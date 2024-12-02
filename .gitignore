@@ -73,3 +73,7 @@ crashlytics-build.properties
 .vscode/extensions.json
 .vscode/launch.json
 .vscode/settings.json
+Assets/Plugins.meta
+Assets/Plugins/Demigiant.meta
+Assets/Plugins/Demigiant/DOTween.meta
+Assets/Plugins/Demigiant/DOTween/Editor.meta
