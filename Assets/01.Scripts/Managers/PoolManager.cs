@@ -11,14 +11,17 @@ public class PoolManager : Singleton<PoolManager>
     [SerializeField] private testScript testScriptPrefab;
     [SerializeField] private testScript2 testScript2Prefab;
 
+    private int initNum = 5;
+
     private PooledObject<testScript> pool1;
     private PooledObject<testScript2> pool2;
 
     protected override void Awake()
     {
         base.Awake();
-        pool1 = new PooledObject<testScript>("TestScriptPool", testScriptPrefab, true, 1, 5);
+        pool1 = new PooledObject<testScript>("TestScriptPool", testScriptPrefab, true, initNum, 5);
         pool2 = new PooledObject<testScript2>("TestScript2Pool", testScript2Prefab, true, 1, 8);
+        CreatePool();
     }
 
     public void test1ButtonGet()
@@ -31,5 +34,14 @@ public class PoolManager : Singleton<PoolManager>
     {
         var obj = pool2.Get();
         obj.ReleaseObject();
+    }
+
+    public void CreatePool()
+    {
+        for (int i = 0; i < initNum; i++)
+        {
+            var obj = pool1.Get();
+            obj.ReleaseObject();
+        }
     }
 }

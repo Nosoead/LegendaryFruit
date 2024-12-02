@@ -5,6 +5,8 @@ using UnityEngine.Pool;
 
 public class testScript : MonoBehaviour, ISetPooledObject<testScript>
 {
+    public int foolCount = 5;
+
     private IObjectPool<testScript> objectPool;
     public IObjectPool<testScript> ObjectPool
     {
@@ -18,7 +20,7 @@ public class testScript : MonoBehaviour, ISetPooledObject<testScript>
 
     public void ReleaseObject()
     {
-        Invoke(nameof(DelayMethod), 3f);
+        Invoke(nameof(DelayMethod), 0f);
     }
 
     private void DelayMethod()
