@@ -1,6 +1,10 @@
 using UnityEngine;
 using UnityEngine.Pool;
 
+public interface ISetPooledObject<T> where T : Component
+{
+    void SetPooledObject(IObjectPool<T> pool);
+}
 
 public class PooledObject<T> where T : Component
 {
@@ -14,14 +18,18 @@ public class PooledObject<T> where T : Component
             return;
         }
         this.prefab = prefab;
-        var pool = new ObjectPool<T>(CreateProjectile, OnGetObject, OnReleaseObject, OnDestroyObject, collectionCheck, defaultCapacity, maxSize);
+        pool = new ObjectPool<T>(CreateObject, OnGetObject, OnReleaseObject, OnDestroyObject, collectionCheck, defaultCapacity, maxSize);
         PoolManager.Instance.objectPools[keyName] = pool;
     }
 
-    private T CreateProjectile()
+    private T CreateObject()
     {
-        T projectileInstance = Object.Instantiate(prefab);
-        return projectileInstance;
+        T objectInstance = Object.Instantiate(prefab);
+        if (objectInstance is ISetPooledObject<T> settableObject)
+        {
+            settableObject.SetPooledObject(pool);
+        }
+        return objectInstance;
     }
 
     private void OnGetObject(T obj)
