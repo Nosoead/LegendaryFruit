@@ -5,8 +5,10 @@ using UnityEngine;
 
 public class UIManager : Singleton<UIManager>
 {
+    //옵션에 따라 이전 UI창 false로 할지 안할지
     //필드에 사전 만들기
     private Dictionary<string, UIBase> uiDictionary = new Dictionary<string, UIBase>();
+    private Stack<UIBase> uiActiveStack = new Stack<UIBase>();
     private string path;
 
     private void Start()
@@ -26,67 +28,62 @@ public class UIManager : Singleton<UIManager>
                 uiDictionary.Add(uiName, ui);
             }
         }
-        Debug.Log(uiDictionary.Keys + " ||| " + uiDictionary.Values);
     }
 
     private T GetUI<T>() where T : UIBase
     {
         var uiName = typeof(T).Name;
 
-        if (uiDictionary.TryGetValue(uiName, out var uiPrefab))
+        if (uiActiveStack.TryPeek(out UIBase uiStack) && uiStack is T prefab)
         {
-            Debug.Log("1");
-            return uiPrefab as T;
+            uiActiveStack.Pop();
+            return uiStack as T;
         }
-        else
+        else if (uiDictionary.TryGetValue(uiName, out var uiPrefab) && uiPrefab != null)
         {
-            Debug.Log("2");
-            var uiObj = uiPrefab as T;
-            return Instantiate(uiObj);
+            var uiInstance = Instantiate(uiPrefab);
+            uiInstance.gameObject.SetActive(false);
+            return uiInstance as T;
         }
+        return null;
     }
 
-    ////TODO 경로 설정 학습 후 재개
-    //private T CreateUI<T>() where T : UIBase
-    //{
-    //    var uiName = typeof(T).Name;
-    //    //if (!uiDictionary.ContainsKey(uiName))
-    //    //{
-    //    //    uiDictionary.Add(uiName, ui);
-    //    //}
-    //    uiDictionary.TryGetValue(uiName, out var uiPrefab);
-    //    T uiRes = uiPrefab as T;
-    //    var uiObj = Instantiate(uiRes);
-
-    //    return uiObj;
-    //}
-
     //열기
-    private void OpenUI<T>(T ui) where T : UIBase
+    private void OpenUI<T>(T ui, bool isPreviousWindowActive) where T : UIBase
     {
         ui.Open();
+        if (uiActiveStack.TryPeek(out UIBase result) && !isPreviousWindowActive)
+        {
+            result.gameObject.SetActive(false);
+        }
+        uiActiveStack.Push(ui);
     }
 
     //닫기
-    private void CloseUI<T>(T ui) where T : UIBase
+    private void CloseUI<T>(T ui, bool isPreviousWindowActive) where T : UIBase
     {
         ui.Close();
+        if (!isPreviousWindowActive && uiActiveStack.TryPeek(out UIBase result))
+        {
+            result.gameObject.SetActive(true);
+        }
     }
 
     //토글
-    public void ToggleUI<T>() where T : UIBase
+    public void ToggleUI<T>(bool isPreviousWindowActive) where T : UIBase
     {
         T ui = GetUI<T>();
-        if (!ui.gameObject.activeSelf)
+        if (ui == null)
         {
-            Debug.Log("11");
-            CloseUI(ui);
+            return;
+        }
+        if (ui.gameObject.activeSelf)
+        {
+            CloseUI(ui, isPreviousWindowActive);
         }
         else
         {
-            Debug.Log("22");
-            OpenUI(ui);
+            OpenUI(ui, isPreviousWindowActive);
         }
-        Debug.Log(ui.gameObject.activeSelf);
     }
 }

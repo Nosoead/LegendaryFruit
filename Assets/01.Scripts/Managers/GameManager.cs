@@ -6,10 +6,10 @@ public class GameManager : Singleton<GameManager>
 {
     public void testUIButton1()
     {
-        UIManager.Instance.ToggleUI<UItest>();
+        UIManager.Instance.ToggleUI<UItest>(isPreviousWindowActive:true);
     }
     public void testUIButton2()
     {
-        UIManager.Instance.ToggleUI<UItest2>();
+        UIManager.Instance.ToggleUI<UItest2>(isPreviousWindowActive:true);
     }
 }
