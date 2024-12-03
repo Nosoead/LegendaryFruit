@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Pool;
 
+//T으로 Dictionary 자동 연동해서 사용가능 하도록.
 public class PoolManager : Singleton<PoolManager>
 {
     public Dictionary<string, object> objectPools = new Dictionary<string, object>();

@@ -20,7 +20,7 @@ public class testScript : MonoBehaviour, ISetPooledObject<testScript>
 
     public void ReleaseObject()
     {
-        Invoke(nameof(DelayMethod), 0f);
+        Invoke(nameof(DelayMethod), 3f);
     }
 
     private void DelayMethod()
