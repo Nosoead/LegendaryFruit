@@ -5,8 +5,19 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="fd1b27b5-9a48-464d-8c89-0ee285d61d98" name="변경" comment="">
-      <change beforePath="$PROJECT_DIR$/Assets/00.Scenes/TestScenes/Test_ParkScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/00.Scenes/TestScenes/Test_ParkScene.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.LegendaryFruit/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.LegendaryFruit/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01.Scripts/Monster/Monster.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/01.Scripts/Monster/Monster.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01.Scripts/Monster/MonsterController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/01.Scripts/Monster/MonsterController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01.Scripts/Monster/NormalMonster.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/01.Scripts/Monster/NormalMonster.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01.Scripts/Monster/stateMachine/MonsterAirState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/01.Scripts/Monster/stateMachine/PatrollState.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01.Scripts/Monster/stateMachine/MonsterAirState.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01.Scripts/Monster/stateMachine/MonsterBaseState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/01.Scripts/Monster/stateMachine/AttackState.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01.Scripts/Monster/stateMachine/MonsterBaseState.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/01.Scripts/Monster/stateMachine/AttackState.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01.Scripts/Monster/stateMachine/MonsterGroundState.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01.Scripts/Monster/stateMachine/MonsterGroundState.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/01.Scripts/Monster/stateMachine/PatrollState.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01.Scripts/Monster/stateMachine/MonsterStateMachine.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/01.Scripts/Monster/stateMachine/MonsterStateMachine.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01.Scripts/ScriptableObject/MonsterSO.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/01.Scripts/ScriptableObject/MonsterSO.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01.Scripts/Util/Stat/Stat.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/01.Scripts/Util/Stat/Stat.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -17,6 +28,7 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/Assets/01.Scripts/Monster/MonsterStat.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/01.Scripts/Monster/NormalMonster.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="ProjectColorInfo"><![CDATA[{
@@ -86,7 +98,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1733273881441</updated>
-      <workItem from="1733273883424" duration="1102000" />
+      <workItem from="1733273883424" duration="6601000" />
     </task>
     <servers />
   </component>

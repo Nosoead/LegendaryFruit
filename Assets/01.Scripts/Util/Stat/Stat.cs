@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class Stat
 {
-    public virtual void InitStat(PlayerSO playerData)
+    public virtual void InitStat(GameSO gameData)
     {
-        //ÃÊ±â SO°ª ³Ö¾îÁÖ´Â ³»¿ë
+        //ï¿½Ê±ï¿½ SOï¿½ï¿½ ï¿½Ö¾ï¿½ï¿½Ö´ï¿½ ï¿½ï¿½ï¿½ï¿½
     }
 }

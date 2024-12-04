@@ -4,8 +4,7 @@ using UnityEngine;
 
 public abstract class  Monster : MonoBehaviour
 {
-    [SerializeField] protected Monster MonsterController;
+    [SerializeField] protected MonsterStateMachine MonstersStateMachine;
     [SerializeField] protected Monster MonsterCondition;
-    // [SerializeField] protected Monster
-
+    [SerializeField] protected MonsterSO MonsterSO;
 }
