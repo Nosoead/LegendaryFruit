@@ -22,13 +22,15 @@ public class PoolManager : Singleton<PoolManager>
         base.Awake();
         reward = new PooledObject<Reward>("Reward", rewardPrefab, true, initNum, 5);
         pool2 = new PooledObject<testScript2>("TestScript2Pool", testScript2Prefab, true, 1, 8);
-        //CreatePool();
+        CreatePool();
     }
 
-    public void test1ButtonGet()
+    // return을 Reward로 받아서 RewardTree에서 위치 조정
+    public Reward CreatReward()
     {
         var obj = reward.Get();
-        obj.ReleaseObject();
+        //obj.ReleaseObject();
+        return obj;
     }
 
     public void test2ButtonGet()
@@ -37,12 +39,19 @@ public class PoolManager : Singleton<PoolManager>
         obj.ReleaseObject();
     }
 
+    // 일단 어케할지 몰라서 적음
+    // 일단 딕셔너리를 만들어 키값을 int로 받아 만들때 자동으로 키 벨류 자동 저장
+
+    private int rewardKey = 1;
+    public Dictionary<int, Reward> rewards = new Dictionary<int, Reward>();
+
     public void CreatePool()
     {
         for (int i = 0; i < initNum; i++)
         {
             var obj = reward.Get();
             obj.ReleaseObject();
+            rewards.Add(rewardKey++,obj);
         }
     }
 }

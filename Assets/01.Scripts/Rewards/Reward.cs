@@ -30,7 +30,7 @@ public class Reward : MonoBehaviour, ISetPooledObject<Reward>
 
     public void ReleaseObject()
     {
-        Invoke(nameof(DelayMethod), 3f);
+        Invoke(nameof(DelayMethod), 0f);
     }
 
     private void DelayMethod()
@@ -38,10 +38,11 @@ public class Reward : MonoBehaviour, ISetPooledObject<Reward>
         objectPool.Release(this);
     }
 
-    // 위치를 잡아준다.
+    // 생성 위치를 잡아준다.
     public void SetPosition(Vector2 position)
     {
         // 위치 설정
+        this.transform.position = position;
     }
 
     // RewardData를 설정
@@ -55,7 +56,6 @@ public class Reward : MonoBehaviour, ISetPooledObject<Reward>
     private void DataToObject()
     {
         weaponPrefab.weaponData = weaponData;
-
     }
 
     // TODO : DOTween 사용 예정
