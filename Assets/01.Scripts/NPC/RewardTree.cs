@@ -9,7 +9,7 @@ public class RewardTree : MonoBehaviour,IInteractable
     protected float rewardGrade;
     [SerializeField] private Reward rewardPrefab;
     [SerializeField] private Transform spawnPositionsRoot;
-    private List<Transform> spawnPositions = new List<Transform>();
+    public List<Transform> spawnPositions = new List<Transform>();
     //private WeaponSO weaponData = null;
 
     //일단 테스트용으로 weaponData를 임시적으로 넣음
@@ -27,6 +27,7 @@ public class RewardTree : MonoBehaviour,IInteractable
         {
             spawnPositions.Add(spawnPositionsRoot.GetChild(i));
         }
+        PoolManager.Instance.CreatePool();
     }
 
     // 나무와 상호작용
@@ -53,9 +54,9 @@ public class RewardTree : MonoBehaviour,IInteractable
         // 열매생성
         for (int i = 0; i < spawnPositions.Count; i++)
         {
-            var reward = PoolManager.Instance.CreatReward();
+            //var reward = PoolManager.Instance.CreatReward();
             Vector2 rewardSpawnPonint = spawnPositions[i].transform.position;
-            reward.SetPosition(rewardSpawnPonint);
+            //reward.SetPosition(rewardSpawnPonint);
         }
 
         // Reward에서 위치 잡아준거 여기로

@@ -11,6 +11,7 @@ public class PoolManager : Singleton<PoolManager>
 
     [SerializeField] private Reward rewardPrefab;
     [SerializeField] private testScript2 testScript2Prefab;
+    [SerializeField] private RewardTree rewardTree;
 
     private int initNum = 5;
 
@@ -22,15 +23,7 @@ public class PoolManager : Singleton<PoolManager>
         base.Awake();
         reward = new PooledObject<Reward>("Reward", rewardPrefab, true, initNum, 5);
         pool2 = new PooledObject<testScript2>("TestScript2Pool", testScript2Prefab, true, 1, 8);
-        CreatePool();
-    }
-
-    // return을 Reward로 받아서 RewardTree에서 위치 조정
-    public Reward CreatReward()
-    {
-        var obj = reward.Get();
-        //obj.ReleaseObject();
-        return obj;
+        //CreatePool();
     }
 
     public void test2ButtonGet()
@@ -45,13 +38,15 @@ public class PoolManager : Singleton<PoolManager>
     private int rewardKey = 1;
     public Dictionary<int, Reward> rewards = new Dictionary<int, Reward>();
 
+    // TODO : 나중에 제네릭으로 리펙토링
     public void CreatePool()
     {
-        for (int i = 0; i < initNum; i++)
+        for (int i = 0; i < rewardTree.spawnPositions.Count; i++)
         {
+            Vector2 rewardSpawnPonint = rewardTree.spawnPositions[i].transform.position;
             var obj = reward.Get();
+            obj.SetPosition(rewardSpawnPonint);
             obj.ReleaseObject();
-            rewards.Add(rewardKey++,obj);
         }
     }
 }
