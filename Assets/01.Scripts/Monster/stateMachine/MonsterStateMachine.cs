@@ -4,33 +4,53 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class MonsterStateMachine : MonoBehaviour
+public class MonsterStateMachine
 {
-    protected IMonster CurrentState { get; private set; }
+    protected IMonster currentState { get; private set; }
 
-    public PatrollState PatrollState;
-    public AttackState AttackState;
+    public GameObject target { get; set; }
+
+    public Monster monster{ get; private set; }
+    public PatrollState patrollState{ get; private set; }
+    public AttackState attackState{ get; private set; }
 
     public void Update()
     {
-        CurrentState?.Excute();
+        Excute();
     }
 
-    public MonsterStateMachine(MonsterStateMachine stateMachine)
+    public MonsterStateMachine(Monster monster)
     {
-        this.PatrollState = new PatrollState(stateMachine);
-        this.AttackState = new AttackState(stateMachine);
+        this.monster = monster;
+        
+        this.patrollState = new PatrollState(this);
+        this.attackState = new AttackState(this);
     }
-    public void Initialize(IMonster monster)
+    public void Initialize(IMonster monsterState) // 초기화
     {
-        CurrentState = PatrollState;
+        currentState = monsterState;
     }
 
-    public void TransitionToState()
+    public void TransitionToState(IMonster nextState)
     {
-        CurrentState?.Exit();
-        CurrentState = AttackState; // 다음 스테이트로
-        CurrentState?.Enter();
+        currentState?.Exit();
+        currentState = nextState; // 다음 스테이트로
+        currentState?.Enter();
     }
-    
+
+    public void MoveTowardsTarget()
+    {
+        Transform monsterTransform = monster.transform;
+        Transform targetTransform = target.transform;
+        var data = monster.Data;
+        Vector2 direction = (targetTransform.position - monsterTransform.position).normalized;
+        monsterTransform.position += (Vector3)(direction * data.moveSpeed * Time.deltaTime);
+    }
+    public void Excute()
+    {
+        if (currentState != null)
+        {
+            currentState?.Excute();
+        }
+    }
 }

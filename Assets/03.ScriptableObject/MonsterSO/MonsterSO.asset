@@ -12,16 +12,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c18d4756f0ce0194f8389a6e584db103, type: 3}
   m_Name: MonsterSO
   m_EditorClassIdentifier: 
-  maxHealth: 0
-  attackPower: 0
-  defense: 0
-  attackSpeed: 0
-  moveSpeed: 0
-  attackDistance: 0
-  chaseRange: 0
+  maxHealth: 10
+  attackPower: 1
+  defense: 1
+  attackSpeed: 1
+  moveSpeed: 5
+  attackDistance: 2
+  chaseRange: 1
   type: 0
   attributeValue: 0
-  attributeRateTime: 0
-  inGameMoney: 0
+  attributeRateTime: 1
+  inGameMoney: 1
   sprite: {fileID: 0}
   animation: {fileID: 0}

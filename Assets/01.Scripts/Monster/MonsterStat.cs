@@ -4,11 +4,16 @@ using UnityEngine;
 
 public class MonsterStat : Stat
 {
-    public float currentHealth;
-    public float moveSpeed;
+
+    public float CurrentHealth {get; set; }
+    public float MoveSpeed{get; set; }
 
     public override void InitStat(GameSO gameData)
     {
-        //if(gameData == GameSO monsterData)
+        if(gameData is MonsterSO monsterData)
+        {
+            CurrentHealth = monsterData.maxHealth;
+            MoveSpeed = monsterData.moveSpeed;
+        }
     }
 }
