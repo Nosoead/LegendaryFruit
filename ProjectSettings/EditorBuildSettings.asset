@@ -18,7 +18,7 @@ EditorBuildSettings:
     path: Assets/00.Scenes/TestScenes/Test_ParkScene.unity
     guid: e27f3dbccc1bc594284b8ba3e70ff9c3
   - enabled: 1
-    path: Assets/00.Scenes/TestScenes/Test_SonScene.unity
+    path: Assets/00.Scenes/TestScenes/Test_FrameWalkScene.unity
     guid: 114d71b7a8bd01346a15e16932a1c9ae
   - enabled: 1
     path: Assets/00.Scenes/TestScenes/TestScene.unity

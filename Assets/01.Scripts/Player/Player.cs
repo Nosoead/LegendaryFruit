@@ -4,15 +4,27 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField] private PlayerSO playerData;
+    [SerializeField] private PlayerController controller;
+    [SerializeField] private PlayerMovement movement;
+    [SerializeField] private PlayerAttack attack;
+    [SerializeField] private PlayerInteraction interaction;
+    [SerializeField] private PlayerCondition condition;
+    [SerializeField] private PlayerToUI openUI;
+    //TODO 무기 Equiop
+    private PlayerStat stat;
+    private StatHandler statHandler;
+
+    private void Awake()
     {
-        
+        stat = new PlayerStat();
+        statHandler = new StatHandler();
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Start()
     {
-        
+        //TODO : SaveManager 생성 후 LoadData에 대한 전역접근 될 때,
+        //       Load 파일 null 여부에 따라 초기화 할 것
+        stat.InitStat(playerData);
     }
 }
