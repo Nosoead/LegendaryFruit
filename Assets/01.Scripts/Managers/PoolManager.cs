@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.Pool;
 
 //T으로 Dictionary 자동 연동해서 사용가능 하도록.
-public class PoolManager : Singleton<PoolManager>
+public class PoolManager: Singleton<PoolManager>
 {
     public Dictionary<string, object> objectPools = new Dictionary<string, object>();
 
@@ -39,7 +39,7 @@ public class PoolManager : Singleton<PoolManager>
     public Dictionary<int, Reward> rewards = new Dictionary<int, Reward>();
 
     // TODO : 나중에 제네릭으로 리펙토링
-    public void CreatePool()
+    public void CreatePool<T>() where T : Component, ISetPooledObject<T>
     {
         for (int i = 0; i < rewardTree.spawnPositions.Count; i++)
         {

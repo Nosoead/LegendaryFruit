@@ -22,12 +22,12 @@ public class RewardTree : MonoBehaviour,IInteractable
 
     private void Awake()
     {   
-        rewards = PoolManager.Instance.rewards;
+        //rewards = PoolManager.Instance.rewards;
         for (int i = 0; i < spawnPositionsRoot.childCount; i++)
         {
             spawnPositions.Add(spawnPositionsRoot.GetChild(i));
         }
-        PoolManager.Instance.CreatePool();
+        PoolManager.Instance.CreatePool<Reward>();
     }
 
     // 나무와 상호작용
