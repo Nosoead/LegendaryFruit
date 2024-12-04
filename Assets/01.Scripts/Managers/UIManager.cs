@@ -19,7 +19,7 @@ public class UIManager : Singleton<UIManager>
 
     private void SetUIDictionary()
     {
-        UIBase[] uiArray = ResourceManager.Instance.LoadAllResources<UIBase>(path);
+        UIBase[] uiArray = ResourceManager.Instance.LoadAllResources<UIBase>($"{path}");
         foreach (var ui in uiArray)
         {
             string uiName = ui.GetType().Name;
