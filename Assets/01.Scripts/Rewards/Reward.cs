@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Pool;
 
@@ -8,6 +9,7 @@ public class Reward : MonoBehaviour, ISetPooledObject<Reward>
 {
     public WeaponSO weaponData = null; // 추후 리펙토링
     private bool isGetWeapon = false; // 무기를 얻었는지
+    public event EventHandler <Reward> OnReward;
 
     [SerializeField] private SpriteRenderer spriteRenderer;
 
@@ -16,6 +18,12 @@ public class Reward : MonoBehaviour, ISetPooledObject<Reward>
 
     // 오브젝트 풀 설정
     private IObjectPool<Reward> objectPool;
+
+    private void Start()
+    {
+        //OnReward += DisableReward;
+    }
+
 
     public IObjectPool<Reward> ObjectPool
     {
@@ -53,6 +61,10 @@ public class Reward : MonoBehaviour, ISetPooledObject<Reward>
         DataToObject();
         //GetWeapon();
     }
+    private void DisableReward(GameObject obj, Reward reward)
+    {
+        obj.SetActive(false);
+    }
 
     private void DataToObject()
     {
@@ -60,8 +72,10 @@ public class Reward : MonoBehaviour, ISetPooledObject<Reward>
     }
 
     // TODO : DOTween 사용 예정
-    private void GetWeapon()
+    public void GetWeapon()
     {
         // 무기생성
+        GameObject weapon = Instantiate(weaponPrefab.gameObject);
+        
     }  
 }
