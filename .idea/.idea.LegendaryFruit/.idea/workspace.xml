@@ -7,18 +7,19 @@
     <list default="true" id="fd1b27b5-9a48-464d-8c89-0ee285d61d98" name="변경" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.LegendaryFruit/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.LegendaryFruit/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/00.Scenes/TestScenes/Test_ParkScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/00.Scenes/TestScenes/Test_ParkScene.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01.Scripts/Monster/Arrtibute/AttributeLogics.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/01.Scripts/Monster/Arrtibute/AttributeLogics.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/01.Scripts/Monster/Arrtibute/AttributeLogicsDictionary.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/01.Scripts/Monster/Arrtibute/AttributeLogicsDictionary.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01.Scripts/Monster/Arrtibute/BurnLogic.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01.Scripts/Monster/Arrtibute/BurnLogic.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01.Scripts/Monster/Arrtibute/NormalLogic.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01.Scripts/Monster/Arrtibute/NormalLogic.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01.Scripts/Monster/Arrtibute/SlowDown.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01.Scripts/Monster/Arrtibute/SlowDown.cs.meta" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/01.Scripts/Monster/Monster.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/01.Scripts/Monster/Monster.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/01.Scripts/Monster/MonsterCondition.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/01.Scripts/Monster/MonsterCondition.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/01.Scripts/Monster/MonsterController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/01.Scripts/Monster/MonsterController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/01.Scripts/Monster/MonsterStat.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/01.Scripts/Monster/MonsterStat.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/01.Scripts/Monster/NormalMonster.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/01.Scripts/Monster/NormalMonster.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/01.Scripts/Monster/stateMachine/AttackState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/01.Scripts/Monster/stateMachine/AttackState.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/01.Scripts/Monster/stateMachine/MonsterStateMachine.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/01.Scripts/Monster/stateMachine/MonsterStateMachine.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/01.Scripts/Monster/stateMachine/PatrollState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/01.Scripts/Monster/stateMachine/PatrollState.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/01.Scripts/ScriptableObject/MonsterSO.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/01.Scripts/ScriptableObject/MonsterSO.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/03.ScriptableObject/MonsterSO/MonsterSO.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/03.ScriptableObject/MonsterSO/MonsterSO.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/DOTweenSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/DOTweenSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -106,7 +107,7 @@
       <updated>1733273881441</updated>
       <workItem from="1733273883424" duration="26444000" />
       <workItem from="1733309697805" duration="3979000" />
-      <workItem from="1733359176503" duration="6454000" />
+      <workItem from="1733359176503" duration="22398000" />
     </task>
     <servers />
   </component>

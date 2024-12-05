@@ -1,32 +1,29 @@
-/*
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
 public class MonsterController : Monster
 {
-    public MonsterStateMachine StatMachine => stateMachine;
-    private AttributeLogicState attributeLogicState;
+    private MonsterStateMachine stateMachine;
+    public MonsterStateMachine StateMachine => stateMachine;
+    private AttributeLogics attributeLogics;
 
     private void Awake()
     {
-        MonstersStateMachine = new MonsterStateMachine(this);
-        attributeLogicState = new AttributeLogicState();
+        stateMachine = new MonsterStateMachine(this);
+        attributeLogics = new NormalLogic(); // dddd
     }
 
     private void Start()
     {
-        MonstersStateMachine.Inisialize(MonsterStateMachine.patrollState);
+        StateMachine.Initialize(StateMachine.patrollState);
     }
 
     private void Update()
     {
-        MonstersStateMachine.Execute();
+        StateMachine.Excute();
     }
 
-    private void OnHit()
+    public void OnHit()
     {
+        //어트리뷰트 딕셔너리에서 값 갖고오기
+        
         //애니메이션에서 이벤트로 불러와짐.
     }
 }
-*/
