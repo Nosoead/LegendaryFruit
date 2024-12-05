@@ -3705,6 +3705,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03e3d07e3a1827e4b8c18bee6b00f05f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  MonsterCondition: {fileID: 0}
   MonsterData: {fileID: 11400000, guid: 00a83f927b71fd640adce8f91d0cd574, type: 2}
 --- !u!212 &1677938597
 SpriteRenderer:
@@ -3768,7 +3769,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: -1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}

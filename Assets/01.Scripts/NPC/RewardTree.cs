@@ -11,21 +11,26 @@ public class RewardTree : MonoBehaviour,IInteractable
     [SerializeField] private Reward rewardPrefab;
     [SerializeField] private Transform spawnPositionsRoot;
     public List<Transform> spawnPositions = new List<Transform>();
+
+
     private List<Reward> rewards = new List<Reward>();
 
-    //일단 테스트용으로 weaponData를 임시적으로 넣음
     //TODO :리소스매니저에서 SO형태인 무기정보 들고옴
-    [SerializeField] private WeaponSO weaponData = null;
+    [SerializeField] public WeaponSO weaponData1 = null;
+
+    //임의적으로 리스트로 SO담아옴
+    [SerializeField] private List<WeaponSO> weaponList = new List<WeaponSO>();
 
 
-    private void Awake()
-    {   
+    private void Start()
+    {
         for (int i = 0; i < spawnPositionsRoot.childCount; i++)
         {
             spawnPositions.Add(spawnPositionsRoot.GetChild(i));
         }
         PoolManager.Instance.CreatePool<Reward>();
         rewards = PoolManager.Instance.rewards;
+        RandomSO();
     }
 
     // 나무와 상호작용
@@ -58,8 +63,7 @@ public class RewardTree : MonoBehaviour,IInteractable
     public void SetReward() // Lobby, Stage클리어 -> GamaManager에서 판단 후 호출
     {
         //랜덤 돌려서 보상 SO - > // TODO : Lobby 신선도 level/stage 따라서
-
-        MakeReward(weaponData);
+        MakeReward(weaponData1);
     }
 
     // SO 데이터를 열메에 넣는다.
@@ -70,13 +74,33 @@ public class RewardTree : MonoBehaviour,IInteractable
         {
             int randomCount = UnityEngine.Random.Range(1, rewards.Count - 1);
             Reward randomReward = rewards[randomCount];
+            weaponData = randomReward.weaponData;
+            rewardPrefab.SetRewardData(weaponData);
             randomReward.gameObject.SetActive(true);
+
             rewards.Remove(randomReward);
         }
-
-        // Reward에서 위치 잡아준거 여기로
-
         // Reward에서 Data설정한거 여기로
-        rewardPrefab.SetRewardData(weaponData);
+    }
+
+
+    // 랜덤으로 집어넣는데 까지는 성공 
+    // 리펙토링 필요(만약에 SO를 각자 다른 SO가 필요하다면 필요)
+    private void RandomSO()
+    {
+        for (int i = 0; i < rewards.Count;i++)
+        {
+            rewards[i].weaponData = weaponList[i];
+        }
+        //weaponList.Remove(rewards[i].weaponData);
+        //var randomWeapon = UnityEngine.Random.Range(0, weaponList.Count - 1);
+        //WeaponSO randomWeaponData = weaponList[randomWeapon];
+        //rewards[i].weaponData = randomWeaponData;
+        //weaponList.Remove(randomWeaponData);
+    }
+
+    public void GetWeaponButton()
+    {
+        rewardPrefab.GetWeapon(); 
     }
 }

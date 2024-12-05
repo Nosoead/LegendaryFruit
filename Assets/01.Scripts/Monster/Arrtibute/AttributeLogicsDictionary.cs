@@ -1,9 +1,6 @@
-/*
-using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
 
-public abstract class AttributeLogicsDictionary, IDamageable
+public abstract class AttributeLogicsDictionary
 {
     private Dictionary<AttributeType, AttributeLogics> attributeLogicMap;
 
@@ -11,13 +8,14 @@ public abstract class AttributeLogicsDictionary, IDamageable
     {
         attributeLogicMap = new Dictionary<AttributeType, AttributeLogics>
         {
-            { AttributeType.Normal, new TakeDamage() },
-            { AttributeType.Burn, new BurnDamage() },
+            { AttributeType.Normal, new NormalLogic() },
+            { AttributeType.Burn, new BurnLogic() },
             { AttributeType.SlowDown, new SlowDown() },
 
         };
     }
 
+    // 속성 타입 가져옴
     public AttributeLogics GetAttributeLogic(AttributeType type)
     {
         if (attributeLogicMap.TryGetValue(type, out AttributeLogics logic))
@@ -28,4 +26,3 @@ public abstract class AttributeLogicsDictionary, IDamageable
         return null;
     }
 }
-*/
