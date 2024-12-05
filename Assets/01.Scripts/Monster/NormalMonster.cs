@@ -1,8 +1,3 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
 public class NormalMonster : Monster
 {  
     private MonsterSO monsterdata;
@@ -16,8 +11,14 @@ public class NormalMonster : Monster
 
     private void Start()
     {
-        stateMachine.TransitionToState(stateMachine.patrollState);
+        //stateMachine.TransitionToState(stateMachine.patrollState);
         stat.InitStat(MonsterData);
+        stateMachine.Initialize(stateMachine.patrollState);
+        
+    }
+    private void Update()
+    {
+        stateMachine.Excute();
     }
 
 }

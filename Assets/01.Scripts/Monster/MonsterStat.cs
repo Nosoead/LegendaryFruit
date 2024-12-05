@@ -1,13 +1,9 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
 
 public class MonsterStat : Stat
 {
 
     public float CurrentHealth {get; set; }
     public float MoveSpeed{get; set; }
-
     public override void InitStat(GameSO gameData)
     {
         if(gameData is MonsterSO monsterData)

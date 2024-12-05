@@ -16,4 +16,5 @@ public class MonsterSO : GameSO
     public float inGameMoney; // 드랍하는 머니
     public Sprite sprite; // 몬스터 이미지
     public Animation animation; // 몬스터 애니메이션
+    public GameObject target;
 }

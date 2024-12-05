@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class AttackState :IMonster
@@ -13,7 +11,7 @@ public class AttackState :IMonster
 
     public void Enter()
     {
-        Debug.Log("PatrollState Enter");
+        Debug.Log("AttackState Enter");
     }
 
     public void Excute()
@@ -21,7 +19,7 @@ public class AttackState :IMonster
         //플레이어와의 거리 확인
         float distanceToPlayer = Vector2.Distance(
             stateMachine.monster.transform.position,
-            stateMachine.target.transform.position
+            stateMachine.monster.Data.target.transform.position
             );
         // ChaseRange 넘으면 다시 Patroll로
         if (distanceToPlayer > stateMachine.monster.Data.chaseRange)
@@ -39,6 +37,6 @@ public class AttackState :IMonster
 
     public void Exit()
     {
-        Debug.Log("PatrollState Exit");
+        Debug.Log("AttackState Exit");
     }
 }
