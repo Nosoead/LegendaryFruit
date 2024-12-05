@@ -16,8 +16,14 @@ public class GameManager : Singleton<GameManager>
     }
 
     // Test ¿ë
+    public bool isClear = false;
     public void StageClear()
     {
-        rewardTree.SetReward();
+        if (!isClear)
+        {
+            rewardTree.SetReward();
+            isClear = true;
+        }
+        else { return; };
     }
 }

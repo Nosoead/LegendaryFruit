@@ -32,11 +32,9 @@ public class PoolManager: Singleton<PoolManager>
         obj.ReleaseObject();
     }
 
-    // 일단 어케할지 몰라서 적음
-    // 일단 딕셔너리를 만들어 키값을 int로 받아 만들때 자동으로 키 벨류 자동 저장
-
+    // 리스트 생성 후 -> 생성된 Reward를 리스트에 추가
     private int rewardKey = 1;
-    public Dictionary<int, Reward> rewards = new Dictionary<int, Reward>();
+    public List<Reward> rewards = new List<Reward>();
 
     // TODO : 나중에 제네릭으로 리펙토링
     public void CreatePool<T>() where T : Component, ISetPooledObject<T>
@@ -47,6 +45,7 @@ public class PoolManager: Singleton<PoolManager>
             var obj = reward.Get();
             obj.SetPosition(rewardSpawnPonint);
             obj.ReleaseObject();
+            rewards.Add(obj);
         }
     }
 }
