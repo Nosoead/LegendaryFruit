@@ -467,6 +467,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rewardTree: {fileID: 1348721317}
+  isClear: 0
 --- !u!4 &465965271
 Transform:
   m_ObjectHideFlags: 0
@@ -1621,7 +1622,7 @@ GameObject:
   - component: {fileID: 815707007}
   - component: {fileID: 815707006}
   m_Layer: 9
-  m_Name: Circle
+  m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1921,6 +1922,7 @@ MonoBehaviour:
   rewardPrefab: {fileID: 6237326417099159519, guid: 9ef1feef5ea18864484183512228d71c, type: 3}
   testScript2Prefab: {fileID: 0}
   rewardTree: {fileID: 1348721317}
+  rewards: []
 --- !u!4 &1091037311
 Transform:
   m_ObjectHideFlags: 0
@@ -4704,7 +4706,7 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}

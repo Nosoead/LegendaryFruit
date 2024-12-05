@@ -49,8 +49,9 @@ public class Reward : MonoBehaviour, ISetPooledObject<Reward>
     public void SetRewardData(WeaponSO weaponData)
     {
         this.weaponData = weaponData;
-        spriteRenderer.sprite = this.weaponData.rewardSprite;   
+        spriteRenderer.sprite = this.weaponData.rewardSprite;
         DataToObject();
+        GetWeapon();
     }
 
     private void DataToObject()
@@ -61,6 +62,6 @@ public class Reward : MonoBehaviour, ISetPooledObject<Reward>
     // TODO : DOTween 사용 예정
     private void GetWeapon()
     {
-        
+        // 무기생성
     }  
 }

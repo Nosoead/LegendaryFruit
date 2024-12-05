@@ -5,19 +5,18 @@ using UnityEngine;
 
 public class RewardTree : MonoBehaviour,IInteractable
 {
-    protected int rewardCount = 2; // 나중에 강화되면 올라갈 변수
+    protected int rewardCount = 1; // 나중에 강화되면 올라갈 변수
 
     protected float rewardGrade;
     [SerializeField] private Reward rewardPrefab;
     [SerializeField] private Transform spawnPositionsRoot;
     public List<Transform> spawnPositions = new List<Transform>();
     private List<Reward> rewards = new List<Reward>();
-    //private WeaponSO weaponData = null;
 
     //일단 테스트용으로 weaponData를 임시적으로 넣음
+    //TODO :리소스매니저에서 SO형태인 무기정보 들고옴
     [SerializeField] private WeaponSO weaponData = null;
 
-    // 리소스매니저에서 SO형태인 무기정보 들고옴
 
     private void Awake()
     {   
@@ -34,8 +33,25 @@ public class RewardTree : MonoBehaviour,IInteractable
     {
         if (isDeepPressed || isPressed)
         {
-            return;
-            // pool지우기
+            
+        }
+    }
+
+    // Tag : Player인 객체와 닿고있으면 UI띄움
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        if(collision.CompareTag("Player"))
+        {
+            //UI를 띄운다
+        }
+    }
+
+    // 콜라이더 벗어나면 UI꺼줌
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Player"))
+        {
+            //UI를 없앤다
         }
     }
 

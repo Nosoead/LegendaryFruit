@@ -134,5 +134,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spriteRenderer: {fileID: 3993336075596136068}
-  spawnPoint: {fileID: 0}
   weaponPrefab: {fileID: -8558756444715360971, guid: b17db198eb234374b99896eb7d1ebb55, type: 3}

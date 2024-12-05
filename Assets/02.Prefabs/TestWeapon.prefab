@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2612071006699471767}
   - component: {fileID: 4238641550917436884}
-  - component: {fileID: -8558756444715360971}
+  - component: {fileID: -5251703065164038305}
   m_Layer: 0
   m_Name: TestWeapon
   m_TagString: Untagged
@@ -85,7 +85,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &-8558756444715360971
+--- !u!114 &-5251703065164038305
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
