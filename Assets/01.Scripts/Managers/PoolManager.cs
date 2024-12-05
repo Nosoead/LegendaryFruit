@@ -23,7 +23,6 @@ public class PoolManager: Singleton<PoolManager>
         base.Awake();
         reward = new PooledObject<Reward>("Reward", rewardPrefab, true, initNum, 5);
         pool2 = new PooledObject<testScript2>("TestScript2Pool", testScript2Prefab, true, 1, 8);
-        //CreatePool();
     }
 
     public void test2ButtonGet()
@@ -33,7 +32,6 @@ public class PoolManager: Singleton<PoolManager>
     }
 
     // 리스트 생성 후 -> 생성된 Reward를 리스트에 추가
-    private int rewardKey = 1;
     public List<Reward> rewards = new List<Reward>();
 
     // TODO : 나중에 제네릭으로 리펙토링
@@ -44,7 +42,7 @@ public class PoolManager: Singleton<PoolManager>
             Vector2 rewardSpawnPonint = rewardTree.spawnPositions[i].transform.position;
             var obj = reward.Get();
             obj.SetPosition(rewardSpawnPonint);
-            obj.ReleaseObject();
+            obj.gameObject.SetActive(false);
             rewards.Add(obj);
         }
     }

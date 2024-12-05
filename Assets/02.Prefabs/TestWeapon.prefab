@@ -97,4 +97,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 775c3eb7aa7d6bf468e4c6eee9ab4c4b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weaponData: {fileID: 0}
+  weaponData: {fileID: 11400000, guid: 447c4232ea47d9c4e886f3d48f1f7646, type: 2}
+  sprite: {fileID: 4238641550917436884}
