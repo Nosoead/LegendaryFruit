@@ -9,9 +9,10 @@ public class Reward : MonoBehaviour, ISetPooledObject<Reward>
 {
     public WeaponSO weaponData = null; // 추후 리펙토링
     private bool isGetWeapon = false; // 무기를 얻었는지
-    public event EventHandler <Reward> OnReward;
 
     [SerializeField] private SpriteRenderer spriteRenderer;
+
+    public event Action <Reward> OnReward;
 
     // SO가 없는 빈 무기 프리펩
     [SerializeField] private Weapon weaponPrefab;
@@ -21,7 +22,7 @@ public class Reward : MonoBehaviour, ISetPooledObject<Reward>
 
     private void Start()
     {
-        //OnReward += DisableReward;
+        
     }
 
 
@@ -61,10 +62,6 @@ public class Reward : MonoBehaviour, ISetPooledObject<Reward>
         DataToObject();
         //GetWeapon();
     }
-    private void DisableReward(GameObject obj, Reward reward)
-    {
-        obj.SetActive(false);
-    }
 
     private void DataToObject()
     {
@@ -76,6 +73,7 @@ public class Reward : MonoBehaviour, ISetPooledObject<Reward>
     {
         // 무기생성
         GameObject weapon = Instantiate(weaponPrefab.gameObject);
-        
-    }  
+        OnReward?.Invoke(this);
+    }
+
 }

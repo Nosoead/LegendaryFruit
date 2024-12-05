@@ -5,15 +5,16 @@ using UnityEngine;
 
 public class RewardTree : MonoBehaviour,IInteractable
 {
-    protected int rewardCount = 1; // 나중에 강화되면 올라갈 변수
+    protected int rewardCount = 2; // 나중에 강화되면 올라갈 변수
 
     protected float rewardGrade;
     [SerializeField] private Reward rewardPrefab;
     [SerializeField] private Transform spawnPositionsRoot;
     public List<Transform> spawnPositions = new List<Transform>();
 
-
     private List<Reward> rewards = new List<Reward>();
+
+    public event Action<Reward> OnReward;
 
     //TODO :리소스매니저에서 SO형태인 무기정보 들고옴
     [SerializeField] public WeaponSO weaponData1 = null;
@@ -66,6 +67,8 @@ public class RewardTree : MonoBehaviour,IInteractable
         MakeReward(weaponData1);
     }
 
+    Reward randomReward;
+
     // SO 데이터를 열메에 넣는다.
     private void MakeReward(WeaponSO weaponData)
     {
@@ -73,16 +76,16 @@ public class RewardTree : MonoBehaviour,IInteractable
         for (int i = 0; i < rewardCount; i++)
         {
             int randomCount = UnityEngine.Random.Range(1, rewards.Count - 1);
-            Reward randomReward = rewards[randomCount];
+            randomReward = rewards[randomCount];
             weaponData = randomReward.weaponData;
             rewardPrefab.SetRewardData(weaponData);
             randomReward.gameObject.SetActive(true);
-
+            //이때 구독
+            OnReward += DisableReward;
             rewards.Remove(randomReward);
         }
         // Reward에서 Data설정한거 여기로
     }
-
 
     // 랜덤으로 집어넣는데 까지는 성공 
     // 리펙토링 필요(만약에 SO를 각자 다른 SO가 필요하다면 필요)
@@ -102,5 +105,10 @@ public class RewardTree : MonoBehaviour,IInteractable
     public void GetWeaponButton()
     {
         rewardPrefab.GetWeapon(); 
+        OnReward?.Invoke(randomReward);
+    }
+    public void DisableReward(Reward reward)
+    {
+        reward.gameObject.SetActive(false);
     }
 }
