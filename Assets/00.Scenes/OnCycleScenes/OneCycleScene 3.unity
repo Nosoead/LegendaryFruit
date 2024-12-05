@@ -135,14 +135,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: OneCycleStage3
       objectReference: {fileID: 0}
-    - target: {fileID: 978823888135565869, guid: 183e5c6c45e4640f0828c74d14fb9f8f, type: 3}
-      propertyPath: m_Name
-      value: SpawnPoint
-      objectReference: {fileID: 0}
-    - target: {fileID: 2090522424302821877, guid: 183e5c6c45e4640f0828c74d14fb9f8f, type: 3}
-      propertyPath: m_Name
-      value: TreeSpawnPoint
-      objectReference: {fileID: 0}
     - target: {fileID: 5605271664187899075, guid: 183e5c6c45e4640f0828c74d14fb9f8f, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -430,7 +422,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0, g: 0.509434, b: 0.3137255, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
