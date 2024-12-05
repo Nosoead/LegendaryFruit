@@ -5,7 +5,7 @@ public enum AttributeType
     SlowDown,
     KnockBack,
     Poison,
-    Blidness
+    Blindness
 }
 
 public enum GradeType
