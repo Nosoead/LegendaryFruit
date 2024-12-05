@@ -5,44 +5,47 @@ using UnityEngine;
 using UnityEngine.Pool;
 
 //T으로 Dictionary 자동 연동해서 사용가능 하도록.
-public class PoolManager : Singleton<PoolManager>
+public class PoolManager: Singleton<PoolManager>
 {
     public Dictionary<string, object> objectPools = new Dictionary<string, object>();
 
-    [SerializeField] private testScript testScriptPrefab;
+    [SerializeField] private Reward rewardPrefab;
     [SerializeField] private testScript2 testScript2Prefab;
+    [SerializeField] private RewardTree rewardTree;
 
     private int initNum = 5;
 
-    private PooledObject<testScript> pool1;
+    private PooledObject<Reward> reward;
     private PooledObject<testScript2> pool2;
 
     protected override void Awake()
     {
         base.Awake();
-        pool1 = new PooledObject<testScript>("TestScriptPool", testScriptPrefab, true, initNum, 5);
+        reward = new PooledObject<Reward>("Reward", rewardPrefab, true, initNum, 5);
         pool2 = new PooledObject<testScript2>("TestScript2Pool", testScript2Prefab, true, 1, 8);
-        CreatePool();
-    }
-
-    public void test1ButtonGet()
-    {
-        var obj = pool1.Get();
-        obj.ReleaseObject();
+        //CreatePool();
     }
 
     public void test2ButtonGet()
     {
-        var obj = pool2.Get();
+        var obj = reward.Get();
         obj.ReleaseObject();
     }
 
-    public void CreatePool()
+    // 리스트 생성 후 -> 생성된 Reward를 리스트에 추가
+    private int rewardKey = 1;
+    public List<Reward> rewards = new List<Reward>();
+
+    // TODO : 나중에 제네릭으로 리펙토링
+    public void CreatePool<T>() where T : Component, ISetPooledObject<T>
     {
-        for (int i = 0; i < initNum; i++)
+        for (int i = 0; i < rewardTree.spawnPositions.Count; i++)
         {
-            var obj = pool1.Get();
+            Vector2 rewardSpawnPonint = rewardTree.spawnPositions[i].transform.position;
+            var obj = reward.Get();
+            obj.SetPosition(rewardSpawnPonint);
             obj.ReleaseObject();
+            rewards.Add(obj);
         }
     }
 }
