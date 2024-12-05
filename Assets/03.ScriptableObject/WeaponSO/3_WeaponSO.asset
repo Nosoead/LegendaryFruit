@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6f30345d6f773874da4088be7b3c7755, type: 3}
+  m_Name: 3_WeaponSO
+  m_EditorClassIdentifier: 
+  name: 
+  description: 
+  attackPower: 0
+  type: 0
+  gradeType: 0
+  eatValue: 0
+  attributeAttackValue: 0
+  attributeAttackRateTime: 0
+  weaponSprite: {fileID: 21300042, guid: 7810966f0f690954c87305933cabf2b0, type: 3}
+  rewardSprite: {fileID: -8851566310641887263, guid: 7810966f0f690954c87305933cabf2b0, type: 3}

@@ -6,7 +6,7 @@ using UnityEngine.Pool;
 
 public class Reward : MonoBehaviour, ISetPooledObject<Reward>
 {
-    private WeaponSO weaponData = null; // 추후 리펙토링
+    public WeaponSO weaponData = null; // 추후 리펙토링
     private bool isGetWeapon = false; // 무기를 얻었는지
 
     [SerializeField] private SpriteRenderer spriteRenderer;
@@ -51,7 +51,7 @@ public class Reward : MonoBehaviour, ISetPooledObject<Reward>
         this.weaponData = weaponData;
         spriteRenderer.sprite = this.weaponData.rewardSprite;
         DataToObject();
-        GetWeapon();
+        //GetWeapon();
     }
 
     private void DataToObject()

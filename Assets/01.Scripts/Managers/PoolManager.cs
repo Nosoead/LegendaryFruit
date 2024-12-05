@@ -23,7 +23,6 @@ public class PoolManager: Singleton<PoolManager>
         base.Awake();
         reward = new PooledObject<Reward>("Reward", rewardPrefab, true, initNum, 5);
         pool2 = new PooledObject<testScript2>("TestScript2Pool", testScript2Prefab, true, 1, 8);
-        //CreatePool();
     }
 
     public void test2ButtonGet()
