@@ -1,13 +1,20 @@
-public class MonsterController : Monster
+using System;
+using Unity.VisualScripting;
+using UnityEngine;
+
+public class MonsterController : MonoBehaviour
 {
     private MonsterStateMachine stateMachine;
     public MonsterStateMachine StateMachine => stateMachine;
     private AttributeLogics attributeLogics;
+    private AttributeLogicsDictionary attributeLogicsDictionary;
+    private Monster monster; //몬스터 데이터에 접근할수없어서 넣음 캐싱??
+
 
     private void Awake()
     {
         stateMachine = new MonsterStateMachine(this);
-        attributeLogics = new NormalLogic(); // dddd
+        attributeLogics = new NormalLogic(); //new AttributeLogics(); // 추상화클래스는 new를 할수없음
     }
 
     private void Start()
@@ -20,10 +27,17 @@ public class MonsterController : Monster
         StateMachine.Excute();
     }
 
-    public void OnHit()
+    private void OnHit()
     {
-        //어트리뷰트 딕셔너리에서 값 갖고오기
-        
-        //애니메이션에서 이벤트로 불러와짐.
+        //어트리뷰트에서 데미지계산후 딕셔너리에 저장후 꺼내옴
+        attributeLogicsDictionary.GetAttributeLogic(monster.Data.type);
+        //애니메이션
+    }
+    private void OnCollisionEnter2D(Collision2D other)
+    {
+        if (other.gameObject.CompareTag("Player"))
+        {
+            OnHit();
+        }
     }
 }
