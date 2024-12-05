@@ -21,7 +21,7 @@ public class PlayerStat : Stat
     //Not JSON Save Data List
     //TODO Add AirControllFactor, FrictionFactor, DoubleJumpFactor ....
     public float JumpForce {  get; set; }
-    public float DashDistance { get; set; }
+    public float DashForce { get; set; }
 
     public override void InitStat(GameSO gameData)
     {
@@ -34,7 +34,7 @@ public class PlayerStat : Stat
             AttackSpeed = playerData.attackSpeed;
             MoveSpeed = playerData.moveSpeed;
             JumpForce = playerData.jumpForce;
-            DashDistance = playerData.dashDistance;
+            DashForce = playerData.dashForce;
         }
         //Debug.Log($"MaxHealth : {MaxHealth}");
         //Debug.Log($"CurrentHealth : {CurrentHealth}");

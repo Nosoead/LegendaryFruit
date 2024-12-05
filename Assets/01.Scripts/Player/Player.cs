@@ -26,5 +26,7 @@ public class Player : MonoBehaviour
         //TODO : SaveManager 생성 후 LoadData에 대한 전역접근 될 때,
         //       Load 파일 null 여부에 따라 초기화 할 것
         stat.InitStat(playerData);
+        movement.ApplyDynamicStats(stat);
+        movement.ApplyStaticStats(stat);
     }
 }

@@ -29,6 +29,7 @@ public class PlayerController : MonoBehaviour
     private void OnEnable()
     {
         //PlayerMovement
+        Input.Player.Move.started += PlayerMove;
         Input.Player.Move.performed += PlayerMove;
         Input.Player.Move.canceled += PlayerMove;
 
@@ -74,7 +75,6 @@ public class PlayerController : MonoBehaviour
     {
         float moveValue = context.ReadValue<float>();
         //moveValue = Mathf.Sign(moveValue);
-        Debug.Log(moveValue);
         OnMoveEvent?.Invoke(moveValue);
     }
     public void PlayerSubCommand(InputAction.CallbackContext context)
