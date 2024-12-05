@@ -135,10 +135,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: OneCycleStage4
       objectReference: {fileID: 0}
-    - target: {fileID: 4695106279304842920, guid: 6f704c9e1d431457588836c2c28755c1, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -5
-      objectReference: {fileID: 0}
     - target: {fileID: 5605271664187899075, guid: 6f704c9e1d431457588836c2c28755c1, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -179,17 +175,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7396426596441996863, guid: 6f704c9e1d431457588836c2c28755c1, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 18
-      objectReference: {fileID: 0}
-    - target: {fileID: 7396426596441996863, guid: 6f704c9e1d431457588836c2c28755c1, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects:
-    - {fileID: 1641306404481053269, guid: 6f704c9e1d431457588836c2c28755c1, type: 3}
+    m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6f704c9e1d431457588836c2c28755c1, type: 3}

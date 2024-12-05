@@ -16,7 +16,7 @@ MonoBehaviour:
   attackPower: 10
   defense: 10
   attackSpeed: 10
-  moveSpeed: 50
+  moveSpeed: 5
   attackDistance: 20
   chaseRange: 10
   type: 0
@@ -25,4 +25,4 @@ MonoBehaviour:
   inGameMoney: 100
   sprite: {fileID: 0}
   animation: {fileID: 0}
-  target: {fileID: 0}
+  target: {fileID: 6595024874787580970, guid: 8bed77e3d73062547a8d9ce781cf46ac, type: 3}
