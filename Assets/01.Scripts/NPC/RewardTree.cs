@@ -12,8 +12,9 @@ public class RewardTree : MonoBehaviour,IInteractable
     [SerializeField] private Transform spawnPositionsRoot;
     public List<Transform> spawnPositions = new List<Transform>();
 
+    //나중에 Dictionary로 변경 가능성 높음 (리펙토링)
     private List<Reward> rewards = new List<Reward>();
-
+    
     public event Action<Reward> OnReward;
 
     //TODO :리소스매니저에서 SO형태인 무기정보 들고옴
@@ -49,7 +50,7 @@ public class RewardTree : MonoBehaviour,IInteractable
     }
 
     // 임시
-    Reward randomReward;
+    private Reward randomReward;
     /// <summary>
     /// 열매 생성 시 WeaponData가 들어간 작업
     /// </summary>
@@ -94,7 +95,7 @@ public class RewardTree : MonoBehaviour,IInteractable
     // 무기 Get
     public void RewardToGetWeapon()
     {
-        rewardPrefab.GetWeapon(); 
+        randomReward.GetWeapon(); 
         OnReward?.Invoke(randomReward);
         GameManager.Instance.isGetWeapon = true;
     }
@@ -107,10 +108,4 @@ public class RewardTree : MonoBehaviour,IInteractable
     {
         reward.gameObject.SetActive(false);
     }
-
-    public void SetWeaponPosition(Reward weapon)
-    {
-        weapon.transform.position = rewardPrefab.transform.position;
-    }
-
 }
