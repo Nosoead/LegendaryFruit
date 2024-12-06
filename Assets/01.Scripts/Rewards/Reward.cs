@@ -13,6 +13,7 @@ public class Reward : MonoBehaviour, ISetPooledObject<Reward>
 
     [SerializeField] private SpriteRenderer spriteRenderer;
 
+
     public event Action <Reward> OnReward;
 
     // SO가 없는 빈 무기 프리펩
@@ -78,6 +79,8 @@ public class Reward : MonoBehaviour, ISetPooledObject<Reward>
     }
 
     // TODO : DOTween 사용 예정
+
+    public Ease ease;
     public void GetWeapon()
     {
         // 무기생성
@@ -85,13 +88,25 @@ public class Reward : MonoBehaviour, ISetPooledObject<Reward>
         weapon.transform.position = this.transform.position;
         RaycastHit2D hit = Physics2D.Raycast(weapon.transform.position,Vector2.down, 50, LayerMask.GetMask("Ground"));
         float hitPosY = hit.point.y;
-        weapon.transform.DOMoveY(hitPosY + 0.3f, 1f, false);
-        Debug.Log(hitPosY);
 
-        // 무기 회전
-
+        //TODO : 거리에 따라 떨어지는 속도 조절
+        if (hit.collider != null)
+        {
+            // 나중에 인스펙터 창에서 관리하면 좋을 듯 함
+            DG.Tweening.Sequence sequence = DOTween.Sequence();
+            sequence.Append(weapon.transform.DOMoveY(hitPosY + 0.3f, 0.5f, false)
+                .SetSpeedBased());
+            sequence.Append(weapon.transform.DOPunchPosition(Vector2.up, 2f, (int)0.7f, 0,false)
+                .SetLoops(-1, LoopType.Restart));
+        }
         // 무기 부유
+
         GameManager.Instance.isCreatReward = false;
+    }
+
+    public void AddTween()
+    {
+
     }
 
 }

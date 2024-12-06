@@ -28,7 +28,7 @@ Transform:
   m_GameObject: {fileID: 5252891402020482419}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -10.080001, y: -1.577168, z: 0}
+  m_LocalPosition: {x: -10.080001, y: -6.7, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -98,8 +98,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 775c3eb7aa7d6bf468e4c6eee9ab4c4b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weaponData: {fileID: 11400000, guid: 447c4232ea47d9c4e886f3d48f1f7646, type: 2}
+  weaponData: {fileID: 11400000, guid: 6d5069ec4c6d3c44d9832a9b8cb505dc, type: 2}
   sprite: {fileID: 4238641550917436884}
+  ease: 29
 --- !u!61 &-2420657502920900829
 BoxCollider2D:
   m_ObjectHideFlags: 0
