@@ -83,9 +83,14 @@ public class Reward : MonoBehaviour, ISetPooledObject<Reward>
         // 公扁积己
         GameObject weapon = Instantiate(weaponPrefab.gameObject);
         weapon.transform.position = this.transform.position;
-        RaycastHit2D hit = Physics2D.Raycast(weapon.transform.position,Vector2.down, 4, LayerMask.GetMask("Ground"));
+        RaycastHit2D hit = Physics2D.Raycast(weapon.transform.position,Vector2.down, 50, LayerMask.GetMask("Ground"));
         float hitPosY = hit.point.y;
-        weapon.transform.DOMoveY(hitPosY, 1, true);
+        weapon.transform.DOMoveY(hitPosY + 0.3f, 1f, false);
+        Debug.Log(hitPosY);
+
+        // 公扁 雀傈
+
+        // 公扁 何蜡
         GameManager.Instance.isCreatReward = false;
     }
 
