@@ -7,10 +7,6 @@ using UnityEngine.UIElements;
 
 public class TestPlayerScript : MonoBehaviour
 {
-    private void Start()
-    {
-
-    }
     Vector2 moveX;
     private float moveSpeed = 3.0f; 
 
@@ -25,9 +21,37 @@ public class TestPlayerScript : MonoBehaviour
         {
             this.transform.Translate(Vector2.right * moveSpeed * Time.deltaTime);
         }
-        if (Input.GetKeyDown(KeyCode.F))
+        if (Input.GetKey(KeyCode.F))
         {
-
+            //Interact(true, false);
+        }   
+        else if (Input.GetKeyDown(KeyCode.F))
+        {
+            //Interact(false,true);
         }
-    } 
+    }
+
+    // 일단 플레이어에서 닿으면 UIManager에서 UI꺼내줌
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if(GameManager.Instance.isClear && GameManager.Instance.isCreatReward)
+        {
+            if (collision.CompareTag("RewardTree"))
+            {
+                UIManager.Instance.ToggleUI<UItest3>(false);
+            }
+        }
+        else { return; }
+    }
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if(GameManager.Instance.isClear && GameManager.Instance.isCreatReward)
+        {
+            if (collision.CompareTag("RewardTree"))
+            {
+                UIManager.Instance.ToggleUI<UItest3>(false);
+            }
+        }
+        else { return;}
+    }
 }

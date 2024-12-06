@@ -11,4 +11,8 @@ public class Weapon : MonoBehaviour
     {
         this.sprite.sprite = weaponData.weaponSprite;
     }
+    public void SetWeaponPosition(Vector2 position)
+    {
+        this.transform.position = position;
+    }
 }

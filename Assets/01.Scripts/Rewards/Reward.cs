@@ -8,7 +8,7 @@ using UnityEngine.Pool;
 public class Reward : MonoBehaviour, ISetPooledObject<Reward>
 {
     public WeaponSO weaponData = null; // 추후 리펙토링
-    private bool isGetWeapon = false; // 무기를 얻었는지
+    //private bool isGetWeapon = false; // 무기를 얻었는지
 
     [SerializeField] private SpriteRenderer spriteRenderer;
 
@@ -48,6 +48,10 @@ public class Reward : MonoBehaviour, ISetPooledObject<Reward>
     }
 
     // 생성 위치를 잡아준다.
+    /// <summary>
+    /// 열매의 위치정보를 전달
+    /// </summary>
+    /// <param name="position">열매의 위치정보를 전달</param>
     public void SetPosition(Vector2 position)
     {
         // 위치 설정
@@ -55,6 +59,10 @@ public class Reward : MonoBehaviour, ISetPooledObject<Reward>
     }
 
     // RewardData를 설정
+    /// <summary>
+    /// 열매에 어떤 WeaponData를 넣어줄것인지
+    /// </summary>
+    /// <param name="weaponData">열매에 설정될 WeaponData</param>
     public void SetRewardData(WeaponSO weaponData)
     {
         this.weaponData = weaponData;
@@ -73,7 +81,7 @@ public class Reward : MonoBehaviour, ISetPooledObject<Reward>
     {
         // 무기생성
         GameObject weapon = Instantiate(weaponPrefab.gameObject);
-        OnReward?.Invoke(this);
+        GameManager.Instance.isCreatReward = false;
     }
 
 }

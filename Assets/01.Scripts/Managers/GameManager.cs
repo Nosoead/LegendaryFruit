@@ -17,6 +17,8 @@ public class GameManager : Singleton<GameManager>
 
     // Test ¿ë
     public bool isClear = false;
+    public bool isGetWeapon = false;
+    public bool isCreatReward = false;
     public void StageClear()
     {
         if (!isClear)
