@@ -4,21 +4,23 @@ using UnityEngine;
 
 public class MonsterController : MonoBehaviour
 {
+    
     private MonsterStateMachine stateMachine;
     public MonsterStateMachine StateMachine => stateMachine;
     private AttributeLogics attributeLogics;
     private AttributeLogicsDictionary attributeLogicsDictionary;
-    private Monster monster { get; set; }
+    [SerializeField]private Monster monster;
     public Monster Monster => monster; //몬스터 데이터에 접근할수없어서 넣음 캐싱??
 
 
-    public MonsterController(Monster monster)
+    /*public void SetMonster(Monster _monster)
     {
-        this.monster = monster;
-    }
+        monster = _monster;
+    } */
+    
     private void Awake()
     {
-        
+        //monster = GetComponent<Monster>();
         stateMachine = new MonsterStateMachine(this);
         attributeLogics = new NormalLogic(); //new AttributeLogics(); // 추상화클래스는 new를 할수없음
     }

@@ -6,15 +6,9 @@
   <component name="ChangeListManager">
     <list default="true" id="fd1b27b5-9a48-464d-8c89-0ee285d61d98" name="변경" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.LegendaryFruit/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.LegendaryFruit/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/00.Scenes/TestScenes/Test_ParkScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/00.Scenes/TestScenes/Test_ParkScene.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/01.Scripts/Monster/Monster.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/01.Scripts/Monster/Monster.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/01.Scripts/Monster/MonsterController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/01.Scripts/Monster/MonsterController.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/01.Scripts/Monster/NormalMonster.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/01.Scripts/Monster/NormalMonster.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/01.Scripts/Monster/stateMachine/AttackState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/01.Scripts/Monster/stateMachine/AttackState.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/01.Scripts/Monster/stateMachine/MonsterStateMachine.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/01.Scripts/Monster/stateMachine/MonsterStateMachine.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/01.Scripts/Monster/stateMachine/PatrollState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/01.Scripts/Monster/stateMachine/PatrollState.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Circle.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Circle.prefab.meta" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -103,7 +97,7 @@
       <workItem from="1733273883424" duration="26444000" />
       <workItem from="1733309697805" duration="3979000" />
       <workItem from="1733359176503" duration="27195000" />
-      <workItem from="1733444023866" duration="6306000" />
+      <workItem from="1733444023866" duration="21381000" />
     </task>
     <servers />
   </component>
