@@ -25,4 +25,4 @@ MonoBehaviour:
   inGameMoney: 100
   sprite: {fileID: 0}
   animation: {fileID: 0}
-  target: {fileID: 6595024874787580970, guid: 8bed77e3d73062547a8d9ce781cf46ac, type: 3}
+  target: {fileID: 2049751661923270965, guid: b00517a01ff04104e863914faa295181, type: 3}

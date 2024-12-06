@@ -3,16 +3,14 @@ using UnityEngine;
 public class MonsterStateMachine
 {
     protected IMonster currentState { get; private set; }
-
-    //public GameObject target { get; set; }
-
-    public Monster monster{ get; private set; }
+    public MonsterController monster{ get; private set; }
     public PatrollState patrollState{ get; private set; }
     public AttackState attackState{ get; private set; }
     public MonsterStateMachine(MonsterController monster)
     {
-        this.patrollState = new PatrollState(this);
-        this.attackState = new AttackState(this);
+        this.monster = monster;
+        this.patrollState = new PatrollState(monster);
+        this.attackState = new AttackState(monster);
     }
 
 
@@ -31,9 +29,10 @@ public class MonsterStateMachine
 
     public void MoveTowardsTarget()
     {
+        var data = monster.Monster.Data;
         Transform monsterTransform = monster.transform;
-        Transform targetTransform = monster.Data.target.transform;
-        var data = monster.Data;
+        Transform targetTransform = data.target.transform;//monster.Data.target.transform;
+        
         Vector2 direction = (targetTransform.position - monsterTransform.position).normalized;
         monsterTransform.position += (Vector3)(direction * (data.moveSpeed * Time.deltaTime));
     }
@@ -44,7 +43,7 @@ public class MonsterStateMachine
         float direction = Mathf.Sign(monsterTransfrom.localScale.x);
         Vector2 moveDirection = new Vector2(direction, 0);
             
-        monsterTransfrom.position += (Vector3)(moveDirection * (monster.Data.moveSpeed * Time.deltaTime));
+        monsterTransfrom.position += (Vector3)(moveDirection * (monster.Monster.Data.moveSpeed * Time.deltaTime));
     }
     public void Excute()
     {

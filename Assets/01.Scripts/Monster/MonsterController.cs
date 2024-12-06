@@ -8,11 +8,17 @@ public class MonsterController : MonoBehaviour
     public MonsterStateMachine StateMachine => stateMachine;
     private AttributeLogics attributeLogics;
     private AttributeLogicsDictionary attributeLogicsDictionary;
-    private Monster monster; //몬스터 데이터에 접근할수없어서 넣음 캐싱??
+    private Monster monster { get; set; }
+    public Monster Monster => monster; //몬스터 데이터에 접근할수없어서 넣음 캐싱??
 
 
+    public MonsterController(Monster monster)
+    {
+        this.monster = monster;
+    }
     private void Awake()
     {
+        
         stateMachine = new MonsterStateMachine(this);
         attributeLogics = new NormalLogic(); //new AttributeLogics(); // 추상화클래스는 new를 할수없음
     }
