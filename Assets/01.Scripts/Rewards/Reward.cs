@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Pool;
+using DG.Tweening;
 
 public class Reward : MonoBehaviour, ISetPooledObject<Reward>
 {
@@ -81,6 +82,10 @@ public class Reward : MonoBehaviour, ISetPooledObject<Reward>
     {
         // 무기생성
         GameObject weapon = Instantiate(weaponPrefab.gameObject);
+        weapon.transform.position = this.transform.position;
+        RaycastHit2D hit = Physics2D.Raycast(weapon.transform.position,Vector2.down, 4, LayerMask.GetMask("Ground"));
+        float hitPosY = hit.point.y;
+        weapon.transform.DOMoveY(hitPosY, 1, true);
         GameManager.Instance.isCreatReward = false;
     }
 

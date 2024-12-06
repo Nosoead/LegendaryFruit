@@ -1,3 +1,4 @@
+using DG.Tweening;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -7,6 +8,8 @@ public class RewardTree : MonoBehaviour,IInteractable
 {
     protected int rewardCount = 1; // 나중에 강화되면 올라갈 변수
     protected float rewardGrade;
+
+    [SerializeField] private Transform treePos;
 
     [SerializeField] private Reward rewardPrefab;
     [SerializeField] private Transform spawnPositionsRoot;
@@ -95,9 +98,15 @@ public class RewardTree : MonoBehaviour,IInteractable
     // 무기 Get
     public void RewardToGetWeapon()
     {
-        randomReward.GetWeapon(); 
-        OnReward?.Invoke(randomReward);
-        GameManager.Instance.isGetWeapon = true;
+        if(GameManager.Instance.isClear)
+        {
+            randomReward.GetWeapon();
+            OnReward?.Invoke(randomReward);
+            //randomReward.transform.DOMoveY(randomReward.transform.position.y, 1, treePos);
+            GameManager.Instance.isGetWeapon = true;
+            GameManager.Instance.isClear = false;
+        }
+        else { return; }
     }
 
     /// <summary>
