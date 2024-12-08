@@ -6,9 +6,6 @@ using UnityEngine.Events;
 //Todo 장비장착시 스탯 추가 시킬 것. 영구 증가X 무기 장작관련 필드 만들어서 저장
 // -> UI에서는 합산한 데이터 송출해 줄것 (DataManager에서 해결)
 
-//TODO Refactoring : 필드 public someField {get; private set;} 캡슐화
-//                      public Method만들어서 데이터 갱신
-//                      갱신 데이터의 float[]로 묶는 방향성 고민중
 public class PlayerStat : Stat
 {
     //TODO Controller로  PlayerStat UPdate마다 전송
