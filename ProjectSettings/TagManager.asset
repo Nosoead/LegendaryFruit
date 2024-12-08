@@ -13,13 +13,13 @@ TagManager:
   - UI
   - Ground
   - Block
-  - Wall
+  - 
   - Player
   - Monster
   - NPC
   - Reward
+  - Item
   - Util
-  - 
   - 
   - 
   - 

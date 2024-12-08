@@ -6,6 +6,6 @@ public class Stat
 {
     public virtual void InitStat(GameSO gameData)
     {
-        //�ʱ� SO�� �־��ִ� ����
+        // 초기 SO를 제공하는 함수
     }
 }

@@ -19,6 +19,7 @@ public class Player : MonoBehaviour
     {
         stat = new PlayerStat();
         statHandler = new StatHandler();
+        if(controller != null) { controller = GetComponent<PlayerController>(); }
     }
 
     private void Start()
