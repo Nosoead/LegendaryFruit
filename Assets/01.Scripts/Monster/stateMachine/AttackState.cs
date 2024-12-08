@@ -2,11 +2,11 @@ using UnityEngine;
 
 public class AttackState :IMonster
 {
-    private MonsterController monster;
+    private MonsterController monsterController;
 
-    public AttackState(MonsterController monster)
+    public AttackState(MonsterController monsterController)
     {
-        this.monster = monster;
+        this.monsterController = monsterController;
     }
 
     public void Enter()
@@ -18,21 +18,22 @@ public class AttackState :IMonster
     {
         //플레이어와의 거리 확인
         float distanceToPlayer = Vector2.Distance(
-            monster.transform.position,
-            monster.Monster.Data.target.transform.position
+            monsterController.transform.position,
+            monsterController.Monster.Data.target.transform.position
             );
-        // ChaseRange 넘으면 다시 Patroll로
-        if (distanceToPlayer > monster.Monster.Data.chaseRange)
+        // ChaseRange 넘으면 다시 idle로
+        if (distanceToPlayer > monsterController.Monster.Data.chaseRange)
         {
-            monster.StateMachine.TransitionToState(monster.StateMachine.patrollState);
+            monsterController.StateMachine.TransitionToState(monsterController.StateMachine.idleState);
             return;
         }
         // currentDistance <AttackDistance-->때리기
-        if (distanceToPlayer <= monster.Monster.Data.attackDistance)
+        if (distanceToPlayer <= monsterController.Monster.Data.attackDistance)
         {
+            Debug.Log("공격!!");
             // if-> 때리는 애니메이션 ->애니메이션에서 OnHit
         }
-        monster.StateMachine.MoveTowardsTarget();
+        monsterController.StateMachine.MoveTowardsTarget();
     }
 
     public void Exit()

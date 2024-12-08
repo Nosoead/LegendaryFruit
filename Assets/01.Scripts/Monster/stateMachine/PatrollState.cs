@@ -1,14 +1,14 @@
-using System;
 using UnityEngine;
 
 public class PatrollState : IMonster
 {
     private MonsterController monstercontroller;
+    private float idleTime;
+    private float idleTimer = 0f;
 
     public PatrollState(MonsterController monstercontroller)
     {
         this.monstercontroller = monstercontroller;
-        Enter();
     }
 
     /// <summary>
@@ -17,27 +17,18 @@ public class PatrollState : IMonster
     
     public void Enter()
     {
-       Debug.Log("PatrollState Enter");
+        idleTime = Random.Range(5, 10);
+        idleTimer = 0f;
+       Debug.Log($"PatrollState Enter, idle time: {idleTime}");
     }
     public void Excute()
     {
-        Debug.Log($"{monstercontroller.transform}1");
-        if (monstercontroller.Monster == null)
-        {
-            Debug.Log($"{monstercontroller.Monster}2");
-        }
-        
+        idleTimer += Time.deltaTime; //타이머
         // 몬스터의 거리와 타겟(플레이어)의 거리를 계산해 저장
         float distanceToPlayer = Vector2.Distance(
             monstercontroller.transform.position,
             monstercontroller.Monster.Data.target.transform.position
-            
         );
-
-        if (distanceToPlayer < 5)
-        {
-            Debug.Log("가까워짐");
-        }
         // chaseRange보다 거리가 가까워진다면 attackState로 전환
         if (distanceToPlayer < monstercontroller.Monster.Data.chaseRange) 
         {
@@ -47,6 +38,11 @@ public class PatrollState : IMonster
         if (distanceToPlayer > monstercontroller.Monster.Data.chaseRange)
         {
             monstercontroller.StateMachine.Move();
+            // n초동안 걷다가 idle 상태로 전환
+            if (idleTimer >= idleTime)
+            {
+                monstercontroller.StateMachine.TransitionToState(monstercontroller.StateMachine.idleState);
+            }
             // 플레이어 거리 계산하지말고 그냥 앞으로 가다가 아래 땅이 없으면 돌게
         }
         // 조건따라 플레이어 서치 어택

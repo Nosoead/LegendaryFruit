@@ -4,11 +4,14 @@ public class MonsterStateMachine
 {
     protected IMonster currentState { get; private set; }
     public MonsterController monster{ get; private set; }
+    public IdleState idleState { get; private set; }
     public PatrollState patrollState{ get; private set; }
     public AttackState attackState{ get; private set; }
+    
     public MonsterStateMachine(MonsterController monster)
     {
         this.monster = monster;
+        this.idleState = new IdleState(monster);
         this.patrollState = new PatrollState(monster);
         this.attackState = new AttackState(monster);
     }
@@ -51,5 +54,12 @@ public class MonsterStateMachine
         {
             currentState?.Excute();
         }
+    }
+    public void ReverseDirection()
+    {
+        // 몬스터의 x축 방향을 반전
+        Vector3 scale = monster.transform.localScale;
+        scale.x *= -1; 
+        monster.transform.localScale = scale;
     }
 }
