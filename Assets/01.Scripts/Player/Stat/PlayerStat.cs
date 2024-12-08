@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 //Todo 장비장착시 스탯 추가 시킬 것. 영구 증가X 무기 장작관련 필드 만들어서 저장
 // -> UI에서는 합산한 데이터 송출해 줄것 (DataManager에서 해결)
@@ -10,37 +11,63 @@ using UnityEngine;
 //                      갱신 데이터의 float[]로 묶는 방향성 고민중
 public class PlayerStat : Stat
 {
-    //TODO JSON Save Data List
-    public float MaxHealth { get; set; }
-    public float CurrentHealth { get; set; }
-    public float CurrentDamage { get; set; }
-    public float CurrentDefense { get; set; }
-    public float AttackSpeed { get; set; }
-    public float MoveSpeed { get; set; }
-
-    //Not JSON Save Data List
-    //TODO Add AirControllFactor, FrictionFactor, DoubleJumpFactor ....
-    public float JumpForce {  get; set; }
-    public float DashForce { get; set; }
+    //TODO Controller로  PlayerStat UPdate마다 전송
+    public UnityAction<string, float> OnStatUpdated;
+    private Dictionary<string, float> stats = new Dictionary<string, float>();
 
     public override void InitStat(GameSO gameData)
     {
         if (gameData is PlayerSO playerData)
         {
-            MaxHealth = playerData.maxHealth;
-            CurrentHealth = MaxHealth;
-            CurrentDamage = playerData.attackPower;
-            CurrentDefense = playerData.defense;
-            AttackSpeed = playerData.attackSpeed;
-            MoveSpeed = playerData.moveSpeed;
-            JumpForce = playerData.jumpForce;
-            DashForce = playerData.dashForce;
+            stats["MaxHealth"] = playerData.maxHealth;
+            stats["CurrentHealth"] = playerData.maxHealth;
+            stats["CurrentAttackPower"] = playerData.attackPower;
+            stats["CurrentDefense"] = playerData.defense;
+            stats["AttackSpeed"] = playerData.attackSpeed;
+            stats["MoveSpeed"] = playerData.moveSpeed;
+            stats["JumpForce"] = playerData.jumpForce;
+            stats["DashForce"] = playerData.dashForce;
+
+            foreach (var stat in stats)
+            {
+                OnStatUpdated?.Invoke(stat.Key, stat.Value);
+            }
         }
-        //Debug.Log($"MaxHealth : {MaxHealth}");
-        //Debug.Log($"CurrentHealth : {CurrentHealth}");
-        //Debug.Log($"CurrentDamage : {CurrentDamage}");
-        //Debug.Log($"CurrentDefense : {CurrentDefense}");
-        //Debug.Log($"AttackSpeed : {AttackSpeed}");
-        //Debug.Log($"MoveSpeed : {MoveSpeed}");
     }
+
+    public void UpdateStat(string statKey, float currentValue)
+    {
+        if (stats.TryGetValue(statKey, out var lastValue))
+        {
+            stats[statKey] = currentValue;
+            OnStatUpdated?.Invoke(statKey, currentValue);
+        }
+        else
+        {
+            return;
+        }
+    }
+
+    public void UpdateCurrentHealth(float currentHealth)
+    {
+        if (stats.ContainsKey("CurrentHealth"))
+        {
+            float newValue = Mathf.Clamp(currentHealth, 0f, stats["MaxHealth"]);
+            UpdateStat("CurrentHealth", newValue);
+        }
+    }
+}
+
+
+//TODO : DataManager로 런타임데이터 관리 후 stage 변화 시 PlayerStatData에 저장 후 Static Class SaveManager에서 지역변수로 사용해서 값형으로 JSON으로 저장하는 영구저장 그릇 역할
+[System.Serializable]
+public class PlayerStatData
+{
+    public float MaxHealth;
+    public float CurrentHealth;
+    public float CurrentDamage;
+    public float CurrentDefense;
+    public float AttackSpeed;
+    public float MoveSpeed;
+    public float DashForce;
 }

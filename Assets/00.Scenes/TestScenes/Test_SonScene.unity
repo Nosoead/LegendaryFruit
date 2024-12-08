@@ -3745,7 +3745,6 @@ GameObject:
   - component: {fileID: 1543741219}
   - component: {fileID: 1543741218}
   - component: {fileID: 1543741217}
-  - component: {fileID: 1543741216}
   - component: {fileID: 1543741226}
   m_Layer: 0
   m_Name: player
@@ -3769,18 +3768,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1543741216
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1543741214}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 942317264e443134b8fe7fd17307cea3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1543741217
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3857,12 +3844,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerData: {fileID: 11400000, guid: e56f00758a4c06e4ea716014b33ff09c, type: 2}
-  controller: {fileID: 1543741221}
-  movement: {fileID: 1543741220}
-  attack: {fileID: 1543741219}
-  interaction: {fileID: 1543741218}
   condition: {fileID: 1543741217}
-  openUI: {fileID: 1543741216}
 --- !u!61 &1543741223
 BoxCollider2D:
   m_ObjectHideFlags: 0
