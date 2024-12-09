@@ -1,3 +1,4 @@
+using DG.Tweening;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -6,21 +7,24 @@ using UnityEngine;
 public class RewardTree : MonoBehaviour,IInteractable
 {
     protected int rewardCount = 1; // 나중에 강화되면 올라갈 변수
-
     protected float rewardGrade;
+
+    [SerializeField] private Transform treePos;
+
     [SerializeField] private Reward rewardPrefab;
     [SerializeField] private Transform spawnPositionsRoot;
     public List<Transform> spawnPositions = new List<Transform>();
 
-
+    //나중에 Dictionary로 변경 가능성 높음 (리펙토링)
     private List<Reward> rewards = new List<Reward>();
+    
+    public event Action<Reward> OnReward;
 
     //TODO :리소스매니저에서 SO형태인 무기정보 들고옴
     [SerializeField] public WeaponSO weaponData1 = null;
 
     //임의적으로 리스트로 SO담아옴
     [SerializeField] private List<WeaponSO> weaponList = new List<WeaponSO>();
-
 
     private void Start()
     {
@@ -33,30 +37,12 @@ public class RewardTree : MonoBehaviour,IInteractable
         RandomSO();
     }
 
-    // 나무와 상호작용
+    // 플레이어와 상호작용 -> 무기 생성
     public void Interact(bool isDeepPressed, bool isPressed)
     {
         if (isDeepPressed || isPressed)
         {
-            
-        }
-    }
-
-    // Tag : Player인 객체와 닿고있으면 UI띄움
-    private void OnTriggerStay2D(Collider2D collision)
-    {
-        if(collision.CompareTag("Player"))
-        {
-            //UI를 띄운다
-        }
-    }
-
-    // 콜라이더 벗어나면 UI꺼줌
-    private void OnTriggerExit2D(Collider2D collision)
-    {
-        if (collision.CompareTag("Player"))
-        {
-            //UI를 없앤다
+            RewardToGetWeapon();
         }
     }
 
@@ -66,25 +52,34 @@ public class RewardTree : MonoBehaviour,IInteractable
         MakeReward(weaponData1);
     }
 
-    // SO 데이터를 열메에 넣는다.
+    // 임시
+    private Reward randomReward;
+    /// <summary>
+    /// 열매 생성 시 WeaponData가 들어간 작업
+    /// </summary>
+    /// <param name="weaponData"> 열매에 들어간 WeaponData</param>.
     private void MakeReward(WeaponSO weaponData)
     {
         // 풀에 생성된 Reard를 랜덤으로 rewardCount갯수에 맞게 SetActive를 True
         for (int i = 0; i < rewardCount; i++)
         {
-            int randomCount = UnityEngine.Random.Range(1, rewards.Count - 1);
-            Reward randomReward = rewards[randomCount];
+            randomReward = rewards[RandomCount()];
             weaponData = randomReward.weaponData;
             rewardPrefab.SetRewardData(weaponData);
             randomReward.gameObject.SetActive(true);
-
+            OnReward += DisableReward;
             rewards.Remove(randomReward);
         }
+        GameManager.Instance.isCreatReward = true;
         // Reward에서 Data설정한거 여기로
     }
 
+    public int RandomCount()
+    {
+        int randomCount = UnityEngine.Random.Range(1, rewards.Count - 1);
+        return randomCount;
+    }
 
-    // 랜덤으로 집어넣는데 까지는 성공 
     // 리펙토링 필요(만약에 SO를 각자 다른 SO가 필요하다면 필요)
     private void RandomSO()
     {
@@ -99,8 +94,27 @@ public class RewardTree : MonoBehaviour,IInteractable
         //weaponList.Remove(randomWeaponData);
     }
 
-    public void GetWeaponButton()
+
+    // 무기 Get
+    public void RewardToGetWeapon()
     {
-        rewardPrefab.GetWeapon(); 
+        if(GameManager.Instance.isClear)
+        {
+            randomReward.GetWeapon();
+            OnReward?.Invoke(randomReward);
+            //randomReward.transform.DOMoveY(randomReward.transform.position.y, 1, treePos);
+            GameManager.Instance.isGetWeapon = true;
+            GameManager.Instance.isClear = false;
+        }
+        else { return; }
+    }
+
+    /// <summary>
+    /// 열매에서 무기 얻고 어떤 것을 꺼줄지에 대한 Reward
+    /// </summary>
+    /// <param name="reward">열매에서 무기 얻고 어떤 것을 꺼줄지에 대한 Reward</param>
+    public void DisableReward(Reward reward)
+    {
+        reward.gameObject.SetActive(false);
     }
 }

@@ -5,14 +5,18 @@ using UnityEngine;
 
 public class StatHandler
 {
-    public void Add(ref float currentValue, float someValue)
-    { 
-        currentValue = currentValue + someValue;
+    public float Add(float currentValue, float deltaValue)
+    {
+        return currentValue + deltaValue;
     }
 
-    public float Substract(ref float currentValue, float someValue)
+    public float LimitAdd(float currentValue, float deltaVlue, float MaxValue)
     {
-        float result = currentValue - someValue;
-        return result;
+        return Mathf.Min(currentValue + deltaVlue, MaxValue);
+    }
+
+    public float Substract(float currentValue, float someValue)
+    {
+        return Mathf.Max(currentValue - someValue, 0f);
     }
 }
