@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2612071006699471767}
   - component: {fileID: 4238641550917436884}
   - component: {fileID: -5251703065164038305}
-  - component: {fileID: -2420657502920900829}
+  - component: {fileID: 4404356345439313946}
   m_Layer: 0
   m_Name: TestWeapon
   m_TagString: Untagged
@@ -98,10 +98,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 775c3eb7aa7d6bf468e4c6eee9ab4c4b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weaponData: {fileID: 11400000, guid: 6d5069ec4c6d3c44d9832a9b8cb505dc, type: 2}
+  weaponData: {fileID: 0}
   sprite: {fileID: 4238641550917436884}
   ease: 29
---- !u!61 &-2420657502920900829
+--- !u!61 &4404356345439313946
 BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -130,7 +130,7 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0.21133333}

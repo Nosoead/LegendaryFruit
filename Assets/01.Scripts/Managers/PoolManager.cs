@@ -37,21 +37,21 @@ public class PoolManager: Singleton<PoolManager>
     // 오브젝트 풀를 만드는 함수
     public void CreatePool<T>(T obj) where T : Component, ISetPooledObject<T>
     {
-        var pool = new PooledObject<T>($"{nameof(obj)}", obj, false, 5, 5);
+        var pool = new PooledObject<T>($"{nameof(obj)}", obj, false, 5, 50);
         objectPools.Add(typeof(T).Name, pool);
     }
 
     // 풀 자체를 꺼내는 함수
-    public object GetPool<T>()
+    public object GetPool<T>() where T : Component
     {
         objectPools.TryGetValue(typeof(T).Name, out var pool);
         return pool;
     }
 
     // 오브젝트를 꺼내는 함수
-    public object GetObject<T>()
+    public T GetObject<T>() where T : Component
     {
-        PooledObject<T> obj =(PooledObject<T>)GetPool<T>();
-        return  obj;
+        PooledObject<T> obj = GetPool<T>() as PooledObject<T>;
+        return  obj.Get();
     }
 }

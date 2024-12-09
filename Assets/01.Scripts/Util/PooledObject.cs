@@ -6,7 +6,7 @@ public interface ISetPooledObject<T> where T : Component
     void SetPooledObject(IObjectPool<T> pool);
 }
 
-public class PooledObject<T> where T : Component
+public class PooledObject<T> where T : Component 
 {
     private IObjectPool<T> pool;
     private T prefab;

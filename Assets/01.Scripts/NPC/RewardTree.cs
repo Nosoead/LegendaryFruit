@@ -11,7 +11,7 @@ public class RewardTree : MonoBehaviour,IInteractable
 
     [SerializeField] private Transform treePos;
 
-    public Reward reward;
+    public Reward rewardPrefab;
 
     [SerializeField] private Transform spawnPositionsRoot;
     public List<Transform> spawnPositions = new List<Transform>();
@@ -29,15 +29,25 @@ public class RewardTree : MonoBehaviour,IInteractable
 
     private void Awake()
     {
-
         for (int i = 0; i < spawnPositionsRoot.childCount; i++)
         {
             spawnPositions.Add(spawnPositionsRoot.GetChild(i));
         }
-        PoolManager.Instance.CreatePool<Reward>(reward);
-        var obj =  PoolManager.Instance.GetObject<Reward>();
-        //rewards = PoolManager.Instance.rewards;
-        RandomSO();
+        PoolManager.Instance.CreatePool<Reward>(rewardPrefab);
+        GetReward();
+        //RandomSO();
+    }
+
+    public void GetReward()
+    {
+        for (int i = 0; i < spawnPositions.Count; i++)
+        {
+            var reward = PoolManager.Instance.GetObject<Reward>();
+            reward.SetPosition(spawnPositions[i].position);
+            reward.weaponData = weaponList[i];
+            reward.gameObject.SetActive(false);
+            rewards.Add(reward);
+        }
     }
 
     // 플레이어가 보호막을 얻음 -> 상태 업데이트
@@ -68,13 +78,18 @@ public class RewardTree : MonoBehaviour,IInteractable
         {
             randomReward = rewards[RandomCount()];
             weaponData = randomReward.weaponData;
-            //rewardPrefab.SetRewardData(weaponData);
+            rewardPrefab.SetRewardData(weaponData);
             randomReward.gameObject.SetActive(true);
             OnReward += DisableReward;
             rewards.Remove(randomReward);
         }
         GameManager.Instance.isCreatReward = true;
         // Reward에서 Data를 받아 초기화
+    }
+
+    private void ClearReward()
+    {
+
     }
 
     public int RandomCount()
@@ -90,11 +105,6 @@ public class RewardTree : MonoBehaviour,IInteractable
         {
             rewards[i].weaponData = weaponList[i];
         }
-        //weaponList.Remove(rewards[i].weaponData);
-        //var randomWeapon = UnityEngine.Random.Range(0, weaponList.Count - 1);
-        //WeaponSO randomWeaponData = weaponList[randomWeapon];
-        //rewards[i].weaponData = randomWeaponData;
-        //weaponList.Remove(randomWeaponData);
     }
 
 

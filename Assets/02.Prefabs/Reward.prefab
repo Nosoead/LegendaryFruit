@@ -75,7 +75,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300258, guid: 7810966f0f690954c87305933cabf2b0, type: 3}
+  m_Sprite: {fileID: -8851566310641887263, guid: 7810966f0f690954c87305933cabf2b0, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -133,7 +133,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed6c79abc1d072d4db833e6de259fb1e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weaponData: {fileID: 11400000, guid: 422106da9a15b11439b912bb12ebe88f, type: 2}
+  weaponData: {fileID: 11400000, guid: 447c4232ea47d9c4e886f3d48f1f7646, type: 2}
   spriteRenderer: {fileID: 3993336075596136068}
   weaponPrefab: {fileID: -5251703065164038305, guid: b17db198eb234374b99896eb7d1ebb55, type: 3}
   ease: 0
