@@ -23,7 +23,7 @@ public class MonsterCondition : MonoBehaviour,IDamageable
         }
     }
 
-    public void BurnDamage(float damage, float attributeValue, float attributeRateTime)
+    public void BurnDamage(float damage, float attributeValue, float attributeRateTime, int attributeStack)
     {
         if (isBurn) return;
         

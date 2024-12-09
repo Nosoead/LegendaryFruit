@@ -43,13 +43,13 @@ public class PlayerMovement : MonoBehaviour
 
     public void ApplyDynamicStats(PlayerStat stat)
     {
-        moveSpeed = stat.MoveSpeed;
+        //moveSpeed = stat.MoveSpeed;
     }
 
     public void ApplyStaticStats(PlayerStat stat)
     {
-        jumpForce = stat.JumpForce;
-        dashForce = stat.DashForce;
+        //jumpForce = stat.JumpForce;
+        //dashForce = stat.DashForce;
     }
 
     #region /Event Method

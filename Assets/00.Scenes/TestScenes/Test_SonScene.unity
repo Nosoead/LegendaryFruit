@@ -3780,6 +3780,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7174a2df3a60b4245ad16d11909d2eec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  statManager: {fileID: 0}
 --- !u!114 &1543741218
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3844,7 +3845,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerData: {fileID: 11400000, guid: e56f00758a4c06e4ea716014b33ff09c, type: 2}
-  condition: {fileID: 1543741217}
 --- !u!61 &1543741223
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -3983,6 +3983,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   characterCollider: {fileID: 1543741223}
   playerRigidbody: {fileID: 1543741224}
+  colliderY: 0
   groundLength: 0.6
 --- !u!1 &1800904616
 GameObject:

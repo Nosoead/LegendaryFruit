@@ -32,8 +32,8 @@ public class BurnLogic : AttributeLogics
     public override void ApplyAttackLogic(GameObject target, float damage)
     {
         IDamageable damageable = target.gameObject.GetComponent<IDamageable>();
-        damageable.BurnDamage(
-            monster.Data.attackPower,monster.Data.attributeValue,monster.Data.attributeRateTime);
+        //damageable.BurnDamage(
+            //monster.Data.attackPower,monster.Data.attributeValue,monster.Data.attributeRateTime);
     }
 }
 public class SlowDown : AttributeLogics
