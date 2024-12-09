@@ -1,7 +1,9 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics.Tracing;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.Pool;
 
 // TODO: Dictionary 자동 생성하여 편리하게 사용할 수 있도록 구현
@@ -21,29 +23,35 @@ public class PoolManager: Singleton<PoolManager>
     protected override void Awake()
     {
         base.Awake();
-        reward = new PooledObject<Reward>("Reward", rewardPrefab, true, initNum, 5);
+        //reward = new PooledObject<Reward>("Reward", rewardPrefab, true, initNum, 5);
         pool2 = new PooledObject<testScript2>("TestScript2Pool", testScript2Prefab, true, 1, 8);
     }
 
-    public void test2ButtonGet()
+    //public void test2ButtonGet()
+    //{
+    //    var obj = reward.Get();
+    //    obj.ReleaseObject();
+    //}
+
+
+    // 오브젝트 풀를 만드는 함수
+    public void CreatePool<T>(T obj) where T : Component, ISetPooledObject<T>
     {
-        var obj = reward.Get();
-        obj.ReleaseObject();
+        var pool = new PooledObject<T>($"{nameof(obj)}", obj, false, 5, 5);
+        objectPools.Add(typeof(T).Name, pool);
     }
 
-    // 리스트 생성 후 -> 선택한 Reward를 리스트에 추가
-    public List<Reward> rewards = new List<Reward>();
-
-    // TODO: 이후에 그래픽적으로 개선할 것
-    public void CreatePool<T>() where T : Component, ISetPooledObject<T>
+    // 풀 자체를 꺼내는 함수
+    public object GetPool<T>()
     {
-        for (int i = 0; i < rewardTree.spawnPositions.Count; i++)
-        {
-            Vector2 rewardSpawnPonint = rewardTree.spawnPositions[i].transform.position;
-            var obj = reward.Get();
-            obj.SetPosition(rewardSpawnPonint);
-            obj.gameObject.SetActive(false);
-            rewards.Add(obj);
-        }
+        objectPools.TryGetValue(typeof(T).Name, out var pool);
+        return pool;
+    }
+
+    // 오브젝트를 꺼내는 함수
+    public object GetObject<T>()
+    {
+        PooledObject<T> obj =(PooledObject<T>)GetPool<T>();
+        return  obj;
     }
 }

@@ -13,7 +13,6 @@ public class Reward : MonoBehaviour, ISetPooledObject<Reward>
 
     [SerializeField] private SpriteRenderer spriteRenderer;
 
-
     public event Action <Reward> OnReward;
 
     // SO를 사용해 데이터를 관리하세요
@@ -37,16 +36,6 @@ public class Reward : MonoBehaviour, ISetPooledObject<Reward>
     public void SetPooledObject(IObjectPool<Reward> pool)
     {
         objectPool = pool;
-    }
-
-    public void ReleaseObject()
-    {
-        Invoke(nameof(DelayMethod), 0f);
-    }
-
-    private void DelayMethod()
-    {
-        objectPool.Release(this);
     }
 
     // 물체 위치를 설정합니다.
@@ -108,5 +97,4 @@ public class Reward : MonoBehaviour, ISetPooledObject<Reward>
     {
 
     }
-
 }

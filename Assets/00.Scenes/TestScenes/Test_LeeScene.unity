@@ -1840,7 +1840,6 @@ MonoBehaviour:
   rewardPrefab: {fileID: 6237326417099159519, guid: 9ef1feef5ea18864484183512228d71c, type: 3}
   testScript2Prefab: {fileID: 0}
   rewardTree: {fileID: 2072097398}
-  rewards: []
 --- !u!4 &653240438
 Transform:
   m_ObjectHideFlags: 0
@@ -5294,7 +5293,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   treePos: {fileID: 2009038314}
-  rewardPrefab: {fileID: 6237326417099159519, guid: 9ef1feef5ea18864484183512228d71c, type: 3}
+  reward: {fileID: 6237326417099159519, guid: 9ef1feef5ea18864484183512228d71c, type: 3}
   spawnPositionsRoot: {fileID: 708334707}
   spawnPositions: []
   weaponData1: {fileID: 0}

@@ -11,7 +11,8 @@ public class RewardTree : MonoBehaviour,IInteractable
 
     [SerializeField] private Transform treePos;
 
-    [SerializeField] private Reward rewardPrefab;
+    public Reward reward;
+
     [SerializeField] private Transform spawnPositionsRoot;
     public List<Transform> spawnPositions = new List<Transform>();
 
@@ -26,14 +27,16 @@ public class RewardTree : MonoBehaviour,IInteractable
     //데이터베이스의 리스트를 SO로 옮김
     [SerializeField] private List<WeaponSO> weaponList = new List<WeaponSO>();
 
-    private void Start()
+    private void Awake()
     {
+
         for (int i = 0; i < spawnPositionsRoot.childCount; i++)
         {
             spawnPositions.Add(spawnPositionsRoot.GetChild(i));
         }
-        PoolManager.Instance.CreatePool<Reward>();
-        rewards = PoolManager.Instance.rewards;
+        PoolManager.Instance.CreatePool<Reward>(reward);
+        var obj =  PoolManager.Instance.GetObject<Reward>();
+        //rewards = PoolManager.Instance.rewards;
         RandomSO();
     }
 
@@ -65,7 +68,7 @@ public class RewardTree : MonoBehaviour,IInteractable
         {
             randomReward = rewards[RandomCount()];
             weaponData = randomReward.weaponData;
-            rewardPrefab.SetRewardData(weaponData);
+            //rewardPrefab.SetRewardData(weaponData);
             randomReward.gameObject.SetActive(true);
             OnReward += DisableReward;
             rewards.Remove(randomReward);
