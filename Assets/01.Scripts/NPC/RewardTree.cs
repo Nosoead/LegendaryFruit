@@ -11,7 +11,8 @@ public class RewardTree : MonoBehaviour,IInteractable
 
     [SerializeField] private Transform treePos;
 
-    [SerializeField] private Reward rewardPrefab;
+    public Reward rewardPrefab;
+
     [SerializeField] private Transform spawnPositionsRoot;
     public List<Transform> spawnPositions = new List<Transform>();
 
@@ -26,15 +27,27 @@ public class RewardTree : MonoBehaviour,IInteractable
     //데이터베이스의 리스트를 SO로 옮김
     [SerializeField] private List<WeaponSO> weaponList = new List<WeaponSO>();
 
-    private void Start()
+    private void Awake()
     {
         for (int i = 0; i < spawnPositionsRoot.childCount; i++)
         {
             spawnPositions.Add(spawnPositionsRoot.GetChild(i));
         }
-        PoolManager.Instance.CreatePool<Reward>();
-        rewards = PoolManager.Instance.rewards;
-        RandomSO();
+        PoolManager.Instance.CreatePool<Reward>(rewardPrefab);
+        GetReward();
+        //RandomSO();
+    }
+
+    public void GetReward()
+    {
+        for (int i = 0; i < spawnPositions.Count; i++)
+        {
+            var reward = PoolManager.Instance.GetObject<Reward>();
+            reward.SetPosition(spawnPositions[i].position);
+            reward.weaponData = weaponList[i];
+            reward.gameObject.SetActive(false);
+            rewards.Add(reward);
+        }
     }
 
     // 플레이어가 보호막을 얻음 -> 상태 업데이트
@@ -74,6 +87,11 @@ public class RewardTree : MonoBehaviour,IInteractable
         // Reward에서 Data를 받아 초기화
     }
 
+    private void ClearReward()
+    {
+
+    }
+
     public int RandomCount()
     {
         int randomCount = UnityEngine.Random.Range(1, rewards.Count - 1);
@@ -87,11 +105,6 @@ public class RewardTree : MonoBehaviour,IInteractable
         {
             rewards[i].weaponData = weaponList[i];
         }
-        //weaponList.Remove(rewards[i].weaponData);
-        //var randomWeapon = UnityEngine.Random.Range(0, weaponList.Count - 1);
-        //WeaponSO randomWeaponData = weaponList[randomWeapon];
-        //rewards[i].weaponData = randomWeaponData;
-        //weaponList.Remove(randomWeaponData);
     }
 
 
