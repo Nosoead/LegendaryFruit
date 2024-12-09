@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Burst;
 using UnityEngine;
 using UnityEngine.Rendering.Universal;
 
@@ -10,6 +11,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private Rigidbody2D playerRigidbody;
     [SerializeField] private BoxCollider2D playerCollider;
     [SerializeField] private PlayerController controller;
+    [SerializeField] private PlayerStatManager statManager;
     private Vector2 velocity = Vector2.zero;
     private Vector2 dash = Vector2.right;
     private Vector2 jump = Vector2.zero;
@@ -18,6 +20,11 @@ public class PlayerMovement : MonoBehaviour
     private float dashForce;
     private float direction;
     private bool isDash;
+
+    private void Awake()
+    {
+        EnsureComponents();
+    }
 
     private void OnEnable()
     {
@@ -33,6 +40,12 @@ public class PlayerMovement : MonoBehaviour
         controller.OnSubCommandEvent -= OnSubCommandEvent;
         controller.OnDashEvent -= OnDash;
         controller.OnJumpEvent -= OnJump;
+        statManager.UnsubscribeToUpdateEvent(moveStats);
+    }
+
+    private void Start()
+    {
+        statManager.SubscribeToStatUpdates(moveStats);
     }
 
     private void FixedUpdate()
@@ -41,15 +54,42 @@ public class PlayerMovement : MonoBehaviour
         //ApplyMovement(velocity);
     }
 
-    public void ApplyDynamicStats(PlayerStat stat)
+    #region /Ensure Components
+    private void EnsureComponents()
     {
-        //moveSpeed = stat.MoveSpeed;
+        if (playerRigidbody == null)
+        {
+            playerRigidbody = GetComponent<Rigidbody2D>();
+        }
+        if (playerCollider == null)
+        {
+            playerCollider = GetComponent<BoxCollider2D>();
+        }
+        if (controller == null)
+        {
+            controller = GetComponent<PlayerController>();
+        }
+        if (statManager == null)
+        {
+            statManager = GetComponent<PlayerStatManager>();
+        }
     }
+    #endregion
 
-    public void ApplyStaticStats(PlayerStat stat)
+    private void moveStats(string statKey, float value)
     {
-        //jumpForce = stat.JumpForce;
-        //dashForce = stat.DashForce;
+        switch (statKey)
+        {
+            case "MoveSpeed":
+                moveSpeed = value;
+                break;
+            case "JumpForce":
+                jumpForce = value;
+                break;
+            case "DashForce":
+                dashForce = value;
+                break;
+        }
     }
 
     #region /Event Method
@@ -63,7 +103,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void OnSubCommandEvent()
     {
-        
+
     }
 
     private void OnDash()
@@ -82,7 +122,7 @@ public class PlayerMovement : MonoBehaviour
     #region /Apply Method
     private void ApplyMovement(Vector2 velocity)
     {
-        playerRigidbody.velocity= velocity;
+        playerRigidbody.velocity = velocity;
     }
 
     private void ApplyDash(Vector2 dash)

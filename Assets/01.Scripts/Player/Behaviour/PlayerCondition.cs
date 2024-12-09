@@ -9,7 +9,7 @@ public class PlayerCondition : MonoBehaviour, IDamageable
     private Coroutine coBurnDamage;
     private Coroutine coSlowDown;
 
-    // 각 캐릭터의 남은 시간을 반환하는 로직?
+    // 각 속성 남은 시간 미리 캐싱하는 것 논의 필요.
     private WaitForSeconds burnWaitTime;
     private WaitForSeconds slowDownTime;
 
@@ -58,11 +58,12 @@ public class PlayerCondition : MonoBehaviour, IDamageable
     private IEnumerator SlowDownCoroutine(float attributeValue, float attributeRateTiem)
     {
         slowDownTime = new WaitForSeconds(attributeRateTiem);
-        //TODO 
+        statManager.ApplyTemporaryStatReduction(attributeValue, "MoveSpeed");
         yield return slowDownTime;
-        //TODO 
+        statManager.ApplyRestoreStat(attributeValue, "MoveSpeed");
     }
     #endregion
+
     public void TakeDamage(float damage)
     {
         statManager.ApplyInstantDamage(damage);
