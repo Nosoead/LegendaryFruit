@@ -7,6 +7,7 @@ using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
 {
+    public UnityAction<float> OnDirectionEvent;
     public UnityAction<float> OnMoveEvent;
     public UnityAction OnSubCommandEvent;
     public UnityAction OnDashEvent;
@@ -29,6 +30,7 @@ public class PlayerController : MonoBehaviour
     private void OnEnable()
     {
         //PlayerMovement
+        Input.Player.Move.started += PlayerDirection;
         Input.Player.Move.started += PlayerMove;
         Input.Player.Move.performed += PlayerMove;
         Input.Player.Move.canceled += PlayerMove;
@@ -70,11 +72,14 @@ public class PlayerController : MonoBehaviour
     {
         Input.Player.Disable();
     }
-
+    public void PlayerDirection(InputAction.CallbackContext context)
+    {
+        float directionValue = Mathf.Sign(context.ReadValue<float>());
+        OnDirectionEvent?.Invoke(directionValue);
+    }
     public void PlayerMove(InputAction.CallbackContext context)
     {
         float moveValue = context.ReadValue<float>();
-        //moveValue = Mathf.Sign(moveValue);
         OnMoveEvent?.Invoke(moveValue);
     }
     public void PlayerSubCommand(InputAction.CallbackContext context)

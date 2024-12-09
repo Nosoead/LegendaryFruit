@@ -1,7 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Security.Cryptography.X509Certificates;
 using Unity.VisualScripting.Antlr3.Runtime.Misc;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class PlayerStatManager : MonoBehaviour
 {
@@ -22,20 +24,33 @@ public class PlayerStatManager : MonoBehaviour
         stat.InitStat(playerData);
     }
 
+    public void SubscribeToStatUpdates(UnityAction<string, float> listener)
+    {
+        stat.OnStatUpdated += listener;
+    }
+
+    public void UnsubscribeToUpdateEvent(UnityAction<string, float> listener)
+    {
+        stat.OnStatUpdated -= listener;
+    }
+
+    #region /ApplystatMethod
     public void ApplyInstantDamage(float damage)
     {
         float result = statHandler.Substract(stat.GetStatValue("CurrentHealth"), damage);
         stat.UpdateCurrentHealth(result);
     }
 
-    public void ApplyDamageOverTime(float attributeValue, float attributeRateTiem, int attributeStack)
+    public void ApplyTemporaryStatReduction(float attributeValue, string statKey)
     {
-        
+        float result = statHandler.Substract(stat.GetStatValue(statKey), attributeValue);
+        stat.UpdateStat(statKey, result);
     }
 
-    public void ApplyTemporaryStatReduction(float attributeValue, float attributeRateTiem)
+    public void ApplyRestoreStat(float attributeValue, string statKey)
     {
-        
+        float result = statHandler.Add(stat.GetStatValue(statKey), attributeValue);
+        stat.UpdateStat(statKey, result);
     }
 
     public void Heal(float heal)
@@ -49,4 +64,5 @@ public class PlayerStatManager : MonoBehaviour
         float result = statHandler.Add(stat.GetStatValue(statKey), eatValue);
         stat.UpdateStat(statKey, result);
     }
+    #endregion
 }

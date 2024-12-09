@@ -13,7 +13,6 @@ public class Reward : MonoBehaviour, ISetPooledObject<Reward>
 
     [SerializeField] private SpriteRenderer spriteRenderer;
 
-
     public event Action <Reward> OnReward;
 
     // SO를 사용해 데이터를 관리하세요
@@ -21,12 +20,6 @@ public class Reward : MonoBehaviour, ISetPooledObject<Reward>
 
     // 오브젝트 풀 생성
     private IObjectPool<Reward> objectPool;
-
-    private void Start()
-    {
-        
-    }
-
 
     public IObjectPool<Reward> ObjectPool
     {
@@ -37,16 +30,6 @@ public class Reward : MonoBehaviour, ISetPooledObject<Reward>
     public void SetPooledObject(IObjectPool<Reward> pool)
     {
         objectPool = pool;
-    }
-
-    public void ReleaseObject()
-    {
-        Invoke(nameof(DelayMethod), 0f);
-    }
-
-    private void DelayMethod()
-    {
-        objectPool.Release(this);
     }
 
     // 물체 위치를 설정합니다.
@@ -70,7 +53,6 @@ public class Reward : MonoBehaviour, ISetPooledObject<Reward>
         this.weaponData = weaponData;
         spriteRenderer.sprite = this.weaponData.rewardSprite;
         DataToObject();
-        //GetWeapon();
     }
 
     private void DataToObject()
@@ -81,6 +63,7 @@ public class Reward : MonoBehaviour, ISetPooledObject<Reward>
     // TODO: DOTween 효과 추가
 
     public Ease ease;
+
     public void GetWeapon()
     {
         // 초기화
@@ -88,25 +71,15 @@ public class Reward : MonoBehaviour, ISetPooledObject<Reward>
         weapon.transform.position = this.transform.position;
         RaycastHit2D hit = Physics2D.Raycast(weapon.transform.position,Vector2.down, 50, LayerMask.GetMask("Ground"));
         float hitPosY = hit.point.y;
+        float goalPos = hitPosY + 0.3f;
 
         // TODO: 거리와 시간에 따라 속도 조정
         if (hit.collider != null)
         {
             // 나중에 인스펙터 창에서 확인할 수 있도록 설정
-            DG.Tweening.Sequence sequence = DOTween.Sequence();
-            sequence.Append(weapon.transform.DOMoveY(hitPosY + 0.3f, 0.5f, false)
-                .SetSpeedBased());
-            sequence.Append(weapon.transform.DOPunchPosition(Vector2.up, 2f, (int)0.7f, 0,false)
-                .SetLoops(-1, LoopType.Restart));
-        }
+            var tween = weapon.transform.DOMoveY(goalPos, 1f, false);
+        } 
         // 현재 상태
-
         GameManager.Instance.isCreatReward = false;
-    }
-
-    public void AddTween()
-    {
-
-    }
-
+    }    
 }

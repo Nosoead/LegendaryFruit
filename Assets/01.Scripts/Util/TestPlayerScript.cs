@@ -25,7 +25,6 @@ public class TestPlayerScript : MonoBehaviour
         }
         if (Input.GetKey(KeyCode.F))
         {
-            Debug.Log("����");
             interactable1.Interact(true,false);
         }   
         else if (Input.GetKeyDown(KeyCode.F))

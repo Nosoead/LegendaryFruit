@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Burst;
 using UnityEngine;
 using UnityEngine.Rendering.Universal;
 
@@ -10,91 +11,230 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private Rigidbody2D playerRigidbody;
     [SerializeField] private BoxCollider2D playerCollider;
     [SerializeField] private PlayerController controller;
+    [SerializeField] private PlayerStatManager statManager;
+    [SerializeField] private PlayerGround playerGround;
     private Vector2 velocity = Vector2.zero;
-    private Vector2 dash = Vector2.right;
-    private Vector2 jump = Vector2.zero;
+    private float moveDirection;
     private float moveSpeed;
-    private float jumpForce;
+
+    [Header("DashInfo")]
+    private Vector2 dash = Vector2.right;
+    private float lookDirection = 1f;
     private float dashForce;
+    private bool isDashing;
+    private bool canDash = true;
+    private WaitForSeconds dashingTime = new WaitForSeconds(0.2f);
+    private WaitForSeconds dashingCooldown = new WaitForSeconds(1f);
+
+    [Header("JumpInfo")]
+    private Vector2 jump = Vector2.zero;
+    private float jumpForce;
     private float direction;
     private bool isDash;
+    private int jumpCounter;
+    private bool isGround;
+
+    private void Awake()
+    {
+        EnsureComponents();
+    }
 
     private void OnEnable()
     {
+        controller.OnDirectionEvent += OnDirectionEvent;
         controller.OnMoveEvent += OnMovement;
         controller.OnSubCommandEvent += OnSubCommandEvent;
-        controller.OnDashEvent += OnDash;
-        controller.OnJumpEvent += OnJump;
+        controller.OnDashEvent += OnDashEvent;
+        controller.OnJumpEvent += OnJumpEvent;
     }
 
     private void OnDisable()
     {
         controller.OnMoveEvent -= OnMovement;
         controller.OnSubCommandEvent -= OnSubCommandEvent;
-        controller.OnDashEvent -= OnDash;
-        controller.OnJumpEvent -= OnJump;
+        controller.OnDashEvent -= OnDashEvent;
+        controller.OnJumpEvent -= OnJumpEvent;
+    }
+
+    private void Start()
+    {
+        statManager.SubscribeToStatUpdates(moveStats);
+    }
+
+    private void Update()
+    {
+        CheckGround();
     }
 
     private void FixedUpdate()
     {
         velocity.y = playerRigidbody.velocity.y;
         //ApplyMovement(velocity);
+        if (isDashing)
+        {
+            return;
+        }
+        ApplyMovement();
     }
 
-    public void ApplyDynamicStats(PlayerStat stat)
+    #region /Ensure Components
+    private void EnsureComponents()
     {
-        //moveSpeed = stat.MoveSpeed;
+        if (playerRigidbody == null)
+        {
+            playerRigidbody = GetComponent<Rigidbody2D>();
+        }
+        if (playerCollider == null)
+        {
+            playerCollider = GetComponent<BoxCollider2D>();
+        }
+        if (controller == null)
+        {
+            controller = GetComponent<PlayerController>();
+        }
+        if (statManager == null)
+        {
+            statManager = GetComponent<PlayerStatManager>();
+        }
     }
+    #endregion
 
-    public void ApplyStaticStats(PlayerStat stat)
+    private void moveStats(string statKey, float value)
     {
-        //jumpForce = stat.JumpForce;
-        //dashForce = stat.DashForce;
+        switch (statKey)
+        {
+            case "MoveSpeed":
+                moveSpeed = value;
+                break;
+            case "JumpForce":
+                jumpForce = value;
+                break;
+            case "DashForce":
+                dashForce = value;
+                break;
+        }
     }
 
     #region /Event Method
+    private void OnDirectionEvent(float directionValue)
+    {
+        lookDirection = directionValue;
+    }
+
     private void OnMovement(float moveValue)
     {
         direction = moveValue;
         velocity.x = direction * moveSpeed;
         velocity = new Vector2(velocity.x, velocity.y);
-        ApplyMovement(velocity);
+        ApplyMovement();
     }
 
     private void OnSubCommandEvent()
     {
-        
+
     }
 
-    private void OnDash()
+    private void OnDashEvent()
     {
-        dash = Vector2.right * dashForce;
+        dash = Vector2.right * lookDirection * dashForce;
         ApplyDash(dash);
     }
 
-    private void OnJump()
+    private void OnJumpEvent()
     {
         jump = Vector2.up * jumpForce;
         ApplyJump(jump);
+        if (isGround)
+        {
+            ExitCoroutine();
+            jump = Vector2.up * jumpForce;
+            ApplyJump(jump);
+        }
+        else if (!isGround && jumpCounter == 1)
+        {
+            Debug.Log(jumpCounter);
+            ExitCoroutine();
+            ApplyJump(jump);
+            jumpCounter--;
+        }
     }
     #endregion
 
     #region /Apply Method
-    private void ApplyMovement(Vector2 velocity)
+    private void ApplyMovement()
     {
-        playerRigidbody.velocity= velocity;
+        if (isDashing)
+        {
+            return;
+        }
+        playerRigidbody.velocity = velocity;
     }
 
     private void ApplyDash(Vector2 dash)
     {
+        if (isDashing)
+        {
+            return;
+        }
+        if (canDash)
+        {
+            StartCoroutine(coDash());
+        }
+    }
+
+    private IEnumerator coDash()
+    {
+        canDash = false;
+        isDashing = true;
+        float originalGravity = playerRigidbody.gravityScale;
+        playerRigidbody.gravityScale = 0f;
+        playerRigidbody.velocity = new Vector2(transform.localScale.x * lookDirection * dashForce, 0f);
+        yield return dashingTime;
+        playerRigidbody.gravityScale = originalGravity;
         playerRigidbody.velocity = Vector2.zero;
         playerRigidbody.AddForce(dash, ForceMode2D.Impulse);
+        isDashing = false;
+        yield return dashingCooldown;
+        canDash = true;
     }
 
     private void ApplyJump(Vector2 jump)
     {
-        playerRigidbody.velocity = Vector2.zero;
+        if (isDashing)
+        {
+            playerRigidbody.velocity = Vector2.zero;
+        }
         playerRigidbody.AddForce(jump, ForceMode2D.Impulse);
     }
     #endregion
+
+    private void ExitCoroutine()
+    {
+        StopAllCoroutines();
+        playerRigidbody.gravityScale = 1f;
+        isDashing = false;
+        canDash = true;
+    }
+
+    private void CheckGround()
+    {
+        isGround = playerGround.GetOnGround();
+        if (isGround)
+        {
+            jumpCounter = 1;
+        }
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.green;
+        if (lookDirection > 0)
+        {
+            Gizmos.DrawLine(transform.position, transform.position + Vector3.right * 1f);
+        }
+        else
+        {
+            Gizmos.DrawLine(transform.position, transform.position - Vector3.right * 1f);
+        }
+    }
 }
