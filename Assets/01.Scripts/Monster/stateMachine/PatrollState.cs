@@ -5,7 +5,8 @@ public class PatrollState : IMonster
     private MonsterController monstercontroller;
     private float idleTime;
     private float idleTimer = 0f;
-
+    private float checkGroundTime = 0.1f;
+    private float checkGroundTimer;
     public PatrollState(MonsterController monstercontroller)
     {
         this.monstercontroller = monstercontroller;
@@ -21,31 +22,35 @@ public class PatrollState : IMonster
         idleTimer = 0f;
        Debug.Log($"PatrollState Enter, idle time: {idleTime}");
     }
+
     public void Excute()
     {
         idleTimer += Time.deltaTime; //타이머
-        // 몬스터의 거리와 타겟(플레이어)의 거리를 계산해 저장
-        float distanceToPlayer = Vector2.Distance(
-            monstercontroller.transform.position,
-            monstercontroller.Monster.Data.target.transform.position
-        );
-        // chaseRange보다 거리가 가까워진다면 attackState로 전환
-        if (distanceToPlayer < monstercontroller.Monster.Data.chaseRange) 
+        monstercontroller.Move(); // chaseRange보다 거리가 멀면 그냥 돌아댕기게
+        Debug.Log($"Detector : {monstercontroller.DetectPlayer()}");
+        // 조건따라 플레이어 서치 어택
+        if (monstercontroller.DetectPlayer())
         {
+            
             monstercontroller.StateMachine.TransitionToState(monstercontroller.StateMachine.attackState);
         }
-        // chaseRange보다 거리가 멀면 그냥 돌아댕기게
-        if (distanceToPlayer > monstercontroller.Monster.Data.chaseRange)
+
+        // n초동안 걷다가 idle 상태로 전환
+        if (idleTimer >= idleTime)
         {
-            monstercontroller.StateMachine.Move();
-            // n초동안 걷다가 idle 상태로 전환
-            if (idleTimer >= idleTime)
-            {
-                monstercontroller.StateMachine.TransitionToState(monstercontroller.StateMachine.idleState);
-            }
-            // 플레이어 거리 계산하지말고 그냥 앞으로 가다가 아래 땅이 없으면 돌게
+            monstercontroller.StateMachine.TransitionToState(monstercontroller.StateMachine.idleState);
         }
-        // 조건따라 플레이어 서치 어택
+        
+        // 만약 땅이 없다면 
+        if (!monstercontroller.monsterGround.GetOnGround())
+        {
+            checkGroundTimer += Time.deltaTime;
+            if (checkGroundTimer >= checkGroundTime)
+            {
+                monstercontroller.ReverseDirection();
+                checkGroundTimer = 0;
+            }
+        }
     }
     public void Exit()
     {

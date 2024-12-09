@@ -2499,16 +2499,6 @@ Tilemap:
   m_GameObject: {fileID: 754536304}
   m_Enabled: 1
   m_Tiles:
-  - first: {x: -16, y: -8, z: 0}
-    second:
-      serializedVersion: 2
-      m_TileIndex: 0
-      m_TileSpriteIndex: 0
-      m_TileMatrixIndex: 0
-      m_TileColorIndex: 0
-      m_TileObjectToInstantiateIndex: 65535
-      dummyAlignment: 0
-      m_AllTileFlags: 1073741825
   - first: {x: -15, y: -8, z: 0}
     second:
       serializedVersion: 2
@@ -2560,26 +2550,6 @@ Tilemap:
       dummyAlignment: 0
       m_AllTileFlags: 1073741825
   - first: {x: -10, y: -8, z: 0}
-    second:
-      serializedVersion: 2
-      m_TileIndex: 0
-      m_TileSpriteIndex: 0
-      m_TileMatrixIndex: 0
-      m_TileColorIndex: 0
-      m_TileObjectToInstantiateIndex: 65535
-      dummyAlignment: 0
-      m_AllTileFlags: 1073741825
-  - first: {x: -9, y: -8, z: 0}
-    second:
-      serializedVersion: 2
-      m_TileIndex: 0
-      m_TileSpriteIndex: 0
-      m_TileMatrixIndex: 0
-      m_TileColorIndex: 0
-      m_TileObjectToInstantiateIndex: 65535
-      dummyAlignment: 0
-      m_AllTileFlags: 1073741825
-  - first: {x: -2, y: -8, z: 0}
     second:
       serializedVersion: 2
       m_TileIndex: 0
@@ -2680,16 +2650,6 @@ Tilemap:
       dummyAlignment: 0
       m_AllTileFlags: 1073741825
   - first: {x: 8, y: -8, z: 0}
-    second:
-      serializedVersion: 2
-      m_TileIndex: 0
-      m_TileSpriteIndex: 0
-      m_TileMatrixIndex: 0
-      m_TileColorIndex: 0
-      m_TileObjectToInstantiateIndex: 65535
-      dummyAlignment: 0
-      m_AllTileFlags: 1073741825
-  - first: {x: 9, y: -8, z: 0}
     second:
       serializedVersion: 2
       m_TileIndex: 0
@@ -2929,16 +2889,6 @@ Tilemap:
       m_TileObjectToInstantiateIndex: 65535
       dummyAlignment: 0
       m_AllTileFlags: 1073741825
-  - first: {x: 17, y: -5, z: 0}
-    second:
-      serializedVersion: 2
-      m_TileIndex: 0
-      m_TileSpriteIndex: 0
-      m_TileMatrixIndex: 0
-      m_TileColorIndex: 0
-      m_TileObjectToInstantiateIndex: 65535
-      dummyAlignment: 0
-      m_AllTileFlags: 1073741825
   - first: {x: -16, y: -4, z: 0}
     second:
       serializedVersion: 2
@@ -3041,13 +2991,13 @@ Tilemap:
       m_AllTileFlags: 1073741825
   m_AnimatedTiles: {}
   m_TileAssetArray:
-  - m_RefCount: 54
+  - m_RefCount: 49
     m_Data: {fileID: 11400000, guid: 34e823f164a433545a6198aa332c5e3f, type: 2}
   m_TileSpriteArray:
-  - m_RefCount: 54
+  - m_RefCount: 49
     m_Data: {fileID: 3938328931581856909, guid: 157cbc340d2b7e64ab85168e80e95550, type: 3}
   m_TileMatrixArray:
-  - m_RefCount: 54
+  - m_RefCount: 49
     m_Data:
       e00: 1
       e01: 0
@@ -3066,7 +3016,7 @@ Tilemap:
       e32: 0
       e33: 1
   m_TileColorArray:
-  - m_RefCount: 54
+  - m_RefCount: 49
     m_Data: {r: 1, g: 1, b: 1, a: 1}
   m_TileObjectToInstantiateArray: []
   m_AnimationFrameRate: 1
@@ -3104,7 +3054,7 @@ GameObject:
   - component: {fileID: 887504207}
   - component: {fileID: 887504206}
   - component: {fileID: 887504205}
-  m_Layer: 7
+  m_Layer: 6
   m_Name: Collision_Block
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3540,6 +3490,7 @@ GameObject:
   - component: {fileID: 1677938600}
   - component: {fileID: 1677938602}
   - component: {fileID: 1677938601}
+  - component: {fileID: 1677938603}
   m_Layer: 0
   m_Name: Monster
   m_TagString: Untagged
@@ -3624,7 +3575,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: -1, y: 1, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -3655,7 +3606,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!61 &1677938600
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -3726,7 +3677,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 23f0b54f9a92b894ea81d898c41966c7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  monsterGround: {fileID: 1677938603}
   monster: {fileID: 1677938596}
+  target: {fileID: 0}
+--- !u!114 &1677938603
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1677938595}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b14cae73bcef42c4084f5ed65639c006, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  characterCollider: {fileID: 1677938600}
+  playerRigidbody: {fileID: 1677938599}
+  colliderY: -0.6
+  groundLength: 0.2
 --- !u!1 &1687531994
 GameObject:
   m_ObjectHideFlags: 0
@@ -3867,6 +3836,10 @@ PrefabInstance:
     - target: {fileID: 2049751661923270965, guid: b00517a01ff04104e863914faa295181, type: 3}
       propertyPath: m_Name
       value: Circle
+      objectReference: {fileID: 0}
+    - target: {fileID: 2049751661923270965, guid: b00517a01ff04104e863914faa295181, type: 3}
+      propertyPath: m_TagString
+      value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 6837166516703974823, guid: b00517a01ff04104e863914faa295181, type: 3}
       propertyPath: m_LocalPosition.x

@@ -40,7 +40,7 @@ public class GroundDetector : MonoBehaviour
     private void OnDrawGizmos()
     {
         if (onGround) { Gizmos.color = Color.green; } else { Gizmos.color = Color.red; }
-        Debug.Log(onGround);
+        //Debug.Log(onGround);
         Gizmos.DrawLine(transform.position + colliderRightOffset, transform.position + colliderRightOffset + Vector3.down * groundLength);
         Gizmos.DrawLine(transform.position + colliderLeftOffset, transform.position + colliderLeftOffset + Vector3.down * groundLength);
     }
@@ -56,7 +56,6 @@ public class GroundDetector : MonoBehaviour
         Vector3 leftOffset = new Vector3(-characterCollider.bounds.extents.x, colliderY, 0);
         colliderRightOffset = rightOffset;
         colliderLeftOffset = leftOffset;
-
     }
 
     protected virtual void CheckGround()
@@ -65,7 +64,8 @@ public class GroundDetector : MonoBehaviour
         {
             return;
         }
-        onGround = Physics2D.Raycast(transform.position + colliderRightOffset, Vector2.down, groundLength, groundLayer) || Physics2D.Raycast(transform.position - colliderLeftOffset, Vector2.down, groundLength, groundLayer);
+        onGround = Physics2D.Raycast(transform.position + colliderRightOffset, Vector2.down, groundLength, groundLayer)
+                   || Physics2D.Raycast(transform.position + colliderLeftOffset, Vector2.down, groundLength, groundLayer);
     }
     public bool GetOnGround() { return onGround; }
 }

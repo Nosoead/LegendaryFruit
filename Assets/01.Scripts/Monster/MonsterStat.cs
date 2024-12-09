@@ -1,36 +1,66 @@
+using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class MonsterStat : Stat
 {
+    public UnityAction<string, float> OnStatUpdated;
+    private Dictionary<string, float> stats = new Dictionary<string, float>();
 
-    public float maxHealth {get; set; }
-    public float attackPower{get; set; }
-    public float defense {get; set; }
-    public float MoveSpeed{get; set; }
-    public float attackDistance{get; set; }
-    public float chaseRange{get; set; }
-    public AttributeType type{get; set; }
-    public float attributeValue{get; set; }
-    public float inGameMoney{get; set; }
-    public Sprite sprite{get; set; }
-    public Animation animation{get; set; }
-    public GameObject target{get; set; }
     public override void InitStat(GameSO gameData)
     {
-        if(gameData is MonsterSO monsterData)
+        if (gameData is MonsterSO monsterData)
         {
-            maxHealth = monsterData.maxHealth;
-            attackPower = monsterData.attackPower;
-            defense = monsterData.defense;
-            MoveSpeed = monsterData.moveSpeed;
-            attackDistance = monsterData.attackDistance;
-            chaseRange = monsterData.chaseRange;
-            type = monsterData.type;
-            attributeValue = monsterData.attributeValue;
-            inGameMoney = monsterData.inGameMoney;
-            sprite = monsterData.sprite;
-            animation = monsterData.animation;
-            target = monsterData.target;
+            stats["MaxHealth"] = monsterData.maxHealth;
+            stats["CurrentHealth"] = monsterData.maxHealth;
+            stats["CurrentAttackPower"] =monsterData.attackPower;
+            stats["CurrentDefense"] =monsterData.defense;
+            stats["AttackSpeed"] = monsterData.attackSpeed;
+            stats["MoveSpeed"] = monsterData.moveSpeed;
+            stats["ChaseRange"] = monsterData.chaseRange;
+            //stats["AttributeType"] = monsterData.type;
+            stats["attributeValue"] = monsterData.attributeValue;
+            stats["attributeRateTime"] = monsterData.attributeRateTime;
+            stats["inGameMoney"] = monsterData.inGameMoney;
+            foreach (var stat in stats)
+            {
+                OnStatUpdated?.Invoke(stat.Key, stat.Value);
+            }
         }
     }
+
+    public void UpdateStat(string statKey, float currentValue)
+    {
+        if (stats.TryGetValue(statKey, out var lastValue))
+        {
+            stats[statKey] = currentValue;
+            OnStatUpdated?.Invoke(statKey, currentValue);
+        }
+        else
+        {
+            return;
+        }
+    }
+
+    public void UpdateCurrentHealth(float currentHealth)
+    {
+        if (stats.ContainsKey("CurrentHealth"))
+        {
+            float newValue = Mathf.Clamp(currentHealth, 0f, stats["MaxHealth"]);
+            UpdateStat("CurrentHealth", newValue);
+        }
+    }
+}
+
+
+[System.Serializable]
+public class MonsterStatData
+{
+    public float MaxHealth;
+    public float CurrentHealth;
+    public float CurrentDamage;
+    public float CurrentDefense;
+    public float AttackSpeed;
+    public float MoveSpeed;
+    public float DashForce;
 }

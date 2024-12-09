@@ -23,23 +23,20 @@ public class IdleState :IMonster
     {
         idleTimer += Time.deltaTime; //타이머
         //플레이어와의 거리 확인
-        float distanceToPlayer = Vector2.Distance(
-            monsterController.transform.position,
-            monsterController.Monster.Data.target.transform.position
-        );
+       
         // n초간 가만히 있다가 패트롤 스테이트로 전환
         if (idleTimer >= idleTime)
         {
-            if (Random.value < 0.3f) // 메이플처럼 가만히있다가 가끔 방향 전환
+            if (Random.value < 0.3f) // 가만히있다가 가끔 방향 전환
             {
-                monsterController.StateMachine.ReverseDirection(); 
+                monsterController.ReverseDirection(); 
                 Debug.Log("방향전환");
             }
             monsterController.StateMachine.TransitionToState(monsterController.StateMachine.patrollState);
             return;
         }
         // 가만히 있는데 플레이어가 들어오면 어택스테이트로 변환
-        if (distanceToPlayer <= monsterController.Monster.Data.chaseRange)
+        if (monsterController.DetectPlayer())
         {
             monsterController.StateMachine.TransitionToState(monsterController.StateMachine.attackState);
             return;

@@ -9,7 +9,9 @@ public class MonsterController : MonoBehaviour
     public MonsterStateMachine StateMachine => stateMachine;
     private AttributeLogics attributeLogics;
     private AttributeLogicsDictionary attributeLogicsDictionary;
+    public MonsterGround monsterGround ;
     [SerializeField]private Monster monster;
+    [SerializeField]private LayerMask playerLayerMask;
     public Monster Monster => monster; //몬스터 데이터에 접근할수없어서 넣음 캐싱??
 
     private float maxHealth;
@@ -25,11 +27,7 @@ public class MonsterController : MonoBehaviour
     private Animation animation;
 
     public GameObject target;
-    /*public void SetMonster(Monster _monster)
-    {
-        monster = _monster;
-    } */
-    
+
     private void Awake()
     {
         //monster = GetComponent<Monster>();
@@ -54,11 +52,48 @@ public class MonsterController : MonoBehaviour
         Debug.Log($"Hit, type : {monster.Data.type}");
         //애니메이션
     }
-    private void OnCollisionEnter2D(Collision2D other)
+   
+    public void Move()
     {
-        if (other.gameObject.CompareTag("Player"))
-        {
-            OnHit();
-        }
+        Transform monsterTransfrom = transform;
+        float direction = Mathf.Sign(monsterTransfrom.localScale.x);
+        Vector2 moveDirection = new Vector2(direction, 0);
+            
+        monsterTransfrom.position += (Vector3)(moveDirection * (Monster.Data.moveSpeed * Time.deltaTime));
+    }
+   
+    public void ReverseDirection()
+    {
+        //x축 반전
+        Vector3 scale = transform.localScale;
+        scale.x *= -1; 
+        transform.localScale = scale;
+    }
+    public bool DetectPlayer()
+    {
+        
+        RaycastHit2D rightHit = Physics2D.Raycast(transform.position, Vector2.right,chaseRange,playerLayerMask);
+        RaycastHit2D leftHit = Physics2D.Raycast(transform.position, -Vector2.right,chaseRange,playerLayerMask);
+       Debug.Log(transform.position);
+        return rightHit.collider != null || leftHit.collider != null;
+
+    }
+
+    public bool InAttackRange()
+    {
+        Debug.Log("InAttackRange");
+        RaycastHit2D rightHit = Physics2D.Raycast(transform.position, Vector2.right,attackDistance,playerLayerMask);
+        RaycastHit2D leftHit = Physics2D.Raycast(transform.position, -Vector2.right,attackDistance,playerLayerMask);
+
+
+        return rightHit.collider != null || leftHit.collider != null;
+    }
+
+    public void OnDrawGizmos()
+    {
+        Gizmos.color = Color.green;
+        Gizmos.DrawLine(transform.position , Vector2.right * chaseRange);
+        Gizmos.DrawLine(transform.position , -Vector2.right * chaseRange);
+
     }
 }
