@@ -8,18 +8,18 @@ using DG.Tweening;
 
 public class Reward : MonoBehaviour, ISetPooledObject<Reward>
 {
-    public WeaponSO weaponData = null; // ÃßÈÄ ¸®ÆåÅä¸µ
-    //private bool isGetWeapon = false; // ¹«±â¸¦ ¾ò¾ú´ÂÁö
+    public WeaponSO weaponData = null; // ê·¸ë˜í”½ ê°œì„  ì˜ˆì •
+    //private bool isGetWeapon = false; // ê²½ê³ ë¥¼ ì œê±°í•˜ì„¸ìš”
 
     [SerializeField] private SpriteRenderer spriteRenderer;
 
 
     public event Action <Reward> OnReward;
 
-    // SO°¡ ¾ø´Â ºó ¹«±â ÇÁ¸®Æé
+    // SOë¥¼ ì‚¬ìš©í•´ ë°ì´í„°ë¥¼ ê´€ë¦¬í•˜ì„¸ìš”
     [SerializeField] private Weapon weaponPrefab;
 
-    // ¿ÀºêÁ§Æ® Ç® ¼³Á¤
+    // ì˜¤ë¸Œì íŠ¸ í’€ ìƒì„±
     private IObjectPool<Reward> objectPool;
 
     private void Start()
@@ -49,22 +49,22 @@ public class Reward : MonoBehaviour, ISetPooledObject<Reward>
         objectPool.Release(this);
     }
 
-    // »ı¼º À§Ä¡¸¦ Àâ¾ÆÁØ´Ù.
+    // ë¬¼ì²´ ìœ„ì¹˜ë¥¼ ì„¤ì •í•©ë‹ˆë‹¤.
     /// <summary>
-    /// ¿­¸ÅÀÇ À§Ä¡Á¤º¸¸¦ Àü´Ş
+    /// ë¬¼ì²´ì˜ ìœ„ì¹˜ê°’ì„ ì„¤ì •
     /// </summary>
-    /// <param name="position">¿­¸ÅÀÇ À§Ä¡Á¤º¸¸¦ Àü´Ş</param>
+    /// <param name="position">ì„¤ì •í•  ìœ„ì¹˜ê°’</param>
     public void SetPosition(Vector2 position)
     {
-        // À§Ä¡ ¼³Á¤
+        // ìœ„ì¹˜ ì„¤ì •
         this.transform.position = position;
     }
 
-    // RewardData¸¦ ¼³Á¤
+    // RewardDataë¥¼ ì¶”ê°€
     /// <summary>
-    /// ¿­¸Å¿¡ ¾î¶² WeaponData¸¦ ³Ö¾îÁÙ°ÍÀÎÁö
+    /// ë³´ìƒì— ì–´ë–¤ WeaponDataë¥¼ ì¤„ì§€ ê²°ì •í•©ë‹ˆë‹¤.
     /// </summary>
-    /// <param name="weaponData">¿­¸Å¿¡ ¼³Á¤µÉ WeaponData</param>
+    /// <param name="weaponData">ë³´ìƒì— ì‚¬ìš©í•  WeaponData</param>
     public void SetRewardData(WeaponSO weaponData)
     {
         this.weaponData = weaponData;
@@ -78,28 +78,28 @@ public class Reward : MonoBehaviour, ISetPooledObject<Reward>
         weaponPrefab.weaponData = weaponData;
     }
 
-    // TODO : DOTween »ç¿ë ¿¹Á¤
+    // TODO: DOTween íš¨ê³¼ ì¶”ê°€
 
     public Ease ease;
     public void GetWeapon()
     {
-        // ¹«±â»ı¼º
+        // ì´ˆê¸°í™”
         GameObject weapon = Instantiate(weaponPrefab.gameObject);
         weapon.transform.position = this.transform.position;
         RaycastHit2D hit = Physics2D.Raycast(weapon.transform.position,Vector2.down, 50, LayerMask.GetMask("Ground"));
         float hitPosY = hit.point.y;
 
-        //TODO : °Å¸®¿¡ µû¶ó ¶³¾îÁö´Â ¼Óµµ Á¶Àı
+        // TODO: ê±°ë¦¬ì™€ ì‹œê°„ì— ë”°ë¼ ì†ë„ ì¡°ì •
         if (hit.collider != null)
         {
-            // ³ªÁß¿¡ ÀÎ½ºÆåÅÍ Ã¢¿¡¼­ °ü¸®ÇÏ¸é ÁÁÀ» µí ÇÔ
+            // ë‚˜ì¤‘ì— ì¸ìŠ¤í™í„° ì°½ì—ì„œ í™•ì¸í•  ìˆ˜ ìˆë„ë¡ ì„¤ì •
             DG.Tweening.Sequence sequence = DOTween.Sequence();
             sequence.Append(weapon.transform.DOMoveY(hitPosY + 0.3f, 0.5f, false)
                 .SetSpeedBased());
             sequence.Append(weapon.transform.DOPunchPosition(Vector2.up, 2f, (int)0.7f, 0,false)
                 .SetLoops(-1, LoopType.Restart));
         }
-        // ¹«±â ºÎÀ¯
+        // í˜„ì¬ ìƒíƒœ
 
         GameManager.Instance.isCreatReward = false;
     }

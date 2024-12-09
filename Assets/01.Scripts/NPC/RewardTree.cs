@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class RewardTree : MonoBehaviour,IInteractable
 {
-    protected int rewardCount = 1; // ³ªÁß¿¡ °­È­µÇ¸é ¿Ã¶ó°¥ º¯¼ö
+    protected int rewardCount = 1; // ë‚˜ì¤‘ì— ì¶”ê°€í•˜ë©´ ì½”ë“œ ìˆ˜ì •
     protected float rewardGrade;
 
     [SerializeField] private Transform treePos;
@@ -15,15 +15,15 @@ public class RewardTree : MonoBehaviour,IInteractable
     [SerializeField] private Transform spawnPositionsRoot;
     public List<Transform> spawnPositions = new List<Transform>();
 
-    //³ªÁß¿¡ Dictionary·Î º¯°æ °¡´É¼º ³ôÀ½ (¸®ÆåÅä¸µ)
+    // ë‚˜ì¤‘ì— Dictionaryì— ë°ì´í„° ì €ì¥ ê¸°ëŠ¥ ì¶”ê°€ (ë¦¬ì†ŒìŠ¤ ê°œì„ )
     private List<Reward> rewards = new List<Reward>();
     
     public event Action<Reward> OnReward;
 
-    //TODO :¸®¼Ò½º¸Å´ÏÀú¿¡¼­ SOÇüÅÂÀÎ ¹«±âÁ¤º¸ µé°í¿È
+    // TODO: ìœ ì €ë°ì´í„°ë¥¼ ê´€ë¦¬í•˜ëŠ” SOí´ë˜ìŠ¤ë¥¼ ìƒì„±í•˜ì—¬ ì ìš©
     [SerializeField] public WeaponSO weaponData1 = null;
 
-    //ÀÓÀÇÀûÀ¸·Î ¸®½ºÆ®·Î SO´ã¾Æ¿È
+    //ë°ì´í„°ë² ì´ìŠ¤ì˜ ë¦¬ìŠ¤íŠ¸ë¥¼ SOë¡œ ì˜®ê¹€
     [SerializeField] private List<WeaponSO> weaponList = new List<WeaponSO>();
 
     private void Start()
@@ -37,7 +37,7 @@ public class RewardTree : MonoBehaviour,IInteractable
         RandomSO();
     }
 
-    // ÇÃ·¹ÀÌ¾î¿Í »óÈ£ÀÛ¿ë -> ¹«±â »ı¼º
+    // í”Œë ˆì´ì–´ê°€ ë³´í˜¸ë§‰ì„ ì–»ìŒ -> ìƒíƒœ ì—…ë°ì´íŠ¸
     public void Interact(bool isDeepPressed, bool isPressed)
     {
         if (isDeepPressed || isPressed)
@@ -46,21 +46,21 @@ public class RewardTree : MonoBehaviour,IInteractable
         }
     }
 
-    public void SetReward() // Lobby, StageÅ¬¸®¾î -> GamaManager¿¡¼­ ÆÇ´Ü ÈÄ È£Ãâ
+    public void SetReward() // Lobby, Stage í´ë˜ìŠ¤ -> GameManagerì—ì„œ í˜¸ì¶œ ë˜ëŠ” ì—°ê²°
     {
-        //·£´ı µ¹·Á¼­ º¸»ó SO - > // TODO : Lobby ½Å¼±µµ level/stage µû¶ó¼­
+        // ê¸°ì¡´ ë°ì´í„°ë¥¼ ê´€ë¦¬í•˜ëŠ” SO -> // TODO: Lobby ì§„ì… ì‹œ level/stage ì´ˆê¸°í™”
         MakeReward(weaponData1);
     }
 
-    // ÀÓ½Ã
+    // í…ŒìŠ¤íŠ¸
     private Reward randomReward;
     /// <summary>
-    /// ¿­¸Å »ı¼º ½Ã WeaponData°¡ µé¾î°£ ÀÛ¾÷
+    /// ë³´ìƒì„ ì¤„ ë•Œ WeaponDataë¥¼ ì¶”ê°€í•˜ëŠ” ì‘ì—…
     /// </summary>
-    /// <param name="weaponData"> ¿­¸Å¿¡ µé¾î°£ WeaponData</param>.
+    /// <param name="weaponData"> ë³´ìƒì— ì¶”ê°€í•  WeaponData</param>
     private void MakeReward(WeaponSO weaponData)
     {
-        // Ç®¿¡ »ı¼ºµÈ Reard¸¦ ·£´ıÀ¸·Î rewardCount°¹¼ö¿¡ ¸Â°Ô SetActive¸¦ True
+        // í’€ì—ì„œ êº¼ë‚¸ Rewardë¥¼ ì´ˆê¸°í™”í•˜ê³  rewardCountì— ë”°ë¼ SetActiveë¥¼ Trueë¡œ ì„¤ì •
         for (int i = 0; i < rewardCount; i++)
         {
             randomReward = rewards[RandomCount()];
@@ -71,7 +71,7 @@ public class RewardTree : MonoBehaviour,IInteractable
             rewards.Remove(randomReward);
         }
         GameManager.Instance.isCreatReward = true;
-        // Reward¿¡¼­ Data¼³Á¤ÇÑ°Å ¿©±â·Î
+        // Rewardì—ì„œ Dataë¥¼ ë°›ì•„ ì´ˆê¸°í™”
     }
 
     public int RandomCount()
@@ -80,7 +80,7 @@ public class RewardTree : MonoBehaviour,IInteractable
         return randomCount;
     }
 
-    // ¸®ÆåÅä¸µ ÇÊ¿ä(¸¸¾à¿¡ SO¸¦ °¢ÀÚ ´Ù¸¥ SO°¡ ÇÊ¿äÇÏ´Ù¸é ÇÊ¿ä)
+    // ë¦¬ì†ŒìŠ¤ ê°œì„  í•„ìš” (ë¦¬ìŠ¤íŠ¸ì— SOê°€ ì•„ë‹Œ ë‹¤ë¥¸ SOê°€ í•„ìš”í•˜ë‹¤ë©´ ì¶”ê°€ í•„ìš”)
     private void RandomSO()
     {
         for (int i = 0; i < rewards.Count;i++)
@@ -95,7 +95,7 @@ public class RewardTree : MonoBehaviour,IInteractable
     }
 
 
-    // ¹«±â Get
+    // ï¿½ï¿½ï¿½ï¿½ Get
     public void RewardToGetWeapon()
     {
         if(GameManager.Instance.isClear)
@@ -110,9 +110,9 @@ public class RewardTree : MonoBehaviour,IInteractable
     }
 
     /// <summary>
-    /// ¿­¸Å¿¡¼­ ¹«±â ¾ò°í ¾î¶² °ÍÀ» ²¨ÁÙÁö¿¡ ´ëÇÑ Reward
+    /// ë³´ìƒì—ì„œ ì‚¬ìš©í•  íŠ¹ì • ë°ì´í„°ë¥¼ í¬í•¨í•œ Reward
     /// </summary>
-    /// <param name="reward">¿­¸Å¿¡¼­ ¹«±â ¾ò°í ¾î¶² °ÍÀ» ²¨ÁÙÁö¿¡ ´ëÇÑ Reward</param>
+    /// <param name="reward">ë³´ìƒì—ì„œ ì‚¬ìš©í•  íŠ¹ì • ë°ì´í„°ë¥¼ í¬í•¨í•œ Reward</param>
     public void DisableReward(Reward reward)
     {
         reward.gameObject.SetActive(false);

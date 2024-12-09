@@ -3,12 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-//Todo ÀåºñÀåÂø½Ã ½ºÅÈ Ãß°¡ ½ÃÅ³ °Í. ¿µ±¸ Áõ°¡X ¹«±â ÀåÀÛ°ü·Ã ÇÊµå ¸¸µé¾î¼­ ÀúÀå
-// -> UI¿¡¼­´Â ÇÕ»êÇÑ µ¥ÀÌÅÍ ¼ÛÃâÇØ ÁÙ°Í (DataManager¿¡¼­ ÇØ°á)
+// TODO: ë°ì´í„° ì €ì¥ì„ ì¶”ê°€í•˜ê³  í˜¸ì¶œí•  ìˆ˜ ìˆë„ë¡ êµ¬í˜„. 
+//       íŒŒì¼ ì €ì¥ ì—†ì´ ë©”ëª¨ë¦¬ì—ì„œë§Œ ì„ì‹œ ë°ì´í„°ë¥¼ ì €ì¥í•˜ë„ë¡ ì²˜ë¦¬
+// -> UI ì—…ë°ì´íŠ¸ëŠ” ì €ì¥ëœ ë°ì´í„°ë¥¼ ë°”íƒ•ìœ¼ë¡œ ë™ì‘ (DataManagerì—ì„œ ê´€ë¦¬)
 
 public class PlayerStat : Stat
 {
-    //TODO Controller·Î  PlayerStat UPdate¸¶´Ù Àü¼Û
+    // TODO: Controllerì—ì„œ PlayerStat ì—…ë°ì´íŠ¸ ë¡œì§ ì¶”ê°€
     public UnityAction<string, float> OnStatUpdated;
     private Dictionary<string, float> stats = new Dictionary<string, float>();
 
@@ -68,7 +69,8 @@ public class PlayerStat : Stat
 }
 
 
-//TODO : DataManager·Î ·±Å¸ÀÓµ¥ÀÌÅÍ °ü¸® ÈÄ stage º¯È­ ½Ã PlayerStatData¿¡ ÀúÀå ÈÄ Static Class SaveManager¿¡¼­ Áö¿ªº¯¼ö·Î »ç¿ëÇØ¼­ °ªÇüÀ¸·Î JSONÀ¸·Î ÀúÀåÇÏ´Â ¿µ±¸ÀúÀå ±×¸© ¿ªÇÒ
+// TODO: DataManagerì— ë°ì´í„° ì´ë™ ê¸°ëŠ¥ ì¶”ê°€, stage ì „í™˜ ì‹œ PlayerStatDataë¥¼ ì €ì¥í•˜ê³  
+//       Static Class SaveManagerë¥¼ í™œìš©í•˜ì—¬ ë°ì´í„°ë¥¼ JSONìœ¼ë¡œ ì €ì¥í•˜ëŠ” ë°©ì‹ êµ¬í˜„
 [System.Serializable]
 public class PlayerStatData
 {

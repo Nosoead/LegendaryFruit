@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Pool;
 
-//TÀ¸·Î Dictionary ÀÚµ¿ ¿¬µ¿ÇØ¼­ »ç¿ë°¡´É ÇÏµµ·Ï.
+// TODO: Dictionary ìë™ ìƒì„±í•˜ì—¬ í¸ë¦¬í•˜ê²Œ ì‚¬ìš©í•  ìˆ˜ ìˆë„ë¡ êµ¬í˜„
 public class PoolManager: Singleton<PoolManager>
 {
     public Dictionary<string, object> objectPools = new Dictionary<string, object>();
@@ -31,10 +31,10 @@ public class PoolManager: Singleton<PoolManager>
         obj.ReleaseObject();
     }
 
-    // ¸®½ºÆ® »ı¼º ÈÄ -> »ı¼ºµÈ Reward¸¦ ¸®½ºÆ®¿¡ Ãß°¡
+    // ë¦¬ìŠ¤íŠ¸ ìƒì„± í›„ -> ì„ íƒí•œ Rewardë¥¼ ë¦¬ìŠ¤íŠ¸ì— ì¶”ê°€
     public List<Reward> rewards = new List<Reward>();
 
-    // TODO : ³ªÁß¿¡ Á¦³×¸¯À¸·Î ¸®ÆåÅä¸µ
+    // TODO: ì´í›„ì— ê·¸ë˜í”½ì ìœ¼ë¡œ ê°œì„ í•  ê²ƒ
     public void CreatePool<T>() where T : Component, ISetPooledObject<T>
     {
         for (int i = 0; i < rewardTree.spawnPositions.Count; i++)

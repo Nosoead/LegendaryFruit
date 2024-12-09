@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class ResourceManager : Singleton<ResourceManager>
 {
-    //°æ·Î ÀúÀå
+    //ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
     public Dictionary<string, string> resourcePaths = new Dictionary<string, string>();
 
     protected override void Awake()
@@ -16,17 +16,17 @@ public class ResourceManager : Singleton<ResourceManager>
 
     private void SetResourcePaths()
     {
-        //°æ·Î ÀÚµ¿ Å½»öÇØ¼­ Dicitonary¿¡ µî·ÏÇØ¼­ »©¼­ ¾²´Â °Í °í·Á...
+        //ï¿½ï¿½ï¿½ ï¿½Úµï¿½ Å½ï¿½ï¿½ï¿½Ø¼ï¿½ Dicitonaryï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ø¼ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½...
     }
 
-    //Resource ÇÏ³ª µé°í¿À´Â ÇÔ¼ö
+    //Resource ï¿½Ï³ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ô¼ï¿½
     public T LoadResource<T>(string path) where T : Object
     {
         T resource = Resources.Load<T>(path);
         return resource;
     }
 
-    //Resource ÀüºÎ µé°í¿À´Â ÇÔ¼ö
+    //Resource ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ô¼ï¿½
     public T[] LoadAllResources<T>(string path) where T : Object
     {
         T[] resources = Resources.LoadAll<T>(path);

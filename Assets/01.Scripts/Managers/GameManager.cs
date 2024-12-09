@@ -15,7 +15,7 @@ public class GameManager : Singleton<GameManager>
         UIManager.Instance.ToggleUI<UItest2>(isPreviousWindowActive: false);
     }
 
-    // Test ��
+    // Test 주석입니다.
     public bool isClear = false;
     public bool isGetWeapon = false;
     public bool isCreatReward = false;

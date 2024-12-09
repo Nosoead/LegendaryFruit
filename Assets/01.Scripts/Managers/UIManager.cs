@@ -5,8 +5,8 @@ using UnityEngine;
 
 public class UIManager : Singleton<UIManager>
 {
-    //¿É¼Ç¿¡ µû¶ó ÀÌÀü UIÃ¢ false·Î ÇÒÁö ¾ÈÇÒÁö
-    //ÇÊµå¿¡ »çÀü ¸¸µé±â
+    // ì˜µì…˜ì—ì„œ ì„¤ì •í•œ UIì°½ì„ falseë¡œ ì„¤ì •í•˜ì—¬ ë¹„í™œì„±í™”
+    // í•„ë“œì— ìƒíƒœë¥¼ ì €ì¥
     private Dictionary<string, UIBase> uiDictionary = new Dictionary<string, UIBase>();
     private Stack<UIBase> uiActiveStack = new Stack<UIBase>();
     private string path;
@@ -48,7 +48,7 @@ public class UIManager : Singleton<UIManager>
         return null;
     }
 
-    //¿­±â
+    // ì—´ê¸°
     private void OpenUI<T>(T ui, bool isPreviousWindowActive) where T : UIBase
     {
         ui.Open();
@@ -59,7 +59,7 @@ public class UIManager : Singleton<UIManager>
         uiActiveStack.Push(ui);
     }
 
-    //´İ±â
+    // ë‹«ê¸°
     private void CloseUI<T>(T ui, bool isPreviousWindowActive) where T : UIBase
     {
         ui.Close();
@@ -69,7 +69,7 @@ public class UIManager : Singleton<UIManager>
         }
     }
 
-    //Åä±Û
+    // í† ê¸€
     public void ToggleUI<T>(bool isPreviousWindowActive) where T : UIBase
     {
         T ui = GetUI<T>();
