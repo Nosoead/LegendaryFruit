@@ -5,11 +5,11 @@ using UnityEngine;
 public class PlayerCondition : MonoBehaviour, IDamageable
 {
     [SerializeField] private PlayerStatManager statManager;
-    //°¢ ¼Ó¼º¿¡ ´ëÇÑ ÇÊ¿ä ÄÚ·çÆ¾
+    // ê° ì†ì„±ì„ í™•ì¸í•˜ì—¬ í•„ìš”í•œ ë°ì´í„°ë¥¼ ë°˜í™˜
     private Coroutine coBurnDamage;
     private Coroutine coSlowDown;
 
-    //°¢ ÄÚ·çÆ¾¿¡ ´ëÇÑ ½Ã°£ÁÖ±â Ä³½Ì??
+    // ê° ìºë¦­í„°ì˜ ë‚¨ì€ ì‹œê°„ì„ ë°˜í™˜í•˜ëŠ” ë¡œì§?
     private WaitForSeconds burnWaitTime;
     private WaitForSeconds slowDownTime;
 
@@ -58,9 +58,9 @@ public class PlayerCondition : MonoBehaviour, IDamageable
     private IEnumerator SlowDownCoroutine(float attributeValue, float attributeRateTiem)
     {
         slowDownTime = new WaitForSeconds(attributeRateTiem);
-        //TODO ½ºÅÈ ±ï±â
+        //TODO 
         yield return slowDownTime;
-        //TODO ½ºÅÈ º¹±¸
+        //TODO 
     }
     #endregion
     public void TakeDamage(float damage)

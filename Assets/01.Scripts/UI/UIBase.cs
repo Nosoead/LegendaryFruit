@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-//¸ğµç UIÇÁ¸®ÆéÀº ÀÚ±âÀÚ½ÅÀÇÀÌ¸§.cs:UIBase¸¦ »ó¼Ó½ÃÄÑ¾ß ÇÑ´Ù.
+// ê° UIí´ë˜ìŠ¤ëŠ” ìì‹ ì˜ ì´ë¦„.cs: UIBaseë¥¼ ìƒì†ë°›ëŠ”ë‹¤.
 public class UIBase : MonoBehaviour
 {
     public void Open()

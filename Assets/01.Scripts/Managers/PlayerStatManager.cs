@@ -17,8 +17,8 @@ public class PlayerStatManager : MonoBehaviour
 
     private void Start()
     {
-        //TODO : SaveManager »ı¼º ÈÄ LoadData¿¡ ´ëÇÑ Àü¿ªÁ¢±Ù µÉ ¶§,
-        //       Load ÆÄÀÏ null ¿©ºÎ¿¡ µû¶ó ÃÊ±âÈ­ ÇÒ °Í
+        // TODO: SaveManagerë¥¼ í†µí•´ LoadDataë¡œ ë°ì´í„° ë¡œë“œ ì‹œ,
+        //       Load ê²°ê³¼ê°€ nullì¸ ê²½ìš° ì´ˆê¸°í™” ì²˜ë¦¬ ì¶”ê°€
         stat.InitStat(playerData);
     }
 

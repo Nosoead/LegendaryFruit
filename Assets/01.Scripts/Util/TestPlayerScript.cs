@@ -25,7 +25,7 @@ public class TestPlayerScript : MonoBehaviour
         }
         if (Input.GetKey(KeyCode.F))
         {
-            Debug.Log("´­¸²");
+            Debug.Log("ï¿½ï¿½ï¿½ï¿½");
             interactable1.Interact(true,false);
         }   
         else if (Input.GetKeyDown(KeyCode.F))
@@ -35,7 +35,7 @@ public class TestPlayerScript : MonoBehaviour
         }
     }
 
-    // ÀÏ´Ü ÇÃ·¹ÀÌ¾î¿¡¼­ ´êÀ¸¸é UIManager¿¡¼­ UI²¨³»ÁÜ
+    // í˜„ì¬ í”Œë ˆì´ì–´ì—ê²Œ í•´ë‹¹í•˜ëŠ” UIë¥¼ UIManagerì—ì„œ ê´€ë¦¬
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if(GameManager.Instance.isClear && GameManager.Instance.isCreatReward)
