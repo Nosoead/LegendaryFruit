@@ -58,9 +58,9 @@ public class PlayerCondition : MonoBehaviour, IDamageable
     private IEnumerator SlowDownCoroutine(float attributeValue, float attributeRateTiem)
     {
         slowDownTime = new WaitForSeconds(attributeRateTiem);
-        //TODO ���� ���
+        //TODO 
         yield return slowDownTime;
-        //TODO ���� ����
+        //TODO 
     }
     #endregion
     public void TakeDamage(float damage)

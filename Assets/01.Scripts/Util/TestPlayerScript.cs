@@ -35,7 +35,7 @@ public class TestPlayerScript : MonoBehaviour
         }
     }
 
-    // �ϴ� �÷��̾�� ������ UIManager���� UI������
+    // 현재 플레이어에게 해당하는 UI를 UIManager에서 관리
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if(GameManager.Instance.isClear && GameManager.Instance.isCreatReward)
