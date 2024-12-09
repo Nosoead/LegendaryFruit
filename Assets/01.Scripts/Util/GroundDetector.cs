@@ -40,7 +40,6 @@ public class GroundDetector : MonoBehaviour
     private void OnDrawGizmos()
     {
         if (onGround) { Gizmos.color = Color.green; } else { Gizmos.color = Color.red; }
-        Debug.Log(onGround);
         Gizmos.DrawLine(transform.position + colliderRightOffset, transform.position + colliderRightOffset + Vector3.down * groundLength);
         Gizmos.DrawLine(transform.position + colliderLeftOffset, transform.position + colliderLeftOffset + Vector3.down * groundLength);
     }
