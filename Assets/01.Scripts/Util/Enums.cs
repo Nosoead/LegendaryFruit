@@ -1,11 +1,21 @@
 public enum AttributeType
 {
-    Normal,
     Burn,
     SlowDown,
     KnockBack,
     Poison,
-    Blindness
+    Blindness,
+    Normal
+}
+
+enum StatType
+{
+    MaxHealth,
+    MoveSpeed,
+    Defense,
+    AttackSpeed,
+    AttackPower,
+    Heal
 }
 
 public enum GradeType

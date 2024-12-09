@@ -10,13 +10,13 @@ public class StatHandler
         return currentValue + deltaValue;
     }
 
-    public float LimitAdd(float currentValue, float deltaVlue, float MaxValue)
+    public float Add(float currentValue, float deltaVlue, float MaxValue)
     {
         return Mathf.Min(currentValue + deltaVlue, MaxValue);
     }
 
-    public float Substract(float currentValue, float someValue)
+    public float Substract(float currentValue, float deltaVlue)
     {
-        return Mathf.Max(currentValue - someValue, 0f);
+        return Mathf.Max(currentValue - deltaVlue, 0f);
     }
 }

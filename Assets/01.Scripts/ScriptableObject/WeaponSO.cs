@@ -11,6 +11,7 @@ public class WeaponSO : GameSO
     public float eatValue;
     public float attributeAttackValue;
     public float attributeAttackRateTime;
+    public int arrtibuteStatck;
     public Sprite weaponSprite;
     public Sprite rewardSprite;
 }

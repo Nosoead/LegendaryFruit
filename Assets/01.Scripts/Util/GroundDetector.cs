@@ -7,8 +7,10 @@ public class GroundDetector : MonoBehaviour
 {
     [SerializeField] protected BoxCollider2D characterCollider;
     [SerializeField] protected Rigidbody2D playerRigidbody;
+    [SerializeField] protected float colliderY = 0;
     [SerializeField] protected float groundLength = 0.6f;
-    protected Vector3 colliderOffset;
+    protected Vector3 colliderRightOffset;
+    protected Vector3 colliderLeftOffset;
     protected LayerMask groundLayer;
     private bool onGround;
 
@@ -39,8 +41,8 @@ public class GroundDetector : MonoBehaviour
     {
         if (onGround) { Gizmos.color = Color.green; } else { Gizmos.color = Color.red; }
         Debug.Log(onGround);
-        Gizmos.DrawLine(transform.position + colliderOffset, transform.position + colliderOffset + Vector3.down * groundLength);
-        Gizmos.DrawLine(transform.position - colliderOffset, transform.position - colliderOffset + Vector3.down * groundLength);
+        Gizmos.DrawLine(transform.position + colliderRightOffset, transform.position + colliderRightOffset + Vector3.down * groundLength);
+        Gizmos.DrawLine(transform.position + colliderLeftOffset, transform.position + colliderLeftOffset + Vector3.down * groundLength);
     }
 
     protected virtual void SetLayerMask()
@@ -50,8 +52,11 @@ public class GroundDetector : MonoBehaviour
 
     protected virtual void SetColliderOffset()
     {
-        Vector3 offsetValue = new Vector3(characterCollider.bounds.extents.x, 0, 0);
-        colliderOffset = offsetValue;
+        Vector3 rightOffset = new Vector3(characterCollider.bounds.extents.x, colliderY, 0);
+        Vector3 leftOffset = new Vector3(-characterCollider.bounds.extents.x, colliderY, 0);
+        colliderRightOffset = rightOffset;
+        colliderLeftOffset = leftOffset;
+
     }
 
     protected virtual void CheckGround()
@@ -60,7 +65,7 @@ public class GroundDetector : MonoBehaviour
         {
             return;
         }
-        onGround = Physics2D.Raycast(transform.position + colliderOffset, Vector2.down, groundLength, groundLayer) || Physics2D.Raycast(transform.position - colliderOffset, Vector2.down, groundLength, groundLayer);
+        onGround = Physics2D.Raycast(transform.position + colliderRightOffset, Vector2.down, groundLength, groundLayer) || Physics2D.Raycast(transform.position - colliderLeftOffset, Vector2.down, groundLength, groundLayer);
     }
     public bool GetOnGround() { return onGround; }
 }

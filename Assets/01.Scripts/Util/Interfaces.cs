@@ -6,7 +6,7 @@ public interface IInteractable
 public interface IDamageable
 {
     void TakeDamage(float damage);
-    void BurnDamage(float damage, float attributeValue, float attributeRateTime);
+    void BurnDamage(float damage, float attributeValue, float attributeRateTime, int attributeStack);
     void SlowDown(float damage, float attributeValue, float attributeRateTime);
 }
 
