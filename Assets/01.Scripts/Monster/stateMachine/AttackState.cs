@@ -16,7 +16,8 @@ public class AttackState :IMonster
 
     public void Excute()
     {
-
+        float distanceToTarget = Vector2.Distance(monsterController. transform.position,
+            monsterController. target.transform.position);
         // player 놓치면 idleState
         if (!monsterController.DetectPlayer())
         {
@@ -26,7 +27,7 @@ public class AttackState :IMonster
         // currentDistance <AttackDistance-->때리기
         if (monsterController.DetectPlayer())
         {
-            monsterController.Move();
+            monsterController.MoveToTarget();
             Debug.Log("돌진!!");
         }
 
@@ -35,7 +36,7 @@ public class AttackState :IMonster
             Debug.Log("공격!!");
             // if-> 때리는 애니메이션 ->애니메이션에서 OnHit
         }
-        monsterController.Move();
+        //monsterController.Move();
     }
 
     public void Exit()

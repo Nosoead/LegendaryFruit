@@ -2,14 +2,14 @@ using UnityEngine;
 
 public class PatrollState : IMonster
 {
-    private MonsterController monstercontroller;
+    private MonsterController monsterController;
     private float idleTime;
     private float idleTimer = 0f;
     private float checkGroundTime = 0.1f;
     private float checkGroundTimer;
-    public PatrollState(MonsterController monstercontroller)
+    public PatrollState(MonsterController monsterController)
     {
-        this.monstercontroller = monstercontroller;
+        this.monsterController = monsterController;
     }
 
     /// <summary>
@@ -26,28 +26,28 @@ public class PatrollState : IMonster
     public void Excute()
     {
         idleTimer += Time.deltaTime; //타이머
-        monstercontroller.Move(); // chaseRange보다 거리가 멀면 그냥 돌아댕기게
-        Debug.Log($"Detector : {monstercontroller.DetectPlayer()}");
+        monsterController.Move(); // chaseRange보다 거리가 멀면 그냥 돌아댕기게
+        Debug.Log($"Detector : {monsterController.DetectPlayer()}");
         // 조건따라 플레이어 서치 어택
-        if (monstercontroller.DetectPlayer())
+        if (monsterController.DetectPlayer())
         {
             
-            monstercontroller.StateMachine.TransitionToState(monstercontroller.StateMachine.attackState);
+            monsterController.StateMachine.TransitionToState(monsterController.StateMachine.attackState);
         }
 
         // n초동안 걷다가 idle 상태로 전환
         if (idleTimer >= idleTime)
         {
-            monstercontroller.StateMachine.TransitionToState(monstercontroller.StateMachine.idleState);
+            monsterController.StateMachine.TransitionToState(monsterController.StateMachine.idleState);
         }
         
         // 만약 땅이 없다면 
-        if (!monstercontroller.monsterGround.GetOnGround())
+        if (!monsterController.monsterGround.GetOnGround())
         {
             checkGroundTimer += Time.deltaTime;
             if (checkGroundTimer >= checkGroundTime)
             {
-                monstercontroller.ReverseDirection();
+                monsterController.ReverseDirection();
                 checkGroundTimer = 0;
             }
         }

@@ -44,6 +44,8 @@ public class MonsterCondition : MonoBehaviour,IDamageable
         isBurn = false;
         //코루틴 화상뎀
     }
+    
+    
     public void SlowDown(float damage, float attributeValue, float attributeRateTime)
     {
         if(isSlow) return;

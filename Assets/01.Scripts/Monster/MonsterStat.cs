@@ -28,7 +28,17 @@ public class MonsterStat : Stat
             }
         }
     }
-
+    public float GetStatValue(string statKey)
+    {
+        if (stats.TryGetValue(statKey, out var currentValue))
+        {
+            return currentValue;
+        }
+        else
+        {
+            return -1f;
+        }
+    }
     public void UpdateStat(string statKey, float currentValue)
     {
         if (stats.TryGetValue(statKey, out var lastValue))
