@@ -1,75 +1,71 @@
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
-public class MonsterCondition : MonoBehaviour,IDamageable
+public class MonsterCondition : MonoBehaviour, IDamageable
 {
+    [SerializeField] private MonsterStatManager statManager;
+    // 각 속성을 확인하여 필요한 데이터를 반환
+    private Coroutine coBurnDamage;
+    private Coroutine coSlowDown;
 
-    [SerializeField] private Monster monster; //stat statHandler
-    [SerializeField] private Stat stat;
-    [SerializeField] private StatHandler statHandler;
+    // 각 속성 남은 시간 미리 캐싱하는 것 논의 필요.
+    private WaitForSeconds burnWaitTime;
+    private WaitForSeconds slowDownTime;
 
-    private bool isBurn = false;
-    private bool isSlow = false;
-
-    private Coroutine slowDownCoroutine;
-    private Coroutine burnCoroutine;
-    public void TakeDamage(float damage)
+    private void Awake()
     {
-        monster.Data.maxHealth -= damage;
-
-        if (monster.Data.maxHealth <= 0)
+        if (statManager == null)
         {
-            Die();
+            statManager = GetComponent<MonsterStatManager>();
         }
     }
 
+    #region /BurnDamageLogic
     public void BurnDamage(float damage, float attributeValue, float attributeRateTime, int attributeStack)
     {
-        if (isBurn) return;
+        statManager.ApplyInstantDamage(damage);
         
-        isBurn = true;
-        burnCoroutine = StartCoroutine(BurnCoroutine(damage, attributeValue, attributeRateTime));
+        if (coBurnDamage != null)
+        {
+            StopCoroutine(coBurnDamage);
+        }
+        coBurnDamage = StartCoroutine(BurnDamageCoroutine(attributeValue, attributeRateTime, attributeStack));
     }
 
-    private IEnumerator BurnCoroutine(float damage, float attributeValue, float attributeRateTime)
+    private IEnumerator BurnDamageCoroutine(float attributeValue, float attributeRateTime, int attributeStack)
     {
-        float burnDuration = attributeRateTime;
-        while (burnDuration > 0)
+        burnWaitTime = new WaitForSeconds(attributeRateTime);
+        for (int i = 0; i < attributeStack; i++)
         {
-            TakeDamage(damage);
-            burnDuration -= attributeValue;
-            
-            yield return new WaitForSeconds(attributeRateTime);
+            statManager.ApplyInstantDamage(attributeValue);
+            yield return burnWaitTime;
         }
-        isBurn = false;
-        //코루틴 화상뎀
     }
-    
-    
+    #endregion
+
+    #region /SlowDownLogic
     public void SlowDown(float damage, float attributeValue, float attributeRateTime)
     {
-        if(isSlow) return;
-        
-        isSlow = true;
-        slowDownCoroutine = StartCoroutine(SlowDownCoroutine(damage,attributeValue, attributeRateTime));
-    }
-    private IEnumerator SlowDownCoroutine(float damage, float slowAmount, float attributeRateTime)
-    {
-        float slowDuration = attributeRateTime;
-        while (slowDuration > 0)
+        statManager.ApplyInstantDamage(damage);
+        if (coSlowDown != null)
         {
-            TakeDamage(damage);
-            monster.Data.moveSpeed -= slowAmount;
-            
-            slowDuration -= Time.deltaTime;
-            yield return null;
+            StopCoroutine(coSlowDown);
         }
-        monster.Data.moveSpeed += slowAmount;
-        isSlow = false;
-        //코루틴 슬로우다운
+        coSlowDown = StartCoroutine(SlowDownCoroutine(attributeValue, attributeRateTime));
     }
-    public void Die()
+
+    private IEnumerator SlowDownCoroutine(float attributeValue, float attributeRateTiem)
     {
-        //Pool, SetActive(false)
+        slowDownTime = new WaitForSeconds(attributeRateTiem);
+        statManager.ApplyTemporaryStatReduction(attributeValue, "MoveSpeed");
+        yield return slowDownTime;
+        statManager.ApplyRestoreStat(attributeValue, "MoveSpeed");
+    }
+    #endregion
+
+    public void TakeDamage(float damage)
+    {
+        statManager.ApplyInstantDamage(damage);
     }
 }

@@ -25,42 +25,42 @@ public class MonsterStatManager : MonoBehaviour
         stat.InitStat(monsterData);
     }
 
-    public void SubscribeToStatUpdates(UnityAction<string, float> listener)
+    public void SubscribeToStatUpdates(UnityAction<string, float> listener) // stat 구독
     {
         stat.OnStatUpdated += listener;
     }
 
-    public void UnsubscribeToUpdateEvent(UnityAction<string, float> listener)
+    public void UnsubscribeToUpdateEvent(UnityAction<string, float> listener) // stat 구독 해제
     {
         stat.OnStatUpdated -= listener;
     }
 
     #region /ApplystatMethod
-    public void ApplyInstantDamage(float damage)
+    public void ApplyInstantDamage(float damage) // stat 데미지
     {
         float result = statHandler.Substract(stat.GetStatValue("CurrentHealth"), damage);
         stat.UpdateCurrentHealth(result);
     }
 
-    public void ApplyTemporaryStatReduction(float attributeValue, string statKey)
+    public void ApplyTemporaryStatReduction(float attributeValue, string statKey) // stat 감소
     {
         float result = statHandler.Substract(stat.GetStatValue(statKey), attributeValue);
         stat.UpdateStat(statKey, result);
     }
 
-    public void ApplyRestoreStat(float attributeValue, string statKey)
+    public void ApplyRestoreStat(float attributeValue, string statKey) // stat 복구
     {
         float result = statHandler.Add(stat.GetStatValue(statKey), attributeValue);
         stat.UpdateStat(statKey, result);
     }
 
-    public void Heal(float heal)
+    public void Heal(float heal) //stat 힐
     {
         float result = statHandler.Add(stat.GetStatValue("CurrentHealth"), heal, stat.GetStatValue("MaxHealth"));
         stat.UpdateCurrentHealth(result);
     }
 
-    public void IncreaseStat(string statKey, float eatValue)
+    public void IncreaseStat(string statKey, float eatValue) //stat 증가
     {
         float result = statHandler.Add(stat.GetStatValue(statKey), eatValue);
         stat.UpdateStat(statKey, result);

@@ -1,6 +1,7 @@
 using System.Collections.Generic;
+using UnityEngine;
 
-public abstract class AttributeLogicsDictionary
+public class AttributeLogicsDictionary
 {
     private Dictionary<AttributeType, AttributeLogics> attributeLogicMap;
 
@@ -18,8 +19,10 @@ public abstract class AttributeLogicsDictionary
     // 속성 타입 가져옴
     public AttributeLogics GetAttributeLogic(AttributeType type)
     {
+        Debug.Log("진입");
         if (attributeLogicMap.TryGetValue(type, out AttributeLogics logic))
         {
+            Debug.Log(attributeLogicMap[type]);
             return logic;
         }
 

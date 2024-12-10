@@ -27,7 +27,7 @@ public class PatrollState : IMonster
     {
         idleTimer += Time.deltaTime; //타이머
         monsterController.Move(); // chaseRange보다 거리가 멀면 그냥 돌아댕기게
-        Debug.Log($"Detector : {monsterController.DetectPlayer()}");
+        //Debug.Log($"Detector : {monsterController.DetectPlayer()}");
         // 조건따라 플레이어 서치 어택
         if (monsterController.DetectPlayer())
         {

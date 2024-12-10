@@ -11,13 +11,14 @@ public class MonsterStat : Stat
     {
         if (gameData is MonsterSO monsterData)
         {
-            stats["MaxHealth"] = monsterData.maxHealth;
-            stats["CurrentHealth"] = monsterData.maxHealth;
-            stats["CurrentAttackPower"] =monsterData.attackPower;
-            stats["CurrentDefense"] =monsterData.defense;
-            stats["AttackSpeed"] = monsterData.attackSpeed;
-            stats["MoveSpeed"] = monsterData.moveSpeed;
-            stats["ChaseRange"] = monsterData.chaseRange;
+            stats["maxHealth"] = monsterData.maxHealth;
+            stats["currentHealth"] = monsterData.maxHealth;
+            stats["currentAttackPower"] =monsterData.attackPower;
+            stats["currentDefense"] =monsterData.defense;
+            stats["attackSpeed"] = monsterData.attackSpeed;
+            stats["moveSpeed"] = monsterData.moveSpeed;
+            stats["attackDistance"] = monsterData.attackDistance;
+            stats["chaseRange"] = monsterData.chaseRange;
             //stats["AttributeType"] = monsterData.type;
             stats["attributeValue"] = monsterData.attributeValue;
             stats["attributeRateTime"] = monsterData.attributeRateTime;
