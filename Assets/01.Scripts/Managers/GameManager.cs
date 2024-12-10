@@ -28,4 +28,21 @@ public class GameManager : Singleton<GameManager>
         }
         else { return; };
     }
+
+    [SerializeField] private StageBase currentStage = null;
+
+    public void SetStage( )
+    {
+        currentStage = StageManager.Instance.GetStage<LobbyStage>();
+        if( currentStage != null )
+        {
+            Instantiate(currentStage);
+        }
+        else
+        {
+            currentStage = StageManager.Instance.GetStage<LobbyStage>();
+        }
+    }
+
+
 }

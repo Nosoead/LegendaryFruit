@@ -46,7 +46,7 @@ public class PlayerController : MonoBehaviour
 
         //PlayerAttack
         Input.Player.Attack.performed += PlayerAttack;
-        Input.Player.Attack.canceled += PlayerAttack;
+        //Input.Player.Attack.canceled += PlayerAttack;
         Input.Player.Skill1.performed += PlayerSkill1;
         Input.Player.Skill1.canceled += PlayerSkill1;
         Input.Player.Skill2.performed += PlayerSkill2;
@@ -96,6 +96,7 @@ public class PlayerController : MonoBehaviour
     }
     public void PlayerAttack(InputAction.CallbackContext context)
     {
+        OnAttackEvent?.Invoke();
     }
     public void PlayerSkill1(InputAction.CallbackContext context)
     {

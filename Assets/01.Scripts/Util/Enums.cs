@@ -25,3 +25,10 @@ public enum GradeType
     Epic,
     Legendary
 }
+
+public enum StageType
+{
+    Lobby,
+    Normal,
+    Shelter
+}

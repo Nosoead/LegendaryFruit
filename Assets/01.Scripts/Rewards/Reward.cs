@@ -13,7 +13,6 @@ public class Reward : MonoBehaviour, ISetPooledObject<Reward>
 
     [SerializeField] private SpriteRenderer spriteRenderer;
 
-    public event Action <Reward> OnReward;
 
     // SO를 사용해 데이터를 관리하세요
     [SerializeField] private Weapon weaponPrefab;
@@ -76,7 +75,7 @@ public class Reward : MonoBehaviour, ISetPooledObject<Reward>
         // TODO: 거리와 시간에 따라 속도 조정
         if (hit.collider != null)
         {
-            // 나중에 인스펙터 창에서 확인할 수 있도록 설정
+            // 무기가 떨궈짐
             var tween = weapon.transform.DOMoveY(goalPos, 1f, false);
         } 
         // 현재 상태
