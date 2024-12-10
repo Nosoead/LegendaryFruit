@@ -9,8 +9,6 @@ public class RewardTree : MonoBehaviour,IInteractable
     protected int rewardCount = 1; // 나중에 추가하면 코드 수정
     protected float rewardGrade;
 
-    [SerializeField] private Transform treePos;
-
     public Reward rewardPrefab;
 
     [SerializeField] private Transform spawnPositionsRoot;
@@ -33,13 +31,13 @@ public class RewardTree : MonoBehaviour,IInteractable
         {
             spawnPositions.Add(spawnPositionsRoot.GetChild(i));
         }
-        PoolManager.Instance.CreatePool<Reward>(rewardPrefab);
         GetReward();
-        //RandomSO();
     }
 
     public void GetReward()
     {
+        PoolManager.Instance.CreatePool<Reward>(rewardPrefab);
+
         for (int i = 0; i < spawnPositions.Count; i++)
         {
             var reward = PoolManager.Instance.GetObject<Reward>();
@@ -59,7 +57,7 @@ public class RewardTree : MonoBehaviour,IInteractable
         }
     }
 
-    public void SetReward() // Lobby, Stage 클래스 -> GameManager에서 호출 또는 연결
+    public void OpenReward() // Lobby, Stage 클래스 -> GameManager에서 호출 또는 연결
     {
         // 기존 데이터를 관리하는 SO -> // TODO: Lobby 진입 시 level/stage 초기화
         MakeReward(weaponData1);
