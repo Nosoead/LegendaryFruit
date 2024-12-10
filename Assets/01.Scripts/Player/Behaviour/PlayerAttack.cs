@@ -4,15 +4,33 @@ using UnityEngine;
 
 public class PlayerAttack : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField] private PlayerController controller;
+
+    private void Awake()
     {
-        
+        EnsureComponents();
     }
 
-    // Update is called once per frame
-    void Update()
+    //private void OnEnable()
+    //{
+    //    controller.OnInteractEvent += OnAttackEvent;
+    //}
+
+    //private void OnDisable()
+    //{
+    //    controller.OnInteractEvent -= OnAttackEvent;
+    //}
+
+    private void EnsureComponents()
     {
-        
+        if (controller == null)
+        {
+            controller = GetComponent<PlayerController>();
+        }
+    }
+
+    private void OnAttackEvent()
+    {
+
     }
 }

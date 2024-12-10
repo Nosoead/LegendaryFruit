@@ -24,12 +24,12 @@ public class PlayerStatManager : MonoBehaviour
         stat.InitStat(playerData);
     }
 
-    public void SubscribeToStatUpdates(UnityAction<string, float> listener)
+    public void SubscribeToStatUpdateEvent(UnityAction<string, float> listener)
     {
         stat.OnStatUpdated += listener;
     }
 
-    public void UnsubscribeToUpdateEvent(UnityAction<string, float> listener)
+    public void UnsubscribeToStatUpdateEvent(UnityAction<string, float> listener)
     {
         stat.OnStatUpdated -= listener;
     }

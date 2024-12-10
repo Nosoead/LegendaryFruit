@@ -30,7 +30,6 @@ public class PlayerMovement : MonoBehaviour
     private Vector2 jump = Vector2.zero;
     private float jumpForce;
     private float direction;
-    private bool isDash;
     private int jumpCounter;
     private bool isGround;
 
@@ -55,12 +54,12 @@ public class PlayerMovement : MonoBehaviour
         controller.OnSubCommandEvent -= OnSubCommandEvent;
         controller.OnDashEvent -= OnDashEvent;
         controller.OnJumpEvent -= OnJumpEvent;
-        statManager.UnsubscribeToUpdateEvent(moveStats);
+        statManager.UnsubscribeToStatUpdateEvent(moveStats);
     }
 
     private void Start()
     {
-        statManager.SubscribeToStatUpdates(moveStats);
+        statManager.SubscribeToStatUpdateEvent(moveStats);
     }
 
     private void Update()

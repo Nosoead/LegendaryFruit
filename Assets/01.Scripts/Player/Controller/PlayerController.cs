@@ -16,7 +16,8 @@ public class PlayerController : MonoBehaviour
     public UnityAction OnSkill1Event;
     public UnityAction OnSkill2Event;
     public UnityAction OnSwapWeaponEvent;
-    public UnityAction OnInteractEvent;
+    public UnityAction<bool> OnTapInteractEvent;
+    public UnityAction<bool> OnHoldInteractEvent;
     public UnityAction OnUserInfoEvent;
     public UnityAction OnSettingWindowEvent;
 
@@ -57,8 +58,10 @@ public class PlayerController : MonoBehaviour
         Input.Player.SwapWeapon.canceled += PlayerSwapWeapon;
 
         //PlayerInteract -> 
-        Input.Player.Interact.performed += PlayerInteract;
-        Input.Player.Interact.canceled += PlayerInteract;
+        Input.Player.Interact.started += PlayerTapInteract;
+        Input.Player.Interact.canceled += PlayerTapInteract;
+        Input.Player.Interact.performed += PlayerHoldInteract;
+        Input.Player.Interact.canceled += PlayerHoldInteract;
 
         //TODO UI -> GameManager refactoring
         Input.Player.UserInfo.performed += PlayerUserInfo;
@@ -107,8 +110,15 @@ public class PlayerController : MonoBehaviour
     public void PlayerSwapWeapon(InputAction.CallbackContext context)
     {
     }
-    public void PlayerInteract(InputAction.CallbackContext context)
+    public void PlayerTapInteract(InputAction.CallbackContext context)
     {
+        bool isTapInteract = context.ReadValue<bool>();
+        OnTapInteractEvent?.Invoke(isTapInteract);
+    }
+    public void PlayerHoldInteract(InputAction.CallbackContext context)
+    {
+        bool isHoldInteract = context.ReadValue<bool>();
+        OnHoldInteractEvent?.Invoke(isHoldInteract);
     }
     public void PlayerUserInfo(InputAction.CallbackContext context)
     {
