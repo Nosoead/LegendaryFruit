@@ -4,26 +4,31 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Pool;
 
-public class StageBase : MonoBehaviour
+public class StageBase :MonoBehaviour
 {
-    [SerializeField] private TestPlayerScript player;
-    [SerializeField] private Monster monster;
-    [SerializeField] private Potal potal;
     [SerializeField] private Transform spawnPointRot;
-    Dictionary<string, Vector2> keyValuePairs = new Dictionary<string, Vector2>();
+    private Dictionary<string, Vector2> keyValuePairs = new Dictionary<string, Vector2>();
+
+    public string nextStageKey;
 
     private void Awake()
     {
-        //for(int i = 0; i <spawnPointRot.childCount; i++)
-        //{
-        //    spawnPointRot.c
-        //}
-        //PlayerSpawn()
+        for (int i = 0; i < spawnPointRot.childCount; i++)
+        {
+            keyValuePairs.Add(spawnPointRot.GetChild(i).name
+                ,spawnPointRot.GetChild(i).position);
+        }
     }
 
-    //private Vector2 PlayerSpawn()
-    //{
-    //    // 딕셔너리 
-    //    return player.transform.position = Vector2 as;
-    //}
+    public Vector2 PlayerSpawnPoint()
+    {
+        keyValuePairs.TryGetValue("PlayerSpawnPoint", out var point);
+        return point;
+    }
+
+    public Vector2 MonsterSpawnPoint()
+    {
+        keyValuePairs.TryGetValue("MonsterSpawnPoint", out var point);
+        return point;
+    }
 }

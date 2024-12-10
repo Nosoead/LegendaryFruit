@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - RewardTree
+  - Potal
   layers:
   - Default
   - TransparentFX

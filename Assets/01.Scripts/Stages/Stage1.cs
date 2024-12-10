@@ -2,5 +2,5 @@
 
 public class Stage1 : StageBase
 {
-    
+
 }
