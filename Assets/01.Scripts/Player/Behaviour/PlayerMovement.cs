@@ -50,6 +50,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void OnDisable()
     {
+        controller.OnDirectionEvent -= OnDirectionEvent;
         controller.OnMoveEvent -= OnMovement;
         controller.OnSubCommandEvent -= OnSubCommandEvent;
         controller.OnDashEvent -= OnDashEvent;
@@ -95,6 +96,10 @@ public class PlayerMovement : MonoBehaviour
         if (statManager == null)
         {
             statManager = GetComponent<PlayerStatManager>();
+        }
+        if (playerGround == null)
+        {
+            playerGround = GetComponent<PlayerGround>();
         }
     }
     #endregion
@@ -143,11 +148,9 @@ public class PlayerMovement : MonoBehaviour
     private void OnJumpEvent()
     {
         jump = Vector2.up * jumpForce;
-        ApplyJump(jump);
         if (isGround)
         {
             ExitCoroutine();
-            jump = Vector2.up * jumpForce;
             ApplyJump(jump);
         }
         else if (!isGround && jumpCounter == 1)
