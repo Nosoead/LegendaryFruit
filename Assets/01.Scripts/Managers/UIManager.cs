@@ -17,7 +17,7 @@ public class UIManager : Singleton<UIManager>
         path = "UI";
     }
 
-    private void SetUIDictionary()
+    public void SetUIDictionary()
     {
         UIBase[] uiArray = ResourceManager.Instance.LoadAllResources<UIBase>($"{path}");
         foreach (var ui in uiArray)

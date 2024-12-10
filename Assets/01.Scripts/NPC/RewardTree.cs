@@ -65,7 +65,7 @@ public class RewardTree : MonoBehaviour,IInteractable
         MakeReward(weaponData1);
     }
 
-    // 테스트
+    // 테스트  
     private Reward randomReward;
     /// <summary>
     /// 보상을 줄 때 WeaponData를 추가하는 작업
