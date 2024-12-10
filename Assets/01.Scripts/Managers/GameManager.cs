@@ -5,6 +5,7 @@ using UnityEngine;
 public class GameManager : Singleton<GameManager>
 {
     [SerializeField] private RewardTree rewardTree;
+    [SerializeField] public TestPlayerScript player;
 
     public void testUIButton1()
     {
@@ -23,26 +24,14 @@ public class GameManager : Singleton<GameManager>
     {
         if (!isClear)
         {
-            rewardTree.SetReward();
+            rewardTree.OpenReward();
             isClear = true;
         }
         else { return; };
     }
 
-    [SerializeField] private StageBase currentStage = null;
-
-    public void SetStage( )
+    public void FirstStage()
     {
-        currentStage = StageManager.Instance.GetStage<LobbyStage>();
-        if( currentStage != null )
-        {
-            Instantiate(currentStage);
-        }
-        else
-        {
-            currentStage = StageManager.Instance.GetStage<LobbyStage>();
-        }
-    }
-
-
+        StageManager.Instance.GetStage("1");
+    }  
 }

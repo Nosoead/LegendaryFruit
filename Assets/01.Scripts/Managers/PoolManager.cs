@@ -20,7 +20,10 @@ public class PoolManager: Singleton<PoolManager>
     public void CreatePool<T>(T obj) where T : Component, ISetPooledObject<T>
     {
         var pool = new PooledObject<T>($"{nameof(obj)}", obj, false, 5, 50);
-        objectPools.Add(typeof(T).Name, pool);
+        if(!objectPools.ContainsKey(typeof(T).Name))
+        {
+            objectPools.Add(typeof(T).Name, pool);
+        }
     }
 
     // 풀 자체를 꺼내는 함수
