@@ -2,6 +2,6 @@
 {
     protected override void ChagedStage()
     {
-        StageManager.Instance.NextStage("1-1");
+        StageManager.Instance.NextStage("1-2");
     }
 }

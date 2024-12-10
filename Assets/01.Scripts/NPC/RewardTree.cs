@@ -31,6 +31,10 @@ public class RewardTree : MonoBehaviour,IInteractable
         {
             spawnPositions.Add(spawnPositionsRoot.GetChild(i));
         }
+    }
+
+    private void OnEnable()
+    {
         GetReward();
     }
 
@@ -85,35 +89,19 @@ public class RewardTree : MonoBehaviour,IInteractable
         // Reward에서 Data를 받아 초기화
     }
 
-    private void ClearReward()
-    {
-
-    }
-
     public int RandomCount()
     {
         int randomCount = UnityEngine.Random.Range(1, rewards.Count - 1);
         return randomCount;
     }
 
-    // 리소스 개선 필요 (리스트에 SO가 아닌 다른 SO가 필요하다면 추가 필요)
-    private void RandomSO()
-    {
-        for (int i = 0; i < rewards.Count;i++)
-        {
-            rewards[i].weaponData = weaponList[i];
-        }
-    }
-
-
-    // ���� Get
+    // 열매 따고 무기 지급
     public void RewardToGetWeapon()
     {
         if(GameManager.Instance.isClear)
         {
             randomReward.GetWeapon();
             OnReward?.Invoke(randomReward);
-            //randomReward.transform.DOMoveY(randomReward.transform.position.y, 1, treePos);
             GameManager.Instance.isGetWeapon = true;
             GameManager.Instance.isClear = false;
         }
