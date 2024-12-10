@@ -55,6 +55,7 @@ public class PlayerMovement : MonoBehaviour
         controller.OnSubCommandEvent -= OnSubCommandEvent;
         controller.OnDashEvent -= OnDashEvent;
         controller.OnJumpEvent -= OnJumpEvent;
+        statManager.UnsubscribeToUpdateEvent(moveStats);
     }
 
     private void Start()
