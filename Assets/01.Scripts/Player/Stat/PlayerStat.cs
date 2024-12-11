@@ -11,6 +11,7 @@ public class PlayerStat : Stat
 {
     // TODO: Controller에서 PlayerStat 업데이트 로직 추가
     public UnityAction<string, float> OnStatUpdated;
+    public UnityAction OnDie;
     private Dictionary<string, float> stats = new Dictionary<string, float>();
 
     public override void InitStat(GameSO gameData)
@@ -51,6 +52,10 @@ public class PlayerStat : Stat
         {
             stats[statKey] = currentValue;
             OnStatUpdated?.Invoke(statKey, currentValue);
+            if (statKey == "CurrentHealth" && stats["CurrentHealth"] == 0)
+            {
+                OnDie?.Invoke();
+            }
         }
         else
         {

@@ -1,27 +1,60 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : Singleton<GameManager>
 {
     [SerializeField] public GameObject player;
-
-    public void testUIButton1()
-    {
-        UIManager.Instance.ToggleUI<UItest>(isPreviousWindowActive:false);
-    }
-    public void testUIButton2()
-    {
-        UIManager.Instance.ToggleUI<UItest2>(isPreviousWindowActive: false);
-    }
-
-    // Test 주석입니다.
     public bool isClear = false;
     public bool isGetWeapon = false;
     public bool isCreatReward = false;
+
+    protected override void Awake()
+    {
+        base.Awake();
+        //test용
+        player = GameObject.Find("Mainplayer");
+    }
+
+    private void Start()
+    {
+        GameStart();
+        Application.targetFrameRate = 60;
+        Time.timeScale = 1f;
+    }
 
     public void FirstStage()
     {
         StageManager.Instance.StartStage();
     }  
+
+    public void GameStart()
+    {
+        StageManager.Instance.StartStage();
+    }
+
+    public void GameEnd()
+    {
+        Debug.Log("GameEnd");
+        UIManager.Instance.ToggleUI<GameEndUI>(isPreviousWindowActive: false);
+
+        //TODO UI창 끄면 Scene 다시Load하면서 시작하기
+    }
+
+    public void GameRestart()
+    {
+        //TODO 실제 게임 하면 LobbyScene이거나 싹다 초기화해서 lobby맵 띄우기
+        string currentSceneName = SceneManager.GetActiveScene().name;
+        SceneManager.LoadScene(currentSceneName);
+    }
+
+    //public void testUIButton1()
+    //{
+    //    UIManager.Instance.ToggleUI<UItest>(isPreviousWindowActive:false);
+    //}
+    //public void testUIButton2()
+    //{
+    //    UIManager.Instance.ToggleUI<UItest2>(isPreviousWindowActive: false);
+    //}
 }

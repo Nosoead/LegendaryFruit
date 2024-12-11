@@ -14,7 +14,6 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private PlayerStatManager statManager;
     [SerializeField] private PlayerGround playerGround;
     private Vector2 velocity = Vector2.zero;
-    private float moveDirection;
     private float moveSpeed;
 
     [Header("DashInfo")]

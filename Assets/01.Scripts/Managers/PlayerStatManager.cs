@@ -17,6 +17,15 @@ public class PlayerStatManager : MonoBehaviour
         statHandler = new StatHandler();
     }
 
+    private void OnEnable()
+    {
+        stat.OnDie += OnDie;
+    }
+
+    private void OnDisable()
+    {
+        stat.OnDie -= OnDie;
+    }
     private void Start()
     {
         // TODO: SaveManager를 통해 LoadData로 데이터 로드 시,
@@ -65,4 +74,9 @@ public class PlayerStatManager : MonoBehaviour
         stat.UpdateStat(statKey, result);
     }
     #endregion
+
+    private void OnDie()
+    {
+        GameManager.Instance.GameEnd();
+    }
 }

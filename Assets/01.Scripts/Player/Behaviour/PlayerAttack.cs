@@ -16,6 +16,9 @@ public class PlayerAttack : MonoBehaviour
 
     //private LayerMask monsterLayer = LayerMask.GetMask("Monster");
     private Vector2 boxSize = new Vector2(1f, 1f); //TODO 무기에따라 변경
+    private float lookDirection = 1f;
+    private float attakRange = 1f;
+
     private void Awake()
     {
         attributeLogics = new PlayerAttribueteLogicsDictionary();
@@ -26,12 +29,14 @@ public class PlayerAttack : MonoBehaviour
 
     private void OnEnable()
     {
+        controller.OnDirectionEvent += OnDirectionEvent;
         controller.OnAttackEvent += OnAttackEvent;
         equipment.OnEquipWeaponEvent += OnEquipWeaponEvent;
     }
 
     private void OnDisable()
     {
+        controller.OnDirectionEvent -= OnDirectionEvent;
         controller.OnAttackEvent -= OnAttackEvent;
         equipment.OnEquipWeaponEvent += OnEquipWeaponEvent;
         statManager.UnsubscribeToStatUpdateEvent(attackStats);
@@ -67,11 +72,16 @@ public class PlayerAttack : MonoBehaviour
         }
     }
 
+    private void OnDirectionEvent(float directionValue)
+    {
+        lookDirection = directionValue;
+    }
+
     private void OnAttackEvent()
     {
         //TODO 여러마리 공격할 수 있도록 변경 -> onecycle 이후
         Vector2 playerPosition = (Vector2)transform.position;
-        Vector2 boxPosition = playerPosition + Vector2.right * 0.5f;
+        Vector2 boxPosition = playerPosition + Vector2.right * attakRange * lookDirection;
         Collider2D monster = Physics2D.OverlapBox(boxPosition, boxSize, 0f, monsterLayer);
         if (monster == null)
         {
@@ -91,7 +101,7 @@ public class PlayerAttack : MonoBehaviour
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.red;
-        Vector2 boxPosition = (Vector2)transform.position + Vector2.right * 0.5f;
+        Vector2 boxPosition = (Vector2)transform.position + Vector2.right * attakRange * lookDirection;
         Gizmos.DrawWireCube(boxPosition, boxSize);
     }
 }
