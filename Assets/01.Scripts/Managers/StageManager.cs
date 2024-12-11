@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class StageManager : Singleton<StageManager>
 {
-    private GameObject player;
+    [SerializeField] private GameObject player;
 
     [SerializeField] private RewardTree tree;
     [SerializeField] private Monster monster;
@@ -20,14 +20,19 @@ public class StageManager : Singleton<StageManager>
     private string stageKey;
 
     private Dictionary<string, StageBase> stageDictionary = new Dictionary<string, StageBase>();
+
+    protected override void Awake()
+    {
+        base.Awake();
+        SettingStage();
+        CreatStage();
+    }
+
     private void Start()
     {
         player = GameManager.Instance.player;
         tree = CreateRewardTree();
         tree.gameObject.SetActive(false);
-
-        SettingStage();
-        CreatStage();
     }
 
     public void SettingStage()
@@ -68,6 +73,7 @@ public class StageManager : Singleton<StageManager>
         {
             stagePrefab.gameObject.SetActive(true);
             player.transform.position = stagePrefab.PlayerSpawnPoint();
+            Debug.Log($"Player : {player.name}");
         }
         else { return; }
     }
