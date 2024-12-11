@@ -68,6 +68,7 @@ public class RewardTree : MonoBehaviour,IInteractable
         MakeReward(weaponData1);
     }
 
+    public List<Reward> getWeapon = new List<Reward>();
     /// <summary>
     /// 보상을 줄 때 WeaponData를 추가하는 작업
     /// </summary>
@@ -81,8 +82,8 @@ public class RewardTree : MonoBehaviour,IInteractable
             weaponData = randomReward.weaponData;
             rewardPrefab.SetRewardData(weaponData);
             randomReward.gameObject.SetActive(true);
-            OnReward += DisableReward;
-            rewards.Remove(randomReward);
+            OnReward += DisableReward;  
+            getWeapon.Add(randomReward);
         }
         GameManager.Instance.isCreatReward = true;
         // Reward에서 Data를 받아 초기화

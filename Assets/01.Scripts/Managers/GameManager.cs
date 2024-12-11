@@ -19,8 +19,6 @@ public class GameManager : Singleton<GameManager>
 
     private void Start()
     {
-        Debug.Log("실행됨");
-
         GameStart();
         Application.targetFrameRate = 60;
         Time.timeScale = 1f;
