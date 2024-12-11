@@ -9,7 +9,7 @@ public class StageBase :MonoBehaviour
     [SerializeField] private Transform spawnPointRot;
     private Dictionary<string, Vector2> keyValuePairs = new Dictionary<string, Vector2>();
 
-    public string nextStageKey;
+    public string stageKey;
 
     private void Awake()
     {
@@ -17,6 +17,7 @@ public class StageBase :MonoBehaviour
         {
             keyValuePairs.Add(spawnPointRot.GetChild(i).name
                 ,spawnPointRot.GetChild(i).position);
+            Debug.Log($"{spawnPointRot.GetChild(i).name}");
         }
     }
 
@@ -30,5 +31,12 @@ public class StageBase :MonoBehaviour
     {
         keyValuePairs.TryGetValue("MonsterSpawnPoint", out var point);
         return point;
+    }
+
+    public Vector2 RewardTreeSpawnPoint()
+    {
+        keyValuePairs.TryGetValue("RewardTreeSpawnPoint", out var point);
+        return point;
+
     }
 }
