@@ -12,7 +12,8 @@ GameObject:
   - component: {fileID: 4238641550917436884}
   - component: {fileID: -5251703065164038305}
   - component: {fileID: 4404356345439313946}
-  m_Layer: 0
+  - component: {fileID: 7693305621051082378}
+  m_Layer: 13
   m_Name: TestWeapon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -98,7 +99,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 775c3eb7aa7d6bf468e4c6eee9ab4c4b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weaponData: {fileID: 0}
+  weaponData: {fileID: 11400000, guid: f47f1734076fa084e8eaa5e591c277a2, type: 2}
   sprite: {fileID: 4238641550917436884}
   ease: 29
 --- !u!61 &4404356345439313946
@@ -146,3 +147,15 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &7693305621051082378
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5252891402020482419}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 251f0572caff3df41913ee92d04cfa20, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

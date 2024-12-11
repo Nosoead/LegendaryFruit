@@ -17,7 +17,7 @@ public class StageBase :MonoBehaviour
         {
             keyValuePairs.Add(spawnPointRot.GetChild(i).name
                 ,spawnPointRot.GetChild(i).position);
-            Debug.Log($"{spawnPointRot.GetChild(i).name}");
+            //Debug.Log($"{spawnPointRot.GetChild(i).name}");
         }
     }
 
@@ -37,6 +37,5 @@ public class StageBase :MonoBehaviour
     {
         keyValuePairs.TryGetValue("RewardTreeSpawnPoint", out var point);
         return point;
-
     }
 }

@@ -10,12 +10,13 @@ public class RewardTree : MonoBehaviour,IInteractable
     protected float rewardGrade;
 
     public Reward rewardPrefab;
+    private Reward randomReward;
 
     [SerializeField] private Transform spawnPositionsRoot;
     public List<Transform> spawnPositions = new List<Transform>();
 
     // 나중에 Dictionary에 데이터 저장 기능 추가 (리소스 개선)
-    private List<Reward> rewards = new List<Reward>();
+    public List<Reward> rewards = new List<Reward>();
     
     public event Action<Reward> OnReward;
 
@@ -31,10 +32,10 @@ public class RewardTree : MonoBehaviour,IInteractable
         {
             spawnPositions.Add(spawnPositionsRoot.GetChild(i));
         }
-    }
-
-    private void OnEnable()
-    {
+        for(int i = 0; i < spawnPositions.Count; i++)
+        {
+            Debug.Log($"CreateReward SpawnPoint : {spawnPositions[i].position}");
+        }
         GetReward();
     }
 
@@ -44,7 +45,7 @@ public class RewardTree : MonoBehaviour,IInteractable
 
         for (int i = 0; i < spawnPositions.Count; i++)
         {
-            var reward = PoolManager.Instance.GetObject<Reward>();
+            var reward =  PoolManager.Instance.GetObject<Reward>();
             reward.SetPosition(spawnPositions[i].position);
             reward.weaponData = weaponList[i];
             reward.gameObject.SetActive(false);
@@ -67,8 +68,6 @@ public class RewardTree : MonoBehaviour,IInteractable
         MakeReward(weaponData1);
     }
 
-    // 테스트  
-    private Reward randomReward;
     /// <summary>
     /// 보상을 줄 때 WeaponData를 추가하는 작업
     /// </summary>
@@ -98,12 +97,11 @@ public class RewardTree : MonoBehaviour,IInteractable
     // 열매 따고 무기 지급
     public void RewardToGetWeapon()
     {
-        if(GameManager.Instance.isClear)
+        if(GameManager.Instance.isCreatReward)
         {
             randomReward.GetWeapon();
             OnReward?.Invoke(randomReward);
             GameManager.Instance.isGetWeapon = true;
-            GameManager.Instance.isClear = false;
         }
         else { return; }
     }
