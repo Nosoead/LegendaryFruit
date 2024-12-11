@@ -6,14 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="fd1b27b5-9a48-464d-8c89-0ee285d61d98" name="변경" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.LegendaryFruit/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.LegendaryFruit/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/01.Scripts/Managers/MonsterStatManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/01.Scripts/Managers/MonsterStatManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/01.Scripts/Monster/Arrtibute/AttributeLogics.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/01.Scripts/Monster/Arrtibute/AttributeLogics.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/01.Scripts/Monster/Arrtibute/AttributeLogicsDictionary.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/01.Scripts/Monster/Arrtibute/AttributeLogicsDictionary.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/01.Scripts/Monster/MonsterCondition.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/01.Scripts/Monster/MonsterCondition.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/01.Scripts/Monster/MonsterController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/01.Scripts/Monster/MonsterController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/01.Scripts/Monster/MonsterStat.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/01.Scripts/Monster/MonsterStat.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/01.Scripts/Monster/stateMachine/AttackState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/01.Scripts/Monster/stateMachine/AttackState.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/01.Scripts/Monster/stateMachine/PatrollState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/01.Scripts/Monster/stateMachine/PatrollState.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/00.Scenes/TestScenes/Test_ParkScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/00.Scenes/TestScenes/Test_ParkScene.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/03.ScriptableObject/MonsterSO/MonsterSO.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/03.ScriptableObject/MonsterSO/MonsterSO.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -46,21 +40,21 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "Unity 에디터에 연결.Unity 에디터에 연결.executor": "Debug",
-    "git-widget-placeholder": "Dev__Park",
-    "ignore.virus.scanning.warn.message": "true",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "preferences.lookFeel",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;Unity 에디터에 연결.Unity 에디터에 연결.executor&quot;: &quot;Debug&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;Dev__Park&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.lookFeel&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager" selected="Unity 에디터에 연결.Unity 에디터에 연결">
     <configuration name="유닛 테스트(배치 모드)" type="RunUnityExe" factoryName="Unity Executable">
       <option name="EXE_PATH" value="C:\Program Files\Unity\Hub\Editor\2022.3.17f1\Editor\Unity.exe" />
@@ -112,6 +106,7 @@
       <workItem from="1733359176503" duration="27195000" />
       <workItem from="1733722128366" duration="3794000" />
       <workItem from="1733790078345" duration="9621000" />
+      <workItem from="1733875915655" duration="1016000" />
     </task>
     <servers />
   </component>
