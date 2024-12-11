@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -12,6 +13,7 @@ public class MonsterCondition : MonoBehaviour, IDamageable
     // 각 속성 남은 시간 미리 캐싱하는 것 논의 필요.
     private WaitForSeconds burnWaitTime;
     private WaitForSeconds slowDownTime;
+    
 
     private void Awake()
     {
@@ -68,4 +70,5 @@ public class MonsterCondition : MonoBehaviour, IDamageable
     {
         statManager.ApplyInstantDamage(damage);
     }
+
 }

@@ -17,9 +17,9 @@ MonoBehaviour:
   defense: 10
   attackSpeed: 10
   moveSpeed: 2
-  attackDistance: 3
+  attackDistance: 0.9
   chaseRange: 10
-  type: 0
+  type: 5
   attributeValue: 0
   attributeRateTime: 1
   inGameMoney: 100

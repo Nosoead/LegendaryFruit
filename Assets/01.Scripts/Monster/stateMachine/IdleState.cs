@@ -16,7 +16,6 @@ public class IdleState :IMonster
     {
         idleTime = Random.Range(1, 5);
         idleTimer = 0f;
-        Debug.Log($"Idle Enter, idle Time : {idleTime:N2}");
     }
 
     public void Excute()
@@ -30,7 +29,6 @@ public class IdleState :IMonster
             if (Random.value < 0.3f) // 가만히있다가 가끔 방향 전환
             {
                 monsterController.ReverseDirection(); 
-                Debug.Log("방향전환");
             }
             monsterController.StateMachine.TransitionToState(monsterController.StateMachine.patrollState);
             return;
@@ -45,6 +43,9 @@ public class IdleState :IMonster
 
     public void Exit()
     {
-        Debug.Log("Idle Exit");
+    }
+    public void UpdateStat(MonsterController monsterController)
+    {
+        this.monsterController = monsterController;
     }
 }

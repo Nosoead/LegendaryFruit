@@ -7,6 +7,7 @@ public class PatrollState : IMonster
     private float idleTimer = 0f;
     private float checkGroundTime = 0.1f;
     private float checkGroundTimer;
+    private float moveSpeed;
     public PatrollState(MonsterController monsterController)
     {
         this.monsterController = monsterController;
@@ -20,7 +21,6 @@ public class PatrollState : IMonster
     {
         idleTime = Random.Range(5, 10);
         idleTimer = 0f;
-       Debug.Log($"PatrollState Enter, idle time: {idleTime}");
     }
 
     public void Excute()
@@ -54,6 +54,14 @@ public class PatrollState : IMonster
     }
     public void Exit()
     {
-        Debug.Log("PatrollState Exit");
+
     }
+   
+
+    public void UpdateStat(MonsterController monsterController)
+    {
+        this.monsterController = monsterController;
+    }
+
+  
 }

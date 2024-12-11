@@ -18,16 +18,31 @@ public class MonsterStatManager : MonoBehaviour
         statHandler = new StatHandler();
     }
 
+    private void OnEnable()
+    {
+        stat.OnMonsterDie += OnMonsterDie;
+    }
+
+    private void OnDisable()
+    {
+        stat.OnMonsterDie -= OnMonsterDie;
+    }
     private void Start()
     {
         // TODO: SaveManager를 통해 LoadData로 데이터 로드 시,
         //       Load 결과가 null인 경우 초기화 처리 추가
+     
+    }
+
+    public void SetInitStat()
+    {
         stat.InitStat(monsterData);
     }
 
     public void SubscribeToStatUpdates(UnityAction<string, float> listener) // stat 구독
     {
         stat.OnStatUpdated += listener;
+        
     }
 
     public void UnsubscribeToUpdateEvent(UnityAction<string, float> listener) // stat 구독 해제
@@ -66,4 +81,8 @@ public class MonsterStatManager : MonoBehaviour
         stat.UpdateStat(statKey, result);
     }
     #endregion
+    private void OnMonsterDie()
+    {
+        gameObject.SetActive(false);
+    }
 }

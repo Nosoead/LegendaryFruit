@@ -5,6 +5,7 @@ using UnityEngine.Events;
 public class MonsterStat : Stat
 {
     public UnityAction<string, float> OnStatUpdated;
+    public UnityAction OnMonsterDie;
     private Dictionary<string, float> stats = new Dictionary<string, float>();
 
     public override void InitStat(GameSO gameData)
@@ -19,7 +20,7 @@ public class MonsterStat : Stat
             stats["moveSpeed"] = monsterData.moveSpeed;
             stats["attackDistance"] = monsterData.attackDistance;
             stats["chaseRange"] = monsterData.chaseRange;
-            //stats["AttributeType"] = monsterData.type;
+            stats["AttributeType"] = (int)monsterData.type;
             stats["attributeValue"] = monsterData.attributeValue;
             stats["attributeRateTime"] = monsterData.attributeRateTime;
             stats["inGameMoney"] = monsterData.inGameMoney;
@@ -46,6 +47,10 @@ public class MonsterStat : Stat
         {
             stats[statKey] = currentValue;
             OnStatUpdated?.Invoke(statKey, currentValue);
+            if (statKey == "currentHealth" && stats["currentHealth"] == 0)
+            {
+                OnMonsterDie?.Invoke();
+            }
         }
         else
         {

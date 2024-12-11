@@ -6,12 +6,12 @@ public class NormalMonster : Monster
     private void Awake()
     {
         //stateMachine = new MonsterStateMachine(controller);
-        stat = new MonsterStat();
+        //stat = new MonsterStat();
     }
 
     private void Start()
     {
-        stat.InitStat(monsterData);
+        //stat.InitStat(monsterData);
         //stateMachine.Initialize(stateMachine.patrollState);
         
     }
