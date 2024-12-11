@@ -55,10 +55,10 @@ public class MonsterStat : Stat
 
     public void UpdateCurrentHealth(float currentHealth)
     {
-        if (stats.ContainsKey("CurrentHealth"))
+        if (stats.ContainsKey("currentHealth"))
         {
-            float newValue = Mathf.Clamp(currentHealth, 0f, stats["MaxHealth"]);
-            UpdateStat("CurrentHealth", newValue);
+            float newValue = Mathf.Clamp(currentHealth, 0f, stats["maxHealth"]);
+            UpdateStat("currentHealth", newValue);
         }
     }
 }

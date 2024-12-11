@@ -11,14 +11,16 @@ public class PlayerAttack : MonoBehaviour
     private PlayerAttribueteLogicsDictionary attributeLogics;
     private PlayerAttributeLogics attributeLogic = null;
     private float currentAttackPower;
+    private LayerMask monsterLayer;
     private AttributeType attributeType;
 
     //private LayerMask monsterLayer = LayerMask.GetMask("Monster");
-    private Vector2 boxSize = new Vector2(1, 1); //TODO 무기에따라 변경
+    private Vector2 boxSize = new Vector2(1f, 1f); //TODO 무기에따라 변경
     private void Awake()
     {
         attributeLogics = new PlayerAttribueteLogicsDictionary();
         attributeLogics.Initialize();
+        monsterLayer = LayerMask.GetMask("Monster");
         EnsureComponents();
     }
 
@@ -70,8 +72,13 @@ public class PlayerAttack : MonoBehaviour
         //TODO 여러마리 공격할 수 있도록 변경 -> onecycle 이후
         Vector2 playerPosition = (Vector2)transform.position;
         Vector2 boxPosition = playerPosition + Vector2.right * 0.5f;
-        //Collider2D enemy = Physics2D.OverlapBox()
-        //attributeLogic.ApplyAttackLogic(, currentAttackPower);
+        Collider2D monster = Physics2D.OverlapBox(boxPosition, boxSize, 0f, monsterLayer);
+        if (monster == null)
+        {
+            return;
+        }
+        Debug.Log(monster.ToString() + " 때림");
+        attributeLogic.ApplyAttackLogic(monster.gameObject, currentAttackPower);
     }
 
     private void OnEquipWeaponEvent()
@@ -79,5 +86,12 @@ public class PlayerAttack : MonoBehaviour
         //TODO 장착한 무기 SO정보 받아서 공격타입 수정
         attributeType = AttributeType.Normal;
         attributeLogic = attributeLogics.GetAttributeLogic(attributeType);
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red;
+        Vector2 boxPosition = (Vector2)transform.position + Vector2.right * 0.5f;
+        Gizmos.DrawWireCube(boxPosition, boxSize);
     }
 }

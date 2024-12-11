@@ -31,6 +31,7 @@ public class PlayerNormal : PlayerAttributeLogics
 {
     public override void ApplyAttackLogic(GameObject target, float damage)
     {
-
+        IDamageable damageable = target.gameObject.GetComponent<IDamageable>();
+        damageable.TakeDamage(damage);
     }
 }
