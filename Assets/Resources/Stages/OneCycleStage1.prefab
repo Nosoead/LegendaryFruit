@@ -10,28 +10,33 @@ GameObject:
   m_Component:
   - component: {fileID: 8205041238865552490}
   - component: {fileID: 4509435627051392305}
-  m_Layer: 0
+  - component: {fileID: 2082990503813252817}
+  m_Layer: 11
   m_Name: GameObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &8205041238865552490
-Transform:
+--- !u!224 &8205041238865552490
+RectTransform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 412590989905217744}
-  serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.381, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1067253204279945971}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: -0.381}
+  m_SizeDelta: {x: 1.09375, y: 2.40625}
+  m_Pivot: {x: 0.5, y: -0}
 --- !u!212 &4509435627051392305
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -74,7 +79,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: -1
   m_Sprite: {fileID: 21300150, guid: 7810966f0f690954c87305933cabf2b0, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.9811321, g: 0.9811321, b: 0.9811321, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -84,6 +89,14 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!222 &2082990503813252817
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 412590989905217744}
+  m_CullTransparentMesh: 1
 --- !u!1 &997163810225252965
 GameObject:
   m_ObjectHideFlags: 0
@@ -94,7 +107,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4494595634612236015}
   - component: {fileID: 3915634546503499749}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: GameObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -569,7 +582,7 @@ Transform:
   m_GameObject: {fileID: 1549657767910399619}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 49.9, y: 0.6, z: 0}
+  m_LocalPosition: {x: 49.9, y: 2.28, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -586,29 +599,34 @@ GameObject:
   - component: {fileID: 1067253204279945971}
   - component: {fileID: 7483546017297755549}
   - component: {fileID: 8497783611529665624}
-  m_Layer: 0
+  - component: {fileID: 6285837573349901599}
+  m_Layer: 11
   m_Name: GoldPotal
   m_TagString: Potal
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &1067253204279945971
-Transform:
+--- !u!224 &1067253204279945971
+RectTransform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1775049886632046768}
-  serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 43.99, y: -0.89, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 3, y: 3, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 8205041238865552490}
   m_Father: {fileID: 8000384732545135693}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 43.99, y: -0.89}
+  m_SizeDelta: {x: 200, y: 50}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!61 &7483546017297755549
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -666,6 +684,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cc1b800954edbe4fac940bbc5f90eea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!222 &6285837573349901599
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1775049886632046768}
+  m_CullTransparentMesh: 1
 --- !u!1 &2875045362768922747
 GameObject:
   m_ObjectHideFlags: 0
@@ -677,13 +703,13 @@ GameObject:
   - component: {fileID: 669891218786446516}
   - component: {fileID: 8881900584896692551}
   - component: {fileID: 7818167264171092241}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: WeaponPotal
   m_TagString: Potal
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &669891218786446516
 Transform:
   m_ObjectHideFlags: 0

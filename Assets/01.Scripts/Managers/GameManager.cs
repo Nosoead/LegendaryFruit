@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class GameManager : Singleton<GameManager>
 {
-    [SerializeField] private RewardTree rewardTree;
     [SerializeField] public GameObject player;
 
     public void testUIButton1()
@@ -20,15 +19,6 @@ public class GameManager : Singleton<GameManager>
     public bool isClear = false;
     public bool isGetWeapon = false;
     public bool isCreatReward = false;
-    public void StageClear()
-    {
-        if (!isClear)
-        {
-            rewardTree.OpenReward();
-            isClear = true;
-        }
-        else { return; };
-    }
 
     public void FirstStage()
     {

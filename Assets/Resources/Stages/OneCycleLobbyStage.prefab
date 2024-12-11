@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3617365320767512843}
   - component: {fileID: 4180559411613921281}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: GameObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -158,7 +158,7 @@ Transform:
   m_GameObject: {fileID: 787025502125826748}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0.15, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -221,7 +221,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6745458149590158695}
   - component: {fileID: 1357338539795510332}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: GameObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -306,7 +306,7 @@ GameObject:
   - component: {fileID: 367213788578194256}
   - component: {fileID: 8579830060413177507}
   - component: {fileID: 6930126996366042869}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: WeaponPotal
   m_TagString: Potal
   m_Icon: {fileID: 0}
@@ -1202,7 +1202,7 @@ GameObject:
   - component: {fileID: 2489684480400688126}
   - component: {fileID: 5447212113120756880}
   - component: {fileID: 6461740576429208917}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: GoldPotal
   m_TagString: Potal
   m_Icon: {fileID: 0}
