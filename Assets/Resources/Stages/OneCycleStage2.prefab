@@ -442,7 +442,7 @@ GameObject:
   - component: {fileID: 5723010994222195973}
   - component: {fileID: 8359171910903910054}
   m_Layer: 11
-  m_Name: GameObject
+  m_Name: PotalSprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -60,15 +60,16 @@ public class Reward : MonoBehaviour, ISetPooledObject<Reward>
     }
 
     // TODO: DOTween 효과 추가
-
     public Ease ease;
+
+    public GameObject creatWeapon;
 
     public void GetWeapon()
     {
         // 초기화
-        GameObject weapon = Instantiate(weaponPrefab.gameObject);
-        weapon.transform.position = this.transform.position;
-        RaycastHit2D hit = Physics2D.Raycast(weapon.transform.position,Vector2.down, 50, LayerMask.GetMask("Ground"));
+        creatWeapon = Instantiate(weaponPrefab.gameObject);
+        creatWeapon.transform.position = this.transform.position;
+        RaycastHit2D hit = Physics2D.Raycast(creatWeapon.transform.position,Vector2.down, 50, LayerMask.GetMask("Ground"));
         float hitPosY = hit.point.y;
         float goalPos = hitPosY + 0.3f;
 
@@ -76,8 +77,9 @@ public class Reward : MonoBehaviour, ISetPooledObject<Reward>
         if (hit.collider != null)
         {
             // 무기가 떨궈짐
-            var tween = weapon.transform.DOMoveY(goalPos, 1f, false);
-        } 
+            var tween = creatWeapon.transform.DOMoveY(goalPos, 1f, false);
+        }
+
         // 현재 상태
         GameManager.Instance.isCreatReward = false;
     }    

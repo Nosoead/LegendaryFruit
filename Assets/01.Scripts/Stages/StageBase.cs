@@ -10,14 +10,14 @@ public class StageBase :MonoBehaviour
     private Dictionary<string, Vector2> keyValuePairs = new Dictionary<string, Vector2>();
 
     public string stageKey;
+    public int monsterCount;
 
-    private void Awake()
+    protected virtual void Awake()
     {
         for (int i = 0; i < spawnPointRot.childCount; i++)
         {
             keyValuePairs.Add(spawnPointRot.GetChild(i).name
                 ,spawnPointRot.GetChild(i).position);
-            //Debug.Log($"{spawnPointRot.GetChild(i).name}");
         }
     }
 

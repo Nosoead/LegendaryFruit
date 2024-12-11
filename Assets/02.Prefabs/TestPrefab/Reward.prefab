@@ -137,3 +137,4 @@ MonoBehaviour:
   spriteRenderer: {fileID: 3993336075596136068}
   weaponPrefab: {fileID: -5251703065164038305, guid: b17db198eb234374b99896eb7d1ebb55, type: 3}
   ease: 0
+  creatWeapon: {fileID: 0}

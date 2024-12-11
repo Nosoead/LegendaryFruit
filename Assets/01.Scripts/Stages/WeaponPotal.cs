@@ -3,6 +3,6 @@
     protected override void ChagedStage()
     {
         if(GameManager.Instance.isClear == true)
-            StageManager.Instance.NextStage("1-1");
+            StageManager.Instance.NextStage("1-2");
     }
 }
