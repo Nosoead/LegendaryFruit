@@ -41,15 +41,15 @@ public class AnimationController : MonoBehaviour
 
     private void OnDirectionEvent(float directionValue)
     {
-        lookDirection = directionValue;
-        if (lookDirection > 0)
-        {
-            weaponAnimator.SetBool(isLookRight, true);
-        }
-        else
-        {
-            weaponAnimator.SetBool(isLookRight, false);
-        }
+        //lookDirection = directionValue;
+        //if (lookDirection > 0)
+        //{
+        //    weaponAnimator.SetBool(isLookRight, true);
+        //}
+        //else
+        //{
+        //    weaponAnimator.SetBool(isLookRight, false);
+        //}
     }
 
     private void OnAttackEvent()

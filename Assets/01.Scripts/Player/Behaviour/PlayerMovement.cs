@@ -155,7 +155,6 @@ public class PlayerMovement : MonoBehaviour
         }
         else if (!isGround && jumpCounter == 1)
         {
-            Debug.Log(jumpCounter);
             ExitCoroutine();
             ApplyJump(jump);
             jumpCounter--;

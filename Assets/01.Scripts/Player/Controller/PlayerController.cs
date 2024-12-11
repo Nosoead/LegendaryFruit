@@ -112,12 +112,30 @@ public class PlayerController : MonoBehaviour
     }
     public void PlayerTapInteract(InputAction.CallbackContext context)
     {
-        bool isTapInteract = context.ReadValue<bool>();
+        float result = context.ReadValue<float>();
+        bool isTapInteract;
+        if (result > 0.5)
+        {
+            isTapInteract = true;
+        }
+        else
+        {
+            isTapInteract = false;
+        }
         OnTapInteractEvent?.Invoke(isTapInteract);
     }
     public void PlayerHoldInteract(InputAction.CallbackContext context)
     {
-        bool isHoldInteract = context.ReadValue<bool>();
+        float result = context.ReadValue<float>();
+        bool isHoldInteract;
+        if (result > 0.5)
+        {
+            isHoldInteract = true;
+        }
+        else
+        {
+            isHoldInteract = false;
+        }
         OnHoldInteractEvent?.Invoke(isHoldInteract);
     }
     public void PlayerUserInfo(InputAction.CallbackContext context)

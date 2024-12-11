@@ -1,18 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class PlayerEquipment : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    //TODO 최대 2개 보관
+    public UnityAction OnEquipWeaponEvent;
+    private void Start()
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        OnEquipWeaponEvent?.Invoke();
     }
 }

@@ -44,7 +44,7 @@ public class BurnLogic : AttributeLogics
             IDamageable damageable = player[i].gameObject.GetComponent<IDamageable>();
             if (damageable != null && CanPenetrate)
             {
-                damageable.BurnDamage(damage);
+                //damageable.BurnDamage(damage);
                 Debug.Log(damage);
             }
         }
@@ -62,7 +62,7 @@ public class SlowDown : AttributeLogics
             IDamageable damageable = player[i].gameObject.GetComponent<IDamageable>();
             if (damageable != null && CanPenetrate)
             {
-                damageable.SlowDown(damage);
+                //damageable.SlowDown(damage);
                 Debug.Log(damage);
             }
         }

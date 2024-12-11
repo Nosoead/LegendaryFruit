@@ -8,13 +8,13 @@ public class testInteractHold : MonoBehaviour, IInteractable
     {
         if (isDeepPressed)
         {
-            Debug.Log("Hold 눌러짐");
+            Debug.Log("2초이상 눌러서 Hold 눌러짐");
+            return;
         }
-        if (isPressed)
+        else if (isPressed)
         {
-            Debug.Log("Tap 눌러짐");
+            Debug.Log("1초전에 풀어서 Tap 눌러짐");
+            return;
         }
-        Debug.Log("취소");
     }
-
 }

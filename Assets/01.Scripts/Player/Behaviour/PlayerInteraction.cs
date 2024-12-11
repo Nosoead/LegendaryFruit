@@ -8,8 +8,9 @@ public class PlayerInteraction : MonoBehaviour
 {
     [SerializeField] private PlayerController controller;
     //[SerializeField] private TextMeshProUGUI promptText;
-    private LayerMask tapAndHoldMask;
-    private LayerMask tapMask;
+    private int NPCLayer;
+    private int rewardLayer;
+    private int itemLayer;
     private IInteractable currentInteractable;
     private bool canTapInteractWithObject;
     private bool CanHoldInteractWithObject;
@@ -22,8 +23,9 @@ public class PlayerInteraction : MonoBehaviour
     private void Awake()
     {
         EnsureComponents();
-        tapMask = LayerMask.GetMask("NPC") | LayerMask.GetMask("Reward");
-        tapAndHoldMask = LayerMask.GetMask("Item");
+        NPCLayer = LayerMask.NameToLayer("NPC");
+        rewardLayer = LayerMask.NameToLayer("Reward");
+        itemLayer = LayerMask.NameToLayer("Item");
     }
 
     private void Start()
@@ -44,12 +46,12 @@ public class PlayerInteraction : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.layer == tapMask)
+        if (collision.gameObject.layer == NPCLayer || collision.gameObject.layer == rewardLayer)
         {
             canTapInteractWithObject = true;
             currentInteractable = collision.gameObject.GetComponent<IInteractable>();
         }
-        else if (collision.gameObject.layer == tapAndHoldMask)
+        else if (collision.gameObject.layer == itemLayer)
         {
             CanHoldInteractWithObject = true;
             ShowTapAndHoldPrompt();
@@ -77,6 +79,7 @@ public class PlayerInteraction : MonoBehaviour
             return;
         }
         isTapPressed = isTapPressedSignal;
+        Debug.Log(isTapPressed);
         if (canTapInteractWithObject && isTapPressed)
         {
             currentInteractable.Interact(isHoldPressed, isTapPressed);
@@ -88,7 +91,7 @@ public class PlayerInteraction : MonoBehaviour
     {
         if (!CanHoldInteractWithObject)
         {
-            return; 
+            return;
         }
         if (coCheckHoldPressed != null)
         {
@@ -101,35 +104,48 @@ public class PlayerInteraction : MonoBehaviour
     private IEnumerator CheckHoldPress(bool isHoldPressedSignal)
     {
         float pressedTime = 0f;
-        
+
         while (isHoldPressedSignal)
         {
             pressedTime += Time.deltaTime;
             if (pressedTime >= 2f)
             {
-                isHoldPressedSignal = false;
+                isHoldPressed = true;
+                break;
+            }
+            else if (pressedTime >= 1f)
+            {
+                Debug.Log("1초 경과");
+                isTapPressed = false;
+            }
+            else
+            {
+                isTapPressed = true;
             }
             yield return null;
         }
 
-        if (pressedTime > holdCompleteTime)
+        if (isHoldPressed)
         {
-            isHoldPressed = true;
             if (CanHoldInteractWithObject && isHoldPressed)
             {
                 currentInteractable.Interact(isHoldPressed, isTapPressed);
                 ResetInteractionChecker();
             }
         }
-
-        if (pressedTime < tapCompleteTime)
+        else if (isTapPressed)
         {
-            isTapPressed = true;
             if (CanHoldInteractWithObject && isTapPressed)
             {
                 currentInteractable.Interact(isHoldPressed, isTapPressed);
                 ResetInteractionChecker();
             }
+        }
+        else
+        {
+            Debug.Log("1초 이상 2초 미만에 취소함");
+            isTapPressed = false;
+            isHoldPressed = false;
         }
     }
 
