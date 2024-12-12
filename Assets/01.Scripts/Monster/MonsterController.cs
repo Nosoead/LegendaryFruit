@@ -6,20 +6,16 @@ using UnityEngine.Events;
 
 public class MonsterController : MonoBehaviour
 {
-    
     private MonsterStateMachine stateMachine;
     public MonsterStateMachine StateMachine => stateMachine;
     private MonsterAttributeLogics monsterAttributeLogics = null;
     private MonsterAttributeLogicsDictionary attributeLogicsDictionary;
     public MonsterGround monsterGround ;
-    [SerializeField]private Monster monster;
     [SerializeField]private LayerMask playerLayerMask;
     public GameObject target;
-    public Monster Monster => monster; //몬스터 데이터에 접근할수없어서 넣음 캐싱??
     public MonsterStatManager statManager;
     private Vector2 boxSize = new Vector2(1f, 1f);
     private float lookDirection= 1f;
-    
     
     private float attackPower;
     private float moveSpeed;
@@ -27,9 +23,9 @@ public class MonsterController : MonoBehaviour
     private float chaseRange;
     private AttributeType type;
     private float attributeValue;
-    
-    private float checkGroundTime = 0.1f;
-    private float checkGroundTimer;
+    private float attributeRateTime;
+    private int attributeStack =5;
+ 
     
     private void Awake()
     {
@@ -66,7 +62,6 @@ public class MonsterController : MonoBehaviour
                 type = (AttributeType)((int)value);
                 monsterAttributeLogics = attributeLogicsDictionary.GetAttributeLogic(type);
                 break;
-            
             case "moveSpeed":
                 moveSpeed = value;
                 break;
@@ -76,17 +71,14 @@ public class MonsterController : MonoBehaviour
             case "attackDistance":
                 attackDistance = value;
                 break;
-           
+            case "attributeValue":
+                attributeValue = value;
+                break;
+            case "attributeRateTime":
+                attributeRateTime = value;
+                break;
         }
     }
-
-    /*private void Die()
-    {
-        if (currentHp <= 0)
-        {
-            this.gameObject.SetActive(false);
-        }
-    }*/
 
     public void StatToStateMachine()
     {
@@ -128,34 +120,45 @@ public class MonsterController : MonoBehaviour
 
         return false;
     }
-    public void Move() // 걷기
+    public void Move() 
     {
         Vector3 rayDirection = Vector3.right * lookDirection;
+        
         RaycastHit2D hit = Physics2D.Raycast(transform.position, rayDirection, chaseRange, playerLayerMask);
-
-        transform.position += rayDirection * (moveSpeed * Time.deltaTime);
+        
+        if (hit.collider == null || hit.distance > 0.1f)
+        {
+            
+            transform.position += rayDirection * (moveSpeed * Time.deltaTime);
+        }
+        else
+        {
+            ReverseDirection();
+        }
     }
+
     public void Attack()
     {
         //어트리뷰트에서 데미지계산후 딕셔너리에 저장후 꺼내옴
         // scale.x가 0보다 크면 우 작으면 좌
         Vector2 monsterPosition = transform.position;
-        Vector2 boxPostion = monsterPosition + Vector2.right * 0.5f * lookDirection;
+        Vector2 boxPostion = monsterPosition + Vector2.right * (0.5f * lookDirection);
         Collider2D player = Physics2D.OverlapBox(boxPostion, boxSize, 0,playerLayerMask);
         if (player == null)
         {
             return;
         }
-        monsterAttributeLogics.ApplyAttackLogic(player.gameObject,attackPower);
+        monsterAttributeLogics.ApplyAttackLogic(player.gameObject,attackPower,attributeValue,attributeRateTime,attributeStack);
+        
         //애니메이션
     }
+
     /*public void OnDrawGizmos()
     {
         Gizmos.color = Color.green;
         Gizmos.DrawRay(transform.position , Vector3.right * 10);
         Gizmos.color = Color.blue;
         Gizmos.DrawRay(transform.position , Vector3.left * 10);
-
     }*/
     private void OnDrawGizmos()
     {

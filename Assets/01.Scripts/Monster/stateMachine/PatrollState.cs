@@ -5,9 +5,10 @@ public class PatrollState : IMonster
     private MonsterController monsterController;
     private float idleTime;
     private float idleTimer = 0f;
-    private float checkGroundTime = 0.1f;
+    private float checkGroundTime = 1f;
     private float checkGroundTimer;
     private float moveSpeed;
+    private bool isGround;
     public PatrollState(MonsterController monsterController)
     {
         this.monsterController = monsterController;
@@ -26,7 +27,7 @@ public class PatrollState : IMonster
     public void Excute()
     {
         idleTimer += Time.deltaTime; //타이머
-        monsterController.Move(); // chaseRange보다 거리가 멀면 그냥 돌아댕기게
+         // chaseRange보다 거리가 멀면 그냥 돌아댕기게
         //Debug.Log($"Detector : {monsterController.DetectPlayer()}");
         // 조건따라 플레이어 서치 어택
         if (monsterController.DetectPlayer())
@@ -41,16 +42,21 @@ public class PatrollState : IMonster
             monsterController.StateMachine.TransitionToState(monsterController.StateMachine.idleState);
         }
         
-        // 만약 땅이 없다면 
-        if (!monsterController.monsterGround.GetOnGround())
+        if (monsterController.monsterGround.GetOnGround())
         {
-            checkGroundTimer += Time.deltaTime;
-            if (checkGroundTimer >= checkGroundTime)
+            isGround = false;
+            monsterController.Move();
+        }
+        else
+        {
+            if (!isGround)
             {
                 monsterController.ReverseDirection();
-                checkGroundTimer = 0;
+                isGround = true;
             }
+            monsterController.Move();
         }
+        
     }
     public void Exit()
     {
