@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : Singleton<GameManager>
 {
-    [SerializeField] public GameObject player;
+    public GameObject player;
     public bool isClear = false;
     public bool isGetWeapon = false;
     public bool isCreatReward = false;
@@ -26,7 +26,9 @@ public class GameManager : Singleton<GameManager>
 
     public void GameStart()
     {
-        StageManager.Instance.StartStage();
+        StageManager.Instance.CreatStage();
+        StageManager.Instance.StartStage("Lobby");
+        //StageManager.Instance.CreatRewardTree();
     }
 
     public void GameEnd()
@@ -43,13 +45,4 @@ public class GameManager : Singleton<GameManager>
         string currentSceneName = SceneManager.GetActiveScene().name;
         SceneManager.LoadScene(currentSceneName);
     }
-
-    //public void testUIButton1()
-    //{
-    //    UIManager.Instance.ToggleUI<UItest>(isPreviousWindowActive:false);
-    //}
-    //public void testUIButton2()
-    //{
-    //    UIManager.Instance.ToggleUI<UItest2>(isPreviousWindowActive: false);
-    //}
 }

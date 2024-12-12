@@ -3,6 +3,6 @@
     protected override void ChagedStage()
     {
         if (GameManager.Instance.isClear == true)
-            StageManager.Instance.NextStage("0");
+            StageManager.Instance.StageChange("Shelter");
     }
 }

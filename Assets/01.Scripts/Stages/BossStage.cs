@@ -1,4 +1,6 @@
-﻿public class BossStage : StageBase
+﻿using UnityEngine;
+
+public class BossStage : StageBase
 {
     protected override void Awake()
     {

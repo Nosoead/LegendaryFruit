@@ -10,18 +10,20 @@ public class RewardTree : MonoBehaviour,IInteractable
     protected float rewardGrade;
 
     public Reward rewardPrefab;
-    private Reward randomReward;
+    private List<Reward> randomReward = new List<Reward>(); 
 
     [SerializeField] private Transform spawnPositionsRoot;
     public List<Transform> spawnPositions = new List<Transform>();
 
     // 나중에 Dictionary에 데이터 저장 기능 추가 (리소스 개선)
     public List<Reward> rewards = new List<Reward>();
-    
+    public List<GameObject> rewardWeapon = new List<GameObject>();
+
+
     public event Action<Reward> OnReward;
 
     // TODO: 유저데이터를 관리하는 SO클래스를 생성하여 적용
-    [SerializeField] public WeaponSO weaponData1 = null;
+    [SerializeField] public WeaponSO weaponData = null;
 
     //데이터베이스의 리스트를 SO로 옮김
     [SerializeField] private List<WeaponSO> weaponList = new List<WeaponSO>();
@@ -32,10 +34,10 @@ public class RewardTree : MonoBehaviour,IInteractable
         {
             spawnPositions.Add(spawnPositionsRoot.GetChild(i));
         }
-        for(int i = 0; i < spawnPositions.Count; i++)
-        {
-            Debug.Log($"CreateReward SpawnPoint : {spawnPositions[i].position}");
-        }
+        //for(int i = 0; i < spawnPositions.Count; i++)
+        //{
+        //    Debug.Log($"CreateReward SpawnPoint : {spawnPositions[i].position}");
+        //}
         GetReward();
     }
 
@@ -65,10 +67,9 @@ public class RewardTree : MonoBehaviour,IInteractable
     public void OpenReward() // Lobby, Stage 클래스 -> GameManager에서 호출 또는 연결
     {
         // 기존 데이터를 관리하는 SO -> // TODO: Lobby 진입 시 level/stage 초기화
-        MakeReward(weaponData1);
+        MakeReward(weaponData);
     }
 
-    public List<Reward> getWeapon = new List<Reward>();
     /// <summary>
     /// 보상을 줄 때 WeaponData를 추가하는 작업
     /// </summary>
@@ -78,12 +79,11 @@ public class RewardTree : MonoBehaviour,IInteractable
         // 풀에서 꺼낸 Reward를 초기화하고 rewardCount에 따라 SetActive를 True로 설정
         for (int i = 0; i < rewardCount; i++)
         {
-            randomReward = rewards[RandomCount()];
-            weaponData = randomReward.weaponData;
+            randomReward.Add(rewards[RandomCount()]);
+            weaponData = randomReward[i].weaponData;
             rewardPrefab.SetRewardData(weaponData);
-            randomReward.gameObject.SetActive(true);
+            randomReward[i].gameObject.SetActive(true);
             OnReward += DisableReward;  
-            getWeapon.Add(randomReward);
         }
         GameManager.Instance.isCreatReward = true;
         // Reward에서 Data를 받아 초기화
@@ -98,13 +98,13 @@ public class RewardTree : MonoBehaviour,IInteractable
     // 열매 따고 무기 지급
     public void RewardToGetWeapon()
     {
-        if(GameManager.Instance.isCreatReward)
+        for(int i = 0; i < randomReward.Count; i++)
         {
-            randomReward.GetWeapon();
-            OnReward?.Invoke(randomReward);
+            var obj = randomReward[i].GetWeapon();
+            OnReward?.Invoke(randomReward[i]);
+            rewardWeapon.Add(obj);
             GameManager.Instance.isGetWeapon = true;
         }
-        else { return; }
     }
 
     /// <summary>

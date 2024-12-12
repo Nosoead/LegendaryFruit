@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 65640f37ba5585c48a689b2bfe301972, type: 3}
+  m_Name: Stage1_StageSO
+  m_EditorClassIdentifier: 
+  stagePrefab: {fileID: 3419419028442377418, guid: b5be18f9753fc432990b94decaa2efb8, type: 3}
+  stageKey: Stage1
+  clearMonsterKillCount: 1
+  creatMonsterCount: 1
+  isCreatMonster: 1
+  isCreatRewardTree: 1
