@@ -37,14 +37,14 @@ public class MonsterController : MonoBehaviour
 
     private void Start()
     {
-        statManager.SubscribeToStatUpdates(UpdateStat);
+        statManager.SubscribeToStatUpdateEvent(UpdateStat);
         statManager.SetInitStat();
         StateMachine.Initialize(StateMachine.patrollState);
     }
 
     private void OnDisable()
     {
-        statManager.UnsubscribeToUpdateEvent(UpdateStat);
+        statManager.UnsubscribeToStatUpdateEvent(UpdateStat);
     }
     private void Update()
     {
@@ -55,26 +55,26 @@ public class MonsterController : MonoBehaviour
     {
         switch (statKey)
         {
-            case "currentAttackPower":
+            case "CurrentAttackPower":
                 attackPower = value;
                 break;
             case "AttributeType":
                 type = (AttributeType)((int)value);
                 monsterAttributeLogics = attributeLogicsDictionary.GetAttributeLogic(type);
                 break;
-            case "moveSpeed":
+            case "MoveSpeed":
                 moveSpeed = value;
                 break;
-            case "chaseRange":
+            case "ChaseRange":
                 chaseRange = value;
                 break;
-            case "attackDistance":
+            case "AttackDistance":
                 attackDistance = value;
                 break;
-            case "attributeValue":
+            case "AttributeValue":
                 attributeValue = value;
                 break;
-            case "attributeRateTime":
+            case "AttributeRateTime":
                 attributeRateTime = value;
                 break;
         }

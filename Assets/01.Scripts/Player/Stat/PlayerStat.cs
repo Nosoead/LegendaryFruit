@@ -51,6 +51,7 @@ public class PlayerStat : Stat
         if (stats.ContainsKey(statKey))
         {
             stats[statKey] = currentValue;
+            //Debug.Log("먹고난 후 : " + stats[statKey]);
             OnStatUpdated?.Invoke(statKey, currentValue);
             if (statKey == "CurrentHealth" && stats["CurrentHealth"] == 0)
             {

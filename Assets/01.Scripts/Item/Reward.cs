@@ -15,7 +15,7 @@ public class Reward : MonoBehaviour, ISetPooledObject<Reward>
 
 
     // SO를 사용해 데이터를 관리하세요
-    [SerializeField] private Weapon weaponPrefab;
+    [SerializeField] private FruitWeapon weaponPrefab;
 
     // 오브젝트 풀 생성
     private IObjectPool<Reward> objectPool;

@@ -1,10 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
-using System.Security.Cryptography.X509Certificates;
-using Unity.VisualScripting.Antlr3.Runtime.Misc;
 using UnityEngine;
 using UnityEngine.Events;
-using UnityEngine.Serialization;
 
 public class MonsterStatManager : MonoBehaviour
 {
@@ -39,13 +34,13 @@ public class MonsterStatManager : MonoBehaviour
         stat.InitStat(monsterData);
     }
 
-    public void SubscribeToStatUpdates(UnityAction<string, float> listener) // stat 구독
+    public void SubscribeToStatUpdateEvent(UnityAction<string, float> listener) // stat 구독
     {
         stat.OnStatUpdated += listener;
         
     }
 
-    public void UnsubscribeToUpdateEvent(UnityAction<string, float> listener) // stat 구독 해제
+    public void UnsubscribeToStatUpdateEvent(UnityAction<string, float> listener) // stat 구독 해제
     {
         stat.OnStatUpdated -= listener;
     }

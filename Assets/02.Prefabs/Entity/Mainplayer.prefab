@@ -112,6 +112,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2879777171072458640}
   - component: {fileID: 725724358003303180}
+  - component: {fileID: 8074874974906680053}
   m_Layer: 9
   m_Name: WeaponPivot
   m_TagString: Untagged
@@ -145,7 +146,7 @@ Animator:
   m_GameObject: {fileID: 7748012411836260618}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 4e1bb067be0a8ea40a12ecbdcfa0af7e, type: 2}
+  m_Controller: {fileID: 0}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -156,6 +157,18 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &8074874974906680053
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7748012411836260618}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dfc3900152d53524c9b77d2a567060ad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8969708975959650250
 GameObject:
   m_ObjectHideFlags: 0
@@ -257,7 +270,6 @@ GameObject:
   - component: {fileID: 4449676845607734076}
   - component: {fileID: 2078229186268252843}
   - component: {fileID: 2867852098290738343}
-  - component: {fileID: 8187240654369027364}
   - component: {fileID: 6077709632811847559}
   - component: {fileID: 9039910661375306380}
   - component: {fileID: 5377852505002099448}
@@ -422,6 +434,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerData: {fileID: 11400000, guid: e56f00758a4c06e4ea716014b33ff09c, type: 2}
+  playerInteraction: {fileID: 2867852098290738343}
 --- !u!114 &8767624224764499905
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -464,7 +477,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   controller: {fileID: 8767624224764499905}
-  equipment: {fileID: 8187240654369027364}
+  equipment: {fileID: 0}
   statManager: {fileID: 7829541853973958117}
 --- !u!114 &2867852098290738343
 MonoBehaviour:
@@ -479,18 +492,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   controller: {fileID: 8767624224764499905}
---- !u!114 &8187240654369027364
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9119261821432956640}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dfc3900152d53524c9b77d2a567060ad, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &6077709632811847559
 MonoBehaviour:
   m_ObjectHideFlags: 0

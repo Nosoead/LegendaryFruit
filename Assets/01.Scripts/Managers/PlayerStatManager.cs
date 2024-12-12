@@ -8,22 +8,29 @@ using UnityEngine.Events;
 public class PlayerStatManager : MonoBehaviour
 {
     [SerializeField] private PlayerSO playerData;
+    [SerializeField] private PlayerInteraction playerInteraction;
     private PlayerStat stat;
     private StatHandler statHandler;
 
     private void Awake()
     {
+        if (playerInteraction == null)
+        {
+            playerInteraction = GetComponent<PlayerInteraction>();
+        }
         stat = new PlayerStat();
         statHandler = new StatHandler();
     }
 
     private void OnEnable()
     {
+        playerInteraction.FruitWeaponEatAndStatUpEvent += IncreaseStat;
         stat.OnDie += OnDie;
     }
 
     private void OnDisable()
     {
+        playerInteraction.FruitWeaponEatAndStatUpEvent -= IncreaseStat;
         stat.OnDie -= OnDie;
     }
     private void Start()
@@ -68,10 +75,12 @@ public class PlayerStatManager : MonoBehaviour
         stat.UpdateCurrentHealth(result);
     }
 
-    public void IncreaseStat(string statKey, float eatValue)
+    private void IncreaseStat(string statKey, float eatValue)
     {
+        //Debug.Log("벨류 업 : " + eatValue);
         float result = statHandler.Add(stat.GetStatValue(statKey), eatValue);
         stat.UpdateStat(statKey, result);
+        //Debug.Log("먹고난 후 : " + result);
     }
     #endregion
 

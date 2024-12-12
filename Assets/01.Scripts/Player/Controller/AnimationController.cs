@@ -54,6 +54,6 @@ public class AnimationController : MonoBehaviour
 
     private void OnAttackEvent()
     {
-        weaponAnimator.SetTrigger(Attack);
+        //weaponAnimator.SetTrigger(Attack);
     }
 }
