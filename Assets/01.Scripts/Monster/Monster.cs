@@ -1,10 +1,19 @@
 using UnityEngine;
+using UnityEngine.Pool;
+using UnityEngine.Rendering;
 
-public abstract class  Monster : MonoBehaviour
+public class Monster : MonoBehaviour, ISetPooledObject<Monster>
 {
-    [SerializeField] protected MonsterStateMachine monstersStateMachine;
-    [SerializeField] protected Monster monsterCondition;
-    [SerializeField] protected MonsterSO monsterData;
-    [SerializeField] protected MonsterController monsterController;
-    public MonsterSO Data => monsterData;
+    private IObjectPool<Monster> objectPool;
+
+    public IObjectPool<Monster> ObjectPool
+    {
+        get => objectPool;
+        set => objectPool = value;
+    }
+
+    public void SetPooledObject(IObjectPool<Monster> pool)
+    {
+        objectPool = pool;
+    }
 }

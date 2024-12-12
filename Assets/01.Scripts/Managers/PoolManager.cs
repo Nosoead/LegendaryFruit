@@ -17,9 +17,9 @@ public class PoolManager: Singleton<PoolManager>
     }
 
     // 오브젝트 풀를 만드는 함수
-    public void CreatePool<T>(T obj) where T : Component, ISetPooledObject<T>
+    public void CreatePool<T>(T obj, bool collectionCheck, int defualtCapacity, int maxSize) where T : Component, ISetPooledObject<T>
     {
-        var pool = new PooledObject<T>($"{nameof(obj)}", obj, false, 5, 50);
+        var pool = new PooledObject<T>($"{nameof(obj)}", obj, collectionCheck, defualtCapacity, maxSize);
         if(!objectPools.ContainsKey(typeof(T).Name))
         {
             objectPools.Add(typeof(T).Name, pool);

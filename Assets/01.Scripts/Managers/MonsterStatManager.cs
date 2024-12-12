@@ -83,6 +83,7 @@ public class MonsterStatManager : MonoBehaviour
     #endregion
     private void OnMonsterDie()
     {
+        StageManager.Instance.MonsterDie();
         gameObject.SetActive(false);
     }
 }

@@ -38,12 +38,12 @@ public class RewardTree : MonoBehaviour,IInteractable
         //{
         //    Debug.Log($"CreateReward SpawnPoint : {spawnPositions[i].position}");
         //}
-        GetReward();
+        CreatReward();
     }
 
-    public void GetReward()
+    public void CreatReward()
     {
-        PoolManager.Instance.CreatePool<Reward>(rewardPrefab);
+        PoolManager.Instance.CreatePool<Reward>(rewardPrefab,false, 5, 50);
 
         for (int i = 0; i < spawnPositions.Count; i++)
         {
@@ -64,7 +64,7 @@ public class RewardTree : MonoBehaviour,IInteractable
         }
     }
 
-    public void OpenReward() // Lobby, Stage 클래스 -> GameManager에서 호출 또는 연결
+    public void GetReward() // Lobby, Stage 클래스 -> GameManager에서 호출 또는 연결
     {
         // 기존 데이터를 관리하는 SO -> // TODO: Lobby 진입 시 level/stage 초기화
         MakeReward(weaponData);

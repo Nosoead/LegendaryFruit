@@ -4,16 +4,22 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using Unity.VisualScripting.Antlr3.Runtime.Tree;
 using UnityEngine;
+using UnityEngine.InputSystem;
+using static UnityEngine.EventSystems.EventTrigger;
 
 public class StageManager : Singleton<StageManager>
 {
-    private List<StageBase> stageList = new List<StageBase>();
+    private Dictionary<string, StageBase> stageDictionary = new Dictionary<string, StageBase>();
     private StageBase currentStage = null;
     private Monster monster;
+    private List<Monster> monsterList = new List<Monster>();
+    private ShelterNPC shelterNPC;
+    private GameObject shelterNPCObject;
     private RewardTree rewardTree;
+    private GameObject rewardTreeObject;
     private GameObject player;
 
-    private int kiilMonsterCount;
+    private int monsterCount;
     private int weaponDestoryCount;
 
     protected override void Awake()
@@ -24,107 +30,134 @@ public class StageManager : Singleton<StageManager>
     public void CreatStage()
     {
         StageBase[] array = ResourceManager.Instance.LoadAllResources<StageBase>("Stages");
-        foreach(var stages  in array)
+        foreach (var stages in array)
         {
             var obj = Instantiate(stages);
-            stageList.Add(obj);
+            stageDictionary.Add(obj.stageSO.stageKey, obj);
             obj.gameObject.SetActive(false);
+            Debug.Log($"key값 : {obj.stageSO.stageKey}");
+        }
+        CreatRewardTree();
+        CreatMonster();
+    }
+
+    private void CreatRewardTree()
+    {
+        rewardTree = ResourceManager.Instance.LoadResource<RewardTree>("NPC/RewardTree");
+        rewardTreeObject = Instantiate(rewardTree.gameObject);
+        rewardTreeObject.SetActive(false);
+        shelterNPC = ResourceManager.Instance.LoadResource<ShelterNPC>("NPC/ShelterNPC"); ;
+        shelterNPCObject = Instantiate(shelterNPC.gameObject);
+        shelterNPCObject.SetActive(false);
+    }
+
+    private void CreatMonster()
+    {
+        //TODO 오브젝트 풀 매니저 사용
+        monster = ResourceManager.Instance.LoadResource<Monster>("NPC/Monster");
+        for (int i = 0; i < 5; i++)
+        {
+            var monsters = Instantiate(monster);
+            monsterList.Add(monsters);
+            monsterList[i].gameObject.SetActive(false);
         }
     }
+
 
     public void StartStage(string key)
     {
         player = GameManager.Instance.player;
-        for(int i = 0; i < stageList.Count; i++)
-        {
-            StageBase stage = stageList[i];
-            if(stage.stageSO.stageKey == key)
-            {
-                stage.gameObject.SetActive(true);
-                currentStage = stage;
-                player.transform.position
-                    = currentStage.playerSpawnPoint.position;
-            }
-        }
+        var stage = stageDictionary[key];
+        stage.gameObject.SetActive(true);
+        currentStage = stage;
+        SetPlayerPosition();
+        SetMonsterPosition(key);
+        SetNPCPosition(key);
     }
 
     public void StageChange(string key)
     {
-        monster = null;
+        GameManager.Instance.isClear = false;
+        var stage = stageDictionary[key];
+        stage.gameObject.SetActive(true);
+        currentStage.gameObject.SetActive(false);
+        currentStage = stage;
+        SetPlayerPosition();
+        SetMonsterPosition(key);
+        SetNPCPosition(key);
+    }
 
-        for (int i = 0; i < stageList.Count;i++)
+    private void SetPlayerPosition()
+    {
+        player.transform.position = currentStage.playerSpawnPoint.position;
+    }
+
+    private void SetMonsterPosition(string key)
+    {
+        if (key == "Stage1" || key == "Stage2" || key == "Boss")
         {
-            StageBase stage = stageList[i];
-            if(stage.stageSO.stageKey == key)
+            if (!monsterList[0].gameObject.activeSelf)
             {
-                currentStage.gameObject.SetActive(false);
-                currentStage = stage;
-                currentStage.gameObject.SetActive(true);
-                player.transform.position
-                    = currentStage.playerSpawnPoint.position;
-                CreatMonster();
-                SetRewardPosition();    
+                monsterList[0].gameObject.SetActive(true);
+                monsterCount++;
+            }
+            else
+            {
+                monsterList[1].gameObject.SetActive(true);
+                monsterCount++;
+            }
+
+            monsterList[0].gameObject.transform.position = currentStage.monsterSpawnPoint.position;
+        }
+    }
+
+    private void SetNPCPosition(string key)
+    {
+        if (key == "Stage1" || key == "Stage2")
+        {
+            rewardTreeObject.SetActive(true);
+            rewardTree.transform.position = currentStage.rewardSpawnPoint.position;
+        }
+        else
+        {
+            rewardTreeObject.SetActive(false);
+        }
+
+        if (key == "Shelter")
+        {
+            shelterNPCObject.SetActive(true);
+            shelterNPCObject.transform.position = currentStage.rewardSpawnPoint.position;
+            GameManager.Instance.isClear = true;
+        }
+        else { shelterNPCObject.SetActive(false); }
+    }
+
+
+    public void MonsterDie()
+    {
+        monsterCount--;
+        StageClear();
+    }
+
+    private void StageClear()
+    {
+        if (monsterCount == 0)
+        {
+            if (rewardTreeObject.TryGetComponent(out RewardTree tree))
+            {
+                tree.GetReward();
+            }
+            GameManager.Instance.isClear = true;
+            if (currentStage.stageSO.stageKey == "Boss")
+            {
+                GameManager.Instance.GameEnd();
             }
         }
     }
 
-    public void CreatRewardTree()
-    {
-        for(int i = 0; i < rewardTree.spawnPositions.Count;i++)
-        {
-
-        }
-    }
-
-    public void CreatMonster()
-    {
-        if(currentStage.stageSO.isCreatMonster &&  monster == null)
-        {
-            monster = Instantiate(currentStage.monster);
-            monster.gameObject.transform.position
-                = currentStage.monsterSpawnPoint.position;
-        }
-        else
-        {
-            monster.gameObject.SetActive(false);
-            return;
-        }
-    }
-
-    public void SetRewardPosition()
-    {
-        for(int i = 0; i < rewardTree.spawnPositions.Count; i++)
-        {
-            var obj = rewardTree.rewards[i].transform.position;
-            currentStage.rewardTree.rewards[i].transform.position = obj;
-        }
-    }
-
-    public void MonsterDie()
-    {
-        if(!currentStage.monster.gameObject.activeSelf)
-        {
-            Debug.Log("죽다 몬스터");
-            kiilMonsterCount++;
-        }
-        else
-        {
-            return;
-        }
-    }
-    
-    public bool StageClear()
-    {
-        if(currentStage.stageSO.clearMonsterKillCount == kiilMonsterCount)
-        {
-            GameManager.Instance.isClear = true;
-        }
-        return true;
-    }
-
     public void WeaponDestory()
     {
-        for(int i = 0; i < rewardTree.rewardWeapon.Count; i++)
+        for (int i = 0; i < rewardTree.rewardWeapon.Count; i++)
         {
             weaponDestoryCount++;
             var obj = rewardTree.rewardWeapon[i].gameObject;
