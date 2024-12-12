@@ -17,11 +17,11 @@ MonoBehaviour:
   defense: 10
   attackSpeed: 10
   moveSpeed: 2
-  attackDistance: 0.9
+  attackDistance: 1
   chaseRange: 10
-  type: 5
-  attributeValue: 0
-  attributeRateTime: 1
+  type: 1
+  attributeValue: 1
+  attributeRateTime: 3
   inGameMoney: 100
   sprite: {fileID: 0}
   animation: {fileID: 0}
