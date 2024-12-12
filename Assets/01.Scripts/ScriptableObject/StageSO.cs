@@ -5,8 +5,11 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "StageSO", menuName ="ScriptableObject/StageSO", order = 4)]
 public class StageSO : ScriptableObject
 {
-    public StageType stageType;
     public GameObject stagePrefab;
-    public Transform playerStartPosition;
-    public Transform monsterStartPositon;
+    public string stageKey;
+    public int clearMonsterKillCount;
+    public int creatMonsterCount;
+    public bool isCreatMonster;
+    public bool isCreatRewardTree;
+
 }

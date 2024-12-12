@@ -6,7 +6,6 @@ public class LobbyPotal : Potal
 {
     protected override void ChagedStage()
     {
-        if(GameManager.Instance.isClear )
-            StageManager.Instance.NextStage("1-1");
+        StageManager.Instance.StageChange("Stage1");
     }
 }

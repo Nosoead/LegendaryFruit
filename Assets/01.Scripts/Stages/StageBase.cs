@@ -3,39 +3,47 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Pool;
+using UnityEngine.Rendering.Universal;
 
 public class StageBase :MonoBehaviour
 {
-    [SerializeField] private Transform spawnPointRot;
-    private Dictionary<string, Vector2> keyValuePairs = new Dictionary<string, Vector2>();
+    //[SerializeField] private Transform spawnPointRot;
+    //private Dictionary<string, Vector2> keyValuePairs = new Dictionary<string, Vector2>();
+    [SerializeField] public StageSO stageSO;
+    [SerializeField] public Monster monster;
+    [SerializeField] public RewardTree rewardTree;
 
-    public string stageKey;
-    public int monsterCount;
+    [SerializeField] public Reward reward;
+
+    [SerializeField] public Transform playerSpawnPoint;
+    [SerializeField] public Transform monsterSpawnPoint;
+    [SerializeField] public Transform rewardSpawnPoint;
+
 
     protected virtual void Awake()
-    {
-        for (int i = 0; i < spawnPointRot.childCount; i++)
-        {
-            keyValuePairs.Add(spawnPointRot.GetChild(i).name
-                ,spawnPointRot.GetChild(i).position);
-        }
+    { 
+        
     }
 
-    public Vector2 PlayerSpawnPoint()
-    {
-        keyValuePairs.TryGetValue("PlayerSpawnPoint", out var point);
-        return point;
-    }
 
-    public Vector2 MonsterSpawnPoint()
-    {
-        keyValuePairs.TryGetValue("MonsterSpawnPoint", out var point);
-        return point;
-    }
 
-    public Vector2 RewardTreeSpawnPoint()
-    {
-        keyValuePairs.TryGetValue("RewardTreeSpawnPoint", out var point);
-        return point;
-    }
+
+
+    //public Vector2 PlayerSpawnPoint()
+    //{
+    //    keyValuePairs.TryGetValue("PlayerSpawnPoint", out var point);
+    //    return point;
+    //}
+
+    //public Vector2 MonsterSpawnPoint()
+    //{
+    //    keyValuePairs.TryGetValue("MonsterSpawnPoint", out var point);
+    //    return point;
+    //}
+
+    //public Vector2 RewardTreeSpawnPoint()
+    //{
+    //    keyValuePairs.TryGetValue("RewardTreeSpawnPoint", out var point);
+    //    return point;
+    //}
 }
