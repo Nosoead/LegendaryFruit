@@ -2,18 +2,14 @@ using UnityEngine;
 
 public abstract class MonsterAttributeLogics 
 {
-    protected  Monster monster;
-    //각 상태이상에 대한 추상클래스
-    public virtual bool CanPenetrate => false; // 통과할수 있는가
-    public abstract void ApplyAttackLogic(GameObject target, float damage);
+    public abstract void ApplyAttackLogic(GameObject target, float damage,float attributeValue=0,float attributeRateTime=0,int attributeStack=0);
     //각 상태이상에 대한 정의
-    protected Collider2D[] player = new Collider2D[10];
 }
 
 public class NormalLogic : MonsterAttributeLogics
 { // 통과할수 있는가
 
-    public override void ApplyAttackLogic(GameObject target, float damage)
+    public override void ApplyAttackLogic(GameObject target, float damage,float attributeValue=0,float attributeRateTime=0,int attributeStack=0)
     {
         IDamageable damageable = target.GetComponent<IDamageable>();
         if (damageable != null)
@@ -29,24 +25,28 @@ public class NormalLogic : MonsterAttributeLogics
 
 public class BurnLogic : MonsterAttributeLogics
 {
-    public override void ApplyAttackLogic(GameObject target, float damage)
+    //추후 SO 리팩토링
+    /*private float attributeValue;
+    private float attributeRateTime;
+    private int attributeStack;*/
+    public override void ApplyAttackLogic(GameObject target, float damage,float attributeValue=0,float attributeRateTime=0,int attributeStack=0)
     {
         IDamageable damageable = target.GetComponent<IDamageable>();
         if (damageable != null)
         {
-            damageable.TakeDamage(damage);
+            damageable.BurnDamage(damage,attributeValue,attributeRateTime,attributeStack);
 
         }
     }
 }
 public class SlowDown : MonsterAttributeLogics
 {
-    public override void ApplyAttackLogic(GameObject target, float damage)
+    public override void ApplyAttackLogic(GameObject target, float damage,float attributeValue=0,float attributeRateTime=0,int attributeStack=0)
     {
         IDamageable damageable = target.GetComponent<IDamageable>();
         if (damageable != null)
         {
-            damageable.TakeDamage(damage);
+            damageable.SlowDown(damage,attributeValue,attributeRateTime);
 
         }
     }

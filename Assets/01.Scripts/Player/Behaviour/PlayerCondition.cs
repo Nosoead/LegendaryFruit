@@ -51,15 +51,18 @@ public class PlayerCondition : MonoBehaviour, IDamageable
         if (coSlowDown != null)
         {
             StopCoroutine(coSlowDown);
+            statManager.ApplyRestoreStat(attributeValue, "MoveSpeed");
+            //TODO 연속으로 맞으면 스탯이 증가하는 버그
         }
         coSlowDown = StartCoroutine(SlowDownCoroutine(attributeValue, attributeRateTime));
     }
 
-    private IEnumerator SlowDownCoroutine(float attributeValue, float attributeRateTiem)
+    private IEnumerator SlowDownCoroutine(float attributeValue, float attributeRateTime)
     {
-        slowDownTime = new WaitForSeconds(attributeRateTiem);
+        slowDownTime = new WaitForSeconds(attributeRateTime);
         statManager.ApplyTemporaryStatReduction(attributeValue, "MoveSpeed");
         yield return slowDownTime;
+        Debug.Log("코루틴 끝");
         statManager.ApplyRestoreStat(attributeValue, "MoveSpeed");
     }
     #endregion
