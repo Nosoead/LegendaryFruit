@@ -8,11 +8,11 @@ public interface IInteractable
 public interface IDamageable
 {
     void TakeDamage(float damage);
-    void BurnDamage(float damage, float attributeValue, float attributeRateTime, int attributeStack);
+    void BurnDamage(float damage, float attributeValue, float attributeRateTime, float attributeStack);
     void SlowDown(float damage, float attributeValue, float attributeRateTime);
 }
 
-public interface IMonster
+public interface IState
 {
     void Enter();
     void Excute();

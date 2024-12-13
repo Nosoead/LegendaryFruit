@@ -12,18 +12,19 @@ public class MonsterStat : Stat
     {
         if (gameData is MonsterSO monsterData)
         {
-            stats["maxHealth"] = monsterData.maxHealth;
-            stats["currentHealth"] = monsterData.maxHealth;
-            stats["currentAttackPower"] =monsterData.attackPower;
-            stats["currentDefense"] =monsterData.defense;
-            stats["attackSpeed"] = monsterData.attackSpeed;
-            stats["moveSpeed"] = monsterData.moveSpeed;
-            stats["attackDistance"] = monsterData.attackDistance;
-            stats["chaseRange"] = monsterData.chaseRange;
+            stats["MaxHealth"] = monsterData.maxHealth;
+            stats["CurrentHealth"] = monsterData.maxHealth;
+            stats["CurrentAttackPower"] =monsterData.attackPower;
+            stats["CurrentDefense"] =monsterData.defense;
+            stats["AttackSpeed"] = monsterData.attackSpeed;
+            stats["MoveSpeed"] = monsterData.moveSpeed;
+            stats["AttackDistance"] = monsterData.attackDistance;
+            stats["ChaseRange"] = monsterData.chaseRange;
             stats["AttributeType"] = (int)monsterData.type;
-            stats["attributeValue"] = monsterData.attributeValue;
-            stats["attributeRateTime"] = monsterData.attributeRateTime;
-            stats["inGameMoney"] = monsterData.inGameMoney;
+            stats["AttributeValue"] = monsterData.attributeValue;
+            stats["AttributeStack"] = monsterData.attributeStack;
+            stats["AttributeRateTime"] = monsterData.attributeRateTime;
+            stats["InGameMoney"] = monsterData.inGameMoney;
             foreach (var stat in stats)
             {
                 OnStatUpdated?.Invoke(stat.Key, stat.Value);
@@ -47,7 +48,8 @@ public class MonsterStat : Stat
         {
             stats[statKey] = currentValue;
             OnStatUpdated?.Invoke(statKey, currentValue);
-            if (statKey == "currentHealth" && stats["currentHealth"] == 0)
+            Debug.Log($"{statKey} : {currentValue}");
+            if (statKey == "CurrentHealth" && stats["CurrentHealth"] == 0)
             {
                 OnMonsterDie?.Invoke();
             }
@@ -60,10 +62,10 @@ public class MonsterStat : Stat
 
     public void UpdateCurrentHealth(float currentHealth)
     {
-        if (stats.ContainsKey("currentHealth"))
+        if (stats.ContainsKey("CurrentHealth"))
         {
-            float newValue = Mathf.Clamp(currentHealth, 0f, stats["maxHealth"]);
-            UpdateStat("currentHealth", newValue);
+            float newValue = Mathf.Clamp(currentHealth, 0f, stats["MaxHealth"]);
+            UpdateStat("CurrentHealth", newValue);
         }
     }
 }

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerAttribueteLogicsDictionary
+public class PlayerAttributeLogicsDictionary
 {
     private Dictionary<AttributeType, PlayerAttributeLogics> attributeLogicMap;
 
@@ -22,7 +22,6 @@ public class PlayerAttribueteLogicsDictionary
     {
         if (attributeLogicMap.TryGetValue(type, out PlayerAttributeLogics logic))
         {
-            Debug.Log(attributeLogicMap[type]);
             return logic;
         }
 

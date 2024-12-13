@@ -13,6 +13,7 @@ public class MonsterSO : GameSO
     public AttributeType type;  // 몬스터의 속성
     public float attributeValue; // 속성값
     public float attributeRateTime; // 속성데미지의 지속시간
+    public float attributeStack;
     public float inGameMoney; // 드랍하는 머니
     public Sprite sprite; // 몬스터 이미지
     public Animation animation; // 몬스터 애니메이션

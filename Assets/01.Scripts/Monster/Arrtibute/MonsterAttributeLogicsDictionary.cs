@@ -9,9 +9,9 @@ public class MonsterAttributeLogicsDictionary
     {
         attributeLogicMap = new Dictionary<AttributeType, MonsterAttributeLogics>
         {
-            { AttributeType.Normal, new NormalLogic() },
-            { AttributeType.Burn, new BurnLogic() },
-            { AttributeType.SlowDown, new SlowDown() },
+            { AttributeType.Normal, new MonsterNormal() },
+            { AttributeType.Burn, new MonsterBurn() },
+            { AttributeType.SlowDown, new MonsterSlowDown() },
 
         };
     }

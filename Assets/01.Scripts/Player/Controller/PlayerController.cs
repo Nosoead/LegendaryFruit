@@ -47,7 +47,7 @@ public class PlayerController : MonoBehaviour
         //Input.Player.Jump.canceled += PlayerJump;
 
         //PlayerAttack
-        Input.Player.Attack.performed += PlayerAttack;
+        Input.Player.Attack.started += PlayerAttack;
         //Input.Player.Attack.canceled += PlayerAttack;
         Input.Player.Skill1.performed += PlayerSkill1;
         Input.Player.Skill1.canceled += PlayerSkill1;
@@ -55,8 +55,8 @@ public class PlayerController : MonoBehaviour
         Input.Player.Skill2.canceled += PlayerSkill2;
 
         //PlayerEquip
-        Input.Player.SwapWeapon.performed += PlayerSwapWeapon;
-        Input.Player.SwapWeapon.canceled += PlayerSwapWeapon;
+        Input.Player.SwapWeapon.started += PlayerSwapWeapon;
+        //Input.Player.SwapWeapon.canceled += PlayerSwapWeapon;
 
         //PlayerInteract -> 
         Input.Player.Interact.started += PlayerTapInteract;
@@ -110,6 +110,7 @@ public class PlayerController : MonoBehaviour
     }
     public void PlayerSwapWeapon(InputAction.CallbackContext context)
     {
+        OnSwapWeaponEvent?.Invoke();
     }
     public void PlayerTapInteract(InputAction.CallbackContext context)
     {

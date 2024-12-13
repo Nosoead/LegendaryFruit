@@ -1,8 +1,10 @@
 using UnityEngine;
 
-public class AttackState :IMonster
+public class AttackState :IState
 {
     private MonsterController monsterController;
+
+    private bool isGround;
     //private MonsterAttributeLogicsDictionary monsterAttributeLogicsDictionary;
     float testTime = 0f;
 
@@ -42,10 +44,17 @@ public class AttackState :IMonster
         {
             monsterController.StateMachine.TransitionToState(monsterController.StateMachine.idleState);
         }
-        // player 놓치면 idleState 
+        // player 발견 && 땅이 있으면 이동
         if (monsterController.DetectPlayer())
         {
-            monsterController.Move();
+            if (monsterController.monsterGround.GetOnGround())
+            {
+                monsterController.Move();
+            }
+        }
+        if(!monsterController.monsterGround.GetOnGround())
+        {
+            monsterController.ReverseDirection();
         }
     }
 

@@ -3,15 +3,23 @@ using System.Collections.Generic;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class PlayerInteraction : MonoBehaviour
 {
+    public UnityAction<WeaponSO> FruitWeapOnEquipEvent;
+    public UnityAction<string, float> FruitWeaponEatAndStatUpEvent; //먹은 리스트도 저장가능~
     [SerializeField] private PlayerController controller;
     //[SerializeField] private TextMeshProUGUI promptText;
+    private IInteractable currentInteractable;
+    private WeaponSO weaponData;
+
+    //Layer
     private int NPCLayer;
     private int rewardLayer;
     private int itemLayer;
-    private IInteractable currentInteractable;
+    
+    //Tap or Hold Check
     private bool canTapInteractWithObject;
     private bool CanHoldInteractWithObject;
     private bool isTapPressed;
@@ -26,10 +34,9 @@ public class PlayerInteraction : MonoBehaviour
         NPCLayer = LayerMask.NameToLayer("NPC");
         rewardLayer = LayerMask.NameToLayer("Reward");
         itemLayer = LayerMask.NameToLayer("Item");
-    }
-
-    private void Start()
-    {
+        Debug.Log(NPCLayer);
+        int ddd = LayerMask.GetMask("NPC");
+        Debug.Log(ddd);
     }
 
     private void OnEnable()
@@ -54,14 +61,19 @@ public class PlayerInteraction : MonoBehaviour
         else if (collision.gameObject.layer == itemLayer)
         {
             CanHoldInteractWithObject = true;
-            ShowTapAndHoldPrompt();
+            ShowTapAndHoldPrompt(isOpen : true);
             currentInteractable = collision.gameObject.GetComponent<IInteractable>();
+            if (collision.gameObject.TryGetComponent(out FruitWeapon fruitWeapon))
+            {
+                weaponData = fruitWeapon.weaponData;
+            }
         }
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
         ResetInteractionChecker();
+        ShowTapAndHoldPrompt(isOpen: false);
     }
 
     private void EnsureComponents()
@@ -108,16 +120,16 @@ public class PlayerInteraction : MonoBehaviour
         while (isHoldPressedSignal)
         {
             pressedTime += Time.deltaTime;
-            if (pressedTime >= 2f)
+            if (pressedTime >= holdCompleteTime)
             {
                 isHoldPressed = true;
                 break;
             }
-            else if (pressedTime >= 1f)
+            else if (pressedTime > tapCompleteTime)
             {
-                Debug.Log("1초 경과");
                 isTapPressed = false;
             }
+            else if (pressedTime == tapCompleteTime) { Debug.Log("1초 경과"); }
             else
             {
                 isTapPressed = true;
@@ -129,16 +141,20 @@ public class PlayerInteraction : MonoBehaviour
         {
             if (CanHoldInteractWithObject && isHoldPressed)
             {
+                FruitWeaponEatAndStatUpEvent?.Invoke(((StatType)((int)weaponData.type)).ToString(), weaponData.eatValue);
                 currentInteractable.Interact(isHoldPressed, isTapPressed);
                 ResetInteractionChecker();
+                ShowTapAndHoldPrompt(isOpen : false);
             }
         }
         else if (isTapPressed)
         {
             if (CanHoldInteractWithObject && isTapPressed)
             {
+                FruitWeapOnEquipEvent?.Invoke(weaponData);
                 currentInteractable.Interact(isHoldPressed, isTapPressed);
                 ResetInteractionChecker();
+                ShowTapAndHoldPrompt(isOpen: false);
             }
         }
         else
@@ -156,10 +172,11 @@ public class PlayerInteraction : MonoBehaviour
         canTapInteractWithObject = false;
         CanHoldInteractWithObject = false;
         currentInteractable = null;
+        weaponData = null;
     }
 
-    private void ShowTapAndHoldPrompt()
+    private void ShowTapAndHoldPrompt(bool isOpen)
     {
-        //TODO : 아이템 정보 및 이미지 내용 띄워주기
+        //TODO : 아이템 정보 SO받아서 이미지 내용 띄워주기
     }
 }

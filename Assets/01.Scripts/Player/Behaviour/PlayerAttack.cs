@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class PlayerAttack : MonoBehaviour
 {
@@ -8,9 +9,12 @@ public class PlayerAttack : MonoBehaviour
     [SerializeField] private PlayerEquipment equipment;
     [SerializeField] private PlayerStatManager statManager;
 
-    private PlayerAttribueteLogicsDictionary attributeLogics;
+    private PlayerAttributeLogicsDictionary attributeLogics;
     private PlayerAttributeLogics attributeLogic = null;
+    private WeaponSO weaponData;
+    private float totalAttackPower;
     private float currentAttackPower;
+    private float weaponAttackPower;
     private LayerMask monsterLayer;
     private AttributeType attributeType;
 
@@ -21,7 +25,7 @@ public class PlayerAttack : MonoBehaviour
 
     private void Awake()
     {
-        attributeLogics = new PlayerAttribueteLogicsDictionary();
+        attributeLogics = new PlayerAttributeLogicsDictionary();
         attributeLogics.Initialize();
         monsterLayer = LayerMask.GetMask("Monster");
         EnsureComponents();
@@ -29,23 +33,20 @@ public class PlayerAttack : MonoBehaviour
 
     private void OnEnable()
     {
+        statManager.OnSubscribeToStatUpdateEvent += OnStatUpdatedEvent;
         controller.OnDirectionEvent += OnDirectionEvent;
         controller.OnAttackEvent += OnAttackEvent;
-        equipment.OnEquipWeaponEvent += OnEquipWeaponEvent;
+        equipment.OnEquipWeaponChanged += OnEquipWeaponChanged;
     }
 
     private void OnDisable()
     {
+        statManager.OnSubscribeToStatUpdateEvent -= OnStatUpdatedEvent;
         controller.OnDirectionEvent -= OnDirectionEvent;
         controller.OnAttackEvent -= OnAttackEvent;
-        equipment.OnEquipWeaponEvent += OnEquipWeaponEvent;
-        statManager.UnsubscribeToStatUpdateEvent(attackStats);
+        equipment.OnEquipWeaponChanged += OnEquipWeaponChanged;
     }
-    private void Start()
-    {
-        statManager.SubscribeToStatUpdateEvent(attackStats);
-    }
-
+ 
     private void EnsureComponents()
     {
         if (controller == null)
@@ -54,7 +55,7 @@ public class PlayerAttack : MonoBehaviour
         }
         if (equipment == null)
         {
-            equipment = GetComponent<PlayerEquipment>();
+            equipment = GetComponentInChildren<PlayerEquipment>();
         }
         if (statManager == null)
         {
@@ -62,12 +63,14 @@ public class PlayerAttack : MonoBehaviour
         }
     }
 
-    private void attackStats(string statKey, float value)
+    #region /subscribeMethod
+    private void OnStatUpdatedEvent(string statKey, float value)
     {
         switch (statKey)
         {
             case "CurrentAttackPower":
                 currentAttackPower = value;
+                SetTotalAttackPower();
                 break;
         }
     }
@@ -88,14 +91,22 @@ public class PlayerAttack : MonoBehaviour
             return;
         }
         Debug.Log(monster.ToString() + " 때림");
-        attributeLogic.ApplyAttackLogic(monster.gameObject, currentAttackPower);
+        attributeLogic.ApplyAttackLogic(monster.gameObject, totalAttackPower, weaponData.attributeAttackValue, weaponData.attributeAttackRateTime, weaponData.arrtibuteStatck);
     }
-
-    private void OnEquipWeaponEvent()
+    private void OnEquipWeaponChanged(WeaponSO weaponData)
     {
-        //TODO 장착한 무기 SO정보 받아서 공격타입 수정
-        attributeType = AttributeType.Normal;
-        attributeLogic = attributeLogics.GetAttributeLogic(attributeType);
+        this.weaponData = weaponData;
+        weaponAttackPower = weaponData.attackPower;
+        attributeLogic = attributeLogics.GetAttributeLogic(weaponData.type);
+        Debug.Log(weaponData.type);
+        SetTotalAttackPower();
+    }
+    #endregion
+
+    private void SetTotalAttackPower()
+    {
+        totalAttackPower = currentAttackPower + weaponAttackPower;
+        Debug.Log("총공격력 : " + totalAttackPower);
     }
 
     private void OnDrawGizmos()

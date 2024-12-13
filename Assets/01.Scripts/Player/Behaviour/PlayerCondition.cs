@@ -13,6 +13,10 @@ public class PlayerCondition : MonoBehaviour, IDamageable
     private WaitForSeconds burnWaitTime;
     private WaitForSeconds slowDownTime;
 
+    // 각 속성 코루틴 체크용
+    private bool isBurn = false;
+    private bool isSlowDown = false;
+
     private void Awake()
     {
         if (statManager == null)
@@ -22,25 +26,29 @@ public class PlayerCondition : MonoBehaviour, IDamageable
     }
 
     #region /BurnDamageLogic
-    public void BurnDamage(float damage, float attributeValue, float attributeRateTime, int attributeStack)
+    public void BurnDamage(float damage, float attributeValue, float attributeRateTime, float attributeStack)
     {
         statManager.ApplyInstantDamage(damage);
-        
-        if (coBurnDamage != null)
+        Debug.Log("1타");
+        if (coBurnDamage != null && isBurn)
         {
             StopCoroutine(coBurnDamage);
         }
+        isBurn = true;
         coBurnDamage = StartCoroutine(BurnDamageCoroutine(attributeValue, attributeRateTime, attributeStack));
     }
 
-    private IEnumerator BurnDamageCoroutine(float attributeValue, float attributeRateTime, int attributeStack)
+    private IEnumerator BurnDamageCoroutine(float attributeValue, float attributeRateTime, float attributeStack)
     {
         burnWaitTime = new WaitForSeconds(attributeRateTime);
+        Debug.Log(attributeStack);
         for (int i = 0; i < attributeStack; i++)
         {
+            Debug.Log($"{i}번째 타격");
             statManager.ApplyInstantDamage(attributeValue);
             yield return burnWaitTime;
         }
+        isBurn = false;
     }
     #endregion
 
@@ -48,18 +56,21 @@ public class PlayerCondition : MonoBehaviour, IDamageable
     public void SlowDown(float damage, float attributeValue, float attributeRateTime)
     {
         statManager.ApplyInstantDamage(damage);
-        if (coSlowDown != null)
+        if (coSlowDown != null && isSlowDown)
         {
             StopCoroutine(coSlowDown);
+            statManager.ApplyRestoreStat(attributeValue, "MoveSpeed");
         }
+        isSlowDown = true;
         coSlowDown = StartCoroutine(SlowDownCoroutine(attributeValue, attributeRateTime));
     }
 
-    private IEnumerator SlowDownCoroutine(float attributeValue, float attributeRateTiem)
+    private IEnumerator SlowDownCoroutine(float attributeValue, float attributeRateTime)
     {
-        slowDownTime = new WaitForSeconds(attributeRateTiem);
+        slowDownTime = new WaitForSeconds(attributeRateTime);
         statManager.ApplyTemporaryStatReduction(attributeValue, "MoveSpeed");
         yield return slowDownTime;
+        isSlowDown = false;
         statManager.ApplyRestoreStat(attributeValue, "MoveSpeed");
     }
     #endregion
