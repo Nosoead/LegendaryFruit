@@ -109,6 +109,7 @@ public class PlayerController : MonoBehaviour
     }
     public void PlayerSwapWeapon(InputAction.CallbackContext context)
     {
+        OnSwapWeaponEvent?.Invoke();
     }
     public void PlayerTapInteract(InputAction.CallbackContext context)
     {

@@ -3,7 +3,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "WeaponSO", menuName = "ScriptableObject/WeaponSO", order = 2)]
 public class WeaponSO : GameSO
 {
-    public string name;
+    public string weaponName;
     public string description;
     public float attackPower;
     public AttributeType type;

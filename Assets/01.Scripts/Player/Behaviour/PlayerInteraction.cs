@@ -117,16 +117,16 @@ public class PlayerInteraction : MonoBehaviour
         while (isHoldPressedSignal)
         {
             pressedTime += Time.deltaTime;
-            if (pressedTime >= 2f)
+            if (pressedTime >= holdCompleteTime)
             {
                 isHoldPressed = true;
                 break;
             }
-            else if (pressedTime > 1f)
+            else if (pressedTime > tapCompleteTime)
             {
                 isTapPressed = false;
             }
-            else if (pressedTime == 1f) { Debug.Log("1초 경과"); }
+            else if (pressedTime == tapCompleteTime) { Debug.Log("1초 경과"); }
             else
             {
                 isTapPressed = true;

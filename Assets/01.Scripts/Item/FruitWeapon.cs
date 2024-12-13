@@ -7,7 +7,7 @@ using UnityEngine;
 public class FruitWeapon : Weapon, IInteractable
 {
     public WeaponSO weaponData;
-    private SpriteRenderer weaponSprite;
+    public SpriteRenderer weaponSprite;
 
 
     private void Awake()
@@ -15,7 +15,7 @@ public class FruitWeapon : Weapon, IInteractable
         EnsureComponents();
     }
 
-    private void EnsureComponents()
+    public void EnsureComponents()
     {
         weaponSprite = GetComponent<SpriteRenderer>();
         if (weaponData != null)

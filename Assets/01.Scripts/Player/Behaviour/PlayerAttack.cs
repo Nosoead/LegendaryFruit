@@ -106,7 +106,7 @@ public class PlayerAttack : MonoBehaviour
     private void SetTotalAttackPower()
     {
         totalAttackPower = currentAttackPower + weaponAttackPower;
-        Debug.Log(totalAttackPower);
+        Debug.Log("총공격력 : " + totalAttackPower);
     }
 
     private void OnDrawGizmos()

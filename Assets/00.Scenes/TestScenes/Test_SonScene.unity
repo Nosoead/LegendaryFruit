@@ -1814,6 +1814,10 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: -2001510239, guid: 7810966f0f690954c87305933cabf2b0, type: 3}
+    - target: {fileID: 1323928403169239411, guid: 41da0155ac723d84e90407b5916cb531, type: 3}
+      propertyPath: m_Color.a
+      value: 0.101960786
+      objectReference: {fileID: 0}
     - target: {fileID: 2078229186268252843, guid: 41da0155ac723d84e90407b5916cb531, type: 3}
       propertyPath: equipment
       value: 
@@ -1858,6 +1862,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8074874974906680053, guid: 41da0155ac723d84e90407b5916cb531, type: 3}
+      propertyPath: controller
+      value: 
+      objectReference: {fileID: 1793391058}
     - target: {fileID: 8074874974906680053, guid: 41da0155ac723d84e90407b5916cb531, type: 3}
       propertyPath: weaponData
       value: 
@@ -4202,6 +4210,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5e1dc13034d814842931c931e99cf5f4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1793391058 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8767624224764499905, guid: 41da0155ac723d84e90407b5916cb531, type: 3}
+  m_PrefabInstance: {fileID: 1090380490}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8711109411f9449418e0f282de5bac21, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1997208279

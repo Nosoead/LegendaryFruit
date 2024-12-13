@@ -27,7 +27,6 @@ public class MonsterStat : Stat
             foreach (var stat in stats)
             {
                 OnStatUpdated?.Invoke(stat.Key, stat.Value);
-                Debug.Log($"{stat.Key} : {stat.Value}");
             }
         }
     }
@@ -48,7 +47,7 @@ public class MonsterStat : Stat
         {
             stats[statKey] = currentValue;
             OnStatUpdated?.Invoke(statKey, currentValue);
-            Debug.Log($"{statKey} : {currentValue}");
+            //Debug.Log($"{statKey} : {currentValue}");
             if (statKey == "CurrentHealth" && stats["CurrentHealth"] == 0)
             {
                 OnMonsterDie?.Invoke();
