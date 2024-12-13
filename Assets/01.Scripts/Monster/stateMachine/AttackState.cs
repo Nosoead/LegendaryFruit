@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class AttackState :IMonster
+public class AttackState :IState
 {
     private MonsterController monsterController;
 

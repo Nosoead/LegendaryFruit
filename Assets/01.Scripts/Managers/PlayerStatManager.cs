@@ -1,29 +1,35 @@
-using System.Collections;
-using System.Collections.Generic;
-using System.Security.Cryptography.X509Certificates;
-using Unity.VisualScripting.Antlr3.Runtime.Misc;
 using UnityEngine;
 using UnityEngine.Events;
 
 public class PlayerStatManager : MonoBehaviour
 {
+    public UnityAction<string, float> OnSubscribeToStatUpdateEvent;
     [SerializeField] private PlayerSO playerData;
+    [SerializeField] private PlayerInteraction playerInteraction;
     private PlayerStat stat;
     private StatHandler statHandler;
 
     private void Awake()
     {
+        if (playerInteraction == null)
+        {
+            playerInteraction = GetComponent<PlayerInteraction>();
+        }
         stat = new PlayerStat();
         statHandler = new StatHandler();
     }
 
     private void OnEnable()
     {
+        playerInteraction.FruitWeaponEatAndStatUpEvent += IncreaseStat;
+        stat.OnStatUpdatedEvent += OnStatUpdatedEvent;
         stat.OnDie += OnDie;
     }
 
     private void OnDisable()
     {
+        playerInteraction.FruitWeaponEatAndStatUpEvent -= IncreaseStat;
+        stat.OnStatUpdatedEvent -= OnStatUpdatedEvent;
         stat.OnDie -= OnDie;
     }
     private void Start()
@@ -33,15 +39,25 @@ public class PlayerStatManager : MonoBehaviour
         stat.InitStat(playerData);
     }
 
-    public void SubscribeToStatUpdateEvent(UnityAction<string, float> listener)
+    #region /subscribeMethod
+    private void IncreaseStat(string statKey, float eatValue)
     {
-        stat.OnStatUpdated += listener;
+        //Debug.Log("벨류 업 : " + eatValue);
+        float result = statHandler.Add(stat.GetStatValue(statKey), eatValue);
+        stat.UpdateStat(statKey, result);
+        //Debug.Log("먹고난 후 : " + result);
     }
 
-    public void UnsubscribeToStatUpdateEvent(UnityAction<string, float> listener)
+    private void OnStatUpdatedEvent(string key, float value)
     {
-        stat.OnStatUpdated -= listener;
+        OnSubscribeToStatUpdateEvent?.Invoke(key, value);
     }
+
+    private void OnDie()
+    {
+        GameManager.Instance.GameEnd();
+    }
+    #endregion
 
     #region /ApplystatMethod
     public void ApplyInstantDamage(float damage)
@@ -67,16 +83,5 @@ public class PlayerStatManager : MonoBehaviour
         float result = statHandler.Add(stat.GetStatValue("CurrentHealth"), heal, stat.GetStatValue("MaxHealth"));
         stat.UpdateCurrentHealth(result);
     }
-
-    public void IncreaseStat(string statKey, float eatValue)
-    {
-        float result = statHandler.Add(stat.GetStatValue(statKey), eatValue);
-        stat.UpdateStat(statKey, result);
-    }
     #endregion
-
-    private void OnDie()
-    {
-        GameManager.Instance.GameEnd();
-    }
 }

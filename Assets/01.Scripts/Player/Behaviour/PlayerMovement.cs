@@ -1,20 +1,18 @@
-using System;
 using System.Collections;
-using System.Collections.Generic;
-using Unity.Burst;
 using UnityEngine;
-using UnityEngine.Rendering.Universal;
+using UnityEngine.Events;
 
 //Move,Jump,Dash
 public class PlayerMovement : MonoBehaviour
 {
+    private PlayerMoveStateMachine stateMachine;
     [SerializeField] private Rigidbody2D playerRigidbody;
     [SerializeField] private BoxCollider2D playerCollider;
     [SerializeField] private PlayerController controller;
     [SerializeField] private PlayerStatManager statManager;
     [SerializeField] private PlayerGround playerGround;
     private Vector2 velocity = Vector2.zero;
-    private float moveSpeed;
+    public float moveSpeed;
 
     [Header("DashInfo")]
     private Vector2 dash = Vector2.right;
@@ -35,10 +33,12 @@ public class PlayerMovement : MonoBehaviour
     private void Awake()
     {
         EnsureComponents();
+        stateMachine = new PlayerMoveStateMachine(this);
     }
 
     private void OnEnable()
     {
+        statManager.OnSubscribeToStatUpdateEvent += OnStatUpdatedEvent;
         controller.OnDirectionEvent += OnDirectionEvent;
         controller.OnMoveEvent += OnMovement;
         controller.OnSubCommandEvent += OnSubCommandEvent;
@@ -48,17 +48,12 @@ public class PlayerMovement : MonoBehaviour
 
     private void OnDisable()
     {
+        statManager.OnSubscribeToStatUpdateEvent -= OnStatUpdatedEvent;
         controller.OnDirectionEvent -= OnDirectionEvent;
         controller.OnMoveEvent -= OnMovement;
         controller.OnSubCommandEvent -= OnSubCommandEvent;
         controller.OnDashEvent -= OnDashEvent;
         controller.OnJumpEvent -= OnJumpEvent;
-        statManager.UnsubscribeToStatUpdateEvent(moveStats);
-    }
-
-    private void Start()
-    {
-        statManager.SubscribeToStatUpdateEvent(moveStats);
     }
 
     private void Update()
@@ -77,9 +72,9 @@ public class PlayerMovement : MonoBehaviour
         ApplyMovement();
     }
 
-    #region /Ensure Components
     private void EnsureComponents()
     {
+        
         if (playerRigidbody == null)
         {
             playerRigidbody = GetComponent<Rigidbody2D>();
@@ -101,14 +96,16 @@ public class PlayerMovement : MonoBehaviour
             playerGround = GetComponent<PlayerGround>();
         }
     }
-    #endregion
 
-    private void moveStats(string statKey, float value)
+
+    #region /subscribeMethod
+    private void OnStatUpdatedEvent(string statKey, float value)
     {
         switch (statKey)
         {
             case "MoveSpeed":
                 moveSpeed = value;
+                Debug.Log($"?{value}");
                 break;
             case "JumpForce":
                 jumpForce = value;
@@ -119,7 +116,6 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    #region /Event Method
     private void OnDirectionEvent(float directionValue)
     {
         lookDirection = directionValue;

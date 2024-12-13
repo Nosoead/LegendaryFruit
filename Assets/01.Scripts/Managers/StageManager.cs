@@ -1,11 +1,5 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
-using Unity.VisualScripting.Antlr3.Runtime.Tree;
 using UnityEngine;
-using UnityEngine.InputSystem;
-using static UnityEngine.EventSystems.EventTrigger;
 
 public class StageManager : Singleton<StageManager>
 {
@@ -35,7 +29,7 @@ public class StageManager : Singleton<StageManager>
             var obj = Instantiate(stages);
             stageDictionary.Add(obj.stageSO.stageKey, obj);
             obj.gameObject.SetActive(false);
-            Debug.Log($"key값 : {obj.stageSO.stageKey}");
+            //Debug.Log($"key값 : {obj.stageSO.stageKey}");
         }
         CreatRewardTree();
         CreatMonster();
@@ -55,12 +49,14 @@ public class StageManager : Singleton<StageManager>
     {
         //TODO 오브젝트 풀 매니저 사용
         monster = ResourceManager.Instance.LoadResource<Monster>("NPC/Monster");
-        for (int i = 0; i < 5; i++)
-        {
-            var monsters = Instantiate(monster);
-            monsterList.Add(monsters);
-            monsterList[i].gameObject.SetActive(false);
-        }
+        PoolManager.Instance.CreatePool<Monster>(monster, false, 5, 50);
+        var obj = PoolManager.Instance.GetObject<Monster>();
+        //for (int i = 0; i < 5; i++)
+        //{
+        //    var monsters = Instantiate(monster);
+        //    monsterList.Add(monsters);
+        //    monsterList[i].gameObject.SetActive(false);
+        //}
     }
 
 

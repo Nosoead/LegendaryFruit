@@ -10,13 +10,13 @@ public class MonsterController : MonoBehaviour
     public MonsterStateMachine StateMachine => stateMachine;
     private MonsterAttributeLogics monsterAttributeLogics = null;
     private MonsterAttributeLogicsDictionary attributeLogicsDictionary;
-    public MonsterGround monsterGround ;
-    [SerializeField]private LayerMask playerLayerMask;
+    public MonsterGround monsterGround;
+    [SerializeField] private LayerMask playerLayerMask;
     public GameObject target;
     public MonsterStatManager statManager;
     private Vector2 boxSize = new Vector2(1f, 1f);
-    private float lookDirection= 1f;
-    
+    private float lookDirection = 1f;
+
     private float attackPower;
     private float moveSpeed;
     private float attackDistance;
@@ -24,27 +24,27 @@ public class MonsterController : MonoBehaviour
     private AttributeType type;
     private float attributeValue;
     private float attributeRateTime;
-    private int attributeStack =5;
- 
-    
+    private float attributeStack;
+
+
     private void Awake()
     {
         attributeLogicsDictionary = new MonsterAttributeLogicsDictionary();
         attributeLogicsDictionary.Initialize();
         stateMachine = new MonsterStateMachine(this);
-        monsterAttributeLogics = new NormalLogic(); //new AttributeLogics(); // 추상화클래스는 new를 할수없음
+        monsterAttributeLogics = new MonsterNormal(); //new AttributeLogics(); // 추상화클래스는 new를 할수없음
     }
 
     private void Start()
     {
-        statManager.SubscribeToStatUpdates(UpdateStat);
+        statManager.SubscribeToStatUpdateEvent(UpdateStat);
         statManager.SetInitStat();
         StateMachine.Initialize(StateMachine.patrollState);
     }
 
     private void OnDisable()
     {
-        statManager.UnsubscribeToUpdateEvent(UpdateStat);
+        statManager.UnsubscribeToStatUpdateEvent(UpdateStat);
     }
     private void Update()
     {
@@ -55,27 +55,30 @@ public class MonsterController : MonoBehaviour
     {
         switch (statKey)
         {
-            case "currentAttackPower":
+            case "CurrentAttackPower":
                 attackPower = value;
                 break;
             case "AttributeType":
                 type = (AttributeType)((int)value);
                 monsterAttributeLogics = attributeLogicsDictionary.GetAttributeLogic(type);
                 break;
-            case "moveSpeed":
+            case "MoveSpeed":
                 moveSpeed = value;
                 break;
-            case "chaseRange":
+            case "ChaseRange":
                 chaseRange = value;
                 break;
-            case "attackDistance":
+            case "AttackDistance":
                 attackDistance = value;
                 break;
-            case "attributeValue":
+            case "AttributeValue":
                 attributeValue = value;
                 break;
-            case "attributeRateTime":
+            case "AttributeRateTime":
                 attributeRateTime = value;
+                break;
+            case "AttributeStack":
+                attributeStack = value;
                 break;
         }
     }
@@ -84,7 +87,7 @@ public class MonsterController : MonoBehaviour
     {
         stateMachine.UpdateStat(this);
     }
- 
+
     public void ReverseDirection() // 방향 반전
     {
         //x축 반전
@@ -92,13 +95,13 @@ public class MonsterController : MonoBehaviour
         scale.x *= -1;
         lookDirection *= -1f;
         transform.localScale = scale;
-        
+
     }
     public bool DetectPlayer() //플레이어 찾는 레이
     {
         Vector3 raytDirection = Vector3.right * lookDirection;
-        RaycastHit2D hit = Physics2D.Raycast(transform.position, raytDirection,chaseRange,playerLayerMask);
-        
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, raytDirection, chaseRange, playerLayerMask);
+
         if (hit.collider != null)
         {
             target = hit.collider.gameObject;
@@ -111,7 +114,7 @@ public class MonsterController : MonoBehaviour
     public bool InAttackRange() // 플레이어가 사거리 안에 오면 활성화
     {
         Vector3 raytDirection = Vector3.right * lookDirection;
-        RaycastHit2D hit = Physics2D.Raycast(transform.position, raytDirection,attackDistance,playerLayerMask);
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, raytDirection, attackDistance, playerLayerMask);
         if (hit.collider != null)
         {
             target = hit.collider.gameObject;
@@ -120,15 +123,15 @@ public class MonsterController : MonoBehaviour
 
         return false;
     }
-    public void Move() 
+    public void Move()
     {
         Vector3 rayDirection = Vector3.right * lookDirection;
-        
+
         RaycastHit2D hit = Physics2D.Raycast(transform.position, rayDirection, chaseRange, playerLayerMask);
-        
+
         if (hit.collider == null || hit.distance > 0.1f)
         {
-            
+
             transform.position += rayDirection * (moveSpeed * Time.deltaTime);
         }
         else
@@ -143,13 +146,14 @@ public class MonsterController : MonoBehaviour
         // scale.x가 0보다 크면 우 작으면 좌
         Vector2 monsterPosition = transform.position;
         Vector2 boxPostion = monsterPosition + Vector2.right * (0.5f * lookDirection);
-        Collider2D player = Physics2D.OverlapBox(boxPostion, boxSize, 0,playerLayerMask);
+        Collider2D player = Physics2D.OverlapBox(boxPostion, boxSize, 0, playerLayerMask);
         if (player == null)
         {
             return;
         }
-        monsterAttributeLogics.ApplyAttackLogic(player.gameObject,attackPower,attributeValue,attributeRateTime,attributeStack);
-        
+        Debug.Log(type);
+        monsterAttributeLogics.ApplyAttackLogic(player.gameObject, attackPower, attributeValue, attributeRateTime, attributeStack);
+
         //애니메이션
     }
 
