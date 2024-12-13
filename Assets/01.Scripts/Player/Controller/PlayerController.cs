@@ -64,10 +64,10 @@ public class PlayerController : MonoBehaviour
         Input.Player.Interact.canceled += PlayerHoldInteract;
 
         //TODO UI -> GameManager refactoring
-        Input.Player.UserInfo.performed += PlayerUserInfo;
-        Input.Player.UserInfo.canceled += PlayerUserInfo;
-        Input.Player.SettingWindow.performed += PlayerSettingWindow;
-        Input.Player.SettingWindow.canceled += PlayerSettingWindow;
+        Input.Player.UserInfo.started += PlayerUserInfo;
+        //Input.Player.UserInfo.canceled += PlayerUserInfo;
+        Input.Player.SettingWindow.started += PlayerSettingWindow;
+        //Input.Player.SettingWindow.canceled += PlayerSettingWindow;
         Input.Player.Enable();
     }
 
@@ -140,8 +140,10 @@ public class PlayerController : MonoBehaviour
     }
     public void PlayerUserInfo(InputAction.CallbackContext context)
     {
+        OnUserInfoEvent?.Invoke();
     }
     public void PlayerSettingWindow(InputAction.CallbackContext context)
     {
+        OnSettingWindowEvent?.Invoke();
     }
 }

@@ -7,13 +7,19 @@
     <list default="true" id="fd1b27b5-9a48-464d-8c89-0ee285d61d98" name="변경" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.LegendaryFruit/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.LegendaryFruit/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/00.Scenes/TestScenes/Test_ParkScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/00.Scenes/TestScenes/Test_ParkScene.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/03.ScriptableObject/MonsterSO/MonsterSO.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/03.ScriptableObject/MonsterSO/MonsterSO.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01.Scripts/Player/Controller/PlayerController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/01.Scripts/Player/Controller/PlayerController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01.Scripts/UI/SettingUI.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/01.Scripts/UI/SettingUI.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/99.UnityAssets/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF - Fallback.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/99.UnityAssets/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF - Fallback.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/UI/ESCUI.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/UI/ESCUI.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/UI/ESCUI.prefab.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/UI/ESCUI.prefab.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Resources/UI/GameEndUI.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/UI/GameEndUI.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/UI/GameEndUI.prefab.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/UI/GameEndUI.prefab.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/UI/InventoryUI.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/UI/InventoryUI.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/UI/NPCUpgradeUI.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/UI/NPCUpgradeUI.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Resources/UI/PlayerCanvasUI.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/UI/PlayerCanvasUI.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/UI/PlayerCanvasUI.prefab.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/UI/PlayerCanvasUI.prefab.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Resources/UI/SettingUI.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/UI/SettingUI.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/UI/SettingUI.prefab.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/UI/SettingUI.prefab.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/UI/ShelterNPCUI.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/UI/ShelterNPCUI.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/UI/UIInteractionText.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/UI/UIInteractionText.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/UI/UpgradeUI.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/UI/UpgradeUI.prefab" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -30,11 +36,13 @@
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/f7237cf7abef49bfbb552d7eb076e422174200/63/11452b66/UnityAction.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/f7237cf7abef49bfbb552d7eb076e422174200/73/e1df8cf7/GameObject.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/f7237cf7abef49bfbb552d7eb076e422174200/9f/2b8345d1/Object.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/3ea01e77be99618395f448b16bd7cc2bd4248bd9e5d8474964b2d97f39c5d74/System.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/d44b17e136d09081da1e8fd0e8c83fde60e11818b9f2442d7ed8cb733fae895e/System.Collections.Generic.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/01.Scripts/Managers/MonsterStatManager.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/01.Scripts/Monster/MonsterCondition.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/01.Scripts/Monster/MonsterStat.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/01.Scripts/Monster/NormalMonster.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.visualscripting@1.9.1/Runtime/VisualScripting.Core/Utilities/UnityObjectUtility.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../SpartaPong/Assets/ScriptableObjects/Script/RangedAttack.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="MetaFilesCheckinStateConfiguration" checkMetaFiles="true" />
@@ -115,6 +123,8 @@
       <workItem from="1733790078345" duration="9621000" />
       <workItem from="1733875915655" duration="26896000" />
       <workItem from="1733962311777" duration="15395000" />
+      <workItem from="1734048311005" duration="26024000" />
+      <workItem from="1734083867015" duration="5040000" />
     </task>
     <servers />
   </component>
