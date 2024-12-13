@@ -71,9 +71,9 @@ public class PlayerAttack : MonoBehaviour
         {
             case "CurrentAttackPower":
                 currentAttackPower = value;
+                SetTotalAttackPower();
                 break;
         }
-        SetTotalAttackPower();
     }
 
     private void OnDirectionEvent(float directionValue)
@@ -100,6 +100,7 @@ public class PlayerAttack : MonoBehaviour
         this.weaponData = weaponData;
         weaponAttackPower = weaponData.attackPower;
         attributeLogic = attributeLogics.GetAttributeLogic(weaponData.type);
+        Debug.Log(weaponData.type);
         SetTotalAttackPower();
     }
 

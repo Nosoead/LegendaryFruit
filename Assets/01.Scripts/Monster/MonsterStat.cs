@@ -22,6 +22,7 @@ public class MonsterStat : Stat
             stats["ChaseRange"] = monsterData.chaseRange;
             stats["AttributeType"] = (int)monsterData.type;
             stats["AttributeValue"] = monsterData.attributeValue;
+            stats["AttributeStack"] = monsterData.attributeStack;
             stats["AttributeRateTime"] = monsterData.attributeRateTime;
             stats["InGameMoney"] = monsterData.inGameMoney;
             foreach (var stat in stats)
@@ -47,7 +48,7 @@ public class MonsterStat : Stat
         {
             stats[statKey] = currentValue;
             OnStatUpdated?.Invoke(statKey, currentValue);
-            //Debug.Log($"{statKey} : {currentValue}");
+            Debug.Log($"{statKey} : {currentValue}");
             if (statKey == "CurrentHealth" && stats["CurrentHealth"] == 0)
             {
                 OnMonsterDie?.Invoke();

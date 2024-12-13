@@ -13,16 +13,16 @@ MonoBehaviour:
   m_Name: MonsterSOBurn
   m_EditorClassIdentifier: 
   maxHealth: 100
-  attackPower: 10
+  attackPower: 7
   defense: 10
   attackSpeed: 10
   moveSpeed: 2
   attackDistance: 0.9
   chaseRange: 10
   type: 0
-  attributeValue: 10
+  attributeValue: 6
   attributeRateTime: 1
-  attributeStack: 5
+  attributeStack: 3
   inGameMoney: 100
   sprite: {fileID: 0}
   animation: {fileID: 0}
