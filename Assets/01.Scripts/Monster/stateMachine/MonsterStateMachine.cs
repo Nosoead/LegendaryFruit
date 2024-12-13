@@ -3,7 +3,7 @@ using UnityEngine.Events;
 
 public class MonsterStateMachine
 {
-    protected IMonster currentState { get; private set; }
+    protected IState currentState { get; private set; }
     public MonsterController MonsterController{ get; private set; }
     public IdleState idleState { get; private set; }
     public PatrollState patrollState{ get; private set; }
@@ -26,12 +26,12 @@ public class MonsterStateMachine
         idleState.UpdateStat(monsterController);
     }
 
-    public void Initialize(IMonster monsterState) // 초기화
+    public void Initialize(IState monsterState) // 초기화
     {
         currentState = monsterState;
     }
 
-    public void TransitionToState(IMonster nextState)
+    public void TransitionToState(IState nextState)
     {
         currentState?.Exit();
         currentState = nextState; // 다음 스테이트로

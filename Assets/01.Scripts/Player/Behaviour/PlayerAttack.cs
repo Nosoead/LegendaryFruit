@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class PlayerAttack : MonoBehaviour
 {
@@ -32,6 +33,7 @@ public class PlayerAttack : MonoBehaviour
 
     private void OnEnable()
     {
+        statManager.OnSubscribeToStatUpdateEvent += OnStatUpdatedEvent;
         controller.OnDirectionEvent += OnDirectionEvent;
         controller.OnAttackEvent += OnAttackEvent;
         equipment.OnEquipWeaponChanged += OnEquipWeaponChanged;
@@ -39,16 +41,12 @@ public class PlayerAttack : MonoBehaviour
 
     private void OnDisable()
     {
+        statManager.OnSubscribeToStatUpdateEvent -= OnStatUpdatedEvent;
         controller.OnDirectionEvent -= OnDirectionEvent;
         controller.OnAttackEvent -= OnAttackEvent;
         equipment.OnEquipWeaponChanged += OnEquipWeaponChanged;
-        statManager.UnsubscribeToStatUpdateEvent(attackStats);
     }
-    private void Start()
-    {
-        statManager.SubscribeToStatUpdateEvent(attackStats);
-    }
-
+ 
     private void EnsureComponents()
     {
         if (controller == null)
@@ -65,7 +63,8 @@ public class PlayerAttack : MonoBehaviour
         }
     }
 
-    private void attackStats(string statKey, float value)
+    #region /subscribeMethod
+    private void OnStatUpdatedEvent(string statKey, float value)
     {
         switch (statKey)
         {
@@ -94,7 +93,6 @@ public class PlayerAttack : MonoBehaviour
         Debug.Log(monster.ToString() + " 때림");
         attributeLogic.ApplyAttackLogic(monster.gameObject, totalAttackPower, weaponData.attributeAttackValue, weaponData.attributeAttackRateTime, weaponData.arrtibuteStatck);
     }
-
     private void OnEquipWeaponChanged(WeaponSO weaponData)
     {
         this.weaponData = weaponData;
@@ -103,6 +101,7 @@ public class PlayerAttack : MonoBehaviour
         Debug.Log(weaponData.type);
         SetTotalAttackPower();
     }
+    #endregion
 
     private void SetTotalAttackPower()
     {

@@ -1,7 +1,7 @@
 using System.Collections;
 using UnityEngine;
 
-public class IdleState :IMonster
+public class IdleState :IState
 {
     private MonsterController monsterController;
     private float idleTime;

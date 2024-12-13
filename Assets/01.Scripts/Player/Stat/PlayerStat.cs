@@ -10,7 +10,7 @@ using UnityEngine.Events;
 public class PlayerStat : Stat
 {
     // TODO: Controller에서 PlayerStat 업데이트 로직 추가
-    public UnityAction<string, float> OnStatUpdated;
+    public UnityAction<string, float> OnStatUpdatedEvent;
     public UnityAction OnDie;
     private Dictionary<string, float> stats = new Dictionary<string, float>();
 
@@ -29,7 +29,7 @@ public class PlayerStat : Stat
 
             foreach (var stat in stats)
             {
-                OnStatUpdated?.Invoke(stat.Key, stat.Value);
+                OnStatUpdatedEvent?.Invoke(stat.Key, stat.Value);
             }
         }
     }
@@ -53,7 +53,7 @@ public class PlayerStat : Stat
             stats[statKey] = currentValue;
             //Debug.Log("먹고난 후 : " + stats[statKey]);
             Debug.Log($"{statKey} : {currentValue}");
-            OnStatUpdated?.Invoke(statKey, currentValue);
+            OnStatUpdatedEvent?.Invoke(statKey, currentValue);
             if (statKey == "CurrentHealth" && stats["CurrentHealth"] == 0)
             {
                 OnDie?.Invoke();

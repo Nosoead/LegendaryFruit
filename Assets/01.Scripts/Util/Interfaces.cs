@@ -12,7 +12,7 @@ public interface IDamageable
     void SlowDown(float damage, float attributeValue, float attributeRateTime);
 }
 
-public interface IMonster
+public interface IState
 {
     void Enter();
     void Excute();

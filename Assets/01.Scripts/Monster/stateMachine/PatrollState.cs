@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class PatrollState : IMonster
+public class PatrollState : IState
 {
     private MonsterController monsterController;
     private float idleTime;

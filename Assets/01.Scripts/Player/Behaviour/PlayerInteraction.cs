@@ -34,6 +34,9 @@ public class PlayerInteraction : MonoBehaviour
         NPCLayer = LayerMask.NameToLayer("NPC");
         rewardLayer = LayerMask.NameToLayer("Reward");
         itemLayer = LayerMask.NameToLayer("Item");
+        Debug.Log(NPCLayer);
+        int ddd = LayerMask.GetMask("NPC");
+        Debug.Log(ddd);
     }
 
     private void OnEnable()
