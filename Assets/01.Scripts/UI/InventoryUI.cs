@@ -14,6 +14,7 @@ public class InventoryUI : UIBase
 
     public override void Open()
     {
+        base.Open();
 
         /*if ()
         {
