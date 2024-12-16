@@ -18,7 +18,7 @@ public class IdleState :IState
         idleTimer = 0f;
     }
 
-    public void Excute()
+    public void Execute()
     {
         idleTimer += Time.deltaTime; //타이머
         //플레이어와의 거리 확인

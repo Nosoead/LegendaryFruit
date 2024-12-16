@@ -41,7 +41,7 @@ public class MonsterStateMachine
     {
         if (currentState != null)
         {
-            currentState?.Excute();
+            currentState?.Execute();
         }
     }
    

@@ -2,11 +2,9 @@ using UnityEngine;
 
 public class MonsterGround : GroundDetector
 {
-    private bool isGround;
     protected override void CheckGround()
     {
         {
-            isGround = base.GetOnGround();
             if (isGround == false && playerRigidbody.velocity.y > 0.01f)
             {
                 return;
@@ -16,6 +14,4 @@ public class MonsterGround : GroundDetector
             //Debug.Log($"isGround체크 {isGround}");
         }
     }
-
-    public bool GetOnGround() { return isGround; }
 }

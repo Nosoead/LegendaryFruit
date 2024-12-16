@@ -23,7 +23,7 @@ public class AttackState :IState
     {
     }
 
-    public void Excute()
+    public void Execute()
     {
         // currentDistance <AttackDistance-->때리기
         if (monsterController.InAttackRange())

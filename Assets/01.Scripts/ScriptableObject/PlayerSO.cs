@@ -10,6 +10,6 @@ public class PlayerSO : GameSO
     public float defense;
     public float attackSpeed;
     public float moveSpeed;
-    public float jumpForce;
-    public float dashForce;
+    public float dashDistance;
+    public float jumpHeight;
 }

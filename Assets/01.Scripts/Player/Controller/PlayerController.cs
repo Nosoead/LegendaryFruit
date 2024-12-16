@@ -9,10 +9,10 @@ using UnityEngine.InputSystem;
 public class PlayerController : MonoBehaviour
 {
     public UnityAction<float> OnDirectionEvent;
-    public UnityAction<float> OnMoveEvent;
+    public UnityAction<float, bool> OnMoveEvent;
     public UnityAction OnSubCommandEvent;
-    public UnityAction OnDashEvent;
-    public UnityAction OnJumpEvent;
+    public UnityAction<bool> OnDashEvent;
+    public UnityAction<bool> OnJumpEvent;
     public UnityAction OnAttackEvent;
     public UnityAction OnSkill1Event;
     public UnityAction OnSkill2Event;
@@ -23,7 +23,8 @@ public class PlayerController : MonoBehaviour
     public UnityAction OnSettingWindowEvent;
 
     public PlayerInput Input;
-
+    private bool isLeftPressed;
+    private bool isRightPressed;
     private void Awake()
     {
         Input = new PlayerInput();
@@ -42,9 +43,9 @@ public class PlayerController : MonoBehaviour
 
         //PlayerMovement + alpha
         Input.Player.Dash.started += PlayerDash;
-        //Input.Player.Dash.canceled += PlayerDash;
+        Input.Player.Dash.canceled += PlayerDash;
         Input.Player.Jump.started += PlayerJump;
-        //Input.Player.Jump.canceled += PlayerJump;
+        Input.Player.Jump.canceled += PlayerJump;
 
         //PlayerAttack
         Input.Player.Attack.started += PlayerAttack;
@@ -76,6 +77,7 @@ public class PlayerController : MonoBehaviour
     {
         Input.Player.Disable();
     }
+
     public void PlayerDirection(InputAction.CallbackContext context)
     {
         float directionValue = Mathf.Sign(context.ReadValue<float>());
@@ -84,7 +86,31 @@ public class PlayerController : MonoBehaviour
     public void PlayerMove(InputAction.CallbackContext context)
     {
         float moveValue = context.ReadValue<float>();
-        OnMoveEvent?.Invoke(moveValue);
+        if (context.started)
+        {
+            if (moveValue < -0.01f)
+            {
+                isLeftPressed = true;
+            }
+            else if (moveValue > 0.01f)
+            {
+                isRightPressed = true;
+            }
+        }
+        else if (context.canceled)
+        {
+            if (isLeftPressed && moveValue > -0.01f)
+            {
+                isLeftPressed = false;
+            }
+            else if (isRightPressed && moveValue < 0.01f)
+            {
+                isRightPressed = false;
+            }
+        }
+
+        bool isMoving = isLeftPressed || isRightPressed;
+        OnMoveEvent?.Invoke(moveValue, isMoving);
     }
     public void PlayerSubCommand(InputAction.CallbackContext context)
     {
@@ -92,11 +118,26 @@ public class PlayerController : MonoBehaviour
     }
     public void PlayerDash(InputAction.CallbackContext context)
     {
-        OnDashEvent?.Invoke();
+        if (context.started)
+        {
+            OnDashEvent?.Invoke(true);
+        }
+        else if (context.canceled)
+        {
+            OnDashEvent?.Invoke(false);
+        }
     }
     public void PlayerJump(InputAction.CallbackContext context)
     {
-        OnJumpEvent?.Invoke();
+        if (context.started)
+        {
+            OnJumpEvent?.Invoke(true);
+        }
+        else if (context.canceled)
+        {
+            OnJumpEvent?.Invoke(false);
+        }
+        
     }
     public void PlayerAttack(InputAction.CallbackContext context)
     {

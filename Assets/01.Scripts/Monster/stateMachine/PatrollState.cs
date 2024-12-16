@@ -24,7 +24,7 @@ public class PatrollState : IState
         idleTimer = 0f;
     }
 
-    public void Excute()
+    public void Execute()
     {
         idleTimer += Time.deltaTime; //타이머
          // chaseRange보다 거리가 멀면 그냥 돌아댕기게

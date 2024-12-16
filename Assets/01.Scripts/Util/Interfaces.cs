@@ -15,6 +15,6 @@ public interface IDamageable
 public interface IState
 {
     void Enter();
-    void Excute();
+    void Execute();
     void Exit();
 }

@@ -24,8 +24,8 @@ public class PlayerStat : Stat
             stats["CurrentDefense"] = playerData.defense;
             stats["AttackSpeed"] = playerData.attackSpeed;
             stats["MoveSpeed"] = playerData.moveSpeed;
-            stats["JumpForce"] = playerData.jumpForce;
-            stats["DashForce"] = playerData.dashForce;
+            stats["DashDistance"] = playerData.dashDistance;
+            stats["JumpHeight"] = playerData.jumpHeight;
 
             foreach (var stat in stats)
             {

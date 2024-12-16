@@ -17,5 +17,5 @@ MonoBehaviour:
   defense: 5
   attackSpeed: 10
   moveSpeed: 7
-  jumpForce: 10
-  dashForce: 25
+  dashDistance: 10
+  jumpHeight: 4.5

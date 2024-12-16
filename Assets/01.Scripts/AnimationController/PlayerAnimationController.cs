@@ -48,7 +48,7 @@ public class PlayerAnimationController : AnimationController
         }
     }
 
-    private void OnMonveEvent(float value)
+    private void OnMonveEvent(float value, bool isbool)
     {
         switch (value)
         {
@@ -67,15 +67,13 @@ public class PlayerAnimationController : AnimationController
         }
     }
 
-    private void OnJumpEvent()
+    private void OnJumpEvent(bool ispressed)
     {
         Animator.SetTrigger(isJump);
     }
 
-    private void OnDashEvent()
+    private void OnDashEvent(bool ispressed)
     {
         Animator.SetTrigger(isDash);
     }
-
-
 }

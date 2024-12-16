@@ -12,7 +12,7 @@ public class GroundDetector : MonoBehaviour
     protected Vector3 colliderRightOffset;
     protected Vector3 colliderLeftOffset;
     protected LayerMask groundLayer;
-    private bool onGround;
+    protected bool isGround;
 
     private void Awake()
     {
@@ -32,14 +32,14 @@ public class GroundDetector : MonoBehaviour
         SetColliderOffset();
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
         CheckGround();
     }
 
-    private void OnDrawGizmos()
+    protected virtual void OnDrawGizmos()
     {
-        if (onGround) { Gizmos.color = Color.green; } else { Gizmos.color = Color.red; }
+        if (isGround) { Gizmos.color = Color.green; } else { Gizmos.color = Color.red; }
         Gizmos.DrawLine(transform.position + colliderRightOffset, transform.position + colliderRightOffset + Vector3.down * groundLength);
         Gizmos.DrawLine(transform.position + colliderLeftOffset, transform.position + colliderLeftOffset + Vector3.down * groundLength);
     }
@@ -60,11 +60,11 @@ public class GroundDetector : MonoBehaviour
 
     protected virtual void CheckGround()
     {
-        if (onGround == false && playerRigidbody.velocity.y > 0.01f)
+        if (isGround == false && playerRigidbody.velocity.y > 0.01f)
         {
             return;
         }
-        onGround = Physics2D.Raycast(transform.position + colliderRightOffset, Vector2.down, groundLength, groundLayer) || Physics2D.Raycast(transform.position - colliderLeftOffset, Vector2.down, groundLength, groundLayer);
+        isGround = Physics2D.Raycast(transform.position + colliderRightOffset, Vector2.down, groundLength, groundLayer) || Physics2D.Raycast(transform.position + colliderLeftOffset, Vector2.down, groundLength, groundLayer);
     }
-    public bool GetOnGround() { return onGround; }
+    public bool GetOnGround() { return isGround; }
 }

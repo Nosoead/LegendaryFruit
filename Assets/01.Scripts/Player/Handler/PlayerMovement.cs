@@ -5,19 +5,19 @@ using UnityEngine.Events;
 //Move,Jump,Dash
 public class PlayerMovement : MonoBehaviour
 {
-    private PlayerMoveStateMachine stateMachine;
+    private PlayerMovementStateMachine stateMachine;
     [SerializeField] private Rigidbody2D playerRigidbody;
     [SerializeField] private BoxCollider2D playerCollider;
     [SerializeField] private PlayerController controller;
     [SerializeField] private PlayerStatManager statManager;
     [SerializeField] private PlayerGround playerGround;
     private Vector2 velocity = Vector2.zero;
-    public float moveSpeed;
+    private float moveSpeed;
 
     [Header("DashInfo")]
     private Vector2 dash = Vector2.right;
     private float lookDirection = 1f;
-    private float dashForce;
+    private float dashDistance;
     private bool isDashing;
     private bool canDash = true;
     private WaitForSeconds dashingTime = new WaitForSeconds(0.2f);
@@ -25,7 +25,7 @@ public class PlayerMovement : MonoBehaviour
 
     [Header("JumpInfo")]
     private Vector2 jump = Vector2.zero;
-    private float jumpForce;
+    private float jumpHeight;
     private float direction;
     private int jumpCounter;
     private bool isGround;
@@ -33,7 +33,10 @@ public class PlayerMovement : MonoBehaviour
     private void Awake()
     {
         EnsureComponents();
-        stateMachine = new PlayerMoveStateMachine(this);
+    }
+
+    private void Start()
+    {
     }
 
     private void OnEnable()
@@ -107,21 +110,15 @@ public class PlayerMovement : MonoBehaviour
                 moveSpeed = value;
                 Debug.Log($"?{value}");
                 break;
-            case "JumpForce":
-                jumpForce = value;
+            case "DashDistance":
+                dashDistance = value;
                 break;
-            case "DashForce":
-                dashForce = value;
+            case "JumpHeight":
+                jumpHeight = value;
                 break;
         }
     }
-
-    private void OnDirectionEvent(float directionValue)
-    {
-        lookDirection = directionValue;
-    }
-
-    private void OnMovement(float moveValue)
+    private void OnMovement(float moveValue, bool isbool)
     {
         direction = moveValue;
         velocity.x = direction * moveSpeed;
@@ -129,20 +126,25 @@ public class PlayerMovement : MonoBehaviour
         ApplyMovement();
     }
 
+    private void OnDirectionEvent(float directionValue)
+    {
+        lookDirection = directionValue;
+    }
+
     private void OnSubCommandEvent()
     {
 
     }
 
-    private void OnDashEvent()
+    private void OnDashEvent(bool isbool)
     {
-        dash = Vector2.right * lookDirection * dashForce;
+        dash = Vector2.right * lookDirection * dashDistance;
         ApplyDash(dash);
     }
 
-    private void OnJumpEvent()
+    private void OnJumpEvent(bool isbool)
     {
-        jump = Vector2.up * jumpForce;
+        jump = Vector2.up * jumpHeight;
         if (isGround)
         {
             ExitCoroutine();
@@ -185,7 +187,7 @@ public class PlayerMovement : MonoBehaviour
         isDashing = true;
         float originalGravity = playerRigidbody.gravityScale;
         playerRigidbody.gravityScale = 0f;
-        playerRigidbody.velocity = new Vector2(transform.localScale.x * lookDirection * dashForce, 0f);
+        playerRigidbody.velocity = new Vector2(transform.localScale.x * lookDirection * dashDistance, 0f);
         yield return dashingTime;
         playerRigidbody.gravityScale = originalGravity;
         playerRigidbody.velocity = Vector2.zero;

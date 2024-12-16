@@ -3,7 +3,7 @@ guid: 0c06f4df0dfb8604dbc836709f4920d0
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
-  serializedVersion: 11
+  serializedVersion: 12
   mipmaps:
     mipMapMode: 0
     enableMipMap: 0
@@ -20,11 +20,12 @@ TextureImporter:
     externalNormalMap: 0
     heightScale: 0.25
     normalMapFilter: 0
+    flipGreenChannel: 0
   isReadable: 0
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
   vTOnly: 0
-  ignoreMasterTextureLimit: 0
+  ignoreMipmapLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -63,6 +64,8 @@ TextureImporter:
   textureFormatSet: 0
   ignorePngGamma: 0
   applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 1
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
@@ -74,6 +77,7 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
@@ -86,6 +90,7 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
@@ -98,6 +103,7 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
@@ -110,6 +116,7 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
@@ -122,6 +129,7 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
@@ -1440,71 +1448,70 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Tree_27_2: 841409219
-      Tree_12_2: -52058726
-      Tree_16_1: -1485043845
       Tree_10_1: -1142965879
-      Tree_22_1: 1120006366
-      Tree_23_1: 916683309
-      Tree_16_2: -698268494
-      Tree_18_2: -1194450673
-      Tree_24_2: -920909348
+      Tree_10_2: 1787753366
+      Tree_11_1: 1706235611
+      Tree_11_2: -1268544524
+      Tree_12_1: -2099127507
+      Tree_12_2: -52058726
+      Tree_13_1: -2099127507
+      Tree_14_1: -1677832512
+      Tree_14_2: 96210928
+      Tree_15_1: -1938396106
       Tree_15_2: 1999436255
+      Tree_16_1: -1485043845
+      Tree_16_2: -698268494
+      Tree_17_1: 723102286
+      Tree_17_2: -1825895425
+      Tree_18_1: -1194450673
+      Tree_18_2: -1194450673
+      Tree_19_1: 1974775619
+      Tree_19_2: 1607317804
+      Tree_1_1: -1709793678
+      Tree_1_2: -926531389
+      Tree_20_1: -1046160908
+      Tree_20_2: 1696200187
+      Tree_21_1: 1120006366
+      Tree_21_2: 1257708050
+      Tree_21_3: -1621344150
+      Tree_22_1: 1120006366
+      Tree_22_2: -1621344150
+      Tree_23_1: 916683309
+      Tree_23_2: 1036865858
+      Tree_24_1: -616646265
+      Tree_24_2: -920909348
       Tree_24_3: -2111923500
       Tree_25_1: -1813681933
-      Tree_18_1: -1194450673
-      Tree_24_1: -616646265
-      Tree_26_1: -899336074
-      Tree_15_1: -1938396106
-      Tree_8_2: 121978018
-      Tree_30_1: 1056517197
-      Tree_13_1: -2099127507
       Tree_25_2: 748937630
-      Tree_31_1: -709595321
-      Tree_6_2: -1852414764
-      Tree_20_1: -1046160908
-      Tree_21_2: 1257708050
-      Tree_17_2: -1825895425
-      Tree_11_1: 1706235611
-      Tree_21_1: 1120006366
-      Tree_5_1: -65825072
-      Tree_17_1: 723102286
+      Tree_26_1: -899336074
+      Tree_26_2: 1431998731
+      Tree_27_1: -1215234330
+      Tree_27_2: 841409219
+      Tree_28_1: -1484776191
+      Tree_28_2: 12462934
+      Tree_29_1: 1712496092
+      Tree_2_1: 1184018703
+      Tree_2_2: 1184018703
+      Tree_30_1: 1056517197
       Tree_30_2: 650221321
+      Tree_30_3: 650221321
+      Tree_31_1: -709595321
+      Tree_31_2: -1860336245
+      Tree_3_1: -442306471
+      Tree_4_1: 353807312
+      Tree_4_2: 902880706
+      Tree_5_1: -65825072
+      Tree_5_2: -709595321
       Tree_6_1: -1112811566
+      Tree_6_2: -1852414764
       Tree_7_1: -271091807
+      Tree_7_2: -1852414764
+      Tree_8_1: 1065316777
+      Tree_8_2: 121978018
       Tree_9_1: -507067248
       Tree_9_2: -607705840
-      Tree_10_2: 1787753366
-      Tree_1_2: -926531389
-      Tree_28_1: -1484776191
-      Tree_19_2: 1607317804
-      Tree_3_1: -442306471
-      Tree_28_2: 12462934
-      Tree_22_2: -1621344150
-      Tree_12_1: -2099127507
-      Tree_7_2: -1852414764
-      Tree_1_1: -1709793678
-      Tree_2_1: 1184018703
-      Tree_23_2: 1036865858
-      Tree_20_2: 1696200187
-      Tree_2_2: 1184018703
-      Tree_21_3: -1621344150
-      Tree_5_2: -709595321
-      Tree_14_1: -1677832512
-      Tree_4_2: 902880706
-      Tree_31_2: -1860336245
-      Tree_14_2: 96210928
-      Tree_4_1: 353807312
-      Tree_8_1: 1065316777
-      Tree_27_1: -1215234330
-      Tree_30_3: 650221321
-      Tree_29_1: 1712496092
-      Tree_11_2: -1268544524
-      Tree_19_1: 1974775619
-      Tree_26_2: 1431998731
-  spritePackingTag: 
+  mipmapLimitGroupName: 
   pSDRemoveMatte: 0
-  pSDShowRemoveMatteOption: 0
   userData: 
   assetBundleName: 
   assetBundleVariant: 
