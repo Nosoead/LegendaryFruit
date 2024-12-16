@@ -77,7 +77,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void EnsureComponents()
     {
-        
+  
         if (playerRigidbody == null)
         {
             playerRigidbody = GetComponent<Rigidbody2D>();
@@ -169,8 +169,7 @@ public class PlayerMovement : MonoBehaviour
         playerRigidbody.velocity = velocity;
     }
 
-    private void ApplyDash(Vector2 dash)
-    {
+    private void ApplyDash(Vector2 dash)    {
         if (isDashing)
         {
             return;

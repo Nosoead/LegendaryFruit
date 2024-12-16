@@ -6,6 +6,7 @@ public class PlayerStatManager : MonoBehaviour
     public UnityAction<string, float> OnSubscribeToStatUpdateEvent;
     [SerializeField] private PlayerSO playerData;
     [SerializeField] private PlayerInteraction playerInteraction;
+    [SerializeField] private PlayerAnimationController playerAnimationController;
     private PlayerStat stat;
     private StatHandler statHandler;
 
@@ -55,6 +56,7 @@ public class PlayerStatManager : MonoBehaviour
 
     private void OnDie()
     {
+        playerAnimationController.OnDie();
         GameManager.Instance.GameEnd();
     }
     #endregion
@@ -63,6 +65,7 @@ public class PlayerStatManager : MonoBehaviour
     public void ApplyInstantDamage(float damage)
     {
         float result = statHandler.Substract(stat.GetStatValue("CurrentHealth"), damage);
+        playerAnimationController.OnHit();
         stat.UpdateCurrentHealth(result);
     }
 
