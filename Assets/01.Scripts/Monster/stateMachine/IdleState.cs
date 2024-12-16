@@ -14,6 +14,7 @@ public class IdleState :IState
 
     public void Enter()
     {
+        monsterController.animationController.OnIdle();
         idleTime = Random.Range(1, 5);
         idleTimer = 0f;
     }

@@ -35,8 +35,9 @@ public class AttackState :IState
                 testTime = 0f;
                 monsterController.Attack();
             }
-           
+
             // if-> 때리는 애니메이션 ->애니메이션에서 OnHit
+            monsterController.animationController.OnAttack();
             return;
         }
         // player 놓치면 idleState 
