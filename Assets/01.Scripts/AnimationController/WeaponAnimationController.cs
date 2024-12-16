@@ -5,11 +5,11 @@ public class WeaponAnimationController : AnimationController
 {
     private PlayerController playerController;
     private SpriteRenderer playerSprite;
+    private SpriteRenderer[] effectSprite;
     private Transform handPosition;
     protected override void Awake()
     {
         base.Awake();
-        playerSprite = GetComponentInParent<SpriteRenderer>();
     }
 
 
@@ -19,11 +19,13 @@ public class WeaponAnimationController : AnimationController
         if (isFlip)
         {
             Sprite.flipX = true;
+            effectSprite[1].flipX = true;
             this.transform.localPosition = new Vector3(-0.8f, 0.8f, 0);
         }
         if (!isFlip)
         {
             Sprite.flipX = false;
+            effectSprite[1].flipX= false;
             this.transform.localPosition = new Vector3(0.8f, 0.8f, 0);
         }
     }
@@ -48,9 +50,13 @@ public class WeaponAnimationController : AnimationController
         {
             Sprite = GetComponentInChildren<SpriteRenderer>();
         }
-        if(handPosition == null)
+        if(playerSprite == null)
         {
-            handPosition = GetComponentInParent<Transform>();
+            playerSprite = GetComponentInParent<SpriteRenderer>();
+        }
+        if(effectSprite == null)
+        {
+            effectSprite = GetComponentsInChildren<SpriteRenderer>(true);
         }
     }
     private void OnAttackEvent()
