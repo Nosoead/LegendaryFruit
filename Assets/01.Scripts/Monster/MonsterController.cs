@@ -6,6 +6,7 @@ using UnityEngine.Events;
 
 public class MonsterController : MonoBehaviour
 {
+    public MonsterAnimationController animationController;
     private MonsterStateMachine stateMachine;
     public MonsterStateMachine StateMachine => stateMachine;
     private MonsterAttributeLogics monsterAttributeLogics = null;
@@ -131,7 +132,6 @@ public class MonsterController : MonoBehaviour
 
         if (hit.collider == null || hit.distance > 0.1f)
         {
-
             transform.position += rayDirection * (moveSpeed * Time.deltaTime);
         }
         else
@@ -155,6 +155,7 @@ public class MonsterController : MonoBehaviour
         monsterAttributeLogics.ApplyAttackLogic(player.gameObject, attackPower, attributeValue, attributeRateTime, attributeStack);
 
         //애니메이션
+        animationController.OnAttack();
     }
 
     /*public void OnDrawGizmos()
@@ -164,6 +165,7 @@ public class MonsterController : MonoBehaviour
         Gizmos.color = Color.blue;
         Gizmos.DrawRay(transform.position , Vector3.left * 10);
     }*/
+
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.red;
