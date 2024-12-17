@@ -58,17 +58,18 @@ public class WeaponAnimationController : AnimationController
 
     private void CheckAttack()
     {
-        if(Animator.GetCurrentAnimatorStateInfo(0).IsName("Weapon_Attack"))
-        {
-            if(Animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1f)
-            {
-                FlipCheck();
-            }
-        }
-        else
-        {
-            FlipCheck();
-        }
+        FlipCheck();
+        //if(Animator.GetCurrentAnimatorStateInfo(0).IsName("Weapon_Attack"))
+        //{
+        //    if(Animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1f)
+        //    {
+        //        FlipCheck();
+        //    }
+        //}
+        //else
+        //{
+        //    FlipCheck();
+        //}
     }
 
     private void FlipCheck()
