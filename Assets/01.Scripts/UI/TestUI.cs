@@ -10,14 +10,12 @@ public class TestUI : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             UIManager.Instance.ToggleUI<ESCUI>(true);
-            Debug.Log("ESC");
         }
 
         // Tab 키를 눌렀을 때 InventoryUI 토글
         if (Input.GetKeyDown(KeyCode.Tab))
         {
             UIManager.Instance.ToggleUI<InventoryUI>(true);
-            Debug.Log("TAB");
         }
 
         if (Input.GetKeyDown(KeyCode.W))

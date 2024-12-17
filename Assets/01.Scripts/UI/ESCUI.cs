@@ -1,6 +1,4 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEditor;
 using UnityEngine;
@@ -17,8 +15,8 @@ public class ESCUI : UIBase
 
     private void Update()
     {
-        //TimeSpan timeSpan =  TimeSpan.FromSeconds(Time.time); // 일시정지되면 같이 멈추는 시간
-        TimeSpan timeSpan = TimeSpan.FromSeconds(Time.unscaledTime); //일시정지되도 흘러가는 시간
+        TimeSpan timeSpan =  TimeSpan.FromSeconds(Time.time); // 일시정지되면 같이 멈추는 시간
+        //TimeSpan timeSpan = TimeSpan.FromSeconds(Time.unscaledTime); //일시정지되도 흘러가는 시간
         nowTime.text = timeSpan.ToString(@"hh\:mm\:ss");
     }
 
@@ -26,9 +24,12 @@ public class ESCUI : UIBase
     {
         base.Open();
         backButton.onClick.AddListener(() => UIManager.Instance.ToggleUI<ESCUI>(true));
-        settingButton.onClick.AddListener(() => UIManager.Instance.ToggleUI<SettingUI>(false));
-        newGameButton.onClick.AddListener(() => SceneManager.LoadScene(1)); // 뉴게임에 해당하는 씬 넣기
-        
+        settingButton.onClick.AddListener(() =>
+        {
+            UIManager.Instance.ToggleUI<SettingUI>(false);
+            SoundManagers.Instance.PlaySFX(SfxType.UIButton);
+        });
+        newGameButton.onClick.AddListener(() => SceneManager.LoadScene(4)); // 뉴게임에 해당하는 씬 넣기
         exitButton.onClick.AddListener(() => UIManager.Instance.ToggleUI<SettingUI>(false));
         exitButton.onClick.AddListener(() => Quit());
     }

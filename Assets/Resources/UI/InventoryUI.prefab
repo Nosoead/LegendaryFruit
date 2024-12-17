@@ -3090,8 +3090,6 @@ MonoBehaviour:
   itmeType1: {fileID: 1257207252024416683}
   itemGrade1: {fileID: 534962901693821075}
   itemEatValue1: {fileID: 606107537410967600}
-  playerStatManager: {fileID: 0}
-  playerEquipment: {fileID: 0}
 --- !u!1 &8514783110371659987
 GameObject:
   m_ObjectHideFlags: 0
