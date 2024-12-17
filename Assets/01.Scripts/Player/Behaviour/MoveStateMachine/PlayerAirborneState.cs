@@ -29,7 +29,11 @@ public class PlayerAirborneState : IState
             player.StateMachine.TransitionTo(player.StateMachine.dashState);
             return;
         }
-        if ((currentVelocity.y < 0.01f) && player.IsGround)
+        if ((currentVelocity.y < 0.01f) && player.IsGround && player.IsMoveKeyPressed)
+        {
+            player.StateMachine.TransitionTo(player.StateMachine.moveState);
+        }
+        if ((currentVelocity.y < 0.01f) && player.IsGround && !player.IsMoveKeyPressed)
         {
             player.StateMachine.TransitionTo(player.StateMachine.idleState);
         }

@@ -131,7 +131,7 @@ public class PlayerMovement : MonoBehaviour
         lookDirection = directionValue;
     }
 
-    private void OnSubCommandEvent()
+    private void OnSubCommandEvent(bool isbool, bool isboool)
     {
 
     }

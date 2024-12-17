@@ -5,9 +5,11 @@ using UnityEngine.Events;
 
 public class PlayerAttack : MonoBehaviour
 {
+    public UnityAction<bool> OnAttackingEvent;
     [SerializeField] private PlayerController controller;
     [SerializeField] private PlayerEquipment equipment;
     [SerializeField] private PlayerStatManager statManager;
+    [SerializeField] private PlayerMovementHandler movementHandler;
 
     private PlayerAttributeLogicsDictionary attributeLogics;
     private PlayerAttributeLogics attributeLogic = null;
@@ -20,8 +22,14 @@ public class PlayerAttack : MonoBehaviour
 
     //private LayerMask monsterLayer = LayerMask.GetMask("Monster");
     private Vector2 boxSize = new Vector2(1f, 1f); //TODO 무기에따라 변경
+    private bool isAttacking = false;
     private float lookDirection = 1f;
-    private float attakRange = 1f;
+    private float attakRange = 0.5f;
+    private WaitForSeconds attackRateTime = new WaitForSeconds(0.5f);
+    //TODO : 공격속도에 따라 waitforseconds가 변하도록
+
+    //기즈모용
+    private float attackLookDirection = 1f;
 
     private void Awake()
     {
@@ -46,7 +54,7 @@ public class PlayerAttack : MonoBehaviour
         controller.OnAttackEvent -= OnAttackEvent;
         equipment.OnEquipWeaponChanged += OnEquipWeaponChanged;
     }
- 
+
     private void EnsureComponents()
     {
         if (controller == null)
@@ -82,16 +90,36 @@ public class PlayerAttack : MonoBehaviour
 
     private void OnAttackEvent()
     {
+        if (isAttacking)
+        {
+            return;
+        }
+        StartCoroutine(attackRoutine());
+    }
+
+    private IEnumerator attackRoutine()
+    {
+        isAttacking = true;
+        attackLookDirection = lookDirection;//기즈모용
+        OnAttackingEvent?.Invoke(isAttacking);
+        Debug.Log($"공격중{isAttacking}");
         //TODO 여러마리 공격할 수 있도록 변경 -> onecycle 이후
         Vector2 playerPosition = (Vector2)transform.position;
         Vector2 boxPosition = playerPosition + Vector2.right * attakRange * lookDirection;
         Collider2D monster = Physics2D.OverlapBox(boxPosition, boxSize, 0f, monsterLayer);
         if (monster == null)
         {
-            return;
+            yield return attackRateTime;
         }
-        Debug.Log(monster.ToString() + " 때림");
-        attributeLogic.ApplyAttackLogic(monster.gameObject, totalAttackPower, weaponData.attributeAttackValue, weaponData.attributeAttackRateTime, weaponData.arrtibuteStatck);
+        else
+        {
+            Debug.Log(monster.ToString() + "진짜때림");
+            attributeLogic.ApplyAttackLogic(monster.gameObject, totalAttackPower, weaponData.attributeAttackValue, weaponData.attributeAttackRateTime, weaponData.arrtibuteStatck);
+            yield return attackRateTime;
+        }
+        isAttacking = false;
+        OnAttackingEvent?.Invoke(isAttacking);
+        Debug.Log($"공격후{isAttacking}");
     }
     private void OnEquipWeaponChanged(WeaponSO weaponData)
     {
@@ -112,7 +140,8 @@ public class PlayerAttack : MonoBehaviour
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.red;
-        Vector2 boxPosition = (Vector2)transform.position + Vector2.right * attakRange * lookDirection;
+        float drawDireiction = isAttacking ? attackLookDirection : lookDirection;
+        Vector2 boxPosition = (Vector2)transform.position + Vector2.right * attakRange * drawDireiction;
         Gizmos.DrawWireCube(boxPosition, boxSize);
     }
 }

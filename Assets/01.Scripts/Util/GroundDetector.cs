@@ -32,7 +32,7 @@ public class GroundDetector : MonoBehaviour
         SetColliderOffset();
     }
 
-    private void FixedUpdate()
+    protected virtual void FixedUpdate()
     {
         CheckGround();
     }

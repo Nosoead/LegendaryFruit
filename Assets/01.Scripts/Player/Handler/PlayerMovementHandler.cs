@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class PlayerMovementHandler : MonoBehaviour
 {
+    //Component & Script Component
     public PlayerMovementStateMachine StateMachine { get; private set; }
     [SerializeField] private Rigidbody2D playerRigidbody;
     [SerializeField] private BoxCollider2D playerCollider;
@@ -12,33 +13,50 @@ public class PlayerMovementHandler : MonoBehaviour
     [SerializeField] private PlayerStatManager statManager;
     [SerializeField] private PlayerAttack attack;
     [SerializeField] private PlayerGround ground;
+
+    //Constant Values
     [SerializeField, Range(0.2f, 1.25f)] private float timeToJumpApex = 0.25f;
     [SerializeField, Range(1f, 10f)] private float upwardMovementMultiplier = 1f;
     [SerializeField, Range(1f, 10f)] private float downwardMovementMultiplier = 4f;
     private float fallSpeedLimit = 20f;
     private float defaultGravityScale = 1;
     public float gravMultiplier;
+    private int playerLayer;
+    private int defaultLayer;
+    private Collider2D onewayBlockCollider = null;
+
+
+    //Movement Values
     public float LookDirection { get; private set; } = 1;
     public float MoveDirection { get; private set; }
     public float MoveSpeed { get; private set; }
     public float DashDistance { get; private set; }
     public float JumpHeight { get; private set; }
 
+    //Counter
     public int MaxDashCount { get; private set; } = 2;
     public int MaxJumpCount { get; private set; } = 2;
     public int CurrentDashCount { get; private set; }
     public int CurrentJumpCount { get; private set; }
+    private WaitForSeconds colliderIgnoreDuration = new WaitForSeconds(0.25f);
 
     public bool IsDashing { get; private set; } = false;
     public bool CanDash { get; private set; } = true;
     public bool CanJump { get; private set; } = true;
 
+    //Single Key input Check
     public bool IsMoveKeyPressed { get; private set; } = false;
     public bool IsDashKeyPressed { get; private set; } = false;
     public bool IsJumpKeyPressed { get; private set; } = false;
+    public bool IsDownKeyPressed { get; private set; } = false;
 
+    //Combined Key Input Check
+    public bool IsDownwardJump { get; private set; } = false;
+
+    //State check
     public bool IsGround { get; private set; }
-    public bool IsAttacking = false; //{ get; private set; }
+    public bool IsOnewayBlock { get; private set; } = false;
+    public bool IsAttacking { get; private set; } = false;
 
 
     #region /Unity life Cycle
@@ -46,6 +64,8 @@ public class PlayerMovementHandler : MonoBehaviour
     {
         EnsureComponents();
         StateMachine = new PlayerMovementStateMachine(this);
+        playerLayer = LayerMask.NameToLayer("Player");
+        defaultLayer = LayerMask.NameToLayer("Default");
         ResetDashCount();
         ResetJumpCount();
     }
@@ -58,6 +78,7 @@ public class PlayerMovementHandler : MonoBehaviour
         controller.OnSubCommandEvent += OnSubCommandEvent;
         controller.OnDashEvent += OnDashEvent;
         controller.OnJumpEvent += OnJumpEvent;
+        attack.OnAttackingEvent += OnAttackingEvent;
     }
 
     private void OnDisable()
@@ -68,6 +89,7 @@ public class PlayerMovementHandler : MonoBehaviour
         controller.OnSubCommandEvent -= OnSubCommandEvent;
         controller.OnDashEvent -= OnDashEvent;
         controller.OnJumpEvent -= OnJumpEvent;
+        attack.OnAttackingEvent -= OnAttackingEvent;
     }
 
     private void Start()
@@ -82,12 +104,13 @@ public class PlayerMovementHandler : MonoBehaviour
             return;
         }
         SetPhysics();
-        CheckGround();
     }
 
     private void FixedUpdate()
     {
         StateMachine.Execute();
+        CheckGround();
+        CheckOnewayBlock();
         if (!IsDashing)
         {
             CalculateGravity();
@@ -123,6 +146,62 @@ public class PlayerMovementHandler : MonoBehaviour
         }
     }
 
+    #region /subscribeMethod
+    private void OnStatUpdatedEvent(string statKey, float value)
+    {
+        switch (statKey)
+        {
+            case "MoveSpeed":
+                MoveSpeed = value;
+                break;
+            case "DashDistance":
+                DashDistance = value;
+                break;
+            case "JumpHeight":
+                JumpHeight = value;
+                break;
+        }
+    }
+    private void OnDirectionEvent(float directionValue)
+    {
+        LookDirection = directionValue;
+    }
+
+    private void OnMovement(float moveValue, bool isMoveKeyPressed)
+    {
+        MoveDirection = moveValue;
+        IsMoveKeyPressed = isMoveKeyPressed;
+    }
+
+    private void OnSubCommandEvent(bool isDownPressed, bool isUpPressed)
+    {
+        IsDownKeyPressed = isDownPressed;
+    }
+
+    private void OnDashEvent(bool isDashKeyPressed)
+    {
+        IsDashKeyPressed = isDashKeyPressed;
+    }
+
+    private void OnJumpEvent(bool isJumpKeyPressed)
+    {
+        if (IsOnewayBlock && IsDownKeyPressed)
+        {
+            IsOnewayBlock = false;
+            IsDownwardJump = isJumpKeyPressed;
+            DownwardJump();
+            return;
+        }
+        //IsDownKeyPressed = false;
+        IsJumpKeyPressed = isJumpKeyPressed;
+    }
+
+    private void OnAttackingEvent(bool isAttacking)
+    {
+        IsAttacking = isAttacking;
+    }
+    #endregion
+
     #region /Calculate Physics
     private void SetPhysics()
     {
@@ -149,61 +228,42 @@ public class PlayerMovementHandler : MonoBehaviour
         float velocityY = playerRigidbody.velocity.y;
         playerRigidbody.velocity = new Vector2(velocityX, Mathf.Clamp(velocityY, -fallSpeedLimit, 50));
     }
-    #endregion
 
-    #region /Coroutine Rental Method
-    public Coroutine SetStartCoroutine(IEnumerator enumerator)
+    private void CheckGround()
     {
-        return StartCoroutine(enumerator);
-    }
-
-    public void SetStopCoroutine(Coroutine coroutine)
-    {
-        StopCoroutine(coroutine);
-        SetGravityScale(GetGravityScale());
-        SetVelocity(Vector2.zero);
-        SetCanDash(true);
-        SetIsDashing(false);
-    }
-    #endregion
-
-    #region /subscribeMethod
-    private void OnStatUpdatedEvent(string statKey, float value)
-    {
-        switch (statKey)
+        IsGround = ground.GetOnGround();
+        if (!(playerRigidbody.velocity.y > 0.01f) && IsGround)
         {
-            case "MoveSpeed":
-                MoveSpeed = value;
-                break;
-            case "DashDistance":
-                DashDistance = value;
-                break;
-            case "JumpHeight":
-                JumpHeight = value;
-                break;
+            CanJump = true;
+            ResetJumpCount();
         }
     }
-    private void OnDirectionEvent(float directionValue)
+
+    private void CheckOnewayBlock()
     {
-        this.LookDirection = directionValue;
+        IsOnewayBlock = ground.GetOnewayBlock();
+            onewayBlockCollider = ground.GetOnewayCollider();
+        if (onewayBlockCollider == null)
+        {
+        }
     }
-    private void OnMovement(float moveValue, bool isMoveKeyPressed)
+
+    private void DownwardJump()
     {
-        this.MoveDirection = moveValue;
-        this.IsMoveKeyPressed = isMoveKeyPressed;
+        if (IsDownwardJump)
+        {
+            IsDownwardJump = false;
+            StartCoroutine(DownwardJumpRoutine());
+        }
     }
-    private void OnSubCommandEvent()
+
+    private IEnumerator DownwardJumpRoutine()
     {
 
-    }
-    private void OnDashEvent(bool isDashKeyPressed)
-    {
-        this.IsDashKeyPressed = isDashKeyPressed;
-        //ApplyDash();
-    }
-    private void OnJumpEvent(bool isJumpKeyPressed)
-    {
-        this.IsJumpKeyPressed = isJumpKeyPressed;
+        Physics2D.IgnoreCollision(playerCollider, onewayBlockCollider, true);
+        Debug.Log(onewayBlockCollider.gameObject.ToString());
+        yield return colliderIgnoreDuration;
+        Physics2D.IgnoreCollision(playerCollider, onewayBlockCollider, false);
     }
     #endregion
 
@@ -259,7 +319,7 @@ public class PlayerMovementHandler : MonoBehaviour
     }
     #endregion
 
-    #region /boolMethod
+    #region /FieldSetMethod
     public void SetIsDashing(bool isDashing)
     {
         this.IsDashing = isDashing;
@@ -285,14 +345,41 @@ public class PlayerMovementHandler : MonoBehaviour
         this.CanJump = canJump;
     }
 
-    private void CheckGround()
+    public void SetLayerToDefault()
     {
-        IsGround = ground.GetOnGround();
-        if (!(playerRigidbody.velocity.y > 0.01f) && IsGround)
+        if (gameObject.layer != defaultLayer)
         {
-            CanJump = true;
-            ResetJumpCount();
+            gameObject.layer = defaultLayer;
+        }
+    }
+
+    public void SetLayerToPlayer()
+    {
+        if (gameObject.layer != playerLayer)
+        {
+            gameObject.layer = playerLayer;
         }
     }
     #endregion
+
+    #region /Coroutine Rental Method
+    public Coroutine SetStartCoroutine(IEnumerator enumerator)
+    {
+        return StartCoroutine(enumerator);
+    }
+
+    public void SetStopCoroutine(Coroutine coroutine)
+    {
+        StopCoroutine(coroutine);
+        SetGravityScale(GetGravityScale());
+        SetVelocity(Vector2.zero);
+        SetCanDash(true);
+        SetIsDashing(false);
+    }
+    #endregion
+
+    public void test()
+    {
+        Debug.Log(onewayBlockCollider.gameObject.ToString());
+    }
 }

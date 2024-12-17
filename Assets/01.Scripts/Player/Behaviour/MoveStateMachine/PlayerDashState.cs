@@ -50,6 +50,7 @@ public class PlayerDashState : IState
             if (player.CurrentDashCount != 0)
             {
                 player.SetStopCoroutine(coDashRoutine);
+                player.SetLayerToPlayer();
             }
             player.StateMachine.TransitionTo(player.StateMachine.airborneState);//TODO : 점프
             return;
@@ -63,7 +64,6 @@ public class PlayerDashState : IState
     private void ApplyDash()
     {
         player.SetIsDashKeyPressed(false);
-        Debug.Log(player.CurrentDashCount);
         if (player.CurrentDashCount != 0)
         {
             if (coDashRoutine != null)
@@ -81,20 +81,9 @@ public class PlayerDashState : IState
     {
         if (player.CurrentDashCount == 2)
         {
-            player.DecreaseDashCount();
-            player.SetCanDash(false);
-            player.SetIsDashing(true);
-            player.SetGravityScale(0f);
-            Vector2 dashVelocity = Vector2.right * player.LookDirection * player.DashDistance;
-            player.SetVelocity(dashVelocity);
-            Debug.Log($"Dash Velocity: {dashVelocity}");
-            Debug.Log($"Applied Velocity: {player.GetVelocity()}");
-            //player.AddForce(new Vector2(player.LookDirection * player.DashDistance, 0f), ForceMode2D.Impulse);
+            EnterDashLogic();
             yield return dashTime;
-            player.SetGravityScale(player.GetGravityScale());
-            player.SetVelocity(Vector2.zero);
-            player.SetCanDash(true);
-            player.SetIsDashing(false);
+            ExitDashLogic();
 
             yield return dashTerm;
 
@@ -106,18 +95,30 @@ public class PlayerDashState : IState
         }
         else if (player.CurrentDashCount == 1)
         {
-            player.DecreaseDashCount();
-            player.SetCanDash(false);
-            player.SetIsDashing(true);
-            player.SetGravityScale(0f);
-            player.SetVelocity(new Vector2(player.LookDirection * player.DashDistance, 0f));
+            EnterDashLogic();
             yield return dashTime;
-            player.SetGravityScale(player.GetGravityScale());
-            player.SetVelocity(Vector2.zero);
-            player.SetCanDash(true);
-            player.SetIsDashing(false);
+            ExitDashLogic();
             yield return dashCoolDownTime;
             player.ResetDashCount();
         }
+    }
+
+    private void EnterDashLogic()
+    {
+        player.SetLayerToDefault();
+        player.DecreaseDashCount();
+        player.SetCanDash(false);
+        player.SetIsDashing(true);
+        player.SetGravityScale(0f);
+        Vector2 dashVelocity = Vector2.right * player.LookDirection * player.DashDistance;
+        player.SetVelocity(dashVelocity);
+    }
+    private void ExitDashLogic()
+    {
+        player.SetLayerToPlayer();
+        player.SetGravityScale(player.GetGravityScale());
+        player.SetVelocity(Vector2.zero);
+        player.SetCanDash(true);
+        player.SetIsDashing(false);
     }
 }

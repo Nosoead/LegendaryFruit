@@ -19,7 +19,7 @@ public class PlayerIdleState : IState
     {
         if (player.IsGround)
         {
-            if (player.IsMoveKeyPressed)
+            if (player.IsMoveKeyPressed && !player.IsAttacking)
             {
                 player.StateMachine.TransitionTo(player.StateMachine.moveState);
                 return;

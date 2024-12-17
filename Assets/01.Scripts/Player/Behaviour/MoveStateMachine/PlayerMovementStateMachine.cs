@@ -9,10 +9,10 @@ public class PlayerMovementStateMachine
 
     public PlayerMovementStateMachine(PlayerMovementHandler player)
     {
-        this.idleState = new PlayerIdleState(player);
-        this.airborneState = new PlayerAirborneState(player);
-        this.moveState = new PlayerMoveState(player);
-        this.dashState = new PlayerDashState(player);
+        idleState = new PlayerIdleState(player);
+        airborneState = new PlayerAirborneState(player);
+        moveState = new PlayerMoveState(player);
+        dashState = new PlayerDashState(player);
     }
 
     public void Initialize(IState state)

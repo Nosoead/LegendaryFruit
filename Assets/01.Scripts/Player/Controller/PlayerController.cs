@@ -10,7 +10,7 @@ public class PlayerController : MonoBehaviour
 {
     public UnityAction<float> OnDirectionEvent;
     public UnityAction<float, bool> OnMoveEvent;
-    public UnityAction OnSubCommandEvent;
+    public UnityAction<bool, bool> OnSubCommandEvent;
     public UnityAction<bool> OnDashEvent;
     public UnityAction<bool> OnJumpEvent;
     public UnityAction OnAttackEvent;
@@ -25,6 +25,8 @@ public class PlayerController : MonoBehaviour
     public PlayerInput Input;
     private bool isLeftPressed;
     private bool isRightPressed;
+    private bool isDownPressed;
+    private bool isUpPressed;
     private void Awake()
     {
         Input = new PlayerInput();
@@ -35,11 +37,12 @@ public class PlayerController : MonoBehaviour
         //PlayerMovement
         Input.Player.Move.started += PlayerDirection;
         Input.Player.Move.started += PlayerMove;
-        Input.Player.Move.performed += PlayerMove;
+        //Input.Player.Move.performed += PlayerMove;
         Input.Player.Move.canceled += PlayerMove;
 
         //SubCommand ex) UpArrow + Attak, DownArrow + Jump ...
         Input.Player.SubCommand.started += PlayerSubCommand;
+        Input.Player.SubCommand.canceled += PlayerSubCommand;
 
         //PlayerMovement + alpha
         Input.Player.Dash.started += PlayerDash;
@@ -86,6 +89,7 @@ public class PlayerController : MonoBehaviour
     public void PlayerMove(InputAction.CallbackContext context)
     {
         float moveValue = context.ReadValue<float>();
+
         if (context.started)
         {
             if (moveValue < -0.01f)
@@ -114,7 +118,33 @@ public class PlayerController : MonoBehaviour
     }
     public void PlayerSubCommand(InputAction.CallbackContext context)
     {
-        OnSubCommandEvent?.Invoke();
+        float inputValue = context.ReadValue<float>();
+        if (context.started)
+        {
+            if (inputValue < -0.01f)
+            {
+                isDownPressed = true;
+            }
+            else if (inputValue > 0.01f)
+            {
+                isUpPressed = true;
+            }
+        }
+        else if (context.canceled)
+        {
+            if (isDownPressed && inputValue > -0.01f)
+            {
+                isDownPressed = false;
+            }
+            else if (isUpPressed && inputValue < 0.01f)
+            {
+                isUpPressed = false;
+            }
+        }
+
+        bool IsDownPressed = isDownPressed;
+        bool IsUpPressed = isUpPressed;
+        OnSubCommandEvent?.Invoke(isDownPressed, isUpPressed);
     }
     public void PlayerDash(InputAction.CallbackContext context)
     {
@@ -137,7 +167,6 @@ public class PlayerController : MonoBehaviour
         {
             OnJumpEvent?.Invoke(false);
         }
-        
     }
     public void PlayerAttack(InputAction.CallbackContext context)
     {
