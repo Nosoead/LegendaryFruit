@@ -6,8 +6,236 @@
   <component name="ChangeListManager">
     <list default="true" id="fd1b27b5-9a48-464d-8c89-0ee285d61d98" name="변경" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.LegendaryFruit/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.LegendaryFruit/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/99.UnityAssets/Cainos/Pixel Art Platformer - Village Props/Texture/TX Village Props.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/99.UnityAssets/Cainos/Pixel Art Platformer - Village Props/Texture/TX Village Props.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/00.Scenes/TestScenes/Test_ParkScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/00.Scenes/TestScenes/Test_ParkScene.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01.Scripts/UI/ESCUI.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/01.Scripts/UI/ESCUI.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01.Scripts/UI/SettingUI.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/01.Scripts/UI/SettingUI.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01.Scripts/UI/TestUI.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/01.Scripts/UI/TestUI.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/99.UnityAssets/Music Tracks.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/99.UnityAssets/Music Tracks/Chunky_Monkey.wav" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/99.UnityAssets/Music Tracks/Chunky_Monkey.wav.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/99.UnityAssets/Music Tracks/Hit.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/99.UnityAssets/Music Tracks/Hit/1.ogg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/99.UnityAssets/Music Tracks/Hit/1.ogg.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/99.UnityAssets/Music Tracks/Hit/10.ogg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/99.UnityAssets/Music Tracks/Hit/10.ogg.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/99.UnityAssets/Music Tracks/Hit/11.ogg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/99.UnityAssets/Music Tracks/Hit/11.ogg.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/99.UnityAssets/Music Tracks/Hit/12.ogg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/99.UnityAssets/Music Tracks/Hit/12.ogg.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/99.UnityAssets/Music Tracks/Hit/13.ogg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/99.UnityAssets/Music Tracks/Hit/13.ogg.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/99.UnityAssets/Music Tracks/Hit/14.ogg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/99.UnityAssets/Music Tracks/Hit/14.ogg.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/99.UnityAssets/Music Tracks/Hit/15.ogg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/99.UnityAssets/Music Tracks/Hit/15.ogg.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/99.UnityAssets/Music Tracks/Hit/16.ogg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/99.UnityAssets/Music Tracks/Hit/16.ogg.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/99.UnityAssets/Music Tracks/Hit/17.ogg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/99.UnityAssets/Music Tracks/Hit/17.ogg.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/99.UnityAssets/Music Tracks/Hit/18.ogg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/99.UnityAssets/Music Tracks/Hit/18.ogg.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/99.UnityAssets/Music Tracks/Hit/2.ogg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/99.UnityAssets/Music Tracks/Hit/2.ogg.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/99.UnityAssets/Music Tracks/Hit/3.ogg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/99.UnityAssets/Music Tracks/Hit/3.ogg.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/99.UnityAssets/Music Tracks/Hit/4.ogg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/99.UnityAssets/Music Tracks/Hit/4.ogg.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/99.UnityAssets/Music Tracks/Hit/5.ogg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/99.UnityAssets/Music Tracks/Hit/5.ogg.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/99.UnityAssets/Music Tracks/Hit/6.ogg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/99.UnityAssets/Music Tracks/Hit/6.ogg.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/99.UnityAssets/Music Tracks/Hit/7.ogg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/99.UnityAssets/Music Tracks/Hit/7.ogg.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/99.UnityAssets/Music Tracks/Hit/8.ogg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/99.UnityAssets/Music Tracks/Hit/8.ogg.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/99.UnityAssets/Music Tracks/Hit/9.ogg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/99.UnityAssets/Music Tracks/Hit/9.ogg.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/99.UnityAssets/Music Tracks/Hit/README.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/99.UnityAssets/Music Tracks/Hit/README.txt.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/99.UnityAssets/Music Tracks/Hit2.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/99.UnityAssets/Music Tracks/Hit2/hit01.mp3.flac" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/99.UnityAssets/Music Tracks/Hit2/hit01.mp3.flac.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/99.UnityAssets/Music Tracks/Hit2/hit02.mp3.flac" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/99.UnityAssets/Music Tracks/Hit2/hit02.mp3.flac.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/99.UnityAssets/Music Tracks/Hit2/hit03.mp3.flac" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/99.UnityAssets/Music Tracks/Hit2/hit03.mp3.flac.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/99.UnityAssets/Music Tracks/Hit2/hit04.mp3.flac" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/99.UnityAssets/Music Tracks/Hit2/hit04.mp3.flac.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/99.UnityAssets/Music Tracks/Hit2/hit05.mp3.flac" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/99.UnityAssets/Music Tracks/Hit2/hit05.mp3.flac.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/99.UnityAssets/Music Tracks/Hit2/hit06.mp3.flac" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/99.UnityAssets/Music Tracks/Hit2/hit06.mp3.flac.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/99.UnityAssets/Music Tracks/Hit2/hit07.mp3.flac" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/99.UnityAssets/Music Tracks/Hit2/hit07.mp3.flac.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/99.UnityAssets/Music Tracks/Hit2/hit08.mp3.flac" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/99.UnityAssets/Music Tracks/Hit2/hit08.mp3.flac.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/99.UnityAssets/Music Tracks/Hit2/hit09.mp3.flac" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/99.UnityAssets/Music Tracks/Hit2/hit09.mp3.flac.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/99.UnityAssets/Music Tracks/Hit2/hit10.mp3.flac" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/99.UnityAssets/Music Tracks/Hit2/hit10.mp3.flac.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/99.UnityAssets/Music Tracks/Hit2/hit11.mp3.flac" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/99.UnityAssets/Music Tracks/Hit2/hit11.mp3.flac.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/99.UnityAssets/Music Tracks/Hit2/hit12.mp3.flac" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/99.UnityAssets/Music Tracks/Hit2/hit12.mp3.flac.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/99.UnityAssets/Music Tracks/Hit2/hit13.mp3.flac" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/99.UnityAssets/Music Tracks/Hit2/hit13.mp3.flac.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/99.UnityAssets/Music Tracks/Hit2/hit14.mp3.flac" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/99.UnityAssets/Music Tracks/Hit2/hit14.mp3.flac.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/99.UnityAssets/Music Tracks/Hit2/hit15.mp3.flac" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/99.UnityAssets/Music Tracks/Hit2/hit15.mp3.flac.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/99.UnityAssets/Music Tracks/Hit2/hit16.mp3.flac" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/99.UnityAssets/Music Tracks/Hit2/hit16.mp3.flac.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/99.UnityAssets/Music Tracks/Hit2/hit17.mp3.flac" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/99.UnityAssets/Music Tracks/Hit2/hit17.mp3.flac.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/99.UnityAssets/Music Tracks/Hit2/hit18.mp3.flac" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/99.UnityAssets/Music Tracks/Hit2/hit18.mp3.flac.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/99.UnityAssets/Music Tracks/Hit2/hit19.mp3.flac" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/99.UnityAssets/Music Tracks/Hit2/hit19.mp3.flac.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/99.UnityAssets/Music Tracks/Hit2/hit20.mp3.flac" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/99.UnityAssets/Music Tracks/Hit2/hit20.mp3.flac.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/99.UnityAssets/Music Tracks/Hit2/hit21.mp3.flac" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/99.UnityAssets/Music Tracks/Hit2/hit21.mp3.flac.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/99.UnityAssets/Music Tracks/Hit2/hit22.mp3.flac" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/99.UnityAssets/Music Tracks/Hit2/hit22.mp3.flac.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/99.UnityAssets/Music Tracks/Hit2/hit23.mp3.flac" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/99.UnityAssets/Music Tracks/Hit2/hit23.mp3.flac.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/99.UnityAssets/Music Tracks/Hit2/hit24.mp3.flac" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/99.UnityAssets/Music Tracks/Hit2/hit24.mp3.flac.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/99.UnityAssets/Music Tracks/Hit2/hit25.mp3.flac" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/99.UnityAssets/Music Tracks/Hit2/hit25.mp3.flac.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/99.UnityAssets/Music Tracks/Hit2/hit26.mp3.flac" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/99.UnityAssets/Music Tracks/Hit2/hit26.mp3.flac.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/99.UnityAssets/Music Tracks/Hit2/hit27.mp3.flac" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/99.UnityAssets/Music Tracks/Hit2/hit27.mp3.flac.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/99.UnityAssets/Music Tracks/Hit2/hit28.mp3.flac" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/99.UnityAssets/Music Tracks/Hit2/hit28.mp3.flac.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/99.UnityAssets/Music Tracks/Hit2/hit29.mp3.flac" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/99.UnityAssets/Music Tracks/Hit2/hit29.mp3.flac.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/99.UnityAssets/Music Tracks/Hit2/hit30.mp3.flac" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/99.UnityAssets/Music Tracks/Hit2/hit30.mp3.flac.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/99.UnityAssets/Music Tracks/Hit2/hit31.mp3.flac" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/99.UnityAssets/Music Tracks/Hit2/hit31.mp3.flac.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/99.UnityAssets/Music Tracks/Hit2/hit32.mp3.flac" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/99.UnityAssets/Music Tracks/Hit2/hit32.mp3.flac.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/99.UnityAssets/Music Tracks/Hit2/hit33.mp3.flac" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/99.UnityAssets/Music Tracks/Hit2/hit33.mp3.flac.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/99.UnityAssets/Music Tracks/Hit2/hit34.mp3.flac" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/99.UnityAssets/Music Tracks/Hit2/hit34.mp3.flac.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/99.UnityAssets/Music Tracks/Hit2/hit35.mp3.flac" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/99.UnityAssets/Music Tracks/Hit2/hit35.mp3.flac.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/99.UnityAssets/Music Tracks/Hit2/hit36.mp3.flac" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/99.UnityAssets/Music Tracks/Hit2/hit36.mp3.flac.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/99.UnityAssets/Music Tracks/Hit2/hit37.mp3.flac" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/99.UnityAssets/Music Tracks/Hit2/hit37.mp3.flac.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/99.UnityAssets/Music Tracks/Hit3.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/99.UnityAssets/Music Tracks/Hit3/qubodupImpactMeat01.flac" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/99.UnityAssets/Music Tracks/Hit3/qubodupImpactMeat01.flac.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/99.UnityAssets/Music Tracks/Hit3/qubodupImpactMeat02.flac" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/99.UnityAssets/Music Tracks/Hit3/qubodupImpactMeat02.flac.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/99.UnityAssets/Music Tracks/InfiniteDoors.wav" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/99.UnityAssets/Music Tracks/InfiniteDoors.wav.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/99.UnityAssets/Music Tracks/Potato.wav" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/99.UnityAssets/Music Tracks/Potato.wav.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/99.UnityAssets/Music Tracks/Sword.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/99.UnityAssets/Music Tracks/Sword/swoosh.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/99.UnityAssets/Music Tracks/Sword/swoosh.txt.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/99.UnityAssets/Music Tracks/Sword/swosh-01.flac" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/99.UnityAssets/Music Tracks/Sword/swosh-01.flac.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/99.UnityAssets/Music Tracks/Sword/swosh-02.flac" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/99.UnityAssets/Music Tracks/Sword/swosh-02.flac.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/99.UnityAssets/Music Tracks/Sword/swosh-03.flac" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/99.UnityAssets/Music Tracks/Sword/swosh-03.flac.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/99.UnityAssets/Music Tracks/Sword/swosh-04.flac" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/99.UnityAssets/Music Tracks/Sword/swosh-04.flac.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/99.UnityAssets/Music Tracks/Sword/swosh-05.flac" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/99.UnityAssets/Music Tracks/Sword/swosh-05.flac.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/99.UnityAssets/Music Tracks/Sword/swosh-06.flac" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/99.UnityAssets/Music Tracks/Sword/swosh-06.flac.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/99.UnityAssets/Music Tracks/Sword/swosh-07.flac" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/99.UnityAssets/Music Tracks/Sword/swosh-07.flac.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/99.UnityAssets/Music Tracks/Sword/swosh-08.flac" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/99.UnityAssets/Music Tracks/Sword/swosh-08.flac.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/99.UnityAssets/Music Tracks/Sword/swosh-09.flac" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/99.UnityAssets/Music Tracks/Sword/swosh-09.flac.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/99.UnityAssets/Music Tracks/Sword/swosh-10.flac" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/99.UnityAssets/Music Tracks/Sword/swosh-10.flac.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/99.UnityAssets/Music Tracks/Sword/swosh-11.flac" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/99.UnityAssets/Music Tracks/Sword/swosh-11.flac.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/99.UnityAssets/Music Tracks/Sword/swosh-12.flac" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/99.UnityAssets/Music Tracks/Sword/swosh-12.flac.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/99.UnityAssets/Music Tracks/Sword/swosh-13.flac" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/99.UnityAssets/Music Tracks/Sword/swosh-13.flac.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/99.UnityAssets/Music Tracks/Sword/swosh-14.flac" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/99.UnityAssets/Music Tracks/Sword/swosh-14.flac.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/99.UnityAssets/Music Tracks/Sword/swosh-15.flac" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/99.UnityAssets/Music Tracks/Sword/swosh-15.flac.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/99.UnityAssets/Music Tracks/Sword/swosh-16.flac" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/99.UnityAssets/Music Tracks/Sword/swosh-16.flac.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/99.UnityAssets/Music Tracks/Sword/swosh-17.flac" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/99.UnityAssets/Music Tracks/Sword/swosh-17.flac.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/99.UnityAssets/Music Tracks/Sword/swosh-18.flac" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/99.UnityAssets/Music Tracks/Sword/swosh-18.flac.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/99.UnityAssets/Music Tracks/Sword/swosh-19.flac" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/99.UnityAssets/Music Tracks/Sword/swosh-19.flac.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/99.UnityAssets/Music Tracks/Sword/swosh-20.flac" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/99.UnityAssets/Music Tracks/Sword/swosh-20.flac.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/99.UnityAssets/Music Tracks/Sword/swosh-21.flac" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/99.UnityAssets/Music Tracks/Sword/swosh-21.flac.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/99.UnityAssets/Music Tracks/Sword/swosh-22.flac" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/99.UnityAssets/Music Tracks/Sword/swosh-22.flac.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/99.UnityAssets/Music Tracks/Sword/swosh-23.flac" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/99.UnityAssets/Music Tracks/Sword/swosh-23.flac.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/99.UnityAssets/Music Tracks/Sword/swosh-24.flac" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/99.UnityAssets/Music Tracks/Sword/swosh-24.flac.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/99.UnityAssets/Music Tracks/Sword/swosh-25.flac" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/99.UnityAssets/Music Tracks/Sword/swosh-25.flac.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/99.UnityAssets/Music Tracks/Sword/swosh-26.flac" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/99.UnityAssets/Music Tracks/Sword/swosh-26.flac.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/99.UnityAssets/Music Tracks/Sword/swosh-27.flac" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/99.UnityAssets/Music Tracks/Sword/swosh-27.flac.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/99.UnityAssets/Music Tracks/Sword/swosh-28.flac" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/99.UnityAssets/Music Tracks/Sword/swosh-28.flac.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/99.UnityAssets/Music Tracks/Sword/swosh-29.flac" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/99.UnityAssets/Music Tracks/Sword/swosh-29.flac.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/99.UnityAssets/Music Tracks/Sword/swosh-30.flac" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/99.UnityAssets/Music Tracks/Sword/swosh-30.flac.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/99.UnityAssets/Music Tracks/Sword/swosh-31.flac" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/99.UnityAssets/Music Tracks/Sword/swosh-31.flac.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/99.UnityAssets/Music Tracks/Sword/swosh-32.flac" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/99.UnityAssets/Music Tracks/Sword/swosh-32.flac.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/99.UnityAssets/Music Tracks/Sword/swosh-33.flac" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/99.UnityAssets/Music Tracks/Sword/swosh-33.flac.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/99.UnityAssets/Music Tracks/Sword/swosh-34.flac" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/99.UnityAssets/Music Tracks/Sword/swosh-34.flac.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/99.UnityAssets/Music Tracks/Sword/swosh-35.flac" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/99.UnityAssets/Music Tracks/Sword/swosh-35.flac.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/99.UnityAssets/Music Tracks/Sword/swosh-36.flac" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/99.UnityAssets/Music Tracks/Sword/swosh-36.flac.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/99.UnityAssets/Music Tracks/Sword/swosh-37.flac" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/99.UnityAssets/Music Tracks/Sword/swosh-37.flac.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/99.UnityAssets/Music Tracks/Sword/swosh-38.flac" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/99.UnityAssets/Music Tracks/Sword/swosh-38.flac.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/99.UnityAssets/Music Tracks/Sword/swosh-39.flac" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/99.UnityAssets/Music Tracks/Sword/swosh-39.flac.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/99.UnityAssets/Music Tracks/Sword/swosh-40.flac" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/99.UnityAssets/Music Tracks/Sword/swosh-40.flac.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/99.UnityAssets/Music Tracks/Sword/swosh-41.flac" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/99.UnityAssets/Music Tracks/Sword/swosh-41.flac.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/99.UnityAssets/Music Tracks/Sword/swosh-42.flac" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/99.UnityAssets/Music Tracks/Sword/swosh-42.flac.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/99.UnityAssets/Music Tracks/Sword/swosh-43.flac" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/99.UnityAssets/Music Tracks/Sword/swosh-43.flac.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/99.UnityAssets/Music Tracks/Tiny_Blocks.wav" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/99.UnityAssets/Music Tracks/Tiny_Blocks.wav.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/UI/ESCUI.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/UI/ESCUI.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/UI/GameEndUI.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/UI/GameEndUI.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/UI/HPBar.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/UI/HPBar.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/UI/InventoryUI.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/UI/InventoryUI.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Resources/UI/NPCUpgradeUI.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/UI/NPCUpgradeUI.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/UI/PlayerCanvasUI.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/UI/PlayerCanvasUI.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/UI/SettingUI.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/UI/SettingUI.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/UI/ShelterNPCUI.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/UI/ShelterNPCUI.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/UI/UpgradeUI.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/UI/UpgradeUI.prefab" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -21,18 +249,21 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/f7237cf7abef49bfbb552d7eb076e422174200/41/07baf228/SceneManager.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/f7237cf7abef49bfbb552d7eb076e422174200/63/11452b66/UnityAction.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/f7237cf7abef49bfbb552d7eb076e422174200/73/e1df8cf7/GameObject.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/f7237cf7abef49bfbb552d7eb076e422174200/9f/2b8345d1/Object.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/3ea01e77be99618395f448b16bd7cc2bd4248bd9e5d8474964b2d97f39c5d74/System.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/d44b17e136d09081da1e8fd0e8c83fde60e11818b9f2442d7ed8cb733fae895e/System.Collections.Generic.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/01.Scripts/Managers/MonsterStatManager.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/01.Scripts/Managers/SceneManager.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/01.Scripts/Monster/MonsterCondition.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/01.Scripts/Monster/MonsterStat.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/01.Scripts/Monster/NormalMonster.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/01.Scripts/UI/TestUI.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.visualscripting@1.9.1/Runtime/VisualScripting.Core/Utilities/UnityObjectUtility.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../SpartaPong/Assets/ScriptableObjects/Script/RangedAttack.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/../돚거/TheLastCube.C_Learn-master/TheLastCube.C_Learn/TheLastCube.C_Learn/Assets/TheLastCube/Scripts/UI/Popup/InGame.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="MetaFilesCheckinStateConfiguration" checkMetaFiles="true" />
   <component name="ProjectColorInfo">{
@@ -44,21 +275,21 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "Unity 에디터에 연결.Unity 에디터에 연결.executor": "Debug",
-    "git-widget-placeholder": "Dev",
-    "ignore.virus.scanning.warn.message": "true",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "preferences.lookFeel",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;Unity 에디터에 연결.Unity 에디터에 연결.executor&quot;: &quot;Debug&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;Dev__Park&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.lookFeel&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager" selected="Unity 에디터에 연결.Unity 에디터에 연결">
     <configuration name="유닛 테스트(배치 모드)" type="RunUnityExe" factoryName="Unity Executable">
       <option name="EXE_PATH" value="C:\Program Files\Unity\Hub\Editor\2022.3.17f1\Editor\Unity.exe" />
@@ -116,6 +347,7 @@
       <workItem from="1734083867015" duration="7383000" />
       <workItem from="1734241535286" duration="11009000" />
       <workItem from="1734307677489" duration="20544000" />
+      <workItem from="1734402674229" duration="20900000" />
     </task>
     <servers />
   </component>

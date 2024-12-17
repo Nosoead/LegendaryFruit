@@ -34,7 +34,7 @@ public class GameManager : Singleton<GameManager>
     public void GameEnd()
     {
         Debug.Log("GameEnd");
-        //Time.timeScale = 0f;
+        Time.timeScale = 0f;
         UIManager.Instance.ToggleUI<GameEndUI>(isPreviousWindowActive: false);
 
         //TODO UI창 끄면 Scene 다시Load하면서 시작하기

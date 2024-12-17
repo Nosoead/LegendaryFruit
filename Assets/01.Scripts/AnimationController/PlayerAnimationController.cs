@@ -2,7 +2,6 @@
 
 public class PlayerAnimationController : AnimationController
 {
-    private static readonly int Attack = Animator.StringToHash("Attack");
     private static readonly int isRun = Animator.StringToHash("isRun");
     private static readonly int isJump = Animator.StringToHash("isJump");
     private static readonly int isDash = Animator.StringToHash("isDash");
@@ -13,6 +12,8 @@ public class PlayerAnimationController : AnimationController
     private PlayerController controller;
     private PlayerGround playerGround;
     private PlayerMovement playerMovement;
+
+    [SerializeField] private Animator weaponAnimator;
 
     private bool playerIsGround;
 
@@ -48,8 +49,6 @@ public class PlayerAnimationController : AnimationController
         }
     }
 
-
-
     private void OnEnable()
     {
         controller.OnDirectionEvent += OnDirectionEvent;
@@ -68,7 +67,22 @@ public class PlayerAnimationController : AnimationController
 
     private void OnDirectionEvent(float directionValue)
     {
-        switch (directionValue)
+        if (weaponAnimator.GetCurrentAnimatorStateInfo(0).IsName("Weapon_Attack"))
+        {
+            if (weaponAnimator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1f) 
+            {
+                FlipCheck(directionValue);
+            }
+        }
+        else
+        {
+            FlipCheck(directionValue);
+        }
+    }
+
+    private void FlipCheck(float value)
+    {
+        switch (value)
         {
             case -1f:
                 Sprite.flipX = true;
@@ -77,7 +91,6 @@ public class PlayerAnimationController : AnimationController
             case 1f:
                 Sprite.flipX = false;
                 break;
-
         }
     }
 

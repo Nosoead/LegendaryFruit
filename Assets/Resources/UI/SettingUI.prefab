@@ -762,7 +762,7 @@ GameObject:
   - component: {fileID: 9206327438136176417}
   - component: {fileID: 420984991138064678}
   m_Layer: 5
-  m_Name: Slider
+  m_Name: Volume
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -840,7 +840,19 @@ MonoBehaviour:
   m_Value: 0
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 4009602629070093656}
+        m_TargetAssemblyTypeName: SoundBarUI, Assembly-CSharp
+        m_MethodName: OnVolumeSliderChanged
+        m_Mode: 4
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &636160773316210394
 GameObject:
   m_ObjectHideFlags: 0
@@ -1546,7 +1558,7 @@ GameObject:
   - component: {fileID: 3033591344760202500}
   - component: {fileID: 7250965743064431443}
   m_Layer: 5
-  m_Name: Slider (1)
+  m_Name: SFX
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1624,7 +1636,19 @@ MonoBehaviour:
   m_Value: 0
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 4009602629070093656}
+        m_TargetAssemblyTypeName: SoundBarUI, Assembly-CSharp
+        m_MethodName: OnSfxSliderChanged
+        m_Mode: 4
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1991900659565136371
 GameObject:
   m_ObjectHideFlags: 0
@@ -2758,6 +2782,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6414559283731114666}
+  - component: {fileID: 4009602629070093656}
   m_Layer: 5
   m_Name: SoundSetting
   m_TagString: Untagged
@@ -2791,6 +2816,21 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &4009602629070093656
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3781724677336111278}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 337587374d7ed484daa1a4a4dcd3139f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  volumeSlider: {fileID: 420984991138064678}
+  bgmSliderbar: {fileID: 2298563674391392813}
+  sfxSliderbar: {fileID: 7250965743064431443}
 --- !u!1 &4062467448672912973
 GameObject:
   m_ObjectHideFlags: 0
@@ -3301,7 +3341,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 003500a3b31122946beb06bc93747c1d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tabGroup: {fileID: 4093826849438529808}
+  tabGroupUI: {fileID: 4093826849438529808}
   backgroundImage: {fileID: 0}
   onTabSelected:
     m_PersistentCalls:
@@ -3952,7 +3992,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &3568727496930306444
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4050,6 +4090,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   exitButton: {fileID: 7455599212946201468}
+  soundbarUI: {fileID: 4009602629070093656}
 --- !u!1 &5857205204846140272
 GameObject:
   m_ObjectHideFlags: 0
@@ -4272,7 +4313,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 003500a3b31122946beb06bc93747c1d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tabGroup: {fileID: 4093826849438529808}
+  tabGroupUI: {fileID: 4093826849438529808}
   backgroundImage: {fileID: 0}
   onTabSelected:
     m_PersistentCalls:
@@ -4455,7 +4496,7 @@ GameObject:
   - component: {fileID: 5079032581210614463}
   - component: {fileID: 2298563674391392813}
   m_Layer: 5
-  m_Name: Slider (2)
+  m_Name: BGM
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4533,7 +4574,19 @@ MonoBehaviour:
   m_Value: 0
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 4009602629070093656}
+        m_TargetAssemblyTypeName: SoundBarUI, Assembly-CSharp
+        m_MethodName: OnBgmSliderChanged
+        m_Mode: 4
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &6642702846787405170
 GameObject:
   m_ObjectHideFlags: 0
