@@ -6,6 +6,7 @@ using UnityEngine;
 public class MonsterCondition : MonoBehaviour, IDamageable
 {
     [SerializeField] private MonsterStatManager statManager;
+    private MonsterAnimationController controller;
     // 각 속성을 확인하여 필요한 데이터를 반환
     private Coroutine coBurnDamage;
     private Coroutine coSlowDown;
@@ -23,6 +24,10 @@ public class MonsterCondition : MonoBehaviour, IDamageable
         if (statManager == null)
         {
             statManager = GetComponent<MonsterStatManager>();
+        }
+        if(controller == null)
+        {
+            controller = GetComponent<MonsterAnimationController>();
         }
     }
 
@@ -78,6 +83,7 @@ public class MonsterCondition : MonoBehaviour, IDamageable
 
     public void TakeDamage(float damage)
     {
+        controller.OnHit();
         statManager.ApplyInstantDamage(damage);
     }
 

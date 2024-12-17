@@ -7,6 +7,10 @@ public class WeaponAnimationController : AnimationController
     private SpriteRenderer playerSprite;
     private SpriteRenderer[] effectSprite;
     private Transform handPosition;
+    private static readonly int Attack = Animator.StringToHash("Attack");
+
+    public bool isAttacking;
+
     protected override void Awake()
     {
         base.Awake();
@@ -15,19 +19,7 @@ public class WeaponAnimationController : AnimationController
 
     private void LateUpdate()
     {
-        bool isFlip = playerSprite.flipX;
-        if (isFlip)
-        {
-            Sprite.flipX = true;
-            effectSprite[1].flipX = true;
-            this.transform.localPosition = new Vector3(-0.8f, 0.8f, 0);
-        }
-        if (!isFlip)
-        {
-            Sprite.flipX = false;
-            effectSprite[1].flipX= false;
-            this.transform.localPosition = new Vector3(0.8f, 0.8f, 0);
-        }
+        CheckAttack();
     }
 
     private void OnEnable()
@@ -61,6 +53,38 @@ public class WeaponAnimationController : AnimationController
     }
     private void OnAttackEvent()
     {
-        Animator.SetTrigger("Attack");
+        Animator.SetTrigger(Attack);
+    }
+
+    private void CheckAttack()
+    {
+        if(Animator.GetCurrentAnimatorStateInfo(0).IsName("Weapon_Attack"))
+        {
+            if(Animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1f)
+            {
+                FlipCheck();
+            }
+        }
+        else
+        {
+            FlipCheck();
+        }
+    }
+
+    private void FlipCheck()
+    {
+        bool isFlip = playerSprite.flipX;
+        if (isFlip)
+        {
+            Sprite.flipX = true;
+            effectSprite[1].flipX = true;
+            this.transform.localPosition = new Vector3(-0.8f, 0.8f, 0);
+        }
+        if (!isFlip)
+        {
+            Sprite.flipX = false;
+            effectSprite[1].flipX = false;
+            this.transform.localPosition = new Vector3(0.8f, 0.8f, 0);
+        }
     }
 }

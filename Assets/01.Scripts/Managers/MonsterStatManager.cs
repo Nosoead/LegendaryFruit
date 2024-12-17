@@ -3,12 +3,17 @@ using UnityEngine.Events;
 
 public class MonsterStatManager : MonoBehaviour
 {
+    MonsterAnimationController monsterAnimationController;
     [SerializeField] private MonsterSO monsterData;
     private MonsterStat stat;
     private StatHandler statHandler;
 
     private void Awake()
     {
+        if(monsterAnimationController == null)
+        {
+            monsterAnimationController = GetComponent<MonsterAnimationController>();
+        }
         stat = new MonsterStat();
         statHandler = new StatHandler();
     }
@@ -80,6 +85,13 @@ public class MonsterStatManager : MonoBehaviour
     {
         StopAllCoroutines();
         StageManager.Instance.MonsterDie();
+        this.gameObject.layer = 0;
+        monsterAnimationController.OnDie();
+        Invoke("MonsterDieOff", 1.5f);
+    }
+
+    private void MonsterDieOff()
+    {
         gameObject.SetActive(false);
     }
 }
