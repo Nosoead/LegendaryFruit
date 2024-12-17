@@ -6,7 +6,6 @@ public class PlayerMovementStateMachine
     public PlayerAirborneState airborneState;
     public PlayerMoveState moveState;
     public PlayerDashState dashState;
-    //public PlayerJumpState jumpState;
 
     public PlayerMovementStateMachine(PlayerMovementHandler player)
     {
@@ -14,7 +13,6 @@ public class PlayerMovementStateMachine
         this.airborneState = new PlayerAirborneState(player);
         this.moveState = new PlayerMoveState(player);
         this.dashState = new PlayerDashState(player);
-        //this.jumpState = new PlayerJumpState(player);
     }
 
     public void Initialize(IState state)

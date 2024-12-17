@@ -214,7 +214,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerData: {fileID: 11400000, guid: e56f00758a4c06e4ea716014b33ff09c, type: 2}
-  playerInteraction: {fileID: 0}
+  playerInteraction: {fileID: 7571377214749441522}
   playerAnimationController: {fileID: 8632830656087433156}
 --- !u!114 &8702183401495928227
 MonoBehaviour:
@@ -388,9 +388,9 @@ MonoBehaviour:
   statManager: {fileID: 3279749791979349983}
   attack: {fileID: 2118636696447819125}
   ground: {fileID: 3354314896731884654}
-  timeToJumpApex: 0.747
+  timeToJumpApex: 0.5
   upwardMovementMultiplier: 1
-  downwardMovementMultiplier: 4
+  downwardMovementMultiplier: 2
   gravMultiplier: 0
   IsAttacking: 0
 --- !u!1 &5102157064190668681

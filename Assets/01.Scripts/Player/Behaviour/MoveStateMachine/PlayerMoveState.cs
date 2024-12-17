@@ -11,8 +11,7 @@ public class PlayerMoveState : IState
 
     public void Enter()
     {
-        //TODO : 애니메이션
-        Debug.Log("Enter Move State");
+
     }
 
     public void Execute()
@@ -23,23 +22,23 @@ public class PlayerMoveState : IState
         {
             if (!player.IsMoveKeyPressed || player.IsAttacking)
             {
-                player.StateMachine.TransitionTo(player.StateMachine.idleState);//TODO : 정지,공격
+                player.StateMachine.TransitionTo(player.StateMachine.idleState);
                 return;
             }
             if (player.IsDashKeyPressed && player.CanDash)
             {
-                player.StateMachine.TransitionTo(player.StateMachine.dashState);//TODO : 대쉬
+                player.StateMachine.TransitionTo(player.StateMachine.dashState);
                 return;
             }
             if (player.IsJumpKeyPressed && player.CanJump)
             {
-                player.StateMachine.TransitionTo(player.StateMachine.airborneState);//TODO : 점프
+                player.StateMachine.TransitionTo(player.StateMachine.airborneState);
                 return;
             }
         }
         else
         {
-            player.StateMachine.TransitionTo(player.StateMachine.airborneState);//TODO : 점프
+            player.StateMachine.TransitionTo(player.StateMachine.airborneState);
             return;
         }
     }

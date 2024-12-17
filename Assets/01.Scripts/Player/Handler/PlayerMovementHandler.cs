@@ -1,3 +1,4 @@
+using JetBrains.Annotations;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -17,7 +18,7 @@ public class PlayerMovementHandler : MonoBehaviour
     private float fallSpeedLimit = 20f;
     private float defaultGravityScale = 1;
     public float gravMultiplier;
-    public float LookDirection { get; private set; }
+    public float LookDirection { get; private set; } = 1;
     public float MoveDirection { get; private set; }
     public float MoveSpeed { get; private set; }
     public float DashDistance { get; private set; }
@@ -78,7 +79,6 @@ public class PlayerMovementHandler : MonoBehaviour
     {
         if (IsDashing)
         {
-            Debug.Log(IsDashing);
             return;
         }
         SetPhysics();
@@ -87,13 +87,11 @@ public class PlayerMovementHandler : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (IsDashing)
-        {
-            Debug.Log(IsDashing);
-            return;
-        }
         StateMachine.Execute();
-        CalculateGravity();
+        if (!IsDashing)
+        {
+            CalculateGravity();
+        }
     }
     #endregion
 
@@ -125,6 +123,7 @@ public class PlayerMovementHandler : MonoBehaviour
         }
     }
 
+    #region /Calculate Physics
     private void SetPhysics()
     {
         Vector2 newGravity = new Vector2(0, (-2 * JumpHeight) / (timeToJumpApex * timeToJumpApex));
@@ -150,7 +149,9 @@ public class PlayerMovementHandler : MonoBehaviour
         float velocityY = playerRigidbody.velocity.y;
         playerRigidbody.velocity = new Vector2(velocityX, Mathf.Clamp(velocityY, -fallSpeedLimit, 50));
     }
+    #endregion
 
+    #region /Coroutine Rental Method
     public Coroutine SetStartCoroutine(IEnumerator enumerator)
     {
         return StartCoroutine(enumerator);
@@ -159,7 +160,12 @@ public class PlayerMovementHandler : MonoBehaviour
     public void SetStopCoroutine(Coroutine coroutine)
     {
         StopCoroutine(coroutine);
+        SetGravityScale(GetGravityScale());
+        SetVelocity(Vector2.zero);
+        SetCanDash(true);
+        SetIsDashing(false);
     }
+    #endregion
 
     #region /subscribeMethod
     private void OnStatUpdatedEvent(string statKey, float value)
@@ -212,11 +218,6 @@ public class PlayerMovementHandler : MonoBehaviour
         return playerRigidbody.velocity;
     }
 
-    public void AddForce(Vector2 force, ForceMode2D mode)
-    {
-        playerRigidbody.AddForce(force, mode);
-    }
-
     public void SetGravityScale(float gravityScale)
     {
         playerRigidbody.gravityScale = gravityScale;
@@ -263,6 +264,7 @@ public class PlayerMovementHandler : MonoBehaviour
     {
         this.IsDashing = isDashing;
     }
+
     public void SetIsDashKeyPressed(bool isPressed)
     {
         IsDashKeyPressed = isPressed;
@@ -283,35 +285,6 @@ public class PlayerMovementHandler : MonoBehaviour
         this.CanJump = canJump;
     }
 
-    #region /DashMethod
-    private void ApplyDash(Vector2 dash)
-    {
-        if (IsDashing)
-        {
-            return;
-        }
-        if (CanDash)
-        {
-            //StartCoroutine(coDash());
-        }
-    }
-
-    //private IEnumerator coDash()
-    //{
-    //    CanDash = false;
-    //    IsDashing = true;
-    //    float originalGravity = playerRigidbody.gravityScale;
-    //    playerRigidbody.gravityScale = 0f;
-    //    playerRigidbody.velocity = new Vector2(transform.localScale.x * LookDirection * DashDistance, 0f);
-    //    yield return dashingTime;
-    //    playerRigidbody.gravityScale = originalGravity;
-    //    playerRigidbody.velocity = Vector2.zero;
-    //    playerRigidbody.AddForce(dash, ForceMode2D.Impulse);
-    //    IsDashing = false;
-    //    yield return dashingCooldown;
-    //    CanDash = true;
-    //}
-    #endregion
     private void CheckGround()
     {
         IsGround = ground.GetOnGround();

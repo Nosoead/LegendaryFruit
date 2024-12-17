@@ -12,7 +12,6 @@ public class PlayerAirborneState : IState
 
     public void Enter()
     {
-        Debug.Log("Enter Airborne State");
         if (player.IsJumpKeyPressed == false)
         {
             player.DecreaseJumpCount();
@@ -27,7 +26,7 @@ public class PlayerAirborneState : IState
         player.SetVelocity(currentVelocity);
         if (player.IsDashKeyPressed && player.CanDash)
         {
-            player.StateMachine.TransitionTo(player.StateMachine.dashState);//TODO : 대쉬
+            player.StateMachine.TransitionTo(player.StateMachine.dashState);
             return;
         }
         if ((currentVelocity.y < 0.01f) && player.IsGround)

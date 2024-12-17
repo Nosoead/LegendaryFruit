@@ -1,11 +1,12 @@
 using System.Collections;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class PlayerDashState : IState
 {
 
     private PlayerMovementHandler player;
-    private WaitForSeconds dashTime = new WaitForSeconds(0.1f);
+    private WaitForSeconds dashTime = new WaitForSeconds(0.3f);
     private WaitForSeconds dashTerm = new WaitForSeconds(0.3f);
     private WaitForSeconds dashCoolDownTime = new WaitForSeconds(1.0f);
     private Coroutine coDashRoutine;
@@ -17,10 +18,6 @@ public class PlayerDashState : IState
 
     public void Enter()
     {
-        //TODO : 애니메이션
-        Debug.Log("Enter Dash State");
-
-        player.SetVelocity(Vector2.zero);
         ApplyDash();
     }
 
@@ -48,23 +45,39 @@ public class PlayerDashState : IState
                 return;
             }
         }
+        if (player.IsJumpKeyPressed && player.CanJump)
+        {
+            if (player.CurrentDashCount != 0)
+            {
+                player.SetStopCoroutine(coDashRoutine);
+            }
+            player.StateMachine.TransitionTo(player.StateMachine.airborneState);//TODO : 점프
+            return;
+        }
     }
 
     public void Exit()
     {
-        player.SetIsDashKeyPressed(false);
     }
 
     private void ApplyDash()
     {
-        if (coDashRoutine != null)
+        player.SetIsDashKeyPressed(false);
+        Debug.Log(player.CurrentDashCount);
+        if (player.CurrentDashCount != 0)
         {
-            player.SetStopCoroutine(coDashRoutine);
+            if (coDashRoutine != null)
+            {
+                player.SetStopCoroutine(coDashRoutine);
+            }
+            if (player.CanDash)
+            {
+                coDashRoutine = player.SetStartCoroutine(dashRoutine());
+            }
         }
-        coDashRoutine = player.SetStartCoroutine(coDash());
     }
 
-    private IEnumerator coDash()
+    private IEnumerator dashRoutine()
     {
         if (player.CurrentDashCount == 2)
         {
@@ -72,7 +85,11 @@ public class PlayerDashState : IState
             player.SetCanDash(false);
             player.SetIsDashing(true);
             player.SetGravityScale(0f);
-            player.SetVelocity(new Vector2(player.LookDirection * player.DashDistance, 0f));
+            Vector2 dashVelocity = Vector2.right * player.LookDirection * player.DashDistance;
+            player.SetVelocity(dashVelocity);
+            Debug.Log($"Dash Velocity: {dashVelocity}");
+            Debug.Log($"Applied Velocity: {player.GetVelocity()}");
+            //player.AddForce(new Vector2(player.LookDirection * player.DashDistance, 0f), ForceMode2D.Impulse);
             yield return dashTime;
             player.SetGravityScale(player.GetGravityScale());
             player.SetVelocity(Vector2.zero);
@@ -83,6 +100,7 @@ public class PlayerDashState : IState
 
             if (player.CurrentDashCount == 1)
             {
+                yield return dashCoolDownTime;
                 player.ResetDashCount();
             }
         }
@@ -98,9 +116,6 @@ public class PlayerDashState : IState
             player.SetVelocity(Vector2.zero);
             player.SetCanDash(true);
             player.SetIsDashing(false);
-        }
-        else
-        {
             yield return dashCoolDownTime;
             player.ResetDashCount();
         }

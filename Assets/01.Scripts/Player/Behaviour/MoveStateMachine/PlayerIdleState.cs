@@ -12,8 +12,7 @@ public class PlayerIdleState : IState
 
     public void Enter()
     {
-        //TODO : 애니메이션
-        Debug.Log("Enter Idle State");
+
     }
 
     public void Execute()
@@ -22,17 +21,17 @@ public class PlayerIdleState : IState
         {
             if (player.IsMoveKeyPressed)
             {
-                player.StateMachine.TransitionTo(player.StateMachine.moveState);//TODO : 이동
+                player.StateMachine.TransitionTo(player.StateMachine.moveState);
                 return;
             }
             if (player.IsDashKeyPressed && player.CanDash)
             {
-                player.StateMachine.TransitionTo(player.StateMachine.dashState);//TODO : 대쉬
+                player.StateMachine.TransitionTo(player.StateMachine.dashState);
                 return;
             }
             if (player.IsJumpKeyPressed && player.CanJump)
             {
-                player.StateMachine.TransitionTo(player.StateMachine.airborneState);//TODO : 점프
+                player.StateMachine.TransitionTo(player.StateMachine.airborneState);
                 return;
             }
         }
