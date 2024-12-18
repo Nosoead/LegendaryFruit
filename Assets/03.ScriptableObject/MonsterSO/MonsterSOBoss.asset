@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18d4756f0ce0194f8389a6e584db103, type: 3}
+  m_Name: MonsterSOBoss
+  m_EditorClassIdentifier: 
+  maxHealth: 150
+  attackPower: 15
+  defense: 10
+  attackSpeed: 15
+  moveSpeed: 3
+  attackDistance: 4
+  chaseRange: 15
+  type: 0
+  attributeValue: 5
+  attributeRateTime: 1
+  attributeStack: 3
+  inGameMoney: 200
+  sprite: {fileID: 0}
+  animation: {fileID: 0}
+  target: {fileID: 0}

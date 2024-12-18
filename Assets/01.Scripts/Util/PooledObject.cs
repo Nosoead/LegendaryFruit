@@ -1,11 +1,6 @@
 using UnityEngine;
 using UnityEngine.Pool;
 
-public interface ISetPooledObject<T> where T : Component
-{
-    void SetPooledObject(IObjectPool<T> pool);
-}
-
 public class PooledObject<T> where T : Component 
 {
     private IObjectPool<T> pool;
@@ -13,13 +8,13 @@ public class PooledObject<T> where T : Component
 
     public PooledObject(string keyName,T prefab, bool collectionCheck, int defaultCapacity, int maxSize)
     {
-        if (PoolManager.Instance.objectPools.ContainsKey(keyName))
+        if (testPoolManager.Instance.objectPools.ContainsKey(keyName))
         {
             return;
         }
         this.prefab = prefab;
         pool = new ObjectPool<T>(CreateObject, OnGetObject, OnReleaseObject, OnDestroyObject, collectionCheck, defaultCapacity, maxSize);
-        PoolManager.Instance.objectPools[keyName] = pool;
+        testPoolManager.Instance.objectPools[keyName] = pool;
     }
 
     private T CreateObject()

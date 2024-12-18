@@ -43,11 +43,11 @@ public class RewardTree : MonoBehaviour,IInteractable
 
     public void CreatReward()
     {
-        PoolManager.Instance.CreatePool<Reward>(rewardPrefab,false, 5, 50);
+        testPoolManager.Instance.CreatePool<Reward>(rewardPrefab,false, 5, 50);
 
         for (int i = 0; i < spawnPositions.Count; i++)
         {
-            var reward =  PoolManager.Instance.GetObject<Reward>();
+            var reward =  testPoolManager.Instance.GetObject<Reward>();
             reward.SetPosition(spawnPositions[i].position);
             reward.weaponData = weaponList[i];
             reward.gameObject.SetActive(false);

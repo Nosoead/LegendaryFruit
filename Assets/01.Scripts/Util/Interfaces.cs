@@ -1,4 +1,4 @@
-using System.ComponentModel;
+using UnityEngine.Pool;
 
 public interface IInteractable
 {
@@ -18,3 +18,8 @@ public interface IState
     void Execute();
     void Exit();
 }
+
+//public interface ISetPooledObject<T> where T : Component
+//{
+//    void SetPooledObject(IObjectPool<T> pool);
+//}

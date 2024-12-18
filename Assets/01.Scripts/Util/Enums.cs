@@ -32,3 +32,12 @@ public enum StageType
     Normal,
     Shelter
 }
+
+public enum PoolType
+{
+    PooledReward,
+    PooledMonster,
+    PooledSound,
+    PooledEffect,
+    Count
+}

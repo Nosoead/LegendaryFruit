@@ -32,8 +32,7 @@ public class PatrollState : IState
         //Debug.Log($"Detector : {monsterController.DetectPlayer()}");
         // 조건따라 플레이어 서치 어택
         if (monsterController.DetectPlayer())
-        {
-            
+        {       
             monsterController.StateMachine.TransitionToState(monsterController.StateMachine.attackState);
         }
 
@@ -42,7 +41,7 @@ public class PatrollState : IState
         {
             monsterController.StateMachine.TransitionToState(monsterController.StateMachine.idleState);
         }
-        
+
         if (monsterController.monsterGround.GetOnGround())
         {
             isGround = false;
@@ -57,7 +56,6 @@ public class PatrollState : IState
             }
             monsterController.Move();
         }
-        
     }
     public void Exit()
     {
@@ -68,7 +66,5 @@ public class PatrollState : IState
     public void UpdateStat(MonsterController monsterController)
     {
         this.monsterController = monsterController;
-    }
-
-  
+    }  
 }
