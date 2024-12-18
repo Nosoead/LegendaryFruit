@@ -13,8 +13,8 @@ public class UIManager : Singleton<UIManager>
 
     private void Start()
     {
-        SetUIDictionary();
         path = "UI";
+        SetUIDictionary();
     }
 
     public void SetUIDictionary()
