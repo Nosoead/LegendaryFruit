@@ -2,7 +2,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Pool;
 //using UnityEngine.Rendering;
-
+public interface ISetPooledObject<T> where T : Component
+{
+    void SetPooledObject(IObjectPool<T> pool);
+}
 public class PoolManager : Singleton<PoolManager>
 {
     private Dictionary<PoolType, GameObject> prefabDictionary = new Dictionary<PoolType, GameObject>();
