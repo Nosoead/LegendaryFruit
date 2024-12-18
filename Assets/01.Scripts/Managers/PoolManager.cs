@@ -1,42 +1,83 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Diagnostics.Tracing;
 using UnityEngine;
-using UnityEngine.EventSystems;
 using UnityEngine.Pool;
+//using UnityEngine.Rendering;
 
-// TODO: Dictionary 자동 생성하여 편리하게 사용할 수 있도록 구현
-public class PoolManager: Singleton<PoolManager>
+public class PoolManager : Singleton<PoolManager>
 {
-    public Dictionary<string, object> objectPools = new Dictionary<string, object>();
-
+    private Dictionary<PoolType, GameObject> prefabDictionary = new Dictionary<PoolType, GameObject>();
+    public Dictionary<PoolType, object> poolDictionary = new Dictionary<PoolType, object>();
+    //private ObjectPoolBase gameObjectPrefab;
+    //private IObjectPool<ObjectPoolBase> objectPool;
     protected override void Awake()
     {
         base.Awake();
+        RegisterPrefab();
     }
 
-    // 오브젝트 풀를 만드는 함수
-    public void CreatePool<T>(T obj, bool collectionCheck, int defualtCapacity, int maxSize) where T : Component, ISetPooledObject<T>
+    private void RegisterPrefab()
     {
-        var pool = new PooledObject<T>($"{nameof(obj)}", obj, collectionCheck, defualtCapacity, maxSize);
-        if(!objectPools.ContainsKey(typeof(T).Name))
+        for (int i = 0; i < (int)PoolType.Count; i++)
         {
-            objectPools.Add(typeof(T).Name, pool);
+            PoolType poolType = (PoolType)i;
+            GameObject poolObject = ResourceManager.Instance.LoadResource<GameObject>($"Pool/{poolType}");
+            if (!prefabDictionary.ContainsKey((PoolType)i) && poolObject != null)
+            {
+                prefabDictionary.Add((PoolType)i, poolObject);
+                Debug.Log($"key : {(PoolType)i}, value : {poolObject.ToString()}");
+            }
         }
     }
 
-    // 풀 자체를 꺼내는 함수
-    public object GetPool<T>() where T : Component
+    public void CreatePool<T>(PoolType poolType, bool collectionCheck, int defaultCapacity, int maxSize) where T : Component
     {
-        objectPools.TryGetValue(typeof(T).Name, out var pool);
-        return pool;
+        if (poolDictionary.ContainsKey(poolType)) return;
+        prefabDictionary.TryGetValue(poolType, out GameObject gameObjectPrefab);
+        if (gameObjectPrefab.TryGetComponent<T>(out T prefab))
+        {
+            new GenericPooledObject<T>(poolType, prefab, collectionCheck, defaultCapacity, maxSize);
+        }
     }
 
-    // 오브젝트를 꺼내는 함수
-    public T GetObject<T>() where T : Component
+    private class GenericPooledObject<T> where T : Component
     {
-        PooledObject<T> obj = GetPool<T>() as PooledObject<T>;
-        return  obj.Get();
+        private IObjectPool<T> objectPoolT;
+        private T gameObjectPrefab;
+
+        public GenericPooledObject(PoolType poolType, T prefab, bool collectionCheck, int defaultCapacity, int maxSize)
+        {
+            if (PoolManager.Instance.poolDictionary.ContainsKey(poolType))
+            {
+                return;
+            }
+            this.gameObjectPrefab = prefab;
+            objectPoolT = new ObjectPool<T>(CreateObject, OnGetObject, OnReleaseObject, OnDestroyObject, collectionCheck, defaultCapacity, maxSize);
+            PoolManager.Instance.poolDictionary.Add(poolType, objectPoolT);
+        }
+
+        private T CreateObject()
+        {
+            T objectInstance = Instantiate(gameObjectPrefab);
+            if (objectInstance is ISetPooledObject<T> settableObject)
+            {
+                settableObject.SetPooledObject(objectPoolT);
+            }
+            return objectInstance;
+        }
+
+        private void OnGetObject(T obj)
+        {
+            obj.gameObject.SetActive(true);
+        }
+
+        private void OnReleaseObject(T obj)
+        {
+            obj.gameObject.SetActive(false);
+        }
+
+        private void OnDestroyObject(T obj)
+        {
+            Destroy(obj.gameObject);
+        }
     }
 }
