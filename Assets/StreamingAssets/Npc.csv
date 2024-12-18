@@ -1,0 +1,3 @@
+code,npcName,npcImage,portrait1,portrait2,portrait3,portrait4,portrait5
+20001,주인공,Sprite/Npc/Hedgehog.png,,,,,
+20002,중간보스,Sprite/Npc/Human_0.png,,,,,
