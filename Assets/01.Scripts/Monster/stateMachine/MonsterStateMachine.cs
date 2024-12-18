@@ -13,7 +13,7 @@ public class MonsterStateMachine
     {
         this.MonsterController = monsterController;
         this.idleState = new IdleState(monsterController);
-        this.patrollState = new PatrollState(monsterController);
+        this.patrollState = new (monsterController);
         this.attackState = new AttackState(monsterController);
         OnStatsUpdated += UpdateStat;
     }
