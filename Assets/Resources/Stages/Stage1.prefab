@@ -388,7 +388,7 @@ PlatformEffector2D:
   m_RotationalOffset: 0
   m_UseOneWay: 1
   m_UseOneWayGrouping: 0
-  m_SurfaceArc: 180
+  m_SurfaceArc: 179
   m_UseSideFriction: 0
   m_UseSideBounce: 0
   m_SideArc: 1
@@ -46798,7 +46798,7 @@ PlatformEffector2D:
   m_RotationalOffset: 0
   m_UseOneWay: 1
   m_UseOneWayGrouping: 0
-  m_SurfaceArc: 180
+  m_SurfaceArc: 179
   m_UseSideFriction: 0
   m_UseSideBounce: 0
   m_SideArc: 1
@@ -48486,6 +48486,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3465149820138296737}
+  - component: {fileID: 8044319099462958854}
   m_Layer: 0
   m_Name: Stage1
   m_TagString: Untagged
@@ -48511,6 +48512,25 @@ Transform:
   - {fileID: 8712592516476480653}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8044319099462958854
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6849587510793662630}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e107d10cf55ac2f47977dc232754a6be, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stageSO: {fileID: 11400000, guid: ecb77ec8754c9534bb89f0b002122013, type: 2}
+  monster: {fileID: 0}
+  rewardTree: {fileID: 8161741214298841888, guid: ba32e021462fe494d85c86467112a9f3, type: 3}
+  reward: {fileID: 0}
+  playerSpawnPoint: {fileID: 6310803700831657532}
+  monsterSpawnPoint: {fileID: 7236336492815166000}
+  rewardSpawnPoint: {fileID: 90893923715190412}
 --- !u!1 &6854639722018413567
 GameObject:
   m_ObjectHideFlags: 0
@@ -49178,7 +49198,7 @@ PlatformEffector2D:
   m_RotationalOffset: 0
   m_UseOneWay: 1
   m_UseOneWayGrouping: 0
-  m_SurfaceArc: 180
+  m_SurfaceArc: 179
   m_UseSideFriction: 0
   m_UseSideBounce: 0
   m_SideArc: 1

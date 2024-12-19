@@ -39349,7 +39349,7 @@ PlatformEffector2D:
   m_RotationalOffset: 0
   m_UseOneWay: 1
   m_UseOneWayGrouping: 0
-  m_SurfaceArc: 180
+  m_SurfaceArc: 179
   m_UseSideFriction: 0
   m_UseSideBounce: 0
   m_SideArc: 1
@@ -39603,7 +39603,7 @@ PlatformEffector2D:
   m_RotationalOffset: 0
   m_UseOneWay: 1
   m_UseOneWayGrouping: 0
-  m_SurfaceArc: 180
+  m_SurfaceArc: 179
   m_UseSideFriction: 0
   m_UseSideBounce: 0
   m_SideArc: 1
@@ -40164,7 +40164,7 @@ PlatformEffector2D:
   m_RotationalOffset: 0
   m_UseOneWay: 1
   m_UseOneWayGrouping: 0
-  m_SurfaceArc: 180
+  m_SurfaceArc: 179
   m_UseSideFriction: 0
   m_UseSideBounce: 0
   m_SideArc: 1
@@ -40429,6 +40429,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6408711111147220666}
+  - component: {fileID: 5808557048823166447}
   m_Layer: 0
   m_Name: Stage2
   m_TagString: Untagged
@@ -40454,6 +40455,25 @@ Transform:
   - {fileID: 8881105214441666455}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5808557048823166447
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3365508634720265841}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 11d2a1defcd10f1429d00089d9ccead6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stageSO: {fileID: 11400000, guid: bd7262a54abe13940afbe900c9b19859, type: 2}
+  monster: {fileID: 0}
+  rewardTree: {fileID: 8161741214298841888, guid: ba32e021462fe494d85c86467112a9f3, type: 3}
+  reward: {fileID: 0}
+  playerSpawnPoint: {fileID: 2076946595874062978}
+  monsterSpawnPoint: {fileID: 4057580427213244813}
+  rewardSpawnPoint: {fileID: 721336552881266716}
 --- !u!1 &3670996407061442774
 GameObject:
   m_ObjectHideFlags: 0
@@ -78980,7 +79000,7 @@ PlatformEffector2D:
   m_RotationalOffset: 0
   m_UseOneWay: 1
   m_UseOneWayGrouping: 0
-  m_SurfaceArc: 180
+  m_SurfaceArc: 179
   m_UseSideFriction: 0
   m_UseSideBounce: 0
   m_SideArc: 1
@@ -79438,7 +79458,7 @@ PlatformEffector2D:
   m_RotationalOffset: 0
   m_UseOneWay: 1
   m_UseOneWayGrouping: 0
-  m_SurfaceArc: 180
+  m_SurfaceArc: 179
   m_UseSideFriction: 0
   m_UseSideBounce: 0
   m_SideArc: 1
@@ -80842,7 +80862,7 @@ PlatformEffector2D:
   m_RotationalOffset: 0
   m_UseOneWay: 1
   m_UseOneWayGrouping: 0
-  m_SurfaceArc: 180
+  m_SurfaceArc: 179
   m_UseSideFriction: 0
   m_UseSideBounce: 0
   m_SideArc: 1

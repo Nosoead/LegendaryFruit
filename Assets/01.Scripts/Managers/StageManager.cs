@@ -40,9 +40,9 @@ public class StageManager : Singleton<StageManager>
         rewardTree = ResourceManager.Instance.LoadResource<RewardTree>("NPC/RewardTree");
         rewardTreeObject = Instantiate(rewardTree.gameObject);
         rewardTreeObject.SetActive(false);
-        shelterNPC = ResourceManager.Instance.LoadResource<ShelterNPC>("NPC/ShelterNPC"); ;
-        shelterNPCObject = Instantiate(shelterNPC.gameObject);
-        shelterNPCObject.SetActive(false);
+        //shelterNPC = ResourceManager.Instance.LoadResource<ShelterNPC>("NPC/ShelterNPC"); ;
+        //shelterNPCObject = Instantiate(shelterNPC.gameObject);
+        //shelterNPCObject.SetActive(false);
     }
 
     private void CreatMonster()

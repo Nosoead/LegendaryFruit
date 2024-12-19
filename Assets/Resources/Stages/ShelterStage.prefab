@@ -64569,6 +64569,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7676827444466876686}
+  - component: {fileID: 6884377649032466437}
   m_Layer: 0
   m_Name: ShelterStage
   m_TagString: Untagged
@@ -64594,6 +64595,25 @@ Transform:
   - {fileID: 488808714843280358}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6884377649032466437
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8831884654253494463}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 10d453433262df448b60281e4ed3d97a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stageSO: {fileID: 11400000, guid: 35001b020f1aa40449b58e150ebb9831, type: 2}
+  monster: {fileID: 0}
+  rewardTree: {fileID: 0}
+  reward: {fileID: 0}
+  playerSpawnPoint: {fileID: 5199553902416457560}
+  monsterSpawnPoint: {fileID: 0}
+  rewardSpawnPoint: {fileID: 0}
 --- !u!1 &8860053837372651022
 GameObject:
   m_ObjectHideFlags: 0

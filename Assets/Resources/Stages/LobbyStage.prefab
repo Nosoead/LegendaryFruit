@@ -58603,6 +58603,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5754317501815773439}
+  - component: {fileID: 3605089852745675771}
   m_Layer: 0
   m_Name: LobbyStage
   m_TagString: Untagged
@@ -58628,6 +58629,25 @@ Transform:
   - {fileID: 1089119654243961875}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3605089852745675771
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8391376690465167666}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9315b5d2f1243e14a81b9c4c9f33b996, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stageSO: {fileID: 11400000, guid: bc55a4f6749d90c49ae4054cbd4bbce5, type: 2}
+  monster: {fileID: 0}
+  rewardTree: {fileID: -7036386501930136491, guid: bb5a31605e6f67b4d8c36563f80a5653, type: 3}
+  reward: {fileID: 0}
+  playerSpawnPoint: {fileID: 6452766579340324310}
+  monsterSpawnPoint: {fileID: 0}
+  rewardSpawnPoint: {fileID: 0}
 --- !u!1 &8471576364265837495
 GameObject:
   m_ObjectHideFlags: 0
