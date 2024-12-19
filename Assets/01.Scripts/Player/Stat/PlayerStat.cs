@@ -12,22 +12,21 @@ public class PlayerStat : Stat
     // TODO: Controller에서 PlayerStat 업데이트 로직 추가
     public UnityAction<string, float> OnStatUpdatedEvent;
     public UnityAction OnDie;
-    private Dictionary<string, float> stats = new Dictionary<string, float>();
-
+    private Dictionary<string, float> statDictionary = new Dictionary<string, float>();
+    private PlayerStatData playerStatData = new PlayerStatData();
+    private bool hasLoadData = false;
     public override void InitStat(GameSO gameData)
     {
         if (gameData is PlayerSO playerData)
         {
-            stats["MaxHealth"] = playerData.maxHealth;
-            stats["CurrentHealth"] = playerData.maxHealth;
-            stats["CurrentAttackPower"] = playerData.attackPower;
-            stats["CurrentDefense"] = playerData.defense;
-            stats["AttackSpeed"] = playerData.attackSpeed;
-            stats["MoveSpeed"] = playerData.moveSpeed;
-            stats["DashDistance"] = playerData.dashDistance;
-            stats["JumpHeight"] = playerData.jumpHeight;
+            if (!hasLoadData)
+            {
+                statDictionary = playerData.playerStats;
+                playerStatData = playerData.playerStatData;
+                playerData.sync.SyncToDictionary(statDictionary, playerStatData);
+            }
 
-            foreach (var stat in stats)
+            foreach (var stat in statDictionary)
             {
                 OnStatUpdatedEvent?.Invoke(stat.Key, stat.Value);
             }
@@ -36,7 +35,7 @@ public class PlayerStat : Stat
 
     public float GetStatValue(string statKey)
     {
-        if (stats.TryGetValue(statKey, out var currentValue))
+        if (statDictionary.TryGetValue(statKey, out var currentValue))
         {
             return currentValue;
         }
@@ -48,13 +47,13 @@ public class PlayerStat : Stat
 
     public void UpdateStat(string statKey, float currentValue)
     {
-        if (stats.ContainsKey(statKey))
+        if (statDictionary.ContainsKey(statKey))
         {
-            stats[statKey] = currentValue;
+            statDictionary[statKey] = currentValue;
             //Debug.Log("먹고난 후 : " + stats[statKey]);
             Debug.Log($"{statKey} : {currentValue}");
             OnStatUpdatedEvent?.Invoke(statKey, currentValue);
-            if (statKey == "CurrentHealth" && stats["CurrentHealth"] == 0)
+            if (statKey == "CurrentHealth" && statDictionary["CurrentHealth"] == 0)
             {
                 OnDie?.Invoke();
             }
@@ -67,25 +66,33 @@ public class PlayerStat : Stat
 
     public void UpdateCurrentHealth(float currentHealth)
     {
-        if (stats.ContainsKey("CurrentHealth"))
+        if (statDictionary.ContainsKey("CurrentHealth"))
         {
-            float newValue = Mathf.Clamp(currentHealth, 0f, stats["MaxHealth"]);
+            float newValue = Mathf.Clamp(currentHealth, 0f, statDictionary["MaxHealth"]);
             UpdateStat("CurrentHealth", newValue);
         }
     }
-}
 
+    public PlayerStatData SavePlayerData(PlayerSO playerData)
+    {
+        hasLoadData = false;
+        playerData.sync.SyncToPlayerStatData(statDictionary, playerStatData);
+        return playerStatData;
+    }
 
-// TODO: DataManager에 데이터 이동 기능 추가, stage 전환 시 PlayerStatData를 저장하고 
-//       Static Class SaveManager를 활용하여 데이터를 JSON으로 저장하는 방식 구현
-[System.Serializable]
-public class PlayerStatData
-{
-    public float MaxHealth;
-    public float CurrentHealth;
-    public float CurrentDamage;
-    public float CurrentDefense;
-    public float AttackSpeed;
-    public float MoveSpeed;
-    public float DashForce;
+    public void LoadPlayerData(PlayerSO playerData, PlayerStatData playerStatData)
+    {
+        hasLoadData = true;
+        this.playerStatData = playerStatData;
+        playerData.sync.SyncToDictionary(statDictionary, this.playerStatData);
+        foreach (var stat in statDictionary)
+        {
+            OnStatUpdatedEvent?.Invoke(stat.Key, stat.Value);
+        }
+    }
+
+    public void DeletePlayerData()
+    {
+        hasLoadData = false;
+    }
 }

@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Pool;
-//using UnityEngine.Rendering;
+
 public interface ISetPooledObject<T> where T : Component
 {
     void SetPooledObject(IObjectPool<T> pool);
@@ -10,8 +10,7 @@ public class PoolManager : Singleton<PoolManager>
 {
     private Dictionary<PoolType, GameObject> prefabDictionary = new Dictionary<PoolType, GameObject>();
     public Dictionary<PoolType, object> poolDictionary = new Dictionary<PoolType, object>();
-    //private ObjectPoolBase gameObjectPrefab;
-    //private IObjectPool<ObjectPoolBase> objectPool;
+
     protected override void Awake()
     {
         base.Awake();
@@ -27,7 +26,6 @@ public class PoolManager : Singleton<PoolManager>
             if (!prefabDictionary.ContainsKey((PoolType)i) && poolObject != null)
             {
                 prefabDictionary.Add((PoolType)i, poolObject);
-                Debug.Log($"key : {(PoolType)i}, value : {poolObject.ToString()}");
             }
         }
     }
