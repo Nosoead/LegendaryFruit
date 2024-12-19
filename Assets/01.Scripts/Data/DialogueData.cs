@@ -9,6 +9,7 @@ public class DialogueData
     public float TypingSpeed;
     public string Bg;
     public string Dialogue;
+    public List<string> Dialogues = new List<string>();
     public List<Answer> AnswerList = new List<Answer>();
     public int Next;
 }

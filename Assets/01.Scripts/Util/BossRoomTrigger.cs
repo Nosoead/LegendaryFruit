@@ -4,21 +4,21 @@ using UnityEngine;
 
 public class BossRoomTrigger : MonoBehaviour
 {
-  [SerializeField] private UIDialogue uidialogue;
-  [SerializeField] private int dialogueIndex;
+  [SerializeField] private UIDialogue uiDialogue;
+  private int dialogueIndex = 10001;
 
-  private void OnTriggerEnter(Collider other)
+  private bool istrigger;
+  private void OnTriggerEnter2D(Collider2D other)
   {
-    if (other.CompareTag("Player"))
+    if (other.CompareTag("Player") && !istrigger)
     {
+      if (uiDialogue == null) uiDialogue = FindObjectOfType<UIDialogue>(true);
+      uiDialogue.gameObject.SetActive(true);
       var dialogue = DialogueManager.Instance.GetDialogueData(dialogueIndex);
-
-      Debug.Log("트리거작동");
-      if (dialogue != null)
-      {
-        uidialogue.gameObject.SetActive(true);
-        uidialogue.SetDialogue(dialogue);
-      }
+      uiDialogue.SetDialogue(dialogue);
+      istrigger = true;
     }
   }
 }
+
+

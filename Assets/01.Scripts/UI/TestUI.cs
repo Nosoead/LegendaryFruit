@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 public class TestUI : MonoBehaviour
 {
+    
     private void Update()
     {
         // ESC 키를 눌렀을 때 ESCUI 토글
@@ -25,6 +26,11 @@ public class TestUI : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Q))
         {
             Time.timeScale = 1;
+        }
+
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            UIManager.Instance.ToggleUI<NPCUpgradeUI>(false);
         }
         
     }

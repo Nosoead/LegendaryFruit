@@ -5,6 +5,7 @@ using System.Data;
 using System.IO;
 using UnityEngine;
 using UnityEngine.Networking;
+using Random = Unity.Mathematics.Random;
 
 enum Table
 {
@@ -94,9 +95,8 @@ public class DialogueManager : Singleton<DialogueManager>
     
         loadData++;
     }
-    
-    
-    void SetNpcTable(List<Dictionary<string, string>> data)
+
+    private void SetNpcTable(List<Dictionary<string, string>> data)
     {
         for (int j = 0; j < data.Count; j++)
         {
@@ -117,7 +117,7 @@ public class DialogueManager : Singleton<DialogueManager>
         }
     }
     
-    void SetDialogueTable(List<Dictionary<string, string>> data)
+    private void SetDialogueTable(List<Dictionary<string, string>> data)
     {
         for (int j = 0; j < data.Count; j++)
         {
@@ -180,7 +180,7 @@ public class DialogueManager : Singleton<DialogueManager>
         }
     }
     
-    void SetDialogueListTable(List<Dictionary<string, string>> data)
+    private void SetDialogueListTable(List<Dictionary<string, string>> data)
     {
         for (int j = 0; j < data.Count; j++)
         {

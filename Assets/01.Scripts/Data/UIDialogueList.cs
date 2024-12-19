@@ -14,7 +14,7 @@ public class UIDialogueList : UIBase
 
     private bool isInit = false;
     
-    void Update()
+    private void Update()
     {
         if (!isInit &&  DialogueManager.Instance.IsLoad)
         {
@@ -23,7 +23,7 @@ public class UIDialogueList : UIBase
         }
     }
 
-    void LoadDialogueList()
+    private void LoadDialogueList()
     {
         var eDialogueList = DialogueManager.Instance.GetDialogueList();
         while (eDialogueList.MoveNext())
@@ -36,7 +36,6 @@ public class UIDialogueList : UIBase
             btn.onClick.AddListener(() =>
             {
                 gameObject.SetActive(false);
-                
                 var dialogue =  DialogueManager.Instance.GetDialogueData(dList.StartDialogue);
                 uiDialogue.SetDialogue(dialogue);
             });

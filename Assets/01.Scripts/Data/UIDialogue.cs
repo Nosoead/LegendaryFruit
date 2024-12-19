@@ -12,6 +12,7 @@ using static System.String;
 public class UIDialogue : UIBase
 {
     [SerializeField] private UIDialogueList uiDialogueList;
+    [SerializeField] private BossRoomTrigger bossRoomTrigger;
 
     [SerializeField] private Button btnBack;
     
@@ -43,6 +44,8 @@ public class UIDialogue : UIBase
         }
         
         btnBack.onClick.AddListener(DialogueDone);
+        
+        
     }
 
     private void Update()
@@ -108,7 +111,7 @@ public class UIDialogue : UIBase
         LogDone(); //두트윈 없을시
     }
 
-    public void LogDone()
+    private void LogDone()
     {
         done = true;
         
@@ -118,20 +121,25 @@ public class UIDialogue : UIBase
             SetBtn();
     }
     
-    public void DialogueDone()
+    private void DialogueDone()
     {
         imgScreenDone.raycastTarget = true;
-        imgScreenDone.DOFade(1, 1).OnComplete(() =>
-        {
-            //uiDialogueList.gameObject.SetActive(true);
-            imgScreenDone.color = new Color(imgScreenDone.color.r, imgScreenDone.color.g, imgScreenDone.color.b , 0);
+        /*imgScreenDone.DOFade(1, 1).OnComplete(() =>
+        {*/
+            this.gameObject.SetActive(false);
+            //imgScreenDone.color = new Color(imgScreenDone.color.r, imgScreenDone.color.g, imgScreenDone.color.b , 0);
+            
             foreach (var t in _textures.Values)
             {
                 if(t) Destroy(t);
             }
-            
+
+            if (bossRoomTrigger != null)
+            {
+                Destroy(bossRoomTrigger.gameObject);
+            }
             _textures.Clear();
-        });
+        /*})*/;
     }
     
     public void SetBg(string bg)
@@ -145,7 +153,7 @@ public class UIDialogue : UIBase
         LoadTexture(imgBg, bg);
     }
 
-    public void SetNpc1(DialogueNpc npc)
+    private void SetNpc1(DialogueNpc npc)
     {
         if (npc == null || npc.Code == 0)
         {
@@ -186,7 +194,7 @@ public class UIDialogue : UIBase
         LoadTexture(imgNpc1, portrait);
     }
     
-    public void SetNpc2(DialogueNpc npc)
+    private void SetNpc2(DialogueNpc npc)
     {
         if (npc == null || npc.Code == 0)
         {
@@ -227,7 +235,7 @@ public class UIDialogue : UIBase
         LoadTexture(imgNpc2, portrait);
     }
 
-    public void SetBtn()
+    private void SetBtn()
     {
         for (var i = 0; i < _dialogueData.AnswerList.Count; i++)
         {
@@ -236,7 +244,7 @@ public class UIDialogue : UIBase
         }
     }
 
-    public void OnClickBtn(int idx)
+    private void OnClickBtn(int idx)
     {
         var next = _dialogueData.AnswerList[idx].Action;
         var nextDialogue =  DialogueManager.Instance.GetDialogueData(next);
@@ -257,7 +265,7 @@ public class UIDialogue : UIBase
         }
     }
 
-    IEnumerator LoadImage(RawImage rImage, string fileName)
+    private IEnumerator LoadImage(RawImage rImage, string fileName)
     {
         string filePath = System.IO.Path.Combine(Application.streamingAssetsPath, fileName);
 
