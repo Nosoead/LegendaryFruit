@@ -31,8 +31,8 @@ public class StageManager : Singleton<StageManager>
             obj.gameObject.SetActive(false);
             //Debug.Log($"key값 : {obj.stageSO.stageKey}");
         }
-        CreatRewardTree();
-        CreatMonster();
+        //CreatRewardTree();
+        //CreatMonster();
     }
 
     private void CreatRewardTree()
@@ -62,6 +62,7 @@ public class StageManager : Singleton<StageManager>
 
     public void StartStage(string key)
     {
+        Debug.Log("dddddddddddd");
         player = GameManager.Instance.player;
         var stage = stageDictionary[key];
         stage.gameObject.SetActive(true);
