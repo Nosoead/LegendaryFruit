@@ -12,10 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1f5f484132f332f4394ffcddfad5925e, type: 3}
   m_Name: PlayerSO
   m_EditorClassIdentifier: 
-  maxHealth: 100
-  attackPower: 5
-  defense: 5
-  attackSpeed: 10
-  moveSpeed: 7
-  dashDistance: 14
-  jumpHeight: 5
+  playerStatData:
+    maxHealth: 100
+    currentHealth: 100
+    currentAttackPower: 5
+    currentDefense: 5
+    attackSpeed: 10
+    moveSpeed: 7
+    dashDistance: 14
+    jumpHeight: 5

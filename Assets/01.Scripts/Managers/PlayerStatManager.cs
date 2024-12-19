@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -7,6 +8,7 @@ public class PlayerStatManager : MonoBehaviour
     [SerializeField] private PlayerSO playerData;
     [SerializeField] private PlayerInteraction playerInteraction;
     [SerializeField] private PlayerAnimationController playerAnimationController;
+    private List<WeaponSO> eatWeapons = new List<WeaponSO>();
     private PlayerStat stat;
     private StatHandler statHandler;
 
@@ -22,14 +24,16 @@ public class PlayerStatManager : MonoBehaviour
 
     private void OnEnable()
     {
-        playerInteraction.FruitWeaponEatAndStatUpEvent += IncreaseStat;
+        playerInteraction.FruitWeaponEatAndStatUpEvent += OnIncreaseStat;
+        playerInteraction.FruitWeaponEatAndStatUpEvent += OnRegisteConsumItemData;
         stat.OnStatUpdatedEvent += OnStatUpdatedEvent;
         stat.OnDie += OnDie;
     }
 
     private void OnDisable()
     {
-        playerInteraction.FruitWeaponEatAndStatUpEvent -= IncreaseStat;
+        playerInteraction.FruitWeaponEatAndStatUpEvent -= OnIncreaseStat;
+        playerInteraction.FruitWeaponEatAndStatUpEvent -= OnRegisteConsumItemData;
         stat.OnStatUpdatedEvent -= OnStatUpdatedEvent;
         stat.OnDie -= OnDie;
     }
@@ -41,12 +45,19 @@ public class PlayerStatManager : MonoBehaviour
     }
 
     #region /subscribeMethod
-    private void IncreaseStat(string statKey, float eatValue)
+    private void OnIncreaseStat(WeaponSO weaponData)
     {
+        string statKey = ((StatType)((int)weaponData.type)).ToString();
+        float eatValue = weaponData.eatValue;
         //Debug.Log("벨류 업 : " + eatValue);
         float result = statHandler.Add(stat.GetStatValue(statKey), eatValue);
         stat.UpdateStat(statKey, result);
         //Debug.Log("먹고난 후 : " + result);
+    }
+
+    private void OnRegisteConsumItemData(WeaponSO weaponData)
+    {
+        eatWeapons.Add(weaponData);
     }
 
     private void OnStatUpdatedEvent(string key, float value)
@@ -85,6 +96,23 @@ public class PlayerStatManager : MonoBehaviour
     {
         float result = statHandler.Add(stat.GetStatValue("CurrentHealth"), heal, stat.GetStatValue("MaxHealth"));
         stat.UpdateCurrentHealth(result);
+    }
+    #endregion
+
+    #region /Data Method
+    public PlayerStatData SaveStatManagerData()
+    {
+        return stat.SavePlayerData(playerData);
+    }
+
+    public void LoadStatManagerData(PlayerStatData playerStatData)
+    {
+        stat.LoadPlayerData(playerData, playerStatData);
+    }
+
+    public void DeleteStatManagerData()
+    {
+        stat.DeletePlayerData();
     }
     #endregion
 }

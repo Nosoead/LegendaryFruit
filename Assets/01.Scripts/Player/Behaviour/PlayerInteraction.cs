@@ -8,7 +8,7 @@ using UnityEngine.Events;
 public class PlayerInteraction : MonoBehaviour
 {
     public UnityAction<WeaponSO> FruitWeapOnEquipEvent;
-    public UnityAction<string, float> FruitWeaponEatAndStatUpEvent; //먹은 리스트도 저장가능~
+    public UnityAction<WeaponSO> FruitWeaponEatAndStatUpEvent; //먹은 리스트도 저장가능~
     [SerializeField] private PlayerController controller;
     //[SerializeField] private TextMeshProUGUI promptText;
     private IInteractable currentInteractable;
@@ -138,7 +138,7 @@ public class PlayerInteraction : MonoBehaviour
         {
             if (CanHoldInteractWithObject && isHoldPressed)
             {
-                FruitWeaponEatAndStatUpEvent?.Invoke(((StatType)((int)weaponData.type)).ToString(), weaponData.eatValue);
+                FruitWeaponEatAndStatUpEvent?.Invoke(weaponData);
                 currentInteractable.Interact(isHoldPressed, isTapPressed);
                 ResetInteractionChecker();
                 ShowTapAndHoldPrompt(isOpen : false);
