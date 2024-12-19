@@ -7,7 +7,8 @@ using UnityEngine.UIElements;
 public class BossMonsterController : MonoBehaviour 
 {
     // TODO: 일단은 복제해서 쓰는데 나중에 몬스터와 보스몬스터 리펙토링 필요
-    private BossStateMachine stateMachine;
+    private BossStateMachine stateMachine;  
+    public MonsterAnimationController animator;
     public BossStateMachine StateMachine => stateMachine;
     private MonsterAttributeLogics monsterAttributeLogics = null;
     private MonsterAttributeLogics burnAttributeLogics = null;
@@ -29,6 +30,7 @@ public class BossMonsterController : MonoBehaviour
 
     private void Awake()
     {
+        animator = GetComponent<MonsterAnimationController>();    
         attributeLogicsDictionary = new MonsterAttributeLogicsDictionary();
         attributeLogicsDictionary.Initialize();
         stateMachine = new BossStateMachine(this);       //new AttributeLogics(); // 추상화클래스는 new를 할수없음
@@ -99,7 +101,8 @@ public class BossMonsterController : MonoBehaviour
     {
         Vector3 raytDirection = Vector3.right * lookDirection;
         RaycastHit2D hit = Physics2D.Raycast(transform.position, raytDirection, chaseRange, playerLayerMask);
-
+        Color rayColor = (hit.collider != null) ? Color.green : Color.red;
+        Debug.DrawRay(transform.position, raytDirection * chaseRange, rayColor);
         if (hit.collider != null)
         {
             target = hit.collider.gameObject;
@@ -152,43 +155,47 @@ public class BossMonsterController : MonoBehaviour
         }
     }
 
-    public void Attack(bool isNormalAttack)
+    public void Attack()
     {
-        Vector2 monsterPosition;
-        Vector2 boxPosition;
-        Vector2 boxSize;
-        if (isNormalAttack)
-        {
-            monsterPosition = transform.position;
-            boxPosition = monsterPosition + Vector2.right * (1f * lookDirection);
-            boxSize = new Vector2(1f,1f);
-        }
-        else
-        {
-            monsterPosition = transform.position;
-            boxPosition = monsterPosition + Vector2.right * (1f * lookDirection);
-            boxSize = new Vector2(4f,4f);
-        }
+        Vector2 monsterPosition = monsterPosition = transform.position;
+        Vector2 boxPosition = monsterPosition + Vector2.right * (1f * lookDirection);
+        Vector2 boxSize =  new Vector2(5f, 3f);
         Collider2D player = Physics2D.OverlapBox(boxPosition, boxSize, 0, playerLayerMask);
         if (player == null)
         {
             return;
         }
-        if(isNormalAttack)
+        monsterAttributeLogics.ApplyAttackLogic(player.gameObject, attackPower, attributeValue, attributeRateTime, attributeStack);
+        Debug.Log($"일반 공격 : {attackPower}");
+    }
+
+    public void AreaAttack()
+    {
+        Vector2 monsterPosition = transform.position;
+        Vector2 boxPosition = monsterPosition + Vector2.right * (0f * lookDirection);
+        Vector2 boxSize = new Vector2(12f, 3f);
+        Collider2D player = Physics2D.OverlapBox(boxPosition, boxSize, 0, playerLayerMask);
+        if (player == null)
         {
-            monsterAttributeLogics.ApplyAttackLogic(player.gameObject, attackPower, attributeValue, attributeRateTime, attributeStack);
+            return;
         }
-        else
-        {
-            monsterAttributeLogics.ApplyAttackLogic(player.gameObject, attackPower + 2, attributeValue,attributeRateTime,attributeStack);
-        }
+        monsterAttributeLogics.ApplyAttackLogic(player.gameObject, attackPower + 5, attributeValue, attributeRateTime, attributeStack);
+        Debug.Log($"강공 : {attackPower + 5}");
     }
 
     private void OnDrawGizmos()
     {
-        Vector2 boxSize = new Vector2(1f, 1f);        
+        Vector2 boxSize = new Vector2(12f, 3f);        
         Gizmos.color = Color.red;
-        Vector2 boxPosition = (Vector2)transform.position + Vector2.right * 4f * lookDirection;
+        Vector2 boxPosition = (Vector2)transform.position + Vector2.right * 0.5f * lookDirection;
+        Gizmos.DrawWireCube(boxPosition, boxSize);
+        OnDrawGizmos2();
+    }
+    private void OnDrawGizmos2()
+    {
+        Vector2 boxSize = new Vector2(5f, 3f);
+        Gizmos.color = Color.red;
+        Vector2 boxPosition = (Vector2)transform.position + Vector2.right * 1f * lookDirection;
         Gizmos.DrawWireCube(boxPosition, boxSize);
     }
 
