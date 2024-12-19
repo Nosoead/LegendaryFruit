@@ -7,6 +7,7 @@ public class MonsterAnimationController : AnimationController
     private int Attack = Animator.StringToHash("Attack");
     private int isDie = Animator.StringToHash("isDie");
     private int isHit = Animator.StringToHash("isHit");
+    private int isArea = Animator.StringToHash("isArea");
 
     private SpriteRenderer effectSprite;
 
@@ -61,5 +62,36 @@ public class MonsterAnimationController : AnimationController
     public void OnDie()
     {
         Animator.SetTrigger(isDie);
+    }
+
+    public void OnAreaAttack(bool isAreaCheck)
+    {
+        Animator.SetBool(isArea, isAreaCheck);
+    }
+    public bool OnAreaAttackCheck()
+    {
+        bool aniName = Animator.GetCurrentAnimatorStateInfo(0).IsName("Boss_AreaAttack");
+        float normalizedTime = Animator.GetCurrentAnimatorStateInfo(0).normalizedTime;
+        if (aniName && normalizedTime >= 1)
+        {
+            OnAreaAttack(false);
+            return true;
+        }
+        return false;
+
+    }
+
+    public void Delay(bool isDelay)
+    {
+        Animator.SetBool("isDelay", isDelay);
+    } 
+
+    public void AttackToIdle()
+    {
+        Animator.SetTrigger("attackToIdle");
+    }
+    public void AttackToAttack(bool isHold)
+    {
+        Animator.SetBool("AttackToAttack",isHold);
     }
 }

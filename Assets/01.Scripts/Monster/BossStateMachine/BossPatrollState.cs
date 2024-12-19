@@ -16,6 +16,8 @@ public class BossPatrollState : IState
 
     public void Enter()
     {
+        bossMonsterController.animator.OnMove();
+        Debug.Log("패트롤상태 진입");
         idleTime = Random.Range(5, 10);
         idleTimer = 0f;
     }

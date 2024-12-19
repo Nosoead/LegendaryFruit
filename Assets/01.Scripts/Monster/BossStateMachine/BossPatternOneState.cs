@@ -24,19 +24,37 @@ public class BossPatternOneState : IState
     public void Enter()
     {
         Debug.Log("패턴진입");
+        bossMonsterController.animator.OnAreaAttack(true);
     }
 
     public void Execute()
     {
+        time += Time.deltaTime;
         if (bossMonsterController.monsterGround.GetOnGround())
         {
-            time += Time.deltaTime;
-            if(time >=  2f)
+            bossMonsterController.animator.Delay(true);
+            if(time >= 2f)
             {
                 time = 0f;
-                Debug.Log("화상공격!");
-                bossMonsterController.Attack(false);
-                bossMonsterController.StateMachine.TransitionToState(bossMonsterController.StateMachine.attackState);
+
+                if (bossMonsterController.animator.OnAreaAttackCheck())
+                {
+                    bossMonsterController.animator.Delay(false);
+                    if(bossMonsterController.DetectPlayer())
+                    {
+                        bossMonsterController.StateMachine.TransitionToState(bossMonsterController.StateMachine.attackState);
+                    }
+                    else
+                    {
+                        bossMonsterController.animator.AttackToIdle();
+                        bossMonsterController.StateMachine.TransitionToState(bossMonsterController.StateMachine.idleState);
+                    }
+                }
+                else
+                {
+                    return;
+                }
+                return;
             }
         }
         else
@@ -47,6 +65,6 @@ public class BossPatternOneState : IState
 
     public void Exit()
     {
-        
+
     }
 }
