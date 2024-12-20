@@ -3,7 +3,9 @@ using UnityEngine;
 
 public class WeaponAnimationController : AnimationController
 {
+    private PlayerEquipment equipment;
     private PlayerController playerController;
+    private WeaponSO currentWeapon;
     private SpriteRenderer playerSprite;
     private SpriteRenderer[] effectSprite;
     private Transform handPosition;
@@ -14,6 +16,11 @@ public class WeaponAnimationController : AnimationController
     protected override void Awake()
     {
         base.Awake();
+        Debug.Log($"{Animator}");
+    }
+    private void Start()
+    {
+
     }
 
 
@@ -25,10 +32,12 @@ public class WeaponAnimationController : AnimationController
     private void OnEnable()
     {
         playerController.OnAttackEvent += OnAttackEvent;
+        equipment.OnEquipWeaponChanged += OnChangedAnimator;
     }
     private void OnDisable()
     {
         playerController.OnAttackEvent -= OnAttackEvent;
+        equipment.OnEquipWeaponChanged -= OnChangedAnimator;
     }
 
     protected override void EnsureComponents()
@@ -50,10 +59,20 @@ public class WeaponAnimationController : AnimationController
         {
             effectSprite = GetComponentsInChildren<SpriteRenderer>(true);
         }
+        if(equipment == null)
+        {
+            equipment = GetComponent<PlayerEquipment>();
+        }
     }
     private void OnAttackEvent()
     {
         Animator.SetTrigger(Attack);
+    }
+
+    private void OnChangedAnimator(WeaponSO weaponSO)
+    {
+        if(weaponSO.animatorController != null)
+        Animator.runtimeAnimatorController = weaponSO.animatorController;
     }
 
     private void CheckAttack()

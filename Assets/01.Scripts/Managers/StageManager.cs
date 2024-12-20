@@ -19,6 +19,7 @@ public class StageManager : Singleton<StageManager>
     protected override void Awake()
     {
         base.Awake();
+
     }
 
     public void CreatStage()
@@ -31,7 +32,7 @@ public class StageManager : Singleton<StageManager>
             obj.gameObject.SetActive(false);
             //Debug.Log($"key값 : {obj.stageSO.stageKey}");
         }
-        //CreatRewardTree();
+        CreatRewardTree();
         //CreatMonster();
     }
 
