@@ -3084,12 +3084,24 @@ MonoBehaviour:
   defenseText: {fileID: 2385034670373524669}
   attackSpeedText: {fileID: 3675533669298939168}
   moveSpeedText: {fileID: 498857719153973420}
-  itemNameText1: {fileID: 6674253792998274106}
-  itemDescription1: {fileID: 2650361630536475746}
-  itemAttackPower1: {fileID: 7575664699747534190}
-  itmeType1: {fileID: 1257207252024416683}
-  itemGrade1: {fileID: 534962901693821075}
-  itemEatValue1: {fileID: 606107537410967600}
+  itemNameText:
+  - {fileID: 6674253792998274106}
+  - {fileID: 383306360680026585}
+  itemDescription:
+  - {fileID: 2650361630536475746}
+  - {fileID: 9173778356961962275}
+  itemAttackPower:
+  - {fileID: 7575664699747534190}
+  - {fileID: 5970275978427526726}
+  itmeType:
+  - {fileID: 1257207252024416683}
+  - {fileID: 7921660350437642440}
+  itemGrade:
+  - {fileID: 534962901693821075}
+  - {fileID: 8986992782018105586}
+  itemEatValue:
+  - {fileID: 606107537410967600}
+  - {fileID: 7547483729720251955}
 --- !u!1 &8514783110371659987
 GameObject:
   m_ObjectHideFlags: 0
