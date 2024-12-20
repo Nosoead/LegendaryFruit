@@ -24,38 +24,26 @@ public class BossPatternOneState : IState
     public void Enter()
     {
         Debug.Log("패턴진입");
+        bossMonsterController.animator.Delay(false);
         bossMonsterController.animator.OnAreaAttack(true);
     }
 
     public void Execute()
     {
-        time += Time.deltaTime;
         if (bossMonsterController.monsterGround.GetOnGround())
         {
             bossMonsterController.animator.Delay(true);
-            if(time >= 2f)
+            if (bossMonsterController.DetectPlayer())
             {
-                time = 0f;
-
-                if (bossMonsterController.animator.OnAreaAttackCheck())
-                {
-                    bossMonsterController.animator.Delay(false);
-                    if(bossMonsterController.DetectPlayer())
-                    {
-                        bossMonsterController.StateMachine.TransitionToState(bossMonsterController.StateMachine.attackState);
-                    }
-                    else
-                    {
-                        bossMonsterController.animator.AttackToIdle();
-                        bossMonsterController.StateMachine.TransitionToState(bossMonsterController.StateMachine.idleState);
-                    }
-                }
-                else
-                {
-                    return;
-                }
-                return;
+                bossMonsterController.StateMachine.TransitionToState(bossMonsterController.StateMachine.attackState);
             }
+            else
+            {
+                bossMonsterController.animator.AttackToIdle();
+                bossMonsterController.StateMachine.TransitionToState(bossMonsterController.StateMachine.idleState);
+            }
+            return;
+
         }
         else
         {
@@ -65,6 +53,6 @@ public class BossPatternOneState : IState
 
     public void Exit()
     {
-
+        bossMonsterController.animator.OnAreaAttack(false);
     }
 }

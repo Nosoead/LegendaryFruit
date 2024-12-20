@@ -22,9 +22,9 @@ public class BossAttackState : IState
 
     public void Enter()
     {
+        bossMonsterController.animator.Delay(false);
         Debug.Log("공격상태 진입!");
         bossMonsterController.animator.OnIdle();
-        bossMonsterController.animator.AttackToAttack(true);
         time = Time.deltaTime;
     }
 
@@ -41,6 +41,7 @@ public class BossAttackState : IState
                 if (bossMonsterController.DetectPlayer() && attackCount >= 3)
                 {
                     attackCount = 0;
+                    bossMonsterController.animator.Delay(true);
                     bossMonsterController.StateMachine.TransitionToState(bossMonsterController.StateMachine.patternOneState);
                 }
             }

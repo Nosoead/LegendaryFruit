@@ -74,7 +74,6 @@ public class MonsterAnimationController : AnimationController
         float normalizedTime = Animator.GetCurrentAnimatorStateInfo(0).normalizedTime;
         if (aniName && normalizedTime >= 1)
         {
-            OnAreaAttack(false);
             return true;
         }
         return false;
