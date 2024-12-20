@@ -49,7 +49,7 @@ public class StageManager : Singleton<StageManager>
     {
         //TODO 오브젝트 풀 매니저 사용
         monster = ResourceManager.Instance.LoadResource<Monster>("NPC/Monster");
-        testPoolManager.Instance.CreatePool<Monster>(monster, false, 5, 50);
+        //testPoolManager.Instance.CreatePool<Monster>(monster, false, 5, 50);
         var obj = testPoolManager.Instance.GetObject<Monster>();
         //for (int i = 0; i < 5; i++)
         //{
