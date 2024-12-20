@@ -31,8 +31,8 @@ public class StageManager : Singleton<StageManager>
             obj.gameObject.SetActive(false);
             //Debug.Log($"key값 : {obj.stageSO.stageKey}");
         }
-        CreatRewardTree();
-        CreatMonster();
+        //CreatRewardTree();
+        //CreatMonster();
     }
 
     private void CreatRewardTree()
@@ -40,9 +40,9 @@ public class StageManager : Singleton<StageManager>
         rewardTree = ResourceManager.Instance.LoadResource<RewardTree>("NPC/RewardTree");
         rewardTreeObject = Instantiate(rewardTree.gameObject);
         rewardTreeObject.SetActive(false);
-        shelterNPC = ResourceManager.Instance.LoadResource<ShelterNPC>("NPC/ShelterNPC"); ;
-        shelterNPCObject = Instantiate(shelterNPC.gameObject);
-        shelterNPCObject.SetActive(false);
+        //shelterNPC = ResourceManager.Instance.LoadResource<ShelterNPC>("NPC/ShelterNPC"); ;
+        //shelterNPCObject = Instantiate(shelterNPC.gameObject);
+        //shelterNPCObject.SetActive(false);
     }
 
     private void CreatMonster()
@@ -62,6 +62,7 @@ public class StageManager : Singleton<StageManager>
 
     public void StartStage(string key)
     {
+        Debug.Log("dddddddddddd");
         player = GameManager.Instance.player;
         var stage = stageDictionary[key];
         stage.gameObject.SetActive(true);
