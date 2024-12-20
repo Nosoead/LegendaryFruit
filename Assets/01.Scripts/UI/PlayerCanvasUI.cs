@@ -10,35 +10,30 @@ public class PlayerCanvasUI : UIBase
     [SerializeField] private TextMeshProUGUI inGameMoneyText;
     [SerializeField] private TextMeshProUGUI lobbyMoneyText;
     [SerializeField] private Image healthBar;
+    [SerializeField] private PlayerStatManager statManager;
+
     private SaveDataContainer saveDataContainer;
 
-    private void Update()
+    private void Awake()
     {
-        if (saveDataContainer != null)
+        if (statManager == null)
         {
-            GetDataToText();
-            healthBar.fillAmount = saveDataContainer.playerStatData.currentHealth;
+            statManager = GetComponentInParent<PlayerStatManager>();
         }
     }
-
-    public override void Open()
+    private void OnEnable()
     {
-        if (saveDataContainer == null)
-        {
-            GetStatData();
-            healthBar = GetComponent<Image>();
-        }
-        base.Open();
-    }
-    private void GetStatData()
-    {
-        saveDataContainer = PlayerInfoManager.Instance.GetSaveData();
+        statManager.OnHealthDataToUIEvent += OnHealthUpdateEvent;
     }
 
-    private void GetDataToText()
+    private void OnDisable()
     {
-        currentHealthText.text = ($"{saveDataContainer.playerStatData.maxHealth.ToString()}/{saveDataContainer.playerStatData.currentHealth.ToString()}");
-        //inGameMoneyText.text = 
-        //lobbyMoneyText.text =
+        statManager.OnHealthDataToUIEvent -= OnHealthUpdateEvent;
+    }
+
+    private void OnHealthUpdateEvent(float healthFillAmount, float currentHealth, float maxHealth)
+    {
+        healthBar.fillAmount = healthFillAmount;
+        currentHealthText.text = $"{currentHealth}/{maxHealth}";
     }
 }

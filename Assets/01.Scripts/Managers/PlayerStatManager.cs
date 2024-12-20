@@ -5,6 +5,7 @@ using UnityEngine.Events;
 public class PlayerStatManager : MonoBehaviour
 {
     public UnityAction<string, float> OnSubscribeToStatUpdateEvent;
+    public UnityAction<float, float, float> OnHealthDataToUIEvent;
     [SerializeField] private PlayerSO playerData;
     [SerializeField] private PlayerInteraction playerInteraction;
     [SerializeField] private PlayerAnimationController playerAnimationController;
@@ -28,6 +29,7 @@ public class PlayerStatManager : MonoBehaviour
         playerInteraction.FruitWeaponEatAndStatUpEvent += OnIncreaseStat;
         playerInteraction.FruitWeaponEatAndStatUpEvent += OnRegisteConsumeItemData;
         stat.OnStatUpdatedEvent += OnStatUpdatedEvent;
+        stat.OnHealthUpdateEvent += OnHealthUpdateEvent;
         stat.OnDie += OnDie;
     }
 
@@ -36,6 +38,7 @@ public class PlayerStatManager : MonoBehaviour
         playerInteraction.FruitWeaponEatAndStatUpEvent -= OnIncreaseStat;
         playerInteraction.FruitWeaponEatAndStatUpEvent -= OnRegisteConsumeItemData;
         stat.OnStatUpdatedEvent -= OnStatUpdatedEvent;
+        stat.OnHealthUpdateEvent -= OnHealthUpdateEvent;
         stat.OnDie -= OnDie;
     }
     private void Start()
@@ -65,6 +68,12 @@ public class PlayerStatManager : MonoBehaviour
     private void OnStatUpdatedEvent(string key, float value)
     {
         OnSubscribeToStatUpdateEvent?.Invoke(key, value);
+    }
+
+    private void OnHealthUpdateEvent(float currentHealth, float maxHealth)
+    {
+        float healthFillAmount = currentHealth/maxHealth;
+        OnHealthDataToUIEvent?.Invoke(healthFillAmount, currentHealth, maxHealth);
     }
 
     private void OnDie()

@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Collections.LowLevel.Unsafe;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -11,6 +12,7 @@ public class PlayerStat : Stat
 {
     // TODO: Controller에서 PlayerStat 업데이트 로직 추가
     public UnityAction<string, float> OnStatUpdatedEvent;
+    public UnityAction<float, float> OnHealthUpdateEvent;
     public UnityAction OnDie;
     private Dictionary<string, float> statDictionary = new Dictionary<string, float>();
     private PlayerStatData playerStatData = new PlayerStatData();
@@ -50,12 +52,10 @@ public class PlayerStat : Stat
         if (statDictionary.ContainsKey(statKey))
         {
             statDictionary[statKey] = currentValue;
-            //Debug.Log("먹고난 후 : " + stats[statKey]);
-            Debug.Log($"{statKey} : {currentValue}");
             OnStatUpdatedEvent?.Invoke(statKey, currentValue);
-            if (statKey == "CurrentHealth" && statDictionary["CurrentHealth"] == 0)
+            if (statKey == "MaxHealth")
             {
-                OnDie?.Invoke();
+                OnHealthUpdateEvent?.Invoke(statDictionary["CurrentHealth"], currentValue);
             }
         }
         else
@@ -69,7 +69,12 @@ public class PlayerStat : Stat
         if (statDictionary.ContainsKey("CurrentHealth"))
         {
             float newValue = Mathf.Clamp(currentHealth, 0f, statDictionary["MaxHealth"]);
-            UpdateStat("CurrentHealth", newValue);
+            statDictionary["CurrentHealth"] = newValue;
+            OnHealthUpdateEvent?.Invoke(newValue, statDictionary["MaxHealth"]);
+            if (statDictionary["CurrentHealth"] == 0)
+            {
+                OnDie?.Invoke();
+            }
         }
     }
 
@@ -89,6 +94,7 @@ public class PlayerStat : Stat
         {
             OnStatUpdatedEvent?.Invoke(stat.Key, stat.Value);
         }
+        OnHealthUpdateEvent?.Invoke(statDictionary["CurrentHealth"], statDictionary["MaxHealth"]);
     }
 
     public void DeletePlayerData()
