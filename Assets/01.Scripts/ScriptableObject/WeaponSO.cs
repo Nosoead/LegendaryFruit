@@ -14,4 +14,5 @@ public class WeaponSO : GameSO
     public int arrtibuteStatck;
     public Sprite weaponSprite;
     public Sprite rewardSprite;
+    public AnimatorOverrideController animatorController;
 }

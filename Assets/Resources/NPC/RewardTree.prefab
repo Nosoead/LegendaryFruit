@@ -206,7 +206,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bab1d63b55d5c7a42b27c0564b85cdd0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rewardPrefab: {fileID: 0}
+  rewardPrefab: {fileID: 6237326417099159519, guid: 9ef1feef5ea18864484183512228d71c, type: 3}
   spawnPositionsRoot: {fileID: 8329019302333703201}
   spawnPositions: []
   rewards: []
