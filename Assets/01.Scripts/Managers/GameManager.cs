@@ -20,7 +20,7 @@ public class GameManager : Singleton<GameManager>
     private void Start()
     {
         GameStart();
-        Application.targetFrameRate = 60;
+        Application.targetFrameRate = 50;
         Time.timeScale = 1f;
     }
 

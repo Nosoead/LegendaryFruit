@@ -9,7 +9,7 @@ public class PlayerInfoManager : Singleton<PlayerInfoManager>
     public UnityAction<SaveDataContainer> OnLoadEvent;
     [SerializeField] private PlayerStatManager statManager;
     [SerializeField] private PlayerEquipment equipment;
-    SaveDataContainer saveDataContainer;
+    private SaveDataContainer saveDataContainer;
     protected override void Awake()
     {
         EnsureComponents();
@@ -36,15 +36,20 @@ public class PlayerInfoManager : Singleton<PlayerInfoManager>
         }
     }
 
-    public void CallSaveData()
+    private void CallSaveData()
     {
         saveDataContainer.playerStatData = statManager.SaveStatManagerData();
-
-        Save();
     }
 
-    private void Save()
+    public SaveDataContainer GetSaveData()
     {
+        CallSaveData();
+        return saveDataContainer;
+    }
+
+    public void Save()
+    {
+        CallSaveData();
         DataManager.Instance.SaveData(saveDataContainer);
     }
 
