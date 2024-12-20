@@ -22,7 +22,6 @@ public class PlayerSO : GameSO
     public SyncStat sync = new SyncStat();
 }
 
-//PlayerStat 저장 그릇
 [System.Serializable]
 public class PlayerStatData
 {

@@ -39,7 +39,7 @@ public class PlayerInfoManager : Singleton<PlayerInfoManager>
     public void CallSaveData()
     {
         saveDataContainer.playerStatData = statManager.SaveStatManagerData();
-
+        ///saveDataContainer.weaponData.eatWeaponDataList = statManager.SaveConsumeData();
         Save();
     }
 
@@ -52,11 +52,13 @@ public class PlayerInfoManager : Singleton<PlayerInfoManager>
     {
         saveDataContainer = DataManager.Instance.LoadData<SaveDataContainer>();
         statManager.LoadStatManagerData(saveDataContainer.playerStatData);
+        statManager.LoadConsumeData(saveDataContainer.weaponData.eatWeaponDataList);
     }
 
     public void Delete()
     {
         statManager.DeleteStatManagerData();
+        statManager.DeleteConsumeData();
     }
 }
 

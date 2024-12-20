@@ -20,12 +20,9 @@ public class DataManager : Singleton<DataManager>
 
     public T LoadData<T>()
     {
-        //if (File.Exists(savePath + $"/{typeof(T).ToString()}.txt"))
-        //{
+        Debug.Log(savePath + $"/{typeof(T).ToString()}.txt");
         string loadJson = File.ReadAllText(savePath + $"/{typeof(T).ToString()}.txt");
         return JsonUtility.FromJson<T>(loadJson);
-        //}
-        //return default;
     }
 
     public void DeleteData<T>()

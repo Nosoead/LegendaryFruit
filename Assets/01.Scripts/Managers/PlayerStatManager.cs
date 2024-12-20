@@ -20,12 +20,13 @@ public class PlayerStatManager : MonoBehaviour
         }
         stat = new PlayerStat();
         statHandler = new StatHandler();
+        playerData = Instantiate(playerData);
     }
 
     private void OnEnable()
     {
         playerInteraction.FruitWeaponEatAndStatUpEvent += OnIncreaseStat;
-        playerInteraction.FruitWeaponEatAndStatUpEvent += OnRegisteConsumItemData;
+        playerInteraction.FruitWeaponEatAndStatUpEvent += OnRegisteConsumeItemData;
         stat.OnStatUpdatedEvent += OnStatUpdatedEvent;
         stat.OnDie += OnDie;
     }
@@ -33,7 +34,7 @@ public class PlayerStatManager : MonoBehaviour
     private void OnDisable()
     {
         playerInteraction.FruitWeaponEatAndStatUpEvent -= OnIncreaseStat;
-        playerInteraction.FruitWeaponEatAndStatUpEvent -= OnRegisteConsumItemData;
+        playerInteraction.FruitWeaponEatAndStatUpEvent -= OnRegisteConsumeItemData;
         stat.OnStatUpdatedEvent -= OnStatUpdatedEvent;
         stat.OnDie -= OnDie;
     }
@@ -55,9 +56,10 @@ public class PlayerStatManager : MonoBehaviour
         //Debug.Log("먹고난 후 : " + result);
     }
 
-    private void OnRegisteConsumItemData(WeaponSO weaponData)
+    private void OnRegisteConsumeItemData(WeaponSO weaponData)
     {
         eatWeapons.Add(weaponData);
+        Debug.Log(eatWeapons.Count);
     }
 
     private void OnStatUpdatedEvent(string key, float value)
@@ -113,6 +115,21 @@ public class PlayerStatManager : MonoBehaviour
     public void DeleteStatManagerData()
     {
         stat.DeletePlayerData();
+    }
+
+    public List<WeaponSO> SaveConsumeData()
+    {
+        return eatWeapons;
+    }
+
+    public void LoadConsumeData(List<WeaponSO> weaponDataList)
+    {
+        eatWeapons = weaponDataList;
+    }
+
+    public void DeleteConsumeData()
+    {
+        eatWeapons.Clear();
     }
     #endregion
 }
