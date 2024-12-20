@@ -586,7 +586,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1589484321516335773
 RectTransform:
   m_ObjectHideFlags: 0
@@ -630,7 +630,7 @@ Canvas:
   m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 5
   m_TargetDisplay: 0
 --- !u!114 &3284990415138677269
 MonoBehaviour:
@@ -684,7 +684,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b05be541893e4d149b9deb6dec69f3ee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  uiDialogue: {fileID: 0}
 --- !u!1 &2624022989768861394
 GameObject:
   m_ObjectHideFlags: 0
