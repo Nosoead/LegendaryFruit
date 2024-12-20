@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f30345d6f773874da4088be7b3c7755, type: 3}
   m_Name: SlowDownWeapon
   m_EditorClassIdentifier: 
-  name: "\uD3EC\uB3C4"
+  weaponName: "\uD3EC\uB3C4"
   description: "\uD3EC\uB3C4\uCE7C~"
   attackPower: 35
   type: 1

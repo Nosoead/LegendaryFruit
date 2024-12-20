@@ -13,8 +13,9 @@ public class PlayerEquipment : MonoBehaviour
     [SerializeField] private PlayerInteraction interaction;
     [SerializeField] private SpriteRenderer weaponSprite;
     [SerializeField] private PlayerController controller;
+    private WeaponSO startingWeaponData;
 
-    private List<WeaponSO> weapons = new List<WeaponSO>();
+    private List<WeaponSO> equipWeapons = new List<WeaponSO>();
     private int maxWeaponCapacity = 2;
     private int currentEquipWeaponIndex = 0;
 
@@ -58,22 +59,22 @@ public class PlayerEquipment : MonoBehaviour
 
     private void OnSwapWeaponEvent()
     {
-        if (weapons.Count < 2)
+        if (equipWeapons.Count < 2)
         {
             currentEquipWeaponIndex = 0;
             return;
         }
-        currentEquipWeaponIndex = (currentEquipWeaponIndex + 1) % weapons.Count;
+        currentEquipWeaponIndex = (currentEquipWeaponIndex + 1) % equipWeapons.Count;
         UpdateWeaponSprite();
     }
 
     private void OnWeaponEquipEvent(WeaponSO weaponData)
     {
 
-        if (weapons.Count < maxWeaponCapacity)
+        if (equipWeapons.Count < maxWeaponCapacity)
         {
-            weapons.Add(weaponData);
-            currentEquipWeaponIndex = weapons.Count-1;
+            equipWeapons.Add(weaponData);
+            currentEquipWeaponIndex = equipWeapons.Count-1;
         }
         else
         {
@@ -87,15 +88,32 @@ public class PlayerEquipment : MonoBehaviour
         //TODO : 오브젝트풀 들고와서 SO랑 스프라이트 덮어씌우기
         //매번 여기서 참조풀려서 경고 뜰 것. -> stageManager에서 풀링 후 껍데기 들고와서 씌우기
         var discardedObject = Instantiate(weaponPrefab, transform.position, Quaternion.identity);
-        discardedObject.weaponData = weapons[currentEquipWeaponIndex];
+        discardedObject.weaponData = equipWeapons[currentEquipWeaponIndex];
         discardedObject.EnsureComponents();
-        weapons[currentEquipWeaponIndex] = weaponData;
+        equipWeapons[currentEquipWeaponIndex] = weaponData;
     }
 
     private void UpdateWeaponSprite()
     {
-        weaponSprite.sprite = weapons[currentEquipWeaponIndex].weaponSprite;
-        OnEquipWeaponChanged?.Invoke(weapons[currentEquipWeaponIndex]);
+        weaponSprite.sprite = equipWeapons[currentEquipWeaponIndex].weaponSprite;
+        OnEquipWeaponChanged?.Invoke(equipWeapons[currentEquipWeaponIndex]);
     }
 
+    public (List<WeaponSO>, int) SaveEquipmentData()
+    {
+        return (equipWeapons, currentEquipWeaponIndex);
+    }
+
+    public void LoadEquipmentData(List<WeaponSO> weaponDataList, int currentEquipWeaponIndex)
+    {
+        equipWeapons = weaponDataList;
+        this.currentEquipWeaponIndex = currentEquipWeaponIndex;
+        UpdateWeaponSprite();
+    }
+
+    public void DeleteEquipmentData()
+    {
+        equipWeapons.Clear();
+        currentEquipWeaponIndex = 0;
+    }
 }
