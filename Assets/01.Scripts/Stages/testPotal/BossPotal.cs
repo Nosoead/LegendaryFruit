@@ -1,8 +1,8 @@
-﻿public class BossPotal : Potal
+﻿public class BossPotal : testPotal
 {
     protected override void ChagedStage()
     {
         if (GameManager.Instance.isClear)
-            StageManager.Instance.StageChange("Boss");
+            testStageManager.Instance.StageChange("Boss");
     }
 }

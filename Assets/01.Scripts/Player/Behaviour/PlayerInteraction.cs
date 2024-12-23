@@ -88,7 +88,6 @@ public class PlayerInteraction : MonoBehaviour
             return;
         }
         isTapPressed = isTapPressedSignal;
-        Debug.Log(isTapPressed);
         if (canTapInteractWithObject && isTapPressed)
         {
             currentInteractable.Interact(isHoldPressed, isTapPressed);

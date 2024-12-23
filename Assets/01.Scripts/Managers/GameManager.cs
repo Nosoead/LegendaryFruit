@@ -9,25 +9,33 @@ public class GameManager : Singleton<GameManager>
     public bool isClear = false;
     public bool isGetWeapon = false;
     public bool isCreatReward = false;
+    public StageManager stageManager;
 
     protected override void Awake()
     {
         base.Awake();
         //test용
         player = GameObject.Find("Mainplayer");
+        Debug.Log(player.ToString());
+        if (stageManager == null)
+        {
+            stageManager = TryGetComponent(out StageManager _stageManager)?
+                _stageManager : gameObject.AddComponent<StageManager>();
+        }
     }
 
     private void Start()
     {
         GameStart();
-        Application.targetFrameRate = 50;
+        Application.targetFrameRate = 60;
         Time.timeScale = 1f;
     }
 
     public void GameStart()
     {
-        StageManager.Instance.CreatStage();
-        StageManager.Instance.StartStage("Lobby");
+        stageManager.ChangeStage(StageType.Stage0);
+        //testStageManager.Instance.CreatStage();
+        //testStageManager.Instance.StartStage("Lobby");
         //StageManager.Instance.CreatRewardTree();
     }
 

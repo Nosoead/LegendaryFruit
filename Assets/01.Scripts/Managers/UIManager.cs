@@ -5,8 +5,6 @@ using UnityEngine;
 
 public class UIManager : Singleton<UIManager>
 {
-    // 옵션에서 설정한 UI창을 false로 설정하여 비활성화
-    // 필드에 상태를 저장
     private Dictionary<string, UIBase> uiDictionary = new Dictionary<string, UIBase>();
     private Stack<UIBase> uiActiveStack = new Stack<UIBase>();
     private string path;
@@ -48,7 +46,6 @@ public class UIManager : Singleton<UIManager>
         return null;
     }
 
-    // 열기
     private void OpenUI<T>(T ui, bool isPreviousWindowActive) where T : UIBase
     {
         ui.Open();
@@ -59,7 +56,6 @@ public class UIManager : Singleton<UIManager>
         uiActiveStack.Push(ui);
     }
 
-    // 닫기
     private void CloseUI<T>(T ui, bool isPreviousWindowActive) where T : UIBase
     {
         ui.Close();
@@ -69,7 +65,6 @@ public class UIManager : Singleton<UIManager>
         }
     }
 
-    // 토글
     public void ToggleUI<T>(bool isPreviousWindowActive) where T : UIBase
     {
         T ui = GetUI<T>();

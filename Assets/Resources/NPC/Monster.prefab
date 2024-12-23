@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 2346401123223086345}
   - component: {fileID: 3003880979825702844}
   - component: {fileID: 6781026936557803701}
-  - component: {fileID: -5357815022538053520}
+  - component: {fileID: 1838082105423512761}
   m_Layer: 10
   m_Name: Monster
   m_TagString: Untagged
@@ -188,8 +188,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 23f0b54f9a92b894ea81d898c41966c7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  animationController: {fileID: 0}
   monsterGround: {fileID: 3003880979825702844}
-  monster: {fileID: 2305174673618592602}
   playerLayerMask:
     serializedVersion: 2
     m_Bits: 512
@@ -237,7 +237,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   monsterData: {fileID: 11400000, guid: 00a83f927b71fd640adce8f91d0cd574, type: 2}
---- !u!114 &-5357815022538053520
+--- !u!114 &1838082105423512761
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -246,6 +246,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 1696436933495674912}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 428c563a5aa9f5445bbd89588ddd66a3, type: 3}
+  m_Script: {fileID: 11500000, guid: dd36a7c5d4e36ce4685e7b0af89e6316, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 

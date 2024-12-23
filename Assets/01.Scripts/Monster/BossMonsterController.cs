@@ -6,7 +6,7 @@ using UnityEngine.UIElements;
 
 public class BossMonsterController : MonoBehaviour 
 {
-    // TODO: ÀÏ´ÜÀº º¹Á¦ÇØ¼­ ¾²´Âµ¥ ³ªÁß¿¡ ¸ó½ºÅÍ¿Í º¸½º¸ó½ºÅÍ ¸®ÆåÅä¸µ ÇÊ¿ä
+    // TODO: ï¿½Ï´ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ø¼ï¿½ ï¿½ï¿½ï¿½Âµï¿½ ï¿½ï¿½ï¿½ß¿ï¿½ ï¿½ï¿½ï¿½Í¿ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ä¸µ ï¿½Ê¿ï¿½
     private BossStateMachine stateMachine;  
     public MonsterAnimationController animator;
     public BossStateMachine StateMachine => stateMachine;
@@ -33,26 +33,30 @@ public class BossMonsterController : MonoBehaviour
         animator = GetComponent<MonsterAnimationController>();    
         attributeLogicsDictionary = new MonsterAttributeLogicsDictionary();
         attributeLogicsDictionary.Initialize();
-        stateMachine = new BossStateMachine(this);       //new AttributeLogics(); // Ãß»óÈ­Å¬·¡½º´Â new¸¦ ÇÒ¼ö¾øÀ½
+        stateMachine = new BossStateMachine(this);       //new AttributeLogics(); // ï¿½ß»ï¿½È­Å¬ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ newï¿½ï¿½ ï¿½Ò¼ï¿½ï¿½ï¿½ï¿½ï¿½
     }
 
-    private void Start()
+    private void OnEnable()
     {
-        statManager.SubscribeToStatUpdateEvent(UpdateStat);
-        statManager.SetInitStat();
-        StateMachine.Initialize(StateMachine.patrollState);
+        statManager.OnSubscribeToStatUpdateEvent += OnStatUpdatedEvent;
     }
 
     private void OnDisable()
     {
-        statManager.UnsubscribeToStatUpdateEvent(UpdateStat);
+        statManager.OnSubscribeToStatUpdateEvent -= OnStatUpdatedEvent;
     }
+
+    private void Start()
+    {
+        StateMachine.Initialize(StateMachine.patrollState);
+    }
+
     private void Update()
     {
         StateMachine.Excute();
     }
 
-    private void UpdateStat(string statKey, float value)
+    private void OnStatUpdatedEvent(string statKey, float value)
     {
         switch (statKey)
         {
@@ -89,15 +93,15 @@ public class BossMonsterController : MonoBehaviour
         stateMachine.UpdateStat(this);  
     }
 
-    public void ReverseDirection() // ¹æÇâ ¹ÝÀü
+    public void ReverseDirection() // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
     {
-        //xÃà ¹ÝÀü
+        //xï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
         Vector3 scale = transform.localScale;
         scale.x *= -1;
         lookDirection *= -1f;
         transform.localScale = scale;
     }
-    public bool DetectPlayer() //ÇÃ·¹ÀÌ¾î Ã£´Â ·¹ÀÌ
+    public bool DetectPlayer() //ï¿½Ã·ï¿½ï¿½Ì¾ï¿½ Ã£ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
     {
         Vector3 raytDirection = Vector3.right * lookDirection;
         RaycastHit2D hit = Physics2D.Raycast(transform.position, raytDirection, chaseRange, playerLayerMask);
@@ -127,7 +131,7 @@ public class BossMonsterController : MonoBehaviour
         return false;
     }
 
-    //public bool InAttackRange() // ÇÃ·¹ÀÌ¾î°¡ »ç°Å¸® ¾È¿¡ ¿À¸é È°¼ºÈ­
+    //public bool InAttackRange() // ï¿½Ã·ï¿½ï¿½Ì¾î°¡ ï¿½ï¿½Å¸ï¿½ ï¿½È¿ï¿½ ï¿½ï¿½ï¿½ï¿½ È°ï¿½ï¿½È­
     //{
     //    Vector3 raytDirection = Vector3.right * lookDirection;
     //    RaycastHit2D hit = Physics2D.Raycast(transform.position, raytDirection, attackDistance, playerLayerMask);
@@ -166,7 +170,7 @@ public class BossMonsterController : MonoBehaviour
             return;
         }
         monsterAttributeLogics.ApplyAttackLogic(player.gameObject, attackPower, attributeValue, attributeRateTime, attributeStack);
-        Debug.Log($"ÀÏ¹Ý °ø°Ý : {attackPower}");
+        Debug.Log($"ï¿½Ï¹ï¿½ ï¿½ï¿½ï¿½ï¿½ : {attackPower}");
     }
 
     public void AreaAttack()
@@ -180,7 +184,7 @@ public class BossMonsterController : MonoBehaviour
             return;
         }
         monsterAttributeLogics.ApplyAttackLogic(player.gameObject, attackPower + 5, attributeValue, attributeRateTime, attributeStack);
-        Debug.Log($"°­°ø : {attackPower + 5}");
+        Debug.Log($"ï¿½ï¿½ï¿½ï¿½ : {attackPower + 5}");
     }
 
     private void OnDrawGizmos()

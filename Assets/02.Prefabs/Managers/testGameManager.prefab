@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &9204995477611893096
+--- !u!1 &8239386384741280135
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,43 +8,43 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 2182815942138493474}
-  - component: {fileID: 4843964198618699736}
+  - component: {fileID: 5073707616562433542}
+  - component: {fileID: 2377003536665389078}
   m_Layer: 0
-  m_Name: StageManager
+  m_Name: testGameManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &2182815942138493474
+--- !u!4 &5073707616562433542
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9204995477611893096}
+  m_GameObject: {fileID: 8239386384741280135}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -6, y: -1.5, z: 0}
+  m_LocalPosition: {x: -4.75657, y: -2.8945339, z: -0.010269534}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &4843964198618699736
+--- !u!114 &2377003536665389078
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9204995477611893096}
+  m_GameObject: {fileID: 8239386384741280135}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fd3cfa182ab4c654cafa957e6745881d, type: 3}
+  m_Script: {fileID: 11500000, guid: dab0c7d478ef0124695aa610cc169824, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tree: {fileID: 8161741214298841888, guid: ba32e021462fe494d85c86467112a9f3, type: 3}
-  monster: {fileID: 2305174673618592602, guid: 8549a5bfa839b094089b3d7382f280df, type: 3}
-  reward: []
-  stagePrefab: {fileID: 2475631003490035242, guid: 64024d3e02be5b0478e8ef4846ad1274, type: 3}
+  player: {fileID: 0}
+  isClear: 0
+  isGetWeapon: 0
+  isCreatReward: 0

@@ -11,7 +11,6 @@ public class PlayerAnimationController : AnimationController
     private static readonly int isHit = Animator.StringToHash("isHit");
     private PlayerController controller;
     private PlayerGround playerGround;
-    private PlayerMovement playerMovement;
 
     [SerializeField] private Animator weaponAnimator;
 
@@ -42,10 +41,6 @@ public class PlayerAnimationController : AnimationController
         if (playerGround == null)
         {
             playerGround = GetComponent<PlayerGround>();
-        }
-        if(playerMovement == null)
-        {
-            playerMovement = GetComponent<PlayerMovement>();
         }
     }
 

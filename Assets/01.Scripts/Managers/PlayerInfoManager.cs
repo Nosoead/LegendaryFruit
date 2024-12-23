@@ -80,10 +80,10 @@ public class PlayerInfoManager : Singleton<PlayerInfoManager>
 [System.Serializable]
 public class SaveDataContainer
 {
-    public PlayerStatData playerStatData = new PlayerStatData();//대충 세팅 완료
+    public PlayerStatData playerStatData = new PlayerStatData();
     public WeaponData weaponData = new WeaponData();
-    public int currentStage; //stageManager하면서
-    public CurrencyData currencyData = new CurrencyData(); //재화만들면
+    public int currentStage;
+    public CurrencyData currencyData = new CurrencyData();
 }
 
 [System.Serializable]

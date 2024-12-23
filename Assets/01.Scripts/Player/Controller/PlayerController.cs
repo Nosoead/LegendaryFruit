@@ -19,66 +19,59 @@ public class PlayerController : MonoBehaviour
     public UnityAction OnSwapWeaponEvent;
     public UnityAction<bool> OnTapInteractEvent;
     public UnityAction<bool> OnHoldInteractEvent;
-    public UnityAction OnUserInfoEvent;
-    public UnityAction OnSettingWindowEvent;
 
-    public PlayerInput Input;
+    public PlayerInput input;
     private bool isLeftPressed;
     private bool isRightPressed;
     private bool isDownPressed;
     private bool isUpPressed;
     private void Awake()
     {
-        Input = new PlayerInput();
+        input = new PlayerInput();
     }
 
     private void OnEnable()
     {
         //PlayerMovement
-        Input.Player.Move.started += PlayerDirection;
-        Input.Player.Move.started += PlayerMove;
+        input.Player.Move.started += PlayerDirection;
+        input.Player.Move.started += PlayerMove;
         //Input.Player.Move.performed += PlayerMove;
-        Input.Player.Move.canceled += PlayerMove;
+        input.Player.Move.canceled += PlayerMove;
 
         //SubCommand ex) UpArrow + Attak, DownArrow + Jump ...
-        Input.Player.SubCommand.started += PlayerSubCommand;
-        Input.Player.SubCommand.canceled += PlayerSubCommand;
+        input.Player.SubCommand.started += PlayerSubCommand;
+        input.Player.SubCommand.canceled += PlayerSubCommand;
 
         //PlayerMovement + alpha
-        Input.Player.Dash.started += PlayerDash;
-        Input.Player.Dash.canceled += PlayerDash;
-        Input.Player.Jump.started += PlayerJump;
-        Input.Player.Jump.canceled += PlayerJump;
+        input.Player.Dash.started += PlayerDash;
+        input.Player.Dash.canceled += PlayerDash;
+        input.Player.Jump.started += PlayerJump;
+        input.Player.Jump.canceled += PlayerJump;
 
         //PlayerAttack
-        Input.Player.Attack.started += PlayerAttack;
+        input.Player.Attack.started += PlayerAttack;
         //Input.Player.Attack.canceled += PlayerAttack;
-        Input.Player.Skill1.performed += PlayerSkill1;
-        Input.Player.Skill1.canceled += PlayerSkill1;
-        Input.Player.Skill2.performed += PlayerSkill2;
-        Input.Player.Skill2.canceled += PlayerSkill2;
+        input.Player.Skill1.performed += PlayerSkill1;
+        input.Player.Skill1.canceled += PlayerSkill1;
+        input.Player.Skill2.performed += PlayerSkill2;
+        input.Player.Skill2.canceled += PlayerSkill2;
 
         //PlayerEquip
-        Input.Player.SwapWeapon.started += PlayerSwapWeapon;
+        input.Player.SwapWeapon.started += PlayerSwapWeapon;
         //Input.Player.SwapWeapon.canceled += PlayerSwapWeapon;
 
         //PlayerInteract -> 
-        Input.Player.Interact.started += PlayerTapInteract;
-        Input.Player.Interact.canceled += PlayerTapInteract;
-        Input.Player.Interact.performed += PlayerHoldInteract;
-        Input.Player.Interact.canceled += PlayerHoldInteract;
+        input.Player.Interact.started += PlayerTapInteract;
+        input.Player.Interact.canceled += PlayerTapInteract;
+        input.Player.Interact.performed += PlayerHoldInteract;
+        input.Player.Interact.canceled += PlayerHoldInteract;
 
-        //TODO UI -> GameManager refactoring
-        Input.Player.UserInfo.started += PlayerUserInfo;
-        //Input.Player.UserInfo.canceled += PlayerUserInfo;
-        Input.Player.SettingWindow.started += PlayerSettingWindow;
-        //Input.Player.SettingWindow.canceled += PlayerSettingWindow;
-        Input.Player.Enable();
+        input.Player.Enable();
     }
 
     private void OnDisable()
     {
-        Input.Player.Disable();
+        input.Player.Disable();
     }
 
     public void PlayerDirection(InputAction.CallbackContext context)
@@ -209,13 +202,5 @@ public class PlayerController : MonoBehaviour
             isHoldInteract = false;
         }
         OnHoldInteractEvent?.Invoke(isHoldInteract);
-    }
-    public void PlayerUserInfo(InputAction.CallbackContext context)
-    {
-        OnUserInfoEvent?.Invoke();
-    }
-    public void PlayerSettingWindow(InputAction.CallbackContext context)
-    {
-        OnSettingWindowEvent?.Invoke();
     }
 }

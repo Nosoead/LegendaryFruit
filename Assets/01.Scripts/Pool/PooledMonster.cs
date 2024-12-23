@@ -5,20 +5,17 @@ using UnityEngine.Pool;
 
 public class PooledMonster : MonoBehaviour, ISetPooledObject<PooledMonster>
 {
+    [SerializeField] public MonsterStatManager statManager{get; private set;}
     protected IObjectPool<PooledMonster> objectPool;
-    public IObjectPool<PooledMonster> ObjectPool { set => objectPool = value; }
+    public IObjectPool<PooledMonster> ObjectPool 
+    { get => objectPool; set => objectPool = value; }
 
-    public void InstanceRelease()
+    private void Awake()
     {
-        objectPool.Release(this);
-    }
-    public void Release3sec()
-    {
-        Invoke(nameof(Release), 3f);
-    }
-    private void Release()
-    {
-        objectPool.Release(this);
+        if (statManager == null)
+        {
+            statManager = GetComponent<MonsterStatManager>();
+        }
     }
 
     public void SetPooledObject(IObjectPool<PooledMonster> pool)
