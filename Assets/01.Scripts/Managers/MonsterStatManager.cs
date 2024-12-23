@@ -3,8 +3,10 @@ using UnityEngine.Events;
 
 public class MonsterStatManager : MonoBehaviour
 {
+    public UnityAction<string, float> OnSubscribeToStatUpdateEvent;
     MonsterAnimationController monsterAnimationController;
     [SerializeField] private MonsterSO monsterData;
+    [SerializeField] private PooledMonster pooledMonster;
     private MonsterStat stat;
     private StatHandler statHandler;
 
@@ -14,24 +16,30 @@ public class MonsterStatManager : MonoBehaviour
         {
             monsterAnimationController = GetComponent<MonsterAnimationController>();
         }
+        if (pooledMonster == null)
+        {
+            pooledMonster = GetComponent<PooledMonster>();
+        }
         stat = new MonsterStat();
         statHandler = new StatHandler();
     }
 
     private void OnEnable()
     {
+        stat.OnStatUpdated += OnStatUpdatedEvent;
         stat.OnMonsterDie += OnMonsterDie;
     }
 
     private void OnDisable()
     {
+        stat.OnStatUpdated -= OnStatUpdatedEvent;
         stat.OnMonsterDie -= OnMonsterDie;
     }
     private void Start()
     {
         // TODO: SaveManager를 통해 LoadData로 데이터 로드 시,
         //       Load 결과가 null인 경우 초기화 처리 추가
-     
+        SetInitStat();
     }
 
     public void SetInitStat()
@@ -39,15 +47,9 @@ public class MonsterStatManager : MonoBehaviour
         stat.InitStat(monsterData);
     }
 
-    public void SubscribeToStatUpdateEvent(UnityAction<string, float> listener) // stat 구독
+    private void OnStatUpdatedEvent(string key, float value)
     {
-        stat.OnStatUpdated += listener;
-        
-    }
-
-    public void UnsubscribeToStatUpdateEvent(UnityAction<string, float> listener) // stat 구독 해제
-    {
-        stat.OnStatUpdated -= listener;
+        OnSubscribeToStatUpdateEvent?.Invoke(key, value);
     }
 
     #region /ApplystatMethod
@@ -84,14 +86,15 @@ public class MonsterStatManager : MonoBehaviour
     private void OnMonsterDie()
     {
         StopAllCoroutines();
-        StageManager.Instance.MonsterDie();
-        this.gameObject.layer = 0;
+        GameManager.Instance.stageManager.MonsterDie();
+        gameObject.layer = LayerMask.NameToLayer("Default");
         monsterAnimationController.OnDie();
         Invoke("MonsterDieOff", 1.5f);
     }
 
     private void MonsterDieOff()
     {
-        gameObject.SetActive(false);
+        pooledMonster.ObjectPool.Release(pooledMonster);
+        gameObject.layer = LayerMask.NameToLayer("Monster");
     }
 }

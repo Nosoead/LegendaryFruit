@@ -21,10 +21,10 @@ public class PlayerAttack : MonoBehaviour
     private AttributeType attributeType;
 
     //private LayerMask monsterLayer = LayerMask.GetMask("Monster");
-    private Vector2 boxSize = new Vector2(1f, 1f); //TODO 무기에따라 변경
+    private Vector2 boxSize = new Vector2(2.5f, 3f); //TODO 무기에따라 변경
     private bool isAttacking = false;
     private float lookDirection = 1f;
-    private float attakRange = 0.5f;
+    private float attakRange = 1.5f;
     private WaitForSeconds attackRateTime = new WaitForSeconds(0.5f);
     //TODO : 공격속도에 따라 waitforseconds가 변하도록
 

@@ -1,6 +1,6 @@
 using UnityEngine.Pool;
 
-public class TestManager : Singleton<TestManager>
+public class TestHowToUseObjectPoolManager : Singleton<TestHowToUseObjectPoolManager>
 {
     private IObjectPool<PooledMonster> monster;
     private IObjectPool<PooledReward> Reward;
@@ -17,7 +17,7 @@ public class TestManager : Singleton<TestManager>
     {
         if (monster.Get() is PooledMonster mon)
         {
-            mon.Release3sec();
+           // mon.Release3sec();
         }
     }
 

@@ -5,11 +5,11 @@ using UnityEngine;
 using UnityEngine.Pool;
 using UnityEngine.Rendering.Universal;
 
-public class StageBase :MonoBehaviour
+public class StageBase : MonoBehaviour
 {
     //[SerializeField] private Transform spawnPointRot;
     //private Dictionary<string, Vector2> keyValuePairs = new Dictionary<string, Vector2>();
-    [SerializeField] public StageSO stageSO;
+    [SerializeField] public testStageSO stageSO;
     [SerializeField] public Monster monster;
     [SerializeField] public RewardTree rewardTree;
 
@@ -21,8 +21,8 @@ public class StageBase :MonoBehaviour
 
 
     protected virtual void Awake()
-    { 
-        
+    {
+
     }
 
 

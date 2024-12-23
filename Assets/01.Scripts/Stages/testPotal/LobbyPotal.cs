@@ -2,10 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class LobbyPotal : Potal
+public class LobbyPotal : testPotal
 {
     protected override void ChagedStage()
     {
-        StageManager.Instance.StageChange("Stage1");
+        testStageManager.Instance.StageChange("Stage1");
     }
 }

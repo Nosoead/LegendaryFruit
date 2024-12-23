@@ -1,8 +1,8 @@
-﻿public class ShelterPotal : Potal
+﻿public class WeaponPotal : testPotal
 {
     protected override void ChagedStage()
     {
         if (GameManager.Instance.isClear == true)
-            StageManager.Instance.StageChange("Shelter");
+            testStageManager.Instance.StageChange("Stage2");
     }
 }

@@ -36,23 +36,27 @@ public class MonsterController : MonoBehaviour
         monsterAttributeLogics = new MonsterNormal(); //new AttributeLogics(); // 추상화클래스는 new를 할수없음
     }
 
-    private void Start()
+    private void OnEnable()
     {
-        statManager.SubscribeToStatUpdateEvent(UpdateStat);
-        statManager.SetInitStat();
-        StateMachine.Initialize(StateMachine.patrollState);
+        statManager.OnSubscribeToStatUpdateEvent += OnStatUpdatedEvent;
     }
 
     private void OnDisable()
     {
-        statManager.UnsubscribeToStatUpdateEvent(UpdateStat);
+        statManager.OnSubscribeToStatUpdateEvent -= OnStatUpdatedEvent;
     }
+
+    private void Start()
+    {
+        StateMachine.Initialize(StateMachine.patrollState);
+    }
+
     private void Update()
     {
         StateMachine.Excute();
     }
 
-    private void UpdateStat(string statKey, float value)
+    private void OnStatUpdatedEvent(string statKey, float value)
     {
         switch (statKey)
         {

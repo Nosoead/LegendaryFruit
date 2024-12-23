@@ -22,7 +22,7 @@ public class PlayerMovementHandler : MonoBehaviour
     private float defaultGravityScale = 1;
     public float gravMultiplier;
     private int playerLayer;
-    private int defaultLayer;
+    private int invincibleLayer;
     private Collider2D onewayBlockCollider = null;
 
 
@@ -65,7 +65,7 @@ public class PlayerMovementHandler : MonoBehaviour
         EnsureComponents();
         StateMachine = new PlayerMovementStateMachine(this);
         playerLayer = LayerMask.NameToLayer("Player");
-        defaultLayer = LayerMask.NameToLayer("Default");
+        invincibleLayer = LayerMask.NameToLayer("Invincible");
         ResetDashCount();
         ResetJumpCount();
     }
@@ -348,9 +348,9 @@ public class PlayerMovementHandler : MonoBehaviour
 
     public void SetLayerToDefault()
     {
-        if (gameObject.layer != defaultLayer)
+        if (gameObject.layer != invincibleLayer)
         {
-            gameObject.layer = defaultLayer;
+            gameObject.layer = invincibleLayer;
         }
     }
 
