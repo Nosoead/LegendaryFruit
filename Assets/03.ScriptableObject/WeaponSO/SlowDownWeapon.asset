@@ -23,3 +23,4 @@ MonoBehaviour:
   arrtibuteStatck: 0
   weaponSprite: {fileID: 21300156, guid: 7810966f0f690954c87305933cabf2b0, type: 3}
   rewardSprite: {fileID: 0}
+  animatorController: {fileID: 0}

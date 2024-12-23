@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: TestWeaponSO
   m_EditorClassIdentifier: 
   weaponName: "\uCC28\uAC00\uC6B4\uAC00\uC9C0"
-  description: "\uC81C\uBC1C\uB418\uB77C"
+  description: "\uCC28\uAC11\uAC8C \uB0C9\uB3D9\uB41C \uAC00\uC9C0\uC785\uB2C8\uB2E4.
+    \uACF5\uACA9\uC2DC \uBAAC\uC2A4\uD130\uC758 \uC774\uB3D9\uC18D\uB3C4\uAC00 \uAC10\uC18C\uD569\uB2C8\uB2E4."
   attackPower: 13
   type: 1
   gradeType: 0

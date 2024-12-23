@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f30345d6f773874da4088be7b3c7755, type: 3}
   m_Name: NormalWeapon
   m_EditorClassIdentifier: 
-  weaponName: 
-  description: "\uC81C\uBC1C"
+  weaponName: "\uAC80"
+  description: "\uD754\uD788 \uBCFC\uC218 \uC788\uB294 \uD3C9\uBC94\uD55C \uAC80"
   attackPower: 10
   type: 5
   gradeType: 0
@@ -21,6 +21,6 @@ MonoBehaviour:
   attributeAttackValue: 1
   attributeAttackRateTime: 1
   arrtibuteStatck: 1
-  weaponSprite: {fileID: 21300000, guid: bf18a0e078782b74881ad8d7be6e1571, type: 2}
+  weaponSprite: {fileID: 21300000, guid: 6a51d5781af8c3d4c83b8f24e86459b0, type: 3}
   rewardSprite: {fileID: 0}
   animatorController: {fileID: 22100000, guid: 287170c3411b6a84692e6b02c7126443, type: 2}

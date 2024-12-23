@@ -7,19 +7,13 @@
     <list default="true" id="fd1b27b5-9a48-464d-8c89-0ee285d61d98" name="변경" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.LegendaryFruit/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.LegendaryFruit/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/00.Scenes/TestScenes/Test_ParkScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/00.Scenes/TestScenes/Test_ParkScene.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01.Scripts/UI/InventoryUI.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/01.Scripts/UI/InventoryUI.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01.Scripts/UI/PlayerCanvasUI.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/01.Scripts/UI/PlayerCanvasUI.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/02.Prefabs/Entity/Mainplayer.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/02.Prefabs/Entity/Mainplayer.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/04.Materials/Textures/PlayerImage/Icon.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/04.Materials/Textures/PlayerImage/Icon.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/UI/ESCUI.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/UI/ESCUI.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/UI/GameEndUI.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/UI/GameEndUI.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/UI/HPBar.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/UI/HPBar.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/03.ScriptableObject/WeaponSO/NormalWeapon.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/03.ScriptableObject/WeaponSO/NormalWeapon.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/03.ScriptableObject/WeaponSO/SlowDownWeapon.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/03.ScriptableObject/WeaponSO/SlowDownWeapon.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/03.ScriptableObject/WeaponSO/TestWeaponSO.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/03.ScriptableObject/WeaponSO/TestWeaponSO.asset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Resources/UI/InventoryUI.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/UI/InventoryUI.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/UI/NPCUpgradeUI.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/UI/NPCUpgradeUI.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/UI/PlayerCanvasUI.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/UI/PlayerCanvasUI.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/UI/PromptUI.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/UI/PromptUI.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/UI/SettingUI.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/UI/SettingUI.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/UI/StageUI.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/UI/StageUI.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/UI/UIDialogue.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/UI/UIDialogue.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/UI/UpgradeUI.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/UI/UpgradeUI.prefab" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -137,7 +131,8 @@
       <workItem from="1734488730464" duration="17918000" />
       <workItem from="1734566950006" duration="16465000" />
       <workItem from="1734589451562" duration="17234000" />
-      <workItem from="1734659548325" duration="14351000" />
+      <workItem from="1734659548325" duration="14948000" />
+      <workItem from="1734912340713" duration="10429000" />
     </task>
     <servers />
   </component>
