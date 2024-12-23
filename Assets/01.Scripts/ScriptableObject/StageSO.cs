@@ -10,6 +10,7 @@ public class StageSO : ScriptableObject
     public int stageID;
     public bool isCombatStage;
     public bool isBossStage;
+    public bool canReceiveReward;
     public int monsterCount;
 
     //TODO 스테이지에 따른 보상확률 조절하는 필드추가~

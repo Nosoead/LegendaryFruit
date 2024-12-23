@@ -9,18 +9,18 @@ public class RewardTree : MonoBehaviour,IInteractable
     protected int rewardCount = 1; // 나중에 추가하면 코드 수정
     protected float rewardGrade;
 
-    public Reward rewardPrefab;
-    private List<Reward> randomReward = new List<Reward>(); 
+    public PooledReward rewardPrefab;
+    private List<PooledReward> randomReward = new List<PooledReward>(); 
 
     [SerializeField] private Transform spawnPositionsRoot;
     public List<Transform> spawnPositions = new List<Transform>();
 
     // 나중에 Dictionary에 데이터 저장 기능 추가 (리소스 개선)
-    public List<Reward> rewards = new List<Reward>();
+    public List<PooledReward> rewards = new List<PooledReward>();
     public List<GameObject> rewardWeapon = new List<GameObject>();
 
 
-    public event Action<Reward> OnReward;
+    public event Action<PooledReward> OnReward;
 
     // TODO: 유저데이터를 관리하는 SO클래스를 생성하여 적용
     [SerializeField] public WeaponSO weaponData = null;
@@ -43,11 +43,11 @@ public class RewardTree : MonoBehaviour,IInteractable
 
     public void CreatReward()
     {
-        testPoolManager.Instance.CreatePool<Reward>(rewardPrefab,false, 5, 50);
+        testPoolManager.Instance.CreatePool<PooledReward>(rewardPrefab,false, 5, 50);
 
         for (int i = 0; i < spawnPositions.Count; i++)
         {
-            var reward =  testPoolManager.Instance.GetObject<Reward>();
+            var reward =  testPoolManager.Instance.GetObject<PooledReward>();
             reward.SetPosition(spawnPositions[i].position);
             reward.weaponData = weaponList[i];
             reward.gameObject.SetActive(false);
@@ -100,10 +100,10 @@ public class RewardTree : MonoBehaviour,IInteractable
     {
         for(int i = 0; i < randomReward.Count; i++)
         {
-            var obj = randomReward[i].GetWeapon();
-            OnReward?.Invoke(randomReward[i]);
-            rewardWeapon.Add(obj);
-            GameManager.Instance.isGetWeapon = true;
+            ////var obj = randomReward[i].GetWeapon();
+            //OnReward?.Invoke(randomReward[i]);
+            //rewardWeapon.Add(obj);
+            //GameManager.Instance.isGetWeapon = true;
         }
     }
 
@@ -111,7 +111,7 @@ public class RewardTree : MonoBehaviour,IInteractable
     /// 보상에서 사용할 특정 데이터를 포함한 Reward
     /// </summary>
     /// <param name="reward">보상에서 사용할 특정 데이터를 포함한 Reward</param>
-    public void DisableReward(Reward reward)
+    public void DisableReward(PooledReward reward)
     {
         reward.gameObject.SetActive(false);
     }

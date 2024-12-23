@@ -3,12 +3,16 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Pool;
 
-public class FruitWeapon : Weapon, IInteractable
+public class PooledFruitWeapon : Weapon, IInteractable, ISetPooledObject<PooledFruitWeapon>
 {
     public WeaponSO weaponData;
     public SpriteRenderer weaponSprite;
 
+    protected IObjectPool<PooledFruitWeapon> objectPool;
+    public IObjectPool<PooledFruitWeapon> ObjectPool
+    { get => objectPool; set => objectPool = value; }
 
     private void Awake()
     {
@@ -40,11 +44,16 @@ public class FruitWeapon : Weapon, IInteractable
 
     private void FruitEat()
     {
-        gameObject.SetActive(false);
+        ObjectPool.Release(this);
     }
 
     private void FruitEquip()
     {
-        gameObject.SetActive(false);
+        ObjectPool.Release(this);
+    }
+
+    public void SetPooledObject(IObjectPool<PooledFruitWeapon> pool)
+    {
+        ObjectPool = pool;
     }
 }

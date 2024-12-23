@@ -15,4 +15,5 @@ MonoBehaviour:
   stageID: 11011
   isCombatStage: 1
   isBossStage: 0
-  monsterCount: 1
+  canReceiveReward: 1
+  monsterCount: 3

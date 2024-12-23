@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 649479837384052548}
   - component: {fileID: 3993336075596136068}
   - component: {fileID: 6695196245465128309}
-  - component: {fileID: 621888302288494963}
+  - component: {fileID: 6237326417099159519}
   m_Layer: 0
   m_Name: PooledReward
   m_TagString: Untagged
@@ -121,7 +121,7 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.5
---- !u!114 &621888302288494963
+--- !u!114 &6237326417099159519
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -130,10 +130,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 9001558419430888469}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d563a1bb988bea044997ef58e1f48151, type: 3}
+  m_Script: {fileID: 11500000, guid: ed6c79abc1d072d4db833e6de259fb1e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weaponData: {fileID: 0}
-  spriteRenderer: {fileID: 0}
-  weaponPrefab: {fileID: 0}
+  weaponData: {fileID: 11400000, guid: 447c4232ea47d9c4e886f3d48f1f7646, type: 2}
+  spriteRenderer: {fileID: 3993336075596136068}
+  weaponPrefab: {fileID: -5251703065164038305, guid: b17db198eb234374b99896eb7d1ebb55, type: 3}
   ease: 0

@@ -13,7 +13,7 @@ public class StageBase : MonoBehaviour
     [SerializeField] public Monster monster;
     [SerializeField] public RewardTree rewardTree;
 
-    [SerializeField] public Reward reward;
+    [SerializeField] public PooledReward reward;
 
     [SerializeField] public Transform playerSpawnPoint;
     [SerializeField] public Transform monsterSpawnPoint;
