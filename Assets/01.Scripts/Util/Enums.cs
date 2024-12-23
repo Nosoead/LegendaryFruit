@@ -41,5 +41,6 @@ public enum PoolType
     PooledMonster,
     PooledSound,
     PooledEffect,
+    PooledFruitWeapon,
     Count
 }

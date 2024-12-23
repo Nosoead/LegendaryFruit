@@ -5,8 +5,9 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Pool;
 using DG.Tweening;
+using UnityEngine.Rendering;
 
-public class Reward : MonoBehaviour, ISetPooledObject<Reward>
+public class PooledReward : MonoBehaviour, ISetPooledObject<PooledReward>
 {
     public WeaponSO weaponData = null; // 그래픽 개선 예정
     //private bool isGetWeapon = false; // 경고를 제거하세요
@@ -15,18 +16,18 @@ public class Reward : MonoBehaviour, ISetPooledObject<Reward>
 
 
     // SO를 사용해 데이터를 관리하세요
-    [SerializeField] private FruitWeapon weaponPrefab;
+    [SerializeField] private PooledFruitWeapon weaponPrefab;
 
     // 오브젝트 풀 생성
-    private IObjectPool<Reward> objectPool;
+    private IObjectPool<PooledReward> objectPool;
 
-    public IObjectPool<Reward> ObjectPool
+    public IObjectPool<PooledReward> ObjectPool
     {
         get => objectPool;
         set => objectPool = value;
     }
 
-    public void SetPooledObject(IObjectPool<Reward> pool)
+    public void SetPooledObject(IObjectPool<PooledReward> pool)
     {
         objectPool = pool;
     }
@@ -63,11 +64,13 @@ public class Reward : MonoBehaviour, ISetPooledObject<Reward>
     public Ease ease;
 
 
-    public GameObject GetWeapon()
+    public void GetWeapon(GameObject go)
     {
+        Debug.Log("두트윈");
         // 초기화
-        var go = Instantiate(weaponPrefab.gameObject);
-        go.transform.position = this.transform.position;
+        ObjectPool.Release(this);
+        //var go = Instantiate(weaponPrefab.gameObject);
+        //go.transform.position = this.transform.position;
         RaycastHit2D hit = Physics2D.Raycast(go.transform.position,Vector2.down, 50, LayerMask.GetMask("Ground"));
         float hitPosY = hit.point.y;
         float goalPos = hitPosY + 0.3f;
@@ -78,7 +81,6 @@ public class Reward : MonoBehaviour, ISetPooledObject<Reward>
             // 무기가 떨궈짐
             var tween = go.transform.DOMoveY(goalPos, 1f, false);
         }
-        return go;
         // 현재 상태
     }    
 }

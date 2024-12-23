@@ -78,6 +78,10 @@ public class StageManager : MonoBehaviour
         if (monsterCount == 0)
         {
             GameManager.Instance.isClear = true;
+            if (GameManager.Instance.isClear)
+            {
+                currentStage.SetReward();
+            }
             if (currentStage.stageData.stageID == (int)StageType.StageBoss)
             {
                 GameManager.Instance.GameEnd();
