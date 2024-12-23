@@ -22,10 +22,8 @@ public class BossAttackState : IState
 
     public void Enter()
     {
-        bossMonsterController.animator.Delay(false);
         Debug.Log("공격상태 진입!");
-        bossMonsterController.animator.OnIdle();
-        time = Time.deltaTime;
+        time = 1;    
     }
 
     public void Execute()
@@ -49,23 +47,12 @@ public class BossAttackState : IState
         }
         if(!bossMonsterController.DetectPlayer())
         {
-            bossMonsterController.StateMachine.TransitionToState(bossMonsterController.StateMachine.idleState);
-        }
-        if (bossMonsterController.DetectPlayer())
-        {
-            if (bossMonsterController.monsterGround.GetOnGround())
-            {
-                bossMonsterController.Move();
-            }
-        }
-        if (!bossMonsterController.monsterGround.GetOnGround())
-        {
-            bossMonsterController.ReverseDirection();
+            bossMonsterController.StateMachine.TransitionToState(bossMonsterController.StateMachine.patrollState);
         }
     }
 
     public void Exit()
     {
-        
+
     }
 }

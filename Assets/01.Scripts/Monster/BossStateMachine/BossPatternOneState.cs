@@ -24,16 +24,14 @@ public class BossPatternOneState : IState
     public void Enter()
     {
         Debug.Log("패턴진입");
-        bossMonsterController.animator.Delay(false);
         bossMonsterController.animator.OnAreaAttack(true);
     }
 
     public void Execute()
     {
-        if (bossMonsterController.monsterGround.GetOnGround())
+        if (bossMonsterController.animator.OnAreaAttackCheck())
         {
-            bossMonsterController.animator.Delay(true);
-            if (bossMonsterController.DetectPlayer())
+            if (bossMonsterController.InAttackRange())
             {
                 bossMonsterController.StateMachine.TransitionToState(bossMonsterController.StateMachine.attackState);
             }
@@ -42,12 +40,6 @@ public class BossPatternOneState : IState
                 bossMonsterController.animator.AttackToIdle();
                 bossMonsterController.StateMachine.TransitionToState(bossMonsterController.StateMachine.idleState);
             }
-            return;
-
-        }
-        else
-        {
-            bossMonsterController.StateMachine.TransitionToState(bossMonsterController.StateMachine.patrollState); ;
         }
     }
 

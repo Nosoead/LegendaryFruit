@@ -52,6 +52,7 @@ public class MonsterAnimationController : AnimationController
     public void OnAttack()
     {
         Animator.SetTrigger(Attack);
+        Debug.Log("공격실행@@");
     }
 
     public void OnHit()
@@ -64,9 +65,16 @@ public class MonsterAnimationController : AnimationController
         Animator.SetTrigger(isDie);
     }
 
-    public void OnAreaAttack(bool isAreaCheck)
+    public void OnAreaAttack(bool attack)
     {
-        Animator.SetBool(isArea, isAreaCheck);
+        if(attack)
+        {
+            Animator.SetTrigger(isArea);
+        }
+        else
+        {
+            Animator.ResetTrigger(isArea);
+        }
     }
     public bool OnAreaAttackCheck()
     {
