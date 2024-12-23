@@ -102,7 +102,6 @@ public class PlayerAttack : MonoBehaviour
         isAttacking = true;
         attackLookDirection = lookDirection;//기즈모용
         OnAttackingEvent?.Invoke(isAttacking);
-        Debug.Log($"공격중{isAttacking}");
         //TODO 여러마리 공격할 수 있도록 변경 -> onecycle 이후
         Vector2 playerPosition = (Vector2)transform.position;
         Vector2 boxPosition = playerPosition + Vector2.right * attakRange * lookDirection;
@@ -113,20 +112,17 @@ public class PlayerAttack : MonoBehaviour
         }
         else
         {
-            Debug.Log(monster.ToString() + "진짜때림");
             attributeLogic.ApplyAttackLogic(monster.gameObject, totalAttackPower, weaponData.attributeAttackValue, weaponData.attributeAttackRateTime, weaponData.arrtibuteStatck);
             yield return attackRateTime;
         }
         isAttacking = false;
         OnAttackingEvent?.Invoke(isAttacking);
-        Debug.Log($"공격후{isAttacking}");
     }
     private void OnEquipWeaponChanged(WeaponSO weaponData)
     {
         this.weaponData = weaponData;
         weaponAttackPower = weaponData.attackPower;
         attributeLogic = attributeLogics.GetAttributeLogic(weaponData.type);
-        Debug.Log(weaponData.type);
         SetTotalAttackPower();
     }
     #endregion
@@ -134,7 +130,6 @@ public class PlayerAttack : MonoBehaviour
     private void SetTotalAttackPower()
     {
         totalAttackPower = currentAttackPower + weaponAttackPower;
-        Debug.Log("총공격력 : " + totalAttackPower);
     }
 
     private void OnDrawGizmos()

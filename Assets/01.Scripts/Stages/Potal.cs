@@ -53,6 +53,7 @@ public class Potal : MonoBehaviour, IInteractable
         currentstageType = (StageType)stage.stageData.stageID;
     }
 
+    #region /TogglePrompt
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.layer == playerLayer || collision.gameObject.layer == invincibleLayer)
@@ -80,6 +81,7 @@ public class Potal : MonoBehaviour, IInteractable
             pressFCanvas.gameObject.SetActive(isOpen);
         }
     }
+    #endregion
 
     #region /Interact: stage
     public void Interact(bool isDeepPressed, bool isPressed)

@@ -54,13 +54,14 @@ public class PlayerInteraction : MonoBehaviour
         {
             canTapInteractWithObject = true;
             currentInteractable = collision.gameObject.GetComponent<IInteractable>();
+            Debug.Log(collision.gameObject.ToString());
         }
         else if (collision.gameObject.layer == itemLayer)
         {
             CanHoldInteractWithObject = true;
             ShowTapAndHoldPrompt(isOpen : true);
             currentInteractable = collision.gameObject.GetComponent<IInteractable>();
-            if (collision.gameObject.TryGetComponent(out FruitWeapon fruitWeapon))
+            if (collision.gameObject.TryGetComponent(out PooledFruitWeapon fruitWeapon))
             {
                 weaponData = fruitWeapon.weaponData;
             }

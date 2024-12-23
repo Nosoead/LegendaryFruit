@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Pool;
 
-public class PooledReward : MonoBehaviour, ISetPooledObject<PooledReward>
+public class testPooledReward : MonoBehaviour, ISetPooledObject<testPooledReward>
 {
-    protected IObjectPool<PooledReward> objectPool;
-    public IObjectPool<PooledReward> ObjectPool { set => objectPool = value; }
+    protected IObjectPool<testPooledReward> objectPool;
+    public IObjectPool<testPooledReward> ObjectPool { set => objectPool = value; }
 
     public void Release3sec()
     {
@@ -18,7 +18,7 @@ public class PooledReward : MonoBehaviour, ISetPooledObject<PooledReward>
         objectPool.Release(this);
     }
 
-    public void SetPooledObject(IObjectPool<PooledReward> pool)
+    public void SetPooledObject(IObjectPool<testPooledReward> pool)
     {
         ObjectPool = pool;
     }

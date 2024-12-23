@@ -9,7 +9,7 @@ public class PlayerEquipment : MonoBehaviour
     //TODO 최대 2개 보관 *리겜할때, 배열 청소 및 현재인덱스 0으로 초기화
     public UnityAction<WeaponSO> OnEquipWeaponChanged;
     [SerializeField] private WeaponSO weaponData;
-    [SerializeField] private FruitWeapon weaponPrefab; //TODO ObjectPool에서 최대 6개 생성 및 관리
+    [SerializeField] private PooledFruitWeapon weaponPrefab; //TODO ObjectPool에서 최대 6개 생성 및 관리
     [SerializeField] private PlayerInteraction interaction;
     [SerializeField] private SpriteRenderer weaponSprite;
     [SerializeField] private PlayerController controller;

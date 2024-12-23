@@ -9,6 +9,7 @@ public class Stage : MonoBehaviour
     [SerializeField] private List<Transform> monsterSpawnPoints = new List<Transform>();
     [SerializeField] private Potal firstPotal;
     [SerializeField] private Potal secondPotal;
+    [SerializeField] private RewardNPC rewardNPC;
 
     public void SetStage(GameObject player, IObjectPool<PooledMonster> monster)
     {
@@ -21,6 +22,10 @@ public class Stage : MonoBehaviour
         if (secondPotal != null)
         {
             secondPotal.InitPotal();
+        }
+        if (rewardNPC != null)
+        {
+            rewardNPC.InitRewardNPC();
         }
     }
 
@@ -42,5 +47,14 @@ public class Stage : MonoBehaviour
             monsterObj.gameObject.transform.position = setMonsterPosition.position;
             monsterObj.statManager.SetInitStat();
         }
+    }
+
+    public void SetReward()
+    {
+        if (!stageData.canReceiveReward)
+        {
+            return;
+        }
+        rewardNPC.SetReward();
     }
 }
