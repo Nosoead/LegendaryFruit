@@ -41,10 +41,7 @@ public class GameManager : Singleton<GameManager>
 
     public void GameEnd()
     {
-        Debug.Log("GameEnd");
-        Time.timeScale = 0f;
-        UIManager.Instance.ToggleUI<GameEndUI>(isPreviousWindowActive: false);
-
+        Invoke(nameof(DelayedGameEnd), 1f);
         //TODO UI창 끄면 Scene 다시Load하면서 시작하기
     }
 
@@ -53,5 +50,11 @@ public class GameManager : Singleton<GameManager>
         //TODO 실제 게임 하면 LobbyScene이거나 싹다 초기화해서 lobby맵 띄우기
         string currentSceneName = SceneManager.GetActiveScene().name;
         SceneManager.LoadScene("TitleScene");
+    }
+
+    private void DelayedGameEnd()
+    {
+        Time.timeScale = 0f;
+        UIManager.Instance.ToggleUI<GameEndUI>(isPreviousWindowActive: false);
     }
 }
