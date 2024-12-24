@@ -7,8 +7,8 @@ using UnityEngine.InputSystem.XR;
 
 public abstract class AnimationController : MonoBehaviour
 {
-    protected Animator Animator;
-    protected SpriteRenderer Sprite;
+    public Animator Animator;
+    public SpriteRenderer Sprite;
 
     protected virtual void Awake()
     {

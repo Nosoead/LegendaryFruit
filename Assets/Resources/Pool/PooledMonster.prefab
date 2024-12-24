@@ -225,7 +225,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 99456d94e039ef048819fc93a4e292db, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  monsterData: {fileID: 11400000, guid: 00a83f927b71fd640adce8f91d0cd574, type: 2}
+  monsterData: {fileID: 11400000, guid: e9ceff5d948964b4c9b0c024dbf97633, type: 2}
   pooledMonster: {fileID: 3571420164024259195}
 --- !u!95 &1103456294632927882
 Animator:
@@ -237,7 +237,7 @@ Animator:
   m_GameObject: {fileID: 5250696970045440906}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: ea7dfa2cb5a1cf047a955562401f5238, type: 2}
+  m_Controller: {fileID: 0}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -260,6 +260,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 16b094f1331cf624680f76ceee850692, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Animator: {fileID: 0}
+  Sprite: {fileID: 0}
 --- !u!114 &3571420164024259195
 MonoBehaviour:
   m_ObjectHideFlags: 0

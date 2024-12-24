@@ -5,7 +5,6 @@ public class MonsterStatManager : MonoBehaviour
 {
     public UnityAction<string, float> OnSubscribeToStatUpdateEvent;
     MonsterAnimationController monsterAnimationController;
-    [SerializeField] private MonsterSO monsterData;
     [SerializeField] private PooledMonster pooledMonster;
     private MonsterStat stat;
     private StatHandler statHandler;
@@ -44,8 +43,9 @@ public class MonsterStatManager : MonoBehaviour
 
     public void SetInitStat()
     {
-        stat.InitStat(monsterData);
+        stat.InitStat(EntityManager.Instance.monsterData);
     }
+
 
     private void OnStatUpdatedEvent(string key, float value)
     {

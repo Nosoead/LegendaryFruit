@@ -3,6 +3,8 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "MonsterSO", menuName = "ScriptableObject/MonsterSO", order = 3)]
 public class MonsterSO : GameSO
 {
+    // ex ) 0001
+    public int monsterID;
     public float maxHealth; // 체력
     public float attackPower; // 공격력
     public float defense; // 방어력
@@ -15,7 +17,6 @@ public class MonsterSO : GameSO
     public float attributeRateTime; // 속성데미지의 지속시간
     public float attributeStack;
     public float inGameMoney; // 드랍하는 머니
-    public Sprite sprite; // 몬스터 이미지
-    public Animation animation; // 몬스터 애니메이션
-    public GameObject target;
+    public SpriteRenderer sprite; // 몬스터 이미지
+    public AnimatorOverrideController animatorOverrideController; // 몬스터 애니메이션
 }

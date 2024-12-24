@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18d4756f0ce0194f8389a6e584db103, type: 3}
+  m_Name: Orc_MonsterSO
+  m_EditorClassIdentifier: 
+  monsterID: 0002
+  maxHealth: 100
+  attackPower: 10
+  defense: 5
+  attackSpeed: 3
+  moveSpeed: 3
+  attackDistance: 4
+  chaseRange: 5
+  type: 5
+  attributeValue: 0
+  attributeRateTime: 0
+  attributeStack: 0
+  inGameMoney: 100
+  sprite: {fileID: 926731303, guid: 26669501ff29439409df8c873ab1a98c, type: 3}
+  animatorOverrideController: {fileID: 22100000, guid: 243c00b9df29bf54482b417cfa1965c0, type: 2}
