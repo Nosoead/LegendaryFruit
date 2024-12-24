@@ -9,25 +9,13 @@ public class MonsterAnimationController : AnimationController
     private int isHit = Animator.StringToHash("isHit");
     private int isArea = Animator.StringToHash("isArea");
 
+
     private SpriteRenderer effectSprite;
 
     protected override void Awake()
     {
         base.Awake();
-    }
-
-    private void LateUpdate()
-    {
-        //if(Sprite.flipX)
-        //{
-        //    effectSprite.flipX = true;
-        //    transform.GetChild(0).gameObject.transform.localPosition = new UnityEngine.Vector2(0.5f, 0.2f);
-        //}
-        //if(!Sprite.flipX)
-        //{
-        //    effectSprite.flipX = false;
-        //    transform.GetChild(0).gameObject.transform.localPosition = new UnityEngine.Vector2(-0.5f, 0.2f);
-        //}
+        SetInitMonsterAnimation();
     }
 
     protected override void EnsureComponents()
@@ -37,6 +25,12 @@ public class MonsterAnimationController : AnimationController
         {
             effectSprite = GetComponentInChildren<SpriteRenderer>(true);
         }
+    }
+
+    private void SetInitMonsterAnimation()
+    {
+        Animator.runtimeAnimatorController =
+        EntityManager.Instance.monsterData.animatorOverrideController;
     }
 
     public void OnIdle()
@@ -52,7 +46,6 @@ public class MonsterAnimationController : AnimationController
     public void OnAttack()
     {
         Animator.SetTrigger(Attack);
-        Debug.Log("공격실행@@");
     }
 
     public void OnHit()
@@ -96,9 +89,5 @@ public class MonsterAnimationController : AnimationController
     public void AttackToIdle()
     {
         Animator.SetTrigger("attackToIdle");
-    }
-    public void AttackToAttack(bool isHold)
-    {
-        Animator.SetBool("AttackToAttack",isHold);
     }
 }
