@@ -157,9 +157,6 @@ public class MonsterController : MonoBehaviour
         }
         Debug.Log(type);
         monsterAttributeLogics.ApplyAttackLogic(player.gameObject, attackPower, attributeValue, attributeRateTime, attributeStack);
-
-        //애니메이션
-        animationController.OnAttack();
     }
 
     /*public void OnDrawGizmos()
@@ -173,7 +170,7 @@ public class MonsterController : MonoBehaviour
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.red;
-        Vector2 boxPosition = (Vector2)transform.position + Vector2.right * 0.5f * lookDirection;
+        Vector2 boxPosition = (Vector2)transform.position + Vector2.right * 1f * lookDirection;
         Gizmos.DrawWireCube(boxPosition, boxSize);
     }
 }

@@ -97,7 +97,7 @@ public class WeaponAnimationController : AnimationController
         {
             Sprite.flipX = true;
             effectSprite[1].flipX = true;
-            this.transform.localPosition = new Vector3(-0.8f, 0.8f, 0);
+            this.transform.localPosition = new Vector3(-0.3f, 0.8f, 0);
         }
         if (!isFlip)
         {

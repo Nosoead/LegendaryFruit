@@ -11,7 +11,7 @@ public class EntityManager : Singleton<EntityManager>
     {
         base.Awake();
         SettingData();
-        SettingMonster(0002);
+        SettingMonster(3);
     }
 
     private void SettingData()
