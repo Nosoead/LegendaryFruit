@@ -34,7 +34,7 @@ public class BossAttackState : IState
             if (time >= 1f)
             {
                 time = 0f;
-                bossMonsterController.animator.OnAttack();
+                bossMonsterController.animator.OnAttack(true);
                 attackCount++;
                 if (bossMonsterController.DetectPlayer() && attackCount >= 3)
                 {

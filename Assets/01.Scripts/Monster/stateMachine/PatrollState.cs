@@ -20,7 +20,9 @@ public class PatrollState : IState
     
     public void Enter()
     {
-        monsterController.animationController.OnMove();
+        Debug.Log("패트롤 상태 진입");
+
+        monsterController.animationController.OnMove(true);
         idleTime = Random.Range(5, 10);
         idleTimer = 0f;
     }
@@ -32,8 +34,16 @@ public class PatrollState : IState
         //Debug.Log($"Detector : {monsterController.DetectPlayer()}");
         // 조건따라 플레이어 서치 어택
         if (monsterController.DetectPlayer())
-        {       
-            monsterController.StateMachine.TransitionToState(monsterController.StateMachine.attackState);
+        {
+            monsterController.Move();
+            if(monsterController.InAttackRange())
+            {
+                monsterController.StateMachine.TransitionToState(monsterController.StateMachine.attackState);
+            }
+            else
+            {
+                return;
+            }
         }
 
         // n초동안 걷다가 idle 상태로 전환
@@ -59,7 +69,7 @@ public class PatrollState : IState
     }
     public void Exit()
     {
-
+        monsterController.animationController.OnMove(false);
     }
    
 

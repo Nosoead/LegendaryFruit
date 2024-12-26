@@ -21,29 +21,30 @@ public class AttackState :IState
     }
     public void Enter()
     {
+        Debug.Log("공격상태 진입");
+        monsterController.animationController.OnAttack(true);
     }
 
     public void Execute()
     {
-        // currentDistance <AttackDistance-->때리기
-        if (monsterController.InAttackRange())
+        // 공격범위벗어나면 패트롤상태 
+        if (!monsterController.InAttackRange())
         {
-            
-            testTime += Time.deltaTime;
-            if (testTime >= 1f)
-            {
-                testTime = 0f;
-                monsterController.Attack();
-            }
-
-            // if-> 때리는 애니메이션 ->애니메이션에서 OnHit
-            monsterController.animationController.OnAttack();
+            monsterController.StateMachine.TransitionToState(monsterController.StateMachine.patrollState);
             return;
         }
+
+        if(monsterController.InAttackRange() && monsterController.animationController.OnAttackComplete())
+        {
+            monsterController.animationController.OffHold();
+        }
+
+
         // player 놓치면 idleState 
         if (!monsterController.DetectPlayer())
         {
             monsterController.StateMachine.TransitionToState(monsterController.StateMachine.idleState);
+            return;
         }
         // player 발견 && 땅이 있으면 이동
         if (monsterController.DetectPlayer())
@@ -61,8 +62,11 @@ public class AttackState :IState
 
     public void Exit()
     {
+        monsterController.animationController.OnAttack(false);
+        Debug.Log("모션 꺼짐 제발 좀 되세요");
+
     }
-    
+
     public void UpdateStat(MonsterController monsterController)
     {
         this.monsterController = monsterController;

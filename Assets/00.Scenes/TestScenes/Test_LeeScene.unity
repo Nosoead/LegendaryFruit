@@ -1078,16 +1078,28 @@ PrefabInstance:
       value: 0.0026218593
       objectReference: {fileID: 0}
     - target: {fileID: 1939992881904551001, guid: e1d847d7758414c42a3adf7ce3a13f0e, type: 3}
+      propertyPath: m_SpriteTilingProperty.pivot.x
+      value: 0.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1939992881904551001, guid: e1d847d7758414c42a3adf7ce3a13f0e, type: 3}
       propertyPath: m_SpriteTilingProperty.pivot.y
-      value: 0.53
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1939992881904551001, guid: e1d847d7758414c42a3adf7ce3a13f0e, type: 3}
+      propertyPath: m_SpriteTilingProperty.newSize.x
+      value: 0.28
+      objectReference: {fileID: 0}
+    - target: {fileID: 1939992881904551001, guid: e1d847d7758414c42a3adf7ce3a13f0e, type: 3}
+      propertyPath: m_SpriteTilingProperty.newSize.y
+      value: 0.23
       objectReference: {fileID: 0}
     - target: {fileID: 1939992881904551001, guid: e1d847d7758414c42a3adf7ce3a13f0e, type: 3}
       propertyPath: m_SpriteTilingProperty.oldSize.x
-      value: 1.375
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 1939992881904551001, guid: e1d847d7758414c42a3adf7ce3a13f0e, type: 3}
       propertyPath: m_SpriteTilingProperty.oldSize.y
-      value: 0.9375
+      value: 1.75
       objectReference: {fileID: 0}
     - target: {fileID: 2025736629880038302, guid: e1d847d7758414c42a3adf7ce3a13f0e, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1135,7 +1147,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5250696970045440906, guid: e1d847d7758414c42a3adf7ce3a13f0e, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5895380291070675840, guid: e1d847d7758414c42a3adf7ce3a13f0e, type: 3}
       propertyPath: m_Size.x
@@ -1409,11 +1421,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 362691467284267163, guid: 1eb79fbb7ea8bfc47bde9dd980867e5f, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1708867427551377529, guid: 1eb79fbb7ea8bfc47bde9dd980867e5f, type: 3}
       propertyPath: m_ColliderPaths.Array.size
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6247777346994454655, guid: 1eb79fbb7ea8bfc47bde9dd980867e5f, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1965,7 +1977,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!1 &356454932170273704
 GameObject:
   m_ObjectHideFlags: 0

@@ -27,3 +27,5 @@ MonoBehaviour:
   inGameMoney: 100
   sprite: {fileID: 926731303, guid: 26669501ff29439409df8c873ab1a98c, type: 3}
   animatorOverrideController: {fileID: 22100000, guid: 243c00b9df29bf54482b417cfa1965c0, type: 2}
+  defalutAttackClip: {fileID: 7400000, guid: 2fe45fc4b38fd064fb877e839b389f4c, type: 2}
+  pattrenAttackClip: {fileID: 0}

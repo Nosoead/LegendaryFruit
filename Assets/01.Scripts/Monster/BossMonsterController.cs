@@ -6,7 +6,6 @@ using UnityEngine.UIElements;
 
 public class BossMonsterController : MonoBehaviour 
 {
-    // TODO: �ϴ��� �����ؼ� ���µ� ���߿� ���Ϳ� �������� �����丵 �ʿ�
     private BossStateMachine stateMachine;  
     public MonsterAnimationController animator;
     public BossStateMachine StateMachine => stateMachine;
@@ -33,7 +32,7 @@ public class BossMonsterController : MonoBehaviour
         animator = GetComponent<MonsterAnimationController>();    
         attributeLogicsDictionary = new MonsterAttributeLogicsDictionary();
         attributeLogicsDictionary.Initialize();
-        stateMachine = new BossStateMachine(this);       //new AttributeLogics(); // �߻�ȭŬ������ new�� �Ҽ�����
+        stateMachine = new BossStateMachine(this);     
     }
 
     private void OnEnable()
@@ -93,15 +92,14 @@ public class BossMonsterController : MonoBehaviour
         stateMachine.UpdateStat(this);  
     }
 
-    public void ReverseDirection() // ���� ����
+    public void ReverseDirection() // 방향반전
     {
-        //x�� ����
         Vector3 scale = transform.localScale;
         scale.x *= -1;
         lookDirection *= -1f;
         transform.localScale = scale;
     }
-    public bool DetectPlayer() //�÷��̾� ã�� ����
+    public bool DetectPlayer() // 플레이어 발견
     {
         Vector3 raytDirection = Vector3.right * lookDirection;
         RaycastHit2D hit = Physics2D.Raycast(transform.position, raytDirection, chaseRange, playerLayerMask);
@@ -131,18 +129,6 @@ public class BossMonsterController : MonoBehaviour
         return false;
     }
 
-    //public bool InAttackRange() // �÷��̾ ��Ÿ� �ȿ� ���� Ȱ��ȭ
-    //{
-    //    Vector3 raytDirection = Vector3.right * lookDirection;
-    //    RaycastHit2D hit = Physics2D.Raycast(transform.position, raytDirection, attackDistance, playerLayerMask);
-    //    if (hit.collider != null)
-    //    {
-    //        target = hit.collider;
-    //        return true;
-    //    }
-
-    //    return false;
-    //}
     public void Move()
     {
         Vector3 rayDirection = Vector3.right * lookDirection;
@@ -170,7 +156,6 @@ public class BossMonsterController : MonoBehaviour
             return;
         }
         monsterAttributeLogics.ApplyAttackLogic(player.gameObject, attackPower, attributeValue, attributeRateTime, attributeStack);
-        Debug.Log($"�Ϲ� ���� : {attackPower}");
     }
 
     public void AreaAttack()
@@ -184,7 +169,6 @@ public class BossMonsterController : MonoBehaviour
             return;
         }
         monsterAttributeLogics.ApplyAttackLogic(player.gameObject, attackPower + 5, attributeValue, attributeRateTime, attributeStack);
-        Debug.Log($"���� : {attackPower + 5}");
     }
 
     private void OnDrawGizmos()

@@ -3,6 +3,7 @@ using System.Collections;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.UIElements;
 
 public class MonsterController : MonoBehaviour
 {
@@ -15,7 +16,6 @@ public class MonsterController : MonoBehaviour
     [SerializeField] private LayerMask playerLayerMask;
     public GameObject target;
     public MonsterStatManager statManager;
-    private Vector2 boxSize = new Vector2(1f, 1f);
     private float lookDirection = 1f;
 
     private float attackPower;
@@ -107,9 +107,11 @@ public class MonsterController : MonoBehaviour
         Vector3 raytDirection = Vector3.right * lookDirection;
         RaycastHit2D hit = Physics2D.Raycast(transform.position, raytDirection, chaseRange, playerLayerMask);
 
+
         if (hit.collider != null)
         {
             target = hit.collider.gameObject;
+
             return true;
         }
 
@@ -119,28 +121,27 @@ public class MonsterController : MonoBehaviour
     public bool InAttackRange() // 플레이어가 사거리 안에 오면 활성화
     {
         Vector3 raytDirection = Vector3.right * lookDirection;
+        Debug.DrawRay(transform.position, raytDirection * attackDistance, Color.red);
         RaycastHit2D hit = Physics2D.Raycast(transform.position, raytDirection, attackDistance, playerLayerMask);
         if (hit.collider != null)
         {
             target = hit.collider.gameObject;
+            Debug.DrawRay(hit.point, Vector3.right * 0.5f, Color.green);
             return true;
         }
 
         return false;
     }
+
     public void Move()
     {
         Vector3 rayDirection = Vector3.right * lookDirection;
 
         RaycastHit2D hit = Physics2D.Raycast(transform.position, rayDirection, chaseRange, playerLayerMask);
 
-        if (hit.collider == null || hit.distance > 0.1f)
+        if (hit.collider == null || hit.distance > attackDistance)
         {
             transform.position += rayDirection * (moveSpeed * Time.deltaTime);
-        }
-        else
-        {
-            ReverseDirection();
         }
     }
 
@@ -149,7 +150,9 @@ public class MonsterController : MonoBehaviour
         //어트리뷰트에서 데미지계산후 딕셔너리에 저장후 꺼내옴
         // scale.x가 0보다 크면 우 작으면 좌
         Vector2 monsterPosition = transform.position;
-        Vector2 boxPostion = monsterPosition + Vector2.right * (0.5f * lookDirection);
+        Vector2 boxPostion = monsterPosition + Vector2.right * (attackDistance * lookDirection);
+        Vector2 boxSize = new Vector2(1f, 1f);
+
         Collider2D player = Physics2D.OverlapBox(boxPostion, boxSize, 0, playerLayerMask);
         if (player == null)
         {
@@ -159,18 +162,13 @@ public class MonsterController : MonoBehaviour
         monsterAttributeLogics.ApplyAttackLogic(player.gameObject, attackPower, attributeValue, attributeRateTime, attributeStack);
     }
 
-    /*public void OnDrawGizmos()
-    {
-        Gizmos.color = Color.green;
-        Gizmos.DrawRay(transform.position , Vector3.right * 10);
-        Gizmos.color = Color.blue;
-        Gizmos.DrawRay(transform.position , Vector3.left * 10);
-    }*/
-
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.red;
-        Vector2 boxPosition = (Vector2)transform.position + Vector2.right * 1f * lookDirection;
+        Vector2 monsterPosition = transform.position;
+        Vector2 boxSize = new Vector2(1f, 1f);
+        Vector2 boxPostion = monsterPosition + Vector2.right * (5 * lookDirection);
+        Vector2 boxPosition = (Vector2)transform.position + Vector2.right * attackDistance * lookDirection;
         Gizmos.DrawWireCube(boxPosition, boxSize);
     }
 }

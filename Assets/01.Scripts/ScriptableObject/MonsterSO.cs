@@ -19,4 +19,7 @@ public class MonsterSO : GameSO
     public float inGameMoney; // 드랍하는 머니
     public SpriteRenderer sprite; // 몬스터 이미지
     public AnimatorOverrideController animatorOverrideController; // 몬스터 애니메이션
+    public AnimationClip defalutAttackClip; // 기본공격 모션
+    public AnimationClip [] pattrenAttackClip; // 패턴공격 모션
+    public float patternAttackChance;
 }
