@@ -131,6 +131,8 @@ public class DialogueManager : Singleton<DialogueManager>
             int.TryParse(entry["speaker"], out dialogue.Speaker);
             float.TryParse(entry["typingSpeed"], out dialogue.TypingSpeed);
 
+            dialogue.UIResource = entry["UIResource"];
+         
             var npc1 = new DialogueNpc();
             int.TryParse(entry["npc1"], out npc1.Code);
             int.TryParse(entry["npc1Portrait"], out npc1.Portrait);
@@ -147,7 +149,11 @@ public class DialogueManager : Singleton<DialogueManager>
             string answer1 = entry["answer1"];
             if (string.IsNullOrEmpty(answer1) == false)
             {
-                var answer = new Answer() { Text = answer1};
+                var answer = new Answer()
+                {
+                    Text = answer1,
+                    UIResource = entry["UIResource"]
+                };
                 int.TryParse(entry["answer1Action"], out answer.Action);
                 dialogue.AnswerList.Add(answer);
             }
@@ -155,7 +161,11 @@ public class DialogueManager : Singleton<DialogueManager>
             string answer2 = entry["answer2"];
             if (string.IsNullOrEmpty(answer2) == false)
             {
-                var answer = new Answer() { Text = answer2};
+                var answer = new Answer()
+                {
+                    Text = answer2,
+                    UIResource = entry["UIResource"]
+                };
                 int.TryParse(entry["answer2Action"], out answer.Action);
                 dialogue.AnswerList.Add(answer);
             }
@@ -163,7 +173,11 @@ public class DialogueManager : Singleton<DialogueManager>
             string answer3 = entry["answer3"];
             if (string.IsNullOrEmpty(answer3) == false)
             {
-                var answer = new Answer() { Text = answer3};
+                var answer = new Answer()
+                {
+                    Text = answer3,
+                    UIResource = entry["UIResource"]
+                };
                 int.TryParse(entry["answer3Action"], out answer.Action);
                 dialogue.AnswerList.Add(answer);
             }
@@ -171,15 +185,36 @@ public class DialogueManager : Singleton<DialogueManager>
             string answer4 = entry["answer4"];
             if (string.IsNullOrEmpty(answer4) == false)
             {
-                var answer = new Answer() { Text = answer4};
+                var answer = new Answer()
+                {
+                    Text = answer4,
+                    UIResource = entry["UIResource"]
+                };
                 int.TryParse(entry["answer4Action"], out answer.Action);
                 dialogue.AnswerList.Add(answer);
             }
-            
+            CreateDialogueUI(dialogue);
             _dialogueDb.Add(dialogue.Code, dialogue);
         }
     }
-    
+
+    private void CreateDialogueUI(DialogueData dialogue)
+    {
+        string uiResourceName = dialogue.UIResource;
+        if (!string.IsNullOrEmpty(uiResourceName))
+        {
+            GameObject uiObject = Resources.Load<GameObject>(uiResourceName);
+            if (uiObject != null)
+            {
+                Instantiate(uiObject);
+            }
+            else
+            {
+                Debug.LogWarning("UI resource not found: " + uiResourceName);
+            }
+        }
+    }
+
     private void SetDialogueListTable(List<Dictionary<string, string>> data)
     {
         for (int j = 0; j < data.Count; j++)

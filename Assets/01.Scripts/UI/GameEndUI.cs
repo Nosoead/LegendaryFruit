@@ -9,9 +9,23 @@ public class GameEndUI : UIBase
     [SerializeField] private TextMeshProUGUI titleTxt;
     [SerializeField] private TextMeshProUGUI exitTxt;
     [SerializeField] private Button exitButton;
+    [SerializeField] private TextMeshProUGUI playTime;
+    [SerializeField] private TextMeshProUGUI inGameMoney;
+    [SerializeField] private TextMeshProUGUI globalMoney;
+    [SerializeField] private TextMeshProUGUI totalDamage;
+    [SerializeField] private TextMeshProUGUI totalEat;
+    [SerializeField] private Image lastImage;
+    [SerializeField] private List<Image> totalEatImages;
 
+    private SaveDataContainer saveDataContainer;
+
+    private void Update()
+    {
+        GetDataToText();
+    }
     public override void Open()
     {
+        if (saveDataContainer == null) GetStatData();
         base.Open();
         if (GameManager.Instance.isClear)
         {
@@ -24,5 +38,17 @@ public class GameEndUI : UIBase
         exitTxt.text = "돌아가기";
         exitButton.onClick.AddListener(() => UIManager.Instance.ToggleUI<GameEndUI>(false));
         exitButton.onClick.AddListener(() => GameManager.Instance.GameRestart());
+    }
+
+    private void GetStatData()
+    {
+        saveDataContainer = PlayerInfoManager.Instance.GetSaveData();
+    }
+
+    private void GetDataToText()
+    {
+        playTime.text = Time.deltaTime.ToString();
+        inGameMoney.text = saveDataContainer.currencyData.inGameCurrency.ToString();
+        inGameMoney.text = saveDataContainer.currencyData.globalCurrency.ToString();
     }
 }

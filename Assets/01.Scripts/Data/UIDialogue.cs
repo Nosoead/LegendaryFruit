@@ -11,7 +11,8 @@ using static System.String;
 
 public class UIDialogue : UIBase
 {
-    [SerializeField] private UIDialogueList uiDialogueList;
+    [SerializeField] private List<GameObject>  uiList;
+    private UIDialogueList uiDialogueList;
     [SerializeField] private BossRoomTrigger bossRoomTrigger;
 
     [SerializeField] private Button btnBack;
@@ -33,7 +34,8 @@ public class UIDialogue : UIBase
     
     private bool done = false;
 
-    private DialogueData _dialogueData;
+    private DialogueData dialogueData;
+    private UIManager uiManager;
 
     private void Awake()
     {
@@ -52,22 +54,24 @@ public class UIDialogue : UIBase
     {
         if (Input.GetKeyDown(KeyCode.Return) || Input.GetMouseButtonDown(0))
         {
+            /*
             if(uiDialogueList.gameObject.activeSelf)
                 return;
+                */
             
             if (done == false)
             {
                 DOTween.KillAll();
-                txtDialogue.text = _dialogueData.Dialogue;
+                txtDialogue.text = dialogueData.Dialogue;
                 LogDone();
             }
             else
             {
-                if (_dialogueData.AnswerList == null || _dialogueData.AnswerList.Count == 0)
+                if (dialogueData.AnswerList == null || dialogueData.AnswerList.Count == 0)
                 {
-                    if (_dialogueData.Next != 0)
+                    if (dialogueData.Next != 0)
                     {
-                        var nextDialogue =  DialogueManager.Instance.GetDialogueData(_dialogueData.Next);
+                        var nextDialogue =  DialogueManager.Instance.GetDialogueData(dialogueData.Next);
                         SetDialogue(nextDialogue);
                     }
                     else
@@ -88,26 +92,26 @@ public class UIDialogue : UIBase
         foreach (var btn in btnAnswerList)
             btn.gameObject.SetActive(false);
         
-        _dialogueData = dialogue;
+        dialogueData = dialogue;
         
         done = false;
         
         imgContinue.color = new Color(imgContinue.color.r, imgContinue.color.g, imgContinue.color.b , 0);
         txtDialogue.text = Empty;
         
-        var npc =  DialogueManager.Instance.GetNpcData(_dialogueData.Speaker);
+        var npc =  DialogueManager.Instance.GetNpcData(dialogueData.Speaker);
         txtName.text = npc.NpcName;
 
-        SetBg(_dialogueData.Bg);
-        SetNpc1(_dialogueData.Npc1);
-        SetNpc2(_dialogueData.Npc2);
+        SetBg(dialogueData.Bg);
+        SetNpc1(dialogueData.Npc1);
+        SetNpc2(dialogueData.Npc2);
 
-        float duration = _dialogueData.Dialogue.Length / 20;
-        if (_dialogueData.TypingSpeed != 0)
-            duration = _dialogueData.TypingSpeed;
+        float duration = dialogueData.Dialogue.Length / 20;
+        if (dialogueData.TypingSpeed != 0)
+            duration = dialogueData.TypingSpeed;
         
         //txtDialogue.DOText(_dialogueData.Dialogue, duration).SetEase(Ease.Linear).OnComplete(LogDone); //두트윈 유료버전
-        txtDialogue.text = _dialogueData.Dialogue; // 두트윈 없을시
+        txtDialogue.text = dialogueData.Dialogue; // 두트윈 없을시
         LogDone(); //두트윈 없을시
     }
 
@@ -115,7 +119,7 @@ public class UIDialogue : UIBase
     {
         done = true;
         
-        if (_dialogueData.AnswerList == null || _dialogueData.AnswerList.Count == 0)
+        if (dialogueData.AnswerList == null || dialogueData.AnswerList.Count == 0)
             imgContinue.DOFade(1, 0.7f).SetLoops(-1, LoopType.Yoyo).SetEase(Ease.InQuad);
         else
             SetBtn();
@@ -237,20 +241,35 @@ public class UIDialogue : UIBase
 
     private void SetBtn()
     {
-        for (var i = 0; i < _dialogueData.AnswerList.Count; i++)
+        for (var i = 0; i < dialogueData.AnswerList.Count; i++)
         {
+            //uiList[i].gameObject.SetActive(true);
             btnAnswerList[i].gameObject.SetActive(true);
-            txtAnswerList[i].text = _dialogueData.AnswerList[i].Text;
+            txtAnswerList[i].text = dialogueData.AnswerList[i].Text;
         }
     }
 
     private void OnClickBtn(int idx)
     {
-        var next = _dialogueData.AnswerList[idx].Action;
-        var nextDialogue =  DialogueManager.Instance.GetDialogueData(next);
-        SetDialogue(nextDialogue);
-    }
+        var answer = dialogueData.AnswerList[idx];
+        if (!string.IsNullOrEmpty(answer.UIResource))
+        {
+            if (answer.UIResource == "WeaponUpgradeUI" && answer.Text == "강화하기")
+            {
+                UIManager.Instance.ToggleUI<WeaponUpgradeUI>(true);
+                //if (dialogueData.AnswerList == null || dialogueData.AnswerList.Count == 0);
+                   
+            }
+        }
 
+        if (answer.Action != 0)
+        {
+            var nextDialogue = DialogueManager.Instance.GetDialogueData(answer.Action);
+            SetDialogue(nextDialogue);
+        }
+        
+    }
+    
     private Dictionary<string, Texture> _textures = new Dictionary<string, Texture>();
 
     private void LoadTexture(RawImage rImage, string fileName)
