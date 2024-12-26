@@ -16,7 +16,7 @@ public class BossPatrollState : IState
 
     public void Enter()
     {
-        bossMonsterController.animator.OnMove();
+        bossMonsterController.animator.OnMove(true);
         Debug.Log("패트롤상태 진입");
         idleTime = Random.Range(5, 10);
         idleTimer = 0f;
@@ -52,7 +52,7 @@ public class BossPatrollState : IState
 
     public void Exit()
     {
-
+        
     }
 
     public void UpdateStat(BossMonsterController monsterController)

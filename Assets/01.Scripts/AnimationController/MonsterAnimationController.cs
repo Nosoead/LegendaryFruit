@@ -1,5 +1,6 @@
 ﻿using System.Numerics;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class MonsterAnimationController : AnimationController
 {
@@ -8,13 +9,18 @@ public class MonsterAnimationController : AnimationController
     private int isDie = Animator.StringToHash("isDie");
     private int isHit = Animator.StringToHash("isHit");
     private int isArea = Animator.StringToHash("isArea");
+    private int Monster_Attack = Animator.StringToHash("Monster_Attack");
 
+    private bool isAttackComplete = false;
 
     private SpriteRenderer effectSprite;
+    private MonsterSO monsterData;
+    private AnimatorOverrideController overrideController;
 
     protected override void Awake()
     {
         base.Awake();
+        monsterData = EntityManager.Instance.monsterData;
         SetInitMonsterAnimation();
     }
 
@@ -29,8 +35,8 @@ public class MonsterAnimationController : AnimationController
 
     private void SetInitMonsterAnimation()
     {
-        Animator.runtimeAnimatorController =
-        EntityManager.Instance.monsterData.animatorOverrideController;
+        overrideController = monsterData.animatorOverrideController;
+        Animator.runtimeAnimatorController = overrideController;
     }
 
     public void OnIdle()
@@ -38,16 +44,46 @@ public class MonsterAnimationController : AnimationController
         Animator.SetBool(isRun, false);
     }
 
-    public void OnMove()
+    public void OnMove(bool isMove)
     {
-        Animator.SetBool(isRun, true); 
+        Animator.SetBool(isRun, isMove); 
     }
 
-    public void OnAttack()
+    public void OnAttack(bool isAttack)
     {
-        Animator.SetTrigger(Attack);
+        AnimationClip selectClip;
+        float randomValue = Random.Range(0f, 100f);
+        if(randomValue <= monsterData.patternAttackChance && monsterData.pattrenAttackClip.Length > 0 )
+        {
+            int randomIndex = Random.Range(0, monsterData.pattrenAttackClip.Length);
+            selectClip = monsterData.pattrenAttackClip[randomIndex];
+        }
+        else
+        {
+            selectClip = monsterData.defalutAttackClip;
+        }
+        overrideController["Monster_Attack"] = selectClip;
+        Animator.SetBool(Attack, isAttack);
     }
 
+
+
+    public bool CheckAttackAnimationState()
+    {
+        var currentState = Animator.GetCurrentAnimatorStateInfo(0).IsName("Monster_Attack");
+        var isAnimating = Animator.GetCurrentAnimatorStateInfo(0).normalizedTime; 
+        if(currentState && isAnimating  >= 1f)
+        {
+            Debug.Log($"{isAnimating}");
+            return true;
+        }
+        return false;
+    }
+
+    public void ResetAttackTrigger()
+    {
+        Animator.ResetTrigger(Attack);
+    }
     public void OnHit()
     {
         Animator.SetTrigger(isHit);
@@ -86,8 +122,22 @@ public class MonsterAnimationController : AnimationController
         Animator.SetBool("isDelay", isDelay);
     } 
 
-    public void AttackToIdle()
+    public void OffHold()
     {
-        Animator.SetTrigger("attackToIdle");
+        Animator.SetBool("Hold", false);
+        Animator.SetBool(Attack, true);
+    }
+
+    public bool OnAttackComplete()
+    {
+        isAttackComplete = true;
+        if(isAttackComplete)
+        {
+            Animator.SetBool("Hold", true);
+            Animator.SetBool(Attack, false);
+            Debug.Log("공격완료 ! Hold로 넘어갑니다.");
+            return true;
+        }
+        return false;
     }
 }

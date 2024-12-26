@@ -14,7 +14,7 @@ public class IdleState :IState
 
     public void Enter()
     {
-        monsterController.animationController.OnIdle();
+        Debug.Log("idle상태 진입");
         idleTime = Random.Range(1, 5);
         idleTimer = 0f;
     }
@@ -35,7 +35,7 @@ public class IdleState :IState
             return;
         }
         // 가만히 있는데 플레이어가 들어오면 어택스테이트로 변환
-        if (monsterController.DetectPlayer())
+        if (monsterController.DetectPlayer() && monsterController.InAttackRange())
         {
             monsterController.StateMachine.TransitionToState(monsterController.StateMachine.attackState);
             return;
@@ -44,6 +44,7 @@ public class IdleState :IState
 
     public void Exit()
     {
+
     }
     public void UpdateStat(MonsterController monsterController)
     {
