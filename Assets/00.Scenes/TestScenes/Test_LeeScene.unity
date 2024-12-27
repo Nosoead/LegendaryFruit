@@ -2258,8 +2258,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 16db5cee6aded9940ac18fa736eeda85, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Animator: {fileID: 0}
-  Sprite: {fileID: 0}
   weaponAnimator: {fileID: 5982697538556357741}
 --- !u!114 &4026857889301515277
 MonoBehaviour:
@@ -2273,9 +2271,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 96160f456f50dba4cb039b20a74b097b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Animator: {fileID: 0}
-  Sprite: {fileID: 0}
-  isAttacking: 0
 --- !u!114 &4249353766703415682
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2454,7 +2449,7 @@ Animator:
   m_GameObject: {fileID: 356454932170273704}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: b6c1a0038850a5c438c59bb01e80bc98, type: 2}
+  m_Controller: {fileID: 22100000, guid: 287170c3411b6a84692e6b02c7126443, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 1

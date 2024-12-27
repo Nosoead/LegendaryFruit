@@ -11,8 +11,6 @@ public class WeaponAnimationController : AnimationController
     private Transform handPosition;
     private static readonly int Attack = Animator.StringToHash("Attack");
 
-    public bool isAttacking;
-
     protected override void Awake()
     {
         base.Awake();
