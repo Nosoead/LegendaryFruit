@@ -187,7 +187,6 @@ public class PlayerController : MonoBehaviour
         {
             isTapInteract = false;
         }
-        Debug.Log(isTapInteract);
         OnTapInteractEvent?.Invoke(isTapInteract);
     }
     public void PlayerHoldInteract(InputAction.CallbackContext context)

@@ -160,7 +160,6 @@ public class MonsterController : MonoBehaviour
         {
             return;
         }
-        Debug.Log(type);
         monsterAttributeLogics.ApplyAttackLogic(player.gameObject, attackPower, attributeValue, attributeRateTime, attributeStack);
     }
 

@@ -45,6 +45,11 @@ public class PlayerStatManager : MonoBehaviour
     {
         // TODO: SaveManager를 통해 LoadData로 데이터 로드 시,
         //       Load 결과가 null인 경우 초기화 처리 추가
+        Init();
+    }
+
+    public void Init()
+    {
         stat.InitStat(playerData);
     }
 

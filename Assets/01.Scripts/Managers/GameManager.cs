@@ -9,47 +9,33 @@ public class GameManager : Singleton<GameManager>
     public bool isClear = false;
     public bool isGetWeapon = false;
     public bool isCreatReward = false;
-    public StageManager stageManager;
 
     protected override void Awake()
     {
-        base.Awake();
-        //test용
+        base.Awake(); 
         player = GameObject.Find("Mainplayer");
-        Debug.Log(player.ToString());
-        if (stageManager == null)
-        {
-            stageManager = TryGetComponent(out StageManager _stageManager)?
-                _stageManager : gameObject.AddComponent<StageManager>();
-        }
+        //test용
     }
 
-    private void Start()
+    public void Init()
     {
+        if (player == null)
+        {
+            player = GameObject.Find("Mainplayer");
+        }
         GameStart();
-        Application.targetFrameRate = 60;
-        Time.timeScale = 1f;
     }
 
     public void GameStart()
     {
-        stageManager.ChangeStage(StageType.Stage0);
-        //testStageManager.Instance.CreatStage();
-        //testStageManager.Instance.StartStage("Lobby");
-        //StageManager.Instance.CreatRewardTree();
+        StageManager.Instance.ChangeStage(StageType.Stage0);
+        Application.targetFrameRate = 60;
+        Time.timeScale = 1f;
     }
 
     public void GameEnd()
     {
         Invoke(nameof(DelayedGameEnd), 1f);
-        //TODO UI창 끄면 Scene 다시Load하면서 시작하기
-    }
-
-    public void GameRestart()
-    {
-        //TODO 실제 게임 하면 LobbyScene이거나 싹다 초기화해서 lobby맵 띄우기
-        string currentSceneName = SceneManager.GetActiveScene().name;
-        SceneManager.LoadScene("TitleScene");
     }
 
     private void DelayedGameEnd()
@@ -57,4 +43,5 @@ public class GameManager : Singleton<GameManager>
         Time.timeScale = 0f;
         UIManager.Instance.ToggleUI<GameEndUI>(isPreviousWindowActive: false);
     }
+
 }
