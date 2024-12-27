@@ -11,7 +11,7 @@ public interface ISetPooledObject<T> where T : Component
 public class PoolManager : Singleton<PoolManager>
 {
     private Dictionary<PoolType, GameObject> prefabDictionary = new Dictionary<PoolType, GameObject>();
-    public Dictionary<PoolType, object> poolDictionary = new Dictionary<PoolType, object>();
+    private Dictionary<PoolType, object> poolDictionary = new Dictionary<PoolType, object>();
     private Dictionary<PoolType, Action> resetDictionary = new Dictionary<PoolType, Action>();
 
     protected override void Awake()

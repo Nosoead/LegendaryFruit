@@ -47,7 +47,7 @@ public class StageManager : Singleton<StageManager>
 
     private void CacheMonster()
     {
-        monster = PoolManager.Instance.poolDictionary[PoolType.PooledMonster] as IObjectPool<PooledMonster>;
+        monster = PoolManager.Instance.GetObjectFromPool<PooledMonster>(PoolType.PooledMonster);
     }
 
     public void Init()

@@ -19,10 +19,10 @@ public class GameEndUI : UIBase
 
     private SaveDataContainer saveDataContainer;
 
-    private void Update()
-    {
-        GetDataToText();
-    }
+    //private void Update()
+    //{
+    //    GetDataToText();
+    //}
     public override void Open()
     {
         if (saveDataContainer == null) GetStatData();

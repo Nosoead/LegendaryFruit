@@ -43,8 +43,8 @@ public class RewardNPC : MonoBehaviour, IInteractable
         }
         PoolManager.Instance.CreatePool<PooledFruitWeapon>(PoolType.PooledFruitWeapon, false, 5, 5);
         PoolManager.Instance.CreatePool<PooledReward>(PoolType.PooledReward, false, 5, 5);
-        fruitWeapon = PoolManager.Instance.poolDictionary[PoolType.PooledFruitWeapon] as IObjectPool<PooledFruitWeapon>;
-        reward = PoolManager.Instance.poolDictionary[PoolType.PooledReward] as IObjectPool<PooledReward>;
+        fruitWeapon = PoolManager.Instance.GetObjectFromPool<PooledFruitWeapon>(PoolType.PooledFruitWeapon);
+        reward = PoolManager.Instance.GetObjectFromPool<PooledReward>(PoolType.PooledReward);
         //TODO 인덱스접근 자동으로 할 수 있게
     }
 
