@@ -28,27 +28,27 @@ public class BossAttackState : IState
 
     public void Execute()
     {
-        time += Time.deltaTime;
-        if(bossMonsterController.InAttackRange())
-        {           
-            if (time >= 1f)
-            {
-                time = 0f;
-                bossMonsterController.animator.OnAttack(true);
-                attackCount++;
-                if (bossMonsterController.DetectPlayer() && attackCount >= 3)
-                {
-                    attackCount = 0;
-                    bossMonsterController.animator.Delay(true);
-                    bossMonsterController.StateMachine.TransitionToState(bossMonsterController.StateMachine.patternOneState);
-                }
-            }
-            return;
-        }
-        if(!bossMonsterController.DetectPlayer())
-        {
-            bossMonsterController.StateMachine.TransitionToState(bossMonsterController.StateMachine.patrollState);
-        }
+        //time += Time.deltaTime;
+        //if(bossMonsterController.InAttackRange())
+        //{           
+        //    if (time >= 1f)
+        //    {
+        //        time = 0f;
+        //        //bossMonsterController.animator.OnAttack(true);
+        //        attackCount++;
+        //        if (bossMonsterController.DetectPlayer() && attackCount >= 3)
+        //        {
+        //            attackCount = 0;
+        //            bossMonsterController.animator.Delay(true);
+        //            bossMonsterController.StateMachine.TransitionToState(bossMonsterController.StateMachine.patternOneState);
+        //        }
+        //    }
+        //    return;
+        //}
+        //if(!bossMonsterController.DetectPlayer())
+        //{
+        //    bossMonsterController.StateMachine.TransitionToState(bossMonsterController.StateMachine.patrollState);
+        //}
     }
 
     public void Exit()

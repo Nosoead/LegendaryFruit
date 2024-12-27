@@ -17,7 +17,6 @@ public class BossPatrollState : IState
     public void Enter()
     {
         bossMonsterController.animator.OnMove(true);
-        //bossMonsterController.animator.OnMove(true);
         Debug.Log("패트롤상태 진입");
     }
 
@@ -27,16 +26,13 @@ public class BossPatrollState : IState
         if(bossMonsterController.DetectPlayer())
         {
             bossMonsterController.LookAtPlayer();
-        }
-        else
-        {
             return;
         }
 
-        if(bossMonsterController.InAttackRange())
-        {
-            bossMonsterController.StateMachine.TransitionToState(bossMonsterController.StateMachine.attackState);
-        }
+        //if(bossMonsterController.InAttackRange())
+        //{
+        //    bossMonsterController.StateMachine.TransitionToState(bossMonsterController.StateMachine.attackState);
+        //}
 
         if (bossMonsterController.monsterGround.GetOnGround())
         {

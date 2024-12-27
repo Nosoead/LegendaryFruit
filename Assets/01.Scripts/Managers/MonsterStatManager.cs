@@ -6,6 +6,8 @@ public class MonsterStatManager : MonoBehaviour
     public UnityAction<string, float> OnSubscribeToStatUpdateEvent;
     MonsterAnimationController monsterAnimationController;
     [SerializeField] private PooledMonster pooledMonster;
+    // 임시적으로 보스전용 
+    [SerializeField] private BossMonsterSO bossMonsterData;
     private MonsterStat stat;
     private StatHandler statHandler;
     public bool isDead = false;
@@ -40,6 +42,7 @@ public class MonsterStatManager : MonoBehaviour
         // TODO: SaveManager를 통해 LoadData로 데이터 로드 시,
         //       Load 결과가 null인 경우 초기화 처리 추가
         SetInitStat();
+        SetInIt();
     }
 
     public void SetInitStat()
@@ -100,5 +103,10 @@ public class MonsterStatManager : MonoBehaviour
         pooledMonster.ObjectPool.Release(pooledMonster);
         gameObject.layer = LayerMask.NameToLayer("Monster");
         isDead = false;
+    }
+
+    public void SetInIt()
+    {
+        stat.InitStat(bossMonsterData);
     }
 }

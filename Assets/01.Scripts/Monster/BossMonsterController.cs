@@ -101,10 +101,11 @@ public class BossMonsterController : MonoBehaviour
     }
     public bool DetectPlayer() // 플레이어 발견
     {
-        Vector3 raytDirection = Vector3.right * lookDirection;
-        RaycastHit2D hit = Physics2D.Raycast(transform.position, raytDirection, chaseRange, playerLayerMask);
+        Vector2 boxSize = new Vector2(5, 5);
+        Vector2 direction = Vector2.right * lookDirection;
+        RaycastHit2D hit = Physics2D.BoxCast(transform.position, boxSize, 0,  direction, chaseRange, playerLayerMask);
         Color rayColor = (hit.collider != null) ? Color.green : Color.red;
-        Debug.DrawRay(transform.position, raytDirection * chaseRange, rayColor);
+        Debug.DrawRay(transform.position, direction * chaseRange, rayColor);
         if (hit.collider != null)
         {
             target = hit.collider.gameObject;
@@ -141,7 +142,7 @@ public class BossMonsterController : MonoBehaviour
             target = hit.collider.gameObject;
             return true;
         }
-        Debug.DrawRay(transform.position, rayDirection * attackDistance, rayColor, 0.1f);
+        //Debug.DrawRay(transform.position, rayDirection * attackDistance, rayColor, 0.1f);
         return false;
     }
 
@@ -188,7 +189,7 @@ public class BossMonsterController : MonoBehaviour
         Vector2 boxSize = new Vector2(12f, 3f);        
         Gizmos.color = Color.red;
         Vector2 boxPosition = (Vector2)transform.position + Vector2.right * 0.5f * lookDirection;
-        Gizmos.DrawWireCube(boxPosition, boxSize);
+        //Gizmos.DrawWireCube(boxPosition, boxSize);
         OnDrawGizmos2();
     }
     private void OnDrawGizmos2()
@@ -196,7 +197,7 @@ public class BossMonsterController : MonoBehaviour
         Vector2 boxSize = new Vector2(5f, 3f);
         Gizmos.color = Color.red;
         Vector2 boxPosition = (Vector2)transform.position + Vector2.right * 1f * lookDirection;
-        Gizmos.DrawWireCube(boxPosition, boxSize);
+        //Gizmos.DrawWireCube(boxPosition, boxSize);
     }
 
 }

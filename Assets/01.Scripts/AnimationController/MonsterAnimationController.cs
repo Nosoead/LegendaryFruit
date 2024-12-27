@@ -51,23 +51,23 @@ public class MonsterAnimationController : AnimationController
         Animator.SetBool(isRun, isMove); 
     }
 
-    public void OnAttack(bool isAttack)
-    {
-        AnimationClip selectClip;
-        float randomValue = Random.Range(0f, 100f);
-        if(randomValue <= monsterData.patternAttackChance && monsterData.pattrenAttackClip.Length > 0 )
-        {
-            int randomIndex = Random.Range(0, monsterData.pattrenAttackClip.Length);
-            selectClip = monsterData.pattrenAttackClip[randomIndex];
-            Debug.Log($"{selectClip.name}");
-        }
-        else
-        {
-            selectClip = monsterData.defalutAttackClip;
-        }
-        overrideController["Monster_Attack"] = selectClip;
-        Animator.SetBool(Attack, isAttack);
-    }
+    //public void OnAttack(bool isAttack)
+    //{
+    //    AnimationClip selectClip;
+    //    float randomValue = Random.Range(0f, 100f);
+    //    if(randomValue <= monsterData.patternAttackChance && monsterData.pattrenAttackClip.Length > 0 )
+    //    {
+    //        int randomIndex = Random.Range(0, monsterData.pattrenAttackClip.Length);
+    //        selectClip = monsterData.pattrenAttackClip[randomIndex];
+    //        Debug.Log($"{selectClip.name}");
+    //    }
+    //    else
+    //    {
+    //        selectClip = monsterData.defalutAttackClip;
+    //    }
+    //    overrideController["Monster_Attack"] = selectClip;
+    //    Animator.SetBool(Attack, isAttack);
+    //}
     public void OnHit()
     {
         Animator.SetTrigger(isHit);

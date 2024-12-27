@@ -1,10 +1,8 @@
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "MonsterSO", menuName = "ScriptableObject/MonsterSO", order = 3)]
 public class MonsterSO : GameSO
 {
     // ex ) 0001
-    public MonsterType monsterType;
     public int monsterID;
     public float maxHealth; // 체력
     public float attackPower; // 공격력
@@ -20,13 +18,6 @@ public class MonsterSO : GameSO
     public float inGameMoney; // 드랍하는 머니
     public SpriteRenderer sprite; // 몬스터 이미지
     public AnimatorOverrideController animatorOverrideController; // 몬스터 애니메이션
-    public AnimationClip defalutAttackClip; // 기본공격 모션
-    public AnimationClip [] pattrenAttackClip; // 패턴공격 모션
-    public float patternAttackChance;
+
 }
 
-public enum MonsterType
-{
-    Boss,
-    Normal
-}
