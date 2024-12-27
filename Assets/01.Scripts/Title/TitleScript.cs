@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEditor.Build.Content;
 using UnityEngine;
-using UnityEngine.SceneManagement;
+
 
 public class TitleScript : MonoBehaviour
 {
@@ -10,7 +10,7 @@ public class TitleScript : MonoBehaviour
     {
         if (Input.anyKey)
         {
-            SceneManager.LoadScene("OneCycleScene");
+            SceneManagerExtension.Instance.LoadScene(SceneType.OneCycleScene);
         }
     }
 }

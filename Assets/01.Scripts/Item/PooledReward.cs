@@ -103,5 +103,5 @@ public class PooledReward : MonoBehaviour, ISetPooledObject<PooledReward>
             var tween = go.transform.DOMoveY(goalPos, 1f, false);
         }
         // 현재 상태
-    }    
+    }
 }

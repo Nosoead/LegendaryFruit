@@ -39,6 +39,8 @@ public class MonsterAnimationController : AnimationController
         Animator.runtimeAnimatorController = overrideController;
     }
 
+    #region 애니메이션 파라미터
+
     public void OnIdle()
     {
         Animator.SetBool(isRun, false);
@@ -57,6 +59,7 @@ public class MonsterAnimationController : AnimationController
         {
             int randomIndex = Random.Range(0, monsterData.pattrenAttackClip.Length);
             selectClip = monsterData.pattrenAttackClip[randomIndex];
+            Debug.Log($"{selectClip.name}");
         }
         else
         {
@@ -64,25 +67,6 @@ public class MonsterAnimationController : AnimationController
         }
         overrideController["Monster_Attack"] = selectClip;
         Animator.SetBool(Attack, isAttack);
-    }
-
-
-
-    public bool CheckAttackAnimationState()
-    {
-        var currentState = Animator.GetCurrentAnimatorStateInfo(0).IsName("Monster_Attack");
-        var isAnimating = Animator.GetCurrentAnimatorStateInfo(0).normalizedTime; 
-        if(currentState && isAnimating  >= 1f)
-        {
-            Debug.Log($"{isAnimating}");
-            return true;
-        }
-        return false;
-    }
-
-    public void ResetAttackTrigger()
-    {
-        Animator.ResetTrigger(Attack);
     }
     public void OnHit()
     {
@@ -120,22 +104,17 @@ public class MonsterAnimationController : AnimationController
     public void Delay(bool isDelay)
     {
         Animator.SetBool("isDelay", isDelay);
-    } 
-
-    public void OffHold()
-    {
-        Animator.SetBool("Hold", false);
-        Animator.SetBool(Attack, true);
     }
+    #endregion
 
+    // 공격모션 끝났는지 판단 후 대기모션
     public bool OnAttackComplete()
     {
         isAttackComplete = true;
         if(isAttackComplete)
         {
-            Animator.SetBool("Hold", true);
-            Animator.SetBool(Attack, false);
-            Debug.Log("공격완료 ! Hold로 넘어갑니다.");
+            Animator.SetTrigger("Hold");
+
             return true;
         }
         return false;

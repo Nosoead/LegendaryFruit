@@ -31,6 +31,7 @@ public class Stage : MonoBehaviour
 
     private void SetPlayer(GameObject player)
     {
+        if (player == null) return;
         player.transform.position = playerSpawnPoint.position;
     }
 

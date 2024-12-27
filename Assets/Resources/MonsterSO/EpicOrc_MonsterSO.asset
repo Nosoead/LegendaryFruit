@@ -30,6 +30,4 @@ MonoBehaviour:
   defalutAttackClip: {fileID: 7400000, guid: 54aba33084ac7514b8cd9e00c63fe45e, type: 2}
   pattrenAttackClip:
   - {fileID: 7400000, guid: 6701faa5ff18b0d429f1e72b952bf624, type: 2}
-  - {fileID: 0}
-  - {fileID: 0}
-  patternAttackChance: 30
+  patternAttackChance: 50

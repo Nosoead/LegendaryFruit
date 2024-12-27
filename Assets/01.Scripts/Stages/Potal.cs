@@ -97,7 +97,7 @@ public class Potal : MonoBehaviour, IInteractable
         if (GameManager.Instance.isClear == true)
         {
             currentstageType = GetNextStage(currentstageType);
-            GameManager.Instance.stageManager.ChangeStage(currentstageType);
+            StageManager.Instance.ChangeStage(currentstageType);
         }
     }
 
@@ -106,7 +106,8 @@ public class Potal : MonoBehaviour, IInteractable
         //TODO 어떤 보상이 나올지 랜덤으로 뽑아주기 5자리쨰 숫자 몫값으로
         //보스 이후 nextLevel확인할 수 있도록 ID 수정하기
         //맵다양성 높아지면 stageVariation도 랜덤으로 뽑아서 처리
-        StageType nextStageType = (StageType)((int)stageType + nextStage);
+        StageType nextStageType = (StageType)(stageType + nextStage);
+        Debug.Log($"last : {stageType}, next : {nextStageType}");
         return nextStageType;
     }
     #endregion

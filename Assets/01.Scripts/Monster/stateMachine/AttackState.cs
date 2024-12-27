@@ -34,9 +34,9 @@ public class AttackState :IState
             return;
         }
 
-        if(monsterController.InAttackRange() && monsterController.animationController.OnAttackComplete())
+        if(monsterController.InAttackRange())
         {
-            monsterController.animationController.OffHold();
+            return;
         }
 
 
@@ -63,8 +63,6 @@ public class AttackState :IState
     public void Exit()
     {
         monsterController.animationController.OnAttack(false);
-        Debug.Log("모션 꺼짐 제발 좀 되세요");
-
     }
 
     public void UpdateStat(MonsterController monsterController)

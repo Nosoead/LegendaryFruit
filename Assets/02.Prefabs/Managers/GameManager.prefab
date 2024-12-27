@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4096506779437352602}
   - component: {fileID: 927768107831137515}
-  - component: {fileID: 4657678026342799588}
   - component: {fileID: 4819784469382137227}
   m_Layer: 0
   m_Name: GameManager
@@ -50,19 +49,7 @@ MonoBehaviour:
   isClear: 0
   isGetWeapon: 0
   isCreatReward: 0
-  stageManager: {fileID: 4657678026342799588}
---- !u!114 &4657678026342799588
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4111966156598457000}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fd3cfa182ab4c654cafa957e6745881d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  stageManager: {fileID: 0}
 --- !u!114 &4819784469382137227
 MonoBehaviour:
   m_ObjectHideFlags: 0

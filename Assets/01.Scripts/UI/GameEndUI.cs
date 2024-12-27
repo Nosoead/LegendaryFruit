@@ -18,10 +18,10 @@ public class GameEndUI : UIBase
 
     private SaveDataContainer saveDataContainer;
 
-    private void Update()
-    {
-        GetDataToText();
-    }
+    //private void Update()
+    //{
+    //    GetDataToText();
+    //}
     public override void Open()
     {
         if (saveDataContainer == null) GetStatData();
@@ -29,14 +29,15 @@ public class GameEndUI : UIBase
         if (GameManager.Instance.isClear)
         {
             titleTxt.text = "Game Clear!";
+            exitButton.onClick.AddListener(() => SceneManagerExtension.Instance.LoadScene(SceneType.TitleScene));
         }
         else
         {
             titleTxt.text = "Game Over..";
+            exitButton.onClick.AddListener(() => SceneManagerExtension.Instance.LoadScene(SceneType.OneCycleScene));
         }
         exitTxt.text = "돌아가기";
         exitButton.onClick.AddListener(() => UIManager.Instance.ToggleUI<GameEndUI>(false));
-        exitButton.onClick.AddListener(() => GameManager.Instance.GameRestart());
     }
 
     private void GetStatData()

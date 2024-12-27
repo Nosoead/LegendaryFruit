@@ -8,6 +8,7 @@ public class MonsterStatManager : MonoBehaviour
     [SerializeField] private PooledMonster pooledMonster;
     private MonsterStat stat;
     private StatHandler statHandler;
+    public bool isDead = false;
 
     private void Awake()
     {
@@ -83,10 +84,12 @@ public class MonsterStatManager : MonoBehaviour
         stat.UpdateStat(statKey, result);
     }
     #endregion
+
     private void OnMonsterDie()
     {
+        isDead = true;
         StopAllCoroutines();
-        GameManager.Instance.stageManager.MonsterDie();
+        StageManager.Instance.MonsterDie();
         gameObject.layer = LayerMask.NameToLayer("Default");
         monsterAnimationController.OnDie();
         Invoke("MonsterDieOff", 1.5f);
@@ -96,5 +99,6 @@ public class MonsterStatManager : MonoBehaviour
     {
         pooledMonster.ObjectPool.Release(pooledMonster);
         gameObject.layer = LayerMask.NameToLayer("Monster");
+        isDead = false;
     }
 }

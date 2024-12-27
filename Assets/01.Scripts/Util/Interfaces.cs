@@ -19,6 +19,10 @@ public interface IState
     void Exit();
 }
 
+public interface IResetPooledObject
+{
+    void Reset();
+}
 //public interface ISetPooledObject<T> where T : Component
 //{
 //    void SetPooledObject(IObjectPool<T> pool);

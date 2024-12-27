@@ -44,3 +44,9 @@ public enum PoolType
     PooledFruitWeapon,
     Count
 }
+
+public enum SceneType
+{
+    TitleScene = 0,
+    OneCycleScene = 1
+}

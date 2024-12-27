@@ -114,6 +114,22 @@ public class BossMonsterController : MonoBehaviour
         return false;
     }
 
+    public void LookAtPlayer()
+    {
+        if (target != null)
+        {
+            float dir = target.transform.position.x - transform.position.x;
+            if ((dir > 0 && lookDirection < 0) || (dir < 0 && lookDirection > 0))
+            {
+                ReverseDirection();
+            }
+        }
+        else
+        {
+            return;
+        }
+    }
+
     public bool InAttackRange()
     {
         Vector3 rayDirection = Vector3.right * lookDirection;
@@ -135,13 +151,9 @@ public class BossMonsterController : MonoBehaviour
 
         RaycastHit2D hit = Physics2D.Raycast(transform.position, rayDirection, chaseRange, playerLayerMask);
 
-        if (hit.collider == null || hit.distance > 0.1f)
+        if (hit.collider == null || hit.distance > attackDistance)
         {
             transform.position += rayDirection * (moveSpeed * Time.deltaTime);
-        }
-        else
-        {
-            ReverseDirection();
         }
     }
 

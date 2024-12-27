@@ -1,9 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using Unity.VisualScripting;
 using UnityEngine;
 
-public class ItemManager : MonoBehaviour
+public class ItemManager : Singleton<ItemManager>
 {
     private List<WeaponSO> itemList = new List<WeaponSO>();
     private Dictionary<int, WeaponSO> itemDictionary = new Dictionary<int, WeaponSO>();
@@ -11,7 +12,7 @@ public class ItemManager : MonoBehaviour
 
     private void Start()
     {
-        path = "Item";
+        path = "ItemSO";
         SetItemDictionary();
     }
 
@@ -34,7 +35,7 @@ public class ItemManager : MonoBehaviour
         int[] selectedNumber = RandomNumber(selectNum, itemList.Count);
         for (int i = 0; i < selectedNumber.Length; i++)
         {
-            selectedItem[i] = itemList[i];
+            selectedItem[i] = itemList[selectedNumber[i]];
         }
         return selectedItem;
     }
@@ -50,9 +51,9 @@ public class ItemManager : MonoBehaviour
 
         for (int i = 0; i < selectNum; i++)
         {
-            int randomNum = Random.Range(0, maxNum - i);
+            int randomNum = Random.Range(0, maxNum);
             resultNum[i] = numberArray[randomNum];
-            numberArray[randomNum] = numberArray[numberArray.Length - i];
+            numberArray[randomNum] = numberArray[numberArray.Length - i - 1];
         }
         return resultNum;
     }

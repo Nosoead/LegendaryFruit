@@ -135,9 +135,10 @@ public class MonsterController : MonoBehaviour
 
     public void Move()
     {
+        if (statManager.isDead) return;
         Vector3 rayDirection = Vector3.right * lookDirection;
-
         RaycastHit2D hit = Physics2D.Raycast(transform.position, rayDirection, chaseRange, playerLayerMask);
+
 
         if (hit.collider == null || hit.distance > attackDistance)
         {
@@ -147,6 +148,7 @@ public class MonsterController : MonoBehaviour
 
     public void Attack()
     {
+        if (statManager.isDead) return;
         //어트리뷰트에서 데미지계산후 딕셔너리에 저장후 꺼내옴
         // scale.x가 0보다 크면 우 작으면 좌
         Vector2 monsterPosition = transform.position;
@@ -158,7 +160,6 @@ public class MonsterController : MonoBehaviour
         {
             return;
         }
-        Debug.Log(type);
         monsterAttributeLogics.ApplyAttackLogic(player.gameObject, attackPower, attributeValue, attributeRateTime, attributeStack);
     }
 

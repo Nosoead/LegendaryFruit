@@ -4,6 +4,7 @@ using UnityEngine;
 public class MonsterSO : GameSO
 {
     // ex ) 0001
+    public MonsterType monsterType;
     public int monsterID;
     public float maxHealth; // 체력
     public float attackPower; // 공격력
@@ -22,4 +23,10 @@ public class MonsterSO : GameSO
     public AnimationClip defalutAttackClip; // 기본공격 모션
     public AnimationClip [] pattrenAttackClip; // 패턴공격 모션
     public float patternAttackChance;
+}
+
+public enum MonsterType
+{
+    Boss,
+    Normal
 }
