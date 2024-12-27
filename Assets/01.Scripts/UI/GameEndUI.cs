@@ -38,6 +38,7 @@ public class GameEndUI : UIBase
         }
         exitTxt.text = "돌아가기";
         exitButton.onClick.AddListener(() => UIManager.Instance.ToggleUI<GameEndUI>(false));
+        DataManager.Instance.DeleteData<SaveDataContainer>();
     }
 
     private void GetStatData()

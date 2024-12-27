@@ -98,6 +98,7 @@ public class Potal : MonoBehaviour, IInteractable
         {
             currentstageType = GetNextStage(currentstageType);
             StageManager.Instance.ChangeStage(currentstageType);
+            GameManager.Instance.Save();
         }
     }
 
