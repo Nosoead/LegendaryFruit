@@ -1,5 +1,7 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.Pool;
 
 public interface ISetPooledObject<T> where T : Component
@@ -10,6 +12,7 @@ public class PoolManager : Singleton<PoolManager>
 {
     private Dictionary<PoolType, GameObject> prefabDictionary = new Dictionary<PoolType, GameObject>();
     public Dictionary<PoolType, object> poolDictionary = new Dictionary<PoolType, object>();
+    private Dictionary<PoolType, Action> resetDictionary = new Dictionary<PoolType, Action>();
 
     protected override void Awake()
     {
@@ -53,7 +56,11 @@ public class PoolManager : Singleton<PoolManager>
             }
             this.gameObjectPrefab = prefab;
             objectPoolT = new ObjectPool<T>(CreateObject, OnGetObject, OnReleaseObject, OnDestroyObject, collectionCheck, defaultCapacity, maxSize);
-            PoolManager.Instance.poolDictionary.Add(poolType, objectPoolT);
+            if (!PoolManager.Instance.poolDictionary.ContainsKey(poolType))
+            {
+                PoolManager.Instance.poolDictionary.Add(poolType, objectPoolT);
+                PoolManager.Instance.resetDictionary.Add(poolType, objectPoolT.Clear);
+            }
         }
 
         private T CreateObject()
@@ -81,4 +88,30 @@ public class PoolManager : Singleton<PoolManager>
             Destroy(obj.gameObject);
         }
     }
+
+    public IObjectPool<T> GetObjectFromPool<T>(PoolType poolType) where T : Component
+    {
+        if (poolDictionary.TryGetValue(poolType, out var pool) && pool is IObjectPool<T> poolComponent)
+        {
+            return poolComponent;
+        }
+        return null;
+    }
+
+    public void ResetObjectPool<T>(PoolType poolType) where T : Component
+    {
+        if (poolDictionary.TryGetValue(poolType, out var pool) && pool is IObjectPool<T> poolComponent)
+        {
+            poolComponent.Clear();
+        }
+    }
+
+    public void ResetAllObjectPool()
+    {
+        foreach (var pool in resetDictionary.Values)
+        {
+            pool();
+        }
+    }
+
 }

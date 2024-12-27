@@ -35487,7 +35487,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pressFCanvas: {fileID: 2062668176286841276}
   spawnPositionsRoot: {fileID: 665697988629490436}
-  weaponData: {fileID: 11400000, guid: 61f6445dbbc2b524fb7fde735c6aecb7, type: 2}
+  weaponData: {fileID: 0}
 --- !u!1 &6205054697269582525
 GameObject:
   m_ObjectHideFlags: 0

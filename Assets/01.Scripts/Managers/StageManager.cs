@@ -1,12 +1,13 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.Pool;
 
-public class StageManager : MonoBehaviour
+public class StageManager : Singleton<StageManager>
 {
-    private GameObject player;
+    [SerializeField] private GameObject player;
 
     private Dictionary<StageType, Stage> stages = new Dictionary<StageType, Stage>();
     private Stage currentStage = null;
@@ -15,10 +16,10 @@ public class StageManager : MonoBehaviour
     //일단 몬스터만 풀링
     private IObjectPool<PooledMonster> monster;
 
-    private void Awake()
+    protected override void Awake()
     {
+        base.Awake();
         RegisterStage();
-        player = GameManager.Instance.player;
     }
 
     private void Start()
@@ -26,8 +27,9 @@ public class StageManager : MonoBehaviour
         //TODO : 오브젝트풀 시작하자마자 다 뽑아와서 등록까지 할 것.
         //instance찍고 딕셔너리로 참조만 하면 바로 풀 사용할 수 있도록, CreatePool사용없이
         PoolManager.Instance.CreatePool<PooledMonster>(PoolType.PooledMonster, false, 7, 12);
-        monster = PoolManager.Instance.poolDictionary[PoolType.PooledMonster] as IObjectPool<PooledMonster>;
+        CacheMonster();
     }
+
 
     private void RegisterStage()
     {
@@ -43,8 +45,30 @@ public class StageManager : MonoBehaviour
         }
     }
 
+    private void CacheMonster()
+    {
+        monster = PoolManager.Instance.poolDictionary[PoolType.PooledMonster] as IObjectPool<PooledMonster>;
+    }
+
+    public void Init()
+    {
+        RegisterStage();
+        CacheMonster();
+    }
+
+    public void ResetStageManager()
+    {
+        stages.Clear();
+        //if( monster != null ) monster.Clear();
+    }
+
+
     public void ChangeStage(StageType type)
     {
+        if (player == null)
+        {
+            player = GameManager.Instance.player;
+        }
         if (currentStage != null)
         {
             Stage lastStage = currentStage;

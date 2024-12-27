@@ -27,6 +27,7 @@ public class RewardNPC : MonoBehaviour, IInteractable
 
     public void InitRewardNPC()
     {
+        Debug.Log("test");
         gameObject.layer = LayerMask.NameToLayer("NPC");
         playerLayer = LayerMask.NameToLayer("Player");
         invincibleLayer = LayerMask.NameToLayer("Invincible");
@@ -44,10 +45,12 @@ public class RewardNPC : MonoBehaviour, IInteractable
         PoolManager.Instance.CreatePool<PooledReward>(PoolType.PooledReward, false, 5, 5);
         fruitWeapon = PoolManager.Instance.poolDictionary[PoolType.PooledFruitWeapon] as IObjectPool<PooledFruitWeapon>;
         reward = PoolManager.Instance.poolDictionary[PoolType.PooledReward] as IObjectPool<PooledReward>;
+        //TODO 인덱스접근 자동으로 할 수 있게
     }
 
     public void SetReward()
     {
+        weaponData = ItemManager.Instance.GetItemData(selectNum: 1)[0];
         randomNum = Random.Range(0, spawnPositions.Count);
         pooledReward = reward.Get();
         pooledReward.gameObject.transform.position = spawnPositions[randomNum].position;

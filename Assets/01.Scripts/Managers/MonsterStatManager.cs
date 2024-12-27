@@ -83,10 +83,11 @@ public class MonsterStatManager : MonoBehaviour
         stat.UpdateStat(statKey, result);
     }
     #endregion
+
     private void OnMonsterDie()
     {
         StopAllCoroutines();
-        GameManager.Instance.stageManager.MonsterDie();
+        StageManager.Instance.MonsterDie();
         gameObject.layer = LayerMask.NameToLayer("Default");
         monsterAnimationController.OnDie();
         Invoke("MonsterDieOff", 1.5f);
