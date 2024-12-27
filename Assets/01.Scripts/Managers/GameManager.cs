@@ -12,7 +12,7 @@ public class GameManager : Singleton<GameManager>
 
     protected override void Awake()
     {
-        base.Awake(); 
+        base.Awake();
         player = GameObject.Find("Mainplayer");
         //test용
     }
@@ -26,9 +26,18 @@ public class GameManager : Singleton<GameManager>
         GameStart();
     }
 
-    public void GameStart()
+    private void GameStart()
     {
-        StageManager.Instance.ChangeStage(StageType.Stage0);
+        Debug.Log(DataManager.Instance.GetCanLoad<SaveDataContainer>());
+        if (DataManager.Instance.GetCanLoad<SaveDataContainer>())
+        {
+            Load();
+            StageManager.Instance.ChangeStage(PlayerInfoManager.Instance.GetStageID());
+        }
+        else
+        {
+            StageManager.Instance.ChangeStage(StageType.Stage0);
+        }
         Application.targetFrameRate = 60;
         Time.timeScale = 1f;
     }
@@ -44,4 +53,13 @@ public class GameManager : Singleton<GameManager>
         UIManager.Instance.ToggleUI<GameEndUI>(isPreviousWindowActive: false);
     }
 
+    public void Save()
+    {
+        PlayerInfoManager.Instance.Save();
+    }
+
+    private void Load()
+    {
+        PlayerInfoManager.Instance.Load();
+    }
 }

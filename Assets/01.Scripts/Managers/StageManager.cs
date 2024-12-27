@@ -11,6 +11,7 @@ public class StageManager : Singleton<StageManager>
 
     private Dictionary<StageType, Stage> stages = new Dictionary<StageType, Stage>();
     private Stage currentStage = null;
+    private StageType currentStageType;
     private int monsterCount;
 
     //일단 몬스터만 풀링
@@ -30,7 +31,6 @@ public class StageManager : Singleton<StageManager>
         CacheMonster();
     }
 
-
     private void RegisterStage()
     {
         foreach (StageType stageType in Enum.GetValues(typeof(StageType)))
@@ -45,24 +45,22 @@ public class StageManager : Singleton<StageManager>
         }
     }
 
-    private void CacheMonster()
-    {
-        monster = PoolManager.Instance.GetObjectFromPool<PooledMonster>(PoolType.PooledMonster);
-    }
-
     public void Init()
     {
         RegisterStage();
         CacheMonster();
     }
 
+    private void CacheMonster()
+    {
+        monster = PoolManager.Instance.GetObjectFromPool<PooledMonster>(PoolType.PooledMonster);
+    }
+
     public void ResetStageManager()
     {
         stages.Clear();
-        //if( monster != null ) monster.Clear();
     }
-
-
+    
     public void ChangeStage(StageType type)
     {
         if (player == null)
@@ -74,7 +72,8 @@ public class StageManager : Singleton<StageManager>
             Stage lastStage = currentStage;
             lastStage.gameObject.SetActive(false);
         }
-        currentStage = stages[type];
+        currentStageType = type;
+        currentStage = stages[currentStageType];
         currentStage.gameObject.SetActive(true);
         if (!currentStage.stageData.isCombatStage)
         {
@@ -111,5 +110,10 @@ public class StageManager : Singleton<StageManager>
                 GameManager.Instance.GameEnd();
             }
         }
+    }
+
+    public StageType GetCurrentStage()
+    {
+        return currentStageType;
     }
 }

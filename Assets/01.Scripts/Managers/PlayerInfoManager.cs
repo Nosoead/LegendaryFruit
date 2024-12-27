@@ -53,6 +53,8 @@ public class PlayerInfoManager : Singleton<PlayerInfoManager>
         {
             Debug.Log($"장착이름 {data.weaponName}, 타입 {data.type}");
         }
+
+
     }
 
     public void Delete()
@@ -68,12 +70,18 @@ public class PlayerInfoManager : Singleton<PlayerInfoManager>
         var result = equipment.SaveEquipmentData();
         saveDataContainer.weaponData.equippedWeapons = result.Item1;
         saveDataContainer.weaponData.currentEquipWeaponIndex = result.Item2;
+        saveDataContainer.currentStage = StageManager.Instance.GetCurrentStage();
     }
 
     public SaveDataContainer GetSaveData()
     {
         CallSaveData();
         return saveDataContainer;
+    }
+
+    public StageType GetStageID()
+    {
+        return saveDataContainer.currentStage;
     }
 }
 
@@ -82,7 +90,7 @@ public class SaveDataContainer
 {
     public PlayerStatData playerStatData = new PlayerStatData();
     public WeaponData weaponData = new WeaponData();
-    public int currentStage;
+    public StageType currentStage;
     public CurrencyData currencyData = new CurrencyData();
 }
 
