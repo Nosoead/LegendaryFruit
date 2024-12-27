@@ -12,14 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c18d4756f0ce0194f8389a6e584db103, type: 3}
   m_Name: Orc_MonsterSO
   m_EditorClassIdentifier: 
-  monsterID: 0002
+  monsterID: 2
   maxHealth: 100
   attackPower: 10
   defense: 5
   attackSpeed: 3
   moveSpeed: 3
-  attackDistance: 4
-  chaseRange: 5
+  attackDistance: 1
+  chaseRange: 10
   type: 5
   attributeValue: 0
   attributeRateTime: 0
@@ -27,3 +27,5 @@ MonoBehaviour:
   inGameMoney: 100
   sprite: {fileID: 926731303, guid: 26669501ff29439409df8c873ab1a98c, type: 3}
   animatorOverrideController: {fileID: 22100000, guid: 243c00b9df29bf54482b417cfa1965c0, type: 2}
+  defalutAttackClip: {fileID: 7400000, guid: 2fe45fc4b38fd064fb877e839b389f4c, type: 2}
+  pattrenAttackClip: {fileID: 0}

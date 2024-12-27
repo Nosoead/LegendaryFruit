@@ -23,7 +23,7 @@ public class BossPatternOneState : IState
 
     public void Enter()
     {
-        Debug.Log("ÆÐÅÏÁøÀÔ");
+        Debug.Log("íŒ¨í„´ì§„ìž…");
         bossMonsterController.animator.OnAreaAttack(true);
     }
 
@@ -37,7 +37,6 @@ public class BossPatternOneState : IState
             }
             else
             {
-                bossMonsterController.animator.AttackToIdle();
                 bossMonsterController.StateMachine.TransitionToState(bossMonsterController.StateMachine.idleState);
             }
         }

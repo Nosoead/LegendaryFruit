@@ -11,7 +11,7 @@ public class EntityManager : Singleton<EntityManager>
     {
         base.Awake();
         SettingData();
-        SettingMonster(0002);
+        SettingMonster(4);
     }
 
     private void SettingData()
@@ -24,7 +24,7 @@ public class EntityManager : Singleton<EntityManager>
     }
 
 
-    //ÀÓÀÇÀûÀ¸·Î »Ì¾Æ¼­ ÀÏ´Ü ÁøÇà 
+    //ì„ì‹œ
     public void SettingMonster(int monsterID)
     {
         if(!monsterDatas.ContainsKey(monsterID))
