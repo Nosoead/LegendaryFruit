@@ -30,7 +30,7 @@ public class TestUI : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.E))
         {
-            UIManager.Instance.ToggleUI<NPCUpgradeUI>(false);
+            UIManager.Instance.ToggleUI<NPCDialougeUI>(false);
         }
         
     }

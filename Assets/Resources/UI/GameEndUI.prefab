@@ -1812,6 +1812,13 @@ MonoBehaviour:
   titleTxt: {fileID: 6308046174299813511}
   exitTxt: {fileID: 2516788992251674948}
   exitButton: {fileID: 4279364240474361990}
+  playTime: {fileID: 0}
+  inGameMoney: {fileID: 0}
+  globalMoney: {fileID: 0}
+  totalDamage: {fileID: 0}
+  totalEat: {fileID: 0}
+  lastImage: {fileID: 0}
+  totalEatImages: []
 --- !u!1 &7753622548490248877
 GameObject:
   m_ObjectHideFlags: 0

@@ -1,7 +1,5 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Data;
 using System.IO;
 using UnityEngine;
 using UnityEngine.Networking;
@@ -18,6 +16,7 @@ enum Table
 public class DialogueManager : Singleton<DialogueManager>
 {
   
+    private UIDialogue uidialogue;
     private int loadData = 0;
 
     public bool IsLoad => loadData >= 2;
@@ -37,7 +36,11 @@ public class DialogueManager : Singleton<DialogueManager>
     private Dictionary<int, NpcData> _npcDb = new Dictionary<int, NpcData>();
     private Dictionary<int, DialogueData> _dialogueDb = new Dictionary<int, DialogueData>();
     private Dictionary<int, DialogueList> _dialogueListDb = new Dictionary<int, DialogueList>();
-    
+
+    public void SetUIDialogue(UIDialogue dialogue)
+    {
+        uidialogue = dialogue;
+    }
     IEnumerator LoadCSV(string fileName)
     {
         string filePath = Path.Combine(Application.streamingAssetsPath, fileName);
@@ -207,10 +210,6 @@ public class DialogueManager : Singleton<DialogueManager>
             if (uiObject != null)
             {
                 Instantiate(uiObject);
-            }
-            else
-            {
-                Debug.LogWarning("UI resource not found: " + uiResourceName);
             }
         }
     }

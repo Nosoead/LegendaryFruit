@@ -527,7 +527,7 @@ GameObject:
   - component: {fileID: 7106634431720305135}
   - component: {fileID: 6678502153504041884}
   - component: {fileID: 1728029443567737414}
-  - component: {fileID: -1083311925352372195}
+  - component: {fileID: 7862838418773001317}
   m_Layer: 5
   m_Name: NPCUpgradeUI
   m_TagString: Untagged
@@ -619,7 +619,7 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
---- !u!114 &-1083311925352372195
+--- !u!114 &7862838418773001317
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -628,10 +628,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 2066668996645915322}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 61a63f9d82be86b43abfa3f6eadd49d2, type: 3}
+  m_Script: {fileID: 11500000, guid: a30131a4a6b0cf142997fe0a7cfbf2f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  uiDialogue: {fileID: 0}
+  uiDialoguePrefab: {fileID: 834888834345065245, guid: 8db68d2bda8c2684f926529529705669, type: 3}
 --- !u!1 &2806890624297351383
 GameObject:
   m_ObjectHideFlags: 0

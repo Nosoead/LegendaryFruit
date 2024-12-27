@@ -406,26 +406,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 6229792565584800426, guid: 70b956bed7635d94497168d98f2e3364, type: 3}
-      propertyPath: m_Type
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6229792565584800426, guid: 70b956bed7635d94497168d98f2e3364, type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: 39b153c30486600499cd3e00b5f9ba25, type: 3}
-    - target: {fileID: 6229792565584800426, guid: 70b956bed7635d94497168d98f2e3364, type: 3}
-      propertyPath: m_Color.b
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6229792565584800426, guid: 70b956bed7635d94497168d98f2e3364, type: 3}
-      propertyPath: m_Color.g
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6229792565584800426, guid: 70b956bed7635d94497168d98f2e3364, type: 3}
-      propertyPath: m_Color.r
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 8278063471221679285, guid: 70b956bed7635d94497168d98f2e3364, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -510,10 +490,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: InventoryUI
       objectReference: {fileID: 0}
-    - target: {fileID: 8420307281006354687, guid: 70b956bed7635d94497168d98f2e3364, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -528,17 +504,9 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 834888834345065245, guid: 8db68d2bda8c2684f926529529705669, type: 3}
-      propertyPath: uiList.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 834888834345065245, guid: 8db68d2bda8c2684f926529529705669, type: 3}
       propertyPath: uiList.Array.data[0]
       value: 
       objectReference: {fileID: 34201651}
-    - target: {fileID: 2167598386578636493, guid: 8db68d2bda8c2684f926529529705669, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 3996186138037893286, guid: 8db68d2bda8c2684f926529529705669, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -619,17 +587,9 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7605412006405057018, guid: 8db68d2bda8c2684f926529529705669, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 8716031764794228471, guid: 8db68d2bda8c2684f926529529705669, type: 3}
       propertyPath: m_Name
       value: UIDialogue
-      objectReference: {fileID: 0}
-    - target: {fileID: 8716031764794228471, guid: 8db68d2bda8c2684f926529529705669, type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -647,10 +607,6 @@ PrefabInstance:
     - target: {fileID: 4572367789242569767, guid: a8ea76f9507b42e47b544428681f46d6, type: 3}
       propertyPath: m_Name
       value: ESCUI
-      objectReference: {fileID: 0}
-    - target: {fileID: 4572367789242569767, guid: a8ea76f9507b42e47b544428681f46d6, type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4752747654478212454, guid: a8ea76f9507b42e47b544428681f46d6, type: 3}
       propertyPath: m_Pivot.x
@@ -829,10 +785,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: ShelterNPCUI
       objectReference: {fileID: 0}
-    - target: {fileID: 8724402640115600562, guid: b11bf7211460ece48a180a884dbc0b85, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -930,14 +882,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: HPBar
       objectReference: {fileID: 0}
-    - target: {fileID: 3411203078039816904, guid: 56c39447acbc4e9428081cdb9f0a097c, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8029907078937179040, guid: 56c39447acbc4e9428081cdb9f0a097c, type: 3}
-      propertyPath: m_PresetInfoIsWorld
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1034,10 +978,6 @@ PrefabInstance:
     - target: {fileID: 8392168668854330974, guid: ab404dd426e7f944e83c593ddcff6a7c, type: 3}
       propertyPath: m_Name
       value: StageUI
-      objectReference: {fileID: 0}
-    - target: {fileID: 8392168668854330974, guid: ab404dd426e7f944e83c593ddcff6a7c, type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1419,10 +1359,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: GameEndUI
       objectReference: {fileID: 0}
-    - target: {fileID: 7381466108547892444, guid: 598632e104a571947a632044d0aa47d9, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1436,10 +1372,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 2546031020380545939, guid: 40804b74e1432944690db22c7d6ca983, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 3568727496930306444, guid: 40804b74e1432944690db22c7d6ca983, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -1520,33 +1452,9 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4068571143155315610, guid: 40804b74e1432944690db22c7d6ca983, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5496693735476838233, guid: 40804b74e1432944690db22c7d6ca983, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 5721536552419961631, guid: 40804b74e1432944690db22c7d6ca983, type: 3}
       propertyPath: m_Name
       value: SettingUI
-      objectReference: {fileID: 0}
-    - target: {fileID: 5721536552419961631, guid: 40804b74e1432944690db22c7d6ca983, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6745882706081686610, guid: 40804b74e1432944690db22c7d6ca983, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7527483776951717841, guid: 40804b74e1432944690db22c7d6ca983, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7962513446121495712, guid: 40804b74e1432944690db22c7d6ca983, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1807,6 +1715,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 69dcae6f9eb906c43bbe2e917adb2ac9, type: 3}
+--- !u!114 &1431432205 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 834888834345065245, guid: 8db68d2bda8c2684f926529529705669, type: 3}
+  m_PrefabInstance: {fileID: 284997735}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 25fd089d5ada79846bb14a26bc782c1e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1730693658
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1958,13 +1877,13 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -1083311925352372195, guid: 3061c6c19e1a90d4c916ae9f860d1050, type: 3}
+      propertyPath: uiDialogue
+      value: 
+      objectReference: {fileID: 1431432205}
     - target: {fileID: 2066668996645915322, guid: 3061c6c19e1a90d4c916ae9f860d1050, type: 3}
       propertyPath: m_Name
       value: NPCUpgradeUI
-      objectReference: {fileID: 0}
-    - target: {fileID: 2066668996645915322, guid: 3061c6c19e1a90d4c916ae9f860d1050, type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4378201995028948231, guid: 3061c6c19e1a90d4c916ae9f860d1050, type: 3}
       propertyPath: m_Pivot.x
@@ -2573,7 +2492,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 04709c9c08e0d3f418dcc08f7c20636f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  uiDialogue: {fileID: 0}
+  uiDialogue: {fileID: 1431432205}
 --- !u!1 &3523069428263721486
 GameObject:
   m_ObjectHideFlags: 0
