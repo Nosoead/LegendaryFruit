@@ -6,7 +6,6 @@ using UnityEngine.UIElements;
 
 public class BossMonsterController : MonoBehaviour 
 {
-    [SerializeField] private BossMonsterMovement movement;
     private BossStateMachine stateMachine;
     public MonsterAnimationController animator;
     public BossStateMachine StateMachine => stateMachine;
