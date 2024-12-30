@@ -5,16 +5,16 @@ using UnityEngine.Pool;
 
 public class PooledMonster : MonoBehaviour, ISetPooledObject<PooledMonster>
 {
-    [SerializeField] public MonsterStatManager statManager{get; private set;}
+    [SerializeField] public MonsterManager monsterManager{get; private set;}
     protected IObjectPool<PooledMonster> objectPool;
     public IObjectPool<PooledMonster> ObjectPool 
     { get => objectPool; set => objectPool = value; }
 
     private void Awake()
     {
-        if (statManager == null)
+        if (monsterManager == null)
         {
-            statManager = GetComponent<MonsterStatManager>();
+            monsterManager = GetComponent<MonsterManager>();
         }
     }
 

@@ -34,12 +34,12 @@ public class BossIdleState : IState
             bossMonsterController.StateMachine.TransitionToState(bossMonsterController.StateMachine.patrollState);
             return;
         }
-        // 가만히 있는데 플레이어가 들어오면 어택스테이트로 변환
-        if (bossMonsterController.DetectPlayer())
-        {
-            bossMonsterController.StateMachine.TransitionToState(bossMonsterController.StateMachine.attackState);
-            return;
-        }
+        //// 가만히 있는데 플레이어가 들어오면 어택스테이트로 변환
+        //if (bossMonsterController.DetectPlayer())
+        //{
+        //    bossMonsterController.StateMachine.TransitionToState(bossMonsterController.StateMachine.attackState);
+        //    return;
+        //}
     }
 
     public void Exit()

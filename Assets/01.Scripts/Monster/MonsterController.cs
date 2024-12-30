@@ -153,7 +153,7 @@ public class MonsterController : MonoBehaviour
         // scale.x가 0보다 크면 우 작으면 좌
         Vector2 monsterPosition = transform.position;
         Vector2 boxPostion = monsterPosition + Vector2.right * (attackDistance * lookDirection);
-        Vector2 boxSize = new Vector2(1f, 1f);
+        Vector2 boxSize = new Vector2(attackDistance, 1f);
 
         Collider2D player = Physics2D.OverlapBox(boxPostion, boxSize, 0, playerLayerMask);
         if (player == null)

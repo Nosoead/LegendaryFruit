@@ -46,7 +46,7 @@ public class Stage : MonoBehaviour
         {
             PooledMonster monsterObj = monster.Get();
             monsterObj.gameObject.transform.position = setMonsterPosition.position;
-            monsterObj.statManager.SetInitStat();
+            monsterObj.monsterManager.GetMonsterData(4);
         }
     }
 

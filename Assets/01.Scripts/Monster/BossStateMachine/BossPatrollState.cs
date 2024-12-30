@@ -23,16 +23,15 @@ public class BossPatrollState : IState
 
     public void Execute()
     {
-        if(bossMonsterController.DetectPlayer())
+        if (bossMonsterController.LookAtPlayer())
         {
-            bossMonsterController.LookAtPlayer();
-            return;
+            bossMonsterController.Move();
         }
 
-        //if(bossMonsterController.InAttackRange())
-        //{
-        //    bossMonsterController.StateMachine.TransitionToState(bossMonsterController.StateMachine.attackState);
-        //}
+        if(bossMonsterController.InAttackRange())
+        {
+            bossMonsterController.StateMachine.TransitionToState(bossMonsterController.StateMachine.attackState);
+        }
 
         if (bossMonsterController.monsterGround.GetOnGround())
         {

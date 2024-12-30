@@ -22,7 +22,7 @@ public class AttackState :IState
     public void Enter()
     {
         Debug.Log("공격상태 진입");
-        //monsterController.animationController.OnAttack(true);
+        monsterController.animationController.OnAttack(true);
     }
 
     public void Execute()
@@ -33,8 +33,7 @@ public class AttackState :IState
             monsterController.StateMachine.TransitionToState(monsterController.StateMachine.patrollState);
             return;
         }
-
-        if(monsterController.InAttackRange())
+        else
         {
             return;
         }
@@ -62,7 +61,7 @@ public class AttackState :IState
 
     public void Exit()
     {
-        //monsterController.animationController.OnAttack(false);
+        monsterController.animationController.OnAttack(false);
     }
 
     public void UpdateStat(MonsterController monsterController)

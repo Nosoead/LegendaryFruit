@@ -19,6 +19,7 @@ GameObject:
   - component: {fileID: 1103456294632927882}
   - component: {fileID: 3435164601870507581}
   - component: {fileID: 3571420164024259195}
+  - component: {fileID: 8882704698822226853}
   m_Layer: 10
   m_Name: PooledMonster
   m_TagString: Untagged
@@ -226,6 +227,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pooledMonster: {fileID: 3571420164024259195}
+  isDead: 0
 --- !u!95 &1103456294632927882
 Animator:
   serializedVersion: 5
@@ -259,8 +261,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 16b094f1331cf624680f76ceee850692, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Animator: {fileID: 0}
-  Sprite: {fileID: 0}
 --- !u!114 &3571420164024259195
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -273,3 +273,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dd36a7c5d4e36ce4685e7b0af89e6316, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &8882704698822226853
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5250696970045440906}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6c4ea43e25bec824aa58e3393d8a5895, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  monsterStatManager: {fileID: 9025224996261991306}
+  monsterAnimationController: {fileID: 3435164601870507581}
