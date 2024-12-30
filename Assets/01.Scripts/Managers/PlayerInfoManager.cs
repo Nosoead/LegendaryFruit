@@ -15,7 +15,6 @@ public class PlayerInfoManager : Singleton<PlayerInfoManager>
     {
         EnsureComponents();
         saveDataContainer = new SaveDataContainer();
-        Debug.Log(saveDataContainer.weaponData.eatWeaponDataList);
     }
 
 

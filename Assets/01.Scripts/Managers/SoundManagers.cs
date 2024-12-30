@@ -1,12 +1,13 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Pool;
 using UnityEngine.SceneManagement;
 
 public enum SfxType
 {
     UIButton = 0,
-    
+
     PlayerAttack1 = 10,
     PlayerAttack2,
     PlayerJump,
@@ -32,22 +33,28 @@ public class SoundManagers : Singleton<SoundManagers>
 {
     public AudioSource sfxSource;       //sfx전용 오디오 변수
     public AudioSource bgmSource;       //bgm전용 오디오 변수
+    private IObjectPool<PooledSound> pooledSound;
 
     private Dictionary<Enum, AudioClip> clipDic = new Dictionary<Enum, AudioClip>(); //sfx클립 저장해놓는 Dic
-   private float volumeMaster;
+    private float volumeMaster;
     protected override void Awake()
     {
         base.Awake();
         Init();
     }
-
-   
+    private void Start()
+    {
+        PoolManager.Instance.CreatePool<PooledSound>(PoolType.PooledSound, false, 5, 100);
+        pooledSound = PoolManager.Instance.GetObjectFromPool<PooledSound>(PoolType.PooledSound) as IObjectPool<PooledSound>;
+    }
     /// <summary>
     /// SFX 재생 함수
     /// </summary>
     public void PlaySFX(SfxType type)
     {
-        sfxSource.PlayOneShot(clipDic[type]);
+        //sfxSource.PlayOneShot(clipDic[type]);
+        PooledSound sound = pooledSound.Get();
+        sound.PlaySound(clipDic[type]);
     }
 
     /// <summary>
@@ -87,7 +94,7 @@ public class SoundManagers : Singleton<SoundManagers>
     /// <summary>
     /// 씬 로드 시 호출해주는 함수
     /// </summary>
-    private void OnLoadCompleted(Scene scene , LoadSceneMode mode)
+    private void OnLoadCompleted(Scene scene, LoadSceneMode mode)
     {
         switch (scene.name)
         {
