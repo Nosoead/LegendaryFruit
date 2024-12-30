@@ -9,6 +9,7 @@ public class NPCDialougeUI : UIBase
 
     public override void Open()
     {
+        dialogueIndex = Random.Range(10007, 10010);
         if (!isFirstOpen)
         {
             Init();
@@ -26,7 +27,6 @@ public class NPCDialougeUI : UIBase
 
     private void Init()
     {
-        dialogueIndex = Random.Range(10007, 10010);
         if (!uiDialogue)
         {
             GameObject dialogueObject = Instantiate(uiDialoguePrefab.gameObject);
