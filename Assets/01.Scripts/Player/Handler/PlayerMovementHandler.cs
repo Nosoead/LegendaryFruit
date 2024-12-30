@@ -153,7 +153,6 @@ public class PlayerMovementHandler : MonoBehaviour
         {
             case "MoveSpeed":
                 MoveSpeed = value;
-                Debug.Log($"MoveSpeed : {value}");
                 break;
             case "DashDistance":
                 DashDistance = value;

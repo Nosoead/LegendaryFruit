@@ -81,4 +81,21 @@ public class UIManager : Singleton<UIManager>
             OpenUI(ui, isPreviousWindowActive);
         }
     }
+
+    public void ToggleUI<T>(bool isPreviousWindowActive, bool isOpened) where T : UIBase
+    {
+        T ui = GetUI<T>();
+        if (ui == null)
+        {
+            return;
+        }
+        if (ui.gameObject.activeSelf && !isOpened)
+        {
+            CloseUI(ui, isPreviousWindowActive);
+        }
+        else if (!ui.gameObject.activeSelf && isOpened)
+        {
+            OpenUI(ui, isPreviousWindowActive);
+        }
+    }
 }
