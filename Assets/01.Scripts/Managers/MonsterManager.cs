@@ -11,7 +11,10 @@ public class MonsterManager : MonoBehaviour
 
     private void Awake()
     {
-        //임의적으로 보스
+        
+    }
+    private void Start()
+    {
         GetMonsterData(101);
     }
 
@@ -25,8 +28,10 @@ public class MonsterManager : MonoBehaviour
     {
         monsterStatManager.SetInitStat(monsterData);
         monsterAnimationController.SetInitMonsterAnimation(monsterData);
+        Debug.Log(monsterData.ToString());
         if(monsterData is BossMonsterSO bossMonsterData)
         {
+            Debug.Log(bossMonsterData);
             bossMonsterController.PatternData(bossMonsterData);
         }
     }

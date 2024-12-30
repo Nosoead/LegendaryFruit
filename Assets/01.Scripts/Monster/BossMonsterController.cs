@@ -6,6 +6,7 @@ using UnityEngine.UIElements;
 
 public class BossMonsterController : MonoBehaviour 
 {
+
     private BossStateMachine stateMachine;
     public MonsterAnimationController animator;
     public BossStateMachine StateMachine => stateMachine;

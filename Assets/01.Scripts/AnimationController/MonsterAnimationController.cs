@@ -28,6 +28,7 @@ public class MonsterAnimationController : AnimationController
         base.EnsureComponents();
     }
 
+    // Animation Init
     public void SetInitMonsterAnimation(MonsterSO monsterData)
     {
         if (monsterData is RegularMonsterSO regularMonsterData)
@@ -56,7 +57,19 @@ public class MonsterAnimationController : AnimationController
         Animator.SetBool(isRun, isMove); 
     }
 
-    // RegluarMonster AttackAnimation
+    public void OnHit()
+    {
+        Animator.SetTrigger(isHit);
+    }
+
+    public void OnDie()
+    {
+        Animator.SetTrigger(isDie);
+    }
+
+    #endregion
+
+    #region RegularMonster AttackAnimations
     public void OnAttack(bool isAttack)
     {
         AnimationClip selectClip;
@@ -74,29 +87,17 @@ public class MonsterAnimationController : AnimationController
         overrideController["Monster_Attack"] = selectClip;
         Animator.SetBool(Attack, isAttack);
     }
+    #endregion
 
-    // BossMonster AttackAnimation
+    #region BossMonster AttackAnimations
+    // BossMonster DefalutAttack Animation
     public void BossDefalutAttack(bool isAttacking)
     {
         Animator.SetBool(Attack, isAttacking);
     }
-
-    public void OnHit()
-    {
-        Animator.SetTrigger(isHit);
-    }
-
-    public void OnDie()
-    {
-        Animator.SetTrigger(isDie);
-    }
-
-    public void AttackToHold()
-    {
-        Animator.SetFloat("Blend", Time.deltaTime * 1f);
-    }
-
     #endregion
+
+
 
     // 공격모션 끝났는지 판단 후 대기모션
     public bool OnAttackComplete()

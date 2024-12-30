@@ -33,10 +33,6 @@ public class BossAttackState : IState
         {
             bossMonsterController.StateMachine.TransitionToState(bossMonsterController.StateMachine.patrollState);
         }
-        else
-        {
-            return;
-        }
     }
 
     public void Exit()
