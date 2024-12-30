@@ -3,15 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
 using UnityEngine.Networking;
-using Random = Unity.Mathematics.Random;
 
-enum Table
-{
-    Rule,
-    Character,
-    Stage,
-    Monster
-}
 
 public class DialogueManager : Singleton<DialogueManager>
 {

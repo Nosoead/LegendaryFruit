@@ -4,31 +4,7 @@ using UnityEngine;
 using UnityEngine.Pool;
 using UnityEngine.SceneManagement;
 
-public enum SfxType
-{
-    UIButton = 0,
 
-    PlayerAttack1 = 10,
-    PlayerAttack2,
-    PlayerJump,
-    PlayerDash,
-    PlayerMove,
-    PlayerDamaged,
-    PlayerDeath,
-
-    MonsterAttack = 20,
-    MonsterDamaged1,
-    MonsterDamaged2,
-    MonsterDeath,
-    End
-}
-public enum BgmType
-{
-    Title = 0,      //타이틀
-    InGame,         //인게임
-    Boss,
-
-}
 public class SoundManagers : Singleton<SoundManagers>
 {
     public AudioSource sfxSource;       //sfx전용 오디오 변수
@@ -53,7 +29,7 @@ public class SoundManagers : Singleton<SoundManagers>
     public void PlaySFX(SfxType type)
     {
         //sfxSource.PlayOneShot(clipDic[type]);
-        PooledSound sound = pooledSound.Get();
+        var sound = pooledSound.Get();
         sound.PlaySound(clipDic[type]);
     }
 
@@ -98,14 +74,14 @@ public class SoundManagers : Singleton<SoundManagers>
     {
         switch (scene.name)
         {
-            case "Test_ParkScene":
+            case "TitleScene":
                 if (bgmSource.clip == null || bgmSource.clip != clipDic[BgmType.Title]) //노래가 새로시작되지않게설정
                 {
                     bgmSource.clip = clipDic[BgmType.Title];
                     bgmSource.Play();
                 }
                 break;
-            case "InGame":
+            case "OneCycleScene":
                 if (bgmSource.clip == null || bgmSource.clip != clipDic[BgmType.InGame])
                 {
                     bgmSource.clip = clipDic[BgmType.InGame];

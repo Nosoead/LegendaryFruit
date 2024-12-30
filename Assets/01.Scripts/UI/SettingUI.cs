@@ -10,5 +10,6 @@ public class SettingUI : UIBase
     {
         base.Open();
         exitButton.onClick.AddListener(() => UIManager.Instance.ToggleUI<SettingUI>(false));
+        exitButton.onClick.AddListener(() => SoundManagers.Instance.PlaySFX(SfxType.UIButton));
     }
 }

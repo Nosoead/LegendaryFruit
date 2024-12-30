@@ -11,12 +11,14 @@ public class TestUI : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             UIManager.Instance.ToggleUI<ESCUI>(true);
+            SoundManagers.Instance.PlaySFX(SfxType.UIButton);
         }
 
         // Tab 키를 눌렀을 때 InventoryUI 토글
         if (Input.GetKeyDown(KeyCode.Tab))
         {
             UIManager.Instance.ToggleUI<InventoryUI>(true);
+            SoundManagers.Instance.PlaySFX(SfxType.UIButton);
         }
 
         if (Input.GetKeyDown(KeyCode.W))
@@ -31,6 +33,7 @@ public class TestUI : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.E))
         {
             UIManager.Instance.ToggleUI<NPCDialougeUI>(false);
+            SoundManagers.Instance.PlaySFX(SfxType.UIButton);
         }
         
     }

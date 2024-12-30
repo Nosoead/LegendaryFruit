@@ -32,6 +32,7 @@ public class WeaponUpgradeUI : UIBase
     {
         cancelButton.onClick.RemoveAllListeners();
         cancelButton.onClick.AddListener(() => UIManager.Instance.ToggleUI<WeaponUpgradeUI>(true));
+        cancelButton.onClick.AddListener(() => SoundManagers.Instance.PlaySFX(SfxType.UIButton));
         upgradeButton.onClick.RemoveAllListeners();
         upgradeButton.onClick.AddListener(OnUpgradeBtn);
     }
@@ -53,6 +54,7 @@ public class WeaponUpgradeUI : UIBase
             dialogueIndex = 10010;
             uiDialogue.gameObject.SetActive(true);
             SetDialogue();
+            SoundManagers.Instance.PlaySFX(SfxType.UIButton);
             UIManager.Instance.ToggleUI<WeaponUpgradeUI>(true);
         }
         else
@@ -60,6 +62,7 @@ public class WeaponUpgradeUI : UIBase
             dialogueIndex = 10012;
             uiDialogue.gameObject.SetActive(true);
             SetDialogue();
+            SoundManagers.Instance.PlaySFX(SfxType.UIButton);
             UIManager.Instance.ToggleUI<WeaponUpgradeUI>(true);
         }
     }

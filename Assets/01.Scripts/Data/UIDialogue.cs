@@ -1,10 +1,7 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Xml;
 using DG.Tweening;
 using TMPro;
-using Unity.VisualScripting.Dependencies.Sqlite;
 using UnityEngine;
 using UnityEngine.UI;
 using static System.String;
@@ -254,6 +251,7 @@ public class UIDialogue : UIBase
         var answer = dialogueData.AnswerList[idx];
         if (!string.IsNullOrEmpty(answer.UIResource))
         {
+            SoundManagers.Instance.PlaySFX(SfxType.UIButton);
             if (answer.UIResource == "WeaponUpgradeUI" && answer.Text == "강화하기")
             {
                 UIManager.Instance.ToggleUI<WeaponUpgradeUI>(true);

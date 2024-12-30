@@ -50,3 +50,35 @@ public enum SceneType
     TitleScene = 0,
     OneCycleScene = 1
 }
+public enum SfxType
+{
+    UIButton = 0,
+
+    PlayerAttack1 = 10,
+    PlayerAttack2,
+    PlayerJump,
+    PlayerDash,
+    PlayerMove,
+    PlayerDamaged,
+    PlayerDeath,
+
+    MonsterAttack = 20,
+    MonsterDamaged1,
+    MonsterDamaged2,
+    MonsterDeath,
+    End
+}
+public enum BgmType
+{
+    Title = 0,      //타이틀
+    InGame,         //인게임
+    Boss,
+
+}
+enum Table
+{
+    Rule,
+    Character,
+    Stage,
+    Monster
+}

@@ -22,6 +22,7 @@ public class TabButtonUI : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
     public void OnPointerEnter(PointerEventData eventData)
     {
         tabGroupUI.OnTabEnter(this);
+        //SoundManagers.Instance.PlaySFX(SfxType.UIButton);
     }
 
     public void OnPointerExit(PointerEventData eventData)
@@ -32,6 +33,7 @@ public class TabButtonUI : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
     public void OnPointerClick(PointerEventData eventData)
     {
         tabGroupUI.OnTabSelected(this);
+        SoundManagers.Instance.PlaySFX(SfxType.UIButton);
     }
 
     public void Select()

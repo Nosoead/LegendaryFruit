@@ -161,6 +161,7 @@ public class MonsterController : MonoBehaviour
             return;
         }
         monsterAttributeLogics.ApplyAttackLogic(player.gameObject, attackPower, attributeValue, attributeRateTime, attributeStack);
+        SoundManagers.Instance.PlaySFX(SfxType.MonsterAttack);
     }
 
     private void OnDrawGizmos()

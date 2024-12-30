@@ -2,6 +2,7 @@ using System;
 using TMPro;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.Pool;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
@@ -24,13 +25,11 @@ public class ESCUI : UIBase
     {
         base.Open();
         backButton.onClick.AddListener(() => UIManager.Instance.ToggleUI<ESCUI>(true));
-        settingButton.onClick.AddListener(() =>
-        {
-            UIManager.Instance.ToggleUI<SettingUI>(false);
-            SoundManagers.Instance.PlaySFX(SfxType.UIButton);
-        });
-        newGameButton.onClick.AddListener(() => SceneManager.LoadScene(4)); // 뉴게임에 해당하는 씬 넣기
-        exitButton.onClick.AddListener(() => UIManager.Instance.ToggleUI<SettingUI>(false));
+        backButton.onClick.AddListener(() => SoundManagers.Instance.PlaySFX(SfxType.UIButton));
+        settingButton.onClick.AddListener(() =>  UIManager.Instance.ToggleUI<SettingUI>(false));
+        settingButton.onClick.AddListener(() => SoundManagers.Instance.PlaySFX(SfxType.UIButton));
+        newGameButton.onClick.AddListener(() => SceneManager.LoadScene("OneCycleScene")); // 뉴게임에 해당하는 씬 넣기
+        newGameButton.onClick.AddListener(() => SoundManagers.Instance.PlaySFX(SfxType.UIButton));
         exitButton.onClick.AddListener(() => Quit());
     }
 

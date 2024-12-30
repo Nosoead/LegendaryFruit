@@ -1,7 +1,6 @@
-using System;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class MonsterCondition : MonoBehaviour, IDamageable
 {
@@ -85,6 +84,8 @@ public class MonsterCondition : MonoBehaviour, IDamageable
     {
         controller.OnHit();
         statManager.ApplyInstantDamage(damage);
+        SfxType randomSfx = (Random.Range(0,2) == 0) ? SfxType.MonsterDamaged1 : SfxType.MonsterDamaged2;
+        SoundManagers.Instance.PlaySFX(randomSfx);
     }
 
 }

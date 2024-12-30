@@ -527,7 +527,7 @@ GameObject:
   - component: {fileID: 7106634431720305135}
   - component: {fileID: 6678502153504041884}
   - component: {fileID: 1728029443567737414}
-  - component: {fileID: 7862838418773001317}
+  - component: {fileID: 166518870620269909}
   m_Layer: 5
   m_Name: NPCUpgradeUI
   m_TagString: Untagged
@@ -619,7 +619,7 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
---- !u!114 &7862838418773001317
+--- !u!114 &166518870620269909
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

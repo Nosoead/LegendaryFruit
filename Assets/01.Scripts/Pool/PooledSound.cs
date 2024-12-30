@@ -10,11 +10,23 @@ public class PooledSound : MonoBehaviour, ISetPooledObject<PooledSound>
     public IObjectPool<PooledSound> ObjectPool
     { get => objectPool; set => objectPool = value; }
 
+    
     private void Awake()
     {
         audioSource = GetComponent<AudioSource>();
     }
 
+    private void Update()
+    {
+        if (audioSource.isPlaying)
+        {
+            
+        }
+        else
+        {
+            
+        }
+    }
     public void SetPooledObject(IObjectPool<PooledSound> pool)
     {
         ObjectPool = pool;
@@ -23,6 +35,11 @@ public class PooledSound : MonoBehaviour, ISetPooledObject<PooledSound>
     public void PlaySound(AudioClip clip)
     {
         audioSource.PlayOneShot(clip);
+        Invoke(nameof(RealseSound), clip.length);
+    }
+
+    private void RealseSound()
+    {
         ObjectPool.Release(this);
     }
 }
