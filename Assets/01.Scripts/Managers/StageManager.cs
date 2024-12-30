@@ -20,7 +20,7 @@ public class StageManager : Singleton<StageManager>
     protected override void Awake()
     {
         base.Awake();
-        RegisterStage();
+        //RegisterStage();
     }
 
     private void Start()

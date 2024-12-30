@@ -3,16 +3,18 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.Pool;
 
 public class PlayerEquipment : MonoBehaviour
 {
     //TODO 최대 2개 보관 *리겜할때, 배열 청소 및 현재인덱스 0으로 초기화
     public UnityAction<WeaponSO> OnEquipWeaponChanged;
     [SerializeField] private WeaponSO weaponData;
-    [SerializeField] private PooledFruitWeapon weaponPrefab; //TODO ObjectPool에서 최대 6개 생성 및 관리
+    //[SerializeField] private PooledFruitWeapon weaponPrefab; //TODO ObjectPool에서 최대 6개 생성 및 관리
     [SerializeField] private PlayerInteraction interaction;
     [SerializeField] private SpriteRenderer weaponSprite;
     [SerializeField] private PlayerController controller;
+    private IObjectPool<PooledFruitWeapon> fruitWeapon;
     private WeaponSO startingWeaponData;
 
     private List<WeaponSO> equipWeapons = new List<WeaponSO>();
@@ -38,7 +40,8 @@ public class PlayerEquipment : MonoBehaviour
 
     private void Start()
     {
-        OnWeaponEquipEvent(weaponData);//Attack에서 OnEnable구독해서 이렇게 함.
+        PoolManager.Instance.CreatePool<PooledFruitWeapon>(PoolType.PooledFruitWeapon, false, 5, 5);
+        Init();
     }
 
     private void EnsureComponents()
@@ -55,6 +58,20 @@ public class PlayerEquipment : MonoBehaviour
         {
             controller = GetComponentInParent<PlayerController>();
         }
+    }
+
+    private void Init()
+    {
+        CacheItem();
+        if (!DataManager.Instance.GetCanLoad<SaveDataContainer>())
+        {
+            OnWeaponEquipEvent(weaponData);//Attack에서 OnEnable구독해서 이렇게 함.
+        }
+    }
+
+    private void CacheItem()
+    {
+        fruitWeapon = PoolManager.Instance.GetObjectFromPool<PooledFruitWeapon>(PoolType.PooledFruitWeapon);
     }
 
     private void OnSwapWeaponEvent()
@@ -87,7 +104,9 @@ public class PlayerEquipment : MonoBehaviour
     {
         //TODO : 오브젝트풀 들고와서 SO랑 스프라이트 덮어씌우기
         //매번 여기서 참조풀려서 경고 뜰 것. -> stageManager에서 풀링 후 껍데기 들고와서 씌우기
-        var discardedObject = Instantiate(weaponPrefab, transform.position, Quaternion.identity);
+        //var discardedObject = Instantiate(weaponPrefab, transform.position, Quaternion.identity);
+        PooledFruitWeapon discardedObject = fruitWeapon.Get();
+        discardedObject.gameObject.transform.position = transform.position; //dotween으로 플레이어 콜라이더 벗어나게하고 돌아오도록 세팅
         discardedObject.weaponData = equipWeapons[currentEquipWeaponIndex];
         discardedObject.EnsureComponents();
         equipWeapons[currentEquipWeaponIndex] = weaponData;
