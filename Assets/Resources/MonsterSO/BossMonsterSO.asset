@@ -20,10 +20,14 @@ MonoBehaviour:
   moveSpeed: 3
   attackDistance: 5
   chaseRange: 15
-  type: 2
-  attributeValue: 0
-  attributeRateTime: 0
+  type: 5
+  attributeValue: 3
+  attributeRateTime: 3
   attributeStack: 0
   inGameMoney: 1000
   sprite: {fileID: 0}
-  animatorOverrideController: {fileID: 0}
+  animatorOverrideController: {fileID: 22100000, guid: eeeaee7a065b4174ebd4012ced7946ee, type: 2}
+  patternDamage: 30
+  pattrenAttack: {fileID: 0}
+  pattrenRange: 20
+  overlapBoxSize: {x: 15, y: 4}

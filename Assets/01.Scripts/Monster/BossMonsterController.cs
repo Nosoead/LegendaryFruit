@@ -6,7 +6,8 @@ using UnityEngine.UIElements;
 
 public class BossMonsterController : MonoBehaviour 
 {
-    private BossStateMachine stateMachine;  
+    [SerializeField] private BossMonsterMovement movement;
+    private BossStateMachine stateMachine;
     public MonsterAnimationController animator;
     public BossStateMachine StateMachine => stateMachine;
     private MonsterAttributeLogics monsterAttributeLogics = null;
@@ -26,13 +27,20 @@ public class BossMonsterController : MonoBehaviour
     private float attributeValue;
     private float attributeRateTime;
     private float attributeStack;
+    private bool canMove = true;
+
+    // Pattren Info
+    private Vector2 overlapBoxSize;
+    private float pattrenDamage;
+    private float pattrenRange;
 
     private void Awake()
     {
         animator = GetComponent<MonsterAnimationController>();    
         attributeLogicsDictionary = new MonsterAttributeLogicsDictionary();
         attributeLogicsDictionary.Initialize();
-        stateMachine = new BossStateMachine(this);     
+        stateMachine = new BossStateMachine(this);
+        target = GameObject.FindWithTag("Player");
     }
 
     private void OnEnable()
@@ -87,6 +95,8 @@ public class BossMonsterController : MonoBehaviour
         }
     }
 
+
+
     public void StatToStateMachine()
     {
         stateMachine.UpdateStat(this);  
@@ -99,23 +109,8 @@ public class BossMonsterController : MonoBehaviour
         lookDirection *= -1f;
         transform.localScale = scale;
     }
-    public bool DetectPlayer() // 플레이어 발견
-    {
-        Vector2 boxSize = new Vector2(5, 5);
-        Vector2 direction = Vector2.right * lookDirection;
-        RaycastHit2D hit = Physics2D.BoxCast(transform.position, boxSize, 0,  direction, chaseRange, playerLayerMask);
-        Color rayColor = (hit.collider != null) ? Color.green : Color.red;
-        Debug.DrawRay(transform.position, direction * chaseRange, rayColor);
-        if (hit.collider != null)
-        {
-            target = hit.collider.gameObject;
-            return true;
-        }
 
-        return false;
-    }
-
-    public void LookAtPlayer()
+    public bool LookAtPlayer()
     {
         if (target != null)
         {
@@ -123,46 +118,67 @@ public class BossMonsterController : MonoBehaviour
             if ((dir > 0 && lookDirection < 0) || (dir < 0 && lookDirection > 0))
             {
                 ReverseDirection();
+                return true;
             }
         }
         else
         {
-            return;
+            target = GameObject.FindWithTag("Player");
         }
+        return false;
     }
 
+    // DefalutAttackRange
     public bool InAttackRange()
     {
-        Vector3 rayDirection = Vector3.right * lookDirection;
-        Color rayColor = Color.red;
-        RaycastHit2D hit = Physics2D.Raycast(transform.position, rayDirection, attackDistance, playerLayerMask);
-        if (hit.collider != null)
+        Vector2 monsterPosition = monsterPosition = transform.position;
+        Vector2 boxPosition = monsterPosition + Vector2.right * attackDistance * (1f * lookDirection)
+                        + Vector2.down * 1.5f;
+        Vector2 boxSize = new Vector2(attackDistance, 4);
+        Collider2D player = Physics2D.OverlapBox(boxPosition, boxSize, 0, playerLayerMask);
+        if (player == null)
         {
-            rayColor = Color.green;
-            target = hit.collider.gameObject;
-            return true;
+            return false;
         }
-        //Debug.DrawRay(transform.position, rayDirection * attackDistance, rayColor, 0.1f);
-        return false;
+        return true;
+    }
+
+    // PattrenAttackRange
+    public bool InPattrenAttackRange()
+    {
+        Vector2 monsterPosition = monsterPosition = transform.position;
+        Vector2 boxPosition = monsterPosition + Vector2.right * (1f * lookDirection)
+                        + Vector2.down * 1.5f;
+        Collider2D player = Physics2D.OverlapBox(boxPosition, overlapBoxSize, 0, playerLayerMask);
+        if (player == null)
+        {
+            return false;
+        }
+        return true;
     }
 
     public void Move()
     {
-        Vector3 rayDirection = Vector3.right * lookDirection;
-
-        RaycastHit2D hit = Physics2D.Raycast(transform.position, rayDirection, chaseRange, playerLayerMask);
-
-        if (hit.collider == null || hit.distance > attackDistance)
+        var dir = Vector3.Distance(transform.position, target.transform.position);
+        if (dir > attackDistance)
         {
-            transform.position += rayDirection * (moveSpeed * Time.deltaTime);
+            canMove = true;
+            Vector3 moveDirection = (target.transform.position - transform.position).normalized;
+            transform.position += moveDirection * (moveSpeed * Time.deltaTime); 
+        }
+        else
+        {
+            canMove = false;
         }
     }
 
+
     public void Attack()
     {
-        Vector2 monsterPosition = monsterPosition = transform.position;
-        Vector2 boxPosition = monsterPosition + Vector2.right * (1f * lookDirection);
-        Vector2 boxSize =  new Vector2(5f, 3f);
+        Vector2 monsterPosition = transform.position;
+        Vector2 boxPosition = monsterPosition + Vector2.right * attackDistance *(1f * lookDirection)
+                        + Vector2.down * 1.5f;
+        Vector2 boxSize = new Vector2(attackDistance, 4);
         Collider2D player = Physics2D.OverlapBox(boxPosition, boxSize, 0, playerLayerMask);
         if (player == null)
         {
@@ -171,33 +187,38 @@ public class BossMonsterController : MonoBehaviour
         monsterAttributeLogics.ApplyAttackLogic(player.gameObject, attackPower, attributeValue, attributeRateTime, attributeStack);
     }
 
-    public void AreaAttack()
+    // BossMonster PattrenData
+    public void PatternData(BossMonsterSO pattrenData)
     {
-        Vector2 monsterPosition = transform.position;
-        Vector2 boxPosition = monsterPosition + Vector2.right * (0f * lookDirection);
-        Vector2 boxSize = new Vector2(12f, 3f);
-        Collider2D player = Physics2D.OverlapBox(boxPosition, boxSize, 0, playerLayerMask);
-        if (player == null)
-        {
-            return;
-        }
-        monsterAttributeLogics.ApplyAttackLogic(player.gameObject, attackPower + 5, attributeValue, attributeRateTime, attributeStack);
+        overlapBoxSize = pattrenData.overlapBoxSize;
+        pattrenDamage = pattrenData.patternDamage;
+        pattrenRange = pattrenData.pattrenRange;
     }
 
     private void OnDrawGizmos()
     {
-        Vector2 boxSize = new Vector2(12f, 3f);        
-        Gizmos.color = Color.red;
-        Vector2 boxPosition = (Vector2)transform.position + Vector2.right * 0.5f * lookDirection;
-        //Gizmos.DrawWireCube(boxPosition, boxSize);
-        OnDrawGizmos2();
+        // 몬스터 위치
+        Vector2 monsterPosition = transform.position;
+
+        // 박스 중심 위치
+        Vector2 boxPosition = monsterPosition + Vector2.right * attackDistance * (1 * lookDirection)
+            + Vector2.down * 1.5f;
+
+        // 박스 크기
+        Vector2 boxSize = new Vector2(attackDistance, 4);
+
+        // Gizmos 색상 설정
+        Gizmos.color = Color.blue;
+
+        // 박스 그리기
+        Gizmos.DrawWireCube(boxPosition, boxSize);
     }
-    private void OnDrawGizmos2()
-    {
-        Vector2 boxSize = new Vector2(5f, 3f);
-        Gizmos.color = Color.red;
-        Vector2 boxPosition = (Vector2)transform.position + Vector2.right * 1f * lookDirection;
-        //Gizmos.DrawWireCube(boxPosition, boxSize);
-    }
+    //private void OnDrawGizmos2()
+    //{
+    //    Vector2 boxSize = new Vector2(5f, 3f);
+    //    Gizmos.color = Color.red;
+    //    Vector2 boxPosition = (Vector2)transform.position + Vector2.right * 1f * lookDirection;
+    //    //Gizmos.DrawWireCube(boxPosition, boxSize);
+    //}
 
 }
