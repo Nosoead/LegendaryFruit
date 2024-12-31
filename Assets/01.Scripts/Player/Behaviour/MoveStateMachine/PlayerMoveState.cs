@@ -17,7 +17,7 @@ public class PlayerMoveState : IState
     public void Execute()
     {
         ApplyMovement();
-
+        
         if (player.IsGround)
         {
             if (!player.IsMoveKeyPressed || player.IsAttacking)
@@ -42,6 +42,8 @@ public class PlayerMoveState : IState
             player.StateMachine.TransitionTo(player.StateMachine.airborneState);
             return;
         }
+        SoundManagers.Instance.PlaySFX(SfxType.PlayerMove,true);
+
     }
 
     public void Exit()

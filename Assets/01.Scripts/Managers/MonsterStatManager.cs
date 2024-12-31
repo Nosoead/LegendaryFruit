@@ -97,6 +97,7 @@ public class MonsterStatManager : MonoBehaviour
         isDead = true;
         StopAllCoroutines();
         StageManager.Instance.MonsterDie();
+        SoundManagers.Instance.PlaySFX(SfxType.MonsterDeath);
         gameObject.layer = LayerMask.NameToLayer("Default");
         monsterAnimationController.OnDie();
         Invoke("MonsterDieOff", 1.5f);

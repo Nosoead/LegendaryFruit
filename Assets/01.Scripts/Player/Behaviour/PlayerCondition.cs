@@ -78,5 +78,6 @@ public class PlayerCondition : MonoBehaviour, IDamageable
     public void TakeDamage(float damage)
     {
         statManager.ApplyInstantDamage(damage);
+        SoundManagers.Instance.PlaySFX(SfxType.PlayerDamaged);
     }
 }

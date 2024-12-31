@@ -60,6 +60,8 @@ public class PlayerAirborneState : IState
             }
             player.SetVelocity(Vector2.zero);
             currentVelocity.y += jumpSpeed;
+            
+            SoundManagers.Instance.PlaySFX(SfxType.PlayerJump);
         }
     }
 

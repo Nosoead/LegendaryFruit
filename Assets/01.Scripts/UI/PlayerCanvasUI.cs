@@ -25,8 +25,8 @@ public class PlayerCanvasUI : UIBase
     {
         if (statManager == null)
         {
-            //statManager = GetComponentInParent<PlayerStatManager>();
-            statManager = GameManager.Instance.player.GetComponent<PlayerStatManager>();
+            statManager = GetComponentInParent<PlayerStatManager>();
+            //statManager = GameManager.Instance.player.GetComponent<PlayerStatManager>();
         }
     }
 

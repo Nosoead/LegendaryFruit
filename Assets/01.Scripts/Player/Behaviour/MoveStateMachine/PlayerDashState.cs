@@ -112,6 +112,7 @@ public class PlayerDashState : IState
         player.SetGravityScale(0f);
         Vector2 dashVelocity = Vector2.right * player.LookDirection * player.DashDistance;
         player.SetVelocity(dashVelocity);
+        SoundManagers.Instance.PlaySFX(SfxType.PlayerDash);
     }
     private void ExitDashLogic()
     {

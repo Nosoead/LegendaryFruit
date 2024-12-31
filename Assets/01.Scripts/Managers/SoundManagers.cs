@@ -13,6 +13,8 @@ public class SoundManagers : Singleton<SoundManagers>
 
     private Dictionary<Enum, AudioClip> clipDic = new Dictionary<Enum, AudioClip>(); //sfx클립 저장해놓는 Dic
     private float volumeMaster;
+    private float lastSoundTime;
+    private float soundInterval = 0.5f;
     protected override void Awake()
     {
         base.Awake();
@@ -26,11 +28,23 @@ public class SoundManagers : Singleton<SoundManagers>
     /// <summary>
     /// SFX 재생 함수
     /// </summary>
-    public void PlaySFX(SfxType type)
+    public void PlaySFX(SfxType type, bool hasInterval  = false)
     {
-        //sfxSource.PlayOneShot(clipDic[type]);
         var sound = pooledSound.Get();
-        sound.PlaySound(clipDic[type]);
+        if (hasInterval)
+        {
+            lastSoundTime += Time.deltaTime;
+            if (lastSoundTime >= soundInterval)
+            {
+                sound.PlaySound(clipDic[type]);
+                lastSoundTime = 0;
+            }
+        }
+        else
+        {
+            sound.PlaySound(clipDic[type]);
+        }
+    
     }
 
     /// <summary>

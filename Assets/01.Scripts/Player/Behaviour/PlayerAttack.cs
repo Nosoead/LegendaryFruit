@@ -99,6 +99,9 @@ public class PlayerAttack : MonoBehaviour
 
     private IEnumerator attackRoutine()
     {
+        SfxType randomSfx = (Random.Range(0,2) == 0) ? SfxType.PlayerAttack1 : SfxType.PlayerAttack2;
+        SoundManagers.Instance.PlaySFX(randomSfx);
+        //SoundManagers.Instance.PlaySFX(SfxType.PlayerAttack2);
         isAttacking = true;
         attackLookDirection = lookDirection;//기즈모용
         OnAttackingEvent?.Invoke(isAttacking);
