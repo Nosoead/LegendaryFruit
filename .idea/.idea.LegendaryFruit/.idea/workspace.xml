@@ -6,29 +6,54 @@
   <component name="ChangeListManager">
     <list default="true" id="fd1b27b5-9a48-464d-8c89-0ee285d61d98" name="변경" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.LegendaryFruit/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.LegendaryFruit/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/00.Scenes/OneCycleScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/00.Scenes/OneCycleScene.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/01.Scripts/Managers/MonsterManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/01.Scripts/Managers/MonsterManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/00.Scenes/TestScenes/Test_ParkScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/00.Scenes/TestScenes/Test_ParkScene.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01.Scripts/Data/DialogueManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/01.Scripts/Data/DialogueManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01.Scripts/Data/NpcData.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/01.Scripts/Data/NpcData.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01.Scripts/Data/UIDialogue.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/01.Scripts/Data/UIDialogue.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01.Scripts/Data/UIDialogueList.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/01.Scripts/Data/UIDialogueList.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/01.Scripts/Managers/SoundManagers.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/01.Scripts/Managers/SoundManagers.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/01.Scripts/Player/Behaviour/PlayerAttack.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/01.Scripts/Player/Behaviour/PlayerAttack.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/01.Scripts/UI/PlayerCanvasUI.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/01.Scripts/UI/PlayerCanvasUI.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01.Scripts/Monster/MonsterCondition.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/01.Scripts/Monster/MonsterCondition.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01.Scripts/Monster/MonsterController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/01.Scripts/Monster/MonsterController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01.Scripts/Pool/PooledSound.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/01.Scripts/Pool/PooledSound.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01.Scripts/UI/ESCUI.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/01.Scripts/UI/ESCUI.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01.Scripts/UI/SettingUI.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/01.Scripts/UI/SettingUI.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01.Scripts/UI/TabButtonUI.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/01.Scripts/UI/TabButtonUI.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01.Scripts/UI/TestUI.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/01.Scripts/UI/TestUI.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01.Scripts/UI/WeaponUpgradeUI.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/01.Scripts/UI/WeaponUpgradeUI.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/01.Scripts/Util/Enums.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/01.Scripts/Util/Enums.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/05.Animations/MonsterAnimations/Orcs/Epic_Orc/EpicOrc_Controller.overrideController" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/05.Animations/MonsterAnimations/Orcs/Epic_Orc/EpicOrc_Controller.overrideController" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Sounds/SFX/PlayerAttack2.wav.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Sounds/SFX/PlayerAttack2.wav.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Sounds/SFX/Slime.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Sounds/SFX/Slime/MonsterDamaged1.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Sounds/SFX/Slime/MonsterDamaged1.wav.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Sounds/SFX/Slime/MonsterDamaged2.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Sounds/SFX/Slime/MonsterDamaged2.wav.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Sounds/SFX/Slime/MonsterDeath.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Sounds/SFX/Slime/MonsterDeath.wav.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Sounds/SFX/Slime/SlimeDamaged.flac" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Sounds/SFX/Slime/SlimeDamaged.flac.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Sounds/SFX/Slime/SlimeDamaged2.flac" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Sounds/SFX/Slime/SlimeDamaged2.flac.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Sounds/SFX/Slime/SlimeDie.flac" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Sounds/SFX/Slime/SlimeDie.flac.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Sounds/SFX/Slime/SlimeWalk.ogg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Sounds/SFX/Slime/SlimeWalk.ogg.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/80.Personal/Park/Icon.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/80.Personal/Park/Icon.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Sounds/SFX/MonsterDamaged1.wav" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Sounds/SFX/MonsterDamaged1.wav.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Sounds/SFX/MonsterDamaged2.wav" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Sounds/SFX/MonsterDamaged2.wav" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Sounds/SFX/MonsterDamaged2.wav.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Sounds/SFX/MonsterDamaged2.wav.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Sounds/SFX/MonsterDeath.wav" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Sounds/SFX/MonsterDeath.wav" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Sounds/SFX/MonsterDeath.wav.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Sounds/SFX/MonsterDeath.wav.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Sounds/SFX/Slime/mud_07.ogg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Sounds/SFX/Slime/mud_07.ogg.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Sounds/SFX/Slime/slime_01.ogg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Sounds/SFX/Slime/slime_01.ogg.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Sounds/SFX/Slime/slime_02.ogg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Sounds/SFX/Slime/slime_02.ogg.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Sounds/SFX/Slime/slime_03.ogg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Sounds/SFX/Slime/slime_03.ogg.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Sounds/SFX/Slime/slime_04.ogg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Sounds/SFX/Slime/slime_04.ogg.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Sounds/SFX/Slime/slime_05.ogg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Sounds/SFX/Slime/slime_05.ogg.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Sounds/SFX/Slime/slime_06.ogg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Sounds/SFX/Slime/slime_06.ogg.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Sounds/SFX/Slime/slime_07.ogg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Sounds/SFX/Slime/slime_07.ogg.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Sounds/SFX/Slime/slime_08.ogg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Sounds/SFX/Slime/slime_08.ogg.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/UI/ESCUI.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/UI/ESCUI.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/UI/InventoryUI.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/UI/InventoryUI.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/UI/NPCUpgradeUI.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/UI/NPCUpgradeUI.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/UI/PlayerCanvasUI.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/UI/PlayerCanvasUI.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/UI/SettingUI.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/UI/SettingUI.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/UI/UIDialogue.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/UI/UIDialogue.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/UI/WeaponUpgradeUI.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/UI/WeaponUpgradeUI.prefab" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -153,7 +178,6 @@
       <workItem from="1735265982004" duration="16201000" />
       <workItem from="1735495796235" duration="12000" />
       <workItem from="1735521607237" duration="21115000" />
-      <workItem from="1735608941906" duration="2010000" />
     </task>
     <servers />
   </component>

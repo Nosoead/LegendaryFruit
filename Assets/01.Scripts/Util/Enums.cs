@@ -62,7 +62,7 @@ public enum SfxType
     PlayerDamaged,
     PlayerDeath,
 
-    MonsterAttack= 20,
+    MonsterAttack = 20,
     MonsterDamaged1,
     MonsterDamaged2,
     MonsterDeath,
