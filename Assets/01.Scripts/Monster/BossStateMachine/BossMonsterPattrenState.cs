@@ -6,7 +6,6 @@ public class BossMonsterPattrenState : IState
 {
     private BossMonsterController bossMonsterController;
 
-    private float attacklate;
     private float time = 0;
 
     
@@ -23,26 +22,26 @@ public class BossMonsterPattrenState : IState
 
     public void Enter()
     {
-        Debug.Log("패턴공격진입");
+        bossMonsterController.animator.BossPatternAttack(true);
     }
 
     public void Execute()
     {
-        //if (bossMonsterController.animator.OnAreaAttackCheck())
-        //{
-        //    if (bossMonsterController.InAttackRange())
-        //    {
-        //        bossMonsterController.StateMachine.TransitionToState(bossMonsterController.StateMachine.attackState);
-        //    }
-        //    else
-        //    {
-        //        bossMonsterController.StateMachine.TransitionToState(bossMonsterController.StateMachine.idleState);
-        //    }
-        //}
+        if(bossMonsterController.animator.HasPatternAttackFinished())
+        {
+            if(bossMonsterController.InAttackRange())
+            {
+                bossMonsterController.StateMachine.TransitionToState(bossMonsterController.StateMachine.attackState);
+            }
+            else
+            {
+                bossMonsterController.StateMachine.TransitionToState(bossMonsterController.StateMachine.patrollState);
+            }
+        }
     }
 
     public void Exit()
     {
-
+        bossMonsterController.animator.BossPatternAttack(false);
     }
 }

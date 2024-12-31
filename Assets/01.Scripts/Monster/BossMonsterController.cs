@@ -6,13 +6,13 @@ using UnityEngine.UIElements;
 
 public class BossMonsterController : MonoBehaviour 
 {
-
     private BossStateMachine stateMachine;
     public MonsterAnimationController animator;
     public BossStateMachine StateMachine => stateMachine;
     private MonsterAttributeLogics monsterAttributeLogics = null;
     private MonsterAttributeLogics burnAttributeLogics = null;
     private MonsterAttributeLogicsDictionary attributeLogicsDictionary;
+    private PatternData pattren;
     public MonsterGround monsterGround;
     [SerializeField] private LayerMask playerLayerMask;
     public GameObject target;
@@ -31,9 +31,10 @@ public class BossMonsterController : MonoBehaviour
 
     // Pattren Info
     private Vector2 overlapBoxSize;
-    private float pattrenDamage;
-    private float pattrenRange;
+    private float patternDamage;
+    private PatternData currentPattern;
 
+    #region Lifecycle Functions
     private void Awake()
     {
         animator = GetComponent<MonsterAnimationController>();    
@@ -46,11 +47,13 @@ public class BossMonsterController : MonoBehaviour
     private void OnEnable()
     {
         statManager.OnSubscribeToStatUpdateEvent += OnStatUpdatedEvent;
+        statManager.OnPatternTriggered += OnHealthThresholdReached;
     }
 
     private void OnDisable()
     {
         statManager.OnSubscribeToStatUpdateEvent -= OnStatUpdatedEvent;
+        statManager.OnPatternTriggered -= OnHealthThresholdReached;
     }
 
     private void Start()
@@ -62,7 +65,9 @@ public class BossMonsterController : MonoBehaviour
     {
         StateMachine.Excute();
     }
+    #endregion
 
+    #region BossMonsterStat
     private void OnStatUpdatedEvent(string statKey, float value)
     {
         switch (statKey)
@@ -95,13 +100,24 @@ public class BossMonsterController : MonoBehaviour
         }
     }
 
-
+    public void OnHealthThresholdReached(PatternData patternData,float damage)
+    {
+        if(patternData != currentPattern && damage != patternDamage)
+        {
+            currentPattern = patternData;
+            animator.GetPatternData(currentPattern);
+            patternDamage = damage;
+        }
+        stateMachine.TransitionToState(stateMachine.pattrenState);
+    }    
 
     public void StatToStateMachine()
     {
         stateMachine.UpdateStat(this);  
     }
+    #endregion
 
+    #region Look
     public void ReverseDirection() // 방향반전
     {
         Vector3 scale = transform.localScale;
@@ -127,8 +143,9 @@ public class BossMonsterController : MonoBehaviour
         }
         return false;
     }
+    #endregion
 
-    // DefalutAttackRange
+    #region DefaultAttack
     public bool InAttackRange()
     {
         Vector2 monsterPosition = monsterPosition = transform.position;
@@ -142,14 +159,30 @@ public class BossMonsterController : MonoBehaviour
         }
         return true;
     }
+    public void Attack()
+    {
+        Vector2 monsterPosition = transform.position;
+        Vector2 boxPosition = monsterPosition + Vector2.right * attackDistance * (1f * lookDirection)
+                        + Vector2.down * 1.5f;
+        Vector2 boxSize = new Vector2(attackDistance, 4);
+        Collider2D player = Physics2D.OverlapBox(boxPosition, boxSize, 0, playerLayerMask);
+        if (player == null)
+        {
+            return;
+        }
+        monsterAttributeLogics.ApplyAttackLogic(player.gameObject, attackPower, attributeValue, attributeRateTime, attributeStack);
+    }
+    #endregion
 
-    // PattrenAttackRange
+    #region PattrenAttack
+
     public bool InPattrenAttackRange()
     {
-        Vector2 monsterPosition = monsterPosition = transform.position;
+        Vector2 monsterPosition = transform.position;
         Vector2 boxPosition = monsterPosition + Vector2.right * (1f * lookDirection)
                         + Vector2.down * 1.5f;
-        Collider2D player = Physics2D.OverlapBox(boxPosition, overlapBoxSize, 0, playerLayerMask);
+        Vector2 boxSize = new Vector2(10f, 10f);
+        Collider2D player = Physics2D.OverlapBox(boxPosition, boxSize, 0, playerLayerMask);
         if (player == null)
         {
             return false;
@@ -157,6 +190,21 @@ public class BossMonsterController : MonoBehaviour
         return true;
     }
 
+    public void PattrenAttack()
+    {
+        Vector2 monsterPosition = transform.position;
+        Vector2 boxPosition = monsterPosition + Vector2.right * attackDistance * (1f * lookDirection)
+                        + Vector2.down * 1.5f;
+        Collider2D player = Physics2D.OverlapBox(boxPosition, overlapBoxSize, 0, playerLayerMask);
+        if (player == null)
+        {
+            return;
+        }
+        monsterAttributeLogics.ApplyAttackLogic(player.gameObject, attackPower, attributeValue, attributeRateTime, attributeStack);
+    }
+    #endregion
+
+    #region Movement
     public void Move()
     {
         var dir = Vector3.Distance(transform.position, target.transform.position);
@@ -171,29 +219,7 @@ public class BossMonsterController : MonoBehaviour
             canMove = false;
         }
     }
-
-
-    public void Attack()
-    {
-        Vector2 monsterPosition = transform.position;
-        Vector2 boxPosition = monsterPosition + Vector2.right * attackDistance *(1f * lookDirection)
-                        + Vector2.down * 1.5f;
-        Vector2 boxSize = new Vector2(attackDistance, 4);
-        Collider2D player = Physics2D.OverlapBox(boxPosition, boxSize, 0, playerLayerMask);
-        if (player == null)
-        {
-            return;
-        }
-        monsterAttributeLogics.ApplyAttackLogic(player.gameObject, attackPower, attributeValue, attributeRateTime, attributeStack);
-    }
-
-    // BossMonster PattrenData
-    public void PatternData(BossMonsterSO pattrenData)
-    {
-        overlapBoxSize = pattrenData.overlapBoxSize;
-        pattrenDamage = pattrenData.patternDamage;
-        pattrenRange = pattrenData.pattrenRange;
-    }
+    #endregion 
 
     private void OnDrawGizmos()
     {
@@ -201,11 +227,11 @@ public class BossMonsterController : MonoBehaviour
         Vector2 monsterPosition = transform.position;
 
         // 박스 중심 위치
-        Vector2 boxPosition = monsterPosition + Vector2.right * attackDistance * (1 * lookDirection)
+        Vector2 boxPosition = monsterPosition + Vector2.right  * (1 * lookDirection)
             + Vector2.down * 1.5f;
 
         // 박스 크기
-        Vector2 boxSize = new Vector2(attackDistance, 4);
+        Vector2 boxSize = new Vector2(10, 10);
 
         // Gizmos 색상 설정
         Gizmos.color = Color.blue;

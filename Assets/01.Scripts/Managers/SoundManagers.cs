@@ -29,8 +29,8 @@ public class SoundManagers : Singleton<SoundManagers>
     public void PlaySFX(SfxType type)
     {
         //sfxSource.PlayOneShot(clipDic[type]);
-        var sound = pooledSound.Get();
-        sound.PlaySound(clipDic[type]);
+        //var sound = pooledSound.Get();
+        //sound.PlaySound(clipDic[type]);
     }
 
     /// <summary>

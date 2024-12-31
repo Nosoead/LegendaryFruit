@@ -1,13 +1,16 @@
 ﻿using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class MonsterManager : MonoBehaviour
 {
     private MonsterSO monsterData;
+
+    //Pattren
+    private Dictionary<int, PatternData> pattrens = new Dictionary<int, PatternData>();
     [SerializeField] private MonsterStatManager monsterStatManager;
     [SerializeField] private MonsterAnimationController monsterAnimationController;
-    [SerializeField] private BossMonsterController bossMonsterController;
 
     private void Awake()
     {
@@ -28,12 +31,15 @@ public class MonsterManager : MonoBehaviour
     {
         monsterStatManager.SetInitStat(monsterData);
         monsterAnimationController.SetInitMonsterAnimation(monsterData);
-        Debug.Log(monsterData.ToString());
         if(monsterData is BossMonsterSO bossMonsterData)
         {
-            Debug.Log(bossMonsterData);
-            bossMonsterController.PatternData(bossMonsterData);
+            var data = bossMonsterData.pattrens;
+            for(int i = 0; i < data.Count; i++)
+            {
+                pattrens.Add(data[i].pattrenID, data[i]);
+            }
+            monsterStatManager.SetPattrenStat(pattrens);
+            monsterAnimationController.SetPatternAnimation(pattrens);
         }
     }
-
 }

@@ -1,13 +1,24 @@
+using System;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
 public class MonsterStatManager : MonoBehaviour
 {
     public UnityAction<string, float> OnSubscribeToStatUpdateEvent;
-    MonsterAnimationController monsterAnimationController;
+    public event UnityAction<PatternData,float> OnPatternTriggered;
+    private MonsterAnimationController monsterAnimationController;
     [SerializeField] private PooledMonster pooledMonster;
     private MonsterStat stat;
     private StatHandler statHandler;
+    private Dictionary<int,PatternData> pattrens = new Dictionary<int,PatternData>();
+    private PatternData currentPattrenData;
+
+    [Header("PattrenStat")]
+    private bool isOnCooldown = false;
+    private float cooldownTime;
+    private float patternDagmae;    
+
     public bool isDead = false;
 
     private void Awake()
@@ -28,12 +39,14 @@ public class MonsterStatManager : MonoBehaviour
     {
         stat.OnStatUpdated += OnStatUpdatedEvent;
         stat.OnMonsterDie += OnMonsterDie;
+        stat.OnHealthChanged += OnPattrenToHealth;
     }
 
     private void OnDisable()
     {
         stat.OnStatUpdated -= OnStatUpdatedEvent;
         stat.OnMonsterDie -= OnMonsterDie;
+        stat.OnHealthChanged -= OnPattrenToHealth;
     }
     private void Start()
     {
@@ -48,17 +61,62 @@ public class MonsterStatManager : MonoBehaviour
         {
             stat.InitStat(regularMonsterData);
         }
-        else if(data is BossMonsterSO bossMonsterData)
+        else if (data is BossMonsterSO bossMonsterData)
         {
             stat.InitStat(bossMonsterData);
+            //SetPattrenStat();
         }
     }
-
 
     private void OnStatUpdatedEvent(string key, float value)
     {
         OnSubscribeToStatUpdateEvent?.Invoke(key, value);
     }
+
+    #region Pattren
+    public void SetPattrenStat(Dictionary<int, PatternData> pattrenData)
+    {
+        pattrens = pattrenData;
+    }
+
+    private void OnPattrenToHealth(float currentHealth)
+    {
+        var data = GetPatternForHealth(currentHealth);
+        if (data != null && currentPattrenData != data && !isOnCooldown)
+        {
+            currentPattrenData = data;
+            OnPatternTriggered?.Invoke(data,patternDagmae);
+            StartCooldown();
+        }
+        else
+        {
+            return;
+        }
+    }
+    private void StartCooldown()
+    {
+        isOnCooldown = true;
+        Invoke(nameof(ResetCooldown), cooldownTime);
+    }
+
+    private void ResetCooldown()
+    {
+        isOnCooldown = false;
+    }
+
+    private PatternData GetPatternForHealth(float health)
+    {
+        if(health <= 200)
+        {
+            var pattern = pattrens[1000];
+            cooldownTime = pattern.pattrenCoolTime;
+            patternDagmae = pattern.patternDamage;
+            return pattern;
+        }
+        return null;
+    }
+
+    #endregion
 
     #region /ApplystatMethod
     public void ApplyInstantDamage(float damage) // stat 데미지
