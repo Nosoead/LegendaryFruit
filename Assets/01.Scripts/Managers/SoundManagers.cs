@@ -143,6 +143,7 @@ public class SoundManagers : Singleton<SoundManagers>
             {
                 T type = (T)Enum.Parse(typeof(T), arr[i].name);
                 clipDic.Add(type, arr[i]);
+                Debug.Log($"Mapped {type} to clip {arr[i].name}");
             }
             catch
             {
