@@ -1,12 +1,20 @@
-﻿using UnityEngine;
+﻿using System;
+using System.Collections.Generic;
+using UnityEngine;
 
 [CreateAssetMenu(fileName = "BossMonsterSO", menuName = "ScriptableObject/BossMonsterSO", order = 4)]
 public class BossMonsterSO : MonsterSO
 {
-    [Header("Pattren")]
+    public List<PatternData> pattrens;
+}
+
+[Serializable]
+public class PatternData
+{
+    [Header("PattrenInfo")]
+    public int pattrenID;
+    public float pattrenCoolTime;
     public float patternDamage;
-    public AnimationClip pattrenAttack;
-    public float pattrenRange;
-    public Vector2 overlapBoxSize;
+    public AnimationClip pattrenAttackAnimation;
 }
 

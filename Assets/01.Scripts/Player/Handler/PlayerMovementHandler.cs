@@ -147,8 +147,7 @@ public class PlayerMovementHandler : MonoBehaviour
     }
 
     #region /subscribeMethod
-    private void OnStatUpdatedEvent(string statKey, float value)
-    {
+    private void OnStatUpdatedEvent(string statKey, float value)    {
         switch (statKey)
         {
             case "MoveSpeed":

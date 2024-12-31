@@ -29,8 +29,7 @@ public class GroundDetector : MonoBehaviour
     private void Start()
     {
         SetLayerMask();
-        SetColliderOffset();
-    }
+        SetColliderOffset();    }
 
     protected virtual void FixedUpdate()
     {
