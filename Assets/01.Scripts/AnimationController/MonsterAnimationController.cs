@@ -1,18 +1,21 @@
 ﻿using System.Collections;
+using System.Collections.Generic;
 using System.Numerics;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class MonsterAnimationController : AnimationController
 {
-    private int isRun = Animator.StringToHash("isRun");
-    private int Attack = Animator.StringToHash("Attack");
-    private int isDie = Animator.StringToHash("isDie");
-    private int isHit = Animator.StringToHash("isHit");
-    private int Monster_Attack = Animator.StringToHash("Monster_Attack");
+    private readonly int PatternAttack = Animator.StringToHash("PatternAttack");
+    private readonly int isRun = Animator.StringToHash("isRun");
+    private readonly int Attack = Animator.StringToHash("Attack");
+    private readonly int isDie = Animator.StringToHash("isDie");
+    private readonly int isHit = Animator.StringToHash("isHit");
 
+    private Dictionary<int, PatternData> pattrens = new Dictionary<int, PatternData>();
     private bool isAttackComplete = false;
 
+    private PatternData currentPattern;
     private RegularMonsterSO regularMonster;
     private BossMonsterSO bossMonster;
     private SpriteRenderer effectSprite;
@@ -26,6 +29,10 @@ public class MonsterAnimationController : AnimationController
     protected override void EnsureComponents()
     {
         base.EnsureComponents();
+        if(effectSprite == null )
+        {
+            effectSprite = GetComponentInChildren<SpriteRenderer>();
+        }
     }
 
     // Animation Init
@@ -43,6 +50,11 @@ public class MonsterAnimationController : AnimationController
             overrideController = bossMonsterData.animatorOverrideController;
             Animator.runtimeAnimatorController = overrideController;
         }
+    }
+
+    public void SetPatternAnimation(Dictionary<int,PatternData> patternData)
+    {
+        pattrens = patternData;
     }
 
     #region 애니메이션 파라미터
@@ -91,9 +103,29 @@ public class MonsterAnimationController : AnimationController
 
     #region BossMonster AttackAnimations
     // BossMonster DefalutAttack Animation
+
+    public PatternData GetPatternData(PatternData data)
+    {       
+        return currentPattern = data;
+    }
+
     public void BossDefalutAttack(bool isAttacking)
     {
         Animator.SetBool(Attack, isAttacking);
+    }
+    
+    public void BossPatternAttack(bool isTrigger)
+    {
+        var clip = currentPattern.pattrenAttackAnimation;
+        overrideController["Boss_PatternAttack"] = clip;
+        if(isTrigger )
+        {
+            Animator.SetTrigger(PatternAttack);
+        }
+        else
+        {
+            Animator.ResetTrigger(PatternAttack);
+        }
     }
     #endregion
 
@@ -107,6 +139,17 @@ public class MonsterAnimationController : AnimationController
         {
             Animator.SetTrigger("Hold");
 
+            return true;
+        }
+        return false;
+    }
+
+    public bool HasPatternAttackFinished()
+    {
+        var state = Animator.GetCurrentAnimatorStateInfo(0).IsName("Boss_PatternAttack");
+        float animationTime = Animator.GetCurrentAnimatorStateInfo(0).normalizedTime;
+        if(state && animationTime >= 1)
+        {
             return true;
         }
         return false;

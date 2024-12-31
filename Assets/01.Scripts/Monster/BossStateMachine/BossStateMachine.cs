@@ -10,7 +10,7 @@ public class BossStateMachine
     public BossIdleState idleState { get; private set; }
     public BossAttackState attackState { get; private set; }
     public BossPatrollState patrollState { get; private set; }
-    public BossMonsterPattrenState patternOneState { get; private set; }
+    public BossMonsterPattrenState pattrenState { get; private set; }
     public UnityAction<BossMonsterController> OnStatsUpdated { get; private set; }
     public BossStateMachine(BossMonsterController bossMonsterController)
     {
@@ -18,7 +18,7 @@ public class BossStateMachine
         this.idleState = new BossIdleState(bossMonsterController);
         this.attackState = new BossAttackState(bossMonsterController);
         this.patrollState = new BossPatrollState(bossMonsterController);
-        this.patternOneState = new BossMonsterPattrenState(bossMonsterController);
+        this.pattrenState = new BossMonsterPattrenState(bossMonsterController);
         OnStatsUpdated += UpdateStat;
     }
 

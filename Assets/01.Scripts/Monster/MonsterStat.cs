@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
@@ -7,6 +8,7 @@ public class MonsterStat : Stat
     public UnityAction<string, float> OnStatUpdated;
     public UnityAction OnMonsterDie;
     private Dictionary<string, float> stats = new Dictionary<string, float>();
+    public event UnityAction<float> OnHealthChanged;
 
     public override void InitStat(GameSO gameData)
     {
@@ -52,6 +54,11 @@ public class MonsterStat : Stat
             if (statKey == "CurrentHealth" && stats["CurrentHealth"] == 0)
             {
                 OnMonsterDie?.Invoke();
+            }
+            else if (statKey == "CurrentHealth" && stats["CurrentHealth"] <= 200
+                && stats["MaxHealth"] >= 200)
+            {
+                OnHealthChanged?.Invoke(stats["CurrentHealth"]);
             }
         }
         else

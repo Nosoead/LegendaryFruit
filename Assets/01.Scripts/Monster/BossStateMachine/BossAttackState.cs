@@ -5,8 +5,6 @@ public class BossAttackState : IState
     private BossMonsterController bossMonsterController;
 
     private bool isGround;
-    private int attackCount;
-    float time = 0f; 
 
 
     public BossAttackState(BossMonsterController bossMonsterController)
