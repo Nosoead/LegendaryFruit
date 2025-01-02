@@ -6,8 +6,10 @@ using UnityEngine.UIElements;
 
 public class BossMonsterController : MonoBehaviour 
 {
-    private BossStateMachine stateMachine;
     public MonsterAnimationController animator;
+    [SerializeField] private MonsterStatManager statManager;
+    [SerializeField] private BossPatternTargetDetector detector;
+    private BossStateMachine stateMachine;
     public BossStateMachine StateMachine => stateMachine;
     private MonsterAttributeLogics monsterAttributeLogics = null;
     private MonsterAttributeLogics burnAttributeLogics = null;
@@ -16,7 +18,6 @@ public class BossMonsterController : MonoBehaviour
     public MonsterGround monsterGround;
     [SerializeField] private LayerMask playerLayerMask;
     public GameObject target;
-    public MonsterStatManager statManager;
     private float lookDirection = 1f;
 
     private float attackPower;
@@ -30,6 +31,7 @@ public class BossMonsterController : MonoBehaviour
     private bool canMove = true;
 
     // Pattren Info
+    [SerializeField] private float damageInterval;
     private Vector2 overlapBoxSize;
     private float patternDamage;
     private PatternData currentPattern;
@@ -37,7 +39,7 @@ public class BossMonsterController : MonoBehaviour
     #region Lifecycle Functions
     private void Awake()
     {
-        animator = GetComponent<MonsterAnimationController>();    
+        if(animator == null) { animator = GetComponent<MonsterAnimationController>(); }
         attributeLogicsDictionary = new MonsterAttributeLogicsDictionary();
         attributeLogicsDictionary.Initialize();
         stateMachine = new BossStateMachine(this);
@@ -48,12 +50,14 @@ public class BossMonsterController : MonoBehaviour
     {
         statManager.OnSubscribeToStatUpdateEvent += OnStatUpdatedEvent;
         statManager.OnPatternTriggered += OnHealthThresholdReached;
+        detector.OnPlayerEnterDamageZone += OnPattrenAttack;
     }
 
     private void OnDisable()
     {
         statManager.OnSubscribeToStatUpdateEvent -= OnStatUpdatedEvent;
         statManager.OnPatternTriggered -= OnHealthThresholdReached;
+        detector.OnPlayerEnterDamageZone -= OnPattrenAttack;
     }
 
     private void Start()
@@ -100,13 +104,19 @@ public class BossMonsterController : MonoBehaviour
         }
     }
 
+    public PatternData SetPatternData(PatternData data)
+    {
+        currentPattern = data;
+        animator.SetPatternAnimationData(data);
+        patternDamage = data.patternDamage;
+        return currentPattern;
+    }
+
     public void OnHealthThresholdReached(PatternData patternData,float damage)
     {
         if(patternData != currentPattern && damage != patternDamage)
         {
-            currentPattern = patternData;
-            animator.GetPatternData(currentPattern);
-            patternDamage = damage;
+            SetPatternData(patternData);
         }
         stateMachine.TransitionToState(stateMachine.pattrenState);
     }    
@@ -190,17 +200,12 @@ public class BossMonsterController : MonoBehaviour
         return true;
     }
 
-    public void PattrenAttack()
+    public void OnPattrenAttack(GameObject player)
     {
-        Vector2 monsterPosition = transform.position;
-        Vector2 boxPosition = monsterPosition + Vector2.right * attackDistance * (1f * lookDirection)
-                        + Vector2.down * 1.5f;
-        Collider2D player = Physics2D.OverlapBox(boxPosition, overlapBoxSize, 0, playerLayerMask);
-        if (player == null)
+        if(player == target)
         {
-            return;
+            monsterAttributeLogics.ApplyAttackLogic(player.gameObject, patternDamage, attributeValue, attributeRateTime, attributeStack);
         }
-        monsterAttributeLogics.ApplyAttackLogic(player.gameObject, attackPower, attributeValue, attributeRateTime, attributeStack);
     }
     #endregion
 
@@ -219,7 +224,21 @@ public class BossMonsterController : MonoBehaviour
             canMove = false;
         }
     }
-    #endregion 
+    #endregion
+
+    public void ChangeLayer()
+    {
+        int targetLayer = LayerMask.NameToLayer("Invincible");
+        this.gameObject.layer = targetLayer;
+        if (animator.HasPatternAttackFinished())
+        {
+            this.gameObject.layer = LayerMask.NameToLayer("Monster");
+        }
+        else
+        {
+            return;
+        }
+    }
 
     private void OnDrawGizmos()
     {

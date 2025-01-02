@@ -29,6 +29,6 @@ MonoBehaviour:
   animatorOverrideController: {fileID: 22100000, guid: eeeaee7a065b4174ebd4012ced7946ee, type: 2}
   pattrens:
   - pattrenID: 1000
-    pattrenCoolTime: 0
+    pattrenCoolTime: 5
     patternDamage: 30
     pattrenAttackAnimation: {fileID: 7400000, guid: 03f5455173627e247ada92bfd9b48ff7, type: 2}
