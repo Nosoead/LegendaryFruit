@@ -15,7 +15,7 @@ public class MonsterAnimationController : AnimationController
     private Dictionary<int, PatternData> pattrens = new Dictionary<int, PatternData>();
     private bool isAttackComplete = false;
 
-    private PatternData currentPattern;
+    private AnimationClip currentPatternAnimaion;
     private RegularMonsterSO regularMonster;
     private BossMonsterSO bossMonster;
     private SpriteRenderer effectSprite;
@@ -104,9 +104,9 @@ public class MonsterAnimationController : AnimationController
     #region BossMonster AttackAnimations
     // BossMonster DefalutAttack Animation
 
-    public PatternData GetPatternData(PatternData data)
+    public AnimationClip SetPatternAnimationData(PatternData data)
     {       
-        return currentPattern = data;
+        return currentPatternAnimaion = data.pattrenAttackAnimation;
     }
 
     public void BossDefalutAttack(bool isAttacking)
@@ -116,7 +116,7 @@ public class MonsterAnimationController : AnimationController
     
     public void BossPatternAttack(bool isTrigger)
     {
-        var clip = currentPattern.pattrenAttackAnimation;
+        var clip = currentPatternAnimaion;
         overrideController["Boss_PatternAttack"] = clip;
         if(isTrigger )
         {

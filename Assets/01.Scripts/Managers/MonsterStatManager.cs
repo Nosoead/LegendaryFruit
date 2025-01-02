@@ -81,22 +81,18 @@ public class MonsterStatManager : MonoBehaviour
 
     private void OnPattrenToHealth(float currentHealth)
     {
-        var data = GetPatternForHealth(currentHealth);
-        if (data != null && currentPattrenData != data && !isOnCooldown)
+        var data = GetPatternData(currentHealth);
+        if(currentPattrenData == data && !isOnCooldown)
         {
-            currentPattrenData = data;
-            OnPatternTriggered?.Invoke(data,patternDagmae);
+            OnPatternTriggered?.Invoke(data, patternDagmae);
             StartCooldown();
-        }
-        else
-        {
-            return;
         }
     }
     private void StartCooldown()
     {
         isOnCooldown = true;
         Invoke(nameof(ResetCooldown), cooldownTime);
+        Debug.Log($"{cooldownTime}");
     }
 
     private void ResetCooldown()
@@ -104,13 +100,14 @@ public class MonsterStatManager : MonoBehaviour
         isOnCooldown = false;
     }
 
-    private PatternData GetPatternForHealth(float health)
+    private PatternData GetPatternData(float health)
     {
         if(health <= 200)
         {
             var pattern = pattrens[1000];
             cooldownTime = pattern.pattrenCoolTime;
             patternDagmae = pattern.patternDamage;
+            currentPattrenData = pattern;
             return pattern;
         }
         return null;

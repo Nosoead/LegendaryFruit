@@ -22,6 +22,7 @@ public class BossMonsterPattrenState : IState
 
     public void Enter()
     {
+        bossMonsterController.ChangeLayer();
         bossMonsterController.animator.BossPatternAttack(true);
     }
 
@@ -29,7 +30,8 @@ public class BossMonsterPattrenState : IState
     {
         if(bossMonsterController.animator.HasPatternAttackFinished())
         {
-            if(bossMonsterController.InAttackRange())
+            bossMonsterController.ChangeLayer();
+            if (bossMonsterController.InAttackRange())
             {
                 bossMonsterController.StateMachine.TransitionToState(bossMonsterController.StateMachine.attackState);
             }

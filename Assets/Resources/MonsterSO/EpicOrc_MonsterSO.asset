@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a48b29d80c90f6a41a2846b84a4266ec, type: 3}
   m_Name: EpicOrc_MonsterSO
   m_EditorClassIdentifier: 
-  monsterID: 4
+  monsterID: 1010303
   maxHealth: 150
   attackPower: 15
   defense: 8

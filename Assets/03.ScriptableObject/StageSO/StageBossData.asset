@@ -15,4 +15,7 @@ MonoBehaviour:
   stageID: 11041
   isCombatStage: 1
   isBossStage: 1
+  canReceiveReward: 0
   monsterCount: 1
+  monsters:
+  - {fileID: 11400000, guid: db9dc5d5ed3c96c4dadb595fa26f7737, type: 2}
