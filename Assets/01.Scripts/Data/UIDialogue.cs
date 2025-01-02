@@ -256,7 +256,11 @@ public class UIDialogue : UIBase
             {
                 UIManager.Instance.ToggleUI<WeaponUpgradeUI>(true);
                 //if (dialogueData.AnswerList == null || dialogueData.AnswerList.Count == 0);
-                   
+            }
+            if (answer.UIResource == "NpcUpgradeUI" && answer.Text == "강화하기")
+            {
+                UIManager.Instance.ToggleUI<NpcUpgradeUI>(true);
+                //if (dialogueData.AnswerList == null || dialogueData.AnswerList.Count == 0);
             }
         }
 

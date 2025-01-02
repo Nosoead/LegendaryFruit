@@ -51,19 +51,21 @@ public class WeaponUpgradeUI : UIBase
             Debug.Log("재화 깍음 ");
             Debug.Log("SO 바꿈");
             isUpgrade = true;
-            dialogueIndex = 10010;
+            dialogueIndex = 10203;
             uiDialogue.gameObject.SetActive(true);
             SetDialogue();
             SoundManagers.Instance.PlaySFX(SfxType.UIButton);
             UIManager.Instance.ToggleUI<WeaponUpgradeUI>(true);
+            //Destroy( uiDialogue);
         }
         else
         {
-            dialogueIndex = 10012;
+            dialogueIndex = 10205;
             uiDialogue.gameObject.SetActive(true);
             SetDialogue();
             SoundManagers.Instance.PlaySFX(SfxType.UIButton);
             UIManager.Instance.ToggleUI<WeaponUpgradeUI>(true);
+            //Destroy( uiDialogue);
         }
     }
     private void Init()
@@ -71,8 +73,10 @@ public class WeaponUpgradeUI : UIBase
         
         if (!uiDialogue)
         {
+            //UIManager.Instance.ToggleUI<UIDialogue>(true);
             GameObject dialogueObject = Instantiate(uiDialoguePrefab.gameObject);
             uiDialogue = dialogueObject.GetComponent<UIDialogue>();
+            uiDialogue.gameObject.SetActive(false);
 
             //DialogueManager.Instance.SetUIDialogue(uiDialogue);
         }

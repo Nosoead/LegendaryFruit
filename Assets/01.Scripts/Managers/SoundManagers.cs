@@ -22,7 +22,7 @@ public class SoundManagers : Singleton<SoundManagers>
     }
     private void Start()
     {
-        PoolManager.Instance.CreatePool<PooledSound>(PoolType.PooledSound, false, 5, 100);
+        PoolManager.Instance.CreatePool<PooledSound>(PoolType.PooledSound, false, 1, 5);
         pooledSound = PoolManager.Instance.GetObjectFromPool<PooledSound>(PoolType.PooledSound) as IObjectPool<PooledSound>;
     }
     /// <summary>
@@ -30,18 +30,19 @@ public class SoundManagers : Singleton<SoundManagers>
     /// </summary>
     public void PlaySFX(SfxType type, bool hasInterval  = false)
     {
-        var sound = pooledSound.Get();
         if (hasInterval)
         {
             lastSoundTime += Time.deltaTime;
             if (lastSoundTime >= soundInterval)
             {
+                var sound = pooledSound.Get();
                 sound.PlaySound(clipDic[type]);
                 lastSoundTime = 0;
             }
         }
         else
         {
+            var sound = pooledSound.Get();
             sound.PlaySound(clipDic[type]);
         }
     
