@@ -206,6 +206,7 @@ public class BossMonsterController : MonoBehaviour
         {
             monsterAttributeLogics.ApplyAttackLogic(player.gameObject, patternDamage, attributeValue, attributeRateTime, attributeStack);
         }
+        detector.ResetDetector();
     }
     #endregion
 

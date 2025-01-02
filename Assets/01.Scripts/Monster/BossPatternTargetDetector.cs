@@ -12,38 +12,38 @@ public class BossPatternTargetDetector : MonoBehaviour
     {
         if (collision.gameObject.layer == LayerMask.NameToLayer("Player"))
         {
-            if (!isInvoking)
-            {
-                isInvoking = true;
-                OnPlayerEnterDamageZone?.Invoke(collision.gameObject);
-                isInvoking = false;
-
-            }
-            else
-            {
-                return;
-            }
+            StartCoroutine(DelayedInvoke(collision.gameObject));            
         }
     }
     private void OnTriggerStay2D(Collider2D collision)
     {
-        if (collision.gameObject.layer == LayerMask.NameToLayer("Player") && !isInvoking)
-        { 
+        if (collision.gameObject.layer == LayerMask.NameToLayer("Player"))
+        {
             StartCoroutine(DelayedInvoke(collision.gameObject));
         }
     }
     private void OnTriggerExit2D(Collider2D collision)
     {
-        
+        if (collision.gameObject.layer == LayerMask.NameToLayer("Player"))
+        {
+            isInvoking = false;
+        }
     }
 
     private IEnumerator DelayedInvoke(GameObject player)
     {
+        if (isInvoking) yield break;
         isInvoking = true;
-        float delay = 0.5f; // 1초 지연
+        float delay = 0.3f;
         yield return new WaitForSeconds(delay);
 
         OnPlayerEnterDamageZone?.Invoke(player);
         isInvoking = false;
+    }
+
+    public void ResetDetector()
+    {
+        isInvoking = false;
+        StopAllCoroutines();
     }
 }

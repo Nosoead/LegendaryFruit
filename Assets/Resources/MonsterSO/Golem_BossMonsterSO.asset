@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 93adddef80c9e9f488571102c77c6a5e, type: 3}
-  m_Name: BossMonsterSO
+  m_Name: Golem_BossMonsterSO
   m_EditorClassIdentifier: 
-  monsterID: 101
+  monsterID: 2020001
   maxHealth: 300
   attackPower: 20
   defense: 10
