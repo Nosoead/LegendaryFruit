@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.Pool;
 using static UnityEngine.InputSystem.LowLevel.InputStateHistory;
 
-public class RewardNPC : MonoBehaviour, IInteractable
+public class RewardNPC : NPC, IInteractable
 {
     //F키 누르세요
     [SerializeField]
@@ -25,7 +25,7 @@ public class RewardNPC : MonoBehaviour, IInteractable
     private IObjectPool<PooledReward> reward;
     private PooledReward pooledReward;
 
-    public void InitRewardNPC()
+    public override void InitNPC()
     {
         Debug.Log("test");
         gameObject.layer = LayerMask.NameToLayer("NPC");
@@ -48,7 +48,7 @@ public class RewardNPC : MonoBehaviour, IInteractable
         //TODO 인덱스접근 자동으로 할 수 있게
     }
 
-    public void SetReward()
+    public override void SetReward()
     {
         weaponData = ItemManager.Instance.GetItemData(selectNum: 1)[0];
         randomNum = Random.Range(0, spawnPositions.Count);

@@ -11,8 +11,24 @@ public class StageSO : ScriptableObject
     public bool isCombatStage;
     public bool isBossStage;
     public bool canReceiveReward;
-    public int monsterCount;
-    public List<MonsterSO> monsters;
+    public List<MonsterSpawnInfo> monstersToSummon = new List<MonsterSpawnInfo>();
 
+    public int TotalMonsterCount()
+    {
+        if (monstersToSummon.Count == 0) return 0;
+        int result = 0;
+        foreach (var monsterNum in monstersToSummon)
+        {
+            result += monsterNum.monsterCount;
+        }
+        return result;
+    }
     //TODO 스테이지에 따른 보상확률 조절하는 필드추가~
+}
+
+[System.Serializable]
+public class MonsterSpawnInfo
+{
+    public int monsterCount;
+    public MonsterSO monsterData;
 }
