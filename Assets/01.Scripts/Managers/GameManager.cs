@@ -36,7 +36,7 @@ public class GameManager : Singleton<GameManager>
         }
         else
         {
-            StageManager.Instance.ChangeStage(StageType.Stage0);
+            StageManager.Instance.ChangeStage(StageType.StageLobby);
         }
         Application.targetFrameRate = 60;
         Time.timeScale = 1f;

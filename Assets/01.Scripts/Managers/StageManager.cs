@@ -1,3 +1,4 @@
+using Cinemachine;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -8,7 +9,7 @@ using UnityEngine.Pool;
 public class StageManager : Singleton<StageManager>
 {
     [SerializeField] private GameObject player;
-
+    [SerializeField] private CinemachineConfiner2D confiner;
     private Dictionary<StageType, Stage> stages = new Dictionary<StageType, Stage>();
     private Stage currentStage = null;
     private StageType currentStageType;
@@ -34,6 +35,13 @@ public class StageManager : Singleton<StageManager>
         CacheMonster();
     }
 
+    public void Init()
+    {
+        RegisterStage();
+        SetCameraBoundary();
+        CacheMonster();
+    }
+
     private void RegisterStage()
     {
         foreach (StageType stageType in Enum.GetValues(typeof(StageType)))
@@ -48,23 +56,29 @@ public class StageManager : Singleton<StageManager>
         }
     }
 
-    public void Init()
+    private void SetCameraBoundary()
     {
-        RegisterStage();
-        CacheMonster();
+        if (confiner == null)
+        {
+            if (GameObject.Find("Virtual Camera").TryGetComponent(out CinemachineVirtualCamera virutalCam))
+            {
+                confiner = virutalCam.GetComponent<CinemachineConfiner2D>();
+            }
+        }
     }
 
     private void CacheMonster()
     {
         monster = PoolManager.Instance.GetObjectFromPool<PooledMonster>(PoolType.PooledMonster);
         bossMonster = PoolManager.Instance.GetObjectFromPool<PooledBossMonster>(PoolType.PooledBossMonster);
-    } 
+    }
 
     public void ResetStageManager()
     {
         stages.Clear();
+        confiner = null;
     }
-    
+
     public void ChangeStage(StageType type)
     {
         if (player == null)
@@ -83,19 +97,19 @@ public class StageManager : Singleton<StageManager>
         {
             GameManager.Instance.isClear = true;
         }
-        else if(currentStage.stageData.isBossStage)
+        else if (currentStage.stageData.isBossStage)
         {
             GameManager.Instance.isClear = false;
-            currentStage.SetStage(player, bossMonster);
+            currentStage.SetStage(player, bossMonster, confiner);
             return;
         }
         else
         {
             GameManager.Instance.isClear = false;
         }
-        monsterCount = currentStage.stageData.monsterCount;
+        monsterCount = currentStage.stageData.TotalMonsterCount();
         //FadeIn
-        currentStage.SetStage(player, monster);
+        currentStage.SetStage(player, monster, confiner);
         //FadeOut
     }
 

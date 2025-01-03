@@ -28,11 +28,12 @@ public enum GradeType
 
 public enum StageType
 {
-    Stage0 = 11001,
-    Stage1 = 11011,
-    Stage2 = 11021,
-    StageShelter = 11031,
-    StageBoss = 11041,
+    StageLobby = 11001,
+    Stage0 = 11011,
+    Stage1 = 11021,
+    Stage2 = 11031,
+    StageShelter = 11041,
+    StageBoss = 11051,
 }
 
 public enum PoolType

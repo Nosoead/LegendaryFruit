@@ -8,24 +8,25 @@ public class Parallax : MonoBehaviour
     public GameObject cam;
     public float parallaxEffect;
 
-    private void Awake()
-    {
-        Init();
-    }
+    //private void Awake()
+    //{
+    //    InitParallax();
+    //}
 
-    private void Start()
-    {
-        SetPositionAndLength();
-    }
+    //private void Start()
+    //{
+    //    SetPositionAndLength();
+    //}
 
     private void FixedUpdate()
     {
         SetBackground();
     }
 
-    public void Init()
+    public void InitParallax()
     {
-        //cam = 
+        cam = Camera.main.gameObject;
+        SetPositionAndLength();
     }
 
     private void SetPositionAndLength()
