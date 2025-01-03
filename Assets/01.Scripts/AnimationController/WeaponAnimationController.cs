@@ -133,8 +133,6 @@ public class WeaponAnimationController : AnimationController
 
 
 
-
-
     public void CheckAndPlayParticle()
     {
         if (!particle.isPlaying)
