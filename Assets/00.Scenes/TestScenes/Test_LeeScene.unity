@@ -1506,10 +1506,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 2050638217353607981, guid: 8276b91019b45c94c90500fde3677b9e, type: 3}
-      propertyPath: InitialModule.startLifetime.scalar
-      value: 0.0001
-      objectReference: {fileID: 0}
     - target: {fileID: 4277354790125660101, guid: 8276b91019b45c94c90500fde3677b9e, type: 3}
       propertyPath: m_LocalPosition.x
       value: -7.18
@@ -1554,13 +1550,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: PooledBossMonster
       objectReference: {fileID: 0}
-    - target: {fileID: 6835112359130173983, guid: 8276b91019b45c94c90500fde3677b9e, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects:
-    - {fileID: 9150402459281714413, guid: 8276b91019b45c94c90500fde3677b9e, type: 3}
+    m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8276b91019b45c94c90500fde3677b9e, type: 3}
@@ -1572,57 +1563,49 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 2164411009789363341, guid: 233013ee03125de4ea771ef6a1636a43, type: 3}
+    - target: {fileID: 2025736629880038302, guid: 233013ee03125de4ea771ef6a1636a43, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -17.3
+      value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2164411009789363341, guid: 233013ee03125de4ea771ef6a1636a43, type: 3}
+    - target: {fileID: 2025736629880038302, guid: 233013ee03125de4ea771ef6a1636a43, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -23
+      value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2164411009789363341, guid: 233013ee03125de4ea771ef6a1636a43, type: 3}
+    - target: {fileID: 2025736629880038302, guid: 233013ee03125de4ea771ef6a1636a43, type: 3}
       propertyPath: m_LocalPosition.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2164411009789363341, guid: 233013ee03125de4ea771ef6a1636a43, type: 3}
+    - target: {fileID: 2025736629880038302, guid: 233013ee03125de4ea771ef6a1636a43, type: 3}
       propertyPath: m_LocalRotation.w
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 2164411009789363341, guid: 233013ee03125de4ea771ef6a1636a43, type: 3}
+    - target: {fileID: 2025736629880038302, guid: 233013ee03125de4ea771ef6a1636a43, type: 3}
       propertyPath: m_LocalRotation.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2164411009789363341, guid: 233013ee03125de4ea771ef6a1636a43, type: 3}
+    - target: {fileID: 2025736629880038302, guid: 233013ee03125de4ea771ef6a1636a43, type: 3}
       propertyPath: m_LocalRotation.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2164411009789363341, guid: 233013ee03125de4ea771ef6a1636a43, type: 3}
+    - target: {fileID: 2025736629880038302, guid: 233013ee03125de4ea771ef6a1636a43, type: 3}
       propertyPath: m_LocalRotation.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2164411009789363341, guid: 233013ee03125de4ea771ef6a1636a43, type: 3}
+    - target: {fileID: 2025736629880038302, guid: 233013ee03125de4ea771ef6a1636a43, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2164411009789363341, guid: 233013ee03125de4ea771ef6a1636a43, type: 3}
+    - target: {fileID: 2025736629880038302, guid: 233013ee03125de4ea771ef6a1636a43, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2164411009789363341, guid: 233013ee03125de4ea771ef6a1636a43, type: 3}
+    - target: {fileID: 2025736629880038302, guid: 233013ee03125de4ea771ef6a1636a43, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4681864660569076001, guid: 233013ee03125de4ea771ef6a1636a43, type: 3}
-      propertyPath: m_Controller
-      value: 
-      objectReference: {fileID: 22100000, guid: 243c00b9df29bf54482b417cfa1965c0, type: 2}
-    - target: {fileID: 6078662648922394675, guid: 233013ee03125de4ea771ef6a1636a43, type: 3}
+    - target: {fileID: 5250696970045440906, guid: 233013ee03125de4ea771ef6a1636a43, type: 3}
       propertyPath: m_Name
       value: PooledMonster
-      objectReference: {fileID: 0}
-    - target: {fileID: 6078662648922394675, guid: 233013ee03125de4ea771ef6a1636a43, type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
