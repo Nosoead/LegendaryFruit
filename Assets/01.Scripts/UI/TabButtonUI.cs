@@ -8,6 +8,7 @@ public class TabButtonUI : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
 {
     [FormerlySerializedAs("tabGroup")] [SerializeField] private TabGroupUI tabGroupUI;
     [SerializeField] private Image backgroundImage;
+    [SerializeField] private GameObject objectToActiveate;
     
     public UnityEvent onTabSelected;
     public UnityEvent onTabDeselected;

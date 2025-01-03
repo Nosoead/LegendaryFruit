@@ -18,7 +18,7 @@ public class MonsterManager : MonoBehaviour
     }
     private void Start()
     {
-        //GetMonsterData(101);
+        //GetMonsterData(2020001);
     }
 
     public void GetMonsterData(int id)

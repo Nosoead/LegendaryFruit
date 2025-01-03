@@ -16,6 +16,7 @@ public class StageManager : Singleton<StageManager>
 
     //일단 몬스터만 풀링
     private IObjectPool<PooledMonster> monster;
+    private IObjectPool<PooledBossMonster> bossMonster;
 
     protected override void Awake()
     {
@@ -28,6 +29,8 @@ public class StageManager : Singleton<StageManager>
         //TODO : 오브젝트풀 시작하자마자 다 뽑아와서 등록까지 할 것.
         //instance찍고 딕셔너리로 참조만 하면 바로 풀 사용할 수 있도록, CreatePool사용없이
         PoolManager.Instance.CreatePool<PooledMonster>(PoolType.PooledMonster, false, 7, 12);
+        PoolManager.Instance.CreatePool<PooledBossMonster>(PoolType.PooledBossMonster, false, 7, 12);
+
         CacheMonster();
     }
 
@@ -54,7 +57,8 @@ public class StageManager : Singleton<StageManager>
     private void CacheMonster()
     {
         monster = PoolManager.Instance.GetObjectFromPool<PooledMonster>(PoolType.PooledMonster);
-    }
+        bossMonster = PoolManager.Instance.GetObjectFromPool<PooledBossMonster>(PoolType.PooledBossMonster);
+    } 
 
     public void ResetStageManager()
     {
@@ -78,6 +82,12 @@ public class StageManager : Singleton<StageManager>
         if (!currentStage.stageData.isCombatStage)
         {
             GameManager.Instance.isClear = true;
+        }
+        else if(currentStage.stageData.isBossStage)
+        {
+            GameManager.Instance.isClear = false;
+            currentStage.SetStage(player, bossMonster);
+            return;
         }
         else
         {

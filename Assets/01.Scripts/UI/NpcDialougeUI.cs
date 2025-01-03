@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class NPCDialougeUI : UIBase
+public class NpcDialougeUI : UIBase
 {
     [SerializeField] private UIDialogue uiDialoguePrefab;
     private UIDialogue uiDialogue;
@@ -9,7 +9,7 @@ public class NPCDialougeUI : UIBase
 
     public override void Open()
     {
-        dialogueIndex = Random.Range(10007, 10010);
+        dialogueIndex = Random.Range(10200, 10203);
         if (!isFirstOpen)
         {
             Init();

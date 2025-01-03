@@ -11,10 +11,15 @@ public class Stage : MonoBehaviour
     [SerializeField] private Potal secondPotal;
     [SerializeField] private RewardNPC rewardNPC;
 
-    public void SetStage(GameObject player, IObjectPool<PooledMonster> monster)
+    private void SetPlayer(GameObject player)
     {
-        SetPlayer(player);
-        SetMonster(monster);
+        if (player == null) return;
+        player.transform.position = playerSpawnPoint.position;
+    }
+
+    #region // Objects
+    private void SetObject()
+    {
         if (firstPotal != null)
         {
             firstPotal.InitPotal();
@@ -28,11 +33,22 @@ public class Stage : MonoBehaviour
             rewardNPC.InitRewardNPC();
         }
     }
-
-    private void SetPlayer(GameObject player)
+    public void SetReward()
     {
-        if (player == null) return;
-        player.transform.position = playerSpawnPoint.position;
+        if (!stageData.canReceiveReward)
+        {
+            return;
+        }
+        rewardNPC.SetReward();
+    }
+    #endregion
+
+    #region // RegularMonsters
+    public void SetStage(GameObject player, IObjectPool<PooledMonster> monster)
+    {
+        SetPlayer(player);
+        SetMonster(monster);
+        SetObject();
     }
 
     private void SetMonster(IObjectPool<PooledMonster> monster)
@@ -44,18 +60,38 @@ public class Stage : MonoBehaviour
 
         foreach (var setMonsterPosition in monsterSpawnPoints)
         {
+            var randomMonster = stageData.monsters[Random.Range(0, stageData.monsters.Count - 1)];
             PooledMonster monsterObj = monster.Get();
             monsterObj.gameObject.transform.position = setMonsterPosition.position;
-            monsterObj.monsterManager.GetMonsterData(4);
+            monsterObj.monsterManager.GetMonsterData(randomMonster.monsterID);
         }
     }
+    #endregion
 
-    public void SetReward()
+    #region // BossMonsters
+    // Boss
+    public void SetStage(GameObject player, IObjectPool<PooledBossMonster> bossMonster)
     {
-        if (!stageData.canReceiveReward)
+        SetPlayer(player);
+        SetMonster(bossMonster);
+        SetObject();
+    }
+
+    private void SetMonster(IObjectPool<PooledBossMonster> bossMonster)
+    {
+        if (!stageData.isCombatStage)
         {
             return;
         }
-        rewardNPC.SetReward();
+
+        foreach (var setMonsterPosition in monsterSpawnPoints)
+        {
+            // 보스는 하나라 랜덤으로 뽑아도 의미 없음 그래도 일단 진행
+            var randomBoss = stageData.monsters[Random.Range(0,stageData.monsters.Count - 1)];
+            PooledBossMonster monsterObj = bossMonster.Get();
+            monsterObj.gameObject.transform.position = setMonsterPosition.position;
+            monsterObj.monsterManager.GetMonsterData(randomBoss.monsterID);
+        }
     }
+    #endregion
 }

@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 65640f37ba5585c48a689b2bfe301972, type: 3}
   m_Name: Stage2_StageSO
   m_EditorClassIdentifier: 
-  stagePrefab: {fileID: 357588029148306145, guid: e6259dd474f599b4fb4d4bfc78d04fe2, type: 3}
-  stageKey: Stage2
-  clearMonsterKillCount: 1
-  creatMonsterCount: 1
-  isCreatMonster: 1
-  isCreatRewardTree: 1
+  stageID: 0
+  isCombatStage: 0
+  isBossStage: 0
+  canReceiveReward: 0
+  monsterCount: 0
+  monsters: []

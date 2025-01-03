@@ -32,9 +32,13 @@ public class TestUI : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.E))
         {
-            UIManager.Instance.ToggleUI<NPCDialougeUI>(false);
+            UIManager.Instance.ToggleUI<NpcDialougeUI>(false);
             SoundManagers.Instance.PlaySFX(SfxType.UIButton);
         }
-        
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            UIManager.Instance.ToggleUI<NpcUpgradeUI>(false);
+            SoundManagers.Instance.PlaySFX(SfxType.UIButton);
+        }
     }
 }
