@@ -21,6 +21,8 @@ public class MonsterAnimationController : AnimationController
     private SpriteRenderer effectSprite;
     private AnimatorOverrideController overrideController;
 
+    [SerializeField] private ParticleSystem particle;
+
     protected override void Awake()
     {
         base.Awake();
@@ -154,4 +156,16 @@ public class MonsterAnimationController : AnimationController
         }
         return false;
     }
+
+    public void CheckAndPlayParticle()
+    {
+        if(!particle.isPlaying)
+        {
+            particle.Play();
+        }
+        else
+        {
+            particle.Stop();
+        }
+    } 
 }

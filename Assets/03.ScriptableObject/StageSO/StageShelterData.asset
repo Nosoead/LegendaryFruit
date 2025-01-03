@@ -12,7 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 65640f37ba5585c48a689b2bfe301972, type: 3}
   m_Name: StageShelterData
   m_EditorClassIdentifier: 
-  stageID: 11031
+  stageID: 11041
   isCombatStage: 0
   isBossStage: 0
+  canReceiveReward: 0
   monsterCount: 0
+  monsters: []

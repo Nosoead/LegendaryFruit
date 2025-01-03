@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 65640f37ba5585c48a689b2bfe301972, type: 3}
   m_Name: StageBossData
   m_EditorClassIdentifier: 
-  stageID: 11041
+  stageID: 11051
   isCombatStage: 1
   isBossStage: 1
   canReceiveReward: 0
-  monsterCount: 1
-  monsters:
-  - {fileID: 11400000, guid: db9dc5d5ed3c96c4dadb595fa26f7737, type: 2}
+  monstersToSummon:
+  - monsterCount: 1
+    monsterData: {fileID: 11400000, guid: db9dc5d5ed3c96c4dadb595fa26f7737, type: 2}

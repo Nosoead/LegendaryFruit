@@ -168,8 +168,8 @@ public class MonsterController : MonoBehaviour
     {
         Gizmos.color = Color.red;
         Vector2 monsterPosition = transform.position;
-        Vector2 boxSize = new Vector2(1f, 1f);
-        Vector2 boxPostion = monsterPosition + Vector2.right * (5 * lookDirection);
+        Vector2 boxSize = new Vector2(attackDistance, 1f);
+        Vector2 boxPostion = monsterPosition + Vector2.right * (attackDistance * lookDirection);
         Vector2 boxPosition = (Vector2)transform.position + Vector2.right * attackDistance * lookDirection;
         Gizmos.DrawWireCube(boxPosition, boxSize);
     }
