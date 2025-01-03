@@ -19,4 +19,5 @@ public class WeaponSO : GameSO
     public Sprite weaponSprite;
     public Sprite rewardSprite;
     public AnimatorOverrideController animatorController;
+    public Material effectMaterial;
 }

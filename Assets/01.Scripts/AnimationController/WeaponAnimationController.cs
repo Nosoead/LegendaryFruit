@@ -11,6 +11,9 @@ public class WeaponAnimationController : AnimationController
     private Transform handPosition;
     private static readonly int Attack = Animator.StringToHash("Attack");
 
+    [SerializeField] private ParticleSystem particle;
+    private ParticleSystemRenderer particleSystemRenderer;
+
     protected override void Awake()
     {
         base.Awake();
@@ -18,7 +21,7 @@ public class WeaponAnimationController : AnimationController
     }
     private void Start()
     {
-
+        
     }
 
 
@@ -36,6 +39,7 @@ public class WeaponAnimationController : AnimationController
     {
         playerController.OnAttackEvent -= OnAttackEvent;
         equipment.OnEquipWeaponChanged -= OnChangedAnimator;
+
     }
 
     protected override void EnsureComponents()
@@ -53,11 +57,11 @@ public class WeaponAnimationController : AnimationController
         {
             playerSprite = GetComponentInParent<SpriteRenderer>();
         }
-        if(effectSprite == null)
+        if (particleSystemRenderer == null)
         {
-            effectSprite = GetComponentsInChildren<SpriteRenderer>(true);
+            particleSystemRenderer = particle.GetComponent<ParticleSystemRenderer>();
         }
-        if(equipment == null)
+        if (equipment == null)
         {
             equipment = GetComponent<PlayerEquipment>();
         }
@@ -72,6 +76,14 @@ public class WeaponAnimationController : AnimationController
         if(weaponSO.animatorController != null)
         Animator.runtimeAnimatorController = weaponSO.animatorController;
     }
+
+    //private void OnChangedParticle(WeaponSO weaponSO)
+    //{
+    //    if(weaponSO.effectMaterial != null)
+    //    {
+    //        particleSystemRenderer.material = weaponSO.effectMaterial;
+    //    }
+    //}
 
     private void CheckAttack()
     {
@@ -91,17 +103,47 @@ public class WeaponAnimationController : AnimationController
     private void FlipCheck()
     {
         bool isFlip = playerSprite.flipX;
-        if (isFlip)
+        if (isFlip == true)
+        {
+            SetParticleAndSpritePosition(isFlip);
+        }
+        if (isFlip == false)
+        {
+            SetParticleAndSpritePosition(isFlip);
+        }
+    }
+    
+    private void SetParticleAndSpritePosition(bool isFlip)
+    {
+        if(isFlip == true)
         {
             Sprite.flipX = true;
-            effectSprite[1].flipX = true;
-            this.transform.localPosition = new Vector3(-0.3f, 0.8f, 0);
+            Sprite.gameObject.transform.localPosition = new Vector2(-1.5f, -0.2f);
+            particle.gameObject.transform.localPosition = new Vector2(-1.5f, -0.6f);
+            particleSystemRenderer.flip = new Vector2(1f, 0f);
         }
-        if (!isFlip)
+        if(isFlip == false)
         {
             Sprite.flipX = false;
-            effectSprite[1].flipX = false;
-            this.transform.localPosition = new Vector3(0.8f, 0.8f, 0);
+            Sprite.gameObject.transform.localPosition = new Vector2(-0.3f, -0.2f);
+            particle.gameObject.transform.localPosition = new Vector2(0f, -0.6f);
+            particleSystemRenderer.flip = new Vector2(0f, 0f);
+        }
+    }
+
+
+
+
+
+    public void CheckAndPlayParticle()
+    {
+        if (!particle.isPlaying)
+        {
+            particle.Play();
+        }
+        else
+        {
+            particle.Stop();
         }
     }
 }

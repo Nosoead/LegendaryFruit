@@ -18,7 +18,7 @@ MonoBehaviour:
   defense: 6
   attackSpeed: 3
   moveSpeed: 4
-  attackDistance: 3
+  attackDistance: 2
   chaseRange: 10
   type: 0
   attributeValue: 5
