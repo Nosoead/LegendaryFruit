@@ -6,37 +6,24 @@
   <component name="ChangeListManager">
     <list default="true" id="fd1b27b5-9a48-464d-8c89-0ee285d61d98" name="변경" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.LegendaryFruit/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.LegendaryFruit/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/00.Scenes/OneCycleScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/00.Scenes/OneCycleScene.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/01.Scripts/Managers/MonsterManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/01.Scripts/Managers/MonsterManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/01.Scripts/Managers/MonsterStatManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/01.Scripts/Managers/MonsterStatManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/01.Scripts/Managers/SoundManagers.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/01.Scripts/Managers/SoundManagers.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/01.Scripts/Monster/MonsterController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/01.Scripts/Monster/MonsterController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/01.Scripts/Player/Behaviour/MoveStateMachine/PlayerAirborneState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/01.Scripts/Player/Behaviour/MoveStateMachine/PlayerAirborneState.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/01.Scripts/Player/Behaviour/MoveStateMachine/PlayerDashState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/01.Scripts/Player/Behaviour/MoveStateMachine/PlayerDashState.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/01.Scripts/Player/Behaviour/MoveStateMachine/PlayerMoveState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/01.Scripts/Player/Behaviour/MoveStateMachine/PlayerMoveState.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/01.Scripts/Player/Behaviour/PlayerAttack.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/01.Scripts/Player/Behaviour/PlayerAttack.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/01.Scripts/Player/Behaviour/PlayerCondition.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/01.Scripts/Player/Behaviour/PlayerCondition.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/01.Scripts/UI/PlayerCanvasUI.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/01.Scripts/UI/PlayerCanvasUI.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/01.Scripts/Util/Enums.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/01.Scripts/Util/Enums.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Sounds/SFX/11.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Sounds/SFX/11.wav.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Sounds/SFX/MonsterAttack.wav" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Sounds/SFX/MonsterAttack.wav" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Sounds/SFX/MonsterAttack.wav.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Sounds/SFX/MonsterAttack.wav.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Sounds/SFX/Slime.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Sounds/SFX/Slime/MonsterDamaged1.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Sounds/SFX/Slime/MonsterDamaged1.wav.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Sounds/SFX/Slime/MonsterDamaged2.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Sounds/SFX/Slime/MonsterDamaged2.wav.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Sounds/SFX/Slime/MonsterDeath.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Sounds/SFX/Slime/MonsterDeath.wav.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Sounds/SFX/Slime/SlimeDamaged.flac" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Sounds/SFX/Slime/SlimeDamaged.flac.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Sounds/SFX/Slime/SlimeDamaged2.flac" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Sounds/SFX/Slime/SlimeDamaged2.flac.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Sounds/SFX/Slime/SlimeDie.flac" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Sounds/SFX/Slime/SlimeDie.flac.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Sounds/SFX/Slime/SlimeWalk.ogg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Sounds/SFX/Slime/SlimeWalk.ogg.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/00.Scenes/TestScenes/Test_ParkScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/00.Scenes/TestScenes/Test_ParkScene.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01.Scripts/Player/Controller/PlayerController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/01.Scripts/Player/Controller/PlayerController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01.Scripts/Player/Handler/PlayerMovementHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/01.Scripts/Player/Handler/PlayerMovementHandler.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01.Scripts/UI/NpcUpgradeUI.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/01.Scripts/UI/NpcUpgradeUI.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01.Scripts/UI/TabButtonUI.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/01.Scripts/UI/TabButtonUI.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/02.Prefabs/Entity/Mainplayer.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/02.Prefabs/Entity/Mainplayer.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/04.Materials/Textures/MotifBackgroundSprite/FieldBackGround_Front.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/04.Materials/Textures/MotifBackgroundSprite/FieldBackGround_Front.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/04.Materials/Textures/MotifBackgroundSprite/FieldBackGround_Middle.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/04.Materials/Textures/MotifBackgroundSprite/FieldBackGround_Middle.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/04.Materials/Textures/StageBackgroundImage/Inn.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/04.Materials/Textures/StageBackgroundImage/Inn.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/05.Animations/MonsterAnimations/BossAnimations/Golem/Boss_Golem_Controller.overrideController" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/05.Animations/MonsterAnimations/BossAnimations/Golem/Boss_Golem_Controller.overrideController" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/05.Animations/MonsterAnimations/RegularAnimations/Orcs/Elite_Orc/EliteOrc_Controller.overrideController" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/05.Animations/MonsterAnimations/RegularAnimations/Orcs/Elite_Orc/EliteOrc_Controller.overrideController" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/99.UnityAssets/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF - Fallback.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/99.UnityAssets/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF - Fallback.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Stage 1.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Stage 1.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Stage.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Stage.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/UI/NPCUpgradeUI.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/UI/NPCUpgradeUI.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/UI/NpcDialougeUI.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/UI/NpcDialougeUI.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/UI/WeaponUpgradeUI.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/UI/WeaponUpgradeUI.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/StreamingAssets/Dialogue.csv" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/StreamingAssets/Dialogue.csv" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -55,6 +42,7 @@
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/f7237cf7abef49bfbb552d7eb076e422174200/54/a876a1d8/IObjectPool`1.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/f7237cf7abef49bfbb552d7eb076e422174200/63/11452b66/UnityAction.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/f7237cf7abef49bfbb552d7eb076e422174200/73/e1df8cf7/GameObject.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/f7237cf7abef49bfbb552d7eb076e422174200/79/3a7f369f/Transform.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/f7237cf7abef49bfbb552d7eb076e422174200/9f/2b8345d1/Object.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/3ea01e77be99618395f448b16bd7cc2bd4248bd9e5d8474964b2d97f39c5d74/System.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/d44b17e136d09081da1e8fd0e8c83fde60e11818b9f2442d7ed8cb733fae895e/System.Collections.Generic.cs" root0="FORCE_HIGHLIGHTING" />
@@ -63,6 +51,8 @@
     <setting file="file://$PROJECT_DIR$/Assets/01.Scripts/Monster/MonsterStat.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/01.Scripts/Monster/NormalMonster.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/01.Scripts/UI/TestUI.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/01.Scripts/Util/ParticleEffect.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.inputsystem@1.7.0/InputSystem/Actions/InputAction.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.visualscripting@1.9.1/Runtime/VisualScripting.Core/Utilities/UnityObjectUtility.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../My project (6)/Assets/Scripts/UIDialogue.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../SpartaPong/Assets/ScriptableObjects/Script/RangedAttack.cs" root0="SKIP_HIGHLIGHTING" />
@@ -111,10 +101,10 @@
       <option name="USE_EXTERNAL_CONSOLE" value="0" />
       <method v="2" />
     </configuration>
-    <configuration name="Unity 에디터에 연결" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
+    <configuration name="Unity 에디터에 연결" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" ignored-value-for-modified-check="5820">
       <option name="allowRunningInParallel" value="false" />
       <option name="listenPortForConnections" value="false" />
-      <option name="pid" />
+      <option name="pid" value="5820" />
       <option name="projectPathOnTarget" />
       <option name="selectedOptions">
         <list />
@@ -162,7 +152,9 @@
       <workItem from="1735495796235" duration="12000" />
       <workItem from="1735521607237" duration="21115000" />
       <workItem from="1735614787387" duration="3286000" />
-      <workItem from="1735622948363" duration="9419000" />
+      <workItem from="1735622948363" duration="11488000" />
+      <workItem from="1735782918215" duration="21615000" />
+      <workItem from="1735867787502" duration="20094000" />
     </task>
     <servers />
   </component>

@@ -7,6 +7,7 @@ public class PlayerMovementHandler : MonoBehaviour
 {
     //Component & Script Component
     public PlayerMovementStateMachine StateMachine { get; private set; }
+    
     [SerializeField] private Rigidbody2D playerRigidbody;
     [SerializeField] private BoxCollider2D playerCollider;
     [SerializeField] private PlayerController controller;

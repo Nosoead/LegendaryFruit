@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.EventSystems;
@@ -9,6 +10,7 @@ public class TabButtonUI : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
     [FormerlySerializedAs("tabGroup")] [SerializeField] private TabGroupUI tabGroupUI;
     [SerializeField] private Image backgroundImage;
     [SerializeField] private GameObject objectToActiveate;
+    [SerializeField] private Text hoverText;
     
     public UnityEvent onTabSelected;
     public UnityEvent onTabDeselected;
@@ -23,12 +25,14 @@ public class TabButtonUI : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
     public void OnPointerEnter(PointerEventData eventData)
     {
         tabGroupUI.OnTabEnter(this);
+        ShowText(true);
         //SoundManagers.Instance.PlaySFX(SfxType.UIButton);
     }
 
     public void OnPointerExit(PointerEventData eventData)
     {
         tabGroupUI.OnTabExit(this);
+        ShowText(false);
     }
 
     public void OnPointerClick(PointerEventData eventData)
@@ -57,6 +61,14 @@ public class TabButtonUI : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
         if (sprite != null)
         {
             backgroundImage.sprite = sprite;
+        }
+    }
+
+    private void ShowText(bool show)
+    {
+        if (hoverText != null)
+        {
+            hoverText.gameObject.SetActive(show) ;
         }
     }
 }

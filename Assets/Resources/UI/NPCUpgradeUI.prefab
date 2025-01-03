@@ -33,6 +33,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 299570064580298263}
+  - {fileID: 5394350794925290937}
   m_Father: {fileID: 4123036413157814135}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -245,16 +246,7 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 8094757775793528844}
-  - {fileID: 4435228228699901403}
-  - {fileID: 8416608285012247213}
-  - {fileID: 5394350794925290937}
-  - {fileID: 5170700115193071491}
-  - {fileID: 3777280346948379440}
-  - {fileID: 1104957784348021928}
-  - {fileID: 8875495476250095098}
-  - {fileID: 5983859460293516710}
+  m_Children: []
   m_Father: {fileID: 5480646814823236685}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -274,7 +266,7 @@ GameObject:
   - component: {fileID: 6631130288832584293}
   - component: {fileID: 1778880965511693195}
   m_Layer: 5
-  m_Name: 2-1
+  m_Name: Skill21LightImage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -292,11 +284,11 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 6272794789185584034}
+  m_Father: {fileID: 8005599799641010804}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -406.4, y: 202.3}
+  m_AnchoredPosition: {x: -95.399994, y: -167.7}
   m_SizeDelta: {x: 23, y: 18}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6631130288832584293
@@ -445,6 +437,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1595613274396136946}
+  - {fileID: 8094757775793528844}
   m_Father: {fileID: 4123036413157814135}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -663,6 +656,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 7588393175653659631}
+  - {fileID: 5983859460293516710}
   m_Father: {fileID: 5589873749764304224}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -881,6 +875,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4832049941185830861}
+  - {fileID: 8875495476250095098}
   m_Father: {fileID: 9175472336371211876}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -1300,6 +1295,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4735643546884030374}
+  - {fileID: 8416608285012247213}
   m_Father: {fileID: 5589873749764304224}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -1699,7 +1695,7 @@ GameObject:
   - component: {fileID: 7915260948956341464}
   - component: {fileID: 4082325861539698357}
   m_Layer: 5
-  m_Name: 2-2
+  m_Name: Skill22LightImage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1717,11 +1713,11 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 6272794789185584034}
+  m_Father: {fileID: 1186719504615183034}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -214.19998, y: 202.3}
+  m_AnchoredPosition: {x: 96.80002, y: 2.300003}
   m_SizeDelta: {x: 23, y: 18}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7915260948956341464
@@ -2244,6 +2240,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2168640492389700575}
+  - {fileID: 4435228228699901403}
   m_Father: {fileID: 9175472336371211876}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -2387,6 +2384,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4884801796751794921}
+  - {fileID: 3777280346948379440}
   m_Father: {fileID: 5589873749764304224}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -2680,7 +2678,7 @@ GameObject:
   - component: {fileID: 1858572970896376262}
   - component: {fileID: 908838512071556443}
   m_Layer: 5
-  m_Name: 2-3
+  m_Name: Skill23LightImage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2698,11 +2696,11 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 6272794789185584034}
+  m_Father: {fileID: 819437520616712972}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -22.700043, y: 202.3}
+  m_AnchoredPosition: {x: 288.29996, y: 172.3}
   m_SizeDelta: {x: 23, y: 18}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1858572970896376262
@@ -3073,7 +3071,7 @@ GameObject:
   - component: {fileID: 2155781377086027306}
   - component: {fileID: 3802233408863283199}
   m_Layer: 5
-  m_Name: 1-2
+  m_Name: Skill12LightImage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3091,11 +3089,11 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 6272794789185584034}
+  m_Father: {fileID: 2278513773058503389}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -214.19994, y: 371}
+  m_AnchoredPosition: {x: 288.80005, y: 171}
   m_SizeDelta: {x: 23, y: 18}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2155781377086027306
@@ -3223,7 +3221,7 @@ GameObject:
   - component: {fileID: 2298041515095109584}
   - component: {fileID: 65980402132784329}
   m_Layer: 5
-  m_Name: 3-1
+  m_Name: Skill31LightImage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3241,11 +3239,11 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 6272794789185584034}
+  m_Father: {fileID: 5242495067812607272}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -406.4, y: 33.2}
+  m_AnchoredPosition: {x: -287.4, y: -336.8}
   m_SizeDelta: {x: 23, y: 18}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2298041515095109584
@@ -3951,6 +3949,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5907770524772677195}
+  - {fileID: 5170700115193071491}
   m_Father: {fileID: 9175472336371211876}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -4115,7 +4114,7 @@ GameObject:
   - component: {fileID: 7441838381283631935}
   - component: {fileID: 2344099868590717162}
   m_Layer: 5
-  m_Name: 2-3
+  m_Name: Skill32LightImage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4133,11 +4132,11 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 6272794789185584034}
+  m_Father: {fileID: 6404217571395363469}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -214.19998, y: 33.2}
+  m_AnchoredPosition: {x: -95.19998, y: -166.8}
   m_SizeDelta: {x: 23, y: 18}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7441838381283631935
@@ -4324,7 +4323,7 @@ GameObject:
   - component: {fileID: 6464413608211378542}
   - component: {fileID: 2134689057734266860}
   m_Layer: 5
-  m_Name: 1-3
+  m_Name: Skill13LightImage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4342,11 +4341,11 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 6272794789185584034}
+  m_Father: {fileID: 2529244809182009262}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -22.7, y: 371}
+  m_AnchoredPosition: {x: 480.3, y: 341}
   m_SizeDelta: {x: 23, y: 18}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6464413608211378542
@@ -4558,7 +4557,7 @@ GameObject:
   - component: {fileID: 3120498110970060990}
   - component: {fileID: 8100666790310971079}
   m_Layer: 5
-  m_Name: 1-1
+  m_Name: Skill11LightImage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4576,11 +4575,11 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 6272794789185584034}
+  m_Father: {fileID: 5809860877390833371}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -406.4, y: 370.43744}
+  m_AnchoredPosition: {x: 96.600006, y: 0.43737793}
   m_SizeDelta: {x: 23, y: 18}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3120498110970060990
@@ -4654,6 +4653,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1969314023462793958}
+  - {fileID: 1104957784348021928}
   m_Father: {fileID: 4123036413157814135}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -5044,7 +5044,7 @@ GameObject:
   - component: {fileID: 3120605870874421947}
   - component: {fileID: 394711293797526576}
   m_Layer: 5
-  m_Name: 3-3
+  m_Name: Skill33LightImage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5062,11 +5062,11 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 6272794789185584034}
+  m_Father: {fileID: 30690833665376507}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -22.700043, y: 33.2}
+  m_AnchoredPosition: {x: 96.29996, y: 3.2000008}
   m_SizeDelta: {x: 23, y: 18}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3120605870874421947
@@ -5121,12 +5121,12 @@ GameObject:
   - component: {fileID: 7036517264684663801}
   - component: {fileID: 6048562710310536411}
   m_Layer: 5
-  m_Name: NpcUpgradeUI
+  m_Name: NPCUpgradeUI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &5906663452357068464
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5168,7 +5168,7 @@ Canvas:
   m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 5
+  m_SortingOrder: 7
   m_TargetDisplay: 0
 --- !u!114 &6776671568500698260
 MonoBehaviour:
@@ -5223,12 +5223,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   uiDialoguePrefab: {fileID: 834888834345065245, guid: 8db68d2bda8c2684f926529529705669, type: 3}
-  chanceLevelText: {fileID: 0}
-  amountLevelText: {fileID: 0}
-  chanceNameText: {fileID: 0}
-  amountNameText: {fileID: 0}
   upgradeButton: {fileID: 8655934405977682092}
   cancelButton: {fileID: 5882449473301948040}
+  skill1LightImage: {fileID: 7578832528692916995}
+  skillList:
+  - skillName: 
+    currentLevel: 0
+    maxLevel: 0
+    isUnlocked: 0
+  skillUIList:
+  - {fileID: 0}
 --- !u!1 &8708464052845766032
 GameObject:
   m_ObjectHideFlags: 0

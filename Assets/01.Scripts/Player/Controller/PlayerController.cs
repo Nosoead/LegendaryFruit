@@ -8,6 +8,7 @@ using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
 {
+    [SerializeField] ParticleEffect particleEffect;
     public UnityAction<float> OnDirectionEvent;
     public UnityAction<float, bool> OnMoveEvent;
     public UnityAction<bool, bool> OnSubCommandEvent;
@@ -19,7 +20,7 @@ public class PlayerController : MonoBehaviour
     public UnityAction OnSwapWeaponEvent;
     public UnityAction<bool> OnTapInteractEvent;
     public UnityAction<bool> OnHoldInteractEvent;
-
+    
     public PlayerInput input;
     private bool isLeftPressed;
     private bool isRightPressed;
@@ -108,6 +109,8 @@ public class PlayerController : MonoBehaviour
 
         bool isMoving = isLeftPressed || isRightPressed;
         OnMoveEvent?.Invoke(moveValue, isMoving);
+        
+        particleEffect.UpdateDirection(isLeftPressed);
     }
     public void PlayerSubCommand(InputAction.CallbackContext context)
     {
@@ -144,6 +147,7 @@ public class PlayerController : MonoBehaviour
         if (context.started)
         {
             OnDashEvent?.Invoke(true);
+            particleEffect.PlayEffect();
         }
         else if (context.canceled)
         {
@@ -203,4 +207,5 @@ public class PlayerController : MonoBehaviour
         }
         OnHoldInteractEvent?.Invoke(isHoldInteract);
     }
+    
 }
