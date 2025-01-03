@@ -161,7 +161,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 96160f456f50dba4cb039b20a74b097b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  particle: {fileID: 7726267844565286676, guid: 81ed96add787fd4458c8946486950260, type: 3}
+  particle: {fileID: 2153005431707820558}
 --- !u!1 &2455545891332849757
 GameObject:
   m_ObjectHideFlags: 0
@@ -1399,9 +1399,21 @@ PrefabInstance:
       propertyPath: m_Flip.x
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7726267844565286675, guid: 81ed96add787fd4458c8946486950260, type: 3}
+      propertyPath: m_SortingLayer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7726267844565286675, guid: 81ed96add787fd4458c8946486950260, type: 3}
+      propertyPath: m_SortingOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7726267844565286675, guid: 81ed96add787fd4458c8946486950260, type: 3}
+      propertyPath: m_SortingLayerID
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7726267844565286676, guid: 81ed96add787fd4458c8946486950260, type: 3}
       propertyPath: playOnAwake
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1411,5 +1423,10 @@ PrefabInstance:
 --- !u!4 &2153005431707820552 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7726267844565286674, guid: 81ed96add787fd4458c8946486950260, type: 3}
+  m_PrefabInstance: {fileID: 8563652567181581594}
+  m_PrefabAsset: {fileID: 0}
+--- !u!198 &2153005431707820558 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 7726267844565286676, guid: 81ed96add787fd4458c8946486950260, type: 3}
   m_PrefabInstance: {fileID: 8563652567181581594}
   m_PrefabAsset: {fileID: 0}

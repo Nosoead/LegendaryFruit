@@ -1171,18 +1171,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 2153005431707820553, guid: dd5abbe63ea36f4478a505be38f9d0ca, type: 3}
-      propertyPath: m_SortingLayer
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2153005431707820553, guid: dd5abbe63ea36f4478a505be38f9d0ca, type: 3}
-      propertyPath: m_SortingOrder
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2153005431707820553, guid: dd5abbe63ea36f4478a505be38f9d0ca, type: 3}
-      propertyPath: m_SortingLayerID
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 6397253155312664548, guid: dd5abbe63ea36f4478a505be38f9d0ca, type: 3}
       propertyPath: m_Name
       value: Mainplayer
