@@ -1,6 +1,4 @@
 using UnityEngine.SceneManagement;
-using UnityEngine;
-using Unity.VisualScripting;
 
 public class SceneManagerExtension : Singleton<SceneManagerExtension>
 {

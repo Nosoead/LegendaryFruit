@@ -1,6 +1,4 @@
 using UnityEngine;
-using Cinemachine;
-using System.Runtime.CompilerServices;
 
 public class Parallax : MonoBehaviour
 {

@@ -1,9 +1,7 @@
 //안내문구
 using System.Collections.Generic;
-using System.Threading;
 using UnityEngine;
 using UnityEngine.Pool;
-using static UnityEngine.InputSystem.LowLevel.InputStateHistory;
 
 public class RewardNPC : NPC, IInteractable
 {

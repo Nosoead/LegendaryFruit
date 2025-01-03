@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "testStageSO", menuName ="ScriptableObject/testStageSO", order = 4)]

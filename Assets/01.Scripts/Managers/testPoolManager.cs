@@ -1,10 +1,5 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Diagnostics.Tracing;
 using UnityEngine;
-using UnityEngine.EventSystems;
-using UnityEngine.Pool;
 
 // TODO: Dictionary 자동 생성하여 편리하게 사용할 수 있도록 구현
 public class testPoolManager: Singleton<testPoolManager>

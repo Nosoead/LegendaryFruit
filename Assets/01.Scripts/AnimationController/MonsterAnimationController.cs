@@ -1,9 +1,5 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using System.Numerics;
+﻿using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
-
 public class MonsterAnimationController : AnimationController
 {
     private readonly int PatternAttack = Animator.StringToHash("PatternAttack");

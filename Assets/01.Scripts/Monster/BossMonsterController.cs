@@ -1,8 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
-using System.Data;
 using UnityEngine;
-using UnityEngine.UIElements;
 
 public class BossMonsterController : MonoBehaviour 
 {
