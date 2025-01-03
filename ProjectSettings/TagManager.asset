@@ -46,7 +46,7 @@ TagManager:
   - name: Sky
     uniqueID: 455728019
     locked: 0
-  - name: Cloud
+  - name: Decoration
     uniqueID: 4050424913
     locked: 0
   - name: Background
