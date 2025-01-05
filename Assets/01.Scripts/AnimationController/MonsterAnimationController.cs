@@ -67,7 +67,7 @@ public class MonsterAnimationController : AnimationController
         Animator.SetBool(isRun, isMove); 
     }
 
-    public void OnHit()
+    public void OnTakeHit()
     {
         Animator.SetTrigger(isHit);
     }

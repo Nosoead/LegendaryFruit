@@ -33,6 +33,7 @@ public class MonsterCondition : MonoBehaviour, IDamageable
     #region /BurnDamageLogic
     public void BurnDamage(float damage, float attributeValue, float attributeRateTime, float attributeStack)
     {
+        controller.OnTakeHit();
         statManager.ApplyInstantDamage(damage);
         Debug.Log("1타");
         if (coBurnDamage != null && isBurn)
@@ -60,6 +61,7 @@ public class MonsterCondition : MonoBehaviour, IDamageable
     #region /SlowDownLogic
     public void SlowDown(float damage, float attributeValue, float attributeRateTime)
     {
+        controller.OnTakeHit();
         statManager.ApplyInstantDamage(damage);
         if (coSlowDown != null && isSlowDown)
         {
@@ -82,8 +84,9 @@ public class MonsterCondition : MonoBehaviour, IDamageable
 
     public void TakeDamage(float damage)
     {
-        controller.OnHit();
+        controller.OnTakeHit();
         statManager.ApplyInstantDamage(damage);
+        Debug.Log("데미지 받음 ");
         SfxType randomSfx = (Random.Range(0,2) == 0) ? SfxType.MonsterDamaged1 : SfxType.MonsterDamaged2;
         SoundManagers.Instance.PlaySFX(randomSfx);
     }

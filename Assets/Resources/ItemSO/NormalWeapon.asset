@@ -25,3 +25,4 @@ MonoBehaviour:
   weaponSprite: {fileID: 21300000, guid: 6a51d5781af8c3d4c83b8f24e86459b0, type: 3}
   rewardSprite: {fileID: 21300000, guid: c728868677dfad541b6543a1f2aec055, type: 3}
   animatorController: {fileID: 22100000, guid: 287170c3411b6a84692e6b02c7126443, type: 2}
+  effectMaterial: {fileID: 2100000, guid: b132e789efe3f4640843a36704e04779, type: 2}

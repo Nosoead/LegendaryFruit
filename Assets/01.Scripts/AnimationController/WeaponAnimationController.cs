@@ -33,12 +33,13 @@ public class WeaponAnimationController : AnimationController
     {
         playerController.OnAttackEvent += OnAttackEvent;
         equipment.OnEquipWeaponChanged += OnChangedAnimator;
+        equipment.OnEquipWeaponChanged += OnChangedParticle;
     }
     private void OnDisable()
     {
         playerController.OnAttackEvent -= OnAttackEvent;
         equipment.OnEquipWeaponChanged -= OnChangedAnimator;
-
+        equipment.OnEquipWeaponChanged -= OnChangedParticle;
     }
 
     protected override void EnsureComponents()
@@ -76,13 +77,18 @@ public class WeaponAnimationController : AnimationController
         Animator.runtimeAnimatorController = weaponSO.animatorController;
     }
 
-    //private void OnChangedParticle(WeaponSO weaponSO)
-    //{
-    //    if(weaponSO.effectMaterial != null)
-    //    {
-    //        particleSystemRenderer.material = weaponSO.effectMaterial;
-    //    }
-    //}
+    private void OnChangedParticle(WeaponSO weaponSO)
+    {
+        if (weaponSO.effectMaterial != null)
+        {
+            ChangedMaterial(weaponSO);
+        }
+    }
+    private void ChangedMaterial(WeaponSO weaponData)
+    {
+        particleSystemRenderer.material = weaponData.effectMaterial;
+    }
+
 
     private void CheckAttack()
     {
@@ -129,7 +135,6 @@ public class WeaponAnimationController : AnimationController
             particleSystemRenderer.flip = new Vector2(0f, 0f);
         }
     }
-
 
 
     public void CheckAndPlayParticle()
