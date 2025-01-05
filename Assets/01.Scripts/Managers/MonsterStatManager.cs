@@ -6,6 +6,7 @@ public class MonsterStatManager : MonoBehaviour
 {
     public UnityAction<string, float> OnSubscribeToStatUpdateEvent;
     public event UnityAction<PatternData,float> OnPatternTriggered;
+    public event UnityAction<float> DamageTakenEvent;
     private MonsterAnimationController monsterAnimationController;
     [SerializeField] private PooledMonster pooledMonster;
     private MonsterStat stat;
@@ -118,6 +119,7 @@ public class MonsterStatManager : MonoBehaviour
     public void ApplyInstantDamage(float damage) // stat 데미지
     {
         float result = statHandler.Substract(stat.GetStatValue("CurrentHealth"), damage);
+        DamageTakenEvent?.Invoke(damage);
         stat.UpdateCurrentHealth(result);
     }
 

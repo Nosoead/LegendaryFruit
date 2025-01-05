@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 public class MonsterAnimationController : AnimationController
 {
     private readonly int PatternAttack = Animator.StringToHash("PatternAttack");
@@ -17,11 +18,24 @@ public class MonsterAnimationController : AnimationController
     private SpriteRenderer effectSprite;
     private AnimatorOverrideController overrideController;
 
+    [SerializeField] private MonsterStatManager monsterStatManager;
     [SerializeField] private ParticleSystem particle;
+    [SerializeField] private ParticleSystem[] numberParticle;
 
     protected override void Awake()
     {
         base.Awake();
+    }
+
+    private void OnEnable()
+    {
+        monsterStatManager.DamageTakenEvent += OnDamageReceived;
+        monsterStatManager.DamageTakenEvent += OnHitParticlePlay;
+    }
+    private void OnDisable()
+    {
+        monsterStatManager.DamageTakenEvent -= OnDamageReceived;
+        monsterStatManager.DamageTakenEvent -= OnHitParticlePlay;
     }
 
     protected override void EnsureComponents()
@@ -153,15 +167,22 @@ public class MonsterAnimationController : AnimationController
         return false;
     }
 
-    public void CheckAndPlayParticle()
+    public void OnHitParticlePlay(float damage)
     {
         if(!particle.isPlaying)
         {
+            //ParticleDamage();
             particle.Play();
         }
         else
         {
             particle.Stop();
         }
-    } 
+    }
+
+    public void OnDamageReceived(float damage)
+    {
+        string str = damage.ToString();
+        Debug.Log(str);
+    }
 }
