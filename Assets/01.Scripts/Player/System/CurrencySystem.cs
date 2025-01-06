@@ -1,11 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class CurrencySystem : MonoBehaviour
 {
+    public UnityAction<int, bool> OnInGameCurrencyDataToUI;
+    public UnityAction<int, bool> OnGlobalCurrencyDataToUI;
     private int inGameCurrency;
     private int globalCurrency;
+    private CurrencyData currencyData = new CurrencyData();
 
     private void InitCurrency()
     {
@@ -40,15 +44,18 @@ public class CurrencySystem : MonoBehaviour
         }
     }
 
-    public void GetCurrency(bool isInGameCurrency, int useValue)
+    public void GetCurrency(int useValue, bool isGlobalCurrency)
     {
-        if (isInGameCurrency)
+        Debug.Log("이벤트?");
+        if (isGlobalCurrency)
         {
-            inGameCurrency += useValue;
+            globalCurrency += useValue;
+            OnGlobalCurrencyDataToUI?.Invoke(globalCurrency, isGlobalCurrency);
         }
         else
         {
-            globalCurrency += useValue;
+            inGameCurrency += useValue;
+            OnInGameCurrencyDataToUI?.Invoke(inGameCurrency, isGlobalCurrency);
         }
     }
 
@@ -59,14 +66,19 @@ public class CurrencySystem : MonoBehaviour
     #endregion
 
     #region /Data
-    public void SaveCurrencyData()
+    public CurrencyData SaveCurrencyData()
     {
-
+        currencyData.inGameCurrency = this.inGameCurrency;
+        currencyData.globalCurrency = this.globalCurrency;
+        return currencyData;
     }
 
-    public void LoadCurrencyData()
+    public void LoadCurrencyData(CurrencyData currencyData)
     {
-
+        this.inGameCurrency = currencyData.inGameCurrency;
+        this.globalCurrency = currencyData.globalCurrency;
+        OnInGameCurrencyDataToUI?.Invoke(inGameCurrency, false);
+        OnGlobalCurrencyDataToUI?.Invoke(globalCurrency, true);
     }
     #endregion
 }

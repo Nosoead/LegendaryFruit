@@ -7,41 +7,32 @@ public class PlayerCanvasUI : UIBase
 {
     [SerializeField] private TextMeshProUGUI currentHealthText;
     [SerializeField] private TextMeshProUGUI inGameMoneyText;
-    [SerializeField] private TextMeshProUGUI lobbyMoneyText;
+    [SerializeField] private TextMeshProUGUI globalMoneyText;
     [SerializeField] private Image healthBar;
     [SerializeField] private PlayerStatManager statManager;
-    
+    [SerializeField] private CurrencySystem currency;
+
     [SerializeField] private List<Image> weaponIcons;
     [SerializeField] private List<Image> weaponOverlays;
 
     private SaveDataContainer saveDataContainer;
 
-    private void Update()
-    {
-        if (saveDataContainer != null) SetWeaponDataToUI();
-    }
-
     private void Awake()
     {
         if (statManager == null)
         {
-            statManager = GetComponentInParent<PlayerStatManager>();
-            //statManager = GameManager.Instance.player.GetComponent<PlayerStatManager>();
+            statManager = GameManager.Instance.player.GetComponent<PlayerStatManager>();
         }
-    }
-
-    private void Start()
-    {
-        Invoke(nameof(GetStatData),0.1f);
-    }
-
-    private void GetStatData()
-    {
-        saveDataContainer = PlayerInfoManager.Instance.GetSaveData();
+        if (currency == null)
+        {
+            currency = GameManager.Instance.player.GetComponent<CurrencySystem>();
+        }
     }
     private void OnEnable()
     {
         statManager.OnHealthDataToUIEvent += OnHealthUpdateEvent;
+        currency.OnInGameCurrencyDataToUI += OnCurrencyUpdateEvent;
+        currency.OnGlobalCurrencyDataToUI += OnCurrencyUpdateEvent;
     }
 
     private void OnDisable()
@@ -49,11 +40,40 @@ public class PlayerCanvasUI : UIBase
         statManager.OnHealthDataToUIEvent -= OnHealthUpdateEvent;
     }
 
+    private void Start()
+    {
+        Invoke(nameof(GetStatData), 0.1f);
+    }
+
+    private void Update()
+    {
+        if (saveDataContainer != null) SetWeaponDataToUI();
+    }
+
+
+    private void GetStatData()
+    {
+        saveDataContainer = PlayerInfoManager.Instance.GetSaveData();
+    }
+
     private void OnHealthUpdateEvent(float healthFillAmount, float currentHealth, float maxHealth)
     {
         healthBar.fillAmount = healthFillAmount;
         currentHealthText.text = $"{currentHealth}/{maxHealth}";
     }
+
+    private void OnCurrencyUpdateEvent(int currencyValue, bool isGlobalCurrency)
+    {
+        if (isGlobalCurrency)
+        {
+            globalMoneyText.text = currencyValue.ToString();
+        }
+        else
+        {
+            inGameMoneyText.text = currencyValue.ToString();
+        }
+    }
+
     private void SetWeaponDataToUI()
     {
         var weaponDataList = saveDataContainer.weaponData.equippedWeapons;
@@ -75,7 +95,7 @@ public class PlayerCanvasUI : UIBase
                     weaponOverlays[1].color = (currentEquipIndex == 1) ? Color.white : Color.red;
                 }
             }
-           
+
             if (weaponDataList.Count == 1)
             {
                 weaponIcons[1].sprite = null;
@@ -88,10 +108,11 @@ public class PlayerCanvasUI : UIBase
             weaponIcons[0].sprite = null;
             weaponIcons[0].color = new Color(0, 0, 0, 0);
             weaponOverlays[0].color = new Color(0, 0, 0, 0);
-            
+
             weaponIcons[1].sprite = null;
             weaponIcons[1].color = new Color(0, 0, 0, 0);
             weaponOverlays[1].color = new Color(0, 0, 0, 0);
         }
     }
+
 }

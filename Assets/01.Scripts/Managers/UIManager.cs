@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using System.Diagnostics;
 using UnityEngine;
 
 public class UIManager : Singleton<UIManager>
@@ -11,11 +10,14 @@ public class UIManager : Singleton<UIManager>
     private void Start()
     {
         path = "UI";
+        Debug.Log("tqlkd");
         SetUIDictionary();
     }
 
     public void SetUIDictionary()
     {
+        //if (uiDictionary != null) return;
+        //Debug.Log("dddd");
         UIBase[] uiArray = ResourceManager.Instance.LoadAllResources<UIBase>($"{path}");
         foreach (var ui in uiArray)
         {

@@ -5027,8 +5027,8 @@ ParticleSystemRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 1723399425
+  m_SortingLayer: 4
   m_SortingOrder: 0
   m_RenderMode: 0
   m_MeshDistribution: 0
@@ -5377,6 +5377,7 @@ GameObject:
   - component: {fileID: 1590021016554274718}
   - component: {fileID: 9083977442622182570}
   - component: {fileID: -6679679649435464765}
+  - component: {fileID: 5551930265035816473}
   m_Layer: 9
   m_Name: Mainplayer
   m_TagString: Player
@@ -5684,6 +5685,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   statManager: {fileID: 5507554177392054263}
   equipment: {fileID: 5326763155529777677}
+--- !u!114 &5551930265035816473
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6397253155312664548}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d15744d843e94d54d9cd27fc8ec9da55, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7903578845340627542
 GameObject:
   m_ObjectHideFlags: 0
@@ -5962,6 +5975,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 7854109364709030339}
     m_Modifications:
+    - target: {fileID: 554071777531906714, guid: 6b64ef5aaa94c654698408c715e6d42d, type: 3}
+      propertyPath: m_SortingLayer
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 554071777531906714, guid: 6b64ef5aaa94c654698408c715e6d42d, type: 3}
+      propertyPath: m_SortingLayerID
+      value: 1723399425
+      objectReference: {fileID: 0}
     - target: {fileID: 3884334984901507802, guid: 6b64ef5aaa94c654698408c715e6d42d, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0

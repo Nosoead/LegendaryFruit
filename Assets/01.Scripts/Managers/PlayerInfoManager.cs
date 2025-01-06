@@ -7,6 +7,7 @@ public class PlayerInfoManager : Singleton<PlayerInfoManager>
     public UnityAction<SaveDataContainer> OnLoadEvent;
     [SerializeField] private PlayerStatManager statManager;
     [SerializeField] private PlayerEquipment equipment;
+    [SerializeField] private CurrencySystem currency;
     private SaveDataContainer saveDataContainer;
     protected override void Awake()
     {
@@ -25,6 +26,10 @@ public class PlayerInfoManager : Singleton<PlayerInfoManager>
         {
             equipment = GetComponentInChildren<PlayerEquipment>();
         }
+        if (currency == null)
+        {
+            currency = GetComponent<CurrencySystem>();
+        }
     }
 
 
@@ -39,18 +44,8 @@ public class PlayerInfoManager : Singleton<PlayerInfoManager>
         saveDataContainer = DataManager.Instance.LoadData<SaveDataContainer>();
         statManager.LoadStatManagerData(saveDataContainer.playerStatData);
         statManager.LoadConsumeData(saveDataContainer.weaponData.eatWeaponDataList);
-        foreach (var dataear in saveDataContainer.weaponData.eatWeaponDataList)
-        {
-            Debug.Log($"섭취이름 {dataear.weaponName}, 타입 {dataear.type}");
-        }
         equipment.LoadEquipmentData(saveDataContainer.weaponData.equippedWeapons, saveDataContainer.weaponData.currentEquipWeaponIndex);
-        Debug.Log("중간끊어보기");
-        foreach (var data in saveDataContainer.weaponData.equippedWeapons)
-        {
-            Debug.Log($"장착이름 {data.weaponName}, 타입 {data.type}");
-        }
-
-
+        currency.LoadCurrencyData(saveDataContainer.currencyData);
     }
 
     public void Delete()
@@ -67,6 +62,7 @@ public class PlayerInfoManager : Singleton<PlayerInfoManager>
         saveDataContainer.weaponData.equippedWeapons = result.Item1;
         saveDataContainer.weaponData.currentEquipWeaponIndex = result.Item2;
         saveDataContainer.currentStage = StageManager.Instance.GetCurrentStage();
+        saveDataContainer.currencyData = currency.SaveCurrencyData();
     }
 
     public SaveDataContainer GetSaveData()
@@ -78,6 +74,12 @@ public class PlayerInfoManager : Singleton<PlayerInfoManager>
     public StageType GetStageID()
     {
         return saveDataContainer.currentStage;
+    }
+
+    public void SetCurrency()
+    {
+        currency.GetCurrency(0, isGlobalCurrency: true);
+        currency.GetCurrency(0, isGlobalCurrency: false);
     }
 }
 
@@ -101,6 +103,6 @@ public class WeaponData
 [System.Serializable]
 public class CurrencyData
 {
-    public float inGameCurrency;
-    public float globalCurrency;
+    public int inGameCurrency;
+    public int globalCurrency;
 }

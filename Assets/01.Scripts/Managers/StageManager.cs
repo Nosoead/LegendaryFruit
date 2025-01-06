@@ -91,11 +91,11 @@ public class StageManager : Singleton<StageManager>
         currentStageType = type;
         currentStage = stages[currentStageType];
         currentStage.gameObject.SetActive(true);
-        if (!currentStage.stageData.isCombatStage)
+        if (!currentStage.GetCombatData())
         {
             GameManager.Instance.isClear = true;
         }
-        else if (currentStage.stageData.isBossStage)
+        else if (currentStage.GetBossData())
         {
             GameManager.Instance.isClear = false;
             currentStage.SetStage(player, bossMonster, confiner);
@@ -105,7 +105,7 @@ public class StageManager : Singleton<StageManager>
         {
             GameManager.Instance.isClear = false;
         }
-        monsterCount = currentStage.stageData.TotalMonsterCount();
+        monsterCount = currentStage.GetMonsterCount();
         //FadeIn
         currentStage.SetStage(player, monster, confiner);
         //FadeOut
@@ -127,7 +127,7 @@ public class StageManager : Singleton<StageManager>
             {
                 currentStage.SetReward();
             }
-            if (currentStage.stageData.stageID == (int)StageType.StageBoss)
+            if (currentStage.GetStageID() == (int)StageType.StageBoss)
             {
                 GameManager.Instance.GameEnd();
             }

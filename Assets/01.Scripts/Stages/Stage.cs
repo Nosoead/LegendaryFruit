@@ -5,7 +5,7 @@ using UnityEngine.Pool;
 
 public class Stage : MonoBehaviour
 {
-    public StageSO stageData;
+    [SerializeField] private StageSO stageData;
     public List<Parallax> parallaxList = new List<Parallax>();
     public PolygonCollider2D boundaryCollider;
     [SerializeField] private Transform playerSpawnPoint;
@@ -48,15 +48,7 @@ public class Stage : MonoBehaviour
             Debug.Log("몬스터 숫자와 리스폰 갯수가 일치하지 않습니다.");
             return;
         }
-        //TODO : 각스테이지마다 몬스터 포인트와 몬스터 종류는 어떻게 할 것인가?
-        //아이디어1 : a. StageSO에서 셋팅 순서 설정 // b. 순서에 맞춰 Stage포인트에 소환 
-        //foreach (var setMonsterPosition in monsterSpawnPoints)
-        //{
-        //    var randomMonster = stageData.monsters[Random.Range(0, stageData.monsters.Count - 1)];
-        //    PooledMonster monsterObj = monster.Get();
-        //    monsterObj.gameObject.transform.position = setMonsterPosition.position;
-        //    monsterObj.monsterManager.GetMonsterData(randomMonster.monsterID);
-        //}
+
         int positionIndex = 0;
         for (int i = 0; i < stageData.monstersToSummon.Count; i++)
         {
@@ -137,6 +129,28 @@ public class Stage : MonoBehaviour
         {
             npc.SetReward();
         }
+    }
+    #endregion
+
+    #region /GetData
+    public int GetStageID()
+    {
+        return stageData.stageID;
+    }
+
+    public int GetMonsterCount()
+    {
+        return stageData.TotalMonsterCount();
+    }
+
+    public bool GetCombatData()
+    {
+        return stageData.isCombatStage;
+    }
+
+    public bool GetBossData()
+    {
+        return stageData.isBossStage;
     }
     #endregion
 }
