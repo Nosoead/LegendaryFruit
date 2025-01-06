@@ -7,7 +7,7 @@ public class PlayerDashState : IState
     private PlayerMovementHandler player;
     private WaitForSeconds dashTime = new WaitForSeconds(0.3f);
     private WaitForSeconds dashTerm = new WaitForSeconds(0.3f);
-    private WaitForSeconds dashCoolDownTime = new WaitForSeconds(1.0f);
+    private WaitForSeconds dashCoolDownTime = new WaitForSeconds(0.5f);
     private Coroutine coDashRoutine;
 
     public PlayerDashState(PlayerMovementHandler player)
