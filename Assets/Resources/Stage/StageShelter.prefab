@@ -8240,7 +8240,7 @@ MonoBehaviour:
   monsterSpawnPoints: []
   firstPotal: {fileID: 4387426014837313651}
   secondPotal: {fileID: 5662840356993696810}
-  stageNPC: {fileID: 0}
+  stageNPC: []
 --- !u!1 &777331769494597266
 GameObject:
   m_ObjectHideFlags: 0
