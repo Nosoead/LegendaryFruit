@@ -1,10 +1,12 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.Events;
 using Random = UnityEngine.Random;
 
 public class MonsterCondition : MonoBehaviour, IDamageable
 {
     [SerializeField] private MonsterStatManager statManager;
+    public event UnityAction<AttributeType> OnTakeHitType;
     private MonsterAnimationController controller;
     // 각 속성을 확인하여 필요한 데이터를 반환
     private Coroutine coBurnDamage;
@@ -34,6 +36,7 @@ public class MonsterCondition : MonoBehaviour, IDamageable
     public void BurnDamage(float damage, float attributeValue, float attributeRateTime, float attributeStack)
     {
         controller.OnTakeHit();
+        OnTakeHitType?.Invoke(AttributeType.Burn);
         statManager.ApplyInstantDamage(damage);
         Debug.Log("1타");
         if (coBurnDamage != null && isBurn)
@@ -62,6 +65,7 @@ public class MonsterCondition : MonoBehaviour, IDamageable
     public void SlowDown(float damage, float attributeValue, float attributeRateTime)
     {
         controller.OnTakeHit();
+        OnTakeHitType?.Invoke(AttributeType.SlowDown);
         statManager.ApplyInstantDamage(damage);
         if (coSlowDown != null && isSlowDown)
         {
@@ -83,8 +87,9 @@ public class MonsterCondition : MonoBehaviour, IDamageable
     #endregion
 
     public void TakeDamage(float damage)
-    {
+    { 
         controller.OnTakeHit();
+        OnTakeHitType?.Invoke(AttributeType.Normal);
         statManager.ApplyInstantDamage(damage);
         Debug.Log("데미지 받음 ");
         SfxType randomSfx = (Random.Range(0,2) == 0) ? SfxType.MonsterDamaged1 : SfxType.MonsterDamaged2;

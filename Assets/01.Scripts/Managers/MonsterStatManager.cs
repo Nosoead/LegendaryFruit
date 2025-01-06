@@ -6,8 +6,9 @@ public class MonsterStatManager : MonoBehaviour
 {
     public UnityAction<string, float> OnSubscribeToStatUpdateEvent;
     public event UnityAction<PatternData,float> OnPatternTriggered;
-    public event UnityAction<float> DamageTakenEvent;
+    public event UnityAction<float, AttributeType> DamageTakenEvent;
     private MonsterAnimationController monsterAnimationController;
+    private MonsterCondition condition;
     [SerializeField] private PooledMonster pooledMonster;
     private MonsterStat stat;
     private StatHandler statHandler;
@@ -17,7 +18,9 @@ public class MonsterStatManager : MonoBehaviour
     [Header("PattrenStat")]
     private bool isOnCooldown = false;
     private float cooldownTime;
-    private float patternDagmae;    
+    private float patternDagmae;
+
+    private AttributeType currentTakeAttributeType;
 
     public bool isDead = false;
 
@@ -31,6 +34,10 @@ public class MonsterStatManager : MonoBehaviour
         {
             pooledMonster = GetComponent<PooledMonster>();
         }
+        if (condition == null)
+        {
+            condition = GetComponent<MonsterCondition>();
+        }
         stat = new MonsterStat();
         statHandler = new StatHandler();
     }
@@ -40,6 +47,7 @@ public class MonsterStatManager : MonoBehaviour
         stat.OnStatUpdated += OnStatUpdatedEvent;
         stat.OnMonsterDie += OnMonsterDie;
         stat.OnHealthChanged += OnPattrenToHealth;
+        condition.OnTakeHitType += OnAttributeTypeReceived;
     }
 
     private void OnDisable()
@@ -47,6 +55,7 @@ public class MonsterStatManager : MonoBehaviour
         stat.OnStatUpdated -= OnStatUpdatedEvent;
         stat.OnMonsterDie -= OnMonsterDie;
         stat.OnHealthChanged -= OnPattrenToHealth;
+        condition.OnTakeHitType -= OnAttributeTypeReceived;
     }
     private void Start()
     {
@@ -71,6 +80,11 @@ public class MonsterStatManager : MonoBehaviour
     private void OnStatUpdatedEvent(string key, float value)
     {
         OnSubscribeToStatUpdateEvent?.Invoke(key, value);
+    }
+    
+    public void OnAttributeTypeReceived(AttributeType type)
+    {
+        currentTakeAttributeType = type;
     }
 
     #region Pattren
@@ -119,7 +133,7 @@ public class MonsterStatManager : MonoBehaviour
     public void ApplyInstantDamage(float damage) // stat 데미지
     {
         float result = statHandler.Substract(stat.GetStatValue("CurrentHealth"), damage);
-        DamageTakenEvent?.Invoke(damage);
+        DamageTakenEvent?.Invoke(damage, currentTakeAttributeType);
         stat.UpdateCurrentHealth(result);
     }
 
