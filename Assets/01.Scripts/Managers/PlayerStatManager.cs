@@ -83,7 +83,14 @@ public class PlayerStatManager : MonoBehaviour
 
     private void OnDie()
     {
+        StopAllCoroutines();//.Invoke(nameof(dddd));
         playerAnimationController.OnDie();
+        //Invoke(nameof(dddd), 1f);
+        GameManager.Instance.GameEnd();
+    }
+
+    private void dddd()
+    {
         GameManager.Instance.GameEnd();
     }
     #endregion

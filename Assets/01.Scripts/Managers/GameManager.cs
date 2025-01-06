@@ -41,14 +41,14 @@ public class GameManager : Singleton<GameManager>
 
     public void GameEnd()
     {
-        DelayedGameEnd();
-        //Invoke(nameof(DelayedGameEnd), 1f);
+        //DelayedGameEnd();
+        Invoke(nameof(DelayedGameEnd), 1f);
     }
 
     private void DelayedGameEnd()
     {
         Time.timeScale = 0f;
-        UIManager.Instance.ToggleUI<GameEndUI>(isPreviousWindowActive: false);
+        UIManager.Instance.ToggleUI<GameEndUI>(isPreviousWindowActive: false, true);
     }
 
     public void Save()

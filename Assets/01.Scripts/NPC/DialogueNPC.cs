@@ -65,6 +65,6 @@ public class DialogueNPC : NPC, IInteractable
 
     private void StartDialog()
     {
-        UIManager.Instance.ToggleUI<NpcDialougeUI>(false, dialogueIndex);
+        UIManager.Instance.ToggleUI<NpcDialougeUI>(true, dialogueIndex);
     }
 }

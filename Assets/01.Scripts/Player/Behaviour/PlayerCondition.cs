@@ -39,6 +39,7 @@ public class PlayerCondition : MonoBehaviour, IDamageable
 
     private IEnumerator BurnDamageCoroutine(float attributeValue, float attributeRateTime, float attributeStack)
     {
+        yield return null;
         burnWaitTime = new WaitForSeconds(attributeRateTime);
         Debug.Log(attributeStack);
         for (int i = 0; i < attributeStack; i++)
