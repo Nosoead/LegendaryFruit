@@ -74,17 +74,6 @@ public class Stage : MonoBehaviour
         PooledBossMonster monsterObj = bossMonster.Get();
         monsterObj.gameObject.transform.position = monsterSpawnPoints[0].position;
         monsterObj.monsterManager.GetMonsterData(summonMonsterData.monsterID);
-        monsterObj.name = "111";
-        Debug.Log(monsterObj.name);
-
-        foreach (var setMonsterPosition in monsterSpawnPoints)
-        {
-            // 보스는 하나라 랜덤으로 뽑아도 의미 없음 그래도 일단 진행
-            //var randomBoss = stageData.monsters[Random.Range(0,stageData.monsters.Count - 1)];
-            //PooledBossMonster monsterObj = bossMonster.Get();
-            //monsterObj.gameObject.transform.position = setMonsterPosition.position;
-            //monsterObj.monsterManager.GetMonsterData(randomBoss.monsterID);
-        }
     }
     #endregion
 
