@@ -15,25 +15,6 @@ public class Potal : MonoBehaviour, IInteractable
     private int stageVariation = 1; //바리에이션 늘어나면 randomRange써서 ㄱㄱ
     private StageType currentstageType;
 
-    //포탈 자동배치할 경우
-    //private void Awake()
-    //{
-    //    playerLayer = LayerMask.NameToLayer("Player");
-    //    if (pressFCanvas == null)
-    //    {
-    //        pressFCanvas = GetComponentInChildren<Canvas>();
-    //    }
-    //    if (stage == null)
-    //    {
-    //        stage = GetComponentInParent<Stage>();
-    //    }
-    //}
-    //private void Start()
-    //{
-    //    pressFCanvas.gameObject.SetActive(false);
-    //    stageType = (StageType)stage.stageData.StageID;
-    //}
-
     public void InitPotal()
     {
         playerLayer = LayerMask.NameToLayer("Player");

@@ -25,7 +25,6 @@ public class RewardNPC : NPC, IInteractable
 
     public override void InitNPC()
     {
-        Debug.Log("test");
         gameObject.layer = LayerMask.NameToLayer("NPC");
         playerLayer = LayerMask.NameToLayer("Player");
         invincibleLayer = LayerMask.NameToLayer("Invincible");

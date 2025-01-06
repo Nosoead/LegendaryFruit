@@ -60440,7 +60440,8 @@ MonoBehaviour:
   - {fileID: 7053792010906147992}
   firstPotal: {fileID: 668892810694164107}
   secondPotal: {fileID: 6947305180885496951}
-  stageNPC: {fileID: 1601272845610695033}
+  stageNPC:
+  - {fileID: 1601272845610695033}
 --- !u!1 &9130649583746676059
 GameObject:
   m_ObjectHideFlags: 0

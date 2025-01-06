@@ -1,19 +1,26 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
-public class ShelterNPC : NPC, IInteractable
+public class DialogueNPC : NPC, IInteractable
 {
-    //F키 누르세요
-    [SerializeField] private Canvas pressFCanvas;
+    [SerializeField]
+    private Canvas pressFCanvas;
     private int playerLayer;
     private int invincibleLayer;
 
+
+    //TODO 엑셀에서 dialogueIndex를 모종의 방법으로 받아오는 방법 모색
+    public int dialogueIndex;
+
     public override void InitNPC()
     {
+        gameObject.layer = LayerMask.NameToLayer("NPC");
         playerLayer = LayerMask.NameToLayer("Player");
         invincibleLayer = LayerMask.NameToLayer("Invincible");
         if (pressFCanvas == null)
         {
-            pressFCanvas=GetComponentInChildren<Canvas>();
+            pressFCanvas = GetComponentInChildren<Canvas>();
         }
         pressFCanvas.gameObject.SetActive(false);
     }
@@ -47,13 +54,17 @@ public class ShelterNPC : NPC, IInteractable
         }
     }
     #endregion
-
+    
     public void Interact(bool isDeepPressed, bool isPressed)
     {
         if (isDeepPressed || isPressed)
         {
-            UIManager.Instance.ToggleUI<ShelterNPCUI>(isPreviousWindowActive:false);
+            StartDialog();
         }
     }
 
+    private void StartDialog()
+    {
+        UIManager.Instance.ToggleUI<NpcDialougeUI>(false, dialogueIndex);
+    }
 }
