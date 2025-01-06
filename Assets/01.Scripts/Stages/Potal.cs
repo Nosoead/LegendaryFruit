@@ -29,7 +29,7 @@ public class Potal : MonoBehaviour, IInteractable
         }
 
         pressFCanvas.gameObject.SetActive(false);
-        currentstageType = (StageType)stage.stageData.stageID;
+        currentstageType = (StageType)stage.GetStageID();
     }
 
     #region /TogglePrompt
@@ -67,14 +67,17 @@ public class Potal : MonoBehaviour, IInteractable
     {
         if (isDeepPressed || isPressed)
         {
+            Debug.Log("0. " + (int)currentstageType);
             ChagedStage();
         }
     }
 
     private void ChagedStage()
     {
+        Debug.Log("1. "+ (int)currentstageType);
         if (GameManager.Instance.isClear == true)
         {
+            Debug.Log("2. " + (int)currentstageType);
             currentstageType = GetNextStage(currentstageType);
             StageManager.Instance.ChangeStage(currentstageType);
             GameManager.Instance.Save();
@@ -83,6 +86,7 @@ public class Potal : MonoBehaviour, IInteractable
 
     private StageType GetNextStage(StageType stageType)
     {
+        Debug.Log(stageType + "ddd" + stageType.ToString());
         //TODO 어떤 보상이 나올지 랜덤으로 뽑아주기 5자리쨰 숫자 몫값으로
         //보스 이후 nextLevel확인할 수 있도록 ID 수정하기
         //맵다양성 높아지면 stageVariation도 랜덤으로 뽑아서 처리

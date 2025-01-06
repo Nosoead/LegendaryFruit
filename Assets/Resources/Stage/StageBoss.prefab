@@ -20213,7 +20213,7 @@ MonoBehaviour:
   - {fileID: 4001993877315979169}
   firstPotal: {fileID: 3663213034591772996}
   secondPotal: {fileID: 3788796238935683355}
-  stageNPC: {fileID: 0}
+  stageNPC: []
 --- !u!1 &8147797101908211776
 GameObject:
   m_ObjectHideFlags: 0

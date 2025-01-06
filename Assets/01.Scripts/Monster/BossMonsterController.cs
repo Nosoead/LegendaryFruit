@@ -255,12 +255,4 @@ public class BossMonsterController : MonoBehaviour
         // 박스 그리기
         Gizmos.DrawWireCube(boxPosition, boxSize);
     }
-    //private void OnDrawGizmos2()
-    //{
-    //    Vector2 boxSize = new Vector2(5f, 3f);
-    //    Gizmos.color = Color.red;
-    //    Vector2 boxPosition = (Vector2)transform.position + Vector2.right * 1f * lookDirection;
-    //    //Gizmos.DrawWireCube(boxPosition, boxSize);
-    //}
-
 }

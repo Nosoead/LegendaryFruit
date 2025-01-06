@@ -15,36 +15,16 @@ public class MonsterAnimationController : AnimationController
     private AnimationClip currentPatternAnimaion;
     private RegularMonsterSO regularMonster;
     private BossMonsterSO bossMonster;
-    private SpriteRenderer effectSprite;
     private AnimatorOverrideController overrideController;
-
-    [SerializeField] private MonsterStatManager monsterStatManager;
-    [SerializeField] private ParticleSystem particle;
-    [SerializeField] private ParticleSystem[] numberParticle;
 
     protected override void Awake()
     {
         base.Awake();
     }
 
-    private void OnEnable()
-    {
-        monsterStatManager.DamageTakenEvent += OnDamageReceived;
-        monsterStatManager.DamageTakenEvent += OnHitParticlePlay;
-    }
-    private void OnDisable()
-    {
-        monsterStatManager.DamageTakenEvent -= OnDamageReceived;
-        monsterStatManager.DamageTakenEvent -= OnHitParticlePlay;
-    }
-
     protected override void EnsureComponents()
     {
         base.EnsureComponents();
-        if(effectSprite == null )
-        {
-            effectSprite = GetComponentInChildren<SpriteRenderer>();
-        }
     }
 
     // Animation Init
@@ -165,24 +145,5 @@ public class MonsterAnimationController : AnimationController
             return true;
         }
         return false;
-    }
-
-    public void OnHitParticlePlay(float damage)
-    {
-        if(!particle.isPlaying)
-        {
-            //ParticleDamage();
-            particle.Play();
-        }
-        else
-        {
-            particle.Stop();
-        }
-    }
-
-    public void OnDamageReceived(float damage)
-    {
-        string str = damage.ToString();
-        Debug.Log(str);
     }
 }
