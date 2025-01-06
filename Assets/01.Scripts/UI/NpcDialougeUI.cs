@@ -9,7 +9,6 @@ public class NpcDialougeUI : UIBase
 
     public override void Open()
     {
-        dialogueIndex = Random.Range(10200, 10203);
         if (!isFirstOpen)
         {
             Init();
@@ -36,6 +35,7 @@ public class NpcDialougeUI : UIBase
         }
 
     }
+    
     private void SetDialogue()
     {
         var dialogue = DialogueManager.Instance.GetDialogueData(dialogueIndex);
@@ -45,4 +45,8 @@ public class NpcDialougeUI : UIBase
         }
     }
    
+    public void GetDialougeIndex(int index)
+    {
+        dialogueIndex = index;
+    }
 }

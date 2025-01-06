@@ -12,7 +12,7 @@ public class Stage : MonoBehaviour
     [SerializeField] private List<Transform> monsterSpawnPoints = new List<Transform>();
     [SerializeField] private Potal firstPotal;
     [SerializeField] private Potal secondPotal;
-    [SerializeField] private NPC stageNPC;
+    [SerializeField] private List<NPC> stageNPC = new List<NPC>();
 
     public void SetStage(GameObject player, IObjectPool<PooledMonster> monster, CinemachineConfiner2D confiner)
     {
@@ -107,7 +107,10 @@ public class Stage : MonoBehaviour
         }
         if (stageNPC != null)
         {
-            stageNPC.InitNPC();
+            foreach (var npc in stageNPC)
+            {
+                npc.InitNPC();
+            }
         }
         if (parallaxList != null)
         {
@@ -129,7 +132,11 @@ public class Stage : MonoBehaviour
         {
             return;
         }
-        stageNPC.SetReward();
+
+        foreach (var npc in stageNPC)
+        {
+            npc.SetReward();
+        }
     }
     #endregion
 }

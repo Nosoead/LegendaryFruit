@@ -1,4 +1,6 @@
 using System.Collections.Generic;
+using System.Diagnostics;
+using UnityEngine;
 
 public class UIManager : Singleton<UIManager>
 {
@@ -79,6 +81,7 @@ public class UIManager : Singleton<UIManager>
         }
     }
 
+
     public void ToggleUI<T>(bool isPreviousWindowActive, bool isOpened) where T : UIBase
     {
         T ui = GetUI<T>();
@@ -93,6 +96,31 @@ public class UIManager : Singleton<UIManager>
         else if (!ui.gameObject.activeSelf && isOpened)
         {
             OpenUI(ui, isPreviousWindowActive);
+        }
+    }
+
+    public void ToggleUI<T>(bool isPreviousWindowActive, int index) where T : UIBase
+    {
+        T ui = GetUI<T>();
+        if (ui == null)
+        {
+            return;
+        }
+        if (ui is NpcDialougeUI dialougeUI)
+        {
+            if (ui.gameObject.activeSelf)
+            {
+                CloseUI(ui, isPreviousWindowActive);
+            }
+            else
+            {
+                dialougeUI.GetDialougeIndex(index);
+                OpenUI(ui, isPreviousWindowActive);
+            }
+        }
+        else
+        {
+            UnityEngine.Debug.LogError("잘못된 UI사용방식입니다.");
         }
     }
 }

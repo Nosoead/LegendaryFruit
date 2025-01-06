@@ -361,7 +361,7 @@ MonoBehaviour:
   monsterSpawnPoints: []
   firstPotal: {fileID: 6042798533001538790}
   secondPotal: {fileID: 3872795117277280923}
-  stageNPC: {fileID: 5330794470105275882}
+  stageNPC: []
 --- !u!1 &450076416310426093
 GameObject:
   m_ObjectHideFlags: 0
@@ -18220,12 +18220,10 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: 0.20748615, y: 5.9002643}
-      - {x: -10.774972, y: 5.854958}
-      - {x: -10.871076, y: -7.7182026}
-      - {x: -1.8473345, y: -7.7479753}
-      - {x: 39.914837, y: -7.748293}
-      - {x: 39.91781, y: 6.031066}
+    - - {x: 39, y: 6}
+      - {x: -15, y: 6}
+      - {x: -15, y: -8}
+      - {x: 39, y: -8}
   m_UseDelaunayMesh: 0
 --- !u!1 &5881158138629934036
 GameObject:
