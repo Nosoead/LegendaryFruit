@@ -87,28 +87,41 @@ public class SoundManagers : Singleton<SoundManagers>
     /// </summary>
     private void OnLoadCompleted(Scene scene, LoadSceneMode mode)
     {
+        if (bgmSource == null)
+        {
+            return;
+        }
         switch (scene.name)
         {
             case "TitleScene":
                 if (bgmSource.clip == null || bgmSource.clip != clipDic[BgmType.Title]) //노래가 새로시작되지않게설정
                 {
+                    Debug.Log($"{bgmSource.clip}44");
                     bgmSource.clip = clipDic[BgmType.Title];
                     bgmSource.Play();
+                    Debug.Log($"{bgmSource.clip}33");
                 }
+
                 break;
             case "OneCycleScene":
                 if (bgmSource.clip == null || bgmSource.clip != clipDic[BgmType.InGame])
                 {
+                    Debug.Log($"{bgmSource.clip}11");
                     bgmSource.clip = clipDic[BgmType.InGame];
                     bgmSource.Play();
+                    Debug.Log($"{bgmSource.clip}22");
                 }
+
                 break;
             case "Boss":
                 if (bgmSource.clip == null || bgmSource.clip != clipDic[BgmType.Boss])
                 {
+                    Debug.Log(bgmSource.clip);
+                    Debug.Log(BgmType.Title);
                     bgmSource.clip = clipDic[BgmType.Boss];
                     bgmSource.Play();
                 }
+
                 break;
         }
     }

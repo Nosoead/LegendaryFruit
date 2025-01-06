@@ -126,15 +126,5 @@ public class UIManager : Singleton<UIManager>
         }
     }
 
-    public bool IsUIActive<T>() where T : UIBase
-    {
-        foreach (var ui in uiActiveStack)
-        {
-            if (ui is T)
-            {
-                return ui.gameObject.activeSelf;
-            }
-        }
-        return false;
-    }
+   
 }

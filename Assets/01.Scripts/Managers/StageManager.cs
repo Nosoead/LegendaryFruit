@@ -12,6 +12,8 @@ public class StageManager : Singleton<StageManager>
     private Stage currentStage = null;
     private StageType currentStageType;
     private int monsterCount;
+    public event Action<StageType> onFadeImage;
+
 
     //일단 몬스터만 풀링
     private IObjectPool<PooledMonster> monster;
@@ -107,6 +109,9 @@ public class StageManager : Singleton<StageManager>
         }
         monsterCount = currentStage.GetMonsterCount();
         //FadeIn
+        UIManager.Instance.ToggleUI<FadeImage>(true,true);
+
+        onFadeImage?.Invoke(type);
         currentStage.SetStage(player, monster, confiner);
         //FadeOut
     }

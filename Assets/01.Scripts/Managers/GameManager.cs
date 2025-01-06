@@ -41,7 +41,8 @@ public class GameManager : Singleton<GameManager>
 
     public void GameEnd()
     {
-        Invoke(nameof(DelayedGameEnd), 1f);
+        DelayedGameEnd();
+        //Invoke(nameof(DelayedGameEnd), 1f);
     }
 
     private void DelayedGameEnd()
