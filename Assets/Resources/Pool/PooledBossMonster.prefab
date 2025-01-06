@@ -435,7 +435,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 16b094f1331cf624680f76ceee850692, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  monsterStatManager: {fileID: 4095274323097415419}
   particle: {fileID: 2050638217353607981}
+  numberParticle: []
 --- !u!114 &5504759668043452202
 MonoBehaviour:
   m_ObjectHideFlags: 0

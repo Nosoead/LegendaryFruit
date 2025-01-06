@@ -5,93 +5,36 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="fd1b27b5-9a48-464d-8c89-0ee285d61d98" name="변경" comment="">
+      <change afterPath="$PROJECT_DIR$/Assets/01.Scripts/UI/BossHPUI.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/01.Scripts/UI/BossHPUI.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/01.Scripts/UI/FadeImage.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/01.Scripts/UI/FadeImage.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/01.Scripts/UI/TutorialUI.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/01.Scripts/UI/TutorialUI.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Resources/UI/BossHPUI.prefab" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Resources/UI/BossHPUI.prefab.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Resources/UI/FadeImage.prefab" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Resources/UI/FadeImage.prefab.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Resources/UI/TutorialUI.prefab" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Resources/UI/TutorialUI.prefab.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.LegendaryFruit/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.LegendaryFruit/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/00.Scenes/TitleScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/00.Scenes/TitleScene.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/01.Scripts/AnimationController/AnimationController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/01.Scripts/AnimationController/AnimationController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/01.Scripts/AnimationController/MonsterAnimationController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/01.Scripts/AnimationController/MonsterAnimationController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/01.Scripts/AnimationController/WeaponAnimationController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/01.Scripts/AnimationController/WeaponAnimationController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/01.Scripts/Item/PooledFruitWeapon.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/01.Scripts/Item/PooledFruitWeapon.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/01.Scripts/Item/PooledReward.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/01.Scripts/Item/PooledReward.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/01.Scripts/Item/Weapon.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/01.Scripts/Item/Weapon.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/01.Scripts/Managers/EntityManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/01.Scripts/Managers/EntityManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/01.Scripts/Managers/GameManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/01.Scripts/Managers/GameManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/01.Scripts/Managers/ItemManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/01.Scripts/Managers/ItemManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/01.Scripts/Managers/Monster.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/01.Scripts/Managers/Monster.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/01.Scripts/Managers/MonsterManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/01.Scripts/Managers/MonsterManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/00.Scenes/TestScenes/Test_ParkScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/00.Scenes/TestScenes/Test_ParkScene.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/01.Scripts/Managers/MonsterStatManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/01.Scripts/Managers/MonsterStatManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/01.Scripts/Managers/ParticleManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/01.Scripts/Managers/ParticleManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/01.Scripts/Managers/PlayerInfoManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/01.Scripts/Managers/PlayerInfoManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/01.Scripts/Managers/PoolManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/01.Scripts/Managers/PoolManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/01.Scripts/Managers/ResourceManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/01.Scripts/Managers/ResourceManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/01.Scripts/Managers/SceneManagerExtension.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/01.Scripts/Managers/SceneManagerExtension.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/01.Scripts/Managers/Singleton.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/01.Scripts/Managers/Singleton.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/01.Scripts/Managers/StageManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/01.Scripts/Managers/StageManager.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/01.Scripts/Managers/UIManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/01.Scripts/Managers/UIManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/01.Scripts/Managers/testPoolManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/01.Scripts/Managers/testPoolManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/01.Scripts/Monster/Arrtibute/MonsterAttributeLogicsDictionary.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/01.Scripts/Monster/Arrtibute/MonsterAttributeLogicsDictionary.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/01.Scripts/Monster/BossMonsterController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/01.Scripts/Monster/BossMonsterController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/01.Scripts/Monster/BossPatternTargetDetector.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/01.Scripts/Monster/BossPatternTargetDetector.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/01.Scripts/Monster/BossStateMachine/BossStateMachine.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/01.Scripts/Monster/BossStateMachine/BossStateMachine.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/01.Scripts/Monster/MonsterController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/01.Scripts/Monster/MonsterController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/01.Scripts/Monster/MonsterStat.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/01.Scripts/Monster/MonsterStat.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/01.Scripts/NPC/RewardNPC.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/01.Scripts/NPC/RewardNPC.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/01.Scripts/NPC/RewardTree.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/01.Scripts/NPC/RewardTree.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/01.Scripts/NPC/ShelterNPC.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/01.Scripts/NPC/ShelterNPC.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/01.Scripts/Player/AttributeLogics/PlayerAttributeLogics.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/01.Scripts/Player/AttributeLogics/PlayerAttributeLogics.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/01.Scripts/Player/AttributeLogics/PlayerAttributeLogicsDictionary.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/01.Scripts/Player/AttributeLogics/PlayerAttributeLogicsDictionary.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/01.Scripts/Player/Behaviour/MoveStateMachine/PlayerDashState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/01.Scripts/Player/Behaviour/MoveStateMachine/PlayerDashState.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/01.Scripts/Player/Behaviour/MoveStateMachine/PlayerIdleState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/01.Scripts/Player/Behaviour/MoveStateMachine/PlayerIdleState.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/01.Scripts/Player/Behaviour/PlayerAttack.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/01.Scripts/Player/Behaviour/PlayerAttack.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/01.Scripts/Player/Behaviour/PlayerCondition.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/01.Scripts/Player/Behaviour/PlayerCondition.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/01.Scripts/Player/Behaviour/PlayerEquipment.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/01.Scripts/Player/Behaviour/PlayerEquipment.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/01.Scripts/Player/Behaviour/PlayerInteraction.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/01.Scripts/Player/Behaviour/PlayerInteraction.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/01.Scripts/Player/Controller/PlayerController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/01.Scripts/Player/Controller/PlayerController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/01.Scripts/Player/Handler/PlayerMovementHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/01.Scripts/Player/Handler/PlayerMovementHandler.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/01.Scripts/Player/Stat/PlayerStat.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/01.Scripts/Player/Stat/PlayerStat.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/01.Scripts/Pool/PooledBossMonster.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/01.Scripts/Pool/PooledBossMonster.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/01.Scripts/Pool/PooledEffect.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/01.Scripts/Pool/PooledEffect.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/01.Scripts/Pool/PooledMonster.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/01.Scripts/Pool/PooledMonster.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/01.Scripts/Pool/PooledSound.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/01.Scripts/Pool/PooledSound.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/01.Scripts/Pool/testPooledReward.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/01.Scripts/Pool/testPooledReward.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/01.Scripts/Scene/BaseScene.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/01.Scripts/Scene/BaseScene.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/01.Scripts/Scene/OneCycleScene.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/01.Scripts/Scene/OneCycleScene.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/01.Scripts/Scene/TitleScene.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/01.Scripts/Scene/TitleScene.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/01.Scripts/ScriptableObject/PlayerSO.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/01.Scripts/ScriptableObject/PlayerSO.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/01.Scripts/ScriptableObject/StageSO.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/01.Scripts/ScriptableObject/StageSO.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/01.Scripts/ScriptableObject/testStageSO.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/01.Scripts/ScriptableObject/testStageSO.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/01.Scripts/Stages/Parallax.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/01.Scripts/Stages/Parallax.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/01.Scripts/Stages/Potal.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/01.Scripts/Stages/Potal.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/01.Scripts/Stages/Stage.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/01.Scripts/Stages/Stage.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/01.Scripts/Stages/testPotal/LobbyPotal.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/01.Scripts/Stages/testPotal/LobbyPotal.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/01.Scripts/Stages/testPotal/ReStartPotal.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/01.Scripts/Stages/testPotal/ReStartPotal.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/01.Scripts/Stages/testPotal/testPotal.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/01.Scripts/Stages/testPotal/testPotal.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/01.Scripts/Title/TitleScript.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/01.Scripts/Title/TitleScript.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/01.Scripts/UI/ESCUI.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/01.Scripts/UI/ESCUI.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01.Scripts/UI/BossHPCanvs.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01.Scripts/UI/BossHPCanvs.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01.Scripts/UI/NpcDialougeUI.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/01.Scripts/UI/NpcDialougeUI.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/01.Scripts/UI/NpcUpgradeUI.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/01.Scripts/UI/NpcUpgradeUI.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/01.Scripts/UI/StageUI.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/01.Scripts/UI/StageUI.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/01.Scripts/UI/TabButtonUI.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/01.Scripts/UI/TabButtonUI.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/01.Scripts/UI/TestUI.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/01.Scripts/UI/TestUI.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/01.Scripts/UI/UIBase.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/01.Scripts/UI/UIBase.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/01.Scripts/UI/UItest.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/01.Scripts/UI/UItest.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/01.Scripts/UI/UItest2.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/01.Scripts/UI/UItest2.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/01.Scripts/Util/BossRoomTrigger.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/01.Scripts/Util/BossRoomTrigger.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/01.Scripts/Util/GroundDetector.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/01.Scripts/Util/GroundDetector.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/01.Scripts/Util/Interfaces.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/01.Scripts/Util/Interfaces.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/01.Scripts/Util/ParticleEffect.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/01.Scripts/Util/ParticleEffect.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/01.Scripts/Util/TestPlayerScript.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/01.Scripts/Util/TestPlayerScript.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/01.Scripts/Util/ToggleMenuController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/01.Scripts/Util/ToggleMenuController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/01.Scripts/Util/testDieButton.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/01.Scripts/Util/testDieButton.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/01.Scripts/Util/testInteractHold.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/01.Scripts/Util/testInteractHold.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/01.Scripts/Util/testInteractTap.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/01.Scripts/Util/testInteractTap.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/01.Scripts/Util/testScript.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/01.Scripts/Util/testScript.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/01.Scripts/Util/testScript2.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/01.Scripts/Util/testScript2.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01.Scripts/UI/WeaponUpgradeUI.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/01.Scripts/UI/WeaponUpgradeUI.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/05.Animations/MonsterAnimations/RegularAnimations/Orcs/Epic_Orc/EpicOrc_Controller.overrideController" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/05.Animations/MonsterAnimations/RegularAnimations/Orcs/Epic_Orc/EpicOrc_Controller.overrideController" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/99.UnityAssets/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF - Fallback.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/99.UnityAssets/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF - Fallback.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Settings/UniversalRP.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Settings/UniversalRP.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Packages/manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/manifest.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Packages/packages-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/packages-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/ShaderGraphSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/ShaderGraphSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Pool/PooledBossMonster.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Pool/PooledBossMonster.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Pool/PooledMonster.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Pool/PooledMonster.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Stage/StageLobby.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Stage/StageLobby.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/UI/BossHPCanvas.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/UI/BossHPCanvas.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/StreamingAssets/Dialogue.csv" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/StreamingAssets/Dialogue.csv" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -106,22 +49,28 @@
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/115f824c8c9c413f87589665175847eb5a00/a3/0a4e0381/WWW.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/17d9ce77f27a4bd2afb5ba32c9bea97646ac00/55/41bf8e1c/List`1.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/f7237cf7abef49bfbb552d7eb076e422174200/1c/3677dfe3/Behaviour.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/f7237cf7abef49bfbb552d7eb076e422174200/41/07baf228/SceneManager.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/f7237cf7abef49bfbb552d7eb076e422174200/54/a876a1d8/IObjectPool`1.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/f7237cf7abef49bfbb552d7eb076e422174200/63/11452b66/UnityAction.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/f7237cf7abef49bfbb552d7eb076e422174200/73/e1df8cf7/GameObject.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/f7237cf7abef49bfbb552d7eb076e422174200/79/3a7f369f/Transform.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/f7237cf7abef49bfbb552d7eb076e422174200/9f/2b8345d1/Object.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/f7237cf7abef49bfbb552d7eb076e422174200/d2/cca88413/MonoBehaviour.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/f7237cf7abef49bfbb552d7eb076e422174200/dd/766d8ac9/Component.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/3ea01e77be99618395f448b16bd7cc2bd4248bd9e5d8474964b2d97f39c5d74/System.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/d44b17e136d09081da1e8fd0e8c83fde60e11818b9f2442d7ed8cb733fae895e/System.Collections.Generic.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/01.Scripts/Managers/MonsterStatManager.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/01.Scripts/Monster/MonsterCondition.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/01.Scripts/Monster/MonsterStat.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/01.Scripts/Monster/NormalMonster.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/01.Scripts/UI/FadeImage.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/01.Scripts/UI/TestUI.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/01.Scripts/Util/ParticleEffect.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.connect.share@4.2.3/Editor/PublisherBuildProcessor.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.inputsystem@1.7.0/InputSystem/Actions/InputAction.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.inputsystem@1.7.0/InputSystem/Utilities/DelegateHelpers.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.visualscripting@1.9.1/Runtime/VisualScripting.Core/Utilities/UnityObjectUtility.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../My project (6)/Assets/Scripts/UIDialogue.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../SpartaPong/Assets/ScriptableObjects/Script/RangedAttack.cs" root0="SKIP_HIGHLIGHTING" />
@@ -170,10 +119,10 @@
       <option name="USE_EXTERNAL_CONSOLE" value="0" />
       <method v="2" />
     </configuration>
-    <configuration name="Unity 에디터에 연결" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" ignored-value-for-modified-check="5820">
+    <configuration name="Unity 에디터에 연결" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
       <option name="allowRunningInParallel" value="false" />
       <option name="listenPortForConnections" value="false" />
-      <option name="pid" value="5820" />
+      <option name="pid" />
       <option name="projectPathOnTarget" />
       <option name="selectedOptions">
         <list />
@@ -224,6 +173,8 @@
       <workItem from="1735622948363" duration="11488000" />
       <workItem from="1735782918215" duration="21615000" />
       <workItem from="1735867787502" duration="21988000" />
+      <workItem from="1736055228177" duration="18599000" />
+      <workItem from="1736123623062" duration="2842000" />
     </task>
     <servers />
   </component>
@@ -251,5 +202,50 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/Assets/01.Scripts/Stages/Stage.cs</url>
+          <line>41</line>
+          <properties documentPath="D:\Unity Practice\LegendaryFruit\Assets\01.Scripts\Stages\Stage.cs" containingFunctionPresentation="메서드 'SetMonster'">
+            <startOffsets>
+              <option value="1333" />
+            </startOffsets>
+            <endOffsets>
+              <option value="1362" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/Assets/01.Scripts/Stages/Stage.cs</url>
+          <line>27</line>
+          <properties documentPath="D:\Unity Practice\LegendaryFruit\Assets\01.Scripts\Stages\Stage.cs" containingFunctionPresentation="메서드 'SetStage'">
+            <startOffsets>
+              <option value="983" />
+            </startOffsets>
+            <endOffsets>
+              <option value="1007" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="3" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/Assets/01.Scripts/Stages/Stage.cs</url>
+          <line>81</line>
+          <properties documentPath="D:\Unity Practice\LegendaryFruit\Assets\01.Scripts\Stages\Stage.cs" containingFunctionPresentation="메서드 'SetMonster'">
+            <startOffsets>
+              <option value="2950" />
+            </startOffsets>
+            <endOffsets>
+              <option value="2999" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="4" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

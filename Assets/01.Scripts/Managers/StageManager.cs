@@ -17,6 +17,8 @@ public class StageManager : Singleton<StageManager>
     private IObjectPool<PooledMonster> monster;
     private IObjectPool<PooledBossMonster> bossMonster;
 
+    public event Action<StageType> onFadeImage;
+
     protected override void Awake()
     {
         base.Awake();
@@ -25,6 +27,7 @@ public class StageManager : Singleton<StageManager>
 
     private void Start()
     {
+     
         //TODO : 오브젝트풀 시작하자마자 다 뽑아와서 등록까지 할 것.
         //instance찍고 딕셔너리로 참조만 하면 바로 풀 사용할 수 있도록, CreatePool사용없이
         PoolManager.Instance.CreatePool<PooledMonster>(PoolType.PooledMonster, false, 7, 12);
@@ -38,6 +41,7 @@ public class StageManager : Singleton<StageManager>
         RegisterStage();
         SetCameraBoundary();
         CacheMonster();
+      
     }
 
     private void RegisterStage()
@@ -79,6 +83,7 @@ public class StageManager : Singleton<StageManager>
 
     public void ChangeStage(StageType type)
     {
+        
         if (player == null)
         {
             player = GameManager.Instance.player;
@@ -105,12 +110,18 @@ public class StageManager : Singleton<StageManager>
         {
             GameManager.Instance.isClear = false;
         }
-        monsterCount = currentStage.stageData.TotalMonsterCount();
-        //FadeIn
-        currentStage.SetStage(player, monster, confiner);
-        //FadeOut
-    }
 
+        monsterCount = currentStage.stageData.TotalMonsterCount();
+        
+        if (!UIManager.Instance.IsUIActive<FadeImage>())
+        {
+            UIManager.Instance.ToggleUI<FadeImage>(true);
+        }
+
+        onFadeImage?.Invoke(type);
+        currentStage.SetStage(player, monster, confiner);
+    }
+    
     public void MonsterDie()
     {
         monsterCount--;

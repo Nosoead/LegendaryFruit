@@ -82,6 +82,8 @@ public class Stage : MonoBehaviour
         PooledBossMonster monsterObj = bossMonster.Get();
         monsterObj.gameObject.transform.position = monsterSpawnPoints[0].position;
         monsterObj.monsterManager.GetMonsterData(summonMonsterData.monsterID);
+        monsterObj.name = "111";
+        Debug.Log(monsterObj.name);
 
         foreach (var setMonsterPosition in monsterSpawnPoints)
         {

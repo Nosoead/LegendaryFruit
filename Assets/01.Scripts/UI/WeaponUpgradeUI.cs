@@ -24,7 +24,6 @@ public class WeaponUpgradeUI : UIBase
     }
     private void Start()
     {
-        Init();
         InitializeUI();
     }
 
@@ -52,42 +51,17 @@ public class WeaponUpgradeUI : UIBase
             Debug.Log("SO 바꿈");
             isUpgrade = true;
             dialogueIndex = 10203;
-            uiDialogue.gameObject.SetActive(true);
-            SetDialogue();
             SoundManagers.Instance.PlaySFX(SfxType.UIButton);
-            UIManager.Instance.ToggleUI<WeaponUpgradeUI>(true);
+            UIManager.Instance.ToggleUI<NpcDialougeUI>(false, dialogueIndex);
             //Destroy( uiDialogue);
         }
         else
         {
             dialogueIndex = 10205;
-            uiDialogue.gameObject.SetActive(true);
-            SetDialogue();
             SoundManagers.Instance.PlaySFX(SfxType.UIButton);
-            UIManager.Instance.ToggleUI<WeaponUpgradeUI>(true);
+            UIManager.Instance.ToggleUI<NpcDialougeUI>(false, dialogueIndex);
             //Destroy( uiDialogue);
         }
     }
-    private void Init()
-    {
-        
-        if (!uiDialogue)
-        {
-            //UIManager.Instance.ToggleUI<UIDialogue>(true);
-            GameObject dialogueObject = Instantiate(uiDialoguePrefab.gameObject);
-            uiDialogue = dialogueObject.GetComponent<UIDialogue>();
-            uiDialogue.gameObject.SetActive(false);
-
-            //DialogueManager.Instance.SetUIDialogue(uiDialogue);
-        }
-
-    }
-    private void SetDialogue()
-    {
-        var dialogue = DialogueManager.Instance.GetDialogueData(dialogueIndex);
-        if (dialogue != null)
-        {
-            uiDialogue.SetDialogue(dialogue); 
-        }
-    }
+   
 }

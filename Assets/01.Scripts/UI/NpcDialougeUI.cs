@@ -14,7 +14,7 @@ public class NpcDialougeUI : UIBase
             Init();
             uiDialogue.gameObject.SetActive(true);
             SetDialogue();
-            Invoke(nameof(SetDialogue), 0.1f);
+            Invoke(nameof(SetDialogue), 0.01f);
             isFirstOpen = true;
         }
         else

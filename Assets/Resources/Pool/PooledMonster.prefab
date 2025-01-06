@@ -19696,7 +19696,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 64542be3a5e1eef4994170cc10d5f96a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  statManager: {fileID: 0}
+  statManager: {fileID: 9025224996261991306}
 --- !u!114 &8083956431419467369
 MonoBehaviour:
   m_ObjectHideFlags: 0

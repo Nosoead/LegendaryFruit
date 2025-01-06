@@ -165,4 +165,9 @@ public class MonsterStatManager : MonoBehaviour
         gameObject.layer = LayerMask.NameToLayer("Monster");
         isDead = false;
     }
+
+    public MonsterStat GetStat()
+    {
+        return stat;
+    }
 }
