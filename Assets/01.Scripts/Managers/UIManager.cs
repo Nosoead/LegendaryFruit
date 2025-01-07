@@ -7,15 +7,20 @@ public class UIManager : Singleton<UIManager>
     private Stack<UIBase> uiActiveStack = new Stack<UIBase>();
     private string path;
 
-    private void Start()
+    //private void Start()
+    //{
+    //    Debug.Log("tqlkd");
+    //    SetUIDictionary();
+    //}
+
+    public void Init()
     {
-        path = "UI";
-        Debug.Log("tqlkd");
         SetUIDictionary();
     }
 
-    public void SetUIDictionary()
+    private void SetUIDictionary()
     {
+        path = "UI";
         //if (uiDictionary != null) return;
         //Debug.Log("dddd");
         UIBase[] uiArray = ResourceManager.Instance.LoadAllResources<UIBase>($"{path}");

@@ -46,7 +46,6 @@ public class CurrencySystem : MonoBehaviour
 
     public void GetCurrency(int useValue, bool isGlobalCurrency)
     {
-        Debug.Log("이벤트?");
         if (isGlobalCurrency)
         {
             globalCurrency += useValue;

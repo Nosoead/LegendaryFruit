@@ -1074,6 +1074,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 474573592450207821, guid: dd5abbe63ea36f4478a505be38f9d0ca, type: 3}
+      propertyPath: m_Flip.x
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4991562544583202733, guid: dd5abbe63ea36f4478a505be38f9d0ca, type: 3}
       propertyPath: m_Name
       value: CurrencyWindow
