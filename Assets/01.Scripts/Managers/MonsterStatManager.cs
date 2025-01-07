@@ -9,7 +9,8 @@ public class MonsterStatManager : MonoBehaviour
     public event UnityAction<float, AttributeType> DamageTakenEvent;
     private MonsterAnimationController monsterAnimationController;
     private MonsterCondition condition;
-    [SerializeField] private PooledMonster pooledMonster;
+    private PooledMonster pooledMonster;
+    private PooledBossMonster pooledBossMonster;
     private MonsterStat stat;
     private StatHandler statHandler;
     private Dictionary<int,PatternData> pattrens = new Dictionary<int,PatternData>();
@@ -33,6 +34,10 @@ public class MonsterStatManager : MonoBehaviour
         if (pooledMonster == null)
         {
             pooledMonster = GetComponent<PooledMonster>();
+        }
+        if(pooledBossMonster == null)
+        {
+            pooledBossMonster = GetComponentInParent<PooledBossMonster>();  
         }
         if (condition == null)
         {
@@ -175,7 +180,14 @@ public class MonsterStatManager : MonoBehaviour
 
     private void MonsterDieOff()
     {
-        pooledMonster.ObjectPool.Release(pooledMonster);
+        if(pooledBossMonster != null)
+        {
+            pooledBossMonster.ObjectPool.Release(pooledBossMonster);
+        }
+        else
+        {
+            pooledMonster.ObjectPool.Release(pooledMonster);
+        }
         gameObject.layer = LayerMask.NameToLayer("Monster");
         isDead = false;
     }

@@ -130,7 +130,7 @@ public class StageManager : Singleton<StageManager>
             }
             if (currentStage.GetStageID() == (int)StageType.StageBoss)
             {
-                GameManager.Instance.GameEnd();
+                //GameManager.Instance.GameEnd();
             }
         }
     }
