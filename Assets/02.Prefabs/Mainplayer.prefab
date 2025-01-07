@@ -102,8 +102,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1485234261263581836}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.8, y: 0.8, z: 0}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -137,7 +137,7 @@ Animator:
   m_GameObject: {fileID: 1485234261263581836}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 22100000, guid: f6fc0d12347d5df4094c587221cc0393, type: 2}
+  m_Controller: {fileID: 22100000, guid: 287170c3411b6a84692e6b02c7126443, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -5503,7 +5503,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8711109411f9449418e0f282de5bac21, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  particleEffect: {fileID: 8478661897199323931}
 --- !u!114 &7126646849603209105
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5670,6 +5669,7 @@ MonoBehaviour:
   upwardMovementMultiplier: 1
   downwardMovementMultiplier: 4
   gravMultiplier: 0
+  particle: {fileID: 0}
 --- !u!114 &-6679679649435464765
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5953,17 +5953,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3884334984901507802, guid: 6b64ef5aaa94c654698408c715e6d42d, type: 3}
   m_PrefabInstance: {fileID: 82880578396707543}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &8478661897199323931 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 8398141696531616204, guid: 6b64ef5aaa94c654698408c715e6d42d, type: 3}
-  m_PrefabInstance: {fileID: 82880578396707543}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 241a7cad4105eaf43b5897147fcbdd0a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &3109017528399775852
 PrefabInstance:
   m_ObjectHideFlags: 0
