@@ -2,7 +2,7 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class FadeImage : UIBase
+public class FadeInUI : UIBase, IPersistentUI
 {
     private Image image;
     private Coroutine fadeCoroutine;
@@ -19,12 +19,12 @@ public class FadeImage : UIBase
 
     private void OnEnable()
     {
-        StageManager.Instance.onFadeImage += StartFade;
+        StageManager.Instance.OnPlayFadeIn += StartFade;
     }
 
     private void OnDisable()
     {
-        StageManager.Instance.onFadeImage -= StartFade;
+        StageManager.Instance.OnPlayFadeIn -= StartFade;
     }
 
     private void StartFade(StageType type)
