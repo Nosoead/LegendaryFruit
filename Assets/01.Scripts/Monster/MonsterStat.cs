@@ -49,7 +49,6 @@ public class MonsterStat : Stat
         {
             stats[statKey] = currentValue;
             OnStatUpdated?.Invoke(statKey, currentValue);
-            Debug.Log($"{statKey} : {currentValue}");
             if (statKey == "CurrentHealth" && stats["CurrentHealth"] == 0)
             {
                 OnMonsterDie?.Invoke();

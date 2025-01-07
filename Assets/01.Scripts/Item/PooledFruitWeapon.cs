@@ -12,7 +12,6 @@ public class PooledFruitWeapon : Weapon, IInteractable, ISetPooledObject<PooledF
 
     private void Awake()
     {
-        Debug.Log("호출");
         EnsureComponents();
     }
 

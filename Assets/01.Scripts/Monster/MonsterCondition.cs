@@ -91,7 +91,6 @@ public class MonsterCondition : MonoBehaviour, IDamageable
         controller.OnTakeHit();
         OnTakeHitType?.Invoke(AttributeType.Normal);
         statManager.ApplyInstantDamage(damage);
-        Debug.Log("데미지 받음 ");
         SfxType randomSfx = (Random.Range(0,2) == 0) ? SfxType.MonsterDamaged1 : SfxType.MonsterDamaged2;
         SoundManagers.Instance.PlaySFX(randomSfx);
     }

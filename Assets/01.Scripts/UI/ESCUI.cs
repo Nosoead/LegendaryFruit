@@ -27,7 +27,7 @@ public class ESCUI : UIBase
         backButton.onClick.AddListener(() => SoundManagers.Instance.PlaySFX(SfxType.UIButton));
         settingButton.onClick.AddListener(() =>  UIManager.Instance.ToggleUI<SettingUI>(false));
         settingButton.onClick.AddListener(() => SoundManagers.Instance.PlaySFX(SfxType.UIButton));
-        newGameButton.onClick.AddListener(() => SceneManager.LoadScene("OneCycleScene")); // 뉴게임에 해당하는 씬 넣기
+        newGameButton.onClick.AddListener(() => SceneManagerExtension.Instance.LoadScene(SceneType.OneCycleScene));
         newGameButton.onClick.AddListener(() => SoundManagers.Instance.PlaySFX(SfxType.UIButton));
         exitButton.onClick.AddListener(() => Quit());
     }

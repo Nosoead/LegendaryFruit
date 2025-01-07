@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: EliteOrc_MonsterSO
   m_EditorClassIdentifier: 
   monsterID: 1010202
-  maxHealth: 120
+  maxHealth: 60
   attackPower: 13
   defense: 6
   attackSpeed: 3

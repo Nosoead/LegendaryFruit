@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: NormalOrc_MonsterSO
   m_EditorClassIdentifier: 
   monsterID: 1010101
-  maxHealth: 100
+  maxHealth: 40
   attackPower: 15
   defense: 5
   attackSpeed: 3

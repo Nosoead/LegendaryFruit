@@ -8,9 +8,13 @@ public class UIManager : Singleton<UIManager>
     private Dictionary<string, UIBase> persistentUI = new Dictionary<string, UIBase>();
     private string path;
 
-    public void Init()
+    public void ForeInit()
     {
         SetUIDictionary();
+    }
+
+    public void PostInit()
+    {
         OpenPersistentUI<PlayerCanvasUI>(true);
         OpenPersistentUI<FadeInUI>(true);
         //TODO PromptUI -> OpenPersistentUI<PromptUI>(false);

@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: EpicOrc_MonsterSO
   m_EditorClassIdentifier: 
   monsterID: 1010303
-  maxHealth: 150
+  maxHealth: 75
   attackPower: 15
   defense: 8
   attackSpeed: 3

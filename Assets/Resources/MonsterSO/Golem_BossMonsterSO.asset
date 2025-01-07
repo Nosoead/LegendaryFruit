@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Golem_BossMonsterSO
   m_EditorClassIdentifier: 
   monsterID: 2020001
-  maxHealth: 300
+  maxHealth: 200
   attackPower: 20
   defense: 10
   attackSpeed: 3
