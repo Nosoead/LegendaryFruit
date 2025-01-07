@@ -20,8 +20,6 @@ public class PatrollState : IState
     
     public void Enter()
     {
-        Debug.Log("패트롤 상태 진입");
-
         monsterController.animationController.OnMove(true);
         idleTime = Random.Range(5, 10);
         idleTimer = 0f;

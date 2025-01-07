@@ -25,7 +25,6 @@ public class GameManager : Singleton<GameManager>
 
     private void GameStart()
     {
-        Debug.Log(DataManager.Instance.GetCanLoad<SaveDataContainer>());
         if (DataManager.Instance.GetCanLoad<SaveDataContainer>())
         {
             Load();

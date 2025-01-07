@@ -10,8 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6f30345d6f773874da4088be7b3c7755, type: 3}
-  m_Name: 4_WeaponSO
+  m_Name: BurnWeaponRareSO
   m_EditorClassIdentifier: 
+  ID: 0
   weaponName: 
   description: 
   attackPower: 0
@@ -21,6 +22,7 @@ MonoBehaviour:
   attributeAttackValue: 0
   attributeAttackRateTime: 0
   arrtibuteStatck: 0
-  weaponSprite: {fileID: 21300000, guid: bf18a0e078782b74881ad8d7be6e1571, type: 2}
-  rewardSprite: {fileID: 21300086, guid: 7810966f0f690954c87305933cabf2b0, type: 3}
-  animatorController: {fileID: 9100000, guid: b6c1a0038850a5c438c59bb01e80bc98, type: 2}
+  weaponSprite: {fileID: 0}
+  rewardSprite: {fileID: 0}
+  animatorController: {fileID: 0}
+  effectMaterial: {fileID: 0}

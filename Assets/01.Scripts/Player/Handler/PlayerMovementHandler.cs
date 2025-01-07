@@ -265,7 +265,6 @@ public class PlayerMovementHandler : MonoBehaviour
     {
 
         Physics2D.IgnoreCollision(playerCollider, onewayBlockCollider, true);
-        Debug.Log(onewayBlockCollider.gameObject.ToString());
         yield return colliderIgnoreDuration;
         Physics2D.IgnoreCollision(playerCollider, onewayBlockCollider, false);
     }

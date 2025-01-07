@@ -13,7 +13,6 @@ public class FadeInUI : UIBase, IPersistentUI
 
     private void Awake()
     {
-        Debug.Log("start");
         image = GetComponentInChildren<Image>();
     }
 
@@ -35,7 +34,7 @@ public class FadeInUI : UIBase, IPersistentUI
     {
         //yield return FadeIn(type);
         image.color = new Color(0, 0, 0, 1);
-        yield return new WaitForSeconds(0.8f);
+        yield return new WaitForSeconds(0.4f);
         yield return FadeOut(type);
 
     }

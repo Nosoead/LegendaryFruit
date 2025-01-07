@@ -51,7 +51,6 @@ public class PlayerInteraction : MonoBehaviour
         {
             canTapInteractWithObject = true;
             currentInteractable = collision.gameObject.GetComponent<IInteractable>();
-            Debug.Log(collision.gameObject.ToString());
         }
         else if (collision.gameObject.layer == itemLayer)
         {

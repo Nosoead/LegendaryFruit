@@ -6,6 +6,7 @@ public class PlayerStatManager : MonoBehaviour
 {
     public UnityAction<string, float> OnSubscribeToStatUpdateEvent;
     public UnityAction<float, float, float> OnHealthDataToUIEvent;
+    public UnityAction OnStopCoroutine;
     [SerializeField] private PlayerSO playerData;
     [SerializeField] private PlayerInteraction playerInteraction;
     [SerializeField] private PlayerAnimationController playerAnimationController;
@@ -83,16 +84,11 @@ public class PlayerStatManager : MonoBehaviour
 
     private void OnDie()
     {
-        StopAllCoroutines();//.Invoke(nameof(dddd));
         playerAnimationController.OnDie();
-        //Invoke(nameof(dddd), 1f);
         GameManager.Instance.GameEnd();
+        //OnStopCoroutine?.Invoke();
     }
 
-    private void dddd()
-    {
-        GameManager.Instance.GameEnd();
-    }
     #endregion
 
     #region /ApplystatMethod

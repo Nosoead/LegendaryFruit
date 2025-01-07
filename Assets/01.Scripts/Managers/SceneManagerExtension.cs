@@ -29,8 +29,6 @@ public class SceneManagerExtension : Singleton<SceneManagerExtension>
         {
             if (scene.name == sceneType.ToString())
             {
-                Debug.Log("dd");
-                Debug.Log((int)sceneType);
                 scenes[(int)sceneType].Init();
                 SceneManager.sceneLoaded -= HandleSceneLoaded;
             }

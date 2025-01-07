@@ -17,7 +17,6 @@ public class BossPatrollState : IState
     public void Enter()
     {
         bossMonsterController.animator.OnMove(true);
-        Debug.Log("패트롤상태 진입");
     }
 
 

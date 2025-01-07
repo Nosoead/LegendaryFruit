@@ -64,14 +64,17 @@ public class PlayerStat : Stat
 
     public void UpdateCurrentHealth(float currentHealth)
     {
-        if (statDictionary.ContainsKey("CurrentHealth"))
+        if (statDictionary["CurrentHealth"] != 0)
         {
-            float newValue = Mathf.Clamp(currentHealth, 0f, statDictionary["MaxHealth"]);
-            statDictionary["CurrentHealth"] = newValue;
-            OnHealthUpdateEvent?.Invoke(newValue, statDictionary["MaxHealth"]);
-            if (statDictionary["CurrentHealth"] == 0)
+            if (statDictionary.ContainsKey("CurrentHealth"))
             {
-                OnDie?.Invoke();
+                float newValue = Mathf.Clamp(currentHealth, 0f, statDictionary["MaxHealth"]);
+                statDictionary["CurrentHealth"] = newValue;
+                OnHealthUpdateEvent?.Invoke(newValue, statDictionary["MaxHealth"]);
+                if (statDictionary["CurrentHealth"] == 0)
+                {
+                    OnDie?.Invoke();
+                }
             }
         }
     }
