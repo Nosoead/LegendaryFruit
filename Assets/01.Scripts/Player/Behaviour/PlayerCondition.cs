@@ -16,6 +16,7 @@ public class PlayerCondition : MonoBehaviour, IDamageable
     private bool isBurn = false;
     private bool isSlowDown = false;
 
+
     private void Awake()
     {
         if (statManager == null)
@@ -28,7 +29,6 @@ public class PlayerCondition : MonoBehaviour, IDamageable
     public void BurnDamage(float damage, float attributeValue, float attributeRateTime, float attributeStack)
     {
         statManager.ApplyInstantDamage(damage);
-        Debug.Log("1타");
         if (coBurnDamage != null && isBurn)
         {
             StopCoroutine(coBurnDamage);
@@ -41,10 +41,8 @@ public class PlayerCondition : MonoBehaviour, IDamageable
     {
         yield return null;
         burnWaitTime = new WaitForSeconds(attributeRateTime);
-        Debug.Log(attributeStack);
         for (int i = 0; i < attributeStack; i++)
         {
-            Debug.Log($"{i}번째 타격");
             statManager.ApplyInstantDamage(attributeValue);
             yield return burnWaitTime;
         }

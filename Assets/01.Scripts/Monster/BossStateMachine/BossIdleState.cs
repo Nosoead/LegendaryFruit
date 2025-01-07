@@ -14,7 +14,6 @@ public class BossIdleState : IState
 
     public void Enter()
     {
-        Debug.Log("Idle 상태 진입");
         bossMonsterController.animator.OnIdle();
         idleTime = Random.Range(1, 5);
         idleTimer = 0f;

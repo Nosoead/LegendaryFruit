@@ -62,7 +62,6 @@ public class PooledReward : MonoBehaviour, ISetPooledObject<PooledReward>
 
     public void GetWeapon(GameObject go)
     {
-        Debug.Log("두트윈");
         // 초기화
         ObjectPool.Release(this);
         //var go = Instantiate(weaponPrefab.gameObject);
@@ -90,7 +89,7 @@ public class PooledReward : MonoBehaviour, ISetPooledObject<PooledReward>
         }
 
         float hitPosY = closestHit.point.y;
-        float goalPos = hitPosY + 0.3f;
+        float goalPos = hitPosY + 0.5f;
 
         // TODO: 거리와 시간에 따라 속도 조정
         if (closestHit.collider != null)

@@ -96,20 +96,16 @@ public class SoundManagers : Singleton<SoundManagers>
             case "TitleScene":
                 if (bgmSource.clip == null || bgmSource.clip != clipDic[BgmType.Title]) //노래가 새로시작되지않게설정
                 {
-                    Debug.Log($"{bgmSource.clip}44");
                     bgmSource.clip = clipDic[BgmType.Title];
                     bgmSource.Play();
-                    Debug.Log($"{bgmSource.clip}33");
                 }
 
                 break;
             case "OneCycleScene":
                 if (bgmSource.clip == null || bgmSource.clip != clipDic[BgmType.InGame])
                 {
-                    Debug.Log($"{bgmSource.clip}11");
                     bgmSource.clip = clipDic[BgmType.InGame];
                     bgmSource.Play();
-                    Debug.Log($"{bgmSource.clip}22");
                 }
 
                 break;

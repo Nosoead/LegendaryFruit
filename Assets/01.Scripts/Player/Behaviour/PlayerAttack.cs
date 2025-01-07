@@ -107,14 +107,15 @@ public class PlayerAttack : MonoBehaviour
         //TODO 여러마리 공격할 수 있도록 변경 -> onecycle 이후
         Vector2 playerPosition = (Vector2)transform.position;
         Vector2 boxPosition = playerPosition + Vector2.right * attakRange * lookDirection;
-        Collider2D monster = Physics2D.OverlapBox(boxPosition, boxSize, 0f, monsterLayer);
+        Collider2D[] monster = Physics2D.OverlapBoxAll(boxPosition, boxSize, 0f, monsterLayer);
         if (monster == null)
         {
             yield return attackRateTime;
         }
         else
         {
-            attributeLogic.ApplyAttackLogic(monster.gameObject, totalAttackPower, weaponData.attributeAttackValue, weaponData.attributeAttackRateTime, weaponData.arrtibuteStatck);
+            foreach (Collider2D collider in monster)
+            attributeLogic.ApplyAttackLogic(collider.gameObject, totalAttackPower, weaponData.attributeAttackValue, weaponData.attributeAttackRateTime, weaponData.arrtibuteStatck);
             yield return attackRateTime;
         }
         isAttacking = false;

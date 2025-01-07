@@ -82,7 +82,6 @@ public class MonsterAnimationController : AnimationController
         {
             int randomIndex = Random.Range(0, regularMonster.pattrenAttackClip.Length);
             selectClip = regularMonster.pattrenAttackClip[randomIndex];
-            Debug.Log($"{selectClip.name}");
         }
         else
         {

@@ -14,7 +14,6 @@ public class IdleState :IState
 
     public void Enter()
     {
-        Debug.Log("idle상태 진입");
         idleTime = Random.Range(1, 5);
         idleTimer = 0f;
     }

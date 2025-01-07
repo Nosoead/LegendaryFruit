@@ -16,7 +16,6 @@ public class WeaponAnimationController : AnimationController
     protected override void Awake()
     {
         base.Awake();
-        Debug.Log($"{Animator}");
     }
     private void Start()
     {

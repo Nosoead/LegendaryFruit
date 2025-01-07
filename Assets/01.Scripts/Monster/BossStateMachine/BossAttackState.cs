@@ -20,7 +20,6 @@ public class BossAttackState : IState
 
     public void Enter()
     {
-        Debug.Log("공격상태 진입!");
         bossMonsterController.animator.BossDefalutAttack(true);
 
     }
