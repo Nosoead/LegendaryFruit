@@ -12,7 +12,7 @@ public class StageManager : Singleton<StageManager>
     private Stage currentStage = null;
     private StageType currentStageType;
     private int monsterCount;
-    public event Action<StageType> onFadeImage;
+    public event Action<StageType> OnPlayFadeIn;
 
 
     //일단 몬스터만 풀링
@@ -108,12 +108,8 @@ public class StageManager : Singleton<StageManager>
             GameManager.Instance.isClear = false;
         }
         monsterCount = currentStage.GetMonsterCount();
-        //FadeIn
-        UIManager.Instance.ToggleUI<FadeImage>(true,true);
-
-        onFadeImage?.Invoke(type);
+        OnPlayFadeIn?.Invoke(type);
         currentStage.SetStage(player, monster, confiner);
-        //FadeOut
     }
 
     public void MonsterDie()

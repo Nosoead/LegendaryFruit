@@ -5,19 +5,20 @@ public class UIManager : Singleton<UIManager>
 {
     private Dictionary<string, UIBase> uiDictionary = new Dictionary<string, UIBase>();
     private Stack<UIBase> uiActiveStack = new Stack<UIBase>();
+    private Dictionary<string, UIBase> persistentUI = new Dictionary<string, UIBase>();
     private string path;
 
-    private void Start()
+    public void Init()
     {
-        path = "UI";
-        Debug.Log("tqlkd");
         SetUIDictionary();
+        OpenPersistentUI<PlayerCanvasUI>(true);
+        OpenPersistentUI<FadeInUI>(true);
+        //TODO PromptUI -> OpenPersistentUI<PromptUI>(false);
     }
 
-    public void SetUIDictionary()
+    private void SetUIDictionary()
     {
-        //if (uiDictionary != null) return;
-        //Debug.Log("dddd");
+        path = "UI";
         UIBase[] uiArray = ResourceManager.Instance.LoadAllResources<UIBase>($"{path}");
         foreach (var ui in uiArray)
         {
@@ -126,5 +127,38 @@ public class UIManager : Singleton<UIManager>
         }
     }
 
-   
+    public void OpenPersistentUI<T>(bool isPersistentOpen)
+    {
+        var uiName = typeof(T).Name;
+        var uiPrefab = uiDictionary[uiName];
+        var uiInstance = Instantiate(uiPrefab);
+        if (uiInstance is IPersistentUI)
+        {
+            uiInstance.Open();
+            persistentUI.Add(uiName, uiInstance);
+            if (isPersistentOpen)
+            {
+                uiInstance.gameObject.SetActive(true);
+            }
+            if (!isPersistentOpen)
+            {
+                uiInstance.gameObject.SetActive(false);
+            }
+        }
+    }
+
+    public UIBase GetPersistentUI<T>()
+    {
+        var uiName = typeof(T).Name;
+        return persistentUI[uiName];
+    }
+
+    public void ClosePersistentUI()
+    {
+        foreach (var ui in persistentUI)
+        {
+            ui.Value.Close();
+        }
+        persistentUI.Clear();
+    }
 }

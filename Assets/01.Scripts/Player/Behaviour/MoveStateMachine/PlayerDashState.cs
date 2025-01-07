@@ -72,6 +72,7 @@ public class PlayerDashState : IState
             if (player.CanDash)
             {
                 coDashRoutine = player.SetStartCoroutine(dashRoutine());
+                player.PlayDustParticle();
             }
         }
     }

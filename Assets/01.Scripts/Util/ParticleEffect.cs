@@ -8,17 +8,17 @@ public class ParticleEffect : MonoBehaviour
         particle = GetComponent<ParticleSystem>();
     }
 
-    public void UpdateDirection(bool isLeft)
+    public void SetDirection(float lookDirection)
     {
         var renderer = particle.GetComponent<ParticleSystemRenderer>();
 
-        if (isLeft)
+        if (0 < lookDirection)
         {
-            renderer.flip = new Vector2(1, 0);
+            renderer.flip = new Vector2(0, 0);
         }
         else
         {
-            renderer.flip = new Vector2(0, 0);
+            renderer.flip = new Vector2(1, 0);
         }
     }
 

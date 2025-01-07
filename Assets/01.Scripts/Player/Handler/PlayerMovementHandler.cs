@@ -57,6 +57,8 @@ public class PlayerMovementHandler : MonoBehaviour
     public bool IsOnewayBlock { get; private set; } = false;
     public bool IsAttacking { get; private set; } = false;
 
+    //Particle Effect
+    [SerializeField] private ParticleEffect particle;
 
     #region /Unity life Cycle
     private void Awake()
@@ -142,6 +144,10 @@ public class PlayerMovementHandler : MonoBehaviour
         if (ground == null)
         {
             ground = GetComponent<PlayerGround>();
+        }
+        if (particle == null)
+        {
+            particle = GetComponentInChildren<ParticleEffect>();
         }
     }
 
@@ -373,6 +379,14 @@ public class PlayerMovementHandler : MonoBehaviour
         SetVelocity(Vector2.zero);
         SetCanDash(true);
         SetIsDashing(false);
+    }
+    #endregion
+
+    #region /Particle
+    public void PlayDustParticle()
+    {
+        particle.SetDirection(LookDirection);
+        particle.PlayEffect();
     }
     #endregion
 

@@ -3,7 +3,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class PlayerCanvasUI : UIBase
+public class PlayerCanvasUI : UIBase, IPersistentUI
 {
     [SerializeField] private TextMeshProUGUI currentHealthText;
     [SerializeField] private TextMeshProUGUI inGameMoneyText;
