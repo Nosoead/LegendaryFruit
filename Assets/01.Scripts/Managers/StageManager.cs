@@ -87,6 +87,7 @@ public class StageManager : Singleton<StageManager>
         }
         if (currentStage != null)
         {
+            currentStage.PoolRelease();
             Stage lastStage = currentStage;
             lastStage.gameObject.SetActive(false);
         }

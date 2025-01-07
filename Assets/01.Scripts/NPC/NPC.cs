@@ -7,4 +7,9 @@ public abstract class NPC : MonoBehaviour
     {
         return;
     }
+
+    public virtual void ReleaseReward()
+    {
+        return;
+    }
 }

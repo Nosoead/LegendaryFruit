@@ -44,6 +44,19 @@ public class GameManager : Singleton<GameManager>
         Invoke(nameof(DelayedGameEnd), 1f);
     }
 
+    public void GameEnd(bool isEnd)
+    {
+        if (isEnd)
+        {
+            DelayedGameEnd();
+        }
+        else
+        {
+            return;
+        }
+
+    }
+
     private void DelayedGameEnd()
     {
         Time.timeScale = 0f;

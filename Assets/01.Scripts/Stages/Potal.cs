@@ -84,7 +84,7 @@ public class Potal : MonoBehaviour, IInteractable
             }
             else
             {
-                GameManager.Instance.GameEnd();
+                GameManager.Instance.GameEnd(true);
             }
         }
     }

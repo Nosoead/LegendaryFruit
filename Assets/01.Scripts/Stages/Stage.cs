@@ -144,4 +144,12 @@ public class Stage : MonoBehaviour
         return stageData.isBossStage;
     }
     #endregion
+
+    public void PoolRelease()
+    {
+        foreach (var npc in stageNPC)
+        {
+            npc.ReleaseReward();
+        }
+    }
 }

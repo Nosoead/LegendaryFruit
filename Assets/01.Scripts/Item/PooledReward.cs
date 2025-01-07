@@ -99,4 +99,9 @@ public class PooledReward : MonoBehaviour, ISetPooledObject<PooledReward>
         }
         // 현재 상태
     }
+
+    public void PoolRelease()
+    {
+        ObjectPool.Release(this);
+    }
 }

@@ -52,4 +52,9 @@ public class PooledFruitWeapon : Weapon, IInteractable, ISetPooledObject<PooledF
     {
         ObjectPool = pool;
     }
+
+    public void PoolRelease()
+    {
+        ObjectPool.Release(this);
+    }
 }
