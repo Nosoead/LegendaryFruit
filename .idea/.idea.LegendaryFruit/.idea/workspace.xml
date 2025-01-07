@@ -6,12 +6,25 @@
   <component name="ChangeListManager">
     <list default="true" id="fd1b27b5-9a48-464d-8c89-0ee285d61d98" name="변경" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.LegendaryFruit/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.LegendaryFruit/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/01.Scripts/Managers/GameManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/01.Scripts/Managers/GameManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/00.Scenes/TestScenes/Test_ParkScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/00.Scenes/TestScenes/Test_ParkScene.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/01.Scripts/Managers/SoundManagers.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/01.Scripts/Managers/SoundManagers.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/01.Scripts/Managers/StageManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/01.Scripts/Managers/StageManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/01.Scripts/Managers/UIManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/01.Scripts/Managers/UIManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/UI/FadeImage.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/UI/FadeImage.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/UI/GameEndUI.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/UI/GameEndUI.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/99.UnityAssets/SkulSprite/123121111 1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/99.UnityAssets/SkulSprite/123121111 1.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/99.UnityAssets/SkulSprite/위치.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/99.UnityAssets/SkulSprite/위치/Alchemist_Projectile_26.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/99.UnityAssets/SkulSprite/위치/Alchemist_Projectile_26.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/99.UnityAssets/SkulSprite/위치/Alchemist_Projectile_27.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/99.UnityAssets/SkulSprite/위치/Alchemist_Projectile_27.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/99.UnityAssets/SkulSprite/위치/Arson_Deactivation.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/99.UnityAssets/SkulSprite/위치/Arson_Deactivation.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/99.UnityAssets/SkulSprite/위치/Bone_Deactivation.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/99.UnityAssets/SkulSprite/위치/Bone_Deactivation.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/99.UnityAssets/SkulSprite/위치/Brawl_Deactivation.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/99.UnityAssets/SkulSprite/위치/Brawl_Deactivation.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Stage/StageLobby.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Stage/StageLobby.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/UI/InventoryUI.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/UI/InventoryUI.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/UI/PromptUI.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/UI/PromptUI.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/StreamingAssets/Dialogue.csv" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/StreamingAssets/Dialogue.csv" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -96,10 +109,10 @@
       <option name="USE_EXTERNAL_CONSOLE" value="0" />
       <method v="2" />
     </configuration>
-    <configuration name="Unity 에디터에 연결" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" ignored-value-for-modified-check="20016">
+    <configuration name="Unity 에디터에 연결" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
       <option name="allowRunningInParallel" value="false" />
       <option name="listenPortForConnections" value="false" />
-      <option name="pid" value="20016" />
+      <option name="pid" />
       <option name="projectPathOnTarget" />
       <option name="selectedOptions">
         <list />
