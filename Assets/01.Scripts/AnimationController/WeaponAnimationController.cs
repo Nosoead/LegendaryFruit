@@ -122,14 +122,17 @@ public class WeaponAnimationController : AnimationController
         if(isFlip == true)
         {
             Sprite.flipX = true;
-            Sprite.gameObject.transform.localPosition = new Vector2(-1.5f, -0.2f);
+            Sprite.gameObject.transform.localPosition = new Vector2(-0.3f, 0.5f);
+
             particle.gameObject.transform.localPosition = new Vector2(-1.5f, -0.6f);
             particleSystemRenderer.flip = new Vector2(1f, 0f);
         }
         if(isFlip == false)
         {
             Sprite.flipX = false;
-            Sprite.gameObject.transform.localPosition = new Vector2(-0.3f, -0.2f);
+            Sprite.gameObject.transform.localPosition = new Vector2(0.3f, 0.5f);
+
+
             particle.gameObject.transform.localPosition = new Vector2(0f, -0.6f);
             particleSystemRenderer.flip = new Vector2(0f, 0f);
         }
