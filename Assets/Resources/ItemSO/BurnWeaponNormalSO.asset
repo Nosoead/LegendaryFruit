@@ -23,6 +23,6 @@ MonoBehaviour:
   attributeAttackRateTime: 1
   arrtibuteStatck: 3
   weaponSprite: {fileID: 21300000, guid: f13d6ddabb083304e8dcd531e554e5a9, type: 3}
-  rewardSprite: {fileID: 21300000, guid: 07b7a4679aaa90141b3f2e728322d23c, type: 3}
+  rewardSprite: {fileID: 21300000, guid: e8853cbfab6f07e409392d4c58e8a218, type: 3}
   animatorController: {fileID: 22100000, guid: f6fc0d12347d5df4094c587221cc0393, type: 2}
   effectMaterial: {fileID: 2100000, guid: b4b27d1d39a6051428b898cd275d0fe8, type: 2}
