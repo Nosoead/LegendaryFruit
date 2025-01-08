@@ -35,9 +35,9 @@ public class MonsterCondition : MonoBehaviour, IDamageable
 
     #region /BurnDamageLogic
     public void BurnDamage(float damage, float attributeValue, float attributeRateTime, float attributeStack)
-    {
+    {       
         controller.OnTakeHit();
-        OnTakeHitType?.Invoke(AttributeType.Burn);
+        OnTakeHitType?.Invoke(AttributeType.Normal);
         statManager.ApplyInstantDamage(damage);
         Debug.Log("1타");
         if (coBurnDamage != null && isBurn)
@@ -50,11 +50,13 @@ public class MonsterCondition : MonoBehaviour, IDamageable
 
     private IEnumerator BurnDamageCoroutine(float attributeValue, float attributeRateTime, float attributeStack)
     {
+        yield return new WaitForSecondsRealtime(0.5f);
         burnWaitTime = new WaitForSeconds(attributeRateTime);
         Debug.Log(attributeStack);
         for (int i = 0; i < attributeStack; i++)
         {
             Debug.Log($"{i}번째 타격");
+            OnTakeHitType?.Invoke(AttributeType.Burn);
             statManager.ApplyInstantDamage(attributeValue);
             yield return burnWaitTime;
         }

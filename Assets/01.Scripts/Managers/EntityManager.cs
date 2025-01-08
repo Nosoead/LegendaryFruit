@@ -2,7 +2,7 @@ using System.Collections.Generic;
 
 public class EntityManager : Singleton<EntityManager>
 {
-    public MonsterSO monsterData;
+    //public MonsterSO monsterData;
     private Dictionary<int, MonsterSO> monsters = new Dictionary<int, MonsterSO>();
 
     protected override void Awake()
