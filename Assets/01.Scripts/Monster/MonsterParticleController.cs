@@ -84,9 +84,10 @@ public class MonsterParticleController : MonoBehaviour
                 color = Color.red;
                 break;
             case AttributeType.SlowDown:
-                color = Color.yellow;
+                color = Color.blue;
                 break;
             case AttributeType.Blindness:
+                color = Color.yellow;
                 break;
             case AttributeType.Poison:
                 break;

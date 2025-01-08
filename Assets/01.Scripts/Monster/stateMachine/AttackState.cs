@@ -30,11 +30,6 @@ public class AttackState :IState
             monsterController.StateMachine.TransitionToState(monsterController.StateMachine.patrollState);
             return;
         }
-        else
-        {
-            return;
-        }
-
 
         // player 놓치면 idleState 
         if (!monsterController.DetectPlayer())
@@ -42,6 +37,7 @@ public class AttackState :IState
             monsterController.StateMachine.TransitionToState(monsterController.StateMachine.idleState);
             return;
         }
+
         // player 발견 && 땅이 있으면 이동
         if (monsterController.DetectPlayer())
         {
