@@ -8,6 +8,7 @@ public class MonsterCondition : MonoBehaviour, IDamageable
     [SerializeField] private MonsterStatManager statManager;
     public event UnityAction<AttributeType> OnTakeHitType;
     private MonsterAnimationController controller;
+
     // 각 속성을 확인하여 필요한 데이터를 반환
     private Coroutine coBurnDamage;
     private Coroutine coSlowDown;

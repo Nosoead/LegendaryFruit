@@ -19,7 +19,6 @@ public class PlayerAttack : MonoBehaviour
     private LayerMask monsterLayer;
     private AttributeType attributeType;
 
-    //private LayerMask monsterLayer = LayerMask.GetMask("Monster");
     private Vector2 boxSize = new Vector2(2.5f, 3f); //TODO 무기에따라 변경
     private bool isAttacking = false;
     private float lookDirection = 1f;
@@ -27,7 +26,7 @@ public class PlayerAttack : MonoBehaviour
     private WaitForSeconds attackRateTime = new WaitForSeconds(0.5f);
     //TODO : 공격속도에 따라 waitforseconds가 변하도록
 
-    //기즈모용
+    //기즈모
     private float attackLookDirection = 1f;
 
     private void Awake()
@@ -100,11 +99,9 @@ public class PlayerAttack : MonoBehaviour
     {
         SfxType randomSfx = (Random.Range(0,2) == 0) ? SfxType.PlayerAttack1 : SfxType.PlayerAttack2;
         SoundManagers.Instance.PlaySFX(randomSfx);
-        //SoundManagers.Instance.PlaySFX(SfxType.PlayerAttack2);
         isAttacking = true;
-        attackLookDirection = lookDirection;//기즈모용
+        attackLookDirection = lookDirection;//기즈모
         OnAttackingEvent?.Invoke(isAttacking);
-        //TODO 여러마리 공격할 수 있도록 변경 -> onecycle 이후
         Vector2 playerPosition = (Vector2)transform.position;
         Vector2 boxPosition = playerPosition + Vector2.right * attakRange * lookDirection;
         Collider2D[] monster = Physics2D.OverlapBoxAll(boxPosition, boxSize, 0f, monsterLayer);

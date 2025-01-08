@@ -1,4 +1,3 @@
-//안내문구
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Pool;
@@ -16,8 +15,8 @@ public class RewardNPC : NPC, IInteractable
     private List<Transform> spawnPositions = new List<Transform>();
     private int randomNum;
 
-    //TODO ItemManager에서 랜덤으로 들고올 수 있도록
     [SerializeField] private WeaponSO weaponData;
+
     //오브젝트풀
     private IObjectPool<PooledFruitWeapon> fruitWeapon;
     private IObjectPool<PooledReward> reward;
@@ -43,7 +42,6 @@ public class RewardNPC : NPC, IInteractable
         PoolManager.Instance.CreatePool<PooledReward>(PoolType.PooledReward, false, 5, 5);
         fruitWeapon = PoolManager.Instance.GetObjectFromPool<PooledFruitWeapon>(PoolType.PooledFruitWeapon);
         reward = PoolManager.Instance.GetObjectFromPool<PooledReward>(PoolType.PooledReward);
-        //TODO 인덱스접근 자동으로 할 수 있게
     }
 
     public override void SetReward()

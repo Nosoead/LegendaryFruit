@@ -13,7 +13,7 @@ public class DialogueManager : Singleton<DialogueManager>
 
     public bool IsLoad => loadData >= 2;
     
-    private void Awake()
+    protected override void Awake()
     {
         base.Awake();
     }

@@ -5,9 +5,6 @@ using UnityEngine;
 public class BossMonsterPattrenState : IState
 {
     private BossMonsterController bossMonsterController;
-
-    private float time = 0;
-
     
     public BossMonsterPattrenState(BossMonsterController bossMonsterController)
     {

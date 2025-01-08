@@ -14,17 +14,6 @@ public class PooledSound : MonoBehaviour, ISetPooledObject<PooledSound>
         audioSource = GetComponent<AudioSource>();
     }
 
-    private void Update()
-    {
-        if (audioSource.isPlaying)
-        {
-            
-        }
-        else
-        {
-            
-        }
-    }
     public void SetPooledObject(IObjectPool<PooledSound> pool)
     {
         ObjectPool = pool;

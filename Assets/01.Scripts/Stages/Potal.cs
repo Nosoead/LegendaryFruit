@@ -10,10 +10,10 @@ public class Potal : MonoBehaviour, IInteractable
 
     //스테이지 셋팅
     [SerializeField] private Stage stage;
-    private int rewardKind = 10000; //나눴을 때 몫, 1:무기, 2:재화
-    private int nextLevel = 1000; //나중에 다음 레벨있으면 써볼까 생각
+    //private int rewardKind = 10000; //나눴을 때 몫, 1:무기, 2:재화
+    //private int nextLevel = 1000; //나중에 다음 레벨있으면 써볼까 생각
     private int nextStage = 10;
-    private int stageVariation = 1; //바리에이션 늘어나면 randomRange써서 ㄱㄱ
+    //private int stageVariation = 1; //바리에이션 늘어나면 randomRange써서 ㄱㄱ
     private StageType currentstageType;
 
     public void InitPotal()

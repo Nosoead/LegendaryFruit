@@ -26,7 +26,7 @@ public class MonsterStateMachine
         idleState.UpdateStat(monsterController);
     }
 
-    public void Initialize(IState monsterState) // 초기화
+    public void Initialize(IState monsterState)
     {
         currentState = monsterState;
     }
@@ -34,7 +34,7 @@ public class MonsterStateMachine
     public void TransitionToState(IState nextState)
     {
         currentState?.Exit();
-        currentState = nextState; // 다음 스테이트로
+        currentState = nextState;
         currentState?.Enter();
     }
     public void Excute()

@@ -8,7 +8,6 @@ public class BossMonsterController : MonoBehaviour
     private BossStateMachine stateMachine;
     public BossStateMachine StateMachine => stateMachine;
     private MonsterAttributeLogics monsterAttributeLogics = null;
-    private MonsterAttributeLogics burnAttributeLogics = null;
     private MonsterAttributeLogicsDictionary attributeLogicsDictionary;
     private PatternData pattren;
     public MonsterGround monsterGround;
@@ -24,7 +23,7 @@ public class BossMonsterController : MonoBehaviour
     private float attributeValue;
     private float attributeRateTime;
     private float attributeStack;
-    private bool canMove = true;
+    //private bool canMove = true;
 
     // Pattren Info
     [SerializeField] private float damageInterval;
@@ -212,13 +211,13 @@ public class BossMonsterController : MonoBehaviour
         var dir = Vector3.Distance(transform.position, target.transform.position);
         if (dir > attackDistance)
         {
-            canMove = true;
+            //canMove = true;
             Vector3 moveDirection = (target.transform.position - transform.position).normalized;
             transform.position += moveDirection * (moveSpeed * Time.deltaTime); 
         }
         else
         {
-            canMove = false;
+            //canMove = false;
         }
     }
     #endregion

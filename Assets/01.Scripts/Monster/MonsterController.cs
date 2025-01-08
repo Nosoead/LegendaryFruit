@@ -28,7 +28,7 @@ public class MonsterController : MonoBehaviour
         attributeLogicsDictionary = new MonsterAttributeLogicsDictionary();
         attributeLogicsDictionary.Initialize();
         stateMachine = new MonsterStateMachine(this);
-        monsterAttributeLogics = new MonsterNormal(); //new AttributeLogics(); // 추상화클래스는 new를 할수없음
+        monsterAttributeLogics = new MonsterNormal();
     }
 
     private void OnEnable()
@@ -88,16 +88,15 @@ public class MonsterController : MonoBehaviour
         stateMachine.UpdateStat(this);
     }
 
-    public void ReverseDirection() // 방향 반전
+    public void ReverseDirection()
     {
-        //x축 반전
         Vector3 scale = transform.localScale;
         scale.x *= -1;
         lookDirection *= -1f;
         transform.localScale = scale;
 
     }
-    public bool DetectPlayer() //플레이어 찾는 레이
+    public bool DetectPlayer()
     {
         Vector3 raytDirection = Vector3.right * lookDirection;
         RaycastHit2D hit = Physics2D.Raycast(transform.position, raytDirection, chaseRange, playerLayerMask);
@@ -113,7 +112,7 @@ public class MonsterController : MonoBehaviour
         return false;
     }
 
-    public bool InAttackRange() // 플레이어가 사거리 안에 오면 활성화
+    public bool InAttackRange()
     {
         Vector3 raytDirection = Vector3.right * lookDirection;
         Debug.DrawRay(transform.position, raytDirection * attackDistance, Color.red);
@@ -144,8 +143,6 @@ public class MonsterController : MonoBehaviour
     public void Attack()
     {
         if (statManager.isDead) return;
-        //어트리뷰트에서 데미지계산후 딕셔너리에 저장후 꺼내옴
-        // scale.x가 0보다 크면 우 작으면 좌
         Vector2 monsterPosition = transform.position;
         Vector2 boxPostion = monsterPosition + Vector2.right * (attackDistance * lookDirection);
         Vector2 boxSize = new Vector2(attackDistance, 1f);

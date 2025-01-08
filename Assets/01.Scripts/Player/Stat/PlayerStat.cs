@@ -2,13 +2,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-// TODO: 데이터 저장을 추가하고 호출할 수 있도록 구현. 
-//       파일 저장 없이 메모리에서만 임시 데이터를 저장하도록 처리
-// -> UI 업데이트는 저장된 데이터를 바탕으로 동작 (DataManager에서 관리)
-
 public class PlayerStat : Stat
 {
-    // TODO: Controller에서 PlayerStat 업데이트 로직 추가
     public UnityAction<string, float> OnStatUpdatedEvent;
     public UnityAction<float, float> OnHealthUpdateEvent;
     public UnityAction OnDie;

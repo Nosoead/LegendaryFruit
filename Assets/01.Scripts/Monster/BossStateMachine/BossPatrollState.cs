@@ -5,8 +5,6 @@ using UnityEngine;
 public class BossPatrollState : IState
 {
     private BossMonsterController bossMonsterController;
-    private float idleTime;
-    private float idleTimer = 0f;
     private bool isGround = false;
 
     public BossPatrollState(BossMonsterController bossMonsterController)

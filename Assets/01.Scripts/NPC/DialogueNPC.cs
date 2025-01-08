@@ -9,8 +9,6 @@ public class DialogueNPC : NPC, IInteractable
     private int playerLayer;
     private int invincibleLayer;
 
-
-    //TODO 엑셀에서 dialogueIndex를 모종의 방법으로 받아오는 방법 모색
     public int dialogueIndex;
 
     public override void InitNPC()

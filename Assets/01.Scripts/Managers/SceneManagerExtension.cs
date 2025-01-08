@@ -13,7 +13,6 @@ public class SceneManagerExtension : Singleton<SceneManagerExtension>
 
     private void RegisterScenes()
     {
-        //TODO SceneName을 Enum으로 해서 BaseScene배열과 SceneName위치 통일시키기
         scenes = new BaseScene[2];
         scenes[0] = new TitleScene();
         scenes[1] = new OneCycleScene();

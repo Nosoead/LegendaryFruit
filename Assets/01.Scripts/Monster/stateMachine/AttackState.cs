@@ -5,8 +5,6 @@ public class AttackState :IState
     private MonsterController monsterController;
 
     private bool isGround;
-    //private MonsterAttributeLogicsDictionary monsterAttributeLogicsDictionary;
-    float testTime = 0f;
 
     public AttackState(MonsterController monsterController)
     {

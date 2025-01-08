@@ -11,7 +11,6 @@ public class MonsterGround : GroundDetector
             }
             isGround = Physics2D.Raycast(transform.position + colliderRightOffset, Vector2.down, groundLength, groundLayer)
                                && Physics2D.Raycast(transform.position + colliderLeftOffset, Vector2.down, groundLength, groundLayer);
-            //Debug.Log($"isGround체크 {isGround}");
         }
     }
 }

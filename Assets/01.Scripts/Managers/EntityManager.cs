@@ -11,8 +11,6 @@ public class EntityManager : Singleton<EntityManager>
         LoadAllMonsters();
     }
 
-
-    //임시
     public void LoadAllMonsters()
     {
         var monsterData = ResourceManager.Instance.LoadAllResources<MonsterSO>("MonsterSO");

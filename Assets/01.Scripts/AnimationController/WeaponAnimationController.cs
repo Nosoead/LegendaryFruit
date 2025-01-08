@@ -17,11 +17,6 @@ public class WeaponAnimationController : AnimationController
     {
         base.Awake();
     }
-    private void Start()
-    {
-        
-    }
-
 
     private void LateUpdate()
     {

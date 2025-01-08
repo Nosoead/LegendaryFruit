@@ -13,7 +13,7 @@ public class TabButtonUI : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
     
     public UnityEvent onTabSelected;
     public UnityEvent onTabDeselected;
-    // Start is called before the first frame update
+
     private void Start()
     {
         backgroundImage = GetComponent<Image>();
@@ -25,7 +25,6 @@ public class TabButtonUI : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
     {
         tabGroupUI.OnTabEnter(this);
         ShowText(true);
-        //SoundManagers.Instance.PlaySFX(SfxType.UIButton);
     }
 
     public void OnPointerExit(PointerEventData eventData)

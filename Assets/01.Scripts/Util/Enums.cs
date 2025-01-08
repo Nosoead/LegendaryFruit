@@ -8,7 +8,7 @@ public enum AttributeType
     Normal
 }
 
-enum StatType
+public enum StatType
 {
     MaxHealth,
     MoveSpeed,
@@ -75,12 +75,5 @@ public enum BgmType
     Title = 0,      //타이틀
     InGame,         //인게임
     Boss,
-
-}
-enum Table
-{
-    Rule,
-    Character,
-    Stage,
-    Monster
+    InfiniteDoors
 }

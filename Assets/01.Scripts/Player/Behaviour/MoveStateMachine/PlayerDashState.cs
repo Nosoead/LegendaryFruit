@@ -51,7 +51,7 @@ public class PlayerDashState : IState
                 player.SetStopCoroutine(coDashRoutine);
                 player.SetLayerToPlayer();
             }
-            player.StateMachine.TransitionTo(player.StateMachine.airborneState);//TODO : 점프
+            player.StateMachine.TransitionTo(player.StateMachine.airborneState);
             return;
         }
     }

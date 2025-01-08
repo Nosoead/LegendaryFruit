@@ -11,8 +11,7 @@ public class WeaponUpgradeUI : UIBase
     private SaveDataContainer saveDataContainer;
     private UIDialogue uiDialogue;
     private int dialogueIndex;
-    private bool isUpgrade;
-    private float currentCurrency = 100;//saveDataContainer.currencyData.inGameCurrency;
+    private float currentCurrency = 100;//saveDataContainer.currencyData.inGameCurrency; -> 캐릭터 보유 재화로 체크
     private int requiredCurrency = 100;
 
   
@@ -49,7 +48,6 @@ public class WeaponUpgradeUI : UIBase
             currentCurrency -= requiredCurrency;
             Debug.Log("재화 깍음 ");
             Debug.Log("SO 바꿈");
-            isUpgrade = true;
             dialogueIndex = 10203;
             SoundManagers.Instance.PlaySFX(SfxType.UIButton);
             UIManager.Instance.ToggleUI<NpcDialougeUI>(false, dialogueIndex);

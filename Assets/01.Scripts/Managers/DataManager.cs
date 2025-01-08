@@ -18,7 +18,7 @@ public class DataManager : Singleton<DataManager>
         Debug.Log(savePath + $"/{typeof(T).ToString()}.txt");
     }
 
-    public T LoadData<T>() //where T : class
+    public T LoadData<T>()
     {
         Debug.Log(savePath + $"/{typeof(T).ToString()}.txt");
         if (File.Exists(savePath + $"/{typeof(T).ToString()}.txt"))

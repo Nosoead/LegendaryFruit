@@ -63,18 +63,6 @@ public class PlayerAnimationController : AnimationController
     private void OnDirectionEvent(float directionValue)
     {
         FlipCheck(directionValue);
-
-        //if (weaponAnimator.GetCurrentAnimatorStateInfo(0).IsName("Weapon_Attack"))
-        //{
-        //    if (weaponAnimator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1f) 
-        //    {
-        //        FlipCheck(directionValue);
-        //    }
-        //}
-        //else
-        //{
-        //    FlipCheck(directionValue);
-        //}
     }
 
     private void FlipCheck(float value)

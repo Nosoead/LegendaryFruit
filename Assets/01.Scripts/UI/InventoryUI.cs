@@ -2,12 +2,8 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
-
-
-
 public class InventoryUI : UIBase
 {
-    
     [SerializeField] private TextMeshProUGUI maxHealthText;
     [SerializeField] private TextMeshProUGUI currentHealthText;
     [SerializeField] private TextMeshProUGUI attackPowerText;
@@ -24,32 +20,20 @@ public class InventoryUI : UIBase
     [SerializeField] private List<Image> weaponIcons;
     [SerializeField] private List<Image> weaponOverlays;
     private Sprite itemSprite1;
-
     private SaveDataContainer saveDataContainer;
-
-
-    private void Update()
-    {
-        if (saveDataContainer != null) GetDataToText();
-    }
 
     public override void Open()
     { 
-        if (saveDataContainer == null) GetStatData();
         base.Open();
+        if (saveDataContainer == null) GetStatData();
     }
     private void GetStatData()
     {
         saveDataContainer = PlayerInfoManager.Instance.GetSaveData();
-        /*if (saveDataContainer == null)
-        {
-            return;
-        }*/
     }
 
     private void GetDataToText()
     {
-        
         maxHealthText.text = ($"최대체력 : {saveDataContainer.playerStatData.maxHealth.ToString()}");
         attackPowerText.text = ($" 공격력 : {saveDataContainer.playerStatData.currentAttackPower.ToString()}");
         defenseText.text = ($" 방어력 : {saveDataContainer.playerStatData.currentDefense.ToString()}");

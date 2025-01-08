@@ -14,21 +14,16 @@ public class StageManager : Singleton<StageManager>
     private int monsterCount;
     public event Action<StageType> OnPlayFadeIn;
 
-
-    //일단 몬스터만 풀링
     private IObjectPool<PooledMonster> monster;
     private IObjectPool<PooledBossMonster> bossMonster;
 
     protected override void Awake()
     {
         base.Awake();
-        //RegisterStage();
     }
 
     private void Start()
     {
-        //TODO : 오브젝트풀 시작하자마자 다 뽑아와서 등록까지 할 것.
-        //instance찍고 딕셔너리로 참조만 하면 바로 풀 사용할 수 있도록, CreatePool사용없이
         PoolManager.Instance.CreatePool<PooledMonster>(PoolType.PooledMonster, false, 7, 12);
         PoolManager.Instance.CreatePool<PooledBossMonster>(PoolType.PooledBossMonster, false, 7, 12);
 

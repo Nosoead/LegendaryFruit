@@ -5,16 +5,10 @@ using UnityEngine.Rendering;
 
 public class PooledReward : MonoBehaviour, ISetPooledObject<PooledReward>
 {
-    public WeaponSO weaponData = null; // 그래픽 개선 예정
-    //private bool isGetWeapon = false; // 경고를 제거하세요
-
+    public WeaponSO weaponData = null;
     [SerializeField] private SpriteRenderer spriteRenderer;
-
-
-    // SO를 사용해 데이터를 관리하세요
     [SerializeField] private PooledFruitWeapon weaponPrefab;
 
-    // 오브젝트 풀 생성
     private IObjectPool<PooledReward> objectPool;
 
     public IObjectPool<PooledReward> ObjectPool
@@ -59,18 +53,13 @@ public class PooledReward : MonoBehaviour, ISetPooledObject<PooledReward>
     // TODO: DOTween 효과 추가
     public Ease ease;
 
-
     public void GetWeapon(GameObject go)
     {
-        // 초기화
         ObjectPool.Release(this);
-        //var go = Instantiate(weaponPrefab.gameObject);
-        //go.transform.position = this.transform.position;
         RaycastHit2D blockHit = Physics2D.Raycast(go.transform.position, Vector2.down, 50, LayerMask.GetMask("Block"));
         RaycastHit2D groundHit = Physics2D.Raycast(go.transform.position,Vector2.down, 50, LayerMask.GetMask("Ground"));
         RaycastHit2D closestHit;
 
-        //가까운 히트
         if (blockHit.collider != null && groundHit.collider != null)
         {
             closestHit = blockHit.distance < groundHit.distance ? blockHit : groundHit;
@@ -94,10 +83,8 @@ public class PooledReward : MonoBehaviour, ISetPooledObject<PooledReward>
         // TODO: 거리와 시간에 따라 속도 조정
         if (closestHit.collider != null)
         {
-            // 무기가 떨궈짐
             var tween = go.transform.DOMoveY(goalPos, 1f, false);
         }
-        // 현재 상태
     }
 
     public void PoolRelease()

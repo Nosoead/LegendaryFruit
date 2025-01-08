@@ -5,9 +5,8 @@ using UnityEngine.Events;
 public class PlayerInteraction : MonoBehaviour
 {
     public UnityAction<WeaponSO> FruitWeapOnEquipEvent;
-    public UnityAction<WeaponSO> FruitWeaponEatAndStatUpEvent; //먹은 리스트도 저장가능~
+    public UnityAction<WeaponSO> FruitWeaponEatAndStatUpEvent;
     [SerializeField] private PlayerController controller;
-    //[SerializeField] private TextMeshProUGUI promptText;
     private IInteractable currentInteractable;
     private WeaponSO weaponData;
 

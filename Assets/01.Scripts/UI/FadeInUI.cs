@@ -6,11 +6,7 @@ public class FadeInUI : UIBase, IPersistentUI
 {
     private Image image;
     private Coroutine fadeCoroutine;
-    /*public override void Open()
-    {
-      base.Open();
-    }*/
-
+  
     private void Awake()
     {
         image = GetComponentInChildren<Image>();
@@ -32,11 +28,9 @@ public class FadeInUI : UIBase, IPersistentUI
     }
     private IEnumerator FadeCoroutine(StageType type)
     {
-        //yield return FadeIn(type);
         image.color = new Color(0, 0, 0, 1);
         yield return new WaitForSeconds(0.4f);
         yield return FadeOut(type);
-
     }
 
 

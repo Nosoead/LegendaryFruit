@@ -152,7 +152,8 @@ public class PlayerMovementHandler : MonoBehaviour
     }
 
     #region /subscribeMethod
-    private void OnStatUpdatedEvent(string statKey, float value)    {
+    private void OnStatUpdatedEvent(string statKey, float value)
+    {
         switch (statKey)
         {
             case "MoveSpeed":
@@ -166,6 +167,7 @@ public class PlayerMovementHandler : MonoBehaviour
                 break;
         }
     }
+
     private void OnDirectionEvent(float directionValue)
     {
         LookDirection = directionValue;
@@ -196,7 +198,6 @@ public class PlayerMovementHandler : MonoBehaviour
             DownwardJump();
             return;
         }
-        //IsDownKeyPressed = false;
         IsJumpKeyPressed = isJumpKeyPressed;
     }
 
@@ -388,9 +389,4 @@ public class PlayerMovementHandler : MonoBehaviour
         particle.PlayEffect();
     }
     #endregion
-
-    public void test()
-    {
-        Debug.Log(onewayBlockCollider.gameObject.ToString());
-    }
 }

@@ -11,7 +11,6 @@ public class GameManager : Singleton<GameManager>
     {
         base.Awake();
         player = GameObject.Find("Mainplayer");
-        //test용
     }
 
     public void Init()
@@ -40,7 +39,6 @@ public class GameManager : Singleton<GameManager>
 
     public void GameEnd()
     {
-        //DelayedGameEnd();
         Invoke(nameof(DelayedGameEnd), 1f);
     }
 

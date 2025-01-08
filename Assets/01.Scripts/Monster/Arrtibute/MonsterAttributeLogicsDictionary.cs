@@ -15,7 +15,6 @@ public class MonsterAttributeLogicsDictionary
         };
     }
 
-    // 속성 타입 가져옴
     public MonsterAttributeLogics GetAttributeLogic(AttributeType type)
     {
         if (attributeLogicMap.TryGetValue(type, out MonsterAttributeLogics logic))

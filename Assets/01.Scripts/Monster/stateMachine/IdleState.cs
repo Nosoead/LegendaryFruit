@@ -20,20 +20,18 @@ public class IdleState :IState
 
     public void Execute()
     {
-        idleTimer += Time.deltaTime; //타이머
-        //플레이어와의 거리 확인
+        idleTimer += Time.deltaTime;
        
-        // n초간 가만히 있다가 패트롤 스테이트로 전환
         if (idleTimer >= idleTime)
         {
-            if (Random.value < 0.3f) // 가만히있다가 가끔 방향 전환
+            if (Random.value < 0.3f)
             {
                 monsterController.ReverseDirection(); 
             }
             monsterController.StateMachine.TransitionToState(monsterController.StateMachine.patrollState);
             return;
         }
-        // 가만히 있는데 플레이어가 들어오면 어택스테이트로 변환
+        
         if (monsterController.DetectPlayer() && monsterController.InAttackRange())
         {
             monsterController.StateMachine.TransitionToState(monsterController.StateMachine.attackState);

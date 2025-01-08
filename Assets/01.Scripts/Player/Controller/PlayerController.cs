@@ -31,7 +31,6 @@ public class PlayerController : MonoBehaviour
         //PlayerMovement
         input.Player.Move.started += PlayerDirection;
         input.Player.Move.started += PlayerMove;
-        //Input.Player.Move.performed += PlayerMove;
         input.Player.Move.canceled += PlayerMove;
 
         //SubCommand ex) UpArrow + Attak, DownArrow + Jump ...
@@ -46,7 +45,6 @@ public class PlayerController : MonoBehaviour
 
         //PlayerAttack
         input.Player.Attack.started += PlayerAttack;
-        //Input.Player.Attack.canceled += PlayerAttack;
         input.Player.Skill1.performed += PlayerSkill1;
         input.Player.Skill1.canceled += PlayerSkill1;
         input.Player.Skill2.performed += PlayerSkill2;
@@ -54,7 +52,6 @@ public class PlayerController : MonoBehaviour
 
         //PlayerEquip
         input.Player.SwapWeapon.started += PlayerSwapWeapon;
-        //Input.Player.SwapWeapon.canceled += PlayerSwapWeapon;
 
         //PlayerInteract -> 
         input.Player.Interact.started += PlayerTapInteract;
