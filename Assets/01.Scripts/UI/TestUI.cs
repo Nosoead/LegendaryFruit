@@ -1,11 +1,7 @@
-using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
-using static UnityEditor.ShaderGraph.Internal.KeywordDependentCollection;
 
 public class TestUI : MonoBehaviour
 {
-    private bool isPlay = true;
     private bool isESC = false;
     private bool isTab = false;
 
