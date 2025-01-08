@@ -1,43 +1,20 @@
-using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
-public class MonsterParticleController : MonoBehaviour
+public class ParticleController : MonoBehaviour
 {
-    [SerializeField] private MonsterStatManager monsterStatManager;
-    [SerializeField] private ParticleSystem particle;
-    [SerializeField] private ParticleSystem[] numberParticle;
-    [SerializeField] private Material damageMaterial;
+    public ParticleSystem particle;
+    public ParticleSystem[] numberParticle;
+    public ParticleSystemRenderer[] impactParticles;
+    public Material damageMaterial;
+    private Dictionary<AttributeType, Material[]> typeMaterial = new Dictionary<AttributeType, Material[]>();
 
-    private void Awake()
+    protected virtual void SetTypeMaterial()
     {
-        EnsureComponents();
+         
     }
 
-    private void OnEnable()
-    {
-        monsterStatManager.DamageTakenEvent += OnDamageReceived;
-        monsterStatManager.DamageTakenEvent += OnHitParticlePlay;
-    }
-    private void OnDisable()
-    {
-        monsterStatManager.DamageTakenEvent -= OnDamageReceived;
-        monsterStatManager.DamageTakenEvent -= OnHitParticlePlay;
-    }
-
-    private void EnsureComponents()
-    {
-        if(monsterStatManager == null)
-        {
-            monsterStatManager = GetComponent<MonsterStatManager>();    
-        }
-        if(particle == null)
-        {
-            particle = GetComponentInChildren<ParticleSystem>();
-        }
-    }
-
-    public void OnDamageReceived(float damage, AttributeType type)
+    protected virtual void OnDamageReceived(float damage, AttributeType type)
     {
         int damageInt = Mathf.FloorToInt(damage);
         string str = damageInt.ToString("D3");
@@ -72,7 +49,7 @@ public class MonsterParticleController : MonoBehaviour
         }
     }
 
-    private void SetDamageColor(Material material, AttributeType type)
+    protected virtual void SetDamageColor(Material material, AttributeType type)
     {
         var color = material.color;
         switch (type)
@@ -95,7 +72,7 @@ public class MonsterParticleController : MonoBehaviour
         material.color = color;
     }
 
-    private void SetFrameOverTime(ParticleSystem.TextureSheetAnimationModule textureSheetAnimation, int frame, int totalFrames)
+    protected virtual void SetFrameOverTime(ParticleSystem.TextureSheetAnimationModule textureSheetAnimation, int frame, int totalFrames)
     {
         if (frame < 0 || frame >= totalFrames)
         {
@@ -107,7 +84,7 @@ public class MonsterParticleController : MonoBehaviour
         textureSheetAnimation.frameOverTime = frameCurve;
     }
 
-    public void OnHitParticlePlay(float damage, AttributeType type)
+    protected virtual void OnHitParticlePlay(float damage, AttributeType type)
     {
         if (particle.isPlaying)
         {

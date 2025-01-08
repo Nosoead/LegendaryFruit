@@ -14893,7 +14893,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 99456d94e039ef048819fc93a4e292db, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pooledMonster: {fileID: 3571420164024259195}
   isDead: 0
 --- !u!95 &1103456294632927882
 Animator:
@@ -14966,13 +14965,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e072eff76c141d34a951e7122385d21d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  monsterStatManager: {fileID: 9025224996261991306}
   particle: {fileID: 6077500509035878028}
   numberParticle:
   - {fileID: 889364513555082667}
   - {fileID: 9072303016439477977}
   - {fileID: 5267744818599219931}
+  rendererParitce: {fileID: 6077500508194437251}
   damageMaterial: {fileID: 2100000, guid: 6701686254d461e40931dd4d1100cb08, type: 2}
+  monsterStatManager: {fileID: 9025224996261991306}
 --- !u!1 &5817554197743874637
 GameObject:
   m_ObjectHideFlags: 0

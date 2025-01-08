@@ -44546,7 +44546,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 99456d94e039ef048819fc93a4e292db, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pooledMonster: {fileID: 0}
   isDead: 0
 --- !u!61 &9178304503981144655
 BoxCollider2D:
@@ -44646,13 +44645,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e072eff76c141d34a951e7122385d21d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  monsterStatManager: {fileID: 0}
   particle: {fileID: 2050638217353607981}
   numberParticle:
   - {fileID: 7789525644270297605}
   - {fileID: 4397201507231859244}
   - {fileID: 1363652545598224341}
   damageMaterial: {fileID: 2100000, guid: 6701686254d461e40931dd4d1100cb08, type: 2}
+  monsterStatManager: {fileID: 0}
 --- !u!1 &8037912053893659440
 GameObject:
   m_ObjectHideFlags: 0
