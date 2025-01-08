@@ -458,6 +458,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a5b0c3a07a3025429d09453646534ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  weaponSo: {fileID: 11400000, guid: ccc85a99a968eb743a3c98bdcb562b49, type: 2}
+  gradeText: {fileID: 7818785896635730238}
+  promptName: {fileID: 2646349241682979861}
+  promptDescription: {fileID: 5718968043812291740}
+  promptAttackPower: {fileID: 0}
+  promptImage: {fileID: 323327616591634060}
 --- !u!1 &4097926254371803366
 GameObject:
   m_ObjectHideFlags: 0

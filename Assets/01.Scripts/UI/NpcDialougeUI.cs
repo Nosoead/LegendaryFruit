@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class NpcDialougeUI : UIBase
@@ -11,11 +12,15 @@ public class NpcDialougeUI : UIBase
     {
         if (!isFirstOpen)
         {
+
             Init();
-            uiDialogue.gameObject.SetActive(true);
-            SetDialogue();
-            Invoke(nameof(SetDialogue), 0.01f);
             isFirstOpen = true;
+            if (!gameObject.activeSelf)
+            {
+                gameObject.SetActive(true);
+            }
+            StartCoroutine(LoadDialogueData(dialogueIndex));
+            
         }
         else
         {
@@ -23,7 +28,6 @@ public class NpcDialougeUI : UIBase
             SetDialogue();
         }
     }
-
     private void Init()
     {
         if (!uiDialogue)
@@ -35,16 +39,26 @@ public class NpcDialougeUI : UIBase
         }
 
     }
-    
+
     private void SetDialogue()
     {
         var dialogue = DialogueManager.Instance.GetDialogueData(dialogueIndex);
-        if (dialogue != null)
-        {
-            uiDialogue.SetDialogue(dialogue); 
-        }
+        if (dialogue == null) return;
+        uiDialogue.SetDialogue(dialogue);
     }
-   
+    private IEnumerator LoadDialogueData(int index)
+    {
+        var dialogue = DialogueManager.Instance.GetDialogueData(index);
+        
+        while (dialogue == null)
+        {
+            yield return null; 
+            dialogue = DialogueManager.Instance.GetDialogueData(index);
+        }
+
+        uiDialogue.SetDialogue(dialogue);
+        gameObject.SetActive(false);
+    }
     public void GetDialougeIndex(int index)
     {
         dialogueIndex = index;

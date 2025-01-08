@@ -10,6 +10,7 @@ public class SoundManagers : Singleton<SoundManagers>
     public AudioSource sfxSource;       //sfx전용 오디오 변수
     public AudioSource bgmSource;       //bgm전용 오디오 변수
     private IObjectPool<PooledSound> pooledSound;
+    private List<PooledSound> activePooledSounds = new List<PooledSound>();
 
     private Dictionary<Enum, AudioClip> clipDic = new Dictionary<Enum, AudioClip>(); //sfx클립 저장해놓는 Dic
     private float volumeMaster;
@@ -36,6 +37,7 @@ public class SoundManagers : Singleton<SoundManagers>
             if (lastSoundTime >= soundInterval)
             {
                 var sound = pooledSound.Get();
+                RegisterPooledSound(sound);
                 sound.PlaySound(clipDic[type]);
                 lastSoundTime = 0;
             }
@@ -43,6 +45,7 @@ public class SoundManagers : Singleton<SoundManagers>
         else
         {
             var sound = pooledSound.Get();
+            RegisterPooledSound(sound);
             sound.PlaySound(clipDic[type]);
         }
     
@@ -72,6 +75,11 @@ public class SoundManagers : Singleton<SoundManagers>
             sfxSource.volume = volume * volumeMaster;
             PlayerPrefs.SetFloat("SFX", volume);
         }
+
+        foreach (var sound in activePooledSounds)
+        {
+            sound.UpdateVolume(volume * volumeMaster);
+        }
     }
 
     public void SetVolumeMaster(float volume)
@@ -82,6 +90,18 @@ public class SoundManagers : Singleton<SoundManagers>
         sfxSource.volume = PlayerPrefs.GetFloat("SFX", 1f) * volumeMaster;
     }
 
+    public float GetSfxVolume()
+    {
+        return PlayerPrefs.GetFloat("SFX", 1f) * volumeMaster;
+    }
+    private void RegisterPooledSound(PooledSound sound)
+    {
+        if (!activePooledSounds.Contains(sound))
+        {
+            activePooledSounds.Add(sound);
+        }
+        sound.OnReleased += () => activePooledSounds.Remove(sound);
+    }
     /// <summary>
     /// 씬 로드 시 호출해주는 함수
     /// </summary>

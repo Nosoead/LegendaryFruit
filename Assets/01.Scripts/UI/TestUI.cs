@@ -8,11 +8,16 @@ public class TestUI : MonoBehaviour
 
     private void Update()
     {
+        /*if (SettingUI.IsActive)
+        {
+            return;
+        }*/
         // ESC 키를 눌렀을 때 ESCUI 토글
         if (Input.GetKeyDown(KeyCode.BackQuote))
         {
             if (isESC == false)
             {
+                
                 isESC = true;
                 isTab = false;
                 ToggletimeScale(isPlay: false);
@@ -65,6 +70,10 @@ public class TestUI : MonoBehaviour
         //    UIManager.Instance.ToggleUI<NpcUpgradeUI>(false);
         //    SoundManagers.Instance.PlaySFX(SfxType.UIButton);
         //}
+        if (Input.GetKeyDown(KeyCode.T))
+        {
+            UIManager.Instance.ToggleUI<PromptUI>(false);
+        }
     }
 
     private void ToggleESCTAB()

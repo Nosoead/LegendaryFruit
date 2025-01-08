@@ -26,6 +26,7 @@ public class InventoryUI : UIBase
     { 
         base.Open();
         if (saveDataContainer == null) GetStatData();
+        GetDataToText();
     }
     private void GetStatData()
     {
