@@ -157,7 +157,7 @@ public class PlayerEquipment : MonoBehaviour
             return;
         }
         float hitPosY = closestHit.point.y;
-        float goalPos = hitPosY + 0.5f;
+        float goalPos = hitPosY + 1f;
         if (closestHit.collider != null)
         {
             // 무기가 떨궈짐

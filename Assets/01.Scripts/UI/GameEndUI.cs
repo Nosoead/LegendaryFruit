@@ -22,7 +22,7 @@ public class GameEndUI : UIBase
     {
         if (saveDataContainer == null) GetStatData();
         base.Open();
-        if (GameManager.Instance.isClear)
+        if (GameManager.Instance.GetGameClear())
         {
             titleTxt.text = "Game Clear!";
             exitButton.onClick.AddListener(() => SceneManagerExtension.Instance.LoadScene(SceneType.TitleScene));

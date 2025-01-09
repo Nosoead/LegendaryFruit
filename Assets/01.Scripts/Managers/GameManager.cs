@@ -1,11 +1,12 @@
 using UnityEngine;
+using UnityEngine.Events;
 
 public class GameManager : Singleton<GameManager>
 {
+    public UnityAction OnGameClear;
+
     public GameObject player;
-    public bool isClear = false;
-    public bool isGetWeapon = false;
-    public bool isCreatReward = false;
+    private bool isClear = false;
 
     protected override void Awake()
     {
@@ -52,6 +53,17 @@ public class GameManager : Singleton<GameManager>
             return;
         }
 
+    }
+
+    public void SetGameClear(bool isClear)
+    {
+        this.isClear = isClear;
+        OnGameClear?.Invoke();
+    }
+
+    public bool GetGameClear()
+    {
+        return isClear;
     }
 
     private void DelayedGameEnd()

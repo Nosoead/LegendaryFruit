@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Pool;
+using UnityEngine.Rendering.Universal;
 
 public class RewardNPC : NPC, IInteractable
 {
@@ -16,6 +17,7 @@ public class RewardNPC : NPC, IInteractable
     private int randomNum;
 
     [SerializeField] private WeaponSO weaponData;
+    [SerializeField] private Light2D NPCSpotlight;
 
     //오브젝트풀
     private IObjectPool<PooledFruitWeapon> fruitWeapon;
@@ -33,7 +35,11 @@ public class RewardNPC : NPC, IInteractable
             pressFCanvas = GetComponentInChildren<Canvas>();
         }
         pressFCanvas.gameObject.SetActive(false);
-
+        if (NPCSpotlight == null)
+        {
+            NPCSpotlight = GetComponentInChildren<Light2D>();
+        }
+        SetSpotlight(isTurnOn : false);
         for (int i = 0; i < spawnPositionsRoot.childCount; i++)
         {
             spawnPositions.Add(spawnPositionsRoot.GetChild(i));
@@ -46,6 +52,7 @@ public class RewardNPC : NPC, IInteractable
 
     public override void SetReward()
     {
+        SetSpotlight(isTurnOn : true);
         weaponData = ItemManager.Instance.GetItemData(selectNum: 1)[0];
         randomNum = Random.Range(0, spawnPositions.Count);
         pooledReward = reward.Get();
@@ -89,6 +96,7 @@ public class RewardNPC : NPC, IInteractable
         if (isDeepPressed || isPressed)
         {
             GetWeaponFromReward();
+            GameManager.Instance.SetGameClear(true);
         }
     }
 
@@ -102,6 +110,18 @@ public class RewardNPC : NPC, IInteractable
             pooledReward.GetWeapon(weapon.gameObject);
             weapon.SetWeaponSO(weaponData);
             weapon.EnsureComponents();
+        }
+    }
+
+    private void SetSpotlight(bool isTurnOn)
+    {
+        if (isTurnOn)
+        {
+            NPCSpotlight.gameObject.SetActive(true);
+        }
+        else
+        {
+            NPCSpotlight.gameObject.SetActive(false);
         }
     }
 

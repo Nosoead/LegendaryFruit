@@ -31,6 +31,17 @@ public class Potal : MonoBehaviour, IInteractable
 
         pressFCanvas.gameObject.SetActive(false);
         currentstageType = (StageType)stage.GetStageID();
+        GameManager.Instance.OnGameClear += OnOpenPotal;
+    }
+
+    private void OnDisable()
+    {
+        GameManager.Instance.OnGameClear -= OnOpenPotal;
+    }
+
+    private void OnOpenPotal()
+    {
+        //TODO 포탈 이미지 변경
     }
 
     #region /TogglePrompt
@@ -38,7 +49,10 @@ public class Potal : MonoBehaviour, IInteractable
     {
         if (collision.gameObject.layer == playerLayer || collision.gameObject.layer == invincibleLayer)
         {
-            TogglePrompt(isOpen: true);
+            if (GameManager.Instance.GetGameClear())
+            {
+                TogglePrompt(isOpen: true);
+            }
         }
     }
 
@@ -46,7 +60,10 @@ public class Potal : MonoBehaviour, IInteractable
     {
         if (collision.gameObject.layer == playerLayer || collision.gameObject.layer == invincibleLayer)
         {
-            TogglePrompt(isOpen: false);
+            if (GameManager.Instance.GetGameClear())
+            {
+                TogglePrompt(isOpen: false);
+            }
         }
     }
 
@@ -74,7 +91,7 @@ public class Potal : MonoBehaviour, IInteractable
 
     private void ChagedStage()
     {
-        if (GameManager.Instance.isClear == true)
+        if (GameManager.Instance.GetGameClear() == true)
         {
             if (!stage.GetBossData())
             {

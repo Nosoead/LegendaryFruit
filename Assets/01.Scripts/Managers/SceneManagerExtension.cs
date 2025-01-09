@@ -40,5 +40,4 @@ public class SceneManagerExtension : Singleton<SceneManagerExtension>
         PoolManager.Instance.ResetAllObjectPool();
         UIManager.Instance.ClosePersistentUI();
     }
-
 }
