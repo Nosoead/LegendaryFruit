@@ -100,9 +100,10 @@ public class PlayerEquipment : MonoBehaviour
     private void ReplaceWeapon(WeaponSO weaponData)
     {
         PooledFruitWeapon discardedObject = fruitWeapon.Get();
+        discardedObject.gameObject.layer = LayerMask.NameToLayer("Default");
         discardedObject.gameObject.transform.position = transform.parent.position;
         DropDotween(discardedObject.gameObject, transform.parent.position);
-        discardedObject.weaponData = equipWeapons[currentEquipWeaponIndex];
+        discardedObject.SetWeaponSO(equipWeapons[currentEquipWeaponIndex]);
         discardedObject.EnsureComponents();
         equipWeapons[currentEquipWeaponIndex] = weaponData;
     }
@@ -156,14 +157,14 @@ public class PlayerEquipment : MonoBehaviour
             return;
         }
         float hitPosY = closestHit.point.y;
-        float goalPos = hitPosY + 0.5f;
+        float goalPos = hitPosY + 1f;
         if (closestHit.collider != null)
         {
             // 무기가 떨궈짐
             Sequence sequence = DOTween.Sequence();
             sequence.Append(go.transform.DOMoveY(position.y+3.5f, 0.5f, false))
                     .Append(go.transform.DOMoveY(goalPos, 0.5f, false));
-            
+            go.gameObject.layer = LayerMask.NameToLayer("Item");
         }
     }
     #endregion

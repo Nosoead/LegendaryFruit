@@ -1,26 +1,28 @@
 using Cinemachine;
+using DG.Tweening;
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.Pool;
+using UnityEngine.Rendering;
+using UnityEngine.Rendering.Universal;
 
 public class StageManager : Singleton<StageManager>
 {
+    public UnityAction<int> OnCountFieldMonster;
+
     [SerializeField] private GameObject player;
     [SerializeField] private CinemachineConfiner2D confiner;
     private Dictionary<StageType, Stage> stages = new Dictionary<StageType, Stage>();
     private Stage currentStage = null;
     private StageType currentStageType;
+    [SerializeField] private Light2D mainLight;
     private int monsterCount;
     public event Action<StageType> OnPlayFadeIn;
 
     private IObjectPool<PooledMonster> monster;
     private IObjectPool<PooledBossMonster> bossMonster;
-
-    protected override void Awake()
-    {
-        base.Awake();
-    }
 
     private void Start()
     {
@@ -35,6 +37,11 @@ public class StageManager : Singleton<StageManager>
         RegisterStage();
         SetCameraBoundary();
         CacheMonster();
+        if (mainLight == null)
+        {
+            GameObject mainLight = GameObject.Find("GlobalLight2D");
+            this.mainLight = mainLight.GetComponent<Light2D>();
+        }
     }
 
     private void RegisterStage()
@@ -76,6 +83,8 @@ public class StageManager : Singleton<StageManager>
 
     public void ChangeStage(StageType type)
     {
+        //TODO라이트 정상화
+        mainLight.intensity = 1;
         if (player == null)
         {
             player = GameManager.Instance.player;
@@ -91,19 +100,20 @@ public class StageManager : Singleton<StageManager>
         currentStage.gameObject.SetActive(true);
         if (!currentStage.GetCombatData())
         {
-            GameManager.Instance.isClear = true;
+            GameManager.Instance.SetGameClear(true);
         }
         else if (currentStage.GetBossData())
         {
-            GameManager.Instance.isClear = false;
+            GameManager.Instance.SetGameClear(false);
             currentStage.SetStage(player, bossMonster, confiner);
             return;
         }
         else
         {
-            GameManager.Instance.isClear = false;
+            GameManager.Instance.SetGameClear(false);
         }
         monsterCount = currentStage.GetMonsterCount();
+        OnCountFieldMonster?.Invoke(monsterCount);
         OnPlayFadeIn?.Invoke(type);
         currentStage.SetStage(player, monster, confiner);
     }
@@ -112,6 +122,7 @@ public class StageManager : Singleton<StageManager>
     {
         monsterCount--;
         monsterCount = Mathf.Max(monsterCount, 0);
+        OnCountFieldMonster?.Invoke(monsterCount);
         CheckClear();
     }
 
@@ -119,14 +130,14 @@ public class StageManager : Singleton<StageManager>
     {
         if (monsterCount == 0)
         {
-            GameManager.Instance.isClear = true;
-            if (GameManager.Instance.isClear)
-            {
-                currentStage.SetReward();
-            }
             if (currentStage.GetStageID() == (int)StageType.StageBoss)
             {
-                //GameManager.Instance.GameEnd();
+                GameManager.Instance.SetGameClear(true);
+            }
+            else
+            {
+                DOTween.To(() => mainLight.intensity, x => mainLight.intensity = x, 0.5f, 0.5f).SetEase(Ease.Linear);
+                currentStage.SetReward();
             }
         }
     }

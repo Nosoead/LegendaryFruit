@@ -24,6 +24,7 @@ public class PooledFruitWeapon : Weapon, IInteractable, ISetPooledObject<PooledF
         }
     }
 
+    #region /Interact
     public void Interact(bool isDeepPressed, bool isPressed)
     {
         if (isDeepPressed)
@@ -47,7 +48,9 @@ public class PooledFruitWeapon : Weapon, IInteractable, ISetPooledObject<PooledF
     {
         ObjectPool.Release(this);
     }
+    #endregion
 
+    #region /ObjectPool
     public void SetPooledObject(IObjectPool<PooledFruitWeapon> pool)
     {
         ObjectPool = pool;
@@ -56,5 +59,16 @@ public class PooledFruitWeapon : Weapon, IInteractable, ISetPooledObject<PooledF
     public void PoolRelease()
     {
         ObjectPool.Release(this);
+    }
+    #endregion
+
+    public WeaponSO GetWeaponSO()
+    {
+        return weaponData;
+    }
+
+    public void SetWeaponSO(WeaponSO weaponData)
+    {
+        this.weaponData = weaponData;
     }
 }

@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.Events;
 
 public class WeaponAnimationController : AnimationController
 {
@@ -11,11 +12,14 @@ public class WeaponAnimationController : AnimationController
     private static readonly int Attack = Animator.StringToHash("Attack");
 
     [SerializeField] private ParticleSystem particle;
-    private ParticleSystemRenderer particleSystemRenderer;
+    [SerializeField] private ParticleSystemRenderer particleSystemRenderer;
+    private Vector3 currentEffectFlip;
+    private bool particleFlip;
 
     protected override void Awake()
     {
         base.Awake();
+        currentEffectFlip = particleSystemRenderer.flip;
     }
 
     private void LateUpdate()
@@ -62,27 +66,43 @@ public class WeaponAnimationController : AnimationController
     }
     private void OnAttackEvent()
     {
+        OnAttackAnimation();
+    }
+
+    private void OnAttackAnimation()
+    {
         Animator.SetTrigger(Attack);
     }
 
     private void OnChangedAnimator(WeaponSO weaponSO)
     {
+        currentWeapon = weaponSO;   
         if(weaponSO.animatorController != null)
         Animator.runtimeAnimatorController = weaponSO.animatorController;
     }
 
     private void OnChangedParticle(WeaponSO weaponSO)
     {
-        if (weaponSO.effectMaterial != null)
+        if (weaponSO != null)
         {
             ChangedMaterial(weaponSO);
+            ChangedEffectValue(weaponSO);
         }
     }
     private void ChangedMaterial(WeaponSO weaponData)
     {
         particleSystemRenderer.material = weaponData.effectMaterial;
     }
-
+    private void ChangedEffectValue(WeaponSO weaponData)
+    {
+        var main = particle.main;
+        main.startSize = weaponData.effectData.effectSize;
+        var colorOverLifeTime = particle.colorOverLifetime;
+        colorOverLifeTime.color = weaponData.effectData.gradient;
+        var velocity = particle.velocityOverLifetime;
+        velocity.x = weaponData.effectData.linearVelocityX;
+        velocity.y = weaponData.effectData.linearVelocityY;
+    }
 
     private void CheckAttack()
     {
@@ -101,7 +121,7 @@ public class WeaponAnimationController : AnimationController
 
     private void FlipCheck()
     {
-        bool isFlip = playerSprite.flipX;
+        var isFlip = playerSprite.flipX;
         if (isFlip == true)
         {
             SetParticleAndSpritePosition(isFlip);
@@ -111,25 +131,36 @@ public class WeaponAnimationController : AnimationController
             SetParticleAndSpritePosition(isFlip);
         }
     }
+
+    private void FlipVelocity()
+    {
+        var filpeedX = particleFlip ? -currentWeapon.effectData.linearVelocityX.constant : currentWeapon.effectData.linearVelocityX;
+        var velocity = particle.velocityOverLifetime;
+        velocity.x = filpeedX;
+    }
     
     private void SetParticleAndSpritePosition(bool isFlip)
     {
         if(isFlip == true)
         {
+            particleFlip = true;
             Sprite.flipX = true;
             Sprite.gameObject.transform.localPosition = new Vector2(-0.3f, 0.5f);
 
-            particle.gameObject.transform.localPosition = new Vector2(-1.5f, -0.6f);
+            particle.gameObject.transform.localPosition = new Vector2(-1f, 0.05f);
             particleSystemRenderer.flip = new Vector2(1f, 0f);
+            FlipVelocity();
         }
-        if(isFlip == false)
+        if (isFlip == false)
         {
+            particleFlip = false;
             Sprite.flipX = false;
             Sprite.gameObject.transform.localPosition = new Vector2(0.3f, 0.5f);
 
-
-            particle.gameObject.transform.localPosition = new Vector2(0f, -0.6f);
+            particle.gameObject.transform.localPosition = new Vector2(1f, 0.05f);
             particleSystemRenderer.flip = new Vector2(0f, 0f);
+
+            FlipVelocity();
         }
     }
 

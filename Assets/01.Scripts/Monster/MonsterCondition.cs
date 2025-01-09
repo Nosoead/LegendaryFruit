@@ -39,7 +39,6 @@ public class MonsterCondition : MonoBehaviour, IDamageable
         controller.OnTakeHit();
         OnTakeHitType?.Invoke(AttributeType.Normal);
         statManager.ApplyInstantDamage(damage);
-        Debug.Log("1타");
         if (coBurnDamage != null && isBurn)
         {
             StopCoroutine(coBurnDamage);
@@ -52,10 +51,8 @@ public class MonsterCondition : MonoBehaviour, IDamageable
     {
         yield return new WaitForSecondsRealtime(0.5f);
         burnWaitTime = new WaitForSeconds(attributeRateTime);
-        Debug.Log(attributeStack);
         for (int i = 0; i < attributeStack; i++)
         {
-            Debug.Log($"{i}번째 타격");
             OnTakeHitType?.Invoke(AttributeType.Burn);
             statManager.ApplyInstantDamage(attributeValue);
             yield return burnWaitTime;

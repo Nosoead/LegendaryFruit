@@ -4,35 +4,72 @@ using UnityEngine.UI;
 
 public class PromptUI : UIBase
 {
-   [SerializeField] private WeaponSO weaponSo;
-   [SerializeField] private TextMeshProUGUI gradeText;
-   [SerializeField] private TextMeshProUGUI promptName;
-   [SerializeField] private TextMeshProUGUI promptDescription;
-   [SerializeField] private TextMeshProUGUI promptAttackPower;
-   [SerializeField] private Image promptImage;
-   private WeaponSO currentWeaponSo;
+    //[SerializeField] private WeaponSO weaponSo;
+    //private WeaponSO currentWeaponSo;
+    [SerializeField] private GameObject promptWindow;
+    [SerializeField] private RectTransform rectTransform;
+    [SerializeField] private Image promptImage;
+    [SerializeField] private TextMeshProUGUI gradeText;
+    [SerializeField] private TextMeshProUGUI promptName;
+    [SerializeField] private TextMeshProUGUI promptDescription;
+    [SerializeField] private TextMeshProUGUI promptAttackPower;
+    [SerializeField] private Image outlineImage;
+    [SerializeField] private PlayerInteraction interaction;
 
-   public override void Open()
-   {
-      DataToPromptText();
-      base.Open();
-   }
+    private void Awake()
+    {
+        promptWindow.SetActive(false);
+        if (GameManager.Instance.player.TryGetComponent(out PlayerInteraction interaction))
+        {
+            this.interaction = interaction;
+        }
+        if (rectTransform == null)
+        {
+            rectTransform = promptWindow.GetComponent<RectTransform>();
+        }
+    }
 
-   public void SetWeapon(WeaponSO newWeaponSo)
-   {
-      currentWeaponSo = newWeaponSo;
-   }
-   private void DataToPromptText()
-   {
-      gradeText.text = currentWeaponSo.gradeType.ToString();
-      promptName.text = currentWeaponSo.weaponName;
-      promptDescription.text = currentWeaponSo.description;
-      //promptAttackPower.text = currentWeaponSo.attackPower.ToString();
-      promptImage.sprite = currentWeaponSo.weaponSprite;
+    private void OnEnable()
+    {
+        interaction.ShowPromptEvent += OnShowPromptEvent;
+        interaction.ShowFillamountInPromptEvent += OnShowFillamount;
+    }
 
+    private void OnDisable()
+    {
+        interaction.ShowPromptEvent -= OnShowPromptEvent;
+        interaction.ShowFillamountInPromptEvent -= OnShowFillamount;
+    }
 
-      // IInteractable로 무기정보 가져오기?
+    private void OnShowPromptEvent(WeaponSO weaponData, Vector3 position, bool isOpen)
+    {
+        if (!isOpen)
+        {
+            promptWindow.gameObject.SetActive(false);
+        }
+        else
+        {
+            promptWindow.gameObject.SetActive(true);
+            SetPosition(position);
+            SetItemData(weaponData);
+        }
+    }
 
-      //F 꾹누를때 fillamount 조정
-   }
+    private void OnShowFillamount(float fillamountValue)
+    {
+        outlineImage.fillAmount = fillamountValue;
+    }
+
+    private void SetPosition(Vector3 promptPosition)
+    {
+        rectTransform.localPosition = promptPosition;
+    }
+
+    private void SetItemData(WeaponSO weaponData)
+    {
+        promptImage.sprite = weaponData.weaponSprite;
+        gradeText.text = weaponData.gradeType.ToString();
+        promptName.text = weaponData.weaponName;
+        promptDescription.text = weaponData.description;
+    }
 }

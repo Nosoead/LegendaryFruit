@@ -635,6 +635,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 0}
   confiner: {fileID: 0}
+  mainLight: {fileID: 0}
 --- !u!4 &773375597
 Transform:
   m_ObjectHideFlags: 0
@@ -1165,7 +1166,7 @@ GameObject:
   - component: {fileID: 1929559941}
   - component: {fileID: 1929559940}
   m_Layer: 0
-  m_Name: Global Light 2D
+  m_Name: GlobalLight2D
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

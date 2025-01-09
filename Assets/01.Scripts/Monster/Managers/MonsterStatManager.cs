@@ -5,7 +5,7 @@ using UnityEngine.Events;
 public class MonsterStatManager : MonoBehaviour
 {
     public UnityAction<string, float> OnSubscribeToStatUpdateEvent;
-    public event UnityAction<PatternData,float> OnPatternTriggered;
+    public event UnityAction<PatternData, float> OnPatternTriggered;
     public event UnityAction<float, AttributeType> DamageTakenEvent;
     private MonsterAnimationController monsterAnimationController;
     private MonsterCondition condition;
@@ -13,7 +13,7 @@ public class MonsterStatManager : MonoBehaviour
     private PooledBossMonster pooledBossMonster;
     private MonsterStat stat;
     private StatHandler statHandler;
-    private Dictionary<int,PatternData> pattrens = new Dictionary<int,PatternData>();
+    private Dictionary<int, PatternData> pattrens = new Dictionary<int, PatternData>();
     private PatternData currentPattrenData;
 
     [Header("PattrenStat")]
@@ -27,7 +27,7 @@ public class MonsterStatManager : MonoBehaviour
 
     private void Awake()
     {
-        if(monsterAnimationController == null)
+        if (monsterAnimationController == null)
         {
             monsterAnimationController = GetComponent<MonsterAnimationController>();
         }
@@ -35,9 +35,9 @@ public class MonsterStatManager : MonoBehaviour
         {
             pooledMonster = GetComponent<PooledMonster>();
         }
-        if(pooledBossMonster == null)
+        if (pooledBossMonster == null)
         {
-            pooledBossMonster = GetComponentInParent<PooledBossMonster>();  
+            pooledBossMonster = GetComponentInParent<PooledBossMonster>();
         }
         if (condition == null)
         {
@@ -62,10 +62,10 @@ public class MonsterStatManager : MonoBehaviour
         stat.OnHealthChanged -= OnPattrenToHealth;
         condition.OnTakeHitType -= OnAttributeTypeReceived;
     }
- 
+
     public void SetInitStat(MonsterSO data)
     {
-        if(data is RegularMonsterSO regularMonsterData)
+        if (data is RegularMonsterSO regularMonsterData)
         {
             stat.InitStat(regularMonsterData);
         }
@@ -79,10 +79,11 @@ public class MonsterStatManager : MonoBehaviour
     {
         OnSubscribeToStatUpdateEvent?.Invoke(key, value);
     }
-    
+
     public void OnAttributeTypeReceived(AttributeType type)
     {
         currentTakeAttributeType = type;
+        Debug.Log($"{currentTakeAttributeType.ToString()}");
     }
 
     #region Pattren
@@ -94,7 +95,7 @@ public class MonsterStatManager : MonoBehaviour
     private void OnPattrenToHealth(float currentHealth)
     {
         var data = GetPatternData(currentHealth);
-        if(currentPattrenData == data && !isOnCooldown)
+        if (currentPattrenData == data && !isOnCooldown)
         {
             OnPatternTriggered?.Invoke(data, patternDagmae);
             StartCooldown();
@@ -113,7 +114,7 @@ public class MonsterStatManager : MonoBehaviour
 
     private PatternData GetPatternData(float health)
     {
-        if(health <= 200)
+        if (health <= 200)
         {
             var pattern = pattrens[1000];
             cooldownTime = pattern.pattrenCoolTime;
@@ -161,10 +162,13 @@ public class MonsterStatManager : MonoBehaviour
 
     private void OnMonsterDie()
     {
+        if (!isDead)
+        {
+            StageManager.Instance.MonsterDie();
+            SoundManagers.Instance.PlaySFX(SfxType.MonsterDeath);
+        }
         isDead = true;
         condition.StopAllCoroutines();
-        StageManager.Instance.MonsterDie();
-        SoundManagers.Instance.PlaySFX(SfxType.MonsterDeath);
         gameObject.layer = LayerMask.NameToLayer("Default");
         monsterAnimationController.OnDie();
         Invoke("MonsterDieOff", 1.5f);
@@ -172,7 +176,7 @@ public class MonsterStatManager : MonoBehaviour
 
     private void MonsterDieOff()
     {
-        if(pooledBossMonster != null)
+        if (pooledBossMonster != null)
         {
             pooledBossMonster.ObjectPool.Release(pooledBossMonster);
         }

@@ -1,11 +1,13 @@
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Pool;
 using UnityEngine.UI;
 
 public class PlayerCanvasUI : UIBase, IPersistentUI
 {
     [SerializeField] private TextMeshProUGUI currentHealthText;
+    [SerializeField] private TextMeshProUGUI fieldMonsterText;
     [SerializeField] private TextMeshProUGUI inGameMoneyText;
     [SerializeField] private TextMeshProUGUI globalMoneyText;
     [SerializeField] private Image healthBar;
@@ -33,11 +35,15 @@ public class PlayerCanvasUI : UIBase, IPersistentUI
         statManager.OnHealthDataToUIEvent += OnHealthUpdateEvent;
         currency.OnInGameCurrencyDataToUI += OnCurrencyUpdateEvent;
         currency.OnGlobalCurrencyDataToUI += OnCurrencyUpdateEvent;
+        StageManager.Instance.OnCountFieldMonster += OnMonsterCountUpdateEvent;
     }
 
     private void OnDisable()
     {
         statManager.OnHealthDataToUIEvent -= OnHealthUpdateEvent;
+        currency.OnInGameCurrencyDataToUI -= OnCurrencyUpdateEvent;
+        currency.OnGlobalCurrencyDataToUI -= OnCurrencyUpdateEvent;
+        StageManager.Instance.OnCountFieldMonster -= OnMonsterCountUpdateEvent;
     }
 
     private void Start()
@@ -72,6 +78,11 @@ public class PlayerCanvasUI : UIBase, IPersistentUI
         {
             inGameMoneyText.text = currencyValue.ToString();
         }
+    }
+
+    private void OnMonsterCountUpdateEvent(int monsterCount)
+    {
+        fieldMonsterText.text = monsterCount.ToString();
     }
 
     private void SetWeaponDataToUI()

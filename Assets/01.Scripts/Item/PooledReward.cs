@@ -47,7 +47,7 @@ public class PooledReward : MonoBehaviour, ISetPooledObject<PooledReward>
 
     private void DataToObject()
     {
-        weaponPrefab.weaponData = weaponData;
+        weaponPrefab.SetWeaponSO(weaponData);
     }
 
     // TODO: DOTween 효과 추가
@@ -78,7 +78,7 @@ public class PooledReward : MonoBehaviour, ISetPooledObject<PooledReward>
         }
 
         float hitPosY = closestHit.point.y;
-        float goalPos = hitPosY + 0.5f;
+        float goalPos = hitPosY + 1f;
 
         // TODO: 거리와 시간에 따라 속도 조정
         if (closestHit.collider != null)

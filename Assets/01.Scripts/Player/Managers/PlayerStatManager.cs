@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -6,6 +7,7 @@ public class PlayerStatManager : MonoBehaviour
 {
     public UnityAction<string, float> OnSubscribeToStatUpdateEvent;
     public UnityAction<float, float, float> OnHealthDataToUIEvent;
+    public event UnityAction<float, AttributeType> DamageTakenEvent;
     public UnityAction OnStopCoroutine;
     [SerializeField] private PlayerSO playerData;
     [SerializeField] private PlayerInteraction playerInteraction;
@@ -13,6 +15,10 @@ public class PlayerStatManager : MonoBehaviour
     private List<WeaponSO> eatWeapons = new List<WeaponSO>();
     private PlayerStat stat;
     private StatHandler statHandler;
+
+    [SerializeField] private MonoBehaviour damageableObject;
+    private IDamageable damageable;
+    private AttributeType currentTakeAttributeType;
 
     private void Awake()
     {
@@ -23,6 +29,7 @@ public class PlayerStatManager : MonoBehaviour
         stat = new PlayerStat();
         statHandler = new StatHandler();
         playerData = Instantiate(playerData);
+        damageable = damageableObject as IDamageable;
     }
 
     private void OnEnable()
@@ -32,6 +39,10 @@ public class PlayerStatManager : MonoBehaviour
         stat.OnStatUpdatedEvent += OnStatUpdatedEvent;
         stat.OnHealthUpdateEvent += OnHealthUpdateEvent;
         stat.OnDie += OnDie;
+        if(damageable is PlayerCondition condition)
+        {
+            condition.OnTakeHitType += OnAttributeTypeReceived;
+        }
     }
 
     private void OnDisable()
@@ -41,6 +52,10 @@ public class PlayerStatManager : MonoBehaviour
         stat.OnStatUpdatedEvent -= OnStatUpdatedEvent;
         stat.OnHealthUpdateEvent -= OnHealthUpdateEvent;
         stat.OnDie -= OnDie;
+        if (damageable is PlayerCondition condition)
+        {
+            condition.OnTakeHitType -= OnAttributeTypeReceived;
+        }
     }
     private void Start()
     {
@@ -76,19 +91,24 @@ public class PlayerStatManager : MonoBehaviour
         float healthFillAmount = currentHealth/maxHealth;
         OnHealthDataToUIEvent?.Invoke(healthFillAmount, currentHealth, maxHealth);
     }
-
+  
     private void OnDie()
     {
         playerAnimationController.OnDie();
         GameManager.Instance.GameEnd();
     }
 
+    public void OnAttributeTypeReceived(AttributeType type)
+    {
+        currentTakeAttributeType = type;
+    }
     #endregion
 
     #region /ApplystatMethod
     public void ApplyInstantDamage(float damage)
     {
         float result = statHandler.Substract(stat.GetStatValue("CurrentHealth"), damage);
+        DamageTakenEvent?.Invoke(damage, currentTakeAttributeType);
         playerAnimationController.OnHit();
         stat.UpdateCurrentHealth(result);
     }

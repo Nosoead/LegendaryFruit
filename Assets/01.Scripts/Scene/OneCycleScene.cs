@@ -9,6 +9,7 @@ public class OneCycleScene : BaseScene
         UIManager.Instance.ForeInit();
         GameManager.Instance.Init();
         UIManager.Instance.PostInit();
+        GameManager.Instance.GameStart();
         PlayerInfoManager.Instance.SetCurrency();
     }
 }
