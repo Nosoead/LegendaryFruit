@@ -108,7 +108,6 @@ public class StageManager : Singleton<StageManager>
             GameManager.Instance.isClear = false;
         }
         monsterCount = currentStage.GetMonsterCount();
-        Debug.Log(monsterCount);
         OnCountFieldMonster?.Invoke(monsterCount);
         OnPlayFadeIn?.Invoke(type);
         currentStage.SetStage(player, monster, confiner);

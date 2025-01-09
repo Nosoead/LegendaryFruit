@@ -51,7 +51,6 @@ public class MonsterCondition : MonoBehaviour, IDamageable
     {
         yield return new WaitForSecondsRealtime(0.5f);
         burnWaitTime = new WaitForSeconds(attributeRateTime);
-        Debug.Log(attributeStack);
         for (int i = 0; i < attributeStack; i++)
         {
             OnTakeHitType?.Invoke(AttributeType.Burn);

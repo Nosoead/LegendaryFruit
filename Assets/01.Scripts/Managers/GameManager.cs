@@ -19,10 +19,9 @@ public class GameManager : Singleton<GameManager>
         {
             player = GameObject.Find("Mainplayer");
         }
-        GameStart();
     }
 
-    private void GameStart()
+    public void GameStart()
     {
         if (DataManager.Instance.GetCanLoad<SaveDataContainer>())
         {
