@@ -1,9 +1,11 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class PlayerCondition : MonoBehaviour, IDamageable
 {
     [SerializeField] private PlayerStatManager statManager;
+    public event UnityAction<AttributeType> OnTakeHitType;
     // 각 속성을 확인하여 필요한 데이터를 반환
     private Coroutine coBurnDamage;
     private Coroutine coSlowDown;
@@ -29,6 +31,7 @@ public class PlayerCondition : MonoBehaviour, IDamageable
     public void BurnDamage(float damage, float attributeValue, float attributeRateTime, float attributeStack)
     {
         statManager.ApplyInstantDamage(damage);
+        OnTakeHitType?.Invoke(AttributeType.Normal);
         if (coBurnDamage != null && isBurn)
         {
             StopCoroutine(coBurnDamage);
@@ -43,6 +46,7 @@ public class PlayerCondition : MonoBehaviour, IDamageable
         burnWaitTime = new WaitForSeconds(attributeRateTime);
         for (int i = 0; i < attributeStack; i++)
         {
+            OnTakeHitType?.Invoke(AttributeType.Burn);
             statManager.ApplyInstantDamage(attributeValue);
             yield return burnWaitTime;
         }
@@ -53,6 +57,7 @@ public class PlayerCondition : MonoBehaviour, IDamageable
     #region /SlowDownLogic
     public void SlowDown(float damage, float attributeValue, float attributeRateTime)
     {
+        OnTakeHitType?.Invoke(AttributeType.SlowDown);
         statManager.ApplyInstantDamage(damage);
         if (coSlowDown != null && isSlowDown)
         {
@@ -75,6 +80,7 @@ public class PlayerCondition : MonoBehaviour, IDamageable
 
     public void TakeDamage(float damage)
     {
+        OnTakeHitType?.Invoke(AttributeType.Normal);
         statManager.ApplyInstantDamage(damage);
         SoundManagers.Instance.PlaySFX(SfxType.PlayerDamaged);
     }
