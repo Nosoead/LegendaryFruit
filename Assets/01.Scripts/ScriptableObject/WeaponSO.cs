@@ -1,3 +1,5 @@
+using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "WeaponSO", menuName = "ScriptableObject/WeaponSO", order = 2)]
@@ -20,4 +22,15 @@ public class WeaponSO : GameSO
     public Sprite rewardSprite;
     public AnimatorOverrideController animatorController;
     public Material effectMaterial;
+    public EffectData effectData;
+}
+
+[Serializable]
+public class EffectData
+{
+    public ParticleSystem.MinMaxCurve linearVelocityX;
+    public ParticleSystem.MinMaxCurve linearVelocityY;
+
+    public float effectSize;
+    public Gradient gradient;
 }

@@ -16,10 +16,6 @@ public class PlayerParticleController : ParticleController
         {
             playerStatManager = GetComponent<PlayerStatManager>();
         }
-        if(particle == null)
-        {
-            //particle = GetComponent<>
-        }
     }
 
 

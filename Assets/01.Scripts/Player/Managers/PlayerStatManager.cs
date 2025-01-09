@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -51,6 +52,10 @@ public class PlayerStatManager : MonoBehaviour
         stat.OnStatUpdatedEvent -= OnStatUpdatedEvent;
         stat.OnHealthUpdateEvent -= OnHealthUpdateEvent;
         stat.OnDie -= OnDie;
+        if (damageable is PlayerCondition condition)
+        {
+            condition.OnTakeHitType -= OnAttributeTypeReceived;
+        }
     }
     private void Start()
     {

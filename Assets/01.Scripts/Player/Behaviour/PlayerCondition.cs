@@ -30,8 +30,8 @@ public class PlayerCondition : MonoBehaviour, IDamageable
     #region /BurnDamageLogic
     public void BurnDamage(float damage, float attributeValue, float attributeRateTime, float attributeStack)
     {
-        OnTakeHitType?.Invoke(AttributeType.Normal);
         statManager.ApplyInstantDamage(damage);
+        OnTakeHitType?.Invoke(AttributeType.Normal);
         if (coBurnDamage != null && isBurn)
         {
             StopCoroutine(coBurnDamage);

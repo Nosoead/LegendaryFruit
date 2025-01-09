@@ -11,7 +11,7 @@ public class ParticleController : MonoBehaviour
 
     protected virtual void SetTypeMaterial()
     {
-         
+         // TODO : 나중에 속성별로 임팩트 변경 시도 
     }
 
     protected virtual void OnDamageReceived(float damage, AttributeType type)
@@ -51,6 +51,7 @@ public class ParticleController : MonoBehaviour
 
     protected virtual void SetDamageColor(Material material, AttributeType type)
     {
+        Debug.Log($"{type.ToString()}");
         var color = material.color;
         switch (type)
         {
@@ -61,7 +62,8 @@ public class ParticleController : MonoBehaviour
                 color = Color.red;
                 break;
             case AttributeType.SlowDown:
-                color = Color.blue;
+                // 넉백 미구현이라 임시로 SlowDown이 노란색임
+                color = Color.yellow;
                 break;
             case AttributeType.Blindness:
                 color = Color.yellow;
