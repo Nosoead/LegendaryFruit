@@ -100,7 +100,7 @@ public class RewardNPC : NPC, IInteractable
             weapon = fruitWeapon.Get();
             weapon.gameObject.transform.position = spawnPositions[randomNum].position;
             pooledReward.GetWeapon(weapon.gameObject);
-            weapon.weaponData = this.weaponData;
+            weapon.SetWeaponSO(weaponData);
             weapon.EnsureComponents();
         }
     }

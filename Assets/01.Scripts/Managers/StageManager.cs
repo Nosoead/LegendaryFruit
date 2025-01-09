@@ -2,10 +2,14 @@ using Cinemachine;
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.Pool;
+using UnityEngine.Rendering;
 
 public class StageManager : Singleton<StageManager>
 {
+    public UnityAction<int> OnCountFieldMonster;
+
     [SerializeField] private GameObject player;
     [SerializeField] private CinemachineConfiner2D confiner;
     private Dictionary<StageType, Stage> stages = new Dictionary<StageType, Stage>();
@@ -104,6 +108,8 @@ public class StageManager : Singleton<StageManager>
             GameManager.Instance.isClear = false;
         }
         monsterCount = currentStage.GetMonsterCount();
+        Debug.Log(monsterCount);
+        OnCountFieldMonster?.Invoke(monsterCount);
         OnPlayFadeIn?.Invoke(type);
         currentStage.SetStage(player, monster, confiner);
     }
@@ -112,6 +118,7 @@ public class StageManager : Singleton<StageManager>
     {
         monsterCount--;
         monsterCount = Mathf.Max(monsterCount, 0);
+        OnCountFieldMonster?.Invoke(monsterCount);
         CheckClear();
     }
 

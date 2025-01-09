@@ -17,7 +17,7 @@ public class UIManager : Singleton<UIManager>
     {
         OpenPersistentUI<PlayerCanvasUI>(true);
         OpenPersistentUI<FadeInUI>(true);
-        //TODO PromptUI -> OpenPersistentUI<PromptUI>(false);
+        OpenPersistentUI<PromptUI>(true);
     }
 
     private void SetUIDictionary()

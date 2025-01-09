@@ -47,7 +47,7 @@ public class PooledReward : MonoBehaviour, ISetPooledObject<PooledReward>
 
     private void DataToObject()
     {
-        weaponPrefab.weaponData = weaponData;
+        weaponPrefab.SetWeaponSO(weaponData);
     }
 
     // TODO: DOTween 효과 추가
