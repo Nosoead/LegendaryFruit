@@ -6,22 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="fd1b27b5-9a48-464d-8c89-0ee285d61d98" name="변경" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.LegendaryFruit/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.LegendaryFruit/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/00.Scenes/TestScenes/Test_ParkScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/00.Scenes/TestScenes/Test_ParkScene.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/01.Scripts/Data/UIDialogue.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/01.Scripts/Data/UIDialogue.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/01.Scripts/Managers/SoundManagers.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/01.Scripts/Managers/SoundManagers.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/01.Scripts/Pool/PooledSound.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/01.Scripts/Pool/PooledSound.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/01.Scripts/UI/InventoryUI.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/01.Scripts/UI/InventoryUI.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/01.Scripts/UI/NpcDialougeUI.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/01.Scripts/UI/NpcDialougeUI.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/01.Scripts/UI/PromptUI.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/01.Scripts/UI/PromptUI.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/01.Scripts/UI/SettingUI.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/01.Scripts/UI/SettingUI.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/01.Scripts/UI/TestUI.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/01.Scripts/UI/TestUI.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/05.Animations/MonsterAnimations/RegularAnimations/Orcs/Epic_Orc/EpicOrc_Controller.overrideController" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/05.Animations/MonsterAnimations/RegularAnimations/Orcs/Epic_Orc/EpicOrc_Controller.overrideController" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/05.Animations/MonsterAnimations/RegularAnimations/Orcs/Normal_Orc/Orc_Controller.overrideController" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/05.Animations/MonsterAnimations/RegularAnimations/Orcs/Normal_Orc/Orc_Controller.overrideController" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Stage/StageLobby.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Stage/StageLobby.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/UI/ESCUI.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/UI/ESCUI.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/UI/PromptUI.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/UI/PromptUI.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/UI/UIDialogue.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/UI/UIDialogue.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01.Scripts/Player/Controller/PlayerController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/01.Scripts/Player/Controller/PlayerController.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -37,6 +22,7 @@
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/115f824c8c9c413f87589665175847eb5a00/a3/0a4e0381/WWW.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/17d9ce77f27a4bd2afb5ba32c9bea97646ac00/55/41bf8e1c/List`1.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/17d9ce77f27a4bd2afb5ba32c9bea97646ac00/e9/2a4891e5/Void.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/f7237cf7abef49bfbb552d7eb076e422174200/1c/3677dfe3/Behaviour.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/f7237cf7abef49bfbb552d7eb076e422174200/41/07baf228/SceneManager.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/f7237cf7abef49bfbb552d7eb076e422174200/54/a876a1d8/IObjectPool`1.cs" root0="FORCE_HIGHLIGHTING" />
@@ -44,6 +30,7 @@
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/f7237cf7abef49bfbb552d7eb076e422174200/73/e1df8cf7/GameObject.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/f7237cf7abef49bfbb552d7eb076e422174200/79/3a7f369f/Transform.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/f7237cf7abef49bfbb552d7eb076e422174200/9f/2b8345d1/Object.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/f7237cf7abef49bfbb552d7eb076e422174200/ab/ce883c62/Debug.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/f7237cf7abef49bfbb552d7eb076e422174200/d2/cca88413/MonoBehaviour.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/f7237cf7abef49bfbb552d7eb076e422174200/dd/766d8ac9/Component.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/3ea01e77be99618395f448b16bd7cc2bd4248bd9e5d8474964b2d97f39c5d74/System.cs" root0="FORCE_HIGHLIGHTING" />
@@ -53,8 +40,13 @@
     <setting file="file://$PROJECT_DIR$/Assets/01.Scripts/Monster/NormalMonster.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/01.Scripts/UI/TestUI.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/01.Scripts/Util/ParticleEffect.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/01.Scripts/Util/UIInputHandler.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.connect.share@4.2.3/Editor/PublisherBuildProcessor.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.inputsystem@1.7.0/InputSystem/Actions/InputAction.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.inputsystem@1.7.0/InputSystem/Actions/InputActionState.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.inputsystem@1.7.0/InputSystem/Editor/AssetEditor/InputActionAssetManager.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.inputsystem@1.7.0/InputSystem/InputManagerStateMonitors.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.inputsystem@1.7.0/InputSystem/Utilities/CSharpCodeHelpers.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.inputsystem@1.7.0/InputSystem/Utilities/DelegateHelpers.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.visualscripting@1.9.1/Runtime/VisualScripting.Core/Utilities/UnityObjectUtility.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../My project (6)/Assets/Scripts/UIDialogue.cs" root0="SKIP_HIGHLIGHTING" />
@@ -71,22 +63,22 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;Unity 에디터에 연결.Unity 에디터에 연결.executor&quot;: &quot;Debug&quot;,
-    &quot;XThreadsFramesViewSplitterKey&quot;: &quot;0.42632332&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;Dev__Park&quot;,
-    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.lookFeel&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "Unity 에디터에 연결.Unity 에디터에 연결.executor": "Debug",
+    "XThreadsFramesViewSplitterKey": "0.39816514",
+    "git-widget-placeholder": "Dev__Park",
+    "ignore.virus.scanning.warn.message": "true",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "preferences.lookFeel",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RunManager" selected="Unity 에디터에 연결.Unity 에디터에 연결">
     <configuration name="유닛 테스트(배치 모드)" type="RunUnityExe" factoryName="Unity Executable">
       <option name="EXE_PATH" value="C:\Program Files\Unity\Hub\Editor\2022.3.17f1\Editor\Unity.exe" />
@@ -104,10 +96,10 @@
       <option name="USE_EXTERNAL_CONSOLE" value="0" />
       <method v="2" />
     </configuration>
-    <configuration name="Unity 에디터에 연결" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" ignored-value-for-modified-check="4532">
+    <configuration name="Unity 에디터에 연결" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" ignored-value-for-modified-check="20260">
       <option name="allowRunningInParallel" value="false" />
       <option name="listenPortForConnections" value="false" />
-      <option name="pid" value="4532" />
+      <option name="pid" value="20260" />
       <option name="projectPathOnTarget" />
       <option name="selectedOptions">
         <list />
@@ -160,6 +152,7 @@
       <workItem from="1735867787502" duration="21988000" />
       <workItem from="1736055228177" duration="18599000" />
       <workItem from="1736123623062" duration="2842000" />
+      <workItem from="1736386379582" duration="22877000" />
     </task>
     <servers />
   </component>
@@ -187,5 +180,24 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/Assets/01.Scripts/Util/UIInputHandler.cs</url>
+          <line>19</line>
+          <properties documentPath="D:\Unity Practice\LegendaryFruit\Assets\01.Scripts\Util\UIInputHandler.cs" containingFunctionPresentation="메서드 'OnEnable'">
+            <startOffsets>
+              <option value="402" />
+            </startOffsets>
+            <endOffsets>
+              <option value="403" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="22" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

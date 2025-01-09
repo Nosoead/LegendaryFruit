@@ -109,9 +109,9 @@ public class UIDialogue : UIBase
         if (dialogueData.TypingSpeed != 0)
             duration = dialogueData.TypingSpeed;
 
-        //txtDialogue.DOText(dialogueData.Dialogue, duration).SetEase(Ease.Linear).OnComplete(LogDone); //두트윈 유료버전
-        txtDialogue.text = dialogueData.Dialogue; // 두트윈 없을시
-        LogDone(); //두트윈 없을시
+        txtDialogue.DOText(dialogueData.Dialogue, duration).SetEase(Ease.Linear).OnComplete(LogDone); //두트윈 유료버전
+        //txtDialogue.text = dialogueData.Dialogue; // 두트윈 없을시
+        //LogDone(); //두트윈 없을시
         
     }
 

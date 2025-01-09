@@ -21,6 +21,7 @@ public class PlayerController : MonoBehaviour
     private bool isRightPressed;
     private bool isDownPressed;
     private bool isUpPressed;
+    private bool isPlay = true;
     private void Awake()
     {
         input = new PlayerInput();
@@ -58,15 +59,32 @@ public class PlayerController : MonoBehaviour
         input.Player.Interact.canceled += PlayerTapInteract;
         input.Player.Interact.performed += PlayerHoldInteract;
         input.Player.Interact.canceled += PlayerHoldInteract;
-
-        input.Player.Enable();
+        
+        //input.Changer.Change.started += Change;
+        //input.Changer.Enable();
+        //input.Player.Enable();
     }
 
     private void OnDisable()
     {
-        input.Player.Disable();
+        //input.Changer.Change.started -= Change;
+        //input.Player.Disable();
     }
-
+    /*private void Change(InputAction.CallbackContext context)
+    {
+        isPlay = !isPlay;
+        //Time.timeScale = isPlay ? 1f : 0f;
+        if (isPlay)
+        {
+            input.UI.Disable();
+            input.Player.Enable();
+        }
+        else
+        {
+            input.Player.Disable();
+            input.UI.Enable();
+        }
+    }*/
     public void PlayerDirection(InputAction.CallbackContext context)
     {
         float directionValue = Mathf.Sign(context.ReadValue<float>());

@@ -1,3 +1,4 @@
+/*
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.InputSystem;
@@ -18,9 +19,9 @@ public class ToggleMenuController : MonoBehaviour
     private void OnEnable()
     {
         //TODO UI -> GameManager refactoring
-        input.Player.UserInfo.started += PlayerUserInfo;
+        //input.Player.UserInfo.started += PlayerUserInfo;
         //Input.Player.UserInfo.canceled += PlayerUserInfo;
-        input.Player.SettingWindow.started += PlayerSettingWindow;
+        //input.Player.SettingWindow.started += PlayerSettingWindow;
         //Input.Player.SettingWindow.canceled += PlayerSettingWindow;
         input.Player.Enable();
     }
@@ -53,3 +54,4 @@ public class ToggleMenuController : MonoBehaviour
         UIManager.Instance.ToggleUI<ESCUI>(false);
     }
 }
+*/
