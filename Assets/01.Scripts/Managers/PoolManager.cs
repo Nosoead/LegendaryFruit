@@ -22,7 +22,7 @@ public class PoolManager : Singleton<PoolManager>
     private void RegisterPrefab()
     {
         for (int i = 0; i < (int)PoolType.Count; i++)
-        {
+        {          
             PoolType poolType = (PoolType)i;
             GameObject poolObject = ResourceManager.Instance.LoadResource<GameObject>($"Pool/{poolType}");
             if (!prefabDictionary.ContainsKey((PoolType)i) && poolObject != null)
@@ -30,6 +30,8 @@ public class PoolManager : Singleton<PoolManager>
                 prefabDictionary.Add((PoolType)i, poolObject);
             }
         }
+        // TODO : 모든 풀링오브젝트를 미리 CreatePool
+        Instance.CreatePool<PooledProjectTile>(PoolType.PooledProjectTile, false, 15, 30);
     }
 
     public void CreatePool<T>(PoolType poolType, bool collectionCheck, int defaultCapacity, int maxSize) where T : Component
