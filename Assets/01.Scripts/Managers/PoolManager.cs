@@ -112,5 +112,4 @@ public class PoolManager : Singleton<PoolManager>
             pool();
         }
     }
-
-}
+};

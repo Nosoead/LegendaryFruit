@@ -100,8 +100,8 @@ public class PlayerEquipment : MonoBehaviour
     private void ReplaceWeapon(WeaponSO weaponData)
     {
         PooledFruitWeapon discardedObject = fruitWeapon.Get();
-        discardedObject.gameObject.layer = LayerMask.NameToLayer("Default");
         discardedObject.gameObject.transform.position = transform.parent.position;
+        discardedObject.gameObject.layer = LayerMask.NameToLayer("Default");
         DropDotween(discardedObject.gameObject, transform.parent.position);
         discardedObject.SetWeaponSO(equipWeapons[currentEquipWeaponIndex]);
         discardedObject.EnsureComponents();

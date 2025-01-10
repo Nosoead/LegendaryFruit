@@ -23,7 +23,7 @@ public class RewardNPC : NPC, IInteractable
     private IObjectPool<PooledFruitWeapon> fruitWeapon;
     private IObjectPool<PooledReward> reward;
     private PooledReward pooledReward;
-    private PooledFruitWeapon weapon;
+    private PooledFruitWeapon pooledWeapon;
 
     public override void InitNPC()
     {
@@ -105,11 +105,11 @@ public class RewardNPC : NPC, IInteractable
         if (weaponData != null)
         {
             gameObject.layer = LayerMask.NameToLayer("Default");
-            weapon = fruitWeapon.Get();
-            weapon.gameObject.transform.position = spawnPositions[randomNum].position;
-            pooledReward.GetWeapon(weapon.gameObject);
-            weapon.SetWeaponSO(weaponData);
-            weapon.EnsureComponents();
+            pooledWeapon = fruitWeapon.Get();
+            pooledWeapon.gameObject.transform.position = spawnPositions[randomNum].position;
+            pooledReward.GetWeapon(pooledWeapon.gameObject);
+            pooledWeapon.SetWeaponSO(weaponData);
+            pooledWeapon.EnsureComponents();
         }
     }
 
@@ -127,14 +127,14 @@ public class RewardNPC : NPC, IInteractable
 
     public override void ReleaseReward()
     {
-        if (pooledReward != null)
+        if (pooledReward != null && pooledReward.gameObject.activeSelf)
         {
             pooledReward.PoolRelease();
         }
 
-        if (weapon != null)
+        if (pooledWeapon != null && pooledWeapon.gameObject.activeSelf)
         {
-            weapon.PoolRelease();
+            pooledWeapon.PoolRelease();
         }
     }
 }
