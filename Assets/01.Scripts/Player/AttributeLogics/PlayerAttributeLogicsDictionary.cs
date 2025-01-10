@@ -10,8 +10,8 @@ public class PlayerAttributeLogicsDictionary
         {
             { AttributeType.Burn, new PlayerBurn() },
             { AttributeType.SlowDown, new PlayerSlowDown() },
-            { AttributeType.Normal, new PlayerNormal() },
-
+            {AttributeType.KnockBack, new PlayerKnockBack()},
+            { AttributeType.Normal, new PlayerNormal() }
         };
     }
 
