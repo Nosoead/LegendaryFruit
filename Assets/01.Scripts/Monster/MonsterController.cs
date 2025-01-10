@@ -1,6 +1,8 @@
+using System.Threading;
 using UnityEngine;
+using UnityEngine.Pool;
 
-public class MonsterController : MonoBehaviour
+public class MonsterController : MonoBehaviour, IProjectTileShooter
 {
     public MonsterAnimationController animationController;
     private MonsterStateMachine stateMachine;
@@ -13,6 +15,10 @@ public class MonsterController : MonoBehaviour
     public MonsterStatManager statManager;
     private float lookDirection = 1f;
 
+    [SerializeField] private Transform shootPoint;
+    private IObjectPool<PooledProjectTile> pooledProjectTile;
+    private RangedAttackData rangedAttackData = null;
+
     private float attackPower;
     private float moveSpeed;
     private float attackDistance;
@@ -22,23 +28,26 @@ public class MonsterController : MonoBehaviour
     private float attributeRateTime;
     private float attributeStack;
 
-
+    #region // LifeCycle
     private void Awake()
     {
         attributeLogicsDictionary = new MonsterAttributeLogicsDictionary();
         attributeLogicsDictionary.Initialize();
         stateMachine = new MonsterStateMachine(this);
         monsterAttributeLogics = new MonsterNormal();
+        CachedProjectTile();
     }
 
     private void OnEnable()
     {
         statManager.OnSubscribeToStatUpdateEvent += OnStatUpdatedEvent;
+        statManager.OnRangedAttackDataEvent += GetRagnedAttackStat;
     }
 
     private void OnDisable()
     {
         statManager.OnSubscribeToStatUpdateEvent -= OnStatUpdatedEvent;
+        statManager.OnRangedAttackDataEvent -= GetRagnedAttackStat;
     }
 
     private void Start()
@@ -50,7 +59,9 @@ public class MonsterController : MonoBehaviour
     {
         StateMachine.Excute();
     }
+    #endregion
 
+    #region // MonsterStat
     private void OnStatUpdatedEvent(string statKey, float value)
     {
         switch (statKey)
@@ -88,13 +99,19 @@ public class MonsterController : MonoBehaviour
         stateMachine.UpdateStat(this);
     }
 
+    public void GetRagnedAttackStat(RangedAttackData data)
+    {
+        rangedAttackData = data;
+    }    
+    #endregion
+
+    #region // MonsterState
     public void ReverseDirection()
     {
         Vector3 scale = transform.localScale;
         scale.x *= -1;
         lookDirection *= -1f;
         transform.localScale = scale;
-
     }
     public bool DetectPlayer()
     {
@@ -139,6 +156,22 @@ public class MonsterController : MonoBehaviour
             transform.position += rayDirection * (moveSpeed * Time.deltaTime);
         }
     }
+    #endregion
+
+    #region // MonsterAttack
+    private void CachedProjectTile()
+    {
+        pooledProjectTile = PoolManager.Instance.GetObjectFromPool<PooledProjectTile>(PoolType.PooledProjectTile);
+    }
+
+    public void Shoot(PooledProjectTile projectTile)
+    {
+        Vector3 look = Vector3.right * lookDirection;
+        projectTile.transform.position = shootPoint.position;
+        projectTile.SetData(rangedAttackData);
+        projectTile.SetAttirbuteData(rangedAttackData);
+        projectTile.ProjectTileShoot(look);
+    }
 
     public void Attack()
     {
@@ -156,6 +189,14 @@ public class MonsterController : MonoBehaviour
         SoundManagers.Instance.PlaySFX(SfxType.MonsterAttack); 
     }
 
+    public void RangedAttack()
+    {
+        if (statManager.isDead) return;
+        var projecttile = pooledProjectTile.Get();
+        Shoot(projecttile);
+    }
+    #endregion
+
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.red;
@@ -165,4 +206,5 @@ public class MonsterController : MonoBehaviour
         Vector2 boxPosition = (Vector2)transform.position + Vector2.right * attackDistance * lookDirection;
         Gizmos.DrawWireCube(boxPosition, boxSize);
     }
+
 }

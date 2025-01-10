@@ -21,8 +21,9 @@ public class WeaponSO : GameSO
     public Sprite weaponSprite;
     public Sprite rewardSprite;
     public AnimatorOverrideController animatorController;
-    public Material effectMaterial;
+    public RangedAttackData rangedAttackData;
     public EffectData effectData;
+    public Material effectMaterial;
 }
 
 [Serializable]
@@ -33,4 +34,17 @@ public class EffectData
 
     public float effectSize;
     public Gradient gradient;
+}
+
+[Serializable]
+public class RangedAttackData
+{
+    public ProjectileType projectileType;
+    public AttributeType attributeType;
+    public Sprite projectTileSprite;
+    public float attackDistance;
+    public float maxDistance;
+    public float rangedAttackPower;
+    public float rangedAttackSpeed;
+    public float rangedAttackRate;
 }

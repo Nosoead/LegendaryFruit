@@ -51,7 +51,6 @@ public class ParticleController : MonoBehaviour
 
     protected virtual void SetDamageColor(Material material, AttributeType type)
     {
-        Debug.Log($"{type.ToString()}");
         var color = material.color;
         switch (type)
         {

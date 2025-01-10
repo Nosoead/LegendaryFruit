@@ -16,6 +16,7 @@ public class MonsterSO : GameSO
     public float attributeRateTime; // 속성데미지의 지속시간
     public float attributeStack;
     public float inGameMoney; // 드랍하는 머니
+    public RangedAttackData monsterRagnedAttackData;
     public SpriteRenderer sprite; // 몬스터 이미지
     public AnimatorOverrideController animatorOverrideController; // 몬스터 애니메이션
 }

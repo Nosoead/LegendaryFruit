@@ -45,6 +45,7 @@ public enum PoolType
     PooledFruitWeapon,
     PooledBossMonster,
     PooledHitParticle,
+    PooledProjectTile,
     Count
 }
 
@@ -77,4 +78,12 @@ public enum BgmType
     InGame,         //인게임
     Boss,
     InfiniteDoors
+}
+
+
+
+public enum ProjectileType
+{
+    Player,
+    Monster
 }

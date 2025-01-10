@@ -459,12 +459,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   promptWindow: {fileID: 4097926254371803366}
+  rectTransform: {fileID: 0}
   promptImage: {fileID: 323327616591634060}
   gradeText: {fileID: 7818785896635730238}
   promptName: {fileID: 2646349241682979861}
   promptDescription: {fileID: 5718968043812291740}
   promptAttackPower: {fileID: 0}
   outlineImage: {fileID: 5567983861480235873}
+  interaction: {fileID: 0}
 --- !u!1 &4097926254371803366
 GameObject:
   m_ObjectHideFlags: 0

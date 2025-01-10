@@ -1,4 +1,5 @@
 using System.Collections;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -18,6 +19,11 @@ public class PlayerCondition : MonoBehaviour, IDamageable
     private bool isBurn = false;
     private bool isSlowDown = false;
 
+    // 플레이어 데미지 텀
+    private Coroutine coTakeDamageCoolDown;
+    private WaitForSeconds cooldownTime = new WaitForSeconds(0.2f);
+    private bool canTakeDamage = true;
+
 
     private void Awake()
     {
@@ -30,6 +36,9 @@ public class PlayerCondition : MonoBehaviour, IDamageable
     #region /BurnDamageLogic
     public void BurnDamage(float damage, float attributeValue, float attributeRateTime, float attributeStack)
     {
+        if (!canTakeDamage) return;
+        StartTakeDamageCooldown();
+
         statManager.ApplyInstantDamage(damage);
         OnTakeHitType?.Invoke(AttributeType.Normal);
         if (coBurnDamage != null && isBurn)
@@ -57,6 +66,9 @@ public class PlayerCondition : MonoBehaviour, IDamageable
     #region /SlowDownLogic
     public void SlowDown(float damage, float attributeValue, float attributeRateTime)
     {
+        if (!canTakeDamage) return;
+        StartTakeDamageCooldown();
+
         OnTakeHitType?.Invoke(AttributeType.SlowDown);
         statManager.ApplyInstantDamage(damage);
         if (coSlowDown != null && isSlowDown)
@@ -78,10 +90,34 @@ public class PlayerCondition : MonoBehaviour, IDamageable
     }
     #endregion
 
+    #region /KnockbackLogic
+    public void Knockback(float damage, float attributeValue, float lookDirection)
+    {
+
+    }
+    #endregion
+
     public void TakeDamage(float damage)
     {
+        if (!canTakeDamage) return;
+        StartTakeDamageCooldown();
+
         OnTakeHitType?.Invoke(AttributeType.Normal);
         statManager.ApplyInstantDamage(damage);
         SoundManagers.Instance.PlaySFX(SfxType.PlayerDamaged);
     }
+
+    #region /TakeDamageCooldown
+    private void StartTakeDamageCooldown()
+    {
+        canTakeDamage = false;
+        coTakeDamageCoolDown = StartCoroutine(CoolDownCoroutine());
+    }
+
+    private IEnumerator CoolDownCoroutine()
+    {
+        yield return cooldownTime;
+        canTakeDamage = true;
+    }
+    #endregion
 }
