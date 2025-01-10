@@ -754,9 +754,27 @@
             "id": "b2a460dd-b58c-444d-aa56-bb55940fdc65",
             "actions": [
                 {
-                    "name": "Change",
+                    "name": "Interact",
                     "type": "Button",
-                    "id": "3d601e11-a094-4bb8-a895-93ec5504dc0a",
+                    "id": "2e64a1b7-15aa-47c8-b685-d2b415fae82c",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Setting",
+                    "type": "Button",
+                    "id": "25102553-40e0-45ff-96a1-16cc5b29dafa",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Inventory",
+                    "type": "Button",
+                    "id": "5ee3d37d-c372-496a-bf29-9804a5cbb3e1",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -766,34 +784,34 @@
             "bindings": [
                 {
                     "name": "",
-                    "id": "5bd261bb-5a37-4fbe-99b1-ec0453b09780",
+                    "id": "5ddbc4c1-72c4-4dc2-86bc-8f4c4b366650",
                     "path": "<Keyboard>/f",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Change",
+                    "action": "Interact",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
                 {
                     "name": "",
-                    "id": "5a05965e-c4f5-49a5-a43e-7076d44b4b41",
+                    "id": "dbe9de73-103d-4bd6-960d-f92d370949cf",
                     "path": "<Keyboard>/backquote",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Change",
+                    "action": "Setting",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
                 {
                     "name": "",
-                    "id": "8a8c0c61-5aaf-4c99-8ce6-c48b4fe91b13",
+                    "id": "c17aedb1-875f-4127-8362-bb31f42c1069",
                     "path": "<Keyboard>/tab",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Change",
+                    "action": "Inventory",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

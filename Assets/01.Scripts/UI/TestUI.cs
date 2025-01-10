@@ -1,3 +1,4 @@
+/*
 using UnityEngine;
 
 public class TestUI : MonoBehaviour
@@ -11,7 +12,7 @@ public class TestUI : MonoBehaviour
         /*if (SettingUI.IsActive)
         {
             return;
-        }*/
+        }#1#
         // ESC 키를 눌렀을 때 ESCUI 토글
         if (Input.GetKeyDown(KeyCode.BackQuote))
         {
@@ -93,3 +94,4 @@ public class TestUI : MonoBehaviour
         }
     }
 }
+*/

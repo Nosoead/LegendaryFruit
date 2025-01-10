@@ -776,9 +776,27 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
             ""id"": ""b2a460dd-b58c-444d-aa56-bb55940fdc65"",
             ""actions"": [
                 {
-                    ""name"": ""Change"",
+                    ""name"": ""Interact"",
                     ""type"": ""Button"",
-                    ""id"": ""3d601e11-a094-4bb8-a895-93ec5504dc0a"",
+                    ""id"": ""2e64a1b7-15aa-47c8-b685-d2b415fae82c"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Setting"",
+                    ""type"": ""Button"",
+                    ""id"": ""25102553-40e0-45ff-96a1-16cc5b29dafa"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Inventory"",
+                    ""type"": ""Button"",
+                    ""id"": ""5ee3d37d-c372-496a-bf29-9804a5cbb3e1"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """",
@@ -788,34 +806,34 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
             ""bindings"": [
                 {
                     ""name"": """",
-                    ""id"": ""5bd261bb-5a37-4fbe-99b1-ec0453b09780"",
+                    ""id"": ""5ddbc4c1-72c4-4dc2-86bc-8f4c4b366650"",
                     ""path"": ""<Keyboard>/f"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Change"",
+                    ""action"": ""Interact"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
                 {
                     ""name"": """",
-                    ""id"": ""5a05965e-c4f5-49a5-a43e-7076d44b4b41"",
+                    ""id"": ""dbe9de73-103d-4bd6-960d-f92d370949cf"",
                     ""path"": ""<Keyboard>/backquote"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Change"",
+                    ""action"": ""Setting"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
                 {
                     ""name"": """",
-                    ""id"": ""8a8c0c61-5aaf-4c99-8ce6-c48b4fe91b13"",
+                    ""id"": ""c17aedb1-875f-4127-8362-bb31f42c1069"",
                     ""path"": ""<Keyboard>/tab"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Change"",
+                    ""action"": ""Inventory"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -866,7 +884,9 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
         m_UI_Interact = m_UI.FindAction("Interact", throwIfNotFound: true);
         // Changer
         m_Changer = asset.FindActionMap("Changer", throwIfNotFound: true);
-        m_Changer_Change = m_Changer.FindAction("Change", throwIfNotFound: true);
+        m_Changer_Interact = m_Changer.FindAction("Interact", throwIfNotFound: true);
+        m_Changer_Setting = m_Changer.FindAction("Setting", throwIfNotFound: true);
+        m_Changer_Inventory = m_Changer.FindAction("Inventory", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -1156,12 +1176,16 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
     // Changer
     private readonly InputActionMap m_Changer;
     private List<IChangerActions> m_ChangerActionsCallbackInterfaces = new List<IChangerActions>();
-    private readonly InputAction m_Changer_Change;
+    private readonly InputAction m_Changer_Interact;
+    private readonly InputAction m_Changer_Setting;
+    private readonly InputAction m_Changer_Inventory;
     public struct ChangerActions
     {
         private @PlayerInput m_Wrapper;
         public ChangerActions(@PlayerInput wrapper) { m_Wrapper = wrapper; }
-        public InputAction @Change => m_Wrapper.m_Changer_Change;
+        public InputAction @Interact => m_Wrapper.m_Changer_Interact;
+        public InputAction @Setting => m_Wrapper.m_Changer_Setting;
+        public InputAction @Inventory => m_Wrapper.m_Changer_Inventory;
         public InputActionMap Get() { return m_Wrapper.m_Changer; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -1171,16 +1195,28 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
         {
             if (instance == null || m_Wrapper.m_ChangerActionsCallbackInterfaces.Contains(instance)) return;
             m_Wrapper.m_ChangerActionsCallbackInterfaces.Add(instance);
-            @Change.started += instance.OnChange;
-            @Change.performed += instance.OnChange;
-            @Change.canceled += instance.OnChange;
+            @Interact.started += instance.OnInteract;
+            @Interact.performed += instance.OnInteract;
+            @Interact.canceled += instance.OnInteract;
+            @Setting.started += instance.OnSetting;
+            @Setting.performed += instance.OnSetting;
+            @Setting.canceled += instance.OnSetting;
+            @Inventory.started += instance.OnInventory;
+            @Inventory.performed += instance.OnInventory;
+            @Inventory.canceled += instance.OnInventory;
         }
 
         private void UnregisterCallbacks(IChangerActions instance)
         {
-            @Change.started -= instance.OnChange;
-            @Change.performed -= instance.OnChange;
-            @Change.canceled -= instance.OnChange;
+            @Interact.started -= instance.OnInteract;
+            @Interact.performed -= instance.OnInteract;
+            @Interact.canceled -= instance.OnInteract;
+            @Setting.started -= instance.OnSetting;
+            @Setting.performed -= instance.OnSetting;
+            @Setting.canceled -= instance.OnSetting;
+            @Inventory.started -= instance.OnInventory;
+            @Inventory.performed -= instance.OnInventory;
+            @Inventory.canceled -= instance.OnInventory;
         }
 
         public void RemoveCallbacks(IChangerActions instance)
@@ -1234,6 +1270,8 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
     }
     public interface IChangerActions
     {
-        void OnChange(InputAction.CallbackContext context);
+        void OnInteract(InputAction.CallbackContext context);
+        void OnSetting(InputAction.CallbackContext context);
+        void OnInventory(InputAction.CallbackContext context);
     }
 }

@@ -5,123 +5,81 @@ using UnityEngine.InputSystem;
 
 public class UIInputHandler : MonoBehaviour
 {
-    public PlayerInput input;
-    private bool isPlay = true;
+    private PlayerInput input;
+    private bool isPlay;
     private bool isEsc;
     private bool isTab;
     private bool isInteract;
+    private bool isNpc;
 
     private void Awake()
     {
-        input = new PlayerInput();
+        input = GatherInput.Instance.input;
     }
 
     private void OnEnable()
     {
-        /*input.UI.Navigate.started += OnNavigate;
-        input.UI.Submit.started += OnSubmit;
-        input.UI.Cancel.started += OnCancel;
-        input.UI.Point.started += OnPoint;
-        input.UI.Click.started += OnClick;
-        input.UI.ScrollWheel.started += OnScrollWheel;
-        input.UI.RightClick.started += OnRightClick;*/
+        input.Changer.Interact.started += OnInteract;
+        input.Changer.Inventory.started += OnInventory;
+        input.Changer.Setting.started += OnSetting;
 
-        input.UI.Interact.started += OnInteract;
-        input.UI.Inventory.started += OnInventory;
-        input.UI.Setting.started += OnSetting;
-        
-        input.Changer.Change.started += Change;
-
-        input.Changer.Enable();
         input.UI.Enable();
-      
     }
 
     private void OnDisable()
     {
-        input.Changer.Change.started -= Change;
+        input.Changer.Interact.started -= OnInteract;
+        input.Changer.Inventory.started -= OnInventory;
+        input.Changer.Setting.started -= OnSetting;
+
         input.UI.Disable();
     }
 
-    private void Change(InputAction.CallbackContext context)
-    {
-        isPlay = !isPlay;
-
-        if (isPlay)
-        {
-            input.UI.Disable();
-            input.Player.Enable();
-        }
-        else
-        {
-            input.Player.Disable();
-            input.UI.Enable();
-        }
-        Debug.Log("Player enabled: " + input.Player.enabled);
-        Debug.Log("UI enabled: " + input.UI.enabled);
-        Debug.Log("Changer enabled: " + input.Changer.enabled);
-    }
     private void OnInteract(InputAction.CallbackContext context)
     {
-        
+        if (isEsc) return;
+        if (isTab) return;
+        //input.Player.Enable();
     }
+
     private void OnInventory(InputAction.CallbackContext context)
     {
-        Debug.Log("Inventory");
         if (isEsc) return;
-        if (!isTab)
+        isPlay = !isPlay;
+
+        if (isPlay && !isTab)
         {
+            input.UI.Enable();
             UIManager.Instance.ToggleUI<InventoryUI>(false);
+            input.Player.Disable();
             isTab = true;
         }
         else
         {
-            UIManager.Instance.ToggleUI<InventoryUI>(true);
+            input.Player.Enable();
+            UIManager.Instance.ToggleUI<InventoryUI>(false);
+            input.UI.Disable();
             isTab = false;
         }
     }
 
     private void OnSetting(InputAction.CallbackContext context)
     {
-        if (isTab) return;
-        if (!isEsc)
+        if (UIManager.Instance.IsSettingOpen || isTab) return;
+        isPlay = !isPlay;
+        if (isPlay && !isEsc)
         {
+            input.UI.Enable();
             UIManager.Instance.ToggleUI<ESCUI>(false);
-
+            input.Player.Disable();
             isEsc = true;
         }
         else
         {
-            UIManager.Instance.ToggleUI<ESCUI>(true);
+            input.Player.Enable();
+            UIManager.Instance.ToggleUI<ESCUI>(false);
+            input.UI.Disable();
             isEsc = false;
         }
-    }
-
-    private void OnNavigate(InputAction.CallbackContext context)
-    {
-    }
-
-    private void OnSubmit(InputAction.CallbackContext context)
-    {
-    }
-
-    private void OnCancel(InputAction.CallbackContext context)
-    {
-    }
-
-    private void OnPoint(InputAction.CallbackContext context)
-    {
-    }
-
-    private void OnClick(InputAction.CallbackContext context)
-    {
-    }
-
-    private void OnScrollWheel(InputAction.CallbackContext context)
-    {
-    }
-
-    private void OnRightClick(InputAction.CallbackContext context)
-    {
     }
 }

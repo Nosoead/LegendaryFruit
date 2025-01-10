@@ -1,5 +1,5 @@
 using System.Collections.Generic;
-using UnityEngine;
+
 
 public class UIManager : Singleton<UIManager>
 {
@@ -7,6 +7,8 @@ public class UIManager : Singleton<UIManager>
     private Stack<UIBase> uiActiveStack = new Stack<UIBase>();
     private Dictionary<string, UIBase> persistentUI = new Dictionary<string, UIBase>();
     private string path;
+
+    public bool IsSettingOpen { get; private set; }
 
     public void ForeInit()
     {
@@ -164,5 +166,10 @@ public class UIManager : Singleton<UIManager>
             ui.Value.Close();
         }
         persistentUI.Clear();
+    }
+
+    public void ToggleSettingState(bool isOpen)
+    {
+        IsSettingOpen = isOpen;
     }
 }

@@ -31,10 +31,13 @@ public class UIDialogue : UIBase
 
     [SerializeField] private Color disableColor;
 
-    private bool done = false;
+    private bool done;
+    private bool keyPressed;
+    private bool isFirst;
 
     private DialogueData dialogueData;
     private UIManager uiManager;
+    private PlayerInput input;
 
     private void Awake()
     {
@@ -45,43 +48,57 @@ public class UIDialogue : UIBase
         }
 
         btnBack.onClick.AddListener(DialogueDone);
-
-
+        input = GatherInput.Instance.input;
     }
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Return) || Input.GetMouseButtonDown(0))
+        if (Input.GetKeyDown(KeyCode.F) && !keyPressed)
         {
             /*
             if(uiDialogueList.gameObject.activeSelf)
                 return;
                 */
 
-            if (done == false)
-            {
-                DOTween.KillAll();
-                txtDialogue.text = dialogueData.Dialogue;
-                LogDone();
-            }
-            else
-            {
-                if (dialogueData.AnswerList == null || dialogueData.AnswerList.Count == 0)
-                {
-                    if (dialogueData.Next != 0)
-                    {
-                        var nextDialogue = DialogueManager.Instance.GetDialogueData(dialogueData.Next);
-                        SetDialogue(nextDialogue);
-                    }
-                    else
-                    {
-                        DialogueDone();
-                    }
-                }
-            }
+            keyPressed = true;
+            StartCoroutine(HandleDialogue());
+        }
+
+        if (Input.GetKeyUp(KeyCode.F))
+        {
+            keyPressed = false;
         }
     }
 
+    private IEnumerator HandleDialogue()
+    {
+        
+        if (done == false)
+        {
+            DOTween.KillAll();
+            yield return null;
+            txtDialogue.text = dialogueData.Dialogue;
+            LogDone();
+        }
+        else
+        {
+            if (dialogueData.AnswerList == null || dialogueData.AnswerList.Count == 0)
+            {
+                if (dialogueData.Next != 0)
+                {
+                    var nextDialogue = DialogueManager.Instance.GetDialogueData(dialogueData.Next);
+                    SetDialogue(nextDialogue);
+                }
+                else
+                {
+                    input.Player.Enable();
+                    DialogueDone();
+                }
+            }
+        }
+
+        yield return null;
+    }
     public void SetDialogue(DialogueData dialogue)
     {
         DOTween.KillAll(true);
@@ -112,7 +129,7 @@ public class UIDialogue : UIBase
         txtDialogue.DOText(dialogueData.Dialogue, duration).SetEase(Ease.Linear).OnComplete(LogDone); //두트윈 유료버전
         //txtDialogue.text = dialogueData.Dialogue; // 두트윈 없을시
         //LogDone(); //두트윈 없을시
-        
+        input.Player.Disable();
     }
 
     private void LogDone()
@@ -123,6 +140,7 @@ public class UIDialogue : UIBase
             imgContinue.DOFade(1, 0.7f).SetLoops(-1, LoopType.Yoyo).SetEase(Ease.InQuad);
         else
             SetBtn();
+       
     }
 
     private void DialogueDone()
@@ -275,7 +293,6 @@ public class UIDialogue : UIBase
             var nextDialogue = DialogueManager.Instance.GetDialogueData(answer.Action);
             SetDialogue(nextDialogue);
         }
-
     }
 
     private Dictionary<string, Texture> _textures = new Dictionary<string, Texture>();

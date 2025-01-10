@@ -15,7 +15,7 @@ public class ESCUI : UIBase
 
     private void Update()
     {
-        TimeSpan timeSpan =  TimeSpan.FromSeconds(Time.time); // 일시정지되면 같이 멈추는 시간
+        TimeSpan timeSpan = TimeSpan.FromSeconds(Time.time); // 일시정지되면 같이 멈추는 시간
         //TimeSpan timeSpan = TimeSpan.FromSeconds(Time.unscaledTime); //일시정지되도 흘러가는 시간
         nowTime.text = timeSpan.ToString(@"hh\:mm\:ss");
     }
@@ -25,9 +25,10 @@ public class ESCUI : UIBase
         base.Open();
         backButton.onClick.AddListener(() => UIManager.Instance.ToggleUI<ESCUI>(true));
         backButton.onClick.AddListener(() => SoundManagers.Instance.PlaySFX(SfxType.UIButton));
-        settingButton.onClick.AddListener(() =>  UIManager.Instance.ToggleUI<SettingUI>(false));
+        settingButton.onClick.AddListener(() => UIManager.Instance.ToggleUI<SettingUI>(false));
+        settingButton.onClick.AddListener(() => UIManager.Instance.ToggleSettingState(true));
         settingButton.onClick.AddListener(() => SoundManagers.Instance.PlaySFX(SfxType.UIButton));
-        newGameButton.onClick.AddListener(()=> DataManager.Instance.DeleteData<SaveDataContainer>());
+        newGameButton.onClick.AddListener(() => DataManager.Instance.DeleteData<SaveDataContainer>());
         newGameButton.onClick.AddListener(() => SceneManagerExtension.Instance.LoadScene(SceneType.OneCycleScene));
         newGameButton.onClick.AddListener(() => SoundManagers.Instance.PlaySFX(SfxType.UIButton));
         exitButton.onClick.AddListener(() => Quit());
@@ -42,4 +43,3 @@ public class ESCUI : UIBase
 #endif
     }
 }
-
