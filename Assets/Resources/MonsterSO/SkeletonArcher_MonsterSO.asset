@@ -10,32 +10,32 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a48b29d80c90f6a41a2846b84a4266ec, type: 3}
-  m_Name: NormalOrc_MonsterSO
+  m_Name: SkeletonArcher_MonsterSO
   m_EditorClassIdentifier: 
-  monsterID: 1010101
-  maxHealth: 40
-  attackPower: 15
+  monsterID: 1030104
+  maxHealth: 50
+  attackPower: 0
   defense: 5
-  attackSpeed: 3
-  moveSpeed: 3
-  attackDistance: 2
+  attackSpeed: 0
+  moveSpeed: 5
+  attackDistance: 8
   chaseRange: 10
   type: 5
   attributeValue: 0
   attributeRateTime: 0
   attributeStack: 0
-  inGameMoney: 100
+  inGameMoney: 120
   monsterRagnedAttackData:
-    projectileType: 0
+    projectileType: 1
     attributeType: 5
-    projectTileSprite: {fileID: 0}
+    projectTileSprite: {fileID: 21300000, guid: b2410cc69af04ae4d9376770f4a035a9, type: 3}
     attackDistance: 0
-    maxDistance: 0
-    rangedAttackPower: 0
-    rangedAttackSpeed: 0
-    rangedAttackRate: 0
+    maxDistance: 15
+    rangedAttackPower: 45
+    rangedAttackSpeed: 5
+    rangedAttackRate: 1
   sprite: {fileID: 0}
-  animatorOverrideController: {fileID: 22100000, guid: 243c00b9df29bf54482b417cfa1965c0, type: 2}
-  defalutAttackClip: {fileID: 7400000, guid: 2fe45fc4b38fd064fb877e839b389f4c, type: 2}
+  animatorOverrideController: {fileID: 22100000, guid: e22aeed35a43c0748b160e71e9056a4a, type: 2}
+  defalutAttackClip: {fileID: 7400000, guid: 8861e8c472e2f184a8a042f57b9b97c9, type: 2}
   pattrenAttackClip: []
   patternAttackChance: 0

@@ -59,13 +59,14 @@ public class PooledProjectTile : MonoBehaviour, ISetPooledObject<PooledProjectTi
 
     public void ProjectTileShoot(Vector3 dir)
     {
+        
         StartCoroutine(ProjectTileMove(dir));
     }
 
     private IEnumerator ProjectTileMove(Vector3 dir)
     {
-        Vector2 startPositon = transform.position;
-        while (Vector2.Distance(startPositon, transform.position) > projectTileMaxDistance)
+        Vector2 startPositon = this.transform.position;
+        while (Vector2.Distance(startPositon, transform.position) < projectTileMaxDistance)
         {
             transform.position += dir * projectTileSpeed * Time.deltaTime;
             yield return null;

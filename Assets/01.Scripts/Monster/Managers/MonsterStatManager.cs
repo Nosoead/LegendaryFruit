@@ -68,20 +68,23 @@ public class MonsterStatManager : MonoBehaviour
     {
         if (data is RegularMonsterSO regularMonsterData)
         {
-            stat.InitStat(regularMonsterData);
-            if(regularMonsterData.monsterRagnedAttackData.projectTileSprite != null)
+            if (regularMonsterData.monsterRagnedAttackData.projectTileSprite != null)
             {
                 OnRangedAttackDataEvent?.Invoke(regularMonsterData.monsterRagnedAttackData);
+                stat.InitStat(regularMonsterData);
+                return;
             }
+            stat.InitStat(regularMonsterData);
         }
         else if (data is BossMonsterSO bossMonsterData)
         {
-            stat.InitStat(bossMonsterData);
-            OnRangedAttackDataEvent?.Invoke(bossMonsterData.monsterRagnedAttackData);
             if (bossMonsterData.monsterRagnedAttackData.projectTileSprite != null)
             {
                 OnRangedAttackDataEvent?.Invoke(bossMonsterData.monsterRagnedAttackData);
+                stat.InitStat(bossMonsterData);
+                return;
             }
+            stat.InitStat(bossMonsterData);
         }
     }
 

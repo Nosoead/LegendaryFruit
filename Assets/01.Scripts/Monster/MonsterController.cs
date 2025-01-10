@@ -167,13 +167,11 @@ public class MonsterController : MonoBehaviour, IProjectTileShooter
     public void Shoot(PooledProjectTile projectTile)
     {
         Vector3 look = Vector3.right * lookDirection;
-        projectTile = pooledProjectTile.Get();
         projectTile.transform.position = shootPoint.position;
         projectTile.SetData(rangedAttackData);
         projectTile.SetAttirbuteData(rangedAttackData);
         projectTile.ProjectTileShoot(look);
         Debug.Log("발사됨 ");
-
     }
 
     public void Attack()
@@ -195,6 +193,8 @@ public class MonsterController : MonoBehaviour, IProjectTileShooter
     public void RangedAttack()
     {
         if (statManager.isDead) return;
+        var projecttile = pooledProjectTile.Get();
+        Shoot(projecttile);
     }
     #endregion
 
