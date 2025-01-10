@@ -59,7 +59,14 @@ public class PooledProjectTile : MonoBehaviour, ISetPooledObject<PooledProjectTi
 
     public void ProjectTileShoot(Vector3 dir)
     {
-        
+        if(dir.x < 1)
+        {
+            projectTileSprtie.flipX = true;
+        }
+        if(dir.x > 1)
+        {
+            projectTileSprtie.flipX = false;
+        }
         StartCoroutine(ProjectTileMove(dir));
     }
 
