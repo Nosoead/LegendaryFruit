@@ -28,12 +28,12 @@ MonoBehaviour:
   monsterRagnedAttackData:
     projectileType: 0
     attributeType: 5
-    projectTileSprite: {fileID: 0}
+    projectTileSprite: {fileID: 21300000, guid: b2410cc69af04ae4d9376770f4a035a9, type: 3}
     attackDistance: 0
-    maxDistance: 0
-    rangedAttackPower: 0
-    rangedAttackSpeed: 0
-    rangedAttackRate: 0
+    maxDistance: 15
+    rangedAttackPower: 45
+    rangedAttackSpeed: 5
+    rangedAttackRate: 1
   sprite: {fileID: 0}
   animatorOverrideController: {fileID: 22100000, guid: 243c00b9df29bf54482b417cfa1965c0, type: 2}
   defalutAttackClip: {fileID: 7400000, guid: 2fe45fc4b38fd064fb877e839b389f4c, type: 2}

@@ -171,7 +171,6 @@ public class MonsterController : MonoBehaviour, IProjectTileShooter
         projectTile.SetData(rangedAttackData);
         projectTile.SetAttirbuteData(rangedAttackData);
         projectTile.ProjectTileShoot(look);
-        Debug.Log("발사됨 ");
     }
 
     public void Attack()
