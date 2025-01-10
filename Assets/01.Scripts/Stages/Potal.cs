@@ -7,6 +7,7 @@ public class Potal : MonoBehaviour, IInteractable
     [SerializeField] private Canvas pressFCanvas;
     private int playerLayer;
     private int invincibleLayer;
+    [SerializeField] private SpriteRenderer barricadeImage;
 
     //스테이지 셋팅
     [SerializeField] private Stage stage;
@@ -28,7 +29,17 @@ public class Potal : MonoBehaviour, IInteractable
         {
             stage = GetComponentInParent<Stage>();
         }
-
+        if (barricadeImage != null)
+        {
+            if (GameManager.Instance.GetGameClear())
+            {
+                barricadeImage.enabled = false;
+            }
+            else
+            {
+                barricadeImage.enabled = true;
+            }
+        }
         pressFCanvas.gameObject.SetActive(false);
         currentstageType = (StageType)stage.GetStageID();
         GameManager.Instance.OnGameClear += OnOpenPotal;
@@ -42,6 +53,10 @@ public class Potal : MonoBehaviour, IInteractable
     private void OnOpenPotal()
     {
         //TODO 포탈 이미지 변경
+        if (barricadeImage != null)
+        {
+            barricadeImage.enabled = false;
+        }
     }
 
     #region /TogglePrompt

@@ -29,6 +29,18 @@ public class PlayerSlowDown : PlayerAttributeLogics
     }
 }
 
+public class PlayerKnockBack : PlayerAttributeLogics
+{
+    public override void ApplyAttackLogic(GameObject target, float damage, float attributeValue, float attributeRateTime, float attributeStack)
+    {
+        IDamageable damageable = target.GetComponent<IDamageable>();
+        if (damageable != null)
+        {
+            //damageable.BurnDamage(damage, attributeValue, attributeRateTime, attributeStack);
+        }
+    }
+}
+
 public class PlayerNormal : PlayerAttributeLogics
 {
     public override void ApplyAttackLogic(GameObject target, float damage, float attributeValue, float attributeRateTime, float attributeStack)

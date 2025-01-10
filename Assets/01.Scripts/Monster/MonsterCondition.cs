@@ -86,6 +86,13 @@ public class MonsterCondition : MonoBehaviour, IDamageable
     }
     #endregion
 
+    #region /KnockbackLogic
+    public void Knockback(float damage, float attributeValue, float lookDirection)
+    {
+
+    }
+    #endregion
+
     public void TakeDamage(float damage)
     { 
         controller.OnTakeHit();
