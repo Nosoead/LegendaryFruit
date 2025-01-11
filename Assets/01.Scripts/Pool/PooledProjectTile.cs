@@ -59,11 +59,11 @@ public class PooledProjectTile : MonoBehaviour, ISetPooledObject<PooledProjectTi
 
     public void ProjectTileShoot(Vector3 dir)
     {
-        if(dir.x < 1)
+        if(dir.x <= 1)
         {
             projectTileSprtie.flipX = true;
         }
-        if(dir.x > 1)
+        if(dir.x >= 1)
         {
             projectTileSprtie.flipX = false;
         }
@@ -86,14 +86,14 @@ public class PooledProjectTile : MonoBehaviour, ISetPooledObject<PooledProjectTi
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.layer == LayerMask.NameToLayer("Player") && currentProjectTileType == ProjectileType.Player)
+        if (collision.gameObject.layer == LayerMask.NameToLayer("Player") && currentProjectTileType == ProjectileType.Monster)
         {
             attackObject = collision.gameObject.GetComponent<IDamageable>();
             ApplyDamageByAttribute(attackObject, projectTileDamage, currentAttirbuteValue, currentAttributeRateTime, currentAttributeStack);
             ResetState();
             ProjectTileRelease();
         }
-        if(collision.gameObject.layer == LayerMask.NameToLayer("Monster") && currentProjectTileType == ProjectileType.Monster)
+        if(collision.gameObject.layer == LayerMask.NameToLayer("Monster") && currentProjectTileType == ProjectileType.Player)
         {
             attackObject = collision.gameObject.GetComponent<IDamageable>();
             ApplyDamageByAttribute(attackObject, projectTileDamage, currentAttirbuteValue, currentAttributeRateTime, currentAttributeStack);
@@ -132,6 +132,4 @@ public class PooledProjectTile : MonoBehaviour, ISetPooledObject<PooledProjectTi
         currentAttributeRateTime = 0f;
         currentAttributeStack = 0f;
     }
-
-
 }

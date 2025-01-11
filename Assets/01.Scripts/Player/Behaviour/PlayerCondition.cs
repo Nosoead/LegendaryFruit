@@ -39,8 +39,8 @@ public class PlayerCondition : MonoBehaviour, IDamageable
         if (!canTakeDamage) return;
         StartTakeDamageCooldown();
 
-        statManager.ApplyInstantDamage(damage);
         OnTakeHitType?.Invoke(AttributeType.Normal);
+        statManager.ApplyInstantDamage(damage);
         if (coBurnDamage != null && isBurn)
         {
             StopCoroutine(coBurnDamage);
@@ -51,7 +51,7 @@ public class PlayerCondition : MonoBehaviour, IDamageable
 
     private IEnumerator BurnDamageCoroutine(float attributeValue, float attributeRateTime, float attributeStack)
     {
-        yield return null;
+        yield return new WaitForSecondsRealtime(0.5f);
         burnWaitTime = new WaitForSeconds(attributeRateTime);
         for (int i = 0; i < attributeStack; i++)
         {

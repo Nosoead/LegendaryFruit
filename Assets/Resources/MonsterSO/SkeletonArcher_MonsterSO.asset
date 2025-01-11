@@ -32,7 +32,7 @@ MonoBehaviour:
     attackDistance: 0
     maxDistance: 15
     rangedAttackPower: 45
-    rangedAttackSpeed: 5
+    rangedAttackSpeed: 10
     rangedAttackRate: 1
   sprite: {fileID: 0}
   animatorOverrideController: {fileID: 22100000, guid: e22aeed35a43c0748b160e71e9056a4a, type: 2}
