@@ -1918,6 +1918,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   uiList: []
+  uiInputHandler: {fileID: 4783446851892071839, guid: dd5abbe63ea36f4478a505be38f9d0ca, type: 3}
   bossRoomTrigger: {fileID: 0}
   btnBack: {fileID: 3420078165175952896}
   imgBg: {fileID: 6059326225043581687}

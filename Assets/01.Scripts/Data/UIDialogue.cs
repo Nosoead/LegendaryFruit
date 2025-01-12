@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using DG.Tweening;
@@ -12,6 +13,7 @@ public class UIDialogue : UIBase
 {
     [SerializeField] private List<GameObject> uiList;
     private UIDialogueList uiDialogueList;
+    [SerializeField] private UIInputHandler uiInputHandler;
     [SerializeField] private BossRoomTrigger bossRoomTrigger;
 
     [SerializeField] private Button btnBack;
@@ -49,36 +51,36 @@ public class UIDialogue : UIBase
 
         btnBack.onClick.AddListener(DialogueDone);
         input = GatherInputManager.Instance.input;
+        uiInputHandler = GetComponent<UIInputHandler>();
     }
 
-    private void Update()
+    private void OnEnable()
     {
-        if (Input.GetKeyDown(KeyCode.F) && !keyPressed)
+        if (uiInputHandler == null)
         {
-            /*
-            if(uiDialogueList.gameObject.activeSelf)
-                return;
-                */
-
-            keyPressed = true;
-            StartCoroutine(HandleDialogue());
+            uiInputHandler =FindObjectOfType<UIInputHandler>();
         }
-
-        if (Input.GetKeyUp(KeyCode.F))
-        {
-            keyPressed = false;
-        }
+        uiInputHandler.OnInteractEvent += Handler;
     }
 
+    private void OnDisable()
+    {
+        uiInputHandler.OnInteractEvent -= Handler;
+    }
+
+    private void Handler()
+    {
+        StartCoroutine(HandleDialogue());
+    }
     private IEnumerator HandleDialogue()
     {
-        
         if (done == false)
         {
             DOTween.KillAll();
             yield return null;
             txtDialogue.text = dialogueData.Dialogue;
             LogDone();
+            Debug.Log("LogDone");
         }
         else
         {
@@ -88,16 +90,25 @@ public class UIDialogue : UIBase
                 {
                     var nextDialogue = DialogueManager.Instance.GetDialogueData(dialogueData.Next);
                     SetDialogue(nextDialogue);
+                    Debug.Log("never");
                 }
                 else
                 {
-                    input.Player.Enable();
+                    Debug.Log("no next dialogue");
+                   
                     DialogueDone();
                 }
             }
         }
 
         yield return null;
+    }
+
+    private void InputInit()
+    {
+        input.Player.Enable();
+        input.Changer.Enable();
+        input.UI.Disable();
     }
     public void SetDialogue(DialogueData dialogue)
     {
@@ -129,7 +140,6 @@ public class UIDialogue : UIBase
         txtDialogue.DOText(dialogueData.Dialogue, duration).SetEase(Ease.Linear).OnComplete(LogDone); //두트윈 유료버전
         //txtDialogue.text = dialogueData.Dialogue; // 두트윈 없을시
         //LogDone(); //두트윈 없을시
-        input.Player.Disable();
     }
 
     private void LogDone()
@@ -140,7 +150,6 @@ public class UIDialogue : UIBase
             imgContinue.DOFade(1, 0.7f).SetLoops(-1, LoopType.Yoyo).SetEase(Ease.InQuad);
         else
             SetBtn();
-       
     }
 
     private void DialogueDone()
@@ -162,8 +171,7 @@ public class UIDialogue : UIBase
         }
 
         _textures.Clear();
-        /*})*/
-        ;
+        InputInit();
     }
 
     public void SetBg(string bg)
@@ -175,6 +183,7 @@ public class UIDialogue : UIBase
             return;
 
         LoadTexture(imgBg, bg);
+       
     }
 
     private void SetNpc1(DialogueNpc npc)
