@@ -1,8 +1,9 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.Pool;
 
-public class PlayerAttack : MonoBehaviour
+public class PlayerAttack : MonoBehaviour, IProjectTileShooter
 {
     public UnityAction<bool> OnAttackingEvent;
     [SerializeField] private PlayerController controller;
@@ -25,6 +26,7 @@ public class PlayerAttack : MonoBehaviour
     private float attakRange = 1.5f;
     private WaitForSeconds attackRateTime = new WaitForSeconds(0.5f);
     //TODO : 공격속도에 따라 waitforseconds가 변하도록
+
 
     //기즈모
     private float attackLookDirection = 1f;
@@ -138,5 +140,10 @@ public class PlayerAttack : MonoBehaviour
         float drawDireiction = isAttacking ? attackLookDirection : lookDirection;
         Vector2 boxPosition = (Vector2)transform.position + Vector2.right * attakRange * drawDireiction;
         Gizmos.DrawWireCube(boxPosition, boxSize);
+    }
+
+    public void Shoot(PooledProjectTile projectTile)
+    {
+        throw new System.NotImplementedException();
     }
 }

@@ -10,22 +10,30 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6f30345d6f773874da4088be7b3c7755, type: 3}
-  m_Name: StrawberryWeaponUniqueSO
+  m_Name: BananaWeaponUniqueSO
   m_EditorClassIdentifier: 
   ID: 0
-  weaponName: "\uC5C4\uCCAD\uBB34\uAC70\uC6CC\uC9C4 \uB538\uAE30\uCE7C"
-  description: "\uC774\uC81C \uBABB\uB4E4\uACA0\uB2E4 \uBA39\uC5B4\uC57C\uC9C0"
-  attackPower: 25
+  weaponName: "\uBC14\uB098\uB098\uAC00 3\uAC1C?"
+  description: "\uBC14\uB098\uB098\uAC003\uAC1C\uB098 \uAC1C\uAFC0"
+  attackPower: 30
   type: 0
-  gradeType: 2
-  eatValue: 6
-  attributeAttackValue: 7
-  attributeAttackRateTime: 1
-  arrtibuteStatck: 3
-  weaponSprite: {fileID: 21300000, guid: 6249f931e9e83f14d8f18116e7a7dbd1, type: 3}
-  rewardSprite: {fileID: 21300000, guid: e8853cbfab6f07e409392d4c58e8a218, type: 3}
-  animatorController: {fileID: 22100000, guid: d8b87d33ce1331c479dc625606a57c3e, type: 2}
-  effectMaterial: {fileID: 2100000, guid: b4b27d1d39a6051428b898cd275d0fe8, type: 2}
+  gradeType: 0
+  eatValue: 5
+  attributeAttackValue: 0
+  attributeAttackRateTime: 0
+  arrtibuteStatck: 0
+  weaponSprite: {fileID: 21300000, guid: 771eb3e10cacb694a9d2eb221919ba5c, type: 3}
+  rewardSprite: {fileID: 21300000, guid: 80620a20e9565a3478bfd115c1addbd1, type: 3}
+  animatorController: {fileID: 22100000, guid: 4525de0bb4ec36b4ba149f8fb8e7daea, type: 2}
+  rangedAttackData:
+    projectileType: 0
+    attributeType: 0
+    projectTileSprite: {fileID: 0}
+    attackDistance: 0
+    maxDistance: 0
+    rangedAttackPower: 0
+    rangedAttackSpeed: 0
+    rangedAttackRate: 0
   effectData:
     linearVelocityX:
       m_Mode: 0
@@ -43,7 +51,7 @@ MonoBehaviour:
         m_PostInfinity: 2
         m_RotationOrder: 4
       m_ConstantMin: 0
-      m_ConstantMax: 2
+      m_ConstantMax: 0
     linearVelocityY:
       m_Mode: 0
       m_CurveMultiplier: 0
@@ -60,28 +68,28 @@ MonoBehaviour:
         m_PostInfinity: 2
         m_RotationOrder: 4
       m_ConstantMin: 0
-      m_ConstantMax: 0
+      m_ConstantMax: -2
     effectSize: 5
     gradient:
       serializedVersion: 2
-      key0: {r: 1, g: 1, b: 1, a: 0}
-      key1: {r: 1, g: 0.94259137, b: 0, a: 0.9137255}
-      key2: {r: 1, g: 0.5430125, b: 0, a: 1}
-      key3: {r: 1, g: 0, b: 0, a: 0}
-      key4: {r: 0, g: 0, b: 0, a: 0}
-      key5: {r: 0, g: 0, b: 0, a: 0}
-      key6: {r: 0, g: 0, b: 0, a: 0}
+      key0: {r: 1, g: 1, b: 1, a: 1}
+      key1: {r: 0.990566, g: 0.8770854, b: 0.71488965, a: 1}
+      key2: {r: 0.99434024, g: 0.79359734, b: 0.42888743, a: 0.5019608}
+      key3: {r: 1, g: 0.66839916, b: 0, a: 0}
+      key4: {r: 0.9254902, g: 0.35133186, b: 0, a: 0}
+      key5: {r: 0.930921, g: 0.2131347, b: 0, a: 0}
+      key6: {r: 1, g: 0.5318797, b: 0, a: 0}
       key7: {r: 0, g: 0, b: 0, a: 0}
       ctime0: 0
-      ctime1: 38550
-      ctime2: 48959
-      ctime3: 65535
-      ctime4: 0
-      ctime5: 0
-      ctime6: 0
+      ctime1: 17155
+      ctime2: 20817
+      ctime3: 24479
+      ctime4: 28334
+      ctime5: 32768
+      ctime6: 65535
       ctime7: 0
       atime0: 0
-      atime1: 26985
+      atime1: 30455
       atime2: 65535
       atime3: 0
       atime4: 0
@@ -90,5 +98,6 @@ MonoBehaviour:
       atime7: 0
       m_Mode: 0
       m_ColorSpace: -1
-      m_NumColorKeys: 4
+      m_NumColorKeys: 7
       m_NumAlphaKeys: 3
+  effectMaterial: {fileID: 2100000, guid: b5f2a28f2387e2045aed8771fb66b1a5, type: 2}

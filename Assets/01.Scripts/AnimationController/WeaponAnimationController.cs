@@ -91,6 +91,12 @@ public class WeaponAnimationController : AnimationController
     }
     private void ChangedMaterial(WeaponSO weaponData)
     {
+        if(weaponData.effectMaterial == null)
+        {
+            var dd = particle.textureSheetAnimation;
+            dd.enabled = false;
+            return;
+        }
         particleSystemRenderer.material = weaponData.effectMaterial;
     }
     private void ChangedEffectValue(WeaponSO weaponData)
@@ -99,6 +105,12 @@ public class WeaponAnimationController : AnimationController
         main.startSize = weaponData.effectData.effectSize;
         var colorOverLifeTime = particle.colorOverLifetime;
         colorOverLifeTime.color = weaponData.effectData.gradient;
+        if(weaponData.effectMaterial == null)
+        {
+            var particleVelocity = particle.velocityOverLifetime;
+            particleVelocity.enabled = false;
+            return;
+        }
         var velocity = particle.velocityOverLifetime;
         velocity.x = weaponData.effectData.linearVelocityX;
         velocity.y = weaponData.effectData.linearVelocityY;
