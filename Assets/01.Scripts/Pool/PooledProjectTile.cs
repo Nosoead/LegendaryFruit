@@ -5,11 +5,11 @@ using System.Threading;
 using UnityEngine;
 using UnityEngine.Pool;
 
-public class PooledProjectTile : MonoBehaviour, ISetPooledObject<PooledProjectTile>
+public class PooledProjectile : MonoBehaviour, ISetPooledObject<PooledProjectile>
 {
-    protected IObjectPool<PooledProjectTile> objectPool;
+    protected IObjectPool<PooledProjectile> objectPool;
     private IDamageable attackObject;
-    public IObjectPool<PooledProjectTile> ObjectPool
+    public IObjectPool<PooledProjectile> ObjectPool
     { get => objectPool; set => objectPool = value; }
 
 
@@ -34,16 +34,16 @@ public class PooledProjectTile : MonoBehaviour, ISetPooledObject<PooledProjectTi
         }
     }
 
-    public void SetPooledObject(IObjectPool<PooledProjectTile> pool)
+    public void SetPooledObject(IObjectPool<PooledProjectile> pool)
     {
         ObjectPool = pool;
     }
 
-    public void SetData(RangedAttackData data)
+    public void SetData(RangedAttackData data, float damage)
     {
         currentProjectTileType = data.projectileType;
         projectTileSprtie.sprite = data.projectTileSprite;
-        projectTileDamage = data.rangedAttackPower;
+        projectTileDamage = damage;
         projectTileSpeed = data.rangedAttackSpeed;
         projectTileMaxDistance = data.maxDistance;    
     }

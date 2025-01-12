@@ -31,5 +31,5 @@ public interface IPersistentUI
 
 public interface IProjectTileShooter
 {
-    void Shoot(PooledProjectTile projectTile);
+    void Shoot(PooledProjectile projectTile);
 }

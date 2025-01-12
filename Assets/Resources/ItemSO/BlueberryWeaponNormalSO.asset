@@ -32,7 +32,7 @@ MonoBehaviour:
     attackDistance: 0
     maxDistance: 10
     rangedAttackPower: 15
-    rangedAttackSpeed: 5
+    rangedAttackSpeed: 10
     rangedAttackRate: 1
   effectData:
     linearVelocityX:

@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 3407500327064483209}
   - component: {fileID: 1827933088264134222}
   m_Layer: 17
-  m_Name: PooledProjectTile
+  m_Name: PooledProjectile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

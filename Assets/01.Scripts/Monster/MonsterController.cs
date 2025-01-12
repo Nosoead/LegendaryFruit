@@ -16,7 +16,7 @@ public class MonsterController : MonoBehaviour, IProjectTileShooter
     private float lookDirection = 1f;
 
     [SerializeField] private Transform shootPoint;
-    private IObjectPool<PooledProjectTile> pooledProjectTile;
+    private IObjectPool<PooledProjectile> pooledProjectTile;
     private RangedAttackData rangedAttackData = null;
 
     private float attackPower;
@@ -117,27 +117,51 @@ public class MonsterController : MonoBehaviour, IProjectTileShooter
     {
         Vector3 raytDirection = Vector3.right * lookDirection;
         RaycastHit2D hit = Physics2D.Raycast(transform.position, raytDirection, chaseRange, playerLayerMask);
-
-
         if (hit.collider != null)
         {
             target = hit.collider.gameObject;
-
             return true;
         }
 
-        return false;
+        if (target != null && Vector2.Distance(transform.position, target.transform.position) > chaseRange)
+        {
+            target = null;
+        }
+
+        return target != null;
+    }
+
+    public void FllowPlayer()
+    {
+        if (target != null)
+        {
+            float distance = target.transform.position.x - transform.position.x;
+            if ((distance > 0 && lookDirection < 0) || (distance < 0 && lookDirection > 0))
+            {
+                ReverseDirection();
+                return;
+            }
+        }
+        Vector3 dir = Vector3.right * lookDirection;
+        if(target != null)
+        {
+            if(Vector2.Distance(transform.position, target.transform.position) < attackDistance)
+            {
+                transform.position +=  dir * moveSpeed * Time.deltaTime;
+            }
+            else
+            {
+                return;
+            }
+        }
     }
 
     public bool InAttackRange()
     {
         Vector3 raytDirection = Vector3.right * lookDirection;
-        Debug.DrawRay(transform.position, raytDirection * attackDistance, Color.red);
         RaycastHit2D hit = Physics2D.Raycast(transform.position, raytDirection, attackDistance, playerLayerMask);
         if (hit.collider != null)
         {
-            target = hit.collider.gameObject;
-            Debug.DrawRay(hit.point, Vector3.right * 0.5f, Color.green);
             return true;
         }
 
@@ -147,28 +171,30 @@ public class MonsterController : MonoBehaviour, IProjectTileShooter
     public void Move()
     {
         if (statManager.isDead) return;
-        Vector3 rayDirection = Vector3.right * lookDirection;
-        RaycastHit2D hit = Physics2D.Raycast(transform.position, rayDirection, chaseRange, playerLayerMask);
 
 
-        if (hit.collider == null || hit.distance > attackDistance)
-        {
-            transform.position += rayDirection * (moveSpeed * Time.deltaTime);
-        }
+        //Vector3 rayDirection = Vector3.right * lookDirection;
+        //RaycastHit2D hit = Physics2D.Raycast(transform.position, rayDirection, chaseRange, playerLayerMask);
+
+
+        //if (hit.collider == null || hit.distance > attackDistance)
+        //{
+        //    transform.position += rayDirection * (moveSpeed * Time.deltaTime);
+        //}
     }
     #endregion
 
     #region // MonsterAttack
     private void CachedProjectTile()
     {
-        pooledProjectTile = PoolManager.Instance.GetObjectFromPool<PooledProjectTile>(PoolType.PooledProjectTile);
+        pooledProjectTile = PoolManager.Instance.GetObjectFromPool<PooledProjectile>(PoolType.PooledProjectile);
     }
 
-    public void Shoot(PooledProjectTile projectTile)
+    public void Shoot(PooledProjectile projectTile)
     {
         Vector3 look = Vector3.right * lookDirection;
         projectTile.transform.position = shootPoint.position;
-        projectTile.SetData(rangedAttackData);
+        projectTile.SetData(rangedAttackData, rangedAttackData.rangedAttackPower);
         projectTile.SetAttirbuteData(rangedAttackData);
         projectTile.ProjectTileShoot(look);
     }

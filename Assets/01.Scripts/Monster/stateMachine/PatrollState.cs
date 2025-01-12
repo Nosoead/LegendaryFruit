@@ -25,10 +25,11 @@ public class PatrollState : IState
 
         if (monsterController.DetectPlayer())
         {
-            monsterController.Move();
+            monsterController.FllowPlayer();
             if(monsterController.InAttackRange())
             {
                 monsterController.StateMachine.TransitionToState(monsterController.StateMachine.attackState);
+                return;
             }
             else
             {
