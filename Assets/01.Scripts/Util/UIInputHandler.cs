@@ -14,7 +14,7 @@ public class UIInputHandler : MonoBehaviour
 
     private void Awake()
     {
-        input = GatherInput.Instance.input;
+        input = GatherInputManager.Instance.input;
     }
 
     private void OnEnable()

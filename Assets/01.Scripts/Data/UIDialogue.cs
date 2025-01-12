@@ -48,7 +48,7 @@ public class UIDialogue : UIBase
         }
 
         btnBack.onClick.AddListener(DialogueDone);
-        input = GatherInput.Instance.input;
+        input = GatherInputManager.Instance.input;
     }
 
     private void Update()
