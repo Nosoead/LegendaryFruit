@@ -45,7 +45,7 @@ public enum PoolType
     PooledFruitWeapon,
     PooledBossMonster,
     PooledHitParticle,
-    PooledProjectTile,
+    PooledProjectile,
     Count
 }
 

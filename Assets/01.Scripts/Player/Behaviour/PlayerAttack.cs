@@ -11,6 +11,7 @@ public class PlayerAttack : MonoBehaviour, IProjectTileShooter
     [SerializeField] private PlayerStatManager statManager;
     [SerializeField] private PlayerMovementHandler movementHandler;
 
+    [SerializeField] private Transform shootPosition;
     private PlayerAttributeLogicsDictionary attributeLogics;
     private PlayerAttributeLogics attributeLogic = null;
     private WeaponSO weaponData;
@@ -27,6 +28,7 @@ public class PlayerAttack : MonoBehaviour, IProjectTileShooter
     private WaitForSeconds attackRateTime = new WaitForSeconds(0.5f);
     //TODO : 공격속도에 따라 waitforseconds가 변하도록
 
+    private IObjectPool<PooledProjectile> projectile;
 
     //기즈모
     private float attackLookDirection = 1f;
@@ -37,6 +39,7 @@ public class PlayerAttack : MonoBehaviour, IProjectTileShooter
         attributeLogics.Initialize();
         monsterLayer = LayerMask.GetMask("Monster");
         EnsureComponents();
+        CachedProjectile();
     }
 
     private void OnEnable()
@@ -111,6 +114,11 @@ public class PlayerAttack : MonoBehaviour, IProjectTileShooter
         {
             yield return attackRateTime;
         }
+        else if (weaponData.rangedAttackData.projectTileSprite != null)
+        {
+            RagnedAttack();
+            yield return attackRateTime;
+        }
         else
         {
             foreach (Collider2D collider in monster)
@@ -129,6 +137,11 @@ public class PlayerAttack : MonoBehaviour, IProjectTileShooter
     }
     #endregion
 
+    private void CachedProjectile()
+    {
+        projectile = PoolManager.Instance.GetObjectFromPool<PooledProjectile>(PoolType.PooledProjectile);
+    }
+
     private void SetTotalAttackPower()
     {
         totalAttackPower = currentAttackPower + weaponAttackPower;
@@ -142,8 +155,18 @@ public class PlayerAttack : MonoBehaviour, IProjectTileShooter
         Gizmos.DrawWireCube(boxPosition, boxSize);
     }
 
-    public void Shoot(PooledProjectTile projectTile)
+    public void Shoot(PooledProjectile projectTile)
     {
-        throw new System.NotImplementedException();
+        Vector3 look = Vector3.right * lookDirection;
+        projectTile.transform.position = shootPosition.position;
+        projectTile.SetData(weaponData.rangedAttackData, weaponData.rangedAttackData.rangedAttackPower + currentAttackPower);
+        projectTile.SetAttirbuteData(weaponData.rangedAttackData);
+        projectTile.ProjectTileShoot(look);
+    }
+
+    public void RagnedAttack()
+    {
+        PooledProjectile attackProjectile = projectile.Get();
+        Shoot(attackProjectile);
     }
 }

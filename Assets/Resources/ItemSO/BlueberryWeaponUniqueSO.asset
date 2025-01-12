@@ -30,9 +30,9 @@ MonoBehaviour:
     attributeType: 5
     projectTileSprite: {fileID: 21300000, guid: 94810767285a7b741b424383a664cc4a, type: 3}
     attackDistance: 0
-    maxDistance: 20
+    maxDistance: 10
     rangedAttackPower: 20
-    rangedAttackSpeed: 10
+    rangedAttackSpeed: 15
     rangedAttackRate: 1
   effectData:
     linearVelocityX:
