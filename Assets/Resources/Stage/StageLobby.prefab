@@ -95,7 +95,7 @@ GameObject:
   - component: {fileID: 4281501060497000114}
   - component: {fileID: 7713642059174240284}
   - component: {fileID: 1185750136289166288}
-  m_Layer: 0
+  m_Layer: 18
   m_Name: Bed
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -188,7 +188,7 @@ GameObject:
   - component: {fileID: 2447985473715615582}
   - component: {fileID: 3211678895103801321}
   - component: {fileID: 4447198138997561226}
-  m_Layer: 11
+  m_Layer: 5
   m_Name: PressFTxt
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -398,7 +398,7 @@ GameObject:
   - component: {fileID: 7075334922219835826}
   - component: {fileID: 6334119051368077377}
   - component: {fileID: 5953337561972998872}
-  m_Layer: 11
+  m_Layer: 5
   m_Name: TxtBG
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -550,7 +550,7 @@ GameObject:
   - component: {fileID: 6877225564271196694}
   - component: {fileID: 4826625942929131827}
   - component: {fileID: 3337526430212036428}
-  m_Layer: 11
+  m_Layer: 5
   m_Name: PressFTxt
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -685,7 +685,7 @@ GameObject:
   - component: {fileID: 2639208302691672437}
   - component: {fileID: 9095219963806346062}
   - component: {fileID: 9114843980134744509}
-  m_Layer: 11
+  m_Layer: 5
   m_Name: pressFCanvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4158,7 +4158,7 @@ GameObject:
   - component: {fileID: 2502674086235059990}
   - component: {fileID: 5208321948206125117}
   - component: {fileID: 8518388138826356790}
-  m_Layer: 11
+  m_Layer: 18
   m_Name: Beer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4328,7 +4328,7 @@ GameObject:
   - component: {fileID: 3436172839790319890}
   - component: {fileID: 8761148029906205103}
   - component: {fileID: 2429194348612350670}
-  m_Layer: 11
+  m_Layer: 5
   m_Name: PressFTxt
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4773,7 +4773,7 @@ GameObject:
   - component: {fileID: 7779267348027927316}
   - component: {fileID: 7097252112213218846}
   - component: {fileID: 3638068678306491936}
-  m_Layer: 11
+  m_Layer: 5
   m_Name: TxtBG
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5112,7 +5112,7 @@ GameObject:
   - component: {fileID: 5288160933672390137}
   - component: {fileID: 8058090337811298752}
   - component: {fileID: 3034736913502733915}
-  m_Layer: 11
+  m_Layer: 5
   m_Name: pressFCanvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5499,7 +5499,7 @@ GameObject:
   - component: {fileID: 4800544139832360378}
   - component: {fileID: 1212166249077737373}
   - component: {fileID: 422178239682941699}
-  m_Layer: 11
+  m_Layer: 18
   m_Name: Bottle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5592,7 +5592,7 @@ GameObject:
   - component: {fileID: 6054379630553059905}
   - component: {fileID: 4270737390048840995}
   - component: {fileID: 1872440956475088261}
-  m_Layer: 11
+  m_Layer: 5
   m_Name: TxtBG
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9489,6 +9489,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pressFCanvas: {fileID: 532445567619660359}
+  barricadeImage: {fileID: 0}
   stage: {fileID: 0}
 --- !u!1 &6203308214588842524
 GameObject:
@@ -10540,7 +10541,7 @@ GameObject:
   - component: {fileID: 4920626113157427688}
   - component: {fileID: 375432161610762329}
   - component: {fileID: 6794624936440671345}
-  m_Layer: 11
+  m_Layer: 18
   m_Name: Frame
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14479,6 +14480,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pressFCanvas: {fileID: 8395438156013617236}
+  barricadeImage: {fileID: 0}
   stage: {fileID: 0}
 --- !u!1 &8318031493234782126
 GameObject:
@@ -14925,7 +14927,7 @@ GameObject:
   - component: {fileID: 1953558232604975029}
   - component: {fileID: 4147940716611582069}
   - component: {fileID: 1950551526976220327}
-  m_Layer: 11
+  m_Layer: 5
   m_Name: pressFCanvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -15026,7 +15028,7 @@ GameObject:
   - component: {fileID: 7305621840831271414}
   - component: {fileID: 5006118774472838371}
   - component: {fileID: 327973683434047957}
-  m_Layer: 11
+  m_Layer: 5
   m_Name: Image
   m_TagString: Untagged
   m_Icon: {fileID: 0}

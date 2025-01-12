@@ -18,7 +18,7 @@ public class UIInputHandler : MonoBehaviour
     private void Awake()
     {
         input = GatherInputManager.Instance.input;
-        npcLayer = LayerMask.NameToLayer("NPC");
+        npcLayer = LayerMask.NameToLayer("TalkableNPC");
     }
 
     private void OnEnable()
@@ -40,9 +40,12 @@ public class UIInputHandler : MonoBehaviour
 
     private void OnInteract(InputAction.CallbackContext context)
     {
-        input.Changer.Disable();
-        input.Player.Disable();
-        input.UI.Interact.Enable();
+        if (isNpc)
+        {
+            input.Changer.Disable();
+            input.Player.Disable();
+            input.UI.Interact.Enable();
+        }
     }
 
     private void OnInteractUI(InputAction.CallbackContext context)
@@ -56,6 +59,7 @@ public class UIInputHandler : MonoBehaviour
     {
         if (collision.gameObject.layer == npcLayer)
         {
+            isNpc = true;
             input.Changer.Interact.Enable();
         }
     }
@@ -64,6 +68,7 @@ public class UIInputHandler : MonoBehaviour
     {
         if (collision.gameObject.layer == npcLayer)
         {
+            isNpc = false;
             input.UI.Interact.Disable();
             input.Player.Enable();
             input.Changer.Enable();
