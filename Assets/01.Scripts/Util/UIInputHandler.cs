@@ -64,6 +64,7 @@ public class UIInputHandler : MonoBehaviour
         if (collision.gameObject.layer == npcLayer)
         {
             inputManager.isNpc = true;
+            input.Changer.Disable();
             input.Changer.Interact.Enable();
         }
     }
@@ -84,7 +85,7 @@ public class UIInputHandler : MonoBehaviour
     {
         inputManager.isPlay = !inputManager.isPlay;
 
-        if (inputManager.isPlay)
+        if (!inputManager.isPlay)
         {
             UIManager.Instance.ToggleUI<InventoryUI>(false);
             inputManager.isTab = true;
@@ -106,7 +107,7 @@ public class UIInputHandler : MonoBehaviour
     {
         if (UIManager.Instance.IsSettingOpen) return;
         inputManager.isPlay = !inputManager.isPlay;
-        if (inputManager.isPlay)
+        if (!inputManager.isPlay)
         {
             UIManager.Instance.ToggleUI<ESCUI>(false);
             inputManager.isEsc = true;

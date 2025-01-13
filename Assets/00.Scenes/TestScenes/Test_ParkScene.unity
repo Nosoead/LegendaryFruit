@@ -30504,6 +30504,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pressFCanvas: {fileID: 534308240}
+  barricadeImage: {fileID: 0}
   stage: {fileID: 1775395363}
 --- !u!4 &995760208
 Transform:
@@ -30829,6 +30830,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pressFCanvas: {fileID: 1745271586}
+  barricadeImage: {fileID: 0}
   stage: {fileID: 1775395363}
 --- !u!4 &1121620296
 Transform:
@@ -62065,13 +62067,13 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 378201149889449161, guid: 598632e104a571947a632044d0aa47d9, type: 3}
+      propertyPath: m_CullingMask.m_Bits
+      value: 458743
+      objectReference: {fileID: 0}
     - target: {fileID: 5090756535924106964, guid: 598632e104a571947a632044d0aa47d9, type: 3}
       propertyPath: m_Name
       value: GameEndUI
-      objectReference: {fileID: 0}
-    - target: {fileID: 5090756535924106964, guid: 598632e104a571947a632044d0aa47d9, type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6071700375324053521, guid: 598632e104a571947a632044d0aa47d9, type: 3}
       propertyPath: m_Pivot.x

@@ -18,12 +18,13 @@ public class GameEndUI : UIBase
     [SerializeField] private Image lastImage;
     [SerializeField] private List<Image> totalEatImages;
     
-    public ScreenshotManager screenshotManager;
+    private SceneCapture sceneCapture;
     private SaveDataContainer saveDataContainer;
     private PlayerInput input;
     private void Awake()
     {
         input = GatherInputManager.Instance.input;
+        sceneCapture = GetComponent<SceneCapture>();
     }
     private void Start()
     {
@@ -31,6 +32,7 @@ public class GameEndUI : UIBase
     }
     public override void Open()
     {
+        sceneCapture.CaptureScene();
         base.Open();
         StartCoroutine(waitForDataToText());
         if (GameManager.Instance.GetGameClear())

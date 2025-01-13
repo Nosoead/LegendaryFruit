@@ -6,19 +6,19 @@
   <component name="ChangeListManager">
     <list default="true" id="fd1b27b5-9a48-464d-8c89-0ee285d61d98" name="변경" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.LegendaryFruit/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.LegendaryFruit/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/00.Scenes/TestScenes/Test_ParkScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/00.Scenes/TestScenes/Test_ParkScene.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/01.Scripts/Data/UIDialogue.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/01.Scripts/Data/UIDialogue.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/01.Scripts/Managers/GatherInputManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/01.Scripts/Managers/GatherInputManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01.Scripts/Managers/SceneManagerExtension.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/01.Scripts/Managers/SceneManagerExtension.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/01.Scripts/Managers/UIManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/01.Scripts/Managers/UIManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/01.Scripts/Player/Behaviour/PlayerInteraction.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/01.Scripts/Player/Behaviour/PlayerInteraction.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01.Scripts/Player/Managers/PlayerStatManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/01.Scripts/Player/Managers/PlayerStatManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01.Scripts/UI/ESCUI.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/01.Scripts/UI/ESCUI.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/01.Scripts/UI/GameEndUI.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/01.Scripts/UI/GameEndUI.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/01.Scripts/UI/WeaponUpgradeUI.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/01.Scripts/UI/WeaponUpgradeUI.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01.Scripts/UI/PromptUI.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/01.Scripts/UI/PromptUI.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/01.Scripts/Util/UIInputHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/01.Scripts/Util/UIInputHandler.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/04.Materials/Textures/MonsterImage/NumberingMaterial/Number_Texture_Monster.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/04.Materials/Textures/MonsterImage/NumberingMaterial/Number_Texture_Monster.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/04.Materials/Textures/PlayerImage/NumberingMaterial/Number_Texture_Player 1.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/04.Materials/Textures/PlayerImage/NumberingMaterial/Number_Texture_Player 1.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/05.Animations/MonsterAnimations/RegularAnimations/Orcs/Epic_Orc/EpicOrc_Controller.overrideController" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/05.Animations/MonsterAnimations/RegularAnimations/Orcs/Epic_Orc/EpicOrc_Controller.overrideController" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Resources/UI/GameEndUI.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/UI/GameEndUI.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/UI/InventoryUI.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/UI/InventoryUI.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/StreamingAssets/Dialogue.csv" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/StreamingAssets/Dialogue.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/UI/PromptUI.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/UI/PromptUI.prefab" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -54,7 +54,7 @@
     <setting file="file://$PROJECT_DIR$/Assets/01.Scripts/Monster/NormalMonster.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/01.Scripts/UI/TestUI.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/01.Scripts/Util/ParticleEffect.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/01.Scripts/Util/ScreenshotManager.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/01.Scripts/Util/SceneCapture.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/01.Scripts/Util/UIInputHandler.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.connect.share@4.2.3/Editor/PublisherBuildProcessor.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.inputsystem@1.7.0/InputSystem/Actions/InputAction.cs" root0="SKIP_HIGHLIGHTING" />

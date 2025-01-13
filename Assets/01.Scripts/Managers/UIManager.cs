@@ -160,13 +160,14 @@ public class UIManager : Singleton<UIManager>
         return persistentUI[uiName];
     }
 
-    public void ClosePersistentUI()
+    public void ResetUI()
     {
         foreach (var ui in persistentUI)
         {
             ui.Value.Close();
         }
         persistentUI.Clear();
+        uiActiveStack.Clear();
     }
 
     public void ToggleSettingState(bool isOpen)

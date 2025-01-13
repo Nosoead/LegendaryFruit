@@ -98,6 +98,7 @@ public class UIDialogue : UIBase
             }
         }
 
+        DOTween.KillAll();
         yield return null;
     }
 

@@ -23,7 +23,7 @@ public class GatherInputManager : Singleton<GatherInputManager>
     }
     public void ResetStates()
     {
-        isPlay = false;
+        isPlay = true;
         isNpc = false;
         isTab = false;
         isEsc = false;
