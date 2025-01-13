@@ -7,7 +7,7 @@ public class MonsterStatManager : MonoBehaviour
     public UnityAction<string, float> OnSubscribeToStatUpdateEvent;
     public event UnityAction<PatternData, float> OnPatternTriggered;
     public event UnityAction<float, AttributeType> DamageTakenEvent;
-    public event UnityAction<RangedAttackData> OnRangedAttackDataEvent;
+    public event UnityAction<MonsterSO> OnRangedAttackDataEvent;
     private MonsterAnimationController monsterAnimationController;
     private MonsterCondition condition;
     private PooledMonster pooledMonster;
@@ -70,7 +70,7 @@ public class MonsterStatManager : MonoBehaviour
         {
             if (regularMonsterData.monsterRagnedAttackData.projectTileSprite != null)
             {
-                OnRangedAttackDataEvent?.Invoke(regularMonsterData.monsterRagnedAttackData);
+                OnRangedAttackDataEvent?.Invoke(regularMonsterData);
                 stat.InitStat(regularMonsterData);
                 return;
             }
@@ -80,7 +80,7 @@ public class MonsterStatManager : MonoBehaviour
         {
             if (bossMonsterData.monsterRagnedAttackData.projectTileSprite != null)
             {
-                OnRangedAttackDataEvent?.Invoke(bossMonsterData.monsterRagnedAttackData);
+                OnRangedAttackDataEvent?.Invoke(bossMonsterData);
                 stat.InitStat(bossMonsterData);
                 return;
             }

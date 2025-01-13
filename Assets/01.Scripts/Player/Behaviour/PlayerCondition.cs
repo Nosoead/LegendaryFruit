@@ -40,6 +40,7 @@ public class PlayerCondition : MonoBehaviour, IDamageable
         StartTakeDamageCooldown();
 
         OnTakeHitType?.Invoke(AttributeType.Normal);
+        ParticleManager.Instance.SetParticleTypeAndPlay(transform.position, ParticleType.NormalDamage);
         statManager.ApplyInstantDamage(damage);
         if (coBurnDamage != null && isBurn)
         {
@@ -56,6 +57,7 @@ public class PlayerCondition : MonoBehaviour, IDamageable
         for (int i = 0; i < attributeStack; i++)
         {
             OnTakeHitType?.Invoke(AttributeType.Burn);
+            ParticleManager.Instance.SetParticleTypeAndPlay(transform.position, ParticleType.BurnDamage);
             statManager.ApplyInstantDamage(attributeValue);
             yield return burnWaitTime;
         }
@@ -70,6 +72,7 @@ public class PlayerCondition : MonoBehaviour, IDamageable
         StartTakeDamageCooldown();
 
         OnTakeHitType?.Invoke(AttributeType.SlowDown);
+        ParticleManager.Instance.SetParticleTypeAndPlay(transform.position, ParticleType.SlowDownDamage);
         statManager.ApplyInstantDamage(damage);
         if (coSlowDown != null && isSlowDown)
         {
@@ -103,6 +106,7 @@ public class PlayerCondition : MonoBehaviour, IDamageable
         StartTakeDamageCooldown();
 
         OnTakeHitType?.Invoke(AttributeType.Normal);
+        ParticleManager.Instance.SetParticleTypeAndPlay(transform.position, ParticleType.Heal);
         statManager.ApplyInstantDamage(damage);
         SoundManagers.Instance.PlaySFX(SfxType.PlayerDamaged);
     }
