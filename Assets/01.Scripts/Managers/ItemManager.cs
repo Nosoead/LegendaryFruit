@@ -1,5 +1,7 @@
+using JetBrains.Annotations;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using UnityEngine;
 
 public class ItemManager : Singleton<ItemManager>
@@ -56,4 +58,11 @@ public class ItemManager : Singleton<ItemManager>
         return resultNum;
     }
     //TODO 랜덤으로 뽑힌 숫자를 ID값에 맞도록 바꾸는 함수 필요.
+    //TODO 이미 나온 아이템은 딕셔너리에서 제외 혹은 먹거나 반납한 아이템 다시 등록
+    //TODO Init으로 기존 먹은 데이터 받아서 리스트에서 제외
+    public WeaponSO GetUpgradeItemData(int ID)
+    {
+        WeaponSO upgradeItem = itemDictionary[ID];
+        return upgradeItem;
+    }
 }

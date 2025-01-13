@@ -52,7 +52,7 @@ public class ShelterNPC : NPC, IInteractable
     {
         if (isDeepPressed || isPressed)
         {
-            UIManager.Instance.ToggleUI<ShelterNPCUI>(isPreviousWindowActive:false);
+            UIManager.Instance.ToggleUI<WeaponUpgradeUI>(isPreviousWindowActive:false);
         }
     }
 

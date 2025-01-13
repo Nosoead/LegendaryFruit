@@ -132,6 +132,17 @@ public class PlayerEquipment : MonoBehaviour
         currentEquipWeaponIndex = 0;
     }
 
+    public WeaponSO GetCurrentEquipData()
+    {
+        return equipWeapons[currentEquipWeaponIndex];
+    }
+
+    public void SetUpgradeData(WeaponSO weaponData)
+    {
+        equipWeapons[currentEquipWeaponIndex] = weaponData;
+        UpdateWeaponSprite();
+    }
+
     #region /DropDotween
     private void DropDotween(GameObject go, Vector3 position)
     {

@@ -18,20 +18,9 @@ public class CurrencySystem : MonoBehaviour
     }
 
     #region /UseCurrency
-    public void UseCurrency(bool isInGameCurrency, int useValue)
+    public void UseCurrency(int useValue, bool isGlobalCurrency)
     {
-        if (isInGameCurrency)
-        {
-            if (inGameCurrency < useValue)
-            {
-                return;
-            }
-            else
-            {
-                inGameCurrency -= useValue;
-            }
-        }
-        else
+        if (isGlobalCurrency)
         {
             if (globalCurrency < useValue)
             {
@@ -40,6 +29,19 @@ public class CurrencySystem : MonoBehaviour
             else
             {
                 globalCurrency -= useValue;
+                OnGlobalCurrencyDataToUI?.Invoke(globalCurrency, isGlobalCurrency);
+            }
+        }
+        else
+        {
+            if (inGameCurrency < useValue)
+            {
+                return;
+            }
+            else
+            {
+                inGameCurrency -= useValue;
+                OnInGameCurrencyDataToUI?.Invoke(inGameCurrency, isGlobalCurrency);
             }
         }
     }
@@ -55,6 +57,18 @@ public class CurrencySystem : MonoBehaviour
         {
             inGameCurrency += useValue;
             OnInGameCurrencyDataToUI?.Invoke(inGameCurrency, isGlobalCurrency);
+        }
+    }
+
+    public int GetCurrencyData(bool isGlobalCurrency)
+    {
+        if (isGlobalCurrency)
+        {
+            return globalCurrency;
+        }
+        else
+        {
+            return inGameCurrency;
         }
     }
 

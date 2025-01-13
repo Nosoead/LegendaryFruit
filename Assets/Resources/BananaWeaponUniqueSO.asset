@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f30345d6f773874da4088be7b3c7755, type: 3}
   m_Name: BananaWeaponUniqueSO
   m_EditorClassIdentifier: 
-  ID: 0
+  ID: 30201
   weaponName: "\uBC14\uB098\uB098\uAC00 3\uAC1C?"
   description: "\uBC14\uB098\uB098\uAC003\uAC1C\uB098 \uAC1C\uAFC0"
   attackPower: 30
