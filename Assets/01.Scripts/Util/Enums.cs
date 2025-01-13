@@ -22,7 +22,7 @@ public enum GradeType
 {
     Normal,
     Rare,
-    Epic,
+    Unique,
     Legendary
 }
 

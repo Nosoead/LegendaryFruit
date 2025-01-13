@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f30345d6f773874da4088be7b3c7755, type: 3}
   m_Name: StrawberryWeaponUniqueSO
   m_EditorClassIdentifier: 
-  ID: 0
+  ID: 30101
   weaponName: "\uC5C4\uCCAD\uBB34\uAC70\uC6CC\uC9C4 \uB538\uAE30\uCE7C"
   description: "\uC774\uC81C \uBABB\uB4E4\uACA0\uB2E4 \uBA39\uC5B4\uC57C\uC9C0"
   attackPower: 25

@@ -12,11 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f30345d6f773874da4088be7b3c7755, type: 3}
   m_Name: BlueberryWeaponUniqueSO
   m_EditorClassIdentifier: 
-  ID: 0
+  ID: 30301
   weaponName: "\uC5C4\uCCAD \uCEE4\uC9C4 \uBE14\uB8E8\uBCA0\uB9AC"
   description: "\uC774\uAC70 \uC644\uC804 \uB9DB\uB3C4\uB9AC"
   attackPower: 20
-  type: 5
+  type: 0
   gradeType: 2
   eatValue: 13
   attributeAttackValue: 0
@@ -27,7 +27,7 @@ MonoBehaviour:
   animatorController: {fileID: 22100000, guid: d7d56ac2c529a394888dca08d0b5049c, type: 2}
   rangedAttackData:
     projectileType: 0
-    attributeType: 5
+    attributeType: 0
     projectTileSprite: {fileID: 21300000, guid: 94810767285a7b741b424383a664cc4a, type: 3}
     attackDistance: 0
     maxDistance: 10

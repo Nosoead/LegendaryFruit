@@ -77,7 +77,7 @@ public class PlayerInfoManager : Singleton<PlayerInfoManager>
     public void SetCurrency()
     {
         currency.GetCurrency(0, isGlobalCurrency: true);
-        currency.GetCurrency(0, isGlobalCurrency: false);
+        currency.GetCurrency(1000, isGlobalCurrency: false);
     }
 }
 

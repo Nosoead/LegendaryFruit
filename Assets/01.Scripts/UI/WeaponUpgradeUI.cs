@@ -2,28 +2,51 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
 
+//TODO : Player 키셋팅 -> 교체(Space Bar) 못하도록
 public class WeaponUpgradeUI : UIBase
 {
     [SerializeField] private UIDialogue uiDialoguePrefab;
     [SerializeField] private TextMeshProUGUI Text;
     [SerializeField] private Button upgradeButton;
     [SerializeField] private Button cancelButton;
-    private SaveDataContainer saveDataContainer;
+
+    private PlayerEquipment playerEquip;
+    private CurrencySystem currencySystem;
+    private WeaponSO weaponData;
+    private int upgradeValue = 10000;
+    private float currentCurrency;
+    private int requiredCurrency;
+
     private UIDialogue uiDialogue;
     private int dialogueIndex;
-    private float currentCurrency = 100;//saveDataContainer.currencyData.inGameCurrency; -> 캐릭터 보유 재화로 체크
-    private int requiredCurrency = 100;
 
-  
     public override void Open()
     {
-        if (saveDataContainer == null) GetStatData();
         base.Open();
-        Text.text = ($"보유 껍질 개수 : {saveDataContainer.currencyData.inGameCurrency.ToString()}, 필요 껍질 개수 : {requiredCurrency}");
     }
+
     private void Start()
     {
         InitializeUI();
+        GetEquipAndCurrencyData();
+        SetCurrncy(weaponData.gradeType);
+        SetDialogueTxt();
+    }
+
+    private void GetEquipAndCurrencyData()
+    {
+        if (playerEquip == null)
+        {
+            playerEquip = GameManager.Instance.player.GetComponentInChildren<PlayerEquipment>();
+        }
+        if (GameManager.Instance.player.TryGetComponent(out CurrencySystem currency))
+        {
+            currencySystem = currency;
+        }
+        if (playerEquip != null)
+        {
+            weaponData = playerEquip.GetCurrentEquipData();
+        }
     }
 
     private void InitializeUI()
@@ -34,32 +57,90 @@ public class WeaponUpgradeUI : UIBase
         upgradeButton.onClick.RemoveAllListeners();
         upgradeButton.onClick.AddListener(OnUpgradeBtn);
     }
-    private void GetStatData()
-   {
-       saveDataContainer = PlayerInfoManager.Instance.GetSaveData();
-   }
 
-    public void OnUpgradeBtn()
+    private void SetCurrncy(GradeType gradeType)
     {
-        //currentCurrency = 1000;
-        //requiredCurrency = 100; //임시
+        if (currencySystem != null)
+        {
+            currentCurrency = currencySystem.GetCurrencyData(isGlobalCurrency: false);
+        }
+
+        switch (gradeType)
+        {
+            case GradeType.Normal:
+                requiredCurrency = 50;
+                break;
+            case GradeType.Rare:
+                requiredCurrency = 100;
+                break;
+            case GradeType.Unique:
+                requiredCurrency = 0;
+                break;
+            case GradeType.Legendary:
+                requiredCurrency = 0;
+                break;
+        }
+    }
+
+    private void SetDialogueTxt()
+    {
+        Text.text = ($"보유 껍질 개수 : {currentCurrency.ToString()}, 필요 껍질 개수 : {requiredCurrency}");
+    }
+
+    private void OnUpgradeBtn()
+    {
+        if (requiredCurrency == 0)
+        {
+            //TODO : 더 이상 업그레이드를 할 수 없는 대화내용
+            dialogueIndex = 10205;
+            SoundManagers.Instance.PlaySFX(SfxType.UIButton);
+            UIManager.Instance.ToggleUI<NpcDialougeUI>(false, dialogueIndex);
+            ResetAllData();
+            return;
+        }
+
+        if (weaponData.type == AttributeType.Normal)
+        {
+            //TODO : 열매가 아닌 것은 강화 해 줄 수 없어
+            dialogueIndex = 10205;
+            SoundManagers.Instance.PlaySFX(SfxType.UIButton);
+            UIManager.Instance.ToggleUI<NpcDialougeUI>(false, dialogueIndex);
+            ResetAllData();
+            return;
+        }
+
         if (currentCurrency >= requiredCurrency)
         {
-            currentCurrency -= requiredCurrency;
-            Debug.Log("재화 깍음 ");
-            Debug.Log("SO 바꿈");
+            currencySystem.UseCurrency(useValue: requiredCurrency, isGlobalCurrency: false);
+            ChangeWeaponData();
             dialogueIndex = 10203;
             SoundManagers.Instance.PlaySFX(SfxType.UIButton);
             UIManager.Instance.ToggleUI<NpcDialougeUI>(false, dialogueIndex);
-            //Destroy( uiDialogue);
+            ResetAllData();
         }
         else
         {
             dialogueIndex = 10205;
             SoundManagers.Instance.PlaySFX(SfxType.UIButton);
             UIManager.Instance.ToggleUI<NpcDialougeUI>(false, dialogueIndex);
-            //Destroy( uiDialogue);
+            ResetAllData();
         }
     }
-   
+
+    private void ChangeWeaponData()
+    {
+        int currentID = weaponData.ID;
+        int upgradeID = currentID + upgradeValue;
+        weaponData = ItemManager.Instance.GetUpgradeItemData(upgradeID);
+        playerEquip.SetUpgradeData(weaponData);
+    }
+
+    private void ResetAllData()
+    {
+        playerEquip = null;
+        currencySystem = null;
+        weaponData = null;
+        currentCurrency = 0;
+        requiredCurrency = 0;
+    }
 }

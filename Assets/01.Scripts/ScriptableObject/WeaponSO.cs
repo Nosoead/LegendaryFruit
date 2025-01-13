@@ -26,7 +26,7 @@ public class WeaponSO : GameSO
     public Material effectMaterial;
 }
 
-[Serializable]
+[System.Serializable]
 public class EffectData
 {
     public ParticleSystem.MinMaxCurve linearVelocityX;
@@ -36,7 +36,7 @@ public class EffectData
     public Gradient gradient;
 }
 
-[Serializable]
+[System.Serializable]
 public class RangedAttackData
 {
     public ProjectileType projectileType;
