@@ -15,6 +15,8 @@ public class MonsterController : MonoBehaviour, IProjectTileShooter
     public MonsterStatManager statManager;
     private float lookDirection = 1f;
 
+    private bool isGround;
+
     [SerializeField] private Transform shootPoint;
     private IObjectPool<PooledProjectile> pooledProjectTile;
     private RangedAttackData rangedAttackData = null;
@@ -102,7 +104,7 @@ public class MonsterController : MonoBehaviour, IProjectTileShooter
     public void GetRagnedAttackStat(RangedAttackData data)
     {
         rangedAttackData = data;
-    }    
+    }
     #endregion
 
     #region // MonsterState
@@ -116,14 +118,15 @@ public class MonsterController : MonoBehaviour, IProjectTileShooter
     public bool DetectPlayer()
     {
         Vector3 raytDirection = Vector3.right * lookDirection;
-        RaycastHit2D hit = Physics2D.Raycast(transform.position, raytDirection, chaseRange, playerLayerMask);
-        if (hit.collider != null)
+        Vector2 boxSize = new Vector2(attackDistance + 4f, attackDistance);
+        var hit = Physics2D.OverlapBox(transform.position, boxSize, chaseRange, playerLayerMask);
+        if (hit != null && monsterGround.GetOnGround())
         {
-            target = hit.collider.gameObject;
+            target = hit.gameObject;
             return true;
         }
 
-        if (target != null && Vector2.Distance(transform.position, target.transform.position) > chaseRange)
+        if (target != null && Vector2.Distance(transform.position, target.transform.position) >= chaseRange)
         {
             target = null;
         }
@@ -131,28 +134,49 @@ public class MonsterController : MonoBehaviour, IProjectTileShooter
         return target != null;
     }
 
+    public void MoveWithGroundDetection()
+    {
+        if(monsterGround.GetOnGround())
+        {
+            isGround = false;
+        }
+        else
+        {
+            if(!isGround)
+            {
+                ReverseDirection();
+                isGround = true;
+            }
+        }
+
+        if(!DetectPlayer())
+        {
+            Move();
+        }
+    }
+
     public void FllowPlayer()
     {
+        if (statManager.isDead) return;
         if (target != null)
         {
-            float distance = target.transform.position.x - transform.position.x;
-            if ((distance > 0 && lookDirection < 0) || (distance < 0 && lookDirection > 0))
+            float distanceX = target.transform.position.x - transform.position.x;
+            float distanceY = Mathf.Abs(target.transform.position.y - transform.position.y);
+
+            if(distanceY > 2f)
+            {
+                Move();
+                return;
+            }
+
+            if ((distanceX >= 0 && lookDirection <= 0) && animationController.OnAttackComplete() 
+                || (distanceX < 0 && lookDirection >= 0) && animationController.OnAttackComplete())
             {
                 ReverseDirection();
                 return;
             }
-        }
-        Vector3 dir = Vector3.right * lookDirection;
-        if(target != null)
-        {
-            if(Vector2.Distance(transform.position, target.transform.position) < attackDistance)
-            {
-                transform.position +=  dir * moveSpeed * Time.deltaTime;
-            }
-            else
-            {
-                return;
-            }
+
+            Move();
         }
     }
 
@@ -170,17 +194,20 @@ public class MonsterController : MonoBehaviour, IProjectTileShooter
 
     public void Move()
     {
+        Vector3 direction = (Vector3.right * lookDirection).normalized;
         if (statManager.isDead) return;
 
-
-        //Vector3 rayDirection = Vector3.right * lookDirection;
-        //RaycastHit2D hit = Physics2D.Raycast(transform.position, rayDirection, chaseRange, playerLayerMask);
-
-
-        //if (hit.collider == null || hit.distance > attackDistance)
-        //{
-        //    transform.position += rayDirection * (moveSpeed * Time.deltaTime);
-        //}
+        if (target != null)
+        {
+            if (Vector2.Distance(transform.position, target.transform.position) >= attackDistance)
+            {
+                transform.position += direction * moveSpeed * Time.deltaTime;
+            }
+        }
+        else
+        {
+            transform.position += direction * moveSpeed * Time.deltaTime;
+        }
     }
     #endregion
 
@@ -212,7 +239,7 @@ public class MonsterController : MonoBehaviour, IProjectTileShooter
             return;
         }
         monsterAttributeLogics.ApplyAttackLogic(player.gameObject, attackPower, attributeValue, attributeRateTime, attributeStack);
-        SoundManagers.Instance.PlaySFX(SfxType.MonsterAttack); 
+        SoundManagers.Instance.PlaySFX(SfxType.MonsterAttack);
     }
 
     public void RangedAttack()
@@ -225,12 +252,17 @@ public class MonsterController : MonoBehaviour, IProjectTileShooter
 
     private void OnDrawGizmos()
     {
-        Gizmos.color = Color.red;
-        Vector2 monsterPosition = transform.position;
-        Vector2 boxSize = new Vector2(attackDistance, 1f);
-        Vector2 boxPostion = monsterPosition + Vector2.right * (attackDistance * lookDirection);
-        Vector2 boxPosition = (Vector2)transform.position + Vector2.right * attackDistance * lookDirection;
-        Gizmos.DrawWireCube(boxPosition, boxSize);
-    }
 
+        // OverlapBox의 중심 위치 계산
+        Vector3 boxCenter = transform.position;
+        Vector2 boxSize = new Vector2(attackDistance + 4, attackDistance);
+
+        // Gizmos 색상 설정
+        Gizmos.color = Color.red;
+
+        // OverlapBox 그리기
+        Gizmos.DrawWireCube(boxCenter, boxSize);
+    }
 }
+
+

@@ -25,14 +25,10 @@ public class PatrollState : IState
 
         if (monsterController.DetectPlayer())
         {
-            monsterController.FllowPlayer();
+            monsterController.FllowPlayer(); 
             if(monsterController.InAttackRange())
             {
                 monsterController.StateMachine.TransitionToState(monsterController.StateMachine.attackState);
-                return;
-            }
-            else
-            {
                 return;
             }
         }
@@ -42,20 +38,7 @@ public class PatrollState : IState
             monsterController.StateMachine.TransitionToState(monsterController.StateMachine.idleState);
         }
 
-        if (monsterController.monsterGround.GetOnGround())
-        {
-            isGround = false;
-            monsterController.Move();
-        }
-        else
-        {
-            if (!isGround)
-            {
-                monsterController.ReverseDirection();
-                isGround = true;
-            }
-            monsterController.Move();
-        }
+        monsterController.MoveWithGroundDetection();
     }
 
     public void Exit()

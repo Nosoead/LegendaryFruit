@@ -91,12 +91,13 @@ public class WeaponAnimationController : AnimationController
     }
     private void ChangedMaterial(WeaponSO weaponData)
     {
-        if(weaponData.effectMaterial == null)
+        var isRagnedWeapon = particle.textureSheetAnimation;
+        if (weaponData.effectMaterial == null)
         {
-            var dd = particle.textureSheetAnimation;
-            dd.enabled = false;
+            isRagnedWeapon.enabled = false;
             return;
         }
+        isRagnedWeapon.enabled = true;
         particleSystemRenderer.material = weaponData.effectMaterial;
     }
     private void ChangedEffectValue(WeaponSO weaponData)
