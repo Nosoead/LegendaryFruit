@@ -7,13 +7,14 @@ using UnityEngine.InputSystem;
 
 public class UIInputHandler : MonoBehaviour
 {
+    private GatherInputManager inputManager;
     private PlayerInput input;
-    //private bool isPlay;
-    //private bool isNpc;
     private int npcLayer;
     public UnityAction OnInteractEvent;
+
     private void Awake()
     {
+        inputManager = GatherInputManager.Instance;
         input = GatherInputManager.Instance.input;
         npcLayer = LayerMask.NameToLayer("TalkableNPC");
     }
@@ -37,27 +38,32 @@ public class UIInputHandler : MonoBehaviour
 
     private void OnInteract(InputAction.CallbackContext context)
     {
-        
-        if (GatherInputManager.Instance.isNpc)
+        if (inputManager.isNpc || inputManager.isPlay)
         {
-            input.UI.Interact.Enable();
-            input.Player.Disable();
-            input.Changer.Disable();
+            if (!inputManager.isEsc && !inputManager.isTab)
+            {
+                input.UI.Interact.Enable();
+                input.Changer.Disable();
+                //input.Player.Disable();
+            }
         }
     }
 
     private void OnInteractUI(InputAction.CallbackContext context)
     {
-        OnInteractEvent?.Invoke();
-        //UI 끄게하고
-        // 꺼지면 다른거 다시 ㄷ ㅏ구독
+        if (!inputManager.isEsc && !inputManager.isTab)
+        {
+            OnInteractEvent?.Invoke();
+            input.Player.Enable();
+            Time.timeScale = 1;
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.layer == npcLayer)
         {
-            GatherInputManager.Instance.isNpc = true;
+            inputManager.isNpc = true;
             input.Changer.Interact.Enable();
         }
     }
@@ -66,7 +72,7 @@ public class UIInputHandler : MonoBehaviour
     {
         if (collision.gameObject.layer == npcLayer)
         {
-            GatherInputManager.Instance.isNpc = false;
+            inputManager.isNpc = false;
             input.UI.Interact.Disable();
             input.Player.Enable();
             input.Changer.Enable();
@@ -76,39 +82,45 @@ public class UIInputHandler : MonoBehaviour
 
     private void OnInventory(InputAction.CallbackContext context)
     {
-        GatherInputManager.Instance.isPlay = !GatherInputManager.Instance.isPlay;
+        inputManager.isPlay = !inputManager.isPlay;
 
-        if (GatherInputManager.Instance.isPlay)
+        if (inputManager.isPlay)
         {
-            input.Changer.Setting.Disable();
             UIManager.Instance.ToggleUI<InventoryUI>(false);
+            inputManager.isTab = true;
+            input.Changer.Setting.Disable();
             input.Player.Disable();
+            Time.timeScale = 0;
         }
         else
         {
-            input.Player.Enable();
             UIManager.Instance.ToggleUI<InventoryUI>(false);
-            input.Changer.Setting.Enable();
+            inputManager.isTab = false;
+            input.Changer.Enable();
+            input.Player.Enable();
+            Time.timeScale = 1;
         }
     }
 
     private void OnSetting(InputAction.CallbackContext context)
     {
         if (UIManager.Instance.IsSettingOpen) return;
-        GatherInputManager.Instance.isPlay = !GatherInputManager.Instance.isPlay;
-        if (GatherInputManager.Instance.isPlay)
+        inputManager.isPlay = !inputManager.isPlay;
+        if (inputManager.isPlay)
         {
-            input.Changer.Inventory.Disable();
             UIManager.Instance.ToggleUI<ESCUI>(false);
+            inputManager.isEsc = true;
+            input.Changer.Inventory.Disable();
             input.Player.Disable();
+            Time.timeScale = 0;
         }
         else
         {
-            input.Player.Enable();
             UIManager.Instance.ToggleUI<ESCUI>(false);
-            input.Changer.Inventory.Enable();
+            inputManager.isEsc = false;
+            input.Changer.Enable();
+            input.Player.Enable();
+            Time.timeScale = 1;
         }
     }
-
-    
 }

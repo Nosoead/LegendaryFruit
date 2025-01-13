@@ -9,6 +9,7 @@ public class WeaponUpgradeUI : UIBase
     [SerializeField] private TextMeshProUGUI Text;
     [SerializeField] private Button upgradeButton;
     [SerializeField] private Button cancelButton;
+    private PlayerInput input;
 
     private PlayerEquipment playerEquip;
     private CurrencySystem currencySystem;
@@ -25,8 +26,17 @@ public class WeaponUpgradeUI : UIBase
         base.Open();
     }
 
+    private void Update()
+    {
+        if (this.gameObject.activeInHierarchy)
+        {
+            input.Player.Disable();
+        }
+    }
+
     private void Start()
     {
+        input = GatherInputManager.Instance.input;
         InitializeUI();
         GetEquipAndCurrencyData();
         SetCurrncy(weaponData.gradeType);
@@ -52,8 +62,9 @@ public class WeaponUpgradeUI : UIBase
     private void InitializeUI()
     {
         cancelButton.onClick.RemoveAllListeners();
-        cancelButton.onClick.AddListener(() => UIManager.Instance.ToggleUI<WeaponUpgradeUI>(true));
+        cancelButton.onClick.AddListener(() => UIManager.Instance.ToggleUI<WeaponUpgradeUI>(false));
         cancelButton.onClick.AddListener(() => SoundManagers.Instance.PlaySFX(SfxType.UIButton));
+        cancelButton.onClick.AddListener(() => GatherInputManager.Instance.ResetStates());
         upgradeButton.onClick.RemoveAllListeners();
         upgradeButton.onClick.AddListener(OnUpgradeBtn);
     }
@@ -91,8 +102,7 @@ public class WeaponUpgradeUI : UIBase
     {
         if (requiredCurrency == 0)
         {
-            //TODO : 더 이상 업그레이드를 할 수 없는 대화내용
-            dialogueIndex = 10205;
+            dialogueIndex = 10216;
             SoundManagers.Instance.PlaySFX(SfxType.UIButton);
             UIManager.Instance.ToggleUI<NpcDialougeUI>(false, dialogueIndex);
             ResetAllData();
@@ -101,8 +111,7 @@ public class WeaponUpgradeUI : UIBase
 
         if (weaponData.type == AttributeType.Normal)
         {
-            //TODO : 열매가 아닌 것은 강화 해 줄 수 없어
-            dialogueIndex = 10205;
+            dialogueIndex = 10217;
             SoundManagers.Instance.PlaySFX(SfxType.UIButton);
             UIManager.Instance.ToggleUI<NpcDialougeUI>(false, dialogueIndex);
             ResetAllData();

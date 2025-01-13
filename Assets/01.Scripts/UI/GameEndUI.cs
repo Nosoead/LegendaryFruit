@@ -1,3 +1,5 @@
+using System;
+using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
@@ -15,13 +17,22 @@ public class GameEndUI : UIBase
     [SerializeField] private TextMeshProUGUI totalEat;
     [SerializeField] private Image lastImage;
     [SerializeField] private List<Image> totalEatImages;
-
+    
+    public ScreenshotManager screenshotManager;
     private SaveDataContainer saveDataContainer;
-
+    private PlayerInput input;
+    private void Awake()
+    {
+        input = GatherInputManager.Instance.input;
+    }
+    private void Start()
+    {
+        StartCoroutine(waitForStatData());
+    }
     public override void Open()
     {
-        if (saveDataContainer == null) GetStatData();
         base.Open();
+        StartCoroutine(waitForDataToText());
         if (GameManager.Instance.GetGameClear())
         {
             titleTxt.text = "Game Clear!";
@@ -35,16 +46,35 @@ public class GameEndUI : UIBase
         exitTxt.text = "돌아가기";
         exitButton.onClick.AddListener(() => UIManager.Instance.ToggleUI<GameEndUI>(false));
         DataManager.Instance.DeleteData<SaveDataContainer>();
+        input.Player.Disable();
     }
 
-    private void GetStatData()
+    private IEnumerator waitForStatData()
     {
-        saveDataContainer = PlayerInfoManager.Instance.GetSaveData();
+        while (saveDataContainer == null)
+        {
+            saveDataContainer = PlayerInfoManager.Instance.GetSaveData();
+            if (saveDataContainer == null)
+            {
+                yield return saveDataContainer != null;
+            }
+        }
     }
 
+    private IEnumerator waitForDataToText()
+    {
+        if (saveDataContainer == null)
+        {
+            yield return saveDataContainer != null;
+        }
+        GetDataToText();
+    }
     private void GetDataToText()
     {
-        playTime.text = Time.deltaTime.ToString();
+        TimeSpan timeSpan = TimeSpan.FromSeconds(Time.time); // 일시정지되면 같이 멈추는 시간
+        //TimeSpan timeSpan = TimeSpan.FromSeconds(Time.unscaledTime); //일시정지되도 흘러가는 시간
+        playTime.text = timeSpan.ToString(@"hh\:mm\:ss");
+        if (  saveDataContainer == null) Debug.Log("null saveDataContainer");
         inGameMoney.text = saveDataContainer.currencyData.inGameCurrency.ToString();
         inGameMoney.text = saveDataContainer.currencyData.globalCurrency.ToString();
     }

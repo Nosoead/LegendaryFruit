@@ -79,6 +79,7 @@ public class UIDialogue : UIBase
             yield return null;
             txtDialogue.text = dialogueData.Dialogue;
             LogDone();
+            input.Player.Disable();
         }
         else
         {
@@ -108,6 +109,7 @@ public class UIDialogue : UIBase
     }
     public void SetDialogue(DialogueData dialogue)
     {
+        input.Player.Disable();
         DOTween.KillAll(true);
 
         imgScreenDone.raycastTarget = false;
@@ -129,15 +131,19 @@ public class UIDialogue : UIBase
         SetNpc1(dialogueData.Npc1);
         SetNpc2(dialogueData.Npc2);
 
-        float duration = dialogueData.Dialogue.Length / 20;
-        if (dialogueData.TypingSpeed != 0)
-            duration = dialogueData.TypingSpeed;
-
-        txtDialogue.DOText(dialogueData.Dialogue, duration).SetEase(Ease.Linear).OnComplete(LogDone); //두트윈 유료버전
+        StartCoroutine(WaitDoTween());
         //txtDialogue.text = dialogueData.Dialogue; // 두트윈 없을시
         //LogDone(); //두트윈 없을시
     }
 
+    private IEnumerator WaitDoTween()
+    {
+        float duration = dialogueData.Dialogue.Length / 20;
+        if (dialogueData.TypingSpeed != 0)
+            duration = dialogueData.TypingSpeed;
+        
+        yield return  txtDialogue.DOText(dialogueData.Dialogue, duration).SetEase(Ease.Linear).OnComplete(LogDone);
+    }
     private void LogDone()
     {
         done = true;
