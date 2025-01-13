@@ -83,7 +83,6 @@ public class StageManager : Singleton<StageManager>
 
     public void ChangeStage(StageType type)
     {
-        //TODO라이트 정상화
         mainLight.intensity = 1;
         if (player == null)
         {
@@ -136,7 +135,10 @@ public class StageManager : Singleton<StageManager>
             }
             else
             {
-                DOTween.To(() => mainLight.intensity, x => mainLight.intensity = x, 0.5f, 0.5f).SetEase(Ease.Linear);
+                if (currentStage.GetCombatData())
+                {
+                    DOTween.To(() => mainLight.intensity, x => mainLight.intensity = x, 0.5f, 0.5f).SetEase(Ease.Linear);
+                }
                 currentStage.SetReward();
             }
         }

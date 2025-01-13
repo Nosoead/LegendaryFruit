@@ -175,7 +175,7 @@ public class BossMonsterController : MonoBehaviour
         {
             return;
         }
-        monsterAttributeLogics.ApplyAttackLogic(player.gameObject, attackPower, attributeValue, attributeRateTime, attributeStack);
+        monsterAttributeLogics.ApplyAttackLogic(player.gameObject, attackPower, attributeValue, attributeRateTime, attributeStack, lookDirection);
     }
     #endregion
 
@@ -199,7 +199,7 @@ public class BossMonsterController : MonoBehaviour
     {
         if(player == target)
         {
-            monsterAttributeLogics.ApplyAttackLogic(player.gameObject, patternDamage, attributeValue, attributeRateTime, attributeStack);
+            monsterAttributeLogics.ApplyAttackLogic(player.gameObject, patternDamage, attributeValue, attributeRateTime, attributeStack, lookDirection);
         }
         detector.ResetDetector();
     }

@@ -238,7 +238,7 @@ public class MonsterController : MonoBehaviour, IProjectTileShooter
         {
             return;
         }
-        monsterAttributeLogics.ApplyAttackLogic(player.gameObject, attackPower, attributeValue, attributeRateTime, attributeStack);
+        monsterAttributeLogics.ApplyAttackLogic(player.gameObject, attackPower, attributeValue, attributeRateTime, attributeStack, lookDirection);
         SoundManagers.Instance.PlaySFX(SfxType.MonsterAttack);
     }
 
@@ -253,14 +253,14 @@ public class MonsterController : MonoBehaviour, IProjectTileShooter
     private void OnDrawGizmos()
     {
 
-        // OverlapBoxÀÇ Áß½É À§Ä¡ °è»ê
+        // OverlapBoxï¿½ï¿½ ï¿½ß½ï¿½ ï¿½ï¿½Ä¡ ï¿½ï¿½ï¿½
         Vector3 boxCenter = transform.position;
         Vector2 boxSize = new Vector2(attackDistance + 4, attackDistance);
 
-        // Gizmos »ö»ó ¼³Á¤
+        // Gizmos ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
         Gizmos.color = Color.red;
 
-        // OverlapBox ±×¸®±â
+        // OverlapBox ï¿½×¸ï¿½ï¿½ï¿½
         Gizmos.DrawWireCube(boxCenter, boxSize);
     }
 }

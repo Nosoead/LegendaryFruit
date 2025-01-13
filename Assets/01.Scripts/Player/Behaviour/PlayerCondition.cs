@@ -7,17 +7,23 @@ public class PlayerCondition : MonoBehaviour, IDamageable
 {
     [SerializeField] private PlayerStatManager statManager;
     public event UnityAction<AttributeType> OnTakeHitType;
+    private Rigidbody2D playerRigidbody;
+    private PlayerInput playerInput;
+
     // 각 속성을 확인하여 필요한 데이터를 반환
     private Coroutine coBurnDamage;
     private Coroutine coSlowDown;
+    private Coroutine coKnockback;
 
     // 각 속성 남은 시간 미리 캐싱하는 것 논의 필요.
     private WaitForSeconds burnWaitTime;
     private WaitForSeconds slowDownTime;
+    private WaitForSeconds knockbackTime;
 
     // 각 속성 코루틴 체크용
     private bool isBurn = false;
     private bool isSlowDown = false;
+    private bool isKnockback = false;
 
     // 플레이어 데미지 텀
     private Coroutine coTakeDamageCoolDown;
@@ -30,6 +36,14 @@ public class PlayerCondition : MonoBehaviour, IDamageable
         if (statManager == null)
         {
             statManager = GetComponent<PlayerStatManager>();
+        }
+        if (playerRigidbody == null)
+        {
+            playerRigidbody = GetComponent<Rigidbody2D>();
+        }
+        if (playerInput == null)
+        {
+            playerInput = GatherInputManager.Instance.input;
         }
     }
 
@@ -91,9 +105,35 @@ public class PlayerCondition : MonoBehaviour, IDamageable
     #endregion
 
     #region /KnockbackLogic
-    public void Knockback(float damage, float attributeValue, float lookDirection)
+    public void Knockback(float damage, float attributeValue, float attributeRateTime, float lookDirection)
     {
+        if (!canTakeDamage) return;
+        StartTakeDamageCooldown();
+        OnTakeHitType?.Invoke(AttributeType.Knockback);
+        statManager.ApplyInstantDamage(damage);
+        if (coKnockback != null && isKnockback)
+        {
+            StopCoroutine(coKnockback);
+        }
+        isKnockback = true;
+        playerInput.Player.Disable();
+        playerRigidbody.velocity = Vector2.zero;
+        float currentGravity = playerRigidbody.gravityScale;
+        playerRigidbody.gravityScale = 0;
+        coKnockback = StartCoroutine(KnockbackCoroutine(attributeValue, attributeRateTime, lookDirection, currentGravity));
+    }
 
+    private IEnumerator KnockbackCoroutine(float attributeValue, float attributeRateTime, float lookDirection, float currentGravity)
+    {
+        yield return null;
+        Vector2 knockbackForce = Vector2.right * attributeValue * lookDirection;
+        playerRigidbody.AddForce(knockbackForce, ForceMode2D.Impulse);
+        knockbackTime = new WaitForSeconds(attributeRateTime);
+        yield return knockbackTime;
+        playerRigidbody.gravityScale = currentGravity;
+        playerRigidbody.velocity = Vector2.zero;
+        playerInput.Player.Enable();
+        isKnockback = false;
     }
     #endregion
 

@@ -62,6 +62,9 @@ public class ParticleController : MonoBehaviour
                 break;
             case AttributeType.SlowDown:
                 // 넉백 미구현이라 임시로 SlowDown이 노란색임
+                color = Color.blue;
+                break;
+            case AttributeType.Knockback:
                 color = Color.yellow;
                 break;
             case AttributeType.Blindness:

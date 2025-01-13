@@ -37,7 +37,6 @@ public class PlayerEquipment : MonoBehaviour
 
     private void Start()
     {
-        PoolManager.Instance.CreatePool<PooledFruitWeapon>(PoolType.PooledFruitWeapon, false, 5, 5);
         Init();
     }
 

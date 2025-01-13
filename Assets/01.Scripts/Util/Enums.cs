@@ -2,7 +2,7 @@ public enum AttributeType
 {
     Burn,
     SlowDown,
-    KnockBack,
+    Knockback,
     Poison,
     Blindness,
     Normal
@@ -43,6 +43,8 @@ public enum PoolType
     PooledSound,
     PooledEffect,
     PooledFruitWeapon,
+    PooledPotion,
+    PooledCurrency,
     PooledBossMonster,
     PooledHitParticle,
     PooledProjectile,

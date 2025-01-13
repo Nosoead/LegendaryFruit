@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.Pool;
 
-public class PooledFruitWeapon : Weapon, IInteractable, ISetPooledObject<PooledFruitWeapon>
+public class PooledFruitWeapon : Item, IInteractable, ISetPooledObject<PooledFruitWeapon>
 {
     public WeaponSO weaponData;
     public SpriteRenderer weaponSprite;

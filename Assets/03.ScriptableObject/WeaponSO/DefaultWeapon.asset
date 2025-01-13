@@ -16,17 +16,59 @@ MonoBehaviour:
   weaponName: "\uAC80"
   description: "\uD754\uD788 \uBCFC\uC218 \uC788\uB294 \uD3C9\uBC94\uD55C \uAC80"
   attackPower: 10
-  type: 5
+  type: 2
   gradeType: 0
   eatValue: 1
-  attributeAttackValue: 1
-  attributeAttackRateTime: 1
+  attributeAttackValue: 10
+  attributeAttackRateTime: 0.2
   arrtibuteStatck: 1
   weaponSprite: {fileID: 21300000, guid: c3a4be7f051b5ab43a33f35d3ce62181, type: 3}
   rewardSprite: {fileID: 0}
   animatorController: {fileID: 22100000, guid: 287170c3411b6a84692e6b02c7126443, type: 2}
-  effectMaterial: {fileID: 2100000, guid: 95fa2700c43e6e14e8f0ee06b58bf50b, type: 2}
+  rangedAttackData:
+    projectileType: 0
+    attributeType: 0
+    projectTileSprite: {fileID: 0}
+    attackDistance: 0
+    maxDistance: 0
+    rangedAttackPower: 0
+    rangedAttackSpeed: 0
+    rangedAttackRate: 0
   effectData:
+    linearVelocityX:
+      m_Mode: 0
+      m_CurveMultiplier: 0
+      m_CurveMin:
+        serializedVersion: 2
+        m_Curve: []
+        m_PreInfinity: 2
+        m_PostInfinity: 2
+        m_RotationOrder: 4
+      m_CurveMax:
+        serializedVersion: 2
+        m_Curve: []
+        m_PreInfinity: 2
+        m_PostInfinity: 2
+        m_RotationOrder: 4
+      m_ConstantMin: 0
+      m_ConstantMax: 0
+    linearVelocityY:
+      m_Mode: 0
+      m_CurveMultiplier: 0
+      m_CurveMin:
+        serializedVersion: 2
+        m_Curve: []
+        m_PreInfinity: 2
+        m_PostInfinity: 2
+        m_RotationOrder: 4
+      m_CurveMax:
+        serializedVersion: 2
+        m_Curve: []
+        m_PreInfinity: 2
+        m_PostInfinity: 2
+        m_RotationOrder: 4
+      m_ConstantMin: 0
+      m_ConstantMax: 0
     effectSize: 4
     gradient:
       serializedVersion: 2
@@ -58,3 +100,4 @@ MonoBehaviour:
       m_ColorSpace: -1
       m_NumColorKeys: 2
       m_NumAlphaKeys: 2
+  effectMaterial: {fileID: 2100000, guid: 95fa2700c43e6e14e8f0ee06b58bf50b, type: 2}

@@ -122,7 +122,7 @@ public class PlayerAttack : MonoBehaviour, IProjectTileShooter
         else
         {
             foreach (Collider2D collider in monster)
-            attributeLogic.ApplyAttackLogic(collider.gameObject, totalAttackPower, weaponData.attributeAttackValue, weaponData.attributeAttackRateTime, weaponData.arrtibuteStatck);
+            attributeLogic.ApplyAttackLogic(collider.gameObject, totalAttackPower, weaponData.attributeAttackValue, weaponData.attributeAttackRateTime, weaponData.arrtibuteStatck, lookDirection);
             yield return attackRateTime;
         }
         isAttacking = false;

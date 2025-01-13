@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "StageSO", menuName = "ScriptableObject/StageSO", order = 5)]
+[CreateAssetMenu(fileName = "StageSO", menuName = "ScriptableObject/StageSO", order = 3)]
 public class StageSO : ScriptableObject
 {
     //   AB0CD -> A : 보상종류 B : 스테이지 C : 단계 D : 버전

@@ -20,9 +20,9 @@ MonoBehaviour:
   moveSpeed: 3
   attackDistance: 2
   chaseRange: 5
-  type: 5
-  attributeValue: 0
-  attributeRateTime: 0
+  type: 2
+  attributeValue: 10
+  attributeRateTime: 0.2
   attributeStack: 0
   inGameMoney: 100
   monsterRagnedAttackData:

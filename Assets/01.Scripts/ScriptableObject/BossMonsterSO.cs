@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "BossMonsterSO", menuName = "ScriptableObject/BossMonsterSO", order = 4)]
+[CreateAssetMenu(fileName = "BossMonsterSO", menuName = "ScriptableObject/BossMonsterSO", order = 2)]
 public class BossMonsterSO : MonsterSO
 {
     public List<PatternData> pattrens;

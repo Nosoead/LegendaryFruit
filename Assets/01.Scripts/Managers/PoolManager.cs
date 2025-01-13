@@ -31,7 +31,7 @@ public class PoolManager : Singleton<PoolManager>
             }
         }
         // TODO : 모든 풀링오브젝트를 미리 CreatePool
-        Instance.CreatePool<PooledProjectile>(PoolType.PooledProjectile, false, 15, 30);
+        PreCreateObjectPool();
     }
 
     public void CreatePool<T>(PoolType poolType, bool collectionCheck, int defaultCapacity, int maxSize) where T : Component
@@ -113,5 +113,14 @@ public class PoolManager : Singleton<PoolManager>
         {
             pool();
         }
+    }
+
+    private void PreCreateObjectPool()
+    {
+        Instance.CreatePool<PooledProjectile>(PoolType.PooledProjectile, false, 15, 30);
+        Instance.CreatePool<PooledFruitWeapon>(PoolType.PooledFruitWeapon, false, 5, 5);
+        Instance.CreatePool<PooledReward>(PoolType.PooledReward, false, 5, 5);
+        Instance.CreatePool<PooledCurrency>(PoolType.PooledCurrency, false, 5, 5);
+        Instance.CreatePool<PooledPotion>(PoolType.PooledPotion, false, 5, 5);
     }
 };

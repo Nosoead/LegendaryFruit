@@ -8,18 +8,22 @@ public class MonsterCondition : MonoBehaviour, IDamageable
     [SerializeField] private MonsterStatManager statManager;
     public event UnityAction<AttributeType> OnTakeHitType;
     private MonsterAnimationController controller;
+    private Rigidbody2D monsterRigidbody;
 
     // 각 속성을 확인하여 필요한 데이터를 반환
     private Coroutine coBurnDamage;
     private Coroutine coSlowDown;
+    private Coroutine coKnockback;
 
     // 각 속성 남은 시간 미리 캐싱하는 것 논의 필요.
     private WaitForSeconds burnWaitTime;
     private WaitForSeconds slowDownTime;
+    private WaitForSeconds knockbackTime;
 
     // 각 속성 코루틴 체크용
     private bool isBurn = false;
     private bool isSlowDown = false;
+    private bool isKnockback = false;
 
     private void Awake()
     {
@@ -31,6 +35,11 @@ public class MonsterCondition : MonoBehaviour, IDamageable
         {
             controller = GetComponent<MonsterAnimationController>();
         }
+        if (monsterRigidbody == null)
+        {
+            monsterRigidbody = GetComponent<Rigidbody2D>();
+        }
+
     }
 
     #region /BurnDamageLogic
@@ -87,9 +96,29 @@ public class MonsterCondition : MonoBehaviour, IDamageable
     #endregion
 
     #region /KnockbackLogic
-    public void Knockback(float damage, float attributeValue, float lookDirection)
+    public void Knockback(float damage, float attributeValue, float attributeRateTime, float lookDirection)
     {
+        controller.OnTakeHit();
+        OnTakeHitType?.Invoke(AttributeType.Knockback);
+        statManager.ApplyInstantDamage(damage);
+        if (coKnockback != null && isKnockback)
+        {
+            StopCoroutine(coKnockback);
+        }
+        isKnockback = true;
+        monsterRigidbody.velocity = Vector2.zero;
+        coKnockback = StartCoroutine(KnockbackCoroutine(attributeValue, attributeRateTime, lookDirection));
+    }
 
+    private IEnumerator KnockbackCoroutine(float attributeValue, float attributeRateTime, float lookDirection)
+    {
+        yield return null;
+        Vector3 knockbackForce = Vector3.right * attributeValue * lookDirection;
+        monsterRigidbody.AddForce(knockbackForce, ForceMode2D.Impulse);
+        knockbackTime = new WaitForSeconds(attributeRateTime);
+        yield return knockbackTime;
+        monsterRigidbody.velocity = Vector2.zero;
+        isKnockback = false;
     }
     #endregion
 

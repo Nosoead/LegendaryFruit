@@ -11,7 +11,7 @@ public class MonsterAttributeLogicsDictionary
             { AttributeType.Normal, new MonsterNormal() },
             { AttributeType.Burn, new MonsterBurn() },
             { AttributeType.SlowDown, new MonsterSlowDown() },
-
+            { AttributeType.Knockback, new MonsterKnockback() }
         };
     }
 

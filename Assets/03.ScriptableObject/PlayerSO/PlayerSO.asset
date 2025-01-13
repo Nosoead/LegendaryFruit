@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: PlayerSO
   m_EditorClassIdentifier: 
   playerStatData:
-    maxHealth: 100
-    currentHealth: 100
-    currentAttackPower: 200
+    maxHealth: 10000
+    currentHealth: 10000
+    currentAttackPower: 1
     currentDefense: 5
     attackSpeed: 10
     moveSpeed: 7

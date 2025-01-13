@@ -9,7 +9,7 @@ public interface IDamageable
     void TakeDamage(float damage);
     void BurnDamage(float damage, float attributeValue, float attributeRateTime, float attributeStack);
     void SlowDown(float damage, float attributeValue, float attributeRateTime);
-    void Knockback(float damage, float attributeValue, float lookDirection);
+    void Knockback(float damage, float attributeValue, float attributeRateTime, float lookDirection);
 }
 
 public interface IState
