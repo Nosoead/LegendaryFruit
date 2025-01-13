@@ -5,14 +5,7 @@ public class ParticleController : MonoBehaviour
 {
     public ParticleSystem particle;
     public ParticleSystem[] numberParticle;
-    public ParticleSystemRenderer[] impactParticles;
     public Material damageMaterial;
-    private Dictionary<AttributeType, Material[]> typeMaterial = new Dictionary<AttributeType, Material[]>();
-
-    protected virtual void SetTypeMaterial()
-    {
-         // TODO : 나중에 속성별로 임팩트 변경 시도 
-    }
 
     protected virtual void OnDamageReceived(float damage, AttributeType type)
     {
@@ -47,6 +40,7 @@ public class ParticleController : MonoBehaviour
                 numberParticle[i].gameObject.SetActive(false);
             }
         }
+        OnHitParticlePlay();
     }
 
     protected virtual void SetDamageColor(Material material, AttributeType type)
@@ -85,13 +79,13 @@ public class ParticleController : MonoBehaviour
         textureSheetAnimation.frameOverTime = frameCurve;
     }
 
-    protected virtual void OnHitParticlePlay(float damage, AttributeType type)
+    protected virtual void OnHitParticlePlay()
     {
         if (particle.isPlaying)
         {
             particle.Stop(true, ParticleSystemStopBehavior.StopEmittingAndClear);
         }
-        particle.Clear();
+
         particle.Play();
     }
 }

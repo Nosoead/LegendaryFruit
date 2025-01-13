@@ -40,11 +40,20 @@ public class EffectData
 public class RangedAttackData
 {
     public ProjectileType projectileType;
-    public AttributeType attributeType;
     public Sprite projectTileSprite;
     public float attackDistance;
     public float maxDistance;
     public float rangedAttackPower;
     public float rangedAttackSpeed;
     public float rangedAttackRate;
+    public List<RangedAttributeData> attributeDatas;
+}
+
+[System.Serializable]
+public class RangedAttributeData
+{
+    public AttributeType attributeType;
+    public float attributeValue;
+    public float attributeLateTime;
+    public float attributeStack;
 }

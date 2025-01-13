@@ -1,0 +1,44 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f8b4efc1f3286b41b584c8ebab3b687, type: 3}
+  m_Name: SlowDownDamage_HitParticeSO
+  m_EditorClassIdentifier: 
+  particleType: 3
+  materials:
+  - {fileID: 2100000, guid: af1c9b0b73e895d4884d471048623ed8, type: 2}
+  - {fileID: 2100000, guid: 467505936a5838e4a86011f7e0be8377, type: 2}
+  - {fileID: 2100000, guid: 5aaccf1aff376f44187901d8b63acfb2, type: 2}
+  - {fileID: 2100000, guid: 5aaccf1aff376f44187901d8b63acfb2, type: 2}
+  particleData:
+  - minMaxCurve:
+      m_Mode: 3
+      m_CurveMultiplier: 0
+      m_CurveMin:
+        serializedVersion: 2
+        m_Curve: []
+        m_PreInfinity: 0
+        m_PostInfinity: 0
+        m_RotationOrder: 0
+      m_CurveMax:
+        serializedVersion: 2
+        m_Curve: []
+        m_PreInfinity: 0
+        m_PostInfinity: 0
+        m_RotationOrder: 0
+      m_ConstantMin: 360
+      m_ConstantMax: -360
+    particleSize: 5
+    particleLifeTime: 0.25
+    textureSeetAnimtaionX: 0
+    textureSeetAnimtaionY: 0
+    isTextureSeetAntimationActive: 0
+    isSizeOverTimeActive: 1

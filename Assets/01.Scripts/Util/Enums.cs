@@ -44,7 +44,7 @@ public enum PoolType
     PooledEffect,
     PooledFruitWeapon,
     PooledBossMonster,
-    PooledHitParticle,
+    PooledParticle,
     PooledProjectile,
     Count
 }
@@ -80,10 +80,17 @@ public enum BgmType
     InfiniteDoors
 }
 
-
-
 public enum ProjectileType
 {
     Player,
     Monster
+}
+
+public enum ParticleType
+{
+    Heal,
+    BurnDamage,
+    NormalDamage,
+    SlowDownDamage,
+    KnockBackDamage
 }

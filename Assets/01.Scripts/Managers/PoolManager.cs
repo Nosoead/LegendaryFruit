@@ -32,6 +32,7 @@ public class PoolManager : Singleton<PoolManager>
         }
         // TODO : 모든 풀링오브젝트를 미리 CreatePool
         Instance.CreatePool<PooledProjectile>(PoolType.PooledProjectile, false, 15, 30);
+        Instance.CreatePool<PooledParticle>(PoolType.PooledParticle, false, 5, 10);
     }
 
     public void CreatePool<T>(PoolType poolType, bool collectionCheck, int defaultCapacity, int maxSize) where T : Component
