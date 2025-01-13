@@ -17,7 +17,7 @@ MonoBehaviour:
   description: "\uC774\uC81C \uBABB\uB4E4\uACA0\uB2E4 \uBA39\uC5B4\uC57C\uC9C0"
   attackPower: 25
   type: 0
-  gradeType: 0
+  gradeType: 2
   eatValue: 6
   attributeAttackValue: 7
   attributeAttackRateTime: 1
@@ -27,13 +27,13 @@ MonoBehaviour:
   animatorController: {fileID: 22100000, guid: d8b87d33ce1331c479dc625606a57c3e, type: 2}
   rangedAttackData:
     projectileType: 0
-    attributeType: 0
     projectTileSprite: {fileID: 0}
     attackDistance: 0
     maxDistance: 0
     rangedAttackPower: 0
     rangedAttackSpeed: 0
     rangedAttackRate: 0
+    attributeDatas: []
   effectData:
     linearVelocityX:
       m_Mode: 0

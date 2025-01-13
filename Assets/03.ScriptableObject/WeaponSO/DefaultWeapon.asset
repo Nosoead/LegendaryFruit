@@ -16,7 +16,7 @@ MonoBehaviour:
   weaponName: "\uAC80"
   description: "\uD754\uD788 \uBCFC\uC218 \uC788\uB294 \uD3C9\uBC94\uD55C \uAC80"
   attackPower: 10
-  type: 1
+  type: 5
   gradeType: 0
   eatValue: 1
   attributeAttackValue: 1

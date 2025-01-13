@@ -34,7 +34,7 @@ MonoBehaviour:
     rangedAttackSpeed: 10
     rangedAttackRate: 1
     attributeDatas:
-    - attributeType: 5
+    - attributeType: 1
       attributeValue: 0
       attributeLateTime: 0
       attributeStack: 0

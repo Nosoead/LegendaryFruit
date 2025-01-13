@@ -27,13 +27,13 @@ MonoBehaviour:
   animatorController: {fileID: 22100000, guid: f6fc0d12347d5df4094c587221cc0393, type: 2}
   rangedAttackData:
     projectileType: 0
-    attributeType: 0
     projectTileSprite: {fileID: 0}
     attackDistance: 0
     maxDistance: 0
     rangedAttackPower: 0
     rangedAttackSpeed: 0
     rangedAttackRate: 0
+    attributeDatas: []
   effectData:
     linearVelocityX:
       m_Mode: 0

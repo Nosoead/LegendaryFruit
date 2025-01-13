@@ -16,7 +16,7 @@ MonoBehaviour:
   weaponName: "\uBC14\uB098\uB098\uB2E4!"
   description: "\uBC1F\uC73C\uBA74 \uBBF8\uB044\uB7EC\uC9C8\uB4EF\uD55C \uBB34\uAE30\uB2E4.."
   attackPower: 12
-  type: 1
+  type: 2
   gradeType: 0
   eatValue: 5
   attributeAttackValue: 3
@@ -27,13 +27,13 @@ MonoBehaviour:
   animatorController: {fileID: 22100000, guid: 173986f3ade84d74588f0e561fdcb476, type: 2}
   rangedAttackData:
     projectileType: 0
-    attributeType: 0
     projectTileSprite: {fileID: 0}
     attackDistance: 0
     maxDistance: 0
     rangedAttackPower: 0
     rangedAttackSpeed: 0
     rangedAttackRate: 0
+    attributeDatas: []
   effectData:
     linearVelocityX:
       m_Mode: 0
