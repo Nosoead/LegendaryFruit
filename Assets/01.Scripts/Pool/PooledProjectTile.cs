@@ -50,11 +50,14 @@ public class PooledProjectile : MonoBehaviour, ISetPooledObject<PooledProjectile
 
     public void SetAttirbuteData(RangedAttackData data)
     {
-        currentAttributeType = data.attributeType;
-        if (currentAttributeType == AttributeType.Normal) return;
-        //currentAttirbuteValue = data.;
-        //currentAttributeRateTime = attributeRateTime;
-        //currentAttributeStack = attributeStack;
+        for(int i = 0; i < data.attributeDatas.Count; i++)
+        {
+            currentAttributeType = data.attributeDatas[i].attributeType;
+            if (data.attributeDatas[i].attributeType == AttributeType.Normal) break; 
+            currentAttirbuteValue = data.attributeDatas[i].attributeValue;
+            currentAttributeStack = data.attributeDatas[i].attributeStack;
+            currentAttributeRateTime = data.attributeDatas[i].attributeLateTime;   
+        }
     }
 
     public void ProjectTileShoot(Vector3 dir)

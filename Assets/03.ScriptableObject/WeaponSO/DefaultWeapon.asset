@@ -16,24 +16,24 @@ MonoBehaviour:
   weaponName: "\uAC80"
   description: "\uD754\uD788 \uBCFC\uC218 \uC788\uB294 \uD3C9\uBC94\uD55C \uAC80"
   attackPower: 10
-  type: 2
+  type: 1
   gradeType: 0
   eatValue: 1
-  attributeAttackValue: 10
-  attributeAttackRateTime: 0.2
+  attributeAttackValue: 1
+  attributeAttackRateTime: 1
   arrtibuteStatck: 1
   weaponSprite: {fileID: 21300000, guid: c3a4be7f051b5ab43a33f35d3ce62181, type: 3}
   rewardSprite: {fileID: 0}
   animatorController: {fileID: 22100000, guid: 287170c3411b6a84692e6b02c7126443, type: 2}
   rangedAttackData:
     projectileType: 0
-    attributeType: 0
     projectTileSprite: {fileID: 0}
     attackDistance: 0
     maxDistance: 0
     rangedAttackPower: 0
     rangedAttackSpeed: 0
     rangedAttackRate: 0
+    attributeDatas: []
   effectData:
     linearVelocityX:
       m_Mode: 0

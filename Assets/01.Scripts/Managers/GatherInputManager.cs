@@ -6,6 +6,8 @@ public class GatherInputManager : Singleton<GatherInputManager>
     public PlayerInput input;
     public bool isNpc {get;set;}
     public bool isPlay {get;set;}
+    public bool isTab {get;set;}
+    public bool isEsc {get;set;}
 
     protected override void Awake()
     {
@@ -21,12 +23,14 @@ public class GatherInputManager : Singleton<GatherInputManager>
     }
     public void ResetStates()
     {
-        isPlay = false;
+        isPlay = true;
         isNpc = false;
+        isTab = false;
+        isEsc = false;
 
-        input.Player.Enable();
         input.Changer.Enable();
+        input.Player.Enable();
         input.UI.Disable();
-        
+        Time.timeScale = 1f;
     }
 }

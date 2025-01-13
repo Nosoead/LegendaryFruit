@@ -19,7 +19,7 @@ public class MonsterController : MonoBehaviour, IProjectTileShooter
 
     [SerializeField] private Transform shootPoint;
     private IObjectPool<PooledProjectile> pooledProjectTile;
-    private RangedAttackData rangedAttackData = null;
+    private MonsterSO monsterData = null;
 
     private float attackPower;
     private float moveSpeed;
@@ -101,9 +101,9 @@ public class MonsterController : MonoBehaviour, IProjectTileShooter
         stateMachine.UpdateStat(this);
     }
 
-    public void GetRagnedAttackStat(RangedAttackData data)
+    public void GetRagnedAttackStat(MonsterSO data)
     {
-        rangedAttackData = data;
+        monsterData = data;
     }
     #endregion
 
@@ -221,8 +221,8 @@ public class MonsterController : MonoBehaviour, IProjectTileShooter
     {
         Vector3 look = Vector3.right * lookDirection;
         projectTile.transform.position = shootPoint.position;
-        projectTile.SetData(rangedAttackData, rangedAttackData.rangedAttackPower);
-        projectTile.SetAttirbuteData(rangedAttackData);
+        projectTile.SetData(monsterData.monsterRagnedAttackData, monsterData.monsterRagnedAttackData.rangedAttackPower);
+        projectTile.SetAttirbuteData(monsterData.monsterRagnedAttackData);
         projectTile.ProjectTileShoot(look);
     }
 

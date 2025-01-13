@@ -47,6 +47,7 @@ public class MonsterCondition : MonoBehaviour, IDamageable
     {       
         controller.OnTakeHit();
         OnTakeHitType?.Invoke(AttributeType.Normal);
+        ParticleManager.Instance.SetParticleTypeAndPlay(transform.position, ParticleType.NormalDamage);
         statManager.ApplyInstantDamage(damage);
         if (coBurnDamage != null && isBurn)
         {
@@ -75,6 +76,7 @@ public class MonsterCondition : MonoBehaviour, IDamageable
     {
         controller.OnTakeHit();
         OnTakeHitType?.Invoke(AttributeType.SlowDown);
+        ParticleManager.Instance.SetParticleTypeAndPlay(transform.position, ParticleType.SlowDownDamage);
         statManager.ApplyInstantDamage(damage);
         if (coSlowDown != null && isSlowDown)
         {
@@ -127,6 +129,7 @@ public class MonsterCondition : MonoBehaviour, IDamageable
         controller.OnTakeHit();
         OnTakeHitType?.Invoke(AttributeType.Normal);
         statManager.ApplyInstantDamage(damage);
+        ParticleManager.Instance.SetParticleTypeAndPlay(transform.position, ParticleType.NormalDamage);
         SfxType randomSfx = (Random.Range(0,2) == 0) ? SfxType.MonsterDamaged1 : SfxType.MonsterDamaged2;
         SoundManagers.Instance.PlaySFX(randomSfx);
     }

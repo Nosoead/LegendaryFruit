@@ -38,7 +38,7 @@ public class SceneManagerExtension : Singleton<SceneManagerExtension>
     {
         StageManager.Instance.ResetStageManager();
         PoolManager.Instance.ResetAllObjectPool();
-        UIManager.Instance.ClosePersistentUI();
+        UIManager.Instance.ResetUI();
         GatherInputManager.Instance.ResetStates();
     }
 }

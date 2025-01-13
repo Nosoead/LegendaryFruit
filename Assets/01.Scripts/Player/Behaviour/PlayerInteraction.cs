@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.Events;
@@ -50,7 +51,7 @@ public class PlayerInteraction : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.layer == NPCLayer || collision.gameObject.layer == TalkNpcLayer || 
+        if (collision.gameObject.layer == NPCLayer || collision.gameObject.layer == TalkNpcLayer ||
             collision.gameObject.layer == rewardLayer)
         {
             canTapInteractWithObject = true;
@@ -90,6 +91,7 @@ public class PlayerInteraction : MonoBehaviour
         {
             return;
         }
+
         isTapPressed = isTapPressedSignal;
         if (canTapInteractWithObject && isTapPressed)
         {
@@ -104,12 +106,13 @@ public class PlayerInteraction : MonoBehaviour
         {
             return;
         }
+
         if (coCheckHoldPressed != null)
         {
             StopCoroutine(coCheckHoldPressed);
         }
-        coCheckHoldPressed = StartCoroutine(CheckHoldPress(isHoldPressedSignal));
 
+        coCheckHoldPressed = StartCoroutine(CheckHoldPress(isHoldPressedSignal));
     }
 
     private IEnumerator CheckHoldPress(bool isHoldPressedSignal)
@@ -128,11 +131,15 @@ public class PlayerInteraction : MonoBehaviour
             {
                 isTapPressed = false;
             }
-            else if (pressedTime == tapCompleteTime) { Debug.Log("1초 경과"); }
+            else if (pressedTime == tapCompleteTime)
+            {
+                Debug.Log("1초 경과");
+            }
             else
             {
                 isTapPressed = true;
             }
+
             GiveFillamountData(pressedTime);
             yield return null;
         }
@@ -163,6 +170,7 @@ public class PlayerInteraction : MonoBehaviour
             isTapPressed = false;
             isHoldPressed = false;
         }
+
         GiveFillamountData(holdCompleteTime);
     }
 
@@ -191,7 +199,8 @@ public class PlayerInteraction : MonoBehaviour
 
     private Vector3 SetPromptPosition()
     {
-        Vector3 inGamePosition = new Vector3(transform.position.x+2.5f,transform.position.y+4f,transform.position.z);
+        Vector3 inGamePosition =
+            new Vector3(transform.position.x + 2.5f, transform.position.y + 4f, transform.position.z);
         Vector3 screenPosition = Camera.main.WorldToScreenPoint(inGamePosition);
         return screenPosition;
     }

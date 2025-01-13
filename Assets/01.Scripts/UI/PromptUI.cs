@@ -13,6 +13,7 @@ public class PromptUI : UIBase
     [SerializeField] private TextMeshProUGUI promptName;
     [SerializeField] private TextMeshProUGUI promptDescription;
     [SerializeField] private TextMeshProUGUI promptAttackPower;
+    
     [SerializeField] private Image outlineImage;
     [SerializeField] private PlayerInteraction interaction;
 
@@ -71,5 +72,7 @@ public class PromptUI : UIBase
         gradeText.text = weaponData.gradeType.ToString();
         promptName.text = weaponData.weaponName;
         promptDescription.text = weaponData.description;
+        promptAttackPower.text = $"공격력 : {weaponData.attackPower.ToString()}" +
+                                  $" 섭취 값 : {weaponData.eatValue.ToString()}";
     }
 }
