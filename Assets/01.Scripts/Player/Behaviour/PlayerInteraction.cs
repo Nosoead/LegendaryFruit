@@ -13,6 +13,7 @@ public class PlayerInteraction : MonoBehaviour
     private WeaponSO weaponData;
 
     //Layer
+    private int TalkNpcLayer;
     private int NPCLayer;
     private int rewardLayer;
     private int itemLayer;
@@ -29,6 +30,7 @@ public class PlayerInteraction : MonoBehaviour
     private void Awake()
     {
         EnsureComponents();
+        TalkNpcLayer = LayerMask.NameToLayer("TalkableNPC");
         NPCLayer = LayerMask.NameToLayer("NPC");
         rewardLayer = LayerMask.NameToLayer("Reward");
         itemLayer = LayerMask.NameToLayer("Item");
@@ -48,7 +50,8 @@ public class PlayerInteraction : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.layer == NPCLayer || collision.gameObject.layer == rewardLayer)
+        if (collision.gameObject.layer == NPCLayer || collision.gameObject.layer == TalkNpcLayer || 
+            collision.gameObject.layer == rewardLayer)
         {
             canTapInteractWithObject = true;
             currentInteractable = collision.gameObject.GetComponent<IInteractable>();

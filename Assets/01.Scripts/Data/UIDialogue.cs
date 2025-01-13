@@ -51,7 +51,6 @@ public class UIDialogue : UIBase
 
         btnBack.onClick.AddListener(DialogueDone);
         input = GatherInputManager.Instance.input;
-        uiInputHandler = GetComponent<UIInputHandler>();
     }
 
     private void OnEnable()
@@ -80,7 +79,6 @@ public class UIDialogue : UIBase
             yield return null;
             txtDialogue.text = dialogueData.Dialogue;
             LogDone();
-            Debug.Log("LogDone");
         }
         else
         {
@@ -94,8 +92,6 @@ public class UIDialogue : UIBase
                 }
                 else
                 {
-                    Debug.Log("no next dialogue");
-                   
                     DialogueDone();
                 }
             }

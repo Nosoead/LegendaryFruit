@@ -31,14 +31,14 @@ public class ESCUI : UIBase
         base.Open();
         backButton.onClick.AddListener(() => UIManager.Instance.ToggleUI<ESCUI>(true));
         backButton.onClick.AddListener(() => SoundManagers.Instance.PlaySFX(SfxType.UIButton));
+        backButton.onClick.AddListener(() => GatherInputManager.Instance.ResetStates());
         settingButton.onClick.AddListener(() => UIManager.Instance.ToggleUI<SettingUI>(false));
         settingButton.onClick.AddListener(() => UIManager.Instance.ToggleSettingState(true));
         settingButton.onClick.AddListener(() => SoundManagers.Instance.PlaySFX(SfxType.UIButton));
         newGameButton.onClick.AddListener(() => DataManager.Instance.DeleteData<SaveDataContainer>());
+    
         newGameButton.onClick.AddListener(() => SceneManagerExtension.Instance.LoadScene(SceneType.OneCycleScene));
         newGameButton.onClick.AddListener(() => SoundManagers.Instance.PlaySFX(SfxType.UIButton));
-        newGameButton.onClick.AddListener(() => input.Changer.Enable());
-        newGameButton.onClick.AddListener(() => input.Player.Enable());
         exitButton.onClick.AddListener(() => Quit());
     }
 

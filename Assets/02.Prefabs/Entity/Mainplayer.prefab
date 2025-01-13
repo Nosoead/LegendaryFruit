@@ -34585,7 +34585,6 @@ GameObject:
   - component: {fileID: -6679679649435464765}
   - component: {fileID: 5551930265035816473}
   - component: {fileID: 2933662977593387522}
-  - component: {fileID: 4783446851892071839}
   m_Layer: 9
   m_Name: Mainplayer
   m_TagString: Player
@@ -34929,18 +34928,6 @@ MonoBehaviour:
   impactParticles: []
   damageMaterial: {fileID: 2100000, guid: 3cef95c3466d32a4c8f079352b229e4f, type: 2}
   playerStatManager: {fileID: 0}
---- !u!114 &4783446851892071839
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6397253155312664548}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0661610340a1e4b42bcb0c14756d0d78, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &7360132170862830779
 GameObject:
   m_ObjectHideFlags: 0

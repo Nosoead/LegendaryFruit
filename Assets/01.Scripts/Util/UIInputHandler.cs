@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -7,14 +8,10 @@ using UnityEngine.InputSystem;
 public class UIInputHandler : MonoBehaviour
 {
     private PlayerInput input;
-    private bool isPlay;
-    private bool isEsc;
-    private bool isTab;
-    private bool isInteract;
-    private bool isNpc;
+    //private bool isPlay;
+    //private bool isNpc;
     private int npcLayer;
     public UnityAction OnInteractEvent;
-
     private void Awake()
     {
         input = GatherInputManager.Instance.input;
@@ -40,11 +37,12 @@ public class UIInputHandler : MonoBehaviour
 
     private void OnInteract(InputAction.CallbackContext context)
     {
-        if (isNpc)
+        
+        if (GatherInputManager.Instance.isNpc)
         {
-            input.Changer.Disable();
-            input.Player.Disable();
             input.UI.Interact.Enable();
+            input.Player.Disable();
+            input.Changer.Disable();
         }
     }
 
@@ -59,7 +57,7 @@ public class UIInputHandler : MonoBehaviour
     {
         if (collision.gameObject.layer == npcLayer)
         {
-            isNpc = true;
+            GatherInputManager.Instance.isNpc = true;
             input.Changer.Interact.Enable();
         }
     }
@@ -68,7 +66,7 @@ public class UIInputHandler : MonoBehaviour
     {
         if (collision.gameObject.layer == npcLayer)
         {
-            isNpc = false;
+            GatherInputManager.Instance.isNpc = false;
             input.UI.Interact.Disable();
             input.Player.Enable();
             input.Changer.Enable();
@@ -78,9 +76,9 @@ public class UIInputHandler : MonoBehaviour
 
     private void OnInventory(InputAction.CallbackContext context)
     {
-        isPlay = !isPlay;
+        GatherInputManager.Instance.isPlay = !GatherInputManager.Instance.isPlay;
 
-        if (isPlay)
+        if (GatherInputManager.Instance.isPlay)
         {
             input.Changer.Setting.Disable();
             UIManager.Instance.ToggleUI<InventoryUI>(false);
@@ -97,8 +95,8 @@ public class UIInputHandler : MonoBehaviour
     private void OnSetting(InputAction.CallbackContext context)
     {
         if (UIManager.Instance.IsSettingOpen) return;
-        isPlay = !isPlay;
-        if (isPlay)
+        GatherInputManager.Instance.isPlay = !GatherInputManager.Instance.isPlay;
+        if (GatherInputManager.Instance.isPlay)
         {
             input.Changer.Inventory.Disable();
             UIManager.Instance.ToggleUI<ESCUI>(false);
@@ -111,4 +109,6 @@ public class UIInputHandler : MonoBehaviour
             input.Changer.Inventory.Enable();
         }
     }
+
+    
 }

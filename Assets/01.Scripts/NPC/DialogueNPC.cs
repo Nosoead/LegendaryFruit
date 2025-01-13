@@ -6,6 +6,8 @@ public class DialogueNPC : NPC, IInteractable
 {
     [SerializeField]
     private Canvas pressFCanvas;
+
+    private int npcLayer;
     private int playerLayer;
     private int invincibleLayer;
 
@@ -13,7 +15,6 @@ public class DialogueNPC : NPC, IInteractable
 
     public override void InitNPC()
     {
-        gameObject.layer = LayerMask.NameToLayer("NPC");
         playerLayer = LayerMask.NameToLayer("Player");
         invincibleLayer = LayerMask.NameToLayer("Invincible");
         if (pressFCanvas == null)
