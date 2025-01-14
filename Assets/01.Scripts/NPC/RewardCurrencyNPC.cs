@@ -40,7 +40,7 @@ public class RewardCurrencyNPC : RewardNPC, IInteractable
 
     public void Interact(bool isDeepPressed, bool isPressed)
     {
-        if (isDeepPressed || isPressed)
+        if ((isDeepPressed || isPressed) && StageManager.Instance.GetStageClear())
         {
             GetCurrencyFromReward();
             GameManager.Instance.SetGameClear(true);

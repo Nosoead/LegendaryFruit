@@ -19,6 +19,7 @@ public class StageManager : Singleton<StageManager>
     [SerializeField] private Light2D mainLight;
     private int monsterCount;
     public event Action<StageType> OnPlayFadeIn;
+    private bool stageClear;
 
     private IObjectPool<PooledMonster> monster;
     private IObjectPool<PooledBossMonster> bossMonster;
@@ -82,6 +83,7 @@ public class StageManager : Singleton<StageManager>
 
     public void ChangeStage(StageType type)
     {
+        stageClear = false;
         mainLight.intensity = 1;
         if (player == null)
         {
@@ -136,6 +138,7 @@ public class StageManager : Singleton<StageManager>
             {
                 if (currentStage.GetCombatData())
                 {
+                    stageClear = true;
                     DOTween.To(() => mainLight.intensity, x => mainLight.intensity = x, 0.5f, 0.5f).SetEase(Ease.Linear);
                 }
                 currentStage.SetReward();
@@ -146,5 +149,10 @@ public class StageManager : Singleton<StageManager>
     public StageType GetCurrentStage()
     {
         return currentStageType;
+    }
+
+    public bool GetStageClear()
+    {
+        return stageClear;
     }
 }

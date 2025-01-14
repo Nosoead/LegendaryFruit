@@ -98,7 +98,6 @@ public class MonsterStatManager : MonoBehaviour
     public void OnAttributeTypeReceived(AttributeType type)
     {
         currentTakeAttributeType = type;
-        Debug.Log($"{currentTakeAttributeType.ToString()}");
     }
 
     #region Pattren

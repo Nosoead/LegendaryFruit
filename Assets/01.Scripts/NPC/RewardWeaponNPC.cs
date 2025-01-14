@@ -40,7 +40,7 @@ public class RewardWeaponNPC : RewardNPC, IInteractable
 
     public void Interact(bool isDeepPressed, bool isPressed)
     {
-        if (isDeepPressed || isPressed)
+        if ((isDeepPressed || isPressed) && StageManager.Instance.GetStageClear())
         {
             GetWeaponFromReward();
             GameManager.Instance.SetGameClear(true);
