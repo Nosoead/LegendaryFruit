@@ -8,18 +8,9 @@
       <change beforePath="$PROJECT_DIR$/.idea/.idea.LegendaryFruit/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.LegendaryFruit/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/00.Scenes/OneCycleScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/00.Scenes/OneCycleScene.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/00.Scenes/TestScenes/Test_ParkScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/00.Scenes/TestScenes/Test_ParkScene.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/01.Scripts/UI/GameEndUI.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/01.Scripts/UI/GameEndUI.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/01.Scripts/UI/InventoryUI.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/01.Scripts/UI/InventoryUI.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/01.Scripts/UI/NpcUpgradeUI.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/01.Scripts/UI/NpcUpgradeUI.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/01.Scripts/UI/TestUI.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/01.Scripts/UI/TestUI.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/01.Scripts/UI/WeaponUpgradeUI.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/01.Scripts/UI/WeaponUpgradeUI.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/01.Scripts/Util/SceneCapture.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/01.Scripts/Util/SceneCapture.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/01.Scripts/Util/UIInputHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/01.Scripts/Util/UIInputHandler.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/03.ScriptableObject/PlayerSO/PlayerSO.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/03.ScriptableObject/PlayerSO/PlayerSO.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/04.Materials/Textures/MonsterImage/NumberingMaterial/Number_Texture_Monster.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/04.Materials/Textures/MonsterImage/NumberingMaterial/Number_Texture_Monster.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/04.Materials/Textures/PlayerImage/NumberingMaterial/Number_Texture_Player 1.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/04.Materials/Textures/PlayerImage/NumberingMaterial/Number_Texture_Player 1.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/05.Animations/MonsterAnimations/RegularAnimations/Orcs/Epic_Orc/EpicOrc_Controller.overrideController" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/05.Animations/MonsterAnimations/RegularAnimations/Orcs/Epic_Orc/EpicOrc_Controller.overrideController" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/UI/GameEndUI.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/UI/GameEndUI.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01.Scripts/Util/Enums.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/01.Scripts/Util/Enums.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Resources/UI/NPCUpgradeUI.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/UI/NPCUpgradeUI.prefab" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -172,7 +163,7 @@
       <workItem from="1736386379582" duration="24626000" />
       <workItem from="1736468289997" duration="889000" />
       <workItem from="1736728308631" duration="4689000" />
-      <workItem from="1736814048271" duration="11212000" />
+      <workItem from="1736814048271" duration="12582000" />
     </task>
     <servers />
   </component>

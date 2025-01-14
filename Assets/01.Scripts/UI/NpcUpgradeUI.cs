@@ -7,36 +7,54 @@ public class NpcUpgradeUI : UIBase
 {
     [SerializeField] private Button upgradeButton;
     [SerializeField] private Button cancelButton;
+    [SerializeField] private Button countButton;
+    [SerializeField] private Button gradeButton;
     [SerializeField] private GameObject skill1LightImage;
     [SerializeField] private TextMeshProUGUI gradeText;
     [SerializeField] private TextMeshProUGUI countText;
+    [SerializeField] private TextMeshProUGUI currencyText;
     private CurrencySystem currencySystem;
 
-    private int gradeUpgrade; //맥스
-    private int countUpgrade; //맥스
+
+    private SkillType selectSkillType;
+    private int requiredCurrency; // 지불비용
+    private int gradeUpgrade;
+    private int countUpgrade; //등급상태
     private int Gradeprobability; //등급확률
-    private int Countprobability; //개수확률
+    private int Countprobability;
     private float currentCurrency = 1000; // saveDataContainer.currencyData.globalCurrency;
-    private int countCurrency;
+    private int countCurrency; // 업그레이드비용
     private int gradeCurrency;
 
     public override void Open()
     {
         base.Open();
+    }
+
+    private void Start()
+    {
+        Initialize();
+        GetEquipAndCurrencyData();
+        SetDialogueTxt();
+    }
+
+    private void Initialize()
+    {
         cancelButton.onClick.RemoveAllListeners();
         cancelButton.onClick.AddListener(() => UIManager.Instance.ToggleUI<NpcUpgradeUI>(true));
         cancelButton.onClick.AddListener(() => SoundManagers.Instance.PlaySFX(SfxType.UIButton));
         cancelButton.onClick.AddListener(() => GatherInputManager.Instance.ResetStates());
         upgradeButton.onClick.RemoveAllListeners();
-        upgradeButton.onClick.AddListener(() => OnUpgradeBtn(1));
+        upgradeButton.onClick.AddListener(() => OnUpgradeBtn());
         upgradeButton.onClick.AddListener(() => SoundManagers.Instance.PlaySFX(SfxType.UIButton));
+
+        countButton.onClick.AddListener(() => SelectSkill(SkillType.Count));
+        gradeButton.onClick.AddListener(() => SelectSkill(SkillType.Grade));
     }
 
-    private void Start()
+    private void SelectSkill(SkillType skillType)
     {
-        GetEquipAndCurrencyData();
-        SetCurrncy(gradeUpgrade,1);
-        SetCurrncy(countUpgrade,2);
+        selectSkillType = skillType;
         SetDialogueTxt();
     }
 
@@ -47,53 +65,32 @@ public class NpcUpgradeUI : UIBase
             currencySystem = currency;
         }
     }
-    private void OnUpgradeBtn(int upgradeType)
+
+    private void OnUpgradeBtn()
     {
-        Debug.Log("강화?");
-        //if (currentCurrency >= GetRequiredCurrency(upgradeType))
-        
-            if (upgradeType == 1)
-            {
-                Debug.Log("강화1");
-                GradeUpgrade();
-            }
-
-            else if (upgradeType == 2)
-            {
-                CountUpgrade();
-                Debug.Log("강화2");
-            }
-
-            SetDialogueTxt();
-        //TODO 텍스트에 현재재화/필요재화 
-        //TODO 충족 초록    부족 빨강?
-        //TODO 버튼에 인덱스번호 부여 가능?
-    }
-
-    private int GetRequiredCurrency(int upgradeType)
-    {
-        if (upgradeType == 1)
+        if (selectSkillType == SkillType.Grade && currentCurrency >= gradeCurrency)
         {
-            return gradeCurrency;
-        }
-        else if (upgradeType == 2)
-        {
-            return countCurrency;
+            GradeUpgrade();
         }
 
-        return 0;
+        if (selectSkillType == SkillType.Count && currentCurrency >= countCurrency)
+        {
+            CountUpgrade();
+        }
+        SetDialogueTxt();
     }
-
-    
 
     private void GradeUpgrade()
     {
-        if (gradeUpgrade < 4)
+        if (gradeUpgrade < 4) //풀강 4
         {
-            gradeUpgrade++;
-            Gradeprobability += 20;
-            currentCurrency -= gradeCurrency;
-            SetCurrncy(gradeUpgrade,1);
+            SetCurrncy(gradeUpgrade, SkillType.Grade);
+            if (currentCurrency >= gradeCurrency)
+            {
+                currentCurrency -= gradeCurrency;
+                gradeUpgrade++;
+                Gradeprobability += 20;
+            }
         }
     }
 
@@ -101,20 +98,23 @@ public class NpcUpgradeUI : UIBase
     {
         if (countUpgrade < 4)
         {
-            countUpgrade++;
-            Countprobability += 20;
-            currentCurrency -= countCurrency;
-            SetCurrncy(countUpgrade,2);
+            SetCurrncy(countUpgrade, SkillType.Count);
+            if (currentCurrency >= countCurrency)
+            {
+                currentCurrency -= countCurrency;
+                countUpgrade++;
+                Countprobability += 20;
+            }
         }
     }
-    private void SetCurrncy(int upgradeLevel, int upgradeType)
+
+    private void SetCurrncy(int upgradeLevel, SkillType skillType)
     {
         if (currencySystem != null)
         {
-            currentCurrency = currencySystem.GetCurrencyData(isGlobalCurrency: true);
+            //currentCurrency = currencySystem.GetCurrencyData(isGlobalCurrency: true);
         }
 
-        int requiredCurrency = 0;
         switch (upgradeLevel)
         {
             case 0:
@@ -131,17 +131,24 @@ public class NpcUpgradeUI : UIBase
                 break;
         }
 
-        if (upgradeType == 1)
+        if (skillType == SkillType.Grade)
         {
             gradeCurrency = requiredCurrency;
         }
-        if (upgradeType == 2)
+
+        if (skillType == SkillType.Count)
         {
             countCurrency = requiredCurrency;
         }
     }
+
     private void SetDialogueTxt()
     {
+        if (selectSkillType == SkillType.Count) SetCurrncy(countUpgrade, SkillType.Count);
+        if (selectSkillType == SkillType.Grade) SetCurrncy(gradeUpgrade, SkillType.Grade);
+
+        string colorCode = currentCurrency < requiredCurrency ? "<color=#FF0000>" : "<color=#00FF00>";
+        currencyText.text = $"{colorCode}{currentCurrency}/{requiredCurrency}</color>";
         countText.text = ($"많은 열매가 맺힐 수 있는 확률을 올립니다.\n" +
                           $"개수 확률 : {Gradeprobability}% \t{gradeUpgrade}/4");
         gradeText.text = ($"좋은 열매가 나올수 있는 확률을 올립니다. \n" +

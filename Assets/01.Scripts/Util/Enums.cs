@@ -96,3 +96,9 @@ public enum ParticleType
     SlowDownDamage,
     KnockBackDamage
 }
+
+public enum SkillType
+{
+    Count = 1,
+    Grade
+}

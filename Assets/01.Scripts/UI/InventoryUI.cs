@@ -40,7 +40,7 @@ public class InventoryUI : UIBase
     private void GetDataToText()
     {
         SetWeaponDataToUI();
-        UpdateAttackPowerText();
+        UpdateColorToText();
 
         maxHealthText.text = ($"최대체력 : {saveDataContainer.playerStatData.maxHealth.ToString()}");
         
@@ -97,7 +97,7 @@ public class InventoryUI : UIBase
         }
     }
 
-    private void UpdateAttackPowerText()
+    private void UpdateColorToText()
     {
         if (currentEquippedWeapon.type == AttributeType.Burn)
         {
