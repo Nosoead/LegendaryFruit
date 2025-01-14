@@ -13,9 +13,11 @@ public class PromptUI : UIBase
     [SerializeField] private TextMeshProUGUI promptName;
     [SerializeField] private TextMeshProUGUI promptDescription;
     [SerializeField] private TextMeshProUGUI promptAttackPower;
+    [SerializeField] private TextMeshProUGUI equipOrEatText;
+    [SerializeField] private GameObject holdButton;
     
     [SerializeField] private Image outlineImage;
-    [SerializeField] private PlayerInteraction interaction;
+    private PlayerInteraction interaction;
 
     private void Awake()
     {
@@ -42,7 +44,7 @@ public class PromptUI : UIBase
         interaction.ShowFillamountInPromptEvent -= OnShowFillamount;
     }
 
-    private void OnShowPromptEvent(WeaponSO weaponData, Vector3 position, bool isOpen)
+    private void OnShowPromptEvent(ItemSO itemData, Vector3 position, bool isOpen)
     {
         if (!isOpen)
         {
@@ -52,7 +54,18 @@ public class PromptUI : UIBase
         {
             promptWindow.gameObject.SetActive(true);
             SetPosition(position);
-            SetItemData(weaponData);
+            if (itemData is WeaponSO weaponData)
+            {
+                SetItemData(weaponData);
+            }
+            else if (itemData is PotionSO potionData)
+            {
+                SetItemData(potionData);
+            }
+            else if (itemData is CurrencySO currencyData)
+            {
+                SetItemData(currencyData);
+            }
         }
     }
 
@@ -68,11 +81,33 @@ public class PromptUI : UIBase
 
     private void SetItemData(WeaponSO weaponData)
     {
+        equipOrEatText.text = "장착";
+        holdButton.gameObject.SetActive(true);
         promptImage.sprite = weaponData.weaponSprite;
         gradeText.text = weaponData.gradeType.ToString();
         promptName.text = weaponData.weaponName;
         promptDescription.text = weaponData.description;
         promptAttackPower.text = $"공격력 : {weaponData.attackPower.ToString()}" +
                                   $" 섭취 값 : {weaponData.eatValue.ToString()}";
+    }
+    private void SetItemData(PotionSO potionData)
+    {
+        equipOrEatText.text = "섭취";
+        holdButton.gameObject.SetActive(false);
+        promptImage.sprite = potionData.potionSprite;
+        gradeText.text = potionData.gradeType.ToString();
+        promptName.text = potionData.potionName;
+        promptDescription.text = potionData.description;
+        promptAttackPower.text = "";
+    }
+    private void SetItemData(CurrencySO currencyData)
+    {
+        equipOrEatText.text = "섭취";
+        holdButton.gameObject.SetActive(false);
+        promptImage.sprite = currencyData.currencySprite;
+        gradeText.text = currencyData.gradeType.ToString();
+        promptName.text = currencyData.currencyName;
+        promptDescription.text = currencyData.description;
+        promptAttackPower.text = "";
     }
 }

@@ -19,14 +19,18 @@ public class RewardWeaponNPC : RewardNPC, IInteractable
         {
             NPCSpotlight = GetComponentInChildren<Light2D>();
         }
-        SetSpotlight(isTurnOn : false);
+        SetSpotlight(isTurnOn: false);
         fruitWeapon = PoolManager.Instance.GetObjectFromPool<PooledFruitWeapon>(PoolType.PooledFruitWeapon);
     }
 
     public override void SetReward()
     {
-        SetSpotlight(isTurnOn : true);
-        weaponData = ItemManager.Instance.GetItemData(selectNum: 1)[0];
+        SetSpotlight(isTurnOn: true);
+        ItemSO itemData = ItemManager.Instance.GetItemData(selectNum: 1, ItemType.Weapon)[0];
+        if (itemData is WeaponSO setItemData)
+        {
+            weaponData = setItemData;
+        }
         randomNum = Random.Range(0, spawnPositions.Count);
         pooledReward = reward.Get();
         pooledReward.gameObject.transform.position = spawnPositions[randomNum].position;
@@ -50,7 +54,7 @@ public class RewardWeaponNPC : RewardNPC, IInteractable
             gameObject.layer = LayerMask.NameToLayer("Default");
             pooledWeapon = fruitWeapon.Get();
             pooledWeapon.gameObject.transform.position = spawnPositions[randomNum].position;
-            pooledReward.GetWeapon(pooledWeapon.gameObject);
+            pooledReward.GetItem(pooledWeapon.gameObject);
             pooledWeapon.SetWeaponSO(weaponData);
             pooledWeapon.EnsureComponents();
         }

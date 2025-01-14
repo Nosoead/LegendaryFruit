@@ -4,23 +4,17 @@ using UnityEngine.Pool;
 public class PooledFruitWeapon : Item, IInteractable, ISetPooledObject<PooledFruitWeapon>
 {
     public WeaponSO weaponData;
-    public SpriteRenderer weaponSprite;
 
     protected IObjectPool<PooledFruitWeapon> objectPool;
     public IObjectPool<PooledFruitWeapon> ObjectPool
     { get => objectPool; set => objectPool = value; }
 
-    private void Awake()
+    public override void EnsureComponents()
     {
-        EnsureComponents();
-    }
-
-    public void EnsureComponents()
-    {
-        weaponSprite = GetComponent<SpriteRenderer>();
+        base.EnsureComponents();
         if (weaponData != null)
         {
-            weaponSprite.sprite = weaponData.weaponSprite;
+            itemSprite.sprite = weaponData.weaponSprite;
         }
     }
 

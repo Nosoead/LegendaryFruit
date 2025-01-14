@@ -138,6 +138,7 @@ MonoBehaviour:
   tabGroupUI: {fileID: 3009792029669201534}
   backgroundImage: {fileID: 0}
   objectToActiveate: {fileID: 0}
+  hoverText: {fileID: 0}
   onTabSelected:
     m_PersistentCalls:
       m_Calls: []
@@ -542,6 +543,7 @@ MonoBehaviour:
   tabGroupUI: {fileID: 3009792029669201534}
   backgroundImage: {fileID: 0}
   objectToActiveate: {fileID: 0}
+  hoverText: {fileID: 0}
   onTabSelected:
     m_PersistentCalls:
       m_Calls: []
@@ -761,6 +763,7 @@ MonoBehaviour:
   tabGroupUI: {fileID: 3009792029669201534}
   backgroundImage: {fileID: 0}
   objectToActiveate: {fileID: 0}
+  hoverText: {fileID: 0}
   onTabSelected:
     m_PersistentCalls:
       m_Calls: []
@@ -980,6 +983,7 @@ MonoBehaviour:
   tabGroupUI: {fileID: 3009792029669201534}
   backgroundImage: {fileID: 0}
   objectToActiveate: {fileID: 0}
+  hoverText: {fileID: 0}
   onTabSelected:
     m_PersistentCalls:
       m_Calls: []
@@ -1123,6 +1127,7 @@ MonoBehaviour:
   tabGroupUI: {fileID: 3009792029669201534}
   backgroundImage: {fileID: 0}
   objectToActiveate: {fileID: 0}
+  hoverText: {fileID: 0}
   onTabSelected:
     m_PersistentCalls:
       m_Calls: []
@@ -1400,6 +1405,7 @@ MonoBehaviour:
   tabGroupUI: {fileID: 3009792029669201534}
   backgroundImage: {fileID: 0}
   objectToActiveate: {fileID: 0}
+  hoverText: {fileID: 0}
   onTabSelected:
     m_PersistentCalls:
       m_Calls: []
@@ -1543,6 +1549,7 @@ MonoBehaviour:
   tabGroupUI: {fileID: 3009792029669201534}
   backgroundImage: {fileID: 0}
   objectToActiveate: {fileID: 0}
+  hoverText: {fileID: 0}
   onTabSelected:
     m_PersistentCalls:
       m_Calls: []
@@ -1895,6 +1902,7 @@ MonoBehaviour:
   tabGroupUI: {fileID: 3009792029669201534}
   backgroundImage: {fileID: 0}
   objectToActiveate: {fileID: 0}
+  hoverText: {fileID: 0}
   onTabSelected:
     m_PersistentCalls:
       m_Calls: []
@@ -2345,6 +2353,7 @@ MonoBehaviour:
   tabGroupUI: {fileID: 3009792029669201534}
   backgroundImage: {fileID: 0}
   objectToActiveate: {fileID: 0}
+  hoverText: {fileID: 0}
   onTabSelected:
     m_PersistentCalls:
       m_Calls: []
@@ -2489,6 +2498,7 @@ MonoBehaviour:
   tabGroupUI: {fileID: 3009792029669201534}
   backgroundImage: {fileID: 0}
   objectToActiveate: {fileID: 0}
+  hoverText: {fileID: 0}
   onTabSelected:
     m_PersistentCalls:
       m_Calls: []
@@ -4054,6 +4064,7 @@ MonoBehaviour:
   tabGroupUI: {fileID: 3009792029669201534}
   backgroundImage: {fileID: 0}
   objectToActiveate: {fileID: 0}
+  hoverText: {fileID: 0}
   onTabSelected:
     m_PersistentCalls:
       m_Calls: []
@@ -4758,6 +4769,7 @@ MonoBehaviour:
   tabGroupUI: {fileID: 3009792029669201534}
   backgroundImage: {fileID: 0}
   objectToActiveate: {fileID: 0}
+  hoverText: {fileID: 0}
   onTabSelected:
     m_PersistentCalls:
       m_Calls: []
@@ -5126,7 +5138,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &5906663452357068464
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5222,13 +5234,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 541988657370bab48821cc8591b32278, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  uiDialoguePrefab: {fileID: 834888834345065245, guid: 8db68d2bda8c2684f926529529705669, type: 3}
   upgradeButton: {fileID: 8655934405977682092}
   cancelButton: {fileID: 5882449473301948040}
   skill1LightImage: {fileID: 7578832528692916995}
   skillList:
-  - skillName: 
-    currentLevel: 0
+  - currentLevel: 0
     maxLevel: 0
     isUnlocked: 0
   skillUIList:

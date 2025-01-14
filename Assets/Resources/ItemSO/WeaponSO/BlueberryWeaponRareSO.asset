@@ -17,7 +17,7 @@ MonoBehaviour:
   description: "\uB450\uBC30\uB85C \uB9DB\uC788\uB2E4"
   attackPower: 0
   type: 1
-  gradeType: 0
+  gradeType: 1
   eatValue: 13
   attributeAttackValue: 0
   attributeAttackRateTime: 0

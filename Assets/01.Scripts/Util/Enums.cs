@@ -12,9 +12,9 @@ public enum StatType
 {
     MaxHealth,
     MoveSpeed,
-    Defense,
-    AttackSpeed,
     AttackPower,
+    AttackSpeed,
+    Defense,
     Heal
 }
 
@@ -95,4 +95,11 @@ public enum ParticleType
     NormalDamage,
     SlowDownDamage,
     KnockBackDamage
+}
+
+public enum ItemType
+{
+    Weapon,
+    Potion,
+    Currency
 }

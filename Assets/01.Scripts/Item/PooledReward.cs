@@ -53,7 +53,7 @@ public class PooledReward : MonoBehaviour, ISetPooledObject<PooledReward>
     // TODO: DOTween 효과 추가
     public Ease ease;
 
-    public void GetWeapon(GameObject go)
+    public void GetItem(GameObject go)
     {
         ObjectPool.Release(this);
         RaycastHit2D blockHit = Physics2D.Raycast(go.transform.position, Vector2.down, 50, LayerMask.GetMask("Block"));

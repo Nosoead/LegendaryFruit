@@ -9,6 +9,7 @@ public class SceneManagerExtension : Singleton<SceneManagerExtension>
     {
         base.Awake();
         RegisterScenes();
+        //PoolManager.Instance.Init();
     }
 
     private void RegisterScenes()

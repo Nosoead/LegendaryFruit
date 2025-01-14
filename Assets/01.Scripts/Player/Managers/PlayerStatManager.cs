@@ -98,7 +98,7 @@ public class PlayerStatManager : MonoBehaviour
         GameManager.Instance.GameEnd();
     }
 
-    public void OnAttributeTypeReceived(AttributeType type)
+    private void OnAttributeTypeReceived(AttributeType type)
     {
         currentTakeAttributeType = type;
     }
@@ -127,6 +127,8 @@ public class PlayerStatManager : MonoBehaviour
 
     public void Heal(float heal)
     {
+        ParticleManager.Instance.SetParticleTypeAndPlay(transform.position, ParticleType.Heal);
+        //TODO 회복량 표시
         float result = statHandler.Add(stat.GetStatValue("CurrentHealth"), heal, stat.GetStatValue("MaxHealth"));
         stat.UpdateCurrentHealth(result);
     }

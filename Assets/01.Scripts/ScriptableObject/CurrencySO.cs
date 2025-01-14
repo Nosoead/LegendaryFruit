@@ -9,10 +9,10 @@ public class CurrencySO : ItemSO
     //ex)000002 -> 일반무기등급 burn타입 002번째 아이템
     //!! Currency 타입 B:15
     public int ID;
-    public string weaponName;
+    public string currencyName;
     public string description;
     public GradeType gradeType;
     public float potionValue;
-    public Sprite weaponSprite;
+    public Sprite currencySprite;
     public Sprite rewardSprite;
 }

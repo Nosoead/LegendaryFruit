@@ -9,15 +9,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1f5f484132f332f4394ffcddfad5925e, type: 3}
-  m_Name: PlayerSO
+  m_Script: {fileID: 11500000, guid: 96848dd3850755b43823d2d084849ef3, type: 3}
+  m_Name: CurrencyUnique
   m_EditorClassIdentifier: 
-  playerStatData:
-    maxHealth: 10000
-    currentHealth: 10000
-    currentAttackPower: 200
-    currentDefense: 5
-    attackSpeed: 10
-    moveSpeed: 7
-    dashDistance: 14
-    jumpHeight: 5
+  ID: 0
+  currencyName: 
+  description: 
+  gradeType: 0
+  potionValue: 0
+  currencySprite: {fileID: 0}
+  rewardSprite: {fileID: 0}

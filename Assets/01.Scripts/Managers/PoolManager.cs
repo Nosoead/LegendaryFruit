@@ -19,6 +19,11 @@ public class PoolManager : Singleton<PoolManager>
         RegisterPrefab();
     }
 
+    public void Init()
+    {
+        RegisterPrefab();
+    }
+
     private void RegisterPrefab()
     {
         for (int i = 0; i < (int)PoolType.Count; i++)

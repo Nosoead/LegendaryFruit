@@ -599,6 +599,8 @@ MonoBehaviour:
   promptName: {fileID: 2646349241682979861}
   promptDescription: {fileID: 5718968043812291740}
   promptAttackPower: {fileID: 7483536006756353771}
+  equipOrEatText: {fileID: 100524459082841163}
+  holdButton: {fileID: 5525249943647845878}
   outlineImage: {fileID: 5567983861480235873}
   interaction: {fileID: 0}
 --- !u!1 &4097926254371803366

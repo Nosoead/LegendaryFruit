@@ -1,4 +1,3 @@
-using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.Events;
@@ -7,14 +6,17 @@ public class PlayerInteraction : MonoBehaviour
 {
     public UnityAction<WeaponSO> FruitWeapOnEquipEvent;
     public UnityAction<WeaponSO> FruitWeaponEatAndStatUpEvent;
-    public UnityAction<WeaponSO, Vector3, bool> ShowPromptEvent;
+    public UnityAction<ItemSO, Vector3, bool> ShowPromptEvent;
     public UnityAction<float> ShowFillamountInPromptEvent;
     [SerializeField] private PlayerController controller;
     private IInteractable currentInteractable;
     private WeaponSO weaponData;
+    private PotionSO potionData;
+    private CurrencySO currencyData;
 
     //Layer
-    private int TalkNpcLayer;
+    private int consumableItemLayer;
+    private int talkNpcLayer;
     private int NPCLayer;
     private int rewardLayer;
     private int itemLayer;
@@ -31,7 +33,8 @@ public class PlayerInteraction : MonoBehaviour
     private void Awake()
     {
         EnsureComponents();
-        TalkNpcLayer = LayerMask.NameToLayer("TalkableNPC");
+        consumableItemLayer = LayerMask.NameToLayer("ConsumableItem");
+        talkNpcLayer = LayerMask.NameToLayer("TalkableNPC");
         NPCLayer = LayerMask.NameToLayer("NPC");
         rewardLayer = LayerMask.NameToLayer("Reward");
         itemLayer = LayerMask.NameToLayer("Item");
@@ -51,11 +54,23 @@ public class PlayerInteraction : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.layer == NPCLayer || collision.gameObject.layer == TalkNpcLayer ||
-            collision.gameObject.layer == rewardLayer)
+        if (collision.gameObject.layer == NPCLayer || collision.gameObject.layer == talkNpcLayer ||
+            collision.gameObject.layer == rewardLayer || collision.gameObject.layer == consumableItemLayer)
         {
             canTapInteractWithObject = true;
             currentInteractable = collision.gameObject.GetComponent<IInteractable>();
+            if (collision.gameObject.layer == consumableItemLayer)
+            {
+                if (collision.gameObject.TryGetComponent(out PooledPotion potion))
+                {
+                    potionData = potion.GetPotionSO();
+                }
+                else if (collision.gameObject.TryGetComponent(out PooledCurrency currency))
+                {
+                    currencyData = currency.GetCurrencySO();
+                }
+                ShowTapAndHoldPrompt(isOpen: true);
+            }
         }
         else if (collision.gameObject.layer == itemLayer)
         {
@@ -182,14 +197,24 @@ public class PlayerInteraction : MonoBehaviour
         CanHoldInteractWithObject = false;
         currentInteractable = null;
         weaponData = null;
+        potionData = null;
+        currencyData = null;
     }
 
     private void ShowTapAndHoldPrompt(bool isOpen)
     {
+        Vector3 promptPosition = SetPromptPosition();
         if (weaponData != null)
         {
-            Vector3 promptPosition = SetPromptPosition();
             ShowPromptEvent?.Invoke(weaponData, promptPosition, isOpen);
+        }
+        else if (potionData != null)
+        {
+            ShowPromptEvent?.Invoke(potionData, promptPosition, isOpen);
+        }
+        else if (currencyData != null)
+        {
+            ShowPromptEvent?.Invoke(currencyData, promptPosition, isOpen);
         }
         else
         {

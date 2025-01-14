@@ -5,7 +5,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.Pool;
-using UnityEngine.Rendering;
 using UnityEngine.Rendering.Universal;
 
 public class StageManager : Singleton<StageManager>
