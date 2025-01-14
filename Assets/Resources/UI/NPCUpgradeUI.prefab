@@ -1946,7 +1946,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: -35, y: 20}
+  m_AnchoredPosition: {x: -35, y: 10}
   m_SizeDelta: {x: 800, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3302204211886856620
@@ -4414,7 +4414,7 @@ MonoBehaviour:
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 1
-  m_HorizontalAlignment: 2
+  m_HorizontalAlignment: 1
   m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
@@ -5363,8 +5363,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   upgradeButton: {fileID: 8655934405977682092}
   cancelButton: {fileID: 5882449473301948040}
-  countButton: {fileID: 4473646771731623483}
-  gradeButton: {fileID: 440898289166939729}
+  countButton:
+  - {fileID: 4473646771731623483}
+  - {fileID: 5343641979643545764}
+  - {fileID: 754814703163069840}
+  - {fileID: 8463602649705675628}
+  gradeButton:
+  - {fileID: 440898289166939729}
+  - {fileID: 6970264102644113920}
+  - {fileID: 7616914922152984337}
+  - {fileID: 1084100456599885997}
   skill1LightImage: {fileID: 7578832528692916995}
   gradeText: {fileID: 5126099736470484740}
   countText: {fileID: 1487234219417505211}
@@ -5403,7 +5411,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: -35, y: 20}
+  m_AnchoredPosition: {x: -35, y: 10}
   m_SizeDelta: {x: 800, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7132331909540271679
