@@ -12,7 +12,7 @@ public class PlayerParticleController : ParticleController
 
     private void EnsureComponents()
     {
-        if(playerStatManager == null)
+        if (playerStatManager == null)
         {
             playerStatManager = GetComponent<PlayerStatManager>();
         }

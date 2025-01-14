@@ -21,8 +21,8 @@ public class WeaponSO : ItemSO
     public Sprite weaponSprite;
     public Sprite rewardSprite;
     public AnimatorOverrideController animatorController;
-    public RangedAttackData rangedAttackData;
-    public EffectData effectData;
+    public List<RangedAttackData> rangedAttackData;
+    public List<EffectData> effectData;
     public Material effectMaterial;
 }
 

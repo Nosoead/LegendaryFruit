@@ -25,15 +25,7 @@ MonoBehaviour:
   attributeRateTime: 0
   attributeStack: 0
   inGameMoney: 150
-  monsterRagnedAttackData:
-    projectileType: 0
-    attributeType: 5
-    projectTileSprite: {fileID: 0}
-    attackDistance: 0
-    maxDistance: 0
-    rangedAttackPower: 0
-    rangedAttackSpeed: 0
-    rangedAttackRate: 0
+  monsterRagnedAttackData: []
   sprite: {fileID: 0}
   animatorOverrideController: {fileID: 22100000, guid: f63b23af8a2040b40bafae0773de05ac, type: 2}
   defalutAttackClip: {fileID: 7400000, guid: 54aba33084ac7514b8cd9e00c63fe45e, type: 2}

@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using UnityEditor;
+using UnityEngine;
 using UnityEngine.Events;
 
 public class WeaponAnimationController : AnimationController
@@ -12,13 +13,16 @@ public class WeaponAnimationController : AnimationController
     private static readonly int Attack = Animator.StringToHash("Attack");
 
     [SerializeField] private ParticleSystem particle;
+    private ParticleHelper particleHelper;
     [SerializeField] private ParticleSystemRenderer particleSystemRenderer;
     private Vector3 currentEffectFlip;
     private bool particleFlip;
+    private ParticleSystem.MinMaxCurve currentLinearVelocityX;
 
     protected override void Awake()
     {
         base.Awake();
+        particleHelper = new ParticleHelper();
         currentEffectFlip = particleSystemRenderer.flip;
     }
 
@@ -95,6 +99,8 @@ public class WeaponAnimationController : AnimationController
         if (weaponData.effectMaterial == null)
         {
             isRagnedWeapon.enabled = false;
+            var particleVelocity = particle.velocityOverLifetime;
+            particleVelocity.enabled = false;
             return;
         }
         isRagnedWeapon.enabled = true;
@@ -102,19 +108,19 @@ public class WeaponAnimationController : AnimationController
     }
     private void ChangedEffectValue(WeaponSO weaponData)
     {
-        var main = particle.main;
-        main.startSize = weaponData.effectData.effectSize;
-        var colorOverLifeTime = particle.colorOverLifetime;
-        colorOverLifeTime.color = weaponData.effectData.gradient;
-        if(weaponData.effectMaterial == null)
+        if (weaponData.effectData == null) return;
+        for (int i = 0; i < weaponData.effectData.Count; i++)
         {
-            var particleVelocity = particle.velocityOverLifetime;
-            particleVelocity.enabled = false;
-            return;
+            ParticleSetting(particle, weaponData.effectData[i]);
         }
-        var velocity = particle.velocityOverLifetime;
-        velocity.x = weaponData.effectData.linearVelocityX;
-        velocity.y = weaponData.effectData.linearVelocityY;
+    }
+
+    private void ParticleSetting(ParticleSystem particleSystem, EffectData data)
+    {
+        particleHelper.SetMainModule(particleSystem, data.effectSize, 0, 0.3f);
+        particleHelper.SetColorOverLifeTime(particleSystem, data.gradient);
+        particleHelper.SetVelocityOverLifetime(particleSystem, data.linearVelocityX, data.linearVelocityY);
+        currentLinearVelocityX = data.linearVelocityX;
     }
 
     private void CheckAttack()
@@ -147,7 +153,7 @@ public class WeaponAnimationController : AnimationController
 
     private void FlipVelocity()
     {
-        var filpeedX = particleFlip ? -currentWeapon.effectData.linearVelocityX.constant : currentWeapon.effectData.linearVelocityX;
+        var filpeedX = particleFlip ? -currentLinearVelocityX.constant : currentLinearVelocityX;
         var velocity = particle.velocityOverLifetime;
         velocity.x = filpeedX;
     }

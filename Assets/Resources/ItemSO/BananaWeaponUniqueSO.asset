@@ -19,78 +19,70 @@ MonoBehaviour:
   type: 2
   gradeType: 2
   eatValue: 5
-  attributeAttackValue: 0
-  attributeAttackRateTime: 0
+  attributeAttackValue: 10
+  attributeAttackRateTime: 0.2
   arrtibuteStatck: 0
   weaponSprite: {fileID: 21300000, guid: 771eb3e10cacb694a9d2eb221919ba5c, type: 3}
   rewardSprite: {fileID: 21300000, guid: 80620a20e9565a3478bfd115c1addbd1, type: 3}
   animatorController: {fileID: 22100000, guid: 4525de0bb4ec36b4ba149f8fb8e7daea, type: 2}
-  rangedAttackData:
-    projectileType: 0
-    projectTileSprite: {fileID: 0}
-    attackDistance: 0
-    maxDistance: 0
-    rangedAttackPower: 0
-    rangedAttackSpeed: 0
-    rangedAttackRate: 0
-    attributeDatas: []
+  rangedAttackData: []
   effectData:
-    linearVelocityX:
+  - linearVelocityX:
       m_Mode: 0
       m_CurveMultiplier: 0
       m_CurveMin:
         serializedVersion: 2
         m_Curve: []
-        m_PreInfinity: 2
-        m_PostInfinity: 2
-        m_RotationOrder: 4
+        m_PreInfinity: 0
+        m_PostInfinity: 0
+        m_RotationOrder: 0
       m_CurveMax:
         serializedVersion: 2
         m_Curve: []
-        m_PreInfinity: 2
-        m_PostInfinity: 2
-        m_RotationOrder: 4
+        m_PreInfinity: 0
+        m_PostInfinity: 0
+        m_RotationOrder: 0
       m_ConstantMin: 0
-      m_ConstantMax: 0
+      m_ConstantMax: 1
     linearVelocityY:
       m_Mode: 0
       m_CurveMultiplier: 0
       m_CurveMin:
         serializedVersion: 2
         m_Curve: []
-        m_PreInfinity: 2
-        m_PostInfinity: 2
-        m_RotationOrder: 4
+        m_PreInfinity: 0
+        m_PostInfinity: 0
+        m_RotationOrder: 0
       m_CurveMax:
         serializedVersion: 2
         m_Curve: []
-        m_PreInfinity: 2
-        m_PostInfinity: 2
-        m_RotationOrder: 4
+        m_PreInfinity: 0
+        m_PostInfinity: 0
+        m_RotationOrder: 0
       m_ConstantMin: 0
-      m_ConstantMax: -2
+      m_ConstantMax: -1
     effectSize: 5
     gradient:
       serializedVersion: 2
-      key0: {r: 1, g: 1, b: 1, a: 1}
-      key1: {r: 0.990566, g: 0.8770854, b: 0.71488965, a: 1}
-      key2: {r: 0.99434024, g: 0.79359734, b: 0.42888743, a: 0.5019608}
-      key3: {r: 1, g: 0.66839916, b: 0, a: 0}
-      key4: {r: 0.9254902, g: 0.35133186, b: 0, a: 0}
-      key5: {r: 0.930921, g: 0.2131347, b: 0, a: 0}
-      key6: {r: 1, g: 0.5318797, b: 0, a: 0}
+      key0: {r: 1, g: 1, b: 1, a: 0}
+      key1: {r: 0.990566, g: 0.7721704, b: 0, a: 1}
+      key2: {r: 1, g: 0.9027058, b: 0, a: 1}
+      key3: {r: 0.802621, g: 1, b: 0, a: 0}
+      key4: {r: 0, g: 0, b: 0, a: 0}
+      key5: {r: 0, g: 0, b: 0, a: 0}
+      key6: {r: 0, g: 0, b: 0, a: 0}
       key7: {r: 0, g: 0, b: 0, a: 0}
       ctime0: 0
-      ctime1: 17155
-      ctime2: 20817
-      ctime3: 24479
-      ctime4: 28334
-      ctime5: 32768
-      ctime6: 65535
+      ctime1: 30069
+      ctime2: 48959
+      ctime3: 65535
+      ctime4: 0
+      ctime5: 0
+      ctime6: 0
       ctime7: 0
       atime0: 0
-      atime1: 30455
-      atime2: 65535
+      atime1: 29684
+      atime2: 65342
       atime3: 0
       atime4: 0
       atime5: 0
@@ -98,6 +90,6 @@ MonoBehaviour:
       atime7: 0
       m_Mode: 0
       m_ColorSpace: -1
-      m_NumColorKeys: 7
+      m_NumColorKeys: 4
       m_NumAlphaKeys: 3
   effectMaterial: {fileID: 2100000, guid: b5f2a28f2387e2045aed8771fb66b1a5, type: 2}
