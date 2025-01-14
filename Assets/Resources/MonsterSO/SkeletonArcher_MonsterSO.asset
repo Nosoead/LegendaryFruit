@@ -32,9 +32,10 @@ MonoBehaviour:
     maxDistance: 10
     rangedAttackPower: 20
     rangedAttackSpeed: 10
-    rangedAttackRate: 0
+    rangedAttackRate: 1
     attributeDatas:
     - attributeType: 0
+      trailMaterial: {fileID: 2100000, guid: e1ff6ae00b0de7647bf652d1795d4b60, type: 2}
       attributeValue: 0
       attributeLateTime: 0
       attributeStack: 0

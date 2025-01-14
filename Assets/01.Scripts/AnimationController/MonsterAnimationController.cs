@@ -13,9 +13,13 @@ public class MonsterAnimationController : AnimationController
     private bool isAttackComplete = false;
 
     private AnimationClip currentPatternAnimaion;
+    private AnimationClip[] regularPatternAnimaions; 
     private RegularMonsterSO regularMonster;
+    private RegularPatternData currentRegularPattern;
     private BossMonsterSO bossMonster;
     private AnimatorOverrideController overrideController;
+
+    private float patternChance;
 
     protected override void Awake()
     {
@@ -35,6 +39,7 @@ public class MonsterAnimationController : AnimationController
             regularMonster = regularMonsterData;
             overrideController = regularMonsterData.animatorOverrideController;
             Animator.runtimeAnimatorController = overrideController;
+            SetRegularPattern(regularMonsterData);
         }
         else if(monsterData is BossMonsterSO bossMonsterData)
         {
@@ -47,6 +52,16 @@ public class MonsterAnimationController : AnimationController
     public void SetPatternAnimation(Dictionary<int,PatternData> patternData)
     {
         pattrens = patternData;
+    }
+
+    public void SetRegularPattern(RegularMonsterSO data)
+    {
+        for(int i = 0; i < data.patterns.Count; i++)
+        {
+            currentRegularPattern = data.patterns[i];
+            regularPatternAnimaions = data.patterns[i].pattrenAttackClip;
+            patternChance = data.patterns[i].patternAttackChance;
+        }
     }
 
     #region 애니메이션 파라미터
@@ -78,10 +93,10 @@ public class MonsterAnimationController : AnimationController
     {
         AnimationClip selectClip;
         float randomValue = Random.Range(0f, 100f);
-        if (randomValue <= regularMonster.patternAttackChance && regularMonster.pattrenAttackClip.Length > 0)
+        if (randomValue <=  patternChance && regularPatternAnimaions.Length > 0)
         {
-            int randomIndex = Random.Range(0, regularMonster.pattrenAttackClip.Length);
-            selectClip = regularMonster.pattrenAttackClip[randomIndex];
+            int randomIndex = Random.Range(0, regularPatternAnimaions.Length);
+            selectClip = regularPatternAnimaions[randomIndex];
         }
         else
         {
@@ -129,7 +144,6 @@ public class MonsterAnimationController : AnimationController
         if(isAttackComplete)
         {
             Animator.SetTrigger("Hold");
-
             return true;
         }
         return false;
@@ -144,5 +158,16 @@ public class MonsterAnimationController : AnimationController
             return true;
         }
         return false;
+    }
+
+    public bool HasAttackFinished()
+    {
+        var state = Animator.GetCurrentAnimatorStateInfo(0).IsName("Monster_Attack");
+        float animationTime = Animator.GetCurrentAnimatorStateInfo(0).normalizedTime;
+        if (state && animationTime >= 1)
+        {
+            return true;
+        }
+        return state;
     }
 }
