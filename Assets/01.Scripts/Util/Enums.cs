@@ -103,7 +103,6 @@ public enum ItemType
     Potion,
     Currency
 }
-}
 
 public enum SkillType
 {
