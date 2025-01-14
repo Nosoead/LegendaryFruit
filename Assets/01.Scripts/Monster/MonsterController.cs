@@ -1,4 +1,5 @@
 using System.Threading;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Pool;
 
@@ -16,6 +17,7 @@ public class MonsterController : MonoBehaviour, IProjectTileShooter
     private float lookDirection = 1f;
 
     private bool isGround;
+    private bool isStopped;
 
     [SerializeField] private Transform shootPoint;
     private IObjectPool<PooledProjectile> pooledProjectTile;
@@ -110,6 +112,10 @@ public class MonsterController : MonoBehaviour, IProjectTileShooter
     #region // MonsterState
     public void ReverseDirection()
     {
+        if(animationController.HasAttackFinished())
+        {
+            return;
+        }
         Vector3 scale = transform.localScale;
         scale.x *= -1;
         lookDirection *= -1f;
@@ -136,20 +142,20 @@ public class MonsterController : MonoBehaviour, IProjectTileShooter
 
     public void MoveWithGroundDetection()
     {
-        if(monsterGround.GetOnGround())
+        if (monsterGround.GetOnGround())
         {
             isGround = false;
         }
         else
         {
-            if(!isGround)
+            if (!isGround)
             {
                 ReverseDirection();
                 isGround = true;
             }
         }
 
-        if(!DetectPlayer())
+        if (!DetectPlayer())
         {
             Move();
         }
@@ -160,16 +166,17 @@ public class MonsterController : MonoBehaviour, IProjectTileShooter
         if (statManager.isDead) return;
         if (target != null)
         {
-            float distanceX = target.transform.position.x - transform.position.x;
-            float distanceY = Mathf.Abs(target.transform.position.y - transform.position.y);
+            var tartPosition = GetRandomizedTargetPosition(target.transform.position);
+            float distanceX = tartPosition.x - transform.position.x;
+            float distanceY = Mathf.Abs(tartPosition.y - transform.position.y);
 
-            if(distanceY > 2f)
+            if (distanceY > 2f)
             {
                 Move();
                 return;
             }
 
-            if ((distanceX >= 0 && lookDirection <= 0) && animationController.OnAttackComplete() 
+            if ((distanceX >= 0 && lookDirection <= 0) && animationController.OnAttackComplete()
                 || (distanceX < 0 && lookDirection >= 0) && animationController.OnAttackComplete())
             {
                 ReverseDirection();
@@ -194,8 +201,12 @@ public class MonsterController : MonoBehaviour, IProjectTileShooter
 
     public void Move()
     {
-        Vector3 direction = (Vector3.right * lookDirection).normalized;
         if (statManager.isDead) return;
+        if (animationController.HasAttackFinished())
+        {
+            return;
+        }
+        Vector3 direction = (Vector3.right * lookDirection).normalized;
 
         if (target != null)
         {
@@ -208,6 +219,11 @@ public class MonsterController : MonoBehaviour, IProjectTileShooter
         {
             transform.position += direction * moveSpeed * Time.deltaTime;
         }
+    }
+
+    Vector3 GetRandomizedTargetPosition(Vector3 targetPosition)
+    {
+        return targetPosition + new Vector3(Random.Range(-1f, 1f), 0, Random.Range(-1f, 1f));
     }
     #endregion
 
@@ -244,9 +260,15 @@ public class MonsterController : MonoBehaviour, IProjectTileShooter
 
     public void RangedAttack()
     {
+        Vector3 direction = (Vector3.right * lookDirection).normalized;
         if (statManager.isDead) return;
         var projecttile = pooledProjectTile.Get();
         Shoot(projecttile);
+    }
+
+    public void RegularMonsterPartternAttack()
+    {
+
     }
     #endregion
 

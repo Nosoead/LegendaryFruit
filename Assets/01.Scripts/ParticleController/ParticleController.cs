@@ -88,7 +88,7 @@ public class ParticleController : MonoBehaviour
         {
             particle.Stop(true, ParticleSystemStopBehavior.StopEmittingAndClear);
         }
-
+        particle.Clear();
         particle.Play();
     }
 }

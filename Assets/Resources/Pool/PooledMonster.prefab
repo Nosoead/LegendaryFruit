@@ -14881,7 +14881,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   characterCollider: {fileID: 1939992881904551001}
   playerRigidbody: {fileID: 9162174101806815202}
-  colliderY: -0.6
+  colliderY: -0.63
   groundLength: 0.8
 --- !u!114 &9025224996261991306
 MonoBehaviour:

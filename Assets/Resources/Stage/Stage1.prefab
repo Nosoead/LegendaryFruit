@@ -3987,16 +3987,6 @@ Tilemap:
       m_TileObjectToInstantiateIndex: 65535
       dummyAlignment: 0
       m_AllTileFlags: 1073741825
-  - first: {x: 7, y: 1, z: 0}
-    second:
-      serializedVersion: 2
-      m_TileIndex: 9
-      m_TileSpriteIndex: 9
-      m_TileMatrixIndex: 0
-      m_TileColorIndex: 0
-      m_TileObjectToInstantiateIndex: 65535
-      dummyAlignment: 0
-      m_AllTileFlags: 1073741825
   - first: {x: 8, y: 1, z: 0}
     second:
       serializedVersion: 2
@@ -4290,8 +4280,8 @@ Tilemap:
   - first: {x: 7, y: 2, z: 0}
     second:
       serializedVersion: 2
-      m_TileIndex: 8
-      m_TileSpriteIndex: 8
+      m_TileIndex: 9
+      m_TileSpriteIndex: 9
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -7265,7 +7255,7 @@ Tilemap:
     m_Data: {fileID: 11400000, guid: 711b5f4ba280c2d4ab795e2999fc1693, type: 2}
   - m_RefCount: 2
     m_Data: {fileID: 11400000, guid: b525604aab1bb3d428a721b85db0bfe7, type: 2}
-  - m_RefCount: 13
+  - m_RefCount: 12
     m_Data: {fileID: 11400000, guid: 3f8d5073c2b1f9c408bc062e66b8c630, type: 2}
   - m_RefCount: 5
     m_Data: {fileID: 11400000, guid: a67b209c926059c4e8589b594c4c73f6, type: 2}
@@ -7288,14 +7278,14 @@ Tilemap:
     m_Data: {fileID: -43695278, guid: 4e549ad101ecaf2479d5197e80f5379f, type: 3}
   - m_RefCount: 2
     m_Data: {fileID: -640881073, guid: 4e549ad101ecaf2479d5197e80f5379f, type: 3}
-  - m_RefCount: 13
+  - m_RefCount: 12
     m_Data: {fileID: -1456584368, guid: 4e549ad101ecaf2479d5197e80f5379f, type: 3}
   - m_RefCount: 5
     m_Data: {fileID: -1122135194, guid: 4e549ad101ecaf2479d5197e80f5379f, type: 3}
   - m_RefCount: 14
     m_Data: {fileID: 631588293, guid: 4e549ad101ecaf2479d5197e80f5379f, type: 3}
   m_TileMatrixArray:
-  - m_RefCount: 656
+  - m_RefCount: 655
     m_Data:
       e00: 1
       e01: 0
@@ -7314,7 +7304,7 @@ Tilemap:
       e32: 0
       e33: 1
   m_TileColorArray:
-  - m_RefCount: 656
+  - m_RefCount: 655
     m_Data: {r: 1, g: 1, b: 1, a: 1}
   m_TileObjectToInstantiateArray: []
   m_AnimationFrameRate: 1
@@ -7554,8 +7544,12 @@ CompositeCollider2D:
       - X: 70000000
         Y: 120000000
       - X: 70000000
-        Y: 15000000
+        Y: 25000000
       - X: 76250000
+        Y: 20000000
+      - X: 80000000
+        Y: 20000000
+      - X: 80000000
         Y: 10000000
       - X: 100000000
         Y: 10000000
@@ -7623,8 +7617,10 @@ CompositeCollider2D:
       - {x: -10, y: -2.624988}
       - {x: -9.99997, y: 12}
       - {x: 7, y: 11.99997}
-      - {x: 7.0000095, y: 1.4999923}
-      - {x: 7.625009, y: 1}
+      - {x: 7.0000095, y: 2.4999921}
+      - {x: 7.625009, y: 2}
+      - {x: 8, y: 1.9999707}
+      - {x: 8.00003, y: 1}
       - {x: 10, y: 0.9999706}
       - {x: 10.00001, y: 0.4999922}
       - {x: 10.625009, y: 0}
@@ -9422,8 +9418,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ed4963ea5a03064fb602961a6f32400, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pressFCanvas: {fileID: 0}
   spawnPositionsRoot: {fileID: 0}
+  pressFCanvas: {fileID: 0}
   weaponData: {fileID: 0}
   NPCSpotlight: {fileID: 0}
 --- !u!1 &1776085944091936188
@@ -22171,8 +22167,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ed4963ea5a03064fb602961a6f32400, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pressFCanvas: {fileID: 8004816015983567660}
   spawnPositionsRoot: {fileID: 6756947317953119314}
+  pressFCanvas: {fileID: 8004816015983567660}
   weaponData: {fileID: 0}
   NPCSpotlight: {fileID: 0}
 --- !u!1 &8232063400000794183

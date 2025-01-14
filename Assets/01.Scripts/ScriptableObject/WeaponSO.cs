@@ -53,6 +53,7 @@ public class RangedAttackData
 public class RangedAttributeData
 {
     public AttributeType attributeType;
+    public Material trailMaterial;
     public float attributeValue;
     public float attributeLateTime;
     public float attributeStack;

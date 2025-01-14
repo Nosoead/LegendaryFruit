@@ -103,6 +103,7 @@ public class MonsterCondition : MonoBehaviour, IDamageable
         controller.OnTakeHit();
         OnTakeHitType?.Invoke(AttributeType.Knockback);
         statManager.ApplyInstantDamage(damage);
+        ParticleManager.Instance.SetParticleTypeAndPlay(transform.position, ParticleType.KnockBackDamage);
         if (coKnockback != null && isKnockback)
         {
             StopCoroutine(coKnockback);
