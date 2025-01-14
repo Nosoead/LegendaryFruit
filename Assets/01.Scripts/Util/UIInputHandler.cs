@@ -38,7 +38,7 @@ public class UIInputHandler : MonoBehaviour
 
     private void OnInteract(InputAction.CallbackContext context)
     {
-        if (inputManager.isNpc || inputManager.isPlay)
+        if (inputManager.isNpc && inputManager.isPlay)
         {
             if (!inputManager.isEsc && !inputManager.isTab)
             {
@@ -64,7 +64,7 @@ public class UIInputHandler : MonoBehaviour
         if (collision.gameObject.layer == npcLayer)
         {
             inputManager.isNpc = true;
-            input.Changer.Disable();
+          
             input.Changer.Interact.Enable();
         }
     }

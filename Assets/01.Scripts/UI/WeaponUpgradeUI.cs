@@ -67,6 +67,7 @@ public class WeaponUpgradeUI : UIBase
         cancelButton.onClick.AddListener(() => GatherInputManager.Instance.ResetStates());
         upgradeButton.onClick.RemoveAllListeners();
         upgradeButton.onClick.AddListener(OnUpgradeBtn);
+        upgradeButton.onClick.AddListener(() => SoundManagers.Instance.PlaySFX(SfxType.UIButton));
     }
 
     private void SetCurrncy(GradeType gradeType)

@@ -10,13 +10,15 @@ public class SceneCapture : MonoBehaviour
     {
         Capture();
     }
-
+    
     private void Capture()
     {
         captureCamera.gameObject.SetActive(true);
+        Vector3 playerpos = GameManager.Instance.player.transform.position;
+        captureCamera.transform.position = new Vector3(playerpos.x, playerpos.y, -10);
         
-        captureCamera.transform.position = new Vector3(0, 0, -10);
-        
+        captureCamera.orthographic = true;
+        captureCamera.orthographicSize = 2f;
         captureCamera.clearFlags = CameraClearFlags.SolidColor;
         RenderTexture renderTexture = new RenderTexture(Screen.width, Screen.height, 24, RenderTextureFormat.ARGB32);
         //RenderTexture renderTexture = new RenderTexture(480,370,24);

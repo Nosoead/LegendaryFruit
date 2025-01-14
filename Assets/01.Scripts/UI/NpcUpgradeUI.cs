@@ -1,94 +1,150 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
-[System.Serializable]
-public class SkillData
-{
-    public int currentLevel;
-    public int maxLevel;
-    public bool isUnlocked;
-}
-
-public class SkillUI : MonoBehaviour
-{
-    public List<GameObject> lightImage;
-
-    public void UpdateUI(bool isUpgrade)
-    {
-        foreach (GameObject image in lightImage)
-        {
-            image.SetActive(isUpgrade);
-        }
-    }
-}
 public class NpcUpgradeUI : UIBase
 {
     [SerializeField] private Button upgradeButton;
     [SerializeField] private Button cancelButton;
     [SerializeField] private GameObject skill1LightImage;
-    public List<SkillData> skillList;
-    public List<SkillUI> skillUIList;
-    private int dialogueIndex;
-    private bool isUpgrade;
-    private float currentCurrency = 100;// saveDataContainer.currencyData.globalCurrency;
-    private int requiredCurrency = 100;
-  public override void Open()
-  {
-      base.Open();
-  }
-  private void Start()
-  {
-      Init();
-      InitializeUI();
-  }
+    [SerializeField] private TextMeshProUGUI gradeText;
+    [SerializeField] private TextMeshProUGUI countText;
+    private CurrencySystem currencySystem;
 
-  private void Init()
-  {
- 
-          for (int i = 0; i < skillList.Count; i++)
-          {
-              skillUIList[i].UpdateUI(skillList[i].currentLevel > 0);
-              skillList[i].isUnlocked = (i == 0);
-          }
-          //DialogueManager.Instance.SetUIDialogue(uiDialogue);
+    private int gradeUpgrade; //맥스
+    private int countUpgrade; //맥스
+    private int Gradeprobability; //등급확률
+    private int Countprobability; //개수확률
+    private float currentCurrency = 1000; // saveDataContainer.currencyData.globalCurrency;
+    private int countCurrency;
+    private int gradeCurrency;
 
-  }
-  private void InitializeUI()
-  {
-      cancelButton.onClick.RemoveAllListeners();
-      cancelButton.onClick.AddListener(() => UIManager.Instance.ToggleUI<NpcUpgradeUI>(true));
-      cancelButton.onClick.AddListener(() => SoundManagers.Instance.PlaySFX(SfxType.UIButton));
-      upgradeButton.onClick.RemoveAllListeners();
-      upgradeButton.onClick.AddListener(() => OnUpgradeBtn(1));
-      upgradeButton.onClick.AddListener(() => SoundManagers.Instance.PlaySFX(SfxType.UIButton));
-  }
-  private void UpgradeSkill(int skillIndex)
-  {
-      if (skillList[skillIndex].isUnlocked &&
-          skillList[skillIndex].currentLevel < skillList[skillIndex].maxLevel)
-      {
-          skillList[skillIndex].currentLevel++;
-          skillUIList[skillIndex].UpdateUI(true);
+    public override void Open()
+    {
+        base.Open();
+        cancelButton.onClick.RemoveAllListeners();
+        cancelButton.onClick.AddListener(() => UIManager.Instance.ToggleUI<NpcUpgradeUI>(true));
+        cancelButton.onClick.AddListener(() => SoundManagers.Instance.PlaySFX(SfxType.UIButton));
+        cancelButton.onClick.AddListener(() => GatherInputManager.Instance.ResetStates());
+        upgradeButton.onClick.RemoveAllListeners();
+        upgradeButton.onClick.AddListener(() => OnUpgradeBtn(1));
+        upgradeButton.onClick.AddListener(() => SoundManagers.Instance.PlaySFX(SfxType.UIButton));
+    }
 
-          if (skillIndex + 1 < skillList.Count)
-          {
-              skillList[skillIndex + 1].isUnlocked = true;
-          }
-      }
-  }
+    private void Start()
+    {
+        GetEquipAndCurrencyData();
+        SetCurrncy(gradeUpgrade,1);
+        SetCurrncy(countUpgrade,2);
+        SetDialogueTxt();
+    }
 
-  public void OnUpgradeBtn(int skillIndex)
-  {
-      // 강화를 하면 재화가 깍이고 스탯이 올라감
-      // 강화하면 해당 강화는 더이상 불가 다음 강화 가능
-      
-      if (currentCurrency >= requiredCurrency)
-      {
-          UpgradeSkill(skillIndex);
-          currentCurrency -= requiredCurrency;
-      }
-      Debug.Log("?");
-  }
-  
+    private void GetEquipAndCurrencyData()
+    {
+        if (GameManager.Instance.player.TryGetComponent(out CurrencySystem currency))
+        {
+            currencySystem = currency;
+        }
+    }
+    private void OnUpgradeBtn(int upgradeType)
+    {
+        Debug.Log("강화?");
+        //if (currentCurrency >= GetRequiredCurrency(upgradeType))
+        
+            if (upgradeType == 1)
+            {
+                Debug.Log("강화1");
+                GradeUpgrade();
+            }
+
+            else if (upgradeType == 2)
+            {
+                CountUpgrade();
+                Debug.Log("강화2");
+            }
+
+            SetDialogueTxt();
+        //TODO 텍스트에 현재재화/필요재화 
+        //TODO 충족 초록    부족 빨강?
+        //TODO 버튼에 인덱스번호 부여 가능?
+    }
+
+    private int GetRequiredCurrency(int upgradeType)
+    {
+        if (upgradeType == 1)
+        {
+            return gradeCurrency;
+        }
+        else if (upgradeType == 2)
+        {
+            return countCurrency;
+        }
+
+        return 0;
+    }
+
+    
+
+    private void GradeUpgrade()
+    {
+        if (gradeUpgrade < 4)
+        {
+            gradeUpgrade++;
+            Gradeprobability += 20;
+            currentCurrency -= gradeCurrency;
+            SetCurrncy(gradeUpgrade,1);
+        }
+    }
+
+    private void CountUpgrade()
+    {
+        if (countUpgrade < 4)
+        {
+            countUpgrade++;
+            Countprobability += 20;
+            currentCurrency -= countCurrency;
+            SetCurrncy(countUpgrade,2);
+        }
+    }
+    private void SetCurrncy(int upgradeLevel, int upgradeType)
+    {
+        if (currencySystem != null)
+        {
+            currentCurrency = currencySystem.GetCurrencyData(isGlobalCurrency: true);
+        }
+
+        int requiredCurrency = 0;
+        switch (upgradeLevel)
+        {
+            case 0:
+                requiredCurrency = 50;
+                break;
+            case 1:
+                requiredCurrency = 100;
+                break;
+            case 2:
+                requiredCurrency = 200;
+                break;
+            case 3:
+                requiredCurrency = 500;
+                break;
+        }
+
+        if (upgradeType == 1)
+        {
+            gradeCurrency = requiredCurrency;
+        }
+        if (upgradeType == 2)
+        {
+            countCurrency = requiredCurrency;
+        }
+    }
+    private void SetDialogueTxt()
+    {
+        countText.text = ($"많은 열매가 맺힐 수 있는 확률을 올립니다.\n" +
+                          $"개수 확률 : {Gradeprobability}% \t{gradeUpgrade}/4");
+        gradeText.text = ($"좋은 열매가 나올수 있는 확률을 올립니다. \n" +
+                          $"등급 확률 : {Countprobability}% \t{countUpgrade}/4");
+    }
 }
