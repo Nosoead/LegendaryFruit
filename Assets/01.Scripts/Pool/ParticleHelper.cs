@@ -29,4 +29,17 @@ public class ParticleHelper
         var emission = particleSystem.emission;
         emission.enabled = true;
     }
+
+    public void SetColorOverLifeTime(ParticleSystem particleSystem, Gradient gradient)
+    {
+        var colorOverLifeTime = particleSystem.colorOverLifetime;
+        colorOverLifeTime.color = gradient;
+    }
+
+    public void SetVelocityOverLifetime(ParticleSystem particleSystem, ParticleSystem.MinMaxCurve linearVelocityX, ParticleSystem.MinMaxCurve linearVelocityY)
+    {
+        var veloCityOverLifeTime = particleSystem.velocityOverLifetime;
+        veloCityOverLifeTime.x = linearVelocityX;
+        veloCityOverLifeTime.y = linearVelocityY;
+    }
 }

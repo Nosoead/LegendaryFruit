@@ -14,10 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   monsterID: 1030104
   maxHealth: 50
-  attackPower: 0
+  attackPower: 20
   defense: 5
   attackSpeed: 0
-  moveSpeed: 5
+  moveSpeed: 8
   attackDistance: 8
   chaseRange: 10
   type: 5
@@ -26,18 +26,18 @@ MonoBehaviour:
   attributeStack: 0
   inGameMoney: 120
   monsterRagnedAttackData:
-    projectileType: 1
+  - projectileType: 1
     projectTileSprite: {fileID: 21300000, guid: b2410cc69af04ae4d9376770f4a035a9, type: 3}
     attackDistance: 0
-    maxDistance: 15
-    rangedAttackPower: 45
+    maxDistance: 10
+    rangedAttackPower: 20
     rangedAttackSpeed: 10
-    rangedAttackRate: 1
+    rangedAttackRate: 0
     attributeDatas:
     - attributeType: 0
-      attributeValue: 3
-      attributeLateTime: 1
-      attributeStack: 3
+      attributeValue: 0
+      attributeLateTime: 0
+      attributeStack: 0
   sprite: {fileID: 0}
   animatorOverrideController: {fileID: 22100000, guid: e22aeed35a43c0748b160e71e9056a4a, type: 2}
   defalutAttackClip: {fileID: 7400000, guid: 8861e8c472e2f184a8a042f57b9b97c9, type: 2}

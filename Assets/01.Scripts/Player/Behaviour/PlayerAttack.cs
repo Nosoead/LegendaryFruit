@@ -15,6 +15,7 @@ public class PlayerAttack : MonoBehaviour, IProjectTileShooter
     private PlayerAttributeLogicsDictionary attributeLogics;
     private PlayerAttributeLogics attributeLogic = null;
     private WeaponSO weaponData;
+    private RangedAttackData rangedAttackData;
     private float totalAttackPower;
     private float currentAttackPower;
     private float weaponAttackPower;
@@ -114,7 +115,7 @@ public class PlayerAttack : MonoBehaviour, IProjectTileShooter
         {
             yield return attackRateTime;
         }
-        else if (weaponData.rangedAttackData.projectTileSprite != null)
+        else if (rangedAttackData != null)
         {
             RagnedAttack();
             yield return attackRateTime;
@@ -134,12 +135,22 @@ public class PlayerAttack : MonoBehaviour, IProjectTileShooter
         weaponAttackPower = weaponData.attackPower;
         attributeLogic = attributeLogics.GetAttributeLogic(weaponData.type);
         SetTotalAttackPower();
+        CachedRagnedAttackData();
     }
     #endregion
 
     private void CachedProjectile()
     {
         projectile = PoolManager.Instance.GetObjectFromPool<PooledProjectile>(PoolType.PooledProjectile);
+    }
+
+    private void CachedRagnedAttackData()
+    {
+        if(weaponData.rangedAttackData == null) return;
+        for(int i = 0; i < weaponData.rangedAttackData.Count; i++)
+        {
+            rangedAttackData = weaponData.rangedAttackData[i];
+        }
     }
 
     private void SetTotalAttackPower()
@@ -159,8 +170,8 @@ public class PlayerAttack : MonoBehaviour, IProjectTileShooter
     {
         Vector3 look = Vector3.right * lookDirection;
         projectTile.transform.position = shootPosition.position;
-        projectTile.SetData(weaponData.rangedAttackData, weaponData.rangedAttackData.rangedAttackPower + currentAttackPower);
-        projectTile.SetAttirbuteData(weaponData.rangedAttackData);
+        projectTile.SetData(rangedAttackData, rangedAttackData.rangedAttackPower + currentAttackPower);
+        projectTile.SetAttirbuteData(rangedAttackData);
         projectTile.ProjectTileShoot(look);
     }
 
