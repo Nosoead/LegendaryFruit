@@ -15,7 +15,7 @@ public class PlayerAttack : MonoBehaviour, IProjectTileShooter
     private PlayerAttributeLogicsDictionary attributeLogics;
     private PlayerAttributeLogics attributeLogic = null;
     private WeaponSO weaponData;
-    private RangedAttackData rangedAttackData;
+    private RangedAttackData rangedAttackData = null;
     private float totalAttackPower;
     private float currentAttackPower;
     private float weaponAttackPower;
@@ -132,6 +132,7 @@ public class PlayerAttack : MonoBehaviour, IProjectTileShooter
     private void OnEquipWeaponChanged(WeaponSO weaponData)
     {
         this.weaponData = weaponData;
+        rangedAttackData = null;
         weaponAttackPower = weaponData.attackPower;
         attributeLogic = attributeLogics.GetAttributeLogic(weaponData.type);
         SetTotalAttackPower();

@@ -67,6 +67,9 @@ public class PooledParticle : MonoBehaviour, ISetPooledObject<PooledParticle>
             case ParticleType.SlowDownDamage:
                 ParticleDataSetting(childrenParticles);
                 break;
+            case ParticleType.KnockBackDamage:
+                ParticleDataSetting(childrenParticles);
+                break;
         }
     }
 

@@ -103,3 +103,10 @@ public enum ItemType
     Potion,
     Currency
 }
+}
+
+public enum SkillType
+{
+    Count = 1,
+    Grade
+}

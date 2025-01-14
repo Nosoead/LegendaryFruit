@@ -20,7 +20,7 @@ MonoBehaviour:
   gradeType: 2
   eatValue: 13
   attributeAttackValue: 0
-  attributeAttackRateTime: 0
+  attributeAttackRateTime: 1
   arrtibuteStatck: 0
   weaponSprite: {fileID: 21300000, guid: fe8d8a5d0bce8af4ab3892997a192e84, type: 3}
   rewardSprite: {fileID: 21300000, guid: 94810767285a7b741b424383a664cc4a, type: 3}
@@ -35,6 +35,7 @@ MonoBehaviour:
     rangedAttackRate: 0
     attributeDatas:
     - attributeType: 1
+      trailMaterial: {fileID: 2100000, guid: c392b67b00000b14c94a1101a5e92315, type: 2}
       attributeValue: 0
       attributeLateTime: 0
       attributeStack: 0

@@ -30082,17 +30082,9 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7372494609427116126, guid: 3061c6c19e1a90d4c916ae9f860d1050, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 8268958919355387283, guid: 3061c6c19e1a90d4c916ae9f860d1050, type: 3}
       propertyPath: m_Name
       value: NpcUpgradeUI
-      objectReference: {fileID: 0}
-    - target: {fileID: 8268958919355387283, guid: 3061c6c19e1a90d4c916ae9f860d1050, type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8655934405977682092, guid: 3061c6c19e1a90d4c916ae9f860d1050, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -62068,12 +62060,16 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 378201149889449161, guid: 598632e104a571947a632044d0aa47d9, type: 3}
-      propertyPath: m_CullingMask.m_Bits
-      value: 458743
+      propertyPath: orthographic
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5090756535924106964, guid: 598632e104a571947a632044d0aa47d9, type: 3}
       propertyPath: m_Name
       value: GameEndUI
+      objectReference: {fileID: 0}
+    - target: {fileID: 5090756535924106964, guid: 598632e104a571947a632044d0aa47d9, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6071700375324053521, guid: 598632e104a571947a632044d0aa47d9, type: 3}
       propertyPath: m_Pivot.x

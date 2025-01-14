@@ -18,5 +18,9 @@ public class TestUI : MonoBehaviour
         {
             UIManager.Instance.ToggleUI<WeaponUpgradeUI>(false);
         }
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            UIManager.Instance.ToggleUI<NpcUpgradeUI>(false);
+        }
     }
 }

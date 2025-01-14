@@ -18,6 +18,7 @@ public class GameEndUI : UIBase
     [SerializeField] private Image lastImage;
     [SerializeField] private List<Image> totalEatImages;
     
+    private CurrencySystem currencySystem;
     private SceneCapture sceneCapture;
     private SaveDataContainer saveDataContainer;
     private PlayerInput input;
@@ -32,9 +33,11 @@ public class GameEndUI : UIBase
     }
     public override void Open()
     {
-        sceneCapture.CaptureScene();
         base.Open();
+        sceneCapture.CaptureScene();
         StartCoroutine(waitForDataToText());
+        exitButton.onClick.AddListener(() => UIManager.Instance.ToggleUI<GameEndUI>(false));
+        DataManager.Instance.DeleteData<SaveDataContainer>();
         if (GameManager.Instance.GetGameClear())
         {
             titleTxt.text = "Game Clear!";
@@ -46,9 +49,8 @@ public class GameEndUI : UIBase
             exitButton.onClick.AddListener(() => SceneManagerExtension.Instance.LoadScene(SceneType.OneCycleScene));
         }
         exitTxt.text = "돌아가기";
-        exitButton.onClick.AddListener(() => UIManager.Instance.ToggleUI<GameEndUI>(false));
-        DataManager.Instance.DeleteData<SaveDataContainer>();
         input.Player.Disable();
+        input.Changer.Disable();
     }
 
     private IEnumerator waitForStatData()

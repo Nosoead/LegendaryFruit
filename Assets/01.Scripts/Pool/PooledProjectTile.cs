@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Threading;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.Pool;
 
 public class PooledProjectile : MonoBehaviour, ISetPooledObject<PooledProjectile>
@@ -12,6 +13,8 @@ public class PooledProjectile : MonoBehaviour, ISetPooledObject<PooledProjectile
     public IObjectPool<PooledProjectile> ObjectPool
     { get => objectPool; set => objectPool = value; }
 
+    public event UnityAction<AttributeType, Material> OnStartMovingEnvet;
+    public event UnityAction OnEndMovingEnvet;
 
     [Header("ProjectTile_Data")]
     private ProjectileType currentProjectTileType;
@@ -19,12 +22,16 @@ public class PooledProjectile : MonoBehaviour, ISetPooledObject<PooledProjectile
     private float projectTileDamage;
     private float projectTileSpeed;
     private float projectTileMaxDistance;
+    private float projectTileRateTime;
 
     [Header("ProjectTile_AttributeTypeData")]
     private AttributeType currentAttributeType;
+    private Material currentTrailMaterial;
     private float currentAttirbuteValue;
     private float currentAttributeRateTime;
     private float currentAttributeStack;
+
+    private float lookDir;
 
     private void Awake()
     {
@@ -45,7 +52,8 @@ public class PooledProjectile : MonoBehaviour, ISetPooledObject<PooledProjectile
         projectTileSprtie.sprite = data.projectTileSprite;
         projectTileDamage = damage;
         projectTileSpeed = data.rangedAttackSpeed;
-        projectTileMaxDistance = data.maxDistance;    
+        projectTileMaxDistance = data.maxDistance;
+        projectTileRateTime = data.rangedAttackRate;
     }
 
     public void SetAttirbuteData(RangedAttackData data)
@@ -56,7 +64,8 @@ public class PooledProjectile : MonoBehaviour, ISetPooledObject<PooledProjectile
             if (data.attributeDatas[i].attributeType == AttributeType.Normal) break; 
             currentAttirbuteValue = data.attributeDatas[i].attributeValue;
             currentAttributeStack = data.attributeDatas[i].attributeStack;
-            currentAttributeRateTime = data.attributeDatas[i].attributeLateTime;   
+            currentAttributeRateTime = data.attributeDatas[i].attributeLateTime;
+            currentTrailMaterial = data.attributeDatas[i].trailMaterial;
         }
     }
 
@@ -64,24 +73,28 @@ public class PooledProjectile : MonoBehaviour, ISetPooledObject<PooledProjectile
     {
         if(dir.x <= 1)
         {
+            lookDir = dir.x;
             projectTileSprtie.flipX = true;
         }
         if(dir.x >= 1)
         {
+            lookDir = dir.x;
             projectTileSprtie.flipX = false;
         }
         StartCoroutine(ProjectTileMove(dir));
     }
 
     private IEnumerator ProjectTileMove(Vector3 dir)
-    {
+    { 
         Vector2 startPositon = this.transform.position;
         while (Vector2.Distance(startPositon, transform.position) < projectTileMaxDistance)
         {
+            OnStartMovingEnvet?.Invoke(currentAttributeType, currentTrailMaterial);
             transform.position += dir * projectTileSpeed * Time.deltaTime;
             yield return null;
         }
 
+        OnEndMovingEnvet?.Invoke();
         ResetState();
         ProjectTileRelease();
     }
@@ -117,6 +130,10 @@ public class PooledProjectile : MonoBehaviour, ISetPooledObject<PooledProjectile
                 break;
             case AttributeType.SlowDown:
                 obj.SlowDown(damage, attirbuteValue, attributeRateTime);
+                break;
+            case AttributeType.Knockback:
+                obj.Knockback(damage, attirbuteValue, attributeRateTime,lookDir);
+                lookDir = 1;
                 break;
         }
     }

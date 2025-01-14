@@ -208,17 +208,20 @@ public class BossMonsterController : MonoBehaviour
     #region Movement
     public void Move()
     {
-        var dir = Vector3.Distance(transform.position, target.transform.position);
-        if (dir > attackDistance)
+        if (statManager.isDead) return;
+        if(animator.HasAttackFinished())
         {
-            //canMove = true;
-            Vector3 moveDirection = (target.transform.position - transform.position).normalized;
-            transform.position += moveDirection * (moveSpeed * Time.deltaTime); 
+            return;
         }
-        else
+        Vector3 direction = (Vector3.right * lookDirection).normalized;
+        if (Vector2.Distance(transform.position, target.transform.position) >= attackDistance)
         {
-            //canMove = false;
+            transform.position += direction * moveSpeed * Time.deltaTime;
         }
+    }
+    Vector3 GetRandomizedTargetPosition(Vector3 targetPosition)
+    {
+        return targetPosition + new Vector3(Random.Range(-1f, 1f), 0, Random.Range(-1f, 1f));
     }
     #endregion
 

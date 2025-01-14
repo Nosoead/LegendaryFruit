@@ -7064,7 +7064,7 @@ PrefabInstance:
     - target: {fileID: 1103456294632927882, guid: 233013ee03125de4ea771ef6a1636a43, type: 3}
       propertyPath: m_Controller
       value: 
-      objectReference: {fileID: 22100000, guid: e22aeed35a43c0748b160e71e9056a4a, type: 2}
+      objectReference: {fileID: 22100000, guid: d13a7d61c6edc3e4facc8554faf5797c, type: 2}
     - target: {fileID: 1939992881904551001, guid: 233013ee03125de4ea771ef6a1636a43, type: 3}
       propertyPath: m_SpriteTilingProperty.pivot.y
       value: 0.47
@@ -7176,7 +7176,7 @@ PrefabInstance:
     - target: {fileID: 5895380291070675840, guid: 233013ee03125de4ea771ef6a1636a43, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 199769310, guid: c59a709c02194a2419de3af6ddeb8341, type: 3}
+      objectReference: {fileID: 731859496, guid: ae32bfd87dd036e4f976516b141323f5, type: 3}
     - target: {fileID: 8657364181835979918, guid: 233013ee03125de4ea771ef6a1636a43, type: 3}
       propertyPath: m_RenderMode
       value: 0
