@@ -1,6 +1,9 @@
+
+using System.Collections.Generic;
 using System.Threading;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.Pool;
 
 public class MonsterController : MonoBehaviour, IProjectTileShooter
@@ -16,6 +19,7 @@ public class MonsterController : MonoBehaviour, IProjectTileShooter
     public MonsterStatManager statManager;
     private float lookDirection = 1f;
 
+    public event UnityAction<RegularPatternData> OnPatternSelected;
     private bool isGround;
     private bool isStopped;
 
@@ -23,6 +27,11 @@ public class MonsterController : MonoBehaviour, IProjectTileShooter
     private IObjectPool<PooledProjectile> pooledProjectTile;
     private RangedAttackData rangedAttackData = null;
 
+    [Header("RegularMonster_Pattern_Info")]
+    private RegularPatternData currentRegularPatternData = null;
+    private List<RegularPatternData> regularPatternDatas = new List<RegularPatternData>();
+
+    [Header("Monster_Stat_Info")]
     private float attackPower;
     private float moveSpeed;
     private float attackDistance;
@@ -46,12 +55,16 @@ public class MonsterController : MonoBehaviour, IProjectTileShooter
     {
         statManager.OnSubscribeToStatUpdateEvent += OnStatUpdatedEvent;
         statManager.OnRangedAttackDataEvent += GetRagnedAttackStat;
+        statManager.OnRegularPatternDataEvent += GetRegularPatternStat;
+        OnPatternSelected += animationController.SetChagedPatternAnimation;
     }
 
     private void OnDisable()
     {
         statManager.OnSubscribeToStatUpdateEvent -= OnStatUpdatedEvent;
         statManager.OnRangedAttackDataEvent -= GetRagnedAttackStat;
+        statManager.OnRegularPatternDataEvent -= GetRegularPatternStat;
+        OnPatternSelected -= animationController.SetChagedPatternAnimation;
     }
 
     private void Start()
@@ -106,6 +119,27 @@ public class MonsterController : MonoBehaviour, IProjectTileShooter
     public void GetRagnedAttackStat(RangedAttackData data)
     {
         rangedAttackData = data;
+    }
+
+    public void GetRegularPatternStat(List<RegularPatternData> data)
+    {
+        regularPatternDatas = data;
+    }
+
+    public RegularPatternData GetRandomPattern()
+    {
+        if (regularPatternDatas.Count == 0) return null;
+        var randomValue = Random.Range(0, 100f);
+        var randomIndex = UnityEngine.Random.Range(0, regularPatternDatas.Count);
+        if(randomValue <= regularPatternDatas[randomIndex].patternAttackChance)
+        {
+            currentRegularPatternData = regularPatternDatas[randomIndex];
+            OnPatternSelected?.Invoke(currentRegularPatternData);
+            return currentRegularPatternData;
+        }
+        currentRegularPatternData = null;
+        OnPatternSelected?.Invoke(currentRegularPatternData);
+        return currentRegularPatternData;
     }
     #endregion
 
@@ -223,7 +257,7 @@ public class MonsterController : MonoBehaviour, IProjectTileShooter
 
     Vector3 GetRandomizedTargetPosition(Vector3 targetPosition)
     {
-        return targetPosition + new Vector3(Random.Range(-1f, 1f), 0, Random.Range(-1f, 1f));
+        return targetPosition + new Vector3(UnityEngine.Random.Range(-1f, 1f), 0, UnityEngine.Random.Range(-1f, 1f));
     }
     #endregion
 
@@ -244,17 +278,24 @@ public class MonsterController : MonoBehaviour, IProjectTileShooter
 
     public void Attack()
     {
-        if (statManager.isDead) return;
+       if (statManager.isDead) return;
         Vector2 monsterPosition = transform.position;
-        Vector2 boxPostion = monsterPosition + Vector2.right * (attackDistance * lookDirection);
+        Vector2 boxPostion = monsterPosition + Vector2.right * attackDistance/2 * lookDirection;
         Vector2 boxSize = new Vector2(attackDistance, 1f);
-
+        var randomPatternAttack = currentRegularPatternData;
         Collider2D player = Physics2D.OverlapBox(boxPostion, boxSize, 0, playerLayerMask);
         if (player == null)
         {
             return;
         }
-        monsterAttributeLogics.ApplyAttackLogic(player.gameObject, attackPower, attributeValue, attributeRateTime, attributeStack, lookDirection);
+        if(randomPatternAttack != null)
+        {
+            ApplyPatternAttackLogic(player.gameObject, randomPatternAttack);          
+        }
+        else if(animationController.CheckedDefalutAttack())
+        {
+            monsterAttributeLogics.ApplyAttackLogic(player.gameObject, attackPower, attributeValue, attributeRateTime, attributeStack, lookDirection);
+        }
         SoundManagers.Instance.PlaySFX(SfxType.MonsterAttack);
     }
 
@@ -265,19 +306,24 @@ public class MonsterController : MonoBehaviour, IProjectTileShooter
         var projecttile = pooledProjectTile.Get();
         Shoot(projecttile);
     }
-
-    public void RegularMonsterPartternAttack()
+    private void ApplyPatternAttackLogic(GameObject target, RegularPatternData patternData)
     {
-
+        var patternLogic = attributeLogicsDictionary.GetAttributeLogic(patternData.patternAttributeType);
+        if(patternLogic != null)
+        {
+            patternLogic.ApplyAttackLogic(target, patternData.patternDamage, patternData.patternAttributeValue,
+                patternData.patternAttributeRateTime, patternData.patternAttributeStack, lookDirection);
+        }
     }
     #endregion
 
     private void OnDrawGizmos()
     {
 
+        Vector2 monsterPosition = transform.position;
         // OverlapBox�� �߽� ��ġ ���
-        Vector3 boxCenter = transform.position;
-        Vector2 boxSize = new Vector2(attackDistance + 4, attackDistance);
+        Vector3 boxCenter = monsterPosition + Vector2.right * attackDistance/2 * lookDirection;
+        Vector2 boxSize = new Vector2(attackDistance, 1f);
 
         // Gizmos ���� ����
         Gizmos.color = Color.red;

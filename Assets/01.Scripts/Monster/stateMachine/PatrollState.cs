@@ -14,7 +14,8 @@ public class PatrollState : IState
 
     public void Enter()
     {
-        monsterController.animationController.OnMove(true);
+        if(monsterController.animationController.HasDefaultAttackFinished())
+            monsterController.animationController.OnMove(true);
         idleTime = Random.Range(5, 10);
         idleTimer = 0f;
     }

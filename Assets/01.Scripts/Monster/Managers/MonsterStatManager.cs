@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -8,6 +9,7 @@ public class MonsterStatManager : MonoBehaviour
     public event UnityAction<PatternData, float> OnPatternTriggered;
     public event UnityAction<float, AttributeType> DamageTakenEvent;
     public event UnityAction<RangedAttackData> OnRangedAttackDataEvent;
+    public event UnityAction<List<RegularPatternData>> OnRegularPatternDataEvent;
     private MonsterAnimationController monsterAnimationController;
     private MonsterCondition condition;
     private PooledMonster pooledMonster;
@@ -18,6 +20,7 @@ public class MonsterStatManager : MonoBehaviour
 
     [Header("PattrenStat")]
     private Dictionary<int, PatternData> pattrens = new Dictionary<int, PatternData>();
+    private RegularPatternData regularPatternData;
     private PatternData currentPattrenData;
     private bool isOnCooldown = false;
     private float cooldownTime;
@@ -70,7 +73,8 @@ public class MonsterStatManager : MonoBehaviour
         CachedRanagedAttackData(data);
         if (data is RegularMonsterSO regularMonsterData)
         {
-            if (regularMonsterData.monsterRagnedAttackData != null)
+            SetRegularPatternData(regularMonsterData);
+            if (regularMonsterData.monsterRagnedAttackData.Count > 0 )
             {
                 OnRangedAttackDataEvent?.Invoke(rangedAttackData);
                 stat.InitStat(regularMonsterData);
@@ -137,6 +141,20 @@ public class MonsterStatManager : MonoBehaviour
             return pattern;
         }
         return null;
+    }
+    private void CachedRanagedAttackData(MonsterSO data)
+    {
+        if (data.monsterRagnedAttackData.Count == 0) return;
+        for (int i = 0; i < data.monsterRagnedAttackData.Count; i++)
+        {
+            rangedAttackData = data.monsterRagnedAttackData[i];
+        }
+    }
+
+    private void SetRegularPatternData(RegularMonsterSO data)
+    {
+        if (data.patterns.Count == 0) return;
+        OnRegularPatternDataEvent?.Invoke(data.patterns);
     }
 
     #endregion
@@ -207,12 +225,5 @@ public class MonsterStatManager : MonoBehaviour
         return stat;
     }
 
-    private void CachedRanagedAttackData(MonsterSO data)
-    {
-        if (data.monsterRagnedAttackData == null) return;
-        for(int i = 0; i< data.monsterRagnedAttackData.Count; i++)
-        {
-            rangedAttackData = data.monsterRagnedAttackData[i];
-        }
-    }
+
 }

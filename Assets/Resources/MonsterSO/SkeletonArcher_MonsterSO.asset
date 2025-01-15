@@ -36,11 +36,10 @@ MonoBehaviour:
     attributeDatas:
     - attributeType: 0
       trailMaterial: {fileID: 2100000, guid: e1ff6ae00b0de7647bf652d1795d4b60, type: 2}
-      attributeValue: 0
-      attributeLateTime: 0
-      attributeStack: 0
+      attributeValue: 3
+      attributeLateTime: 1
+      attributeStack: 3
   sprite: {fileID: 0}
   animatorOverrideController: {fileID: 22100000, guid: e22aeed35a43c0748b160e71e9056a4a, type: 2}
+  patterns: []
   defalutAttackClip: {fileID: 7400000, guid: 8861e8c472e2f184a8a042f57b9b97c9, type: 2}
-  pattrenAttackClip: []
-  patternAttackChance: 0

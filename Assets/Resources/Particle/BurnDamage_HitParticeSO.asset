@@ -14,10 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   particleType: 1
   materials:
-  - {fileID: 2100000, guid: dc5f99d8075405347a1f2aab257dc670, type: 2}
+  - {fileID: 2100000, guid: 5d96ee0bbf4154a4186051e54926a9ad, type: 2}
   particleData:
   - minMaxCurve:
-      m_Mode: 3
+      m_Mode: 0
       m_CurveMultiplier: 0
       m_CurveMin:
         serializedVersion: 2
@@ -32,10 +32,10 @@ MonoBehaviour:
         m_PostInfinity: 0
         m_RotationOrder: 0
       m_ConstantMin: 360
-      m_ConstantMax: -360
-    particleSize: 5
-    particleLifeTime: 0.25
-    textureSeetAnimtaionX: 0
-    textureSeetAnimtaionY: 0
-    isTextureSeetAntimationActive: 0
-    isSizeOverTimeActive: 1
+      m_ConstantMax: 0
+    particleSize: 1
+    particleLifeTime: 1
+    textureSeetAnimtaionX: 2
+    textureSeetAnimtaionY: 2
+    isTextureSeetAntimationActive: 1
+    isSizeOverTimeActive: 0
