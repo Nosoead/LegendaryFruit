@@ -13,7 +13,6 @@ public class PooledParticle : MonoBehaviour, ISetPooledObject<PooledParticle>
     public ParticleSystemRenderer[] particleSystemRenderer;
     private ParticleSO currentParticleData;
     private ParticleHelper particleHelper;
-    private List<ParticleData> particleData;
     private Coroutine particleCoroutine;
 
     public IObjectPool<PooledParticle> ObjectPool
@@ -52,7 +51,7 @@ public class PooledParticle : MonoBehaviour, ISetPooledObject<PooledParticle>
 
     private void ParticleTypeToSetting()
     {
-        if (currentParticleData.particleData == null) return;
+        if (currentParticleData.particleData.Count == 0) return;
         switch(currentParticleData.particleType)
         {
             case ParticleType.Heal:

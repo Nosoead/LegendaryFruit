@@ -9,17 +9,17 @@ public class MonsterAnimationController : AnimationController
     private readonly int isDie = Animator.StringToHash("isDie");
     private readonly int isHit = Animator.StringToHash("isHit");
 
-    private Dictionary<int, PatternData> pattrens = new Dictionary<int, PatternData>();
     private bool isAttackComplete = false;
-
-    private AnimationClip currentPatternAnimaion;
-    private AnimationClip[] regularPatternAnimaions; 
-    private RegularMonsterSO regularMonster;
-    private RegularPatternData currentRegularPattern;
+    [Header("BossMonsterPattern_Info")]
     private BossMonsterSO bossMonster;
-    private AnimatorOverrideController overrideController;
+    private Dictionary<int, PatternData> pattrens = new Dictionary<int, PatternData>();
+    private AnimationClip currentPatternAnimaion;
 
-    private float patternChance;
+    [Header("RegularMonsterPattern_Info")]
+    private RegularMonsterSO regularMonster;
+    private RegularPatternData currentRegularPatternData;
+
+    private AnimatorOverrideController overrideController;
 
     protected override void Awake()
     {
@@ -39,7 +39,6 @@ public class MonsterAnimationController : AnimationController
             regularMonster = regularMonsterData;
             overrideController = regularMonsterData.animatorOverrideController;
             Animator.runtimeAnimatorController = overrideController;
-            SetRegularPattern(regularMonsterData);
         }
         else if(monsterData is BossMonsterSO bossMonsterData)
         {
@@ -54,15 +53,11 @@ public class MonsterAnimationController : AnimationController
         pattrens = patternData;
     }
 
-    public void SetRegularPattern(RegularMonsterSO data)
+    public void SetChagedPatternAnimation(RegularPatternData data)
     {
-        for(int i = 0; i < data.patterns.Count; i++)
-        {
-            currentRegularPattern = data.patterns[i];
-            regularPatternAnimaions = data.patterns[i].pattrenAttackClip;
-            patternChance = data.patterns[i].patternAttackChance;
-        }
+        currentRegularPatternData = data;
     }
+
 
     #region 애니메이션 파라미터
 
@@ -91,18 +86,18 @@ public class MonsterAnimationController : AnimationController
     #region RegularMonster AttackAnimations
     public void OnAttack(bool isAttack)
     {
-        AnimationClip selectClip;
+        AnimationClip attackClip;
         float randomValue = Random.Range(0f, 100f);
-        if (randomValue <=  patternChance && regularPatternAnimaions.Length > 0)
+        var randomPattern = currentRegularPatternData;
+        if (randomPattern != null )
         {
-            int randomIndex = Random.Range(0, regularPatternAnimaions.Length);
-            selectClip = regularPatternAnimaions[randomIndex];
+            attackClip = randomPattern.pattrenAttackClip;
         }
         else
         {
-            selectClip = regularMonster.defalutAttackClip;
+            attackClip = regularMonster.defalutAttackClip;
         }
-        overrideController["Monster_Attack"] = selectClip;
+        overrideController["Monster_Attack"] = attackClip;
         Animator.SetBool(Attack, isAttack);
     }
     #endregion
@@ -160,6 +155,21 @@ public class MonsterAnimationController : AnimationController
         return false;
     }
 
+    public bool CheckedDefalutAttack()
+    {
+        AnimatorClipInfo[] clipInfo = Animator.GetCurrentAnimatorClipInfo(0);
+
+        foreach (var info in clipInfo)
+        {
+            if (info.clip.name == regularMonster.defalutAttackClip.name)
+            {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
     public bool HasAttackFinished()
     {
         var state = Animator.GetCurrentAnimatorStateInfo(0).IsName("Monster_Attack");
@@ -169,5 +179,16 @@ public class MonsterAnimationController : AnimationController
             return true;
         }
         return state;
+    }
+
+    public bool HasDefaultAttackFinished()
+    {
+        float animationTime = Animator.GetCurrentAnimatorStateInfo(0).normalizedTime;
+        if (animationTime >= 1)
+        {
+            Animator.SetTrigger("Hold");
+            return true;
+        }
+        return false;
     }
 }

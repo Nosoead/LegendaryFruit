@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Events;
 
 public class AttackState :IState
 {
@@ -19,6 +20,7 @@ public class AttackState :IState
     }
     public void Enter()
     {
+        monsterController.GetRandomPattern();
         monsterController.animationController.OnAttack(true);
     }
 

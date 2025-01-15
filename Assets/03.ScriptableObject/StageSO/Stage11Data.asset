@@ -18,7 +18,7 @@ MonoBehaviour:
   canReceiveReward: 1
   monstersToSummon:
   - monsterCount: 1
-    monsterData: {fileID: 11400000, guid: 1638226de2539b842b7612822926c820, type: 2}
+    monsterData: {fileID: 11400000, guid: 65d07962a28c90b4da99d4e9cdf97ee1, type: 2}
   - monsterCount: 3
     monsterData: {fileID: 11400000, guid: b914371ac87d33141b0999c5600298bb, type: 2}
   - monsterCount: 3

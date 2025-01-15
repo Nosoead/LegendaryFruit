@@ -108,7 +108,7 @@ public class WeaponAnimationController : AnimationController
     }
     private void ChangedEffectValue(WeaponSO weaponData)
     {
-        if (weaponData.effectData == null) return;
+        if (weaponData.effectData.Count == 0) return;
         for (int i = 0; i < weaponData.effectData.Count; i++)
         {
             ParticleSetting(particle, weaponData.effectData[i]);
