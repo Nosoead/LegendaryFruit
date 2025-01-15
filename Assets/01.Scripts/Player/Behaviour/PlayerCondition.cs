@@ -147,7 +147,7 @@ public class PlayerCondition : MonoBehaviour, IDamageable
         StartTakeDamageCooldown();
 
         OnTakeHitType?.Invoke(AttributeType.Normal);
-        ParticleManager.Instance.SetParticleTypeAndPlay(transform.position, ParticleType.Heal);
+        ParticleManager.Instance.SetParticleTypeAndPlay(transform.position, ParticleType.NormalDamage);
         statManager.ApplyInstantDamage(damage);
         SoundManagers.Instance.PlaySFX(SfxType.PlayerDamaged);
     }
