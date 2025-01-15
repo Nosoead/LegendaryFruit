@@ -9,8 +9,8 @@ public class NpcUpgradeUI : UIBase
     [SerializeField] private Button cancelButton;
     [SerializeField] private Button[] countButton;
     [SerializeField] private Button[] gradeButton;
-    //[SerializeField] private Button[] upgradeButtons;
-    [SerializeField] private GameObject skill1LightImage;
+    [SerializeField] private List<GameObject> countLightImage;
+    [SerializeField] private List<GameObject> gradeLightImage;
     [SerializeField] private TextMeshProUGUI gradeText;
     [SerializeField] private TextMeshProUGUI countText;
     [SerializeField] private TextMeshProUGUI currencyText;
@@ -22,7 +22,8 @@ public class NpcUpgradeUI : UIBase
     private int gradeUpgrade;
     private int countUpgrade; //등급상태
     private int gradeProbability; //등급확률
-    private int countProbability;
+    private int countProbability; // 재화
+    private int weaponProbability; //무기
     private float currentCurrency = 1000; // saveDataContainer.currencyData.globalCurrency;
     private int countCurrency; // 업그레이드비용
     private int gradeCurrency;
@@ -30,14 +31,20 @@ public class NpcUpgradeUI : UIBase
     public override void Open()
     {
         base.Open();
-        //TODO 이제 강화된 데이터를 어디다가 넘겨줘서 보관하면될듯
+        //TODO 확률(재화열매 등급 높을 확률)
+        //TODO 10%, 20%, 30%, 40%
+        //TODO 열매갯수 최대 2개 (재화 1개, 무기 1개)
+        //TODO 재화 50% 재화 100%, 무기 50, 무기 100%
     }
+
     private void Start()
     {
         Initialize();
         GetEquipAndCurrencyData();
         SetDialogueTxt();
-        //UpdateButtonState();
+        GradeButtonState();
+        CountButtonState();
+        upgradeButton.interactable = false;
     }
 
     private void Initialize()
@@ -52,21 +59,63 @@ public class NpcUpgradeUI : UIBase
 
         for (int i = 0; i < countButton.Length; i++)
         {
-            countButton[i].onClick.AddListener(() => SelectSkill(SkillType.Count));
+            int index = i;
+            countButton[i].onClick.RemoveAllListeners();
+            countButton[i].onClick.AddListener(() => SelectSkill(index, SkillType.Count));
         }
+
         for (int i = 0; i < countButton.Length; i++)
         {
-            gradeButton[i].onClick.AddListener(() => SelectSkill(SkillType.Grade));
+            int index = i;
+            gradeButton[i].onClick.RemoveAllListeners();
+            gradeButton[i].onClick.AddListener(() => SelectSkill(index, SkillType.Grade));
         }
         //countButton.onClick.AddListener(() => SelectSkill(SkillType.Count));
         //gradeButton.onClick.AddListener(() => SelectSkill(SkillType.Grade));
     }
-    
-    private void SelectSkill(SkillType skillType)
+
+    private void SelectSkill(int buttonIndex, SkillType skillType)
     {
-        selectSkillType = skillType;
+        selectSkillType = SkillType.None;
+        upgradeButton.interactable = false;
+
+        if (skillType == SkillType.Count)
+        {
+            if (currentCurrency >= countCurrency)
+            {
+                selectSkillType = SkillType.Count;
+                SetCurrncy(countUpgrade, SkillType.Count);
+            }
+            else
+            {
+                selectSkillType = SkillType.None;
+            }
+        }
+        else if (skillType == SkillType.Grade)
+        {
+            if (currentCurrency >= gradeCurrency)
+            {
+                selectSkillType = SkillType.Grade;
+                SetCurrncy(countUpgrade, SkillType.Grade);
+            }
+            else
+            {
+                selectSkillType = SkillType.None;
+            }
+        }
+
+        if (selectSkillType != SkillType.None && currentCurrency >= requiredCurrency)
+        {
+            upgradeButton.interactable = true;
+        }
+        else
+        {
+            upgradeButton.interactable = false;
+        }
+
         SetDialogueTxt();
     }
+
 
     private void OnUpgradeBtn()
     {
@@ -75,12 +124,22 @@ public class NpcUpgradeUI : UIBase
             GradeUpgrade();
         }
 
-        if (selectSkillType == SkillType.Count && currentCurrency >= countCurrency)
+        else if (selectSkillType == SkillType.Count && currentCurrency >= countCurrency)
         {
             CountUpgrade();
         }
+        else
+        {
+            return;
+        }
+
         SetDialogueTxt();
-        //UpdateButtonState();
+        /*GradeButtonState();
+        CountButtonState();*/
+        Debug.Log(selectSkillType);
+        SetCurrncy(999, SkillType.None);
+        selectSkillType = SkillType.None;
+        upgradeButton.interactable = false;
     }
 
     private void GradeUpgrade()
@@ -92,7 +151,9 @@ public class NpcUpgradeUI : UIBase
             {
                 currentCurrency -= gradeCurrency;
                 gradeUpgrade++;
-                gradeProbability += 20;
+                gradeProbability += 10;
+                GradeButtonState();
+                GradeActiveLight(gradeUpgrade);
             }
         }
     }
@@ -107,6 +168,8 @@ public class NpcUpgradeUI : UIBase
                 currentCurrency -= countCurrency;
                 countUpgrade++;
                 countProbability += 20;
+                CountButtonState();
+                CountActiveLight(countUpgrade);
             }
         }
     }
@@ -132,6 +195,9 @@ public class NpcUpgradeUI : UIBase
             case 3:
                 requiredCurrency = 500;
                 break;
+            case 4:
+                requiredCurrency = 9999;
+                break;
         }
 
         if (skillType == SkillType.Grade)
@@ -143,7 +209,39 @@ public class NpcUpgradeUI : UIBase
         {
             countCurrency = requiredCurrency;
         }
+
+        if (currentCurrency >= requiredCurrency)
+        {
+            upgradeButton.interactable = true;
+        }
+        else
+        {
+            upgradeButton.interactable = false;
+        }
     }
+
+    private void CountActiveLight(int upgradeLevel)
+    {
+        for (int i = 0; i < countLightImage.Count; i++)
+        {
+            if (i == upgradeLevel - 1)
+            {
+                countLightImage[i].SetActive(true);
+            }
+        }
+    }
+
+    private void GradeActiveLight(int upgradeLevel)
+    {
+        for (int i = 0; i < gradeLightImage.Count; i++)
+        {
+            if (i == upgradeLevel - 1)
+            {
+                gradeLightImage[i].SetActive(true);
+            }
+        }
+    }
+
     private void GetEquipAndCurrencyData()
     {
         if (GameManager.Instance.player.TryGetComponent(out CurrencySystem currency))
@@ -151,6 +249,7 @@ public class NpcUpgradeUI : UIBase
             currencySystem = currency;
         }
     }
+
     private void SetDialogueTxt()
     {
         if (selectSkillType == SkillType.Count) SetCurrncy(countUpgrade, SkillType.Count);
@@ -163,29 +262,57 @@ public class NpcUpgradeUI : UIBase
         gradeText.text = ($"좋은 열매가 나올수 있는 확률을 올립니다. \n" +
                           $"등급 확률 : {countProbability}% \t{countUpgrade}/4");
     }
-    public void GetUpgradeStats(out int gradeUpgrade,out int countUpgrade,out int gradeProbability,out int countProbability)
+
+    public void GetUpgradeStats(out int gradeUpgrade, out int countUpgrade, out int gradeProbability,
+        out int countProbability)
     {
         gradeUpgrade = this.gradeUpgrade;
         countUpgrade = this.countUpgrade;
         gradeProbability = this.gradeProbability;
         countProbability = this.countProbability;
     }
-    /*private void UpdateButtonState()
+
+    private void CountButtonState()
     {
-        for (int i = 0; i < upgradeButtons.Length; i++)
+        for (int i = 0; i < countButton.Length; i++)
         {
-            if (i == gradeUpgrade)
+            var color = countButton[i].colors;
+            color.normalColor = Color.white;
+            countButton[i].colors = color;
+            if (i > countUpgrade || currentCurrency < requiredCurrency)
             {
-                upgradeButtons[i].interactable = true;
-            }
-            else if (i == countUpgrade)
-            {
-                upgradeButtons[i].interactable = true;
+                color.normalColor = new Color32(129, 129, 129, 158);
+                countButton[i].colors = color;
+                countButton[i].onClick.RemoveAllListeners();
             }
             else
             {
-                upgradeButtons[i].interactable = false;
+                int index = i;
+                countButton[i].onClick.RemoveAllListeners();
+                countButton[i].onClick.AddListener(() => SelectSkill(index, SkillType.Count));
             }
         }
-    }*/
+    }
+
+    private void GradeButtonState()
+    {
+        for (int i = 0; i < gradeButton.Length; i++)
+        {
+            var color = gradeButton[i].colors;
+            color.normalColor = Color.white;
+            gradeButton[i].colors = color;
+            if (i > gradeUpgrade || currentCurrency < requiredCurrency)
+            {
+               color.normalColor = new Color32(129, 129, 129, 158);
+               gradeButton[i].colors = color;
+                gradeButton[i].onClick.RemoveAllListeners();
+            }
+            else
+            {
+                int index = i;
+                gradeButton[i].onClick.RemoveAllListeners();
+                gradeButton[i].onClick.AddListener(() => SelectSkill(index, SkillType.Grade));
+            }
+        }
+    }
 }
