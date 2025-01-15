@@ -10,16 +10,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 65640f37ba5585c48a689b2bfe301972, type: 3}
-  m_Name: Stage2Data
+  m_Name: Stage11Data
   m_EditorClassIdentifier: 
-  stageID: 11031
+  stageID: 11021
   isCombatStage: 1
   isBossStage: 0
   canReceiveReward: 1
   monstersToSummon:
   - monsterCount: 1
     monsterData: {fileID: 11400000, guid: 1638226de2539b842b7612822926c820, type: 2}
-  - monsterCount: 2
-    monsterData: {fileID: 11400000, guid: dd4ea5270ac4a6448bdd99427ea32338, type: 2}
+  - monsterCount: 3
+    monsterData: {fileID: 11400000, guid: b914371ac87d33141b0999c5600298bb, type: 2}
   - monsterCount: 3
     monsterData: {fileID: 11400000, guid: 6dc3ac0b135af1d4782bd4924cf639bc, type: 2}
+  - monsterCount: 1
+    monsterData: {fileID: 11400000, guid: 8e62fae62a3325a4fb595cb4c779a6b1, type: 2}

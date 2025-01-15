@@ -34,8 +34,8 @@ MonoBehaviour:
       m_ConstantMin: 0
       m_ConstantMax: 0
     particleSize: 8
-    particleLifeTime: 3
+    particleLifeTime: 0.5
     textureSeetAnimtaionX: 4
     textureSeetAnimtaionY: 1
     isTextureSeetAntimationActive: 1
-    isOtherModuleActive: 0
+    isSizeOverTimeActive: 0

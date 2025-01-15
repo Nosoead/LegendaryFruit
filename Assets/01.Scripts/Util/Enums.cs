@@ -30,8 +30,8 @@ public enum StageType
 {
     StageLobby = 11001,
     Stage0 = 11011,
-    Stage1 = 11021,
-    Stage2 = 11031,
+    Stage11 = 11021,
+    Stage21 = 11031,
     StageShelter = 11041,
     StageBoss = 11051,
 }

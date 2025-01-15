@@ -2286,8 +2286,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ed4963ea5a03064fb602961a6f32400, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pressFCanvas: {fileID: 8017091436963198153}
   spawnPositionsRoot: {fileID: 7428339024129224202}
+  pressFCanvas: {fileID: 8017091436963198153}
   weaponData: {fileID: 0}
   NPCSpotlight: {fileID: 0}
 --- !u!1 &2141289394315641261
@@ -18530,7 +18530,7 @@ Transform:
   m_GameObject: {fileID: 5882681937877751187}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: -0.05, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -22815,7 +22815,7 @@ Transform:
   m_GameObject: {fileID: 9072995996215756872}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: -1.55, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
