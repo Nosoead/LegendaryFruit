@@ -166,6 +166,7 @@ public class BossMonsterController : MonoBehaviour
     }
     public void Attack()
     {
+        if (statManager.isDead) return;
         Vector2 monsterPosition = transform.position;
         Vector2 boxPosition = monsterPosition + Vector2.right * attackDistance * (1f * lookDirection)
                         + Vector2.down * 1.5f;
@@ -197,6 +198,7 @@ public class BossMonsterController : MonoBehaviour
 
     public void OnPattrenAttack(GameObject player)
     {
+        if (statManager.isDead) return;
         if(player == target)
         {
             monsterAttributeLogics.ApplyAttackLogic(player.gameObject, patternDamage, attributeValue, attributeRateTime, attributeStack, lookDirection);

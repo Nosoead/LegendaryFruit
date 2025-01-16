@@ -15,7 +15,7 @@ MonoBehaviour:
   playerStatData:
     maxHealth: 100
     currentHealth: 100
-    currentAttackPower: 50
+    currentAttackPower: 8
     currentDefense: 5
     attackSpeed: 10
     moveSpeed: 7
