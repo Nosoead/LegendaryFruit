@@ -107,5 +107,6 @@ public enum ItemType
 public enum SkillType
 {
     Count = 1,
-    Grade
+    Grade,
+    None
 }
