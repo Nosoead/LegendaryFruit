@@ -18,7 +18,7 @@ MonoBehaviour:
   attackPower: 0
   type: 1
   gradeType: 0
-  eatValue: 13
+  eatValue: 1
   attributeAttackValue: 0
   attributeAttackRateTime: 1
   arrtibuteStatck: 0

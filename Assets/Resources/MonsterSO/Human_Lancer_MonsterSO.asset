@@ -24,7 +24,7 @@ MonoBehaviour:
   attributeValue: 0
   attributeRateTime: 0
   attributeStack: 0
-  inGameMoney: 200
+  inGameMoney: 9
   monsterRagnedAttackData: []
   sprite: {fileID: 0}
   animatorOverrideController: {fileID: 22100000, guid: fddc411bb70e7e44d9bdab0e38816d3d, type: 2}

@@ -24,7 +24,7 @@ MonoBehaviour:
   attributeValue: 0
   attributeRateTime: 1
   attributeStack: 0
-  inGameMoney: 130
+  inGameMoney: 5
   monsterRagnedAttackData:
   - projectileType: 1
     projectTileSprite: {fileID: 21300000, guid: 79b2e76784e71eb46a9667ebb24fc284, type: 3}
