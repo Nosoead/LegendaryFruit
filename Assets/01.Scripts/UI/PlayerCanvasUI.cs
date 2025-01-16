@@ -1,3 +1,4 @@
+using DG.Tweening;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
@@ -64,7 +65,7 @@ public class PlayerCanvasUI : UIBase, IPersistentUI
 
     private void OnHealthUpdateEvent(float healthFillAmount, float currentHealth, float maxHealth)
     {
-        healthBar.fillAmount = healthFillAmount;
+        healthBar.DOFillAmount(healthFillAmount, 0.1f).SetEase(Ease.OutQuad);
         currentHealthText.text = $"{currentHealth}/{maxHealth}";
     }
 

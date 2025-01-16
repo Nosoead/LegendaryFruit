@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;
+using DG.Tweening;
 
 public class MonsterHPUI : UIBase
 {
@@ -40,6 +41,6 @@ public class MonsterHPUI : UIBase
       monsterHPUI.SetActive(isOpen);
     }
     
-    healthBar.fillAmount = healthData;
+    healthBar.DOFillAmount(healthData, 0.2f).SetEase(Ease.OutQuad);
   }
 }

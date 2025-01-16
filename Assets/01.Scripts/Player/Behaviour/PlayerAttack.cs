@@ -103,7 +103,7 @@ public class PlayerAttack : MonoBehaviour, IProjectTileShooter
 
     private IEnumerator attackRoutine()
     {
-        SfxType randomSfx = (Random.Range(0,2) == 0) ? SfxType.PlayerAttack1 : SfxType.PlayerAttack2;
+        SfxType randomSfx = (Random.Range(0, 2) == 0) ? SfxType.PlayerAttack1 : SfxType.PlayerAttack2;
         SoundManagers.Instance.PlaySFX(randomSfx);
         isAttacking = true;
         attackLookDirection = lookDirection;//기즈모
@@ -123,12 +123,23 @@ public class PlayerAttack : MonoBehaviour, IProjectTileShooter
         else
         {
             foreach (Collider2D collider in monster)
-            attributeLogic.ApplyAttackLogic(collider.gameObject, totalAttackPower, weaponData.attributeAttackValue, weaponData.attributeAttackRateTime, weaponData.arrtibuteStatck, lookDirection);
+            {
+                float randomAttackPower = GetRandomDamageInRange(totalAttackPower);
+                attributeLogic.ApplyAttackLogic(collider.gameObject, randomAttackPower, weaponData.attributeAttackValue, weaponData.attributeAttackRateTime, weaponData.arrtibuteStatck, lookDirection);
+            }
             yield return attackRateTime;
         }
         isAttacking = false;
         OnAttackingEvent?.Invoke(isAttacking);
     }
+
+    private float GetRandomDamageInRange(float totalAttackPower)
+    {
+        float randomNum = Random.Range(0.8f, 1.21f);
+        int randomint = (int)(randomNum*totalAttackPower);
+        return randomint;
+    }
+
     private void OnEquipWeaponChanged(WeaponSO weaponData)
     {
         this.weaponData = weaponData;
@@ -147,8 +158,8 @@ public class PlayerAttack : MonoBehaviour, IProjectTileShooter
 
     private void CachedRagnedAttackData()
     {
-        if(weaponData.rangedAttackData == null) return;
-        for(int i = 0; i < weaponData.rangedAttackData.Count; i++)
+        if (weaponData.rangedAttackData == null) return;
+        for (int i = 0; i < weaponData.rangedAttackData.Count; i++)
         {
             rangedAttackData = weaponData.rangedAttackData[i];
         }

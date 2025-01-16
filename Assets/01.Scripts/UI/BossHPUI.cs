@@ -2,6 +2,7 @@ using System;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using DG.Tweening;
 
 public class BossHPUI : UIBase
 {
@@ -33,7 +34,7 @@ public class BossHPUI : UIBase
     
     private void OnShowHealthbar(float healthData,bool isOpen)
     {
-        healthBar.fillAmount = healthData;
+        healthBar.DOFillAmount(healthData, 0.2f).SetEase(Ease.OutQuad);
     }
 
 }
