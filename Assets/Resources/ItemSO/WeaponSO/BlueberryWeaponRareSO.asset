@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f30345d6f773874da4088be7b3c7755, type: 3}
   m_Name: BlueberryWeaponRareSO
   m_EditorClassIdentifier: 
-  ID: 20301
+  ID: 203001
   weaponName: "\uC870\uAE08 \uB354 \uCEE4\uC9C4 \uBE14\uB8E8\uBCA0\uB9AC"
   description: "\uB450\uBC30\uB85C \uB9DB\uC788\uB2E4"
   attackPower: 0

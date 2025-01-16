@@ -29,12 +29,17 @@ public class MonsterHPUI : UIBase
   {
     monsterStatManager.OnShowHealthBarEvent -= OnShowHealthbar;
   }
-  private void OnShowHealthbar(float healthData)
+  private void OnShowHealthbar(float healthData,bool isOpen)
   {
-    if (!monsterHPUI.activeSelf)
+    if (!monsterHPUI.activeSelf && isOpen)
     {
-      monsterHPUI.SetActive(true);
+      monsterHPUI.SetActive(isOpen);
     }
+    else if (!isOpen)
+    {
+      monsterHPUI.SetActive(isOpen);
+    }
+    
     healthBar.fillAmount = healthData;
   }
 }

@@ -116,9 +116,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   statManager: {fileID: 2002901818823872495, guid: 8c23b9b1c26de5548b4eb929ec3dc89a, type: 3}
-  bossNameText: {fileID: 0}
-  bossImage: {fileID: 0}
-  healthBar: {fileID: 0}
+  healthBar: {fileID: 4407572447793898054}
 --- !u!1 &2914362488081140759
 GameObject:
   m_ObjectHideFlags: 0

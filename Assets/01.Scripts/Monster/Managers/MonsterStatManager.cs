@@ -10,7 +10,7 @@ public class MonsterStatManager : MonoBehaviour
     public event UnityAction<float, AttributeType> DamageTakenEvent;
     public event UnityAction<RangedAttackData> OnRangedAttackDataEvent;
     public event UnityAction<List<RegularPatternData>> OnRegularPatternDataEvent;
-    public UnityAction<float> OnShowHealthBarEvent;
+    public UnityAction<float, bool> OnShowHealthBarEvent;
     private MonsterAnimationController monsterAnimationController;
     private MonsterCondition condition;
     private PooledMonster pooledMonster;
@@ -21,8 +21,7 @@ public class MonsterStatManager : MonoBehaviour
     private CurrencySystem currencySystem;
     private float inGameCurrency;
 
-    [Header("PattrenStat")]
-    private Dictionary<int, PatternData> pattrens = new Dictionary<int, PatternData>();
+    [Header("PattrenStat")] private Dictionary<int, PatternData> pattrens = new Dictionary<int, PatternData>();
     private RegularPatternData regularPatternData;
     private PatternData currentPattrenData;
     private bool isOnCooldown = false;
@@ -39,18 +38,22 @@ public class MonsterStatManager : MonoBehaviour
         {
             monsterAnimationController = GetComponent<MonsterAnimationController>();
         }
+
         if (pooledMonster == null)
         {
             pooledMonster = GetComponent<PooledMonster>();
         }
+
         if (pooledBossMonster == null)
         {
             pooledBossMonster = GetComponentInParent<PooledBossMonster>();
         }
+
         if (condition == null)
         {
             condition = GetComponent<MonsterCondition>();
         }
+
         if (currencySystem == null)
         {
             if (GameManager.Instance.player.gameObject.TryGetComponent(out CurrencySystem currencySys))
@@ -58,6 +61,7 @@ public class MonsterStatManager : MonoBehaviour
                 currencySystem = currencySys;
             }
         }
+
         stat = new MonsterStat();
         statHandler = new StatHandler();
     }
@@ -86,13 +90,14 @@ public class MonsterStatManager : MonoBehaviour
         if (data is RegularMonsterSO regularMonsterData)
         {
             SetRegularPatternData(regularMonsterData);
-            if (regularMonsterData.monsterRagnedAttackData.Count > 0 )
+            if (regularMonsterData.monsterRagnedAttackData.Count > 0)
             {
                 OnRangedAttackDataEvent?.Invoke(rangedAttackData);
                 stat.InitStat(regularMonsterData);
                 inGameCurrency = data.inGameMoney;
                 return;
             }
+
             stat.InitStat(regularMonsterData);
         }
         else if (data is BossMonsterSO bossMonsterData)
@@ -104,8 +109,10 @@ public class MonsterStatManager : MonoBehaviour
                 inGameCurrency = data.inGameMoney;
                 return;
             }
+
             stat.InitStat(bossMonsterData);
         }
+
         inGameCurrency = data.inGameMoney;
     }
 
@@ -121,15 +128,24 @@ public class MonsterStatManager : MonoBehaviour
 
     private void OnHealthData(float currentHealth, float maxHealth)
     {
-        OnShowHealthBarEvent?.Invoke(currentHealth/maxHealth);
+        if (currentHealth > 0)
+        {
+            OnShowHealthBarEvent?.Invoke(currentHealth / maxHealth,true);
+        }
+        else
+        {
+            OnShowHealthBarEvent?.Invoke(currentHealth / maxHealth,false);
+        }
     }
+
     #region Pattren
+
     public void SetPattrenStat(Dictionary<int, PatternData> pattrenData)
     {
         pattrens = pattrenData;
     }
 
-    private void OnPattrenToHealth(float currentHealth,float maxHealth)
+    private void OnPattrenToHealth(float currentHealth, float maxHealth)
     {
         if (currentHealth <= 200 && maxHealth >= 200)
         {
@@ -141,6 +157,7 @@ public class MonsterStatManager : MonoBehaviour
             }
         }
     }
+
     private void StartCooldown()
     {
         isOnCooldown = true;
@@ -162,8 +179,10 @@ public class MonsterStatManager : MonoBehaviour
             currentPattrenData = pattern;
             return pattern;
         }
+
         return null;
     }
+
     private void CachedRanagedAttackData(MonsterSO data)
     {
         if (data.monsterRagnedAttackData.Count == 0) return;
@@ -182,6 +201,7 @@ public class MonsterStatManager : MonoBehaviour
     #endregion
 
     #region /ApplystatMethod
+
     public void ApplyInstantDamage(float damage) // stat 데미지
     {
         float result = statHandler.Substract(stat.GetStatValue("CurrentHealth"), damage);
@@ -212,6 +232,7 @@ public class MonsterStatManager : MonoBehaviour
         float result = statHandler.Add(stat.GetStatValue(statKey), eatValue);
         stat.UpdateStat(statKey, result);
     }
+
     #endregion
 
     private void OnMonsterDie()
@@ -222,6 +243,7 @@ public class MonsterStatManager : MonoBehaviour
             SoundManagers.Instance.PlaySFX(SfxType.MonsterDeath);
             currencySystem.GetCurrency((int)inGameCurrency, isGlobalCurrency: false);
         }
+
         isDead = true;
         condition.StopAllCoroutines();
         gameObject.layer = LayerMask.NameToLayer("Default");
@@ -239,6 +261,7 @@ public class MonsterStatManager : MonoBehaviour
         {
             pooledMonster.ObjectPool.Release(pooledMonster);
         }
+
         gameObject.layer = LayerMask.NameToLayer("Monster");
         isDead = false;
     }
@@ -247,6 +270,4 @@ public class MonsterStatManager : MonoBehaviour
     {
         return stat;
     }
-
-
 }

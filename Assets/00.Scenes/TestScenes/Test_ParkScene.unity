@@ -62273,6 +62273,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: BossHPUI
       objectReference: {fileID: 0}
+    - target: {fileID: 1790788264887223721, guid: 6c58beee622ccf04a9ccf32c15efe063, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3857562314299939742, guid: 6c58beee622ccf04a9ccf32c15efe063, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -62353,11 +62357,34 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4407572447793898054, guid: 6c58beee622ccf04a9ccf32c15efe063, type: 3}
+      propertyPath: m_FillAmount
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5797275133378135292, guid: 6c58beee622ccf04a9ccf32c15efe063, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6523631363787453253, guid: 6c58beee622ccf04a9ccf32c15efe063, type: 3}
+      propertyPath: healthBar
+      value: 
+      objectReference: {fileID: 5189340778634212074}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6c58beee622ccf04a9ccf32c15efe063, type: 3}
+--- !u!114 &5189340778634212074 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4407572447793898054, guid: 6c58beee622ccf04a9ccf32c15efe063, type: 3}
+  m_PrefabInstance: {fileID: 5189340778634212073}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!61 &5436900806236377445
 BoxCollider2D:
   m_ObjectHideFlags: 0
