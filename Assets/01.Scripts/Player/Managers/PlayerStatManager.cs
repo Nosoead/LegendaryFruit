@@ -8,6 +8,7 @@ public class PlayerStatManager : MonoBehaviour
     public UnityAction<string, float> OnSubscribeToStatUpdateEvent;
     public UnityAction<float, float, float> OnHealthDataToUIEvent;
     public event UnityAction<float, AttributeType> DamageTakenEvent;
+    public event UnityAction<float> OnHealEvent;
     public UnityAction OnStopCoroutine;
     [SerializeField] private PlayerSO playerData;
     [SerializeField] private PlayerInteraction playerInteraction;
@@ -129,6 +130,7 @@ public class PlayerStatManager : MonoBehaviour
     {
         ParticleManager.Instance.SetParticleTypeAndPlay(transform.position, ParticleType.Heal);
         //TODO 회복량 표시
+        OnHealEvent?.Invoke(heal);  
         float result = statHandler.Add(stat.GetStatValue("CurrentHealth"), heal, stat.GetStatValue("MaxHealth"));
         stat.UpdateCurrentHealth(result);
     }

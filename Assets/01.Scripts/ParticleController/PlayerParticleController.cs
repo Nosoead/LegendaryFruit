@@ -22,9 +22,11 @@ public class PlayerParticleController : ParticleController
     private void OnEnable()
     {
         playerStatManager.DamageTakenEvent += OnDamageReceived;
+        playerStatManager.OnHealEvent += OnDamageReceived;
     }
     private void OnDisable()
     {
         playerStatManager.DamageTakenEvent -= OnDamageReceived;
+        playerStatManager.OnHealEvent -= OnDamageReceived;
     }
 }

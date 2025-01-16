@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Threading;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.Playables;
 using UnityEngine.Pool;
 
 public class PooledProjectile : MonoBehaviour, ISetPooledObject<PooledProjectile>
@@ -91,6 +92,11 @@ public class PooledProjectile : MonoBehaviour, ISetPooledObject<PooledProjectile
         {
             OnStartMovingEnvet?.Invoke(currentAttributeType, currentTrailMaterial);
             transform.position += dir * projectTileSpeed * Time.deltaTime;
+            RaycastHit2D hit = Physics2D.Raycast(this.transform.position, dir, 0.5f, LayerMask.GetMask("Ground"));
+            if (hit.collider != null)
+            {
+                break;
+            }
             yield return null;
         }
 
@@ -116,6 +122,11 @@ public class PooledProjectile : MonoBehaviour, ISetPooledObject<PooledProjectile
             ResetState();
             ProjectTileRelease();
         }
+        if(collision.gameObject.layer == LayerMask.NameToLayer("Ground"))
+        {
+            ResetState();
+            ProjectTileRelease();
+        }
     }
 
     private void ApplyDamageByAttribute( IDamageable obj, float damage, float attirbuteValue, float attributeRateTime, float attributeStack)
@@ -133,7 +144,6 @@ public class PooledProjectile : MonoBehaviour, ISetPooledObject<PooledProjectile
                 break;
             case AttributeType.Knockback:
                 obj.Knockback(damage, attirbuteValue, attributeRateTime,lookDir);
-                lookDir = 1;
                 break;
         }
     }

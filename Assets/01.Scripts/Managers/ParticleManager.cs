@@ -10,6 +10,8 @@ public class ParticleManager : Singleton<ParticleManager>
 
     private Dictionary<ParticleType, ParticleSO> particleDictionary = new Dictionary<ParticleType, ParticleSO>();
 
+    private float lookDir;
+
     protected override void Awake()
     {
         base.Awake();
@@ -28,6 +30,7 @@ public class ParticleManager : Singleton<ParticleManager>
         pooledParticle = PoolManager.Instance.GetObjectFromPool<PooledParticle>(PoolType.PooledParticle);
     }
 
+
     private void SetParticleType()
     {
         var particeData = ResourceManager.Instance.LoadAllResources<ParticleSO>("Particle");
@@ -37,6 +40,10 @@ public class ParticleManager : Singleton<ParticleManager>
         }
     }
 
+    public void SetParticleFlip(float dir)
+    {
+        lookDir = dir;
+    }
     public void SetParticleTypeAndPlay(Vector3 position, ParticleType type)
     {
         PooledParticle particle =  pooledParticle.Get();
@@ -45,6 +52,7 @@ public class ParticleManager : Singleton<ParticleManager>
             var particleType = particleDictionary[type];
             particle.SetHelpaer(particleHelper);
             particle.SetParticeType(particleType);
+            particle.CheckFlip(lookDir);
             particle.gameObject.transform.position = position;
             particle.ParticlePlay();
         }

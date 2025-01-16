@@ -5,6 +5,7 @@ using UnityEngine;
 public class MonsterParticleController : ParticleController
 {
     [SerializeField] private MonsterStatManager monsterStatManager;
+    [SerializeField] private ParticleSystem dieParticle;
 
     private void Awake()
     {
@@ -15,10 +16,12 @@ public class MonsterParticleController : ParticleController
     private void OnEnable()
     {
         monsterStatManager.DamageTakenEvent += OnDamageReceived;
+        //monsterStatManager.OnDieEvent += DieParticlePlay;
     }
     private void OnDisable()
     {
         monsterStatManager.DamageTakenEvent -= OnDamageReceived;
+        //monsterStatManager.OnDieEvent -= DieParticlePlay;
     }
 
     private void EnsureComponents()
@@ -31,5 +34,10 @@ public class MonsterParticleController : ParticleController
         {
             particle = GetComponentInChildren<ParticleSystem>();
         }
+    }
+
+    private void DieParticlePlay()
+    {     
+        dieParticle.Play();
     }
 }

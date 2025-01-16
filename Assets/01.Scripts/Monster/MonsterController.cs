@@ -292,7 +292,7 @@ public class MonsterController : MonoBehaviour, IProjectTileShooter
         {
             ApplyPatternAttackLogic(player.gameObject, randomPatternAttack);          
         }
-        else if(animationController.CheckedDefalutAttack())
+        else
         {
             monsterAttributeLogics.ApplyAttackLogic(player.gameObject, attackPower, attributeValue, attributeRateTime, attributeStack, lookDirection);
         }

@@ -15,6 +15,8 @@ public class PooledParticle : MonoBehaviour, ISetPooledObject<PooledParticle>
     private ParticleHelper particleHelper;
     private Coroutine particleCoroutine;
 
+    private float lookDir;
+
     public IObjectPool<PooledParticle> ObjectPool
     { get => objectPool; set => objectPool = value; }
 
@@ -47,6 +49,12 @@ public class PooledParticle : MonoBehaviour, ISetPooledObject<PooledParticle>
             }
         }
         ParticleTypeToSetting();
+    }
+
+    public float CheckFlip(float look)
+    {
+        lookDir = look;
+        return lookDir;
     }
 
     private void ParticleTypeToSetting()
@@ -84,6 +92,8 @@ public class PooledParticle : MonoBehaviour, ISetPooledObject<PooledParticle>
                 currentParticleData.particleData[i].textureSeetAnimtaionY, currentParticleData.particleData[i].isTextureSeetAntimationActive);
 
             particleHelper.SetSizeLifeOverTime(system[i], currentParticleData.particleData[i].isSizeOverTimeActive);
+
+            particleHelper.SetRedererFlip(particleSystemRenderer[i], lookDir);
         }
     }
 

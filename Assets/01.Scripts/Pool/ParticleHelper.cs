@@ -42,4 +42,19 @@ public class ParticleHelper
         veloCityOverLifeTime.x = linearVelocityX;
         veloCityOverLifeTime.y = linearVelocityY;
     }
+
+    public void SetRedererFlip(ParticleSystemRenderer renderer, float lookdir)
+    {
+        Vector3 particleRendererFlip = renderer.flip;
+
+        if (lookdir == -1)
+        {
+            particleRendererFlip.x = 1;    
+        }
+        else if(lookdir ==  1)
+        {
+            particleRendererFlip.x = 0;
+        }
+        renderer.flip = particleRendererFlip;
+    }
 }

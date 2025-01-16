@@ -64,6 +64,7 @@ public class MonsterCondition : MonoBehaviour, IDamageable
         for (int i = 0; i < attributeStack; i++)
         {
             OnTakeHitType?.Invoke(AttributeType.Burn);
+            ParticleManager.Instance.SetParticleTypeAndPlay(transform.position, ParticleType.BurnDamage);
             statManager.ApplyInstantDamage(attributeValue);
             yield return burnWaitTime;
         }
@@ -103,6 +104,7 @@ public class MonsterCondition : MonoBehaviour, IDamageable
         controller.OnTakeHit();
         OnTakeHitType?.Invoke(AttributeType.Knockback);
         statManager.ApplyInstantDamage(damage);
+        ParticleManager.Instance.SetParticleFlip(lookDirection);
         ParticleManager.Instance.SetParticleTypeAndPlay(transform.position, ParticleType.KnockBackDamage);
         if (coKnockback != null && isKnockback)
         {

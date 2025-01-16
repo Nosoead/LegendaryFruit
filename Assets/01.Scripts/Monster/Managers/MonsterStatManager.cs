@@ -203,12 +203,11 @@ public class MonsterStatManager : MonoBehaviour
         condition.StopAllCoroutines();
         gameObject.layer = LayerMask.NameToLayer("Default");
         monsterAnimationController.OnDie();
-        Invoke("MonsterDieOff", 1.0f);
+        Invoke("MonsterDieOff", 1.5f);
     }
 
     private void MonsterDieOff()
     {
-        ParticleManager.Instance.SetParticleTypeAndPlay(transform.position, ParticleType.DieCurreny);
         if (pooledBossMonster != null)
         {
             pooledBossMonster.ObjectPool.Release(pooledBossMonster);
