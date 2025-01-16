@@ -40,19 +40,20 @@ public class ParticleManager : Singleton<ParticleManager>
         }
     }
 
-    public void SetParticleFlip(float dir)
+    public void SetParticleLookDirection(float dir)
     {
         lookDir = dir;
     }
+
     public void SetParticleTypeAndPlay(Vector3 position, ParticleType type)
     {
         PooledParticle particle =  pooledParticle.Get();
         if(particleDictionary.ContainsKey(type))
         {
             var particleType = particleDictionary[type];
+            particle.SetLookDirection(lookDir);
             particle.SetHelpaer(particleHelper);
             particle.SetParticeType(particleType);
-            particle.CheckFlip(lookDir);
             particle.gameObject.transform.position = position;
             particle.ParticlePlay();
         }

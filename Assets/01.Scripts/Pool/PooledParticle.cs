@@ -30,6 +30,11 @@ public class PooledParticle : MonoBehaviour, ISetPooledObject<PooledParticle>
         particleHelper = helper;    
     }
 
+    public void SetLookDirection(float dir)
+    {
+        lookDir = dir;
+    }
+
     public void SetParticeType(ParticleSO data)
     {
         currentParticleData = data;
@@ -49,12 +54,6 @@ public class PooledParticle : MonoBehaviour, ISetPooledObject<PooledParticle>
             }
         }
         ParticleTypeToSetting();
-    }
-
-    public float CheckFlip(float look)
-    {
-        lookDir = look;
-        return lookDir;
     }
 
     private void ParticleTypeToSetting()
