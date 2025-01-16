@@ -7,12 +7,14 @@
     <list default="true" id="fd1b27b5-9a48-464d-8c89-0ee285d61d98" name="변경" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.LegendaryFruit/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.LegendaryFruit/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/00.Scenes/TestScenes/Test_ParkScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/00.Scenes/TestScenes/Test_ParkScene.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/01.Scripts/UI/NpcUpgradeUI.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/01.Scripts/UI/NpcUpgradeUI.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/05.Animations/MonsterAnimations/RegularAnimations/Skeleton/SkeletonArcher/SkeletonArcher_Controller.overrideController" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/05.Animations/MonsterAnimations/RegularAnimations/Skeleton/SkeletonArcher/SkeletonArcher_Controller.overrideController" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/99.UnityAssets/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/99.UnityAssets/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01.Scripts/Monster/Managers/MonsterStatManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/01.Scripts/Monster/Managers/MonsterStatManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01.Scripts/Monster/MonsterController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/01.Scripts/Monster/MonsterController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01.Scripts/Monster/MonsterStat.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/01.Scripts/Monster/MonsterStat.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01.Scripts/UI/MonsterHPUI.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/01.Scripts/UI/MonsterHPUI.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/03.ScriptableObject/PlayerSO/PlayerSO.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/03.ScriptableObject/PlayerSO/PlayerSO.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/04.Materials/Textures/MonsterImage/NumberingMaterial/Number_Texture_Monster.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/04.Materials/Textures/MonsterImage/NumberingMaterial/Number_Texture_Monster.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/05.Animations/MonsterAnimations/RegularAnimations/Orcs/Epic_Orc/EpicOrc_Controller.overrideController" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/05.Animations/MonsterAnimations/RegularAnimations/Orcs/Epic_Orc/EpicOrc_Controller.overrideController" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Resources/Pool/PooledMonster.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Pool/PooledMonster.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/UI/HPBar.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/UI/HPBar.prefab.meta" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -165,7 +167,7 @@
       <workItem from="1736468289997" duration="889000" />
       <workItem from="1736728308631" duration="4689000" />
       <workItem from="1736814048271" duration="12582000" />
-      <workItem from="1736986045988" duration="18657000" />
+      <workItem from="1736986045988" duration="20960000" />
     </task>
     <servers />
   </component>

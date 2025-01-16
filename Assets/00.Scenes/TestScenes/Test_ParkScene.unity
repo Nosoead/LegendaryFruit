@@ -30397,6 +30397,7 @@ MonoBehaviour:
   pressFCanvas: {fileID: 534308240}
   barricadeImage: {fileID: 0}
   stage: {fileID: 1775395363}
+  isCurrencyPotal: 0
 --- !u!4 &995760208
 Transform:
   m_ObjectHideFlags: 0
@@ -30723,6 +30724,7 @@ MonoBehaviour:
   pressFCanvas: {fileID: 1745271586}
   barricadeImage: {fileID: 0}
   stage: {fileID: 1775395363}
+  isCurrencyPotal: 0
 --- !u!4 &1121620296
 Transform:
   m_ObjectHideFlags: 0

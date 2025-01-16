@@ -7,7 +7,7 @@ public class MonsterStat : Stat
     public UnityAction<string, float> OnStatUpdated;
     public UnityAction OnMonsterDie;
     private Dictionary<string, float> stats = new Dictionary<string, float>();
-    public UnityAction<float,float> OnHealthChanged;
+    public UnityAction<float, float> OnHealthChanged;
 
     public override void InitStat(GameSO gameData)
     {
@@ -15,8 +15,8 @@ public class MonsterStat : Stat
         {
             stats["MaxHealth"] = monsterData.maxHealth;
             stats["CurrentHealth"] = monsterData.maxHealth;
-            stats["CurrentAttackPower"] =monsterData.attackPower;
-            stats["CurrentDefense"] =monsterData.defense;
+            stats["CurrentAttackPower"] = monsterData.attackPower;
+            stats["CurrentDefense"] = monsterData.defense;
             stats["AttackSpeed"] = monsterData.attackSpeed;
             stats["MoveSpeed"] = monsterData.moveSpeed;
             stats["AttackDistance"] = monsterData.attackDistance;
@@ -32,6 +32,7 @@ public class MonsterStat : Stat
             }
         }
     }
+
     public float GetStatValue(string statKey)
     {
         if (stats.TryGetValue(statKey, out var currentValue))
@@ -43,6 +44,7 @@ public class MonsterStat : Stat
             return -1f;
         }
     }
+
     public void UpdateStat(string statKey, float currentValue)
     {
         if (stats.TryGetValue(statKey, out var lastValue))
@@ -52,11 +54,6 @@ public class MonsterStat : Stat
             if (statKey == "CurrentHealth" && stats["CurrentHealth"] == 0)
             {
                 OnMonsterDie?.Invoke();
-            }
-            else if (statKey == "CurrentHealth" && stats["CurrentHealth"] <= 200
-                && stats["MaxHealth"] >= 200)
-            {
-                OnHealthChanged?.Invoke(stats["CurrentHealth"]);
             }
         }
         else
@@ -71,6 +68,7 @@ public class MonsterStat : Stat
         {
             float newValue = Mathf.Clamp(currentHealth, 0f, stats["MaxHealth"]);
             UpdateStat("CurrentHealth", newValue);
+            OnHealthChanged?.Invoke(newValue, stats["MaxHealth"]);
         }
     }
 }

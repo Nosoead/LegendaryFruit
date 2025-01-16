@@ -10,6 +10,7 @@ public class MonsterStatManager : MonoBehaviour
     public event UnityAction<float, AttributeType> DamageTakenEvent;
     public event UnityAction<RangedAttackData> OnRangedAttackDataEvent;
     public event UnityAction<List<RegularPatternData>> OnRegularPatternDataEvent;
+    public UnityAction<float> OnShowHealthBarEvent;
     private MonsterAnimationController monsterAnimationController;
     private MonsterCondition condition;
     private PooledMonster pooledMonster;
@@ -66,6 +67,7 @@ public class MonsterStatManager : MonoBehaviour
         stat.OnStatUpdated += OnStatUpdatedEvent;
         stat.OnMonsterDie += OnMonsterDie;
         stat.OnHealthChanged += OnPattrenToHealth;
+        stat.OnHealthChanged += OnHealthData;
         condition.OnTakeHitType += OnAttributeTypeReceived;
     }
 
@@ -74,6 +76,7 @@ public class MonsterStatManager : MonoBehaviour
         stat.OnStatUpdated -= OnStatUpdatedEvent;
         stat.OnMonsterDie -= OnMonsterDie;
         stat.OnHealthChanged -= OnPattrenToHealth;
+        stat.OnHealthChanged -= OnHealthData;
         condition.OnTakeHitType -= OnAttributeTypeReceived;
     }
 
@@ -116,19 +119,26 @@ public class MonsterStatManager : MonoBehaviour
         currentTakeAttributeType = type;
     }
 
+    private void OnHealthData(float currentHealth, float maxHealth)
+    {
+        OnShowHealthBarEvent?.Invoke(currentHealth/maxHealth);
+    }
     #region Pattren
     public void SetPattrenStat(Dictionary<int, PatternData> pattrenData)
     {
         pattrens = pattrenData;
     }
 
-    private void OnPattrenToHealth(float currentHealth)
+    private void OnPattrenToHealth(float currentHealth,float maxHealth)
     {
-        var data = GetPatternData(currentHealth);
-        if (currentPattrenData == data && !isOnCooldown)
+        if (currentHealth <= 200 && maxHealth >= 200)
         {
-            OnPatternTriggered?.Invoke(data, patternDagmae);
-            StartCooldown();
+            var data = GetPatternData(currentHealth);
+            if (currentPattrenData == data && !isOnCooldown)
+            {
+                OnPatternTriggered?.Invoke(data, patternDagmae);
+                StartCooldown();
+            }
         }
     }
     private void StartCooldown()
