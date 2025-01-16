@@ -12,7 +12,7 @@ public class CurrencySO : ItemSO
     public string currencyName;
     public string description;
     public GradeType gradeType;
-    public float potionValue;
+    public float currencyValue;
     public Sprite currencySprite;
     public Sprite rewardSprite;
 }

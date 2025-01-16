@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 96848dd3850755b43823d2d084849ef3, type: 3}
   m_Name: CurrencyRare
   m_EditorClassIdentifier: 
-  ID: 0
-  currencyName: 
-  description: 
-  gradeType: 0
-  potionValue: 0
-  currencySprite: {fileID: 0}
-  rewardSprite: {fileID: 0}
+  ID: 21501
+  currencyName: "\uC740\uC194\uBC29\uC6B8"
+  description: "\uAECD\uB370\uAE30 25 \uD68D\uB4DD"
+  gradeType: 1
+  currencyValue: 25
+  currencySprite: {fileID: 2101805479, guid: 2dc759bd3a4956a43abfb19f02f4369d, type: 3}
+  rewardSprite: {fileID: 2101805479, guid: 2dc759bd3a4956a43abfb19f02f4369d, type: 3}

@@ -17,6 +17,8 @@ public class MonsterStatManager : MonoBehaviour
     private MonsterStat stat;
     private StatHandler statHandler;
     private RangedAttackData rangedAttackData;
+    private CurrencySystem currencySystem;
+    private float inGameCurrency;
 
     [Header("PattrenStat")]
     private Dictionary<int, PatternData> pattrens = new Dictionary<int, PatternData>();
@@ -48,6 +50,13 @@ public class MonsterStatManager : MonoBehaviour
         {
             condition = GetComponent<MonsterCondition>();
         }
+        if (currencySystem == null)
+        {
+            if (GameManager.Instance.player.gameObject.TryGetComponent(out CurrencySystem currencySys))
+            {
+                currencySystem = currencySys;
+            }
+        }
         stat = new MonsterStat();
         statHandler = new StatHandler();
     }
@@ -78,6 +87,7 @@ public class MonsterStatManager : MonoBehaviour
             {
                 OnRangedAttackDataEvent?.Invoke(rangedAttackData);
                 stat.InitStat(regularMonsterData);
+                inGameCurrency = data.inGameMoney;
                 return;
             }
             stat.InitStat(regularMonsterData);
@@ -88,10 +98,12 @@ public class MonsterStatManager : MonoBehaviour
             {
                 OnRangedAttackDataEvent?.Invoke(rangedAttackData);
                 stat.InitStat(bossMonsterData);
+                inGameCurrency = data.inGameMoney;
                 return;
             }
             stat.InitStat(bossMonsterData);
         }
+        inGameCurrency = data.inGameMoney;
     }
 
     private void OnStatUpdatedEvent(string key, float value)
@@ -198,6 +210,7 @@ public class MonsterStatManager : MonoBehaviour
         {
             StageManager.Instance.MonsterDie();
             SoundManagers.Instance.PlaySFX(SfxType.MonsterDeath);
+            currencySystem.GetCurrency((int)inGameCurrency, isGlobalCurrency: false);
         }
         isDead = true;
         condition.StopAllCoroutines();

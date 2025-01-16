@@ -4,6 +4,7 @@ using UnityEngine.Pool;
 public class PooledCurrency : Item, IInteractable, ISetPooledObject<PooledCurrency>
 {
     public CurrencySO currencyData;
+    private CurrencySystem currencySystem;
 
     protected IObjectPool<PooledCurrency> objectPool;
     public IObjectPool<PooledCurrency> ObjectPool
@@ -16,6 +17,13 @@ public class PooledCurrency : Item, IInteractable, ISetPooledObject<PooledCurren
         {
             itemSprite.sprite = currencyData.currencySprite;
         }
+        if (currencySystem == null)
+        {
+            if (GameManager.Instance.player.TryGetComponent(out CurrencySystem currencySys))
+            {
+                currencySystem = currencySys;
+            }
+        }
     }
 
     #region /Interact
@@ -23,8 +31,14 @@ public class PooledCurrency : Item, IInteractable, ISetPooledObject<PooledCurren
     {
         if (isDeepPressed || isPressed)
         {
+            ConsumItem();
             PoolRelease();
         }
+    }
+
+    private void ConsumItem()
+    {
+        currencySystem.GetCurrency((int)currencyData.currencyValue, isGlobalCurrency: false);
     }
     #endregion
 
