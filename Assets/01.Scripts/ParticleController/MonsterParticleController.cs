@@ -16,12 +16,12 @@ public class MonsterParticleController : ParticleController
     private void OnEnable()
     {
         monsterStatManager.DamageTakenEvent += OnDamageReceived;
-        //monsterStatManager.OnDieEvent += DieParticlePlay;
+        monsterStatManager.OnDieEvent += DieParticlePlay;
     }
     private void OnDisable()
     {
         monsterStatManager.DamageTakenEvent -= OnDamageReceived;
-        //monsterStatManager.OnDieEvent -= DieParticlePlay;
+        monsterStatManager.OnDieEvent -= DieParticlePlay;
     }
 
     private void EnsureComponents()

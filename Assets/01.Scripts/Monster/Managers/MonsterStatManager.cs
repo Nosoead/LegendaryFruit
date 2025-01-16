@@ -11,6 +11,7 @@ public class MonsterStatManager : MonoBehaviour
     public event UnityAction<RangedAttackData> OnRangedAttackDataEvent;
     public event UnityAction<List<RegularPatternData>> OnRegularPatternDataEvent;
     public UnityAction<float, bool> OnShowHealthBarEvent;
+    public event UnityAction OnDieEvent;
     private MonsterAnimationController monsterAnimationController;
     private MonsterCondition condition;
     private PooledMonster pooledMonster;
@@ -248,6 +249,7 @@ public class MonsterStatManager : MonoBehaviour
         condition.StopAllCoroutines();
         gameObject.layer = LayerMask.NameToLayer("Default");
         monsterAnimationController.OnDie();
+        OnDieEvent?.Invoke();
         Invoke("MonsterDieOff", 1.5f);
     }
 
