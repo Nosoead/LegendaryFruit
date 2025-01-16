@@ -14,7 +14,7 @@ public class WeaponUpgradeUI : UIBase
     private PlayerEquipment playerEquip;
     private CurrencySystem currencySystem;
     private WeaponSO weaponData;
-    private int upgradeValue = 10000;
+    private int upgradeValue = 100000;
     private float currentCurrency;
     private int requiredCurrency;
 

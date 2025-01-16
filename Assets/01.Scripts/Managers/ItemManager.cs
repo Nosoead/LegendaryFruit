@@ -78,6 +78,10 @@ public class ItemManager : Singleton<ItemManager>
         for (int i = 0; i < selectedNumber.Length; i++)
         {
             selectedItem[i] = itemList[selectedNumber[i]];
+            if (itemType == ItemType.Weapon)
+            {
+                selectedItem[i] = RandomGrade(selectedItem[i]);
+            }
         }
         return selectedItem;
     }
@@ -107,5 +111,62 @@ public class ItemManager : Singleton<ItemManager>
     {
         WeaponSO upgradeItem = weaponDictionary[ID];
         return upgradeItem;
+    }
+
+    private ItemSO RandomGrade(ItemSO itemData)
+    {
+        if (itemData is WeaponSO weaponData)
+        {
+            int probability = Random.Range(0, 100);
+            if (probability < 65)
+            {
+                return weaponData;
+            }
+            else if (probability < 90)
+            {
+                weaponData = weaponDictionary[weaponData.ID + 100000];
+                return weaponData;
+            }
+            else
+            {
+                weaponData = weaponDictionary[weaponData.ID + 200000];
+                return weaponData;
+            }
+        }
+        else
+        {
+            return itemData;
+        }
+    }
+
+    public void IncludeInSelectList(WeaponSO weaponData)
+    {
+        if (weaponData.type == AttributeType.Normal)
+        {
+            return;
+        }
+        weaponData = CheckItemGrade(weaponData);
+        OwnedWeaponList.Remove(weaponData);
+        weaponList.Add(weaponData);
+    }
+
+    public void ExcludeFromSelectList(WeaponSO weaponData)
+    {
+        if (weaponData.type == AttributeType.Normal)
+        {
+            return;
+        }
+        weaponData = CheckItemGrade(weaponData);
+        OwnedWeaponList.Add(weaponData);
+        weaponList.Remove(weaponData);
+    }
+
+    private WeaponSO CheckItemGrade(WeaponSO weaponData)
+    {
+        if (weaponData.gradeType != GradeType.Normal)
+        {
+            weaponData = weaponDictionary[weaponData.ID % 100000 + 100000];
+        }
+        return weaponData;
     }
 }
