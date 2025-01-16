@@ -72,6 +72,7 @@ public class Stage : MonoBehaviour
 
         MonsterSO summonMonsterData = stageData.monstersToSummon[0].monsterData;
         PooledBossMonster monsterObj = bossMonster.Get();
+        UIManager.Instance.ToggleUI<BossHPUI>(false,true);
         monsterObj.gameObject.transform.position = monsterSpawnPoints[0].position;
         monsterObj.monsterManager.GetMonsterData(summonMonsterData.monsterID);
     }

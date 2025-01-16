@@ -6,37 +6,34 @@ using TMPro;
 public class BossHPUI : UIBase
 {
     [SerializeField] private MonsterStatManager statManager;
-    [SerializeField] private TextMeshProUGUI bossNameText; 
-    [SerializeField] private Image bossImage; 
     [SerializeField] private Image healthBar;
 
-    private MonsterStat monsterStat; 
+    private MonsterStat monsterStat;
+
+    private void Awake()
+    {
+        GameObject BossMonster = GameObject.Find("PooledBossMonster(Clone)");
+        statManager = BossMonster.GetComponentInChildren<MonsterStatManager>();
+
+        if (healthBar == null)
+        {
+            healthBar = GetComponentInChildren<Image>();
+        }
+    }
+
     private void OnEnable()
     {
-        statManager.OnSubscribeToStatUpdateEvent += UpdateHealthUI;
+        statManager.OnShowHealthBarEvent += OnShowHealthbar;
     }
-
+    
     private void OnDisable()
     {
-        statManager.OnSubscribeToStatUpdateEvent -= UpdateHealthUI;
+        statManager.OnShowHealthBarEvent -= OnShowHealthbar;
+    }
+    
+    private void OnShowHealthbar(float healthData,bool isOpen)
+    {
+        healthBar.fillAmount = healthData;
     }
 
-    private void Start()
-    {
-        statManager = FindObjectOfType<MonsterStatManager>();
-        if (statManager != null)
-        {
-            monsterStat = statManager.GetComponent<MonsterStatManager>().GetStat();
-        }
-        
-    }
-    private void UpdateHealthUI(string statKey, float value)
-    {
-        if (statKey == "CurrentHealth")
-        {
-            float maxHealth = monsterStat.GetStatValue("MaxHealth");
-            healthBar.fillAmount = (float)value / maxHealth;
-           
-        }
-    }
 }

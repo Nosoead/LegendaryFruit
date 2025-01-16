@@ -6,8 +6,24 @@
   <component name="ChangeListManager">
     <list default="true" id="fd1b27b5-9a48-464d-8c89-0ee285d61d98" name="변경" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.LegendaryFruit/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.LegendaryFruit/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/01.Scripts/UI/NpcUpgradeUI.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/01.Scripts/UI/NpcUpgradeUI.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/UI/NPCUpgradeUI.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/UI/NPCUpgradeUI.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/00.Scenes/TestScenes/Test_ParkScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/00.Scenes/TestScenes/Test_ParkScene.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01.Scripts/Managers/StageManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/01.Scripts/Managers/StageManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01.Scripts/Monster/Managers/MonsterStatManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/01.Scripts/Monster/Managers/MonsterStatManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01.Scripts/Stages/Stage.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/01.Scripts/Stages/Stage.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01.Scripts/UI/BossHPUI.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/01.Scripts/UI/BossHPUI.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01.Scripts/UI/MonsterHPUI.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/01.Scripts/UI/MonsterHPUI.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/03.ScriptableObject/PlayerSO/PlayerSO.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/03.ScriptableObject/PlayerSO/PlayerSO.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/04.Materials/Textures/PlayerImage/NumberingMaterial/Number_Texture_Player 1.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/04.Materials/Textures/PlayerImage/NumberingMaterial/Number_Texture_Player 1.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/ItemSO/WeaponSO/BananaWeaponNormalSO.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/ItemSO/WeaponSO/BananaWeaponNormalSO.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/ItemSO/WeaponSO/BananaWeaponRareSO.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/ItemSO/WeaponSO/BananaWeaponRareSO.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/ItemSO/WeaponSO/BananaWeaponUniqueSO.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/ItemSO/WeaponSO/BananaWeaponUniqueSO.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/ItemSO/WeaponSO/BlueberryWeaponNormalSO.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/ItemSO/WeaponSO/BlueberryWeaponNormalSO.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/ItemSO/WeaponSO/BlueberryWeaponRareSO.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/ItemSO/WeaponSO/BlueberryWeaponRareSO.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/ItemSO/WeaponSO/BlueberryWeaponUniqueSO.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/ItemSO/WeaponSO/BlueberryWeaponUniqueSO.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/ItemSO/WeaponSO/StrawberryWeaponNormalSO.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/ItemSO/WeaponSO/StrawberryWeaponNormalSO.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/ItemSO/WeaponSO/StrawberryWeaponRareSO.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/ItemSO/WeaponSO/StrawberryWeaponRareSO.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/ItemSO/WeaponSO/StrawberryWeaponUniqueSO.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/ItemSO/WeaponSO/StrawberryWeaponUniqueSO.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/UI/BossHPUI.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/UI/BossHPUI.prefab" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -67,22 +83,22 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;Unity 에디터에 연결.Unity 에디터에 연결.executor&quot;: &quot;Debug&quot;,
-    &quot;XThreadsFramesViewSplitterKey&quot;: &quot;0.39816514&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;Dev__Park&quot;,
-    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.lookFeel&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "Unity 에디터에 연결.Unity 에디터에 연결.executor": "Debug",
+    "XThreadsFramesViewSplitterKey": "0.39816514",
+    "git-widget-placeholder": "Dev__Park",
+    "ignore.virus.scanning.warn.message": "true",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "CodeLensConfigurable",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RunManager" selected="Unity 에디터에 연결.Unity 에디터에 연결">
     <configuration name="유닛 테스트(배치 모드)" type="RunUnityExe" factoryName="Unity Executable">
       <option name="EXE_PATH" value="C:\Program Files\Unity\Hub\Editor\2022.3.17f1\Editor\Unity.exe" />
@@ -160,6 +176,7 @@
       <workItem from="1736468289997" duration="889000" />
       <workItem from="1736728308631" duration="4689000" />
       <workItem from="1736814048271" duration="12582000" />
+      <workItem from="1736986045988" duration="23461000" />
     </task>
     <servers />
   </component>

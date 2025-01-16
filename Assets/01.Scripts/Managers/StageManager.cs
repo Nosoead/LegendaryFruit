@@ -105,6 +105,7 @@ public class StageManager : Singleton<StageManager>
         else if (currentStage.GetBossData())
         {
             GameManager.Instance.SetGameClear(false);
+            OnPlayFadeIn?.Invoke(type);
             currentStage.SetStage(player, bossMonster, confiner);
             return;
         }
@@ -132,6 +133,7 @@ public class StageManager : Singleton<StageManager>
         {
             if (currentStage.GetStageID() == (int)StageType.StageBoss)
             {
+                UIManager.Instance.ToggleUI<BossHPUI>(false,false);
                 GameManager.Instance.SetGameClear(true);
             }
             else

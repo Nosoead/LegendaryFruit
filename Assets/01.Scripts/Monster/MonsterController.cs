@@ -10,6 +10,7 @@ public class MonsterController : MonoBehaviour, IProjectTileShooter
 {
     public MonsterAnimationController animationController;
     private MonsterStateMachine stateMachine;
+    private SpriteRenderer spriteRenderer;
     public MonsterStateMachine StateMachine => stateMachine;
     private MonsterAttributeLogics monsterAttributeLogics = null;
     private MonsterAttributeLogicsDictionary attributeLogicsDictionary;
@@ -48,6 +49,7 @@ public class MonsterController : MonoBehaviour, IProjectTileShooter
         attributeLogicsDictionary.Initialize();
         stateMachine = new MonsterStateMachine(this);
         monsterAttributeLogics = new MonsterNormal();
+        spriteRenderer = GetComponent<SpriteRenderer>();
         CachedProjectTile();
     }
 
@@ -150,10 +152,8 @@ public class MonsterController : MonoBehaviour, IProjectTileShooter
         {
             return;
         }
-        Vector3 scale = transform.localScale;
-        scale.x *= -1;
+        spriteRenderer.flipX = !spriteRenderer.flipX;
         lookDirection *= -1f;
-        transform.localScale = scale;
     }
     public bool DetectPlayer()
     {

@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 1558213547112692295}
   - component: {fileID: -5943520700973480202}
   - component: {fileID: 768943986347838763}
-  m_Layer: 13
+  m_Layer: 19
   m_Name: PooledCurrency
   m_TagString: Untagged
   m_Icon: {fileID: 0}
