@@ -34,6 +34,8 @@ public enum StageType
     Stage21 = 11031,
     StageShelter = 11041,
     StageBoss = 11051,
+    Stage12 = 21021,
+    Stage22 = 21031
 }
 
 public enum PoolType

@@ -91,8 +91,10 @@ public class PlayerEquipment : MonoBehaviour
         }
         else
         {
+            ItemManager.Instance.IncludeInSelectList(equipWeapons[currentEquipWeaponIndex]);
             ReplaceWeapon(weaponData);
         }
+        ItemManager.Instance.ExcludeFromSelectList(weaponData);
         UpdateWeaponSprite();
     }
 
@@ -121,6 +123,10 @@ public class PlayerEquipment : MonoBehaviour
     public void LoadEquipmentData(List<WeaponSO> weaponDataList, int currentEquipWeaponIndex)
     {
         equipWeapons = weaponDataList;
+        foreach (WeaponSO weaponData in equipWeapons)
+        {
+            ItemManager.Instance.ExcludeFromSelectList(weaponData);
+        }
         this.currentEquipWeaponIndex = currentEquipWeaponIndex;
         UpdateWeaponSprite();
     }

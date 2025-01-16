@@ -16,7 +16,7 @@ MonoBehaviour:
   weaponName: "\uBC14\uB098\uB098\uAC00 3\uAC1C?"
   description: "\uBC14\uB098\uB098\uAC003\uAC1C\uB098 \uAC1C\uAFC0"
   attackPower: 30
-  type: 0
+  type: 2
   gradeType: 2
   eatValue: 5
   attributeAttackValue: 10
