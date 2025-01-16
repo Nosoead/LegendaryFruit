@@ -8,6 +8,7 @@ public class MonsterAnimationController : AnimationController
     private readonly int Attack = Animator.StringToHash("Attack");
     private readonly int isDie = Animator.StringToHash("isDie");
     private readonly int isHit = Animator.StringToHash("isHit");
+    private readonly int Hold = Animator.StringToHash("Hold");
 
     private bool isAttackComplete = false;
     [Header("BossMonsterPattern_Info")]
@@ -138,10 +139,15 @@ public class MonsterAnimationController : AnimationController
         isAttackComplete = true;
         if(isAttackComplete)
         {
-            Animator.SetTrigger("Hold");
+            Animator.SetTrigger(Hold);
             return true;
         }
         return false;
+    }
+
+    public void ResetTrigger()
+    {
+        Animator.ResetTrigger(Hold);
     }
 
     public bool HasPatternAttackFinished()

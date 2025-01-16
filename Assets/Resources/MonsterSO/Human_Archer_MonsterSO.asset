@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Human_Archer_MonsterSO
   m_EditorClassIdentifier: 
   monsterID: 1040105
-  maxHealth: 100
+  maxHealth: 60
   attackPower: 0
   defense: 10
   attackSpeed: 0
@@ -24,13 +24,13 @@ MonoBehaviour:
   attributeValue: 0
   attributeRateTime: 1
   attributeStack: 0
-  inGameMoney: 200
+  inGameMoney: 130
   monsterRagnedAttackData:
   - projectileType: 1
     projectTileSprite: {fileID: 21300000, guid: 79b2e76784e71eb46a9667ebb24fc284, type: 3}
     attackDistance: 0
     maxDistance: 15
-    rangedAttackPower: 26
+    rangedAttackPower: 20
     rangedAttackSpeed: 12
     rangedAttackRate: 1
     attributeDatas:
@@ -41,6 +41,5 @@ MonoBehaviour:
       attributeStack: 0
   sprite: {fileID: 0}
   animatorOverrideController: {fileID: 22100000, guid: 4716e8aeb72fb0a4090a93b331680147, type: 2}
+  patterns: []
   defalutAttackClip: {fileID: 7400000, guid: 904b13f4d388caa4ea9dc84188b5d069, type: 2}
-  pattrenAttackClip: []
-  patternAttackChance: 0

@@ -18,10 +18,10 @@ MonoBehaviour:
   canReceiveReward: 1
   monstersToSummon:
   - monsterCount: 1
-    monsterData: {fileID: 11400000, guid: 65d07962a28c90b4da99d4e9cdf97ee1, type: 2}
+    monsterData: {fileID: 11400000, guid: 3befd38a0fd7e6f4a9aeade5d597e1d9, type: 2}
+  - monsterCount: 3
+    monsterData: {fileID: 11400000, guid: 1c181c219c1942a419f586a3dc1547ca, type: 2}
   - monsterCount: 3
     monsterData: {fileID: 11400000, guid: b914371ac87d33141b0999c5600298bb, type: 2}
-  - monsterCount: 3
-    monsterData: {fileID: 11400000, guid: 6dc3ac0b135af1d4782bd4924cf639bc, type: 2}
   - monsterCount: 1
-    monsterData: {fileID: 11400000, guid: 8e62fae62a3325a4fb595cb4c779a6b1, type: 2}
+    monsterData: {fileID: 11400000, guid: 1f4bf2196ab8477469fb0f13109ef107, type: 2}

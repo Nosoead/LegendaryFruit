@@ -56,6 +56,7 @@ public class AttackState :IState
 
     public void Exit()
     {
+        monsterController.animationController.ResetTrigger();
         monsterController.animationController.OnAttack(false);
     }
 

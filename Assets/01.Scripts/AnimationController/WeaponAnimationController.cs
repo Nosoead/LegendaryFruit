@@ -117,7 +117,7 @@ public class WeaponAnimationController : AnimationController
 
     private void ParticleSetting(ParticleSystem particleSystem, EffectData data)
     {
-        particleHelper.SetMainModule(particleSystem, data.effectSize, 0, 0.3f);
+        particleHelper.SetMainModule(particleSystem, data.effectSize, 0, 0.3f, 0.1f);
         particleHelper.SetColorOverLifeTime(particleSystem, data.gradient);
         particleHelper.SetVelocityOverLifetime(particleSystem, data.linearVelocityX, data.linearVelocityY);
         currentLinearVelocityX = data.linearVelocityX;

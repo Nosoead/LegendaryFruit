@@ -1,0 +1,46 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a48b29d80c90f6a41a2846b84a4266ec, type: 3}
+  m_Name: Human_Swordsman_MonsterSO
+  m_EditorClassIdentifier: 
+  monsterID: 1040209
+  maxHealth: 70
+  attackPower: 10
+  defense: 5
+  attackSpeed: 5
+  moveSpeed: 5
+  attackDistance: 2
+  chaseRange: 10
+  type: 5
+  attributeValue: 0
+  attributeRateTime: 0
+  attributeStack: 0
+  inGameMoney: 150
+  monsterRagnedAttackData: []
+  sprite: {fileID: 0}
+  animatorOverrideController: {fileID: 22100000, guid: 058d0b4a43439c34e97e5a0bc673996e, type: 2}
+  patterns:
+  - patternAttributeType: 5
+    patternDamage: 12
+    pattrenAttackClip: {fileID: 7400000, guid: ccbd9428f5f326f4ab927b785f82d383, type: 2}
+    patternAttackChance: 30
+    patternAttributeValue: 0
+    patternAttributeRateTime: 0
+    patternAttributeStack: 0
+  - patternAttributeType: 5
+    patternDamage: 15
+    pattrenAttackClip: {fileID: 7400000, guid: 4800de7ef0e5d3741870c5b80b5611b6, type: 2}
+    patternAttackChance: 30
+    patternAttributeValue: 0
+    patternAttributeRateTime: 0
+    patternAttributeStack: 0
+  defalutAttackClip: {fileID: 7400000, guid: aeece8af55caf8b4d8b71c7194204350, type: 2}

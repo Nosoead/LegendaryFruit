@@ -13,34 +13,34 @@ MonoBehaviour:
   m_Name: Human_Knight_MonsterSO
   m_EditorClassIdentifier: 
   monsterID: 1040206
-  maxHealth: 150
-  attackPower: 20
+  maxHealth: 70
+  attackPower: 10
   defense: 5
   attackSpeed: 5
-  moveSpeed: 7
+  moveSpeed: 5
   attackDistance: 2
   chaseRange: 7
   type: 5
   attributeValue: 0
   attributeRateTime: 0
   attributeStack: 0
-  inGameMoney: 200
+  inGameMoney: 150
   monsterRagnedAttackData: []
   sprite: {fileID: 0}
   animatorOverrideController: {fileID: 22100000, guid: d13a7d61c6edc3e4facc8554faf5797c, type: 2}
   patterns:
   - patternAttributeType: 5
-    patternDamage: 30
+    patternDamage: 15
     pattrenAttackClip: {fileID: 7400000, guid: f1d6ca0011623814385f6bce4f5422a8, type: 2}
     patternAttackChance: 50
     patternAttributeValue: 0
     patternAttributeRateTime: 0
     patternAttributeStack: 0
   - patternAttributeType: 0
-    patternDamage: 25
+    patternDamage: 17
     pattrenAttackClip: {fileID: 7400000, guid: 3520baddb90b7564d8e7be3db704f898, type: 2}
     patternAttackChance: 30
-    patternAttributeValue: 5
+    patternAttributeValue: 3
     patternAttributeRateTime: 1
     patternAttributeStack: 3
   defalutAttackClip: {fileID: 7400000, guid: d57aea4c9b67b44409723f08f5cc3f8c, type: 2}
