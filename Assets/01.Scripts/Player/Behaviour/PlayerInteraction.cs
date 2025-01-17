@@ -203,7 +203,15 @@ public class PlayerInteraction : MonoBehaviour
 
     private void ShowTapAndHoldPrompt(bool isOpen)
     {
-        Vector3 promptPosition = SetPromptPosition();
+        Vector3 promptPosition;
+        if (isOpen)
+        {
+            promptPosition = SetPromptPosition();
+        }
+        else
+        {
+            promptPosition = Vector3.zero;
+        }
         if (weaponData != null)
         {
             ShowPromptEvent?.Invoke(weaponData, promptPosition, isOpen);

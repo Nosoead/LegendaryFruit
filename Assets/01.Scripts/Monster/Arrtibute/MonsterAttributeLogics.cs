@@ -24,6 +24,7 @@ public class MonsterSlowDown : MonsterAttributeLogics
         if (damageable != null)
         {
             damageable.SlowDown(damage,attributeValue,attributeRateTime);
+            Debug.Log(attributeValue);
         }
     }
 }

@@ -12,8 +12,10 @@ public class StatHandler
         return Mathf.Min(currentValue + deltaVlue, MaxValue);
     }
 
-    public float Substract(float currentValue, float deltaVlue)
+    public float Substract(float currentValue, float deltaValue)
     {
-        return Mathf.Max(currentValue - deltaVlue, 0f);
+        Debug.Log(currentValue);
+        Debug.Log(currentValue - deltaValue);
+        return Mathf.Max(currentValue - deltaValue, 0f);
     }
 }

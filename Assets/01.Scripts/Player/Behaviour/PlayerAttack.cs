@@ -182,7 +182,8 @@ public class PlayerAttack : MonoBehaviour, IProjectTileShooter
     {
         Vector3 look = Vector3.right * lookDirection;
         projectTile.transform.position = shootPosition.position;
-        projectTile.SetData(rangedAttackData, rangedAttackData.rangedAttackPower + currentAttackPower);
+        float randomAttackPower = GetRandomDamageInRange(rangedAttackData.rangedAttackPower + currentAttackPower);
+        projectTile.SetData(rangedAttackData, randomAttackPower);
         projectTile.SetAttirbuteData(rangedAttackData);
         projectTile.ProjectTileShoot(look);
     }
