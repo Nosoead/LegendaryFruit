@@ -176,7 +176,8 @@ public class BossMonsterController : MonoBehaviour
         {
             return;
         }
-        monsterAttributeLogics.ApplyAttackLogic(player.gameObject, attackPower, attributeValue, attributeRateTime, attributeStack, lookDirection);
+        float randomAttackPower = GetRandomDamageInRange(attackPower);
+        monsterAttributeLogics.ApplyAttackLogic(player.gameObject, randomAttackPower, attributeValue, attributeRateTime, attributeStack, lookDirection);
     }
     #endregion
 
@@ -201,7 +202,8 @@ public class BossMonsterController : MonoBehaviour
         if (statManager.isDead) return;
         if(player == target)
         {
-            monsterAttributeLogics.ApplyAttackLogic(player.gameObject, patternDamage, attributeValue, attributeRateTime, attributeStack, lookDirection);
+            float randomAttackPower = GetRandomDamageInRange(patternDamage);
+            monsterAttributeLogics.ApplyAttackLogic(player.gameObject, randomAttackPower, attributeValue, attributeRateTime, attributeStack, lookDirection);
         }
         detector.ResetDetector();
     }
@@ -239,6 +241,13 @@ public class BossMonsterController : MonoBehaviour
         {
             return;
         }
+    }
+
+    private float GetRandomDamageInRange(float totalAttackPower)
+    {
+        float randomNum = Random.Range(0.8f, 1.21f);
+        int randomint = (int)(randomNum * totalAttackPower);
+        return randomint;
     }
 
     private void OnDrawGizmos()

@@ -274,7 +274,8 @@ public class MonsterController : MonoBehaviour, IProjectTileShooter
     {
         Vector3 look = Vector3.right * lookDirection;
         projectTile.transform.position = shootPoint.position;
-        projectTile.SetData(rangedAttackData, rangedAttackData.rangedAttackPower);
+        float randomAttackPower = GetRandomDamageInRange(rangedAttackData.rangedAttackPower);
+        projectTile.SetData(rangedAttackData, randomAttackPower);
         projectTile.SetAttirbuteData(rangedAttackData);
         projectTile.ProjectTileShoot(look);
     }
@@ -297,7 +298,8 @@ public class MonsterController : MonoBehaviour, IProjectTileShooter
         }
         else
         {
-            monsterAttributeLogics.ApplyAttackLogic(player.gameObject, attackPower, attributeValue, attributeRateTime, attributeStack, lookDirection);
+            float randomAttackPower = GetRandomDamageInRange(attackPower);
+            monsterAttributeLogics.ApplyAttackLogic(player.gameObject, randomAttackPower, attributeValue, attributeRateTime, attributeStack, lookDirection);
         }
         SoundManagers.Instance.PlaySFX(SfxType.MonsterAttack);
     }
@@ -314,11 +316,19 @@ public class MonsterController : MonoBehaviour, IProjectTileShooter
         var patternLogic = attributeLogicsDictionary.GetAttributeLogic(patternData.patternAttributeType);
         if(patternLogic != null)
         {
-            patternLogic.ApplyAttackLogic(target, patternData.patternDamage, patternData.patternAttributeValue,
+            float randomAttackPower = GetRandomDamageInRange(patternData.patternDamage);
+            patternLogic.ApplyAttackLogic(target, randomAttackPower, patternData.patternAttributeValue,
                 patternData.patternAttributeRateTime, patternData.patternAttributeStack, lookDirection);
         }
     }
     #endregion
+
+    private float GetRandomDamageInRange(float totalAttackPower)
+    {
+        float randomNum = Random.Range(0.8f, 1.21f);
+        int randomint = (int)(randomNum * totalAttackPower);
+        return randomint;
+    }
 
     private void OnDrawGizmos()
     {
