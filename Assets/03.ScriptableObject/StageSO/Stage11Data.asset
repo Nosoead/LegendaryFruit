@@ -17,13 +17,13 @@ MonoBehaviour:
   isBossStage: 0
   canReceiveReward: 1
   monstersToSummon:
-  - monsterCount: 1
+  - monsterCount: 0
     monsterData: {fileID: 11400000, guid: 3befd38a0fd7e6f4a9aeade5d597e1d9, type: 2}
-  - monsterCount: 1
+  - monsterCount: 0
     monsterData: {fileID: 11400000, guid: dd4ea5270ac4a6448bdd99427ea32338, type: 2}
-  - monsterCount: 2
+  - monsterCount: 0
     monsterData: {fileID: 11400000, guid: 6dc3ac0b135af1d4782bd4924cf639bc, type: 2}
-  - monsterCount: 3
+  - monsterCount: 8
     monsterData: {fileID: 11400000, guid: 1638226de2539b842b7612822926c820, type: 2}
-  - monsterCount: 1
+  - monsterCount: 0
     monsterData: {fileID: 11400000, guid: 8e62fae62a3325a4fb595cb4c779a6b1, type: 2}

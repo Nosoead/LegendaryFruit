@@ -37,6 +37,7 @@ public class MonsterAnimationController : AnimationController
     {
         if (monsterData is RegularMonsterSO regularMonsterData)
         {
+            overrideController = null;
             regularMonster = regularMonsterData;
             overrideController = regularMonsterData.animatorOverrideController;
             Animator.runtimeAnimatorController = overrideController;
@@ -88,7 +89,7 @@ public class MonsterAnimationController : AnimationController
     public void OnAttack(bool isAttack)
     {
         AnimationClip attackClip;
-        float randomValue = Random.Range(0f, 100f);
+        currentRegularPatternData = null;
         var randomPattern = currentRegularPatternData;
         if (randomPattern != null )
         {
