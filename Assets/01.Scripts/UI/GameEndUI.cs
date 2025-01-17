@@ -49,8 +49,6 @@ public class GameEndUI : UIBase
             exitButton.onClick.AddListener(() => SceneManagerExtension.Instance.LoadScene(SceneType.OneCycleScene));
         }
         exitTxt.text = "돌아가기";
-        input.Player.Disable();
-        input.Changer.Disable();
     }
 
     private IEnumerator waitForStatData()

@@ -12,13 +12,6 @@ public class ESCUI : UIBase
     [SerializeField] private Button newGameButton;
     [SerializeField] private Button exitButton;
     [SerializeField] private TMP_Text nowTime;
-
-    private PlayerInput input {get; set; }
-
-    private void Awake()
-    {
-        input = GatherInputManager.Instance.input;
-    }
     private void Update()
     {
         TimeSpan timeSpan = TimeSpan.FromSeconds(Time.time); // 일시정지되면 같이 멈추는 시간

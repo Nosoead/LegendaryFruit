@@ -20,9 +20,14 @@ public class PlayerStatManager : MonoBehaviour
     [SerializeField] private MonoBehaviour damageableObject;
     private IDamageable damageable;
     private AttributeType currentTakeAttributeType;
+    private PlayerInput input;
 
     private void Awake()
     {
+        if (input == null)
+        {
+            input = GatherInputManager.Instance.input;
+        }
         if (playerInteraction == null)
         {
             playerInteraction = GetComponent<PlayerInteraction>();
@@ -97,6 +102,8 @@ public class PlayerStatManager : MonoBehaviour
     {
         playerAnimationController.OnDie();
         GameManager.Instance.GameEnd();
+        input.Player.Disable();
+        input.Changer.Disable();
     }
 
     private void OnAttributeTypeReceived(AttributeType type)
