@@ -30,6 +30,10 @@ public class ItemManager : Singleton<ItemManager>
             currencyItemPath = "ItemSO/CurrencySO";
             SetItemDictionary();
         }
+        else
+        {
+            ResetWeaponList();
+        }
     }
 
     #region /SetCollection
@@ -67,6 +71,15 @@ public class ItemManager : Singleton<ItemManager>
     {
         currencyList = ResourceManager.Instance.LoadAllResources<ItemSO>($"{currencyItemPath}").ToList();
         itemDictionary.Add(ItemType.Currency, currencyList);
+    }
+
+    private void ResetWeaponList()
+    {
+        foreach (WeaponSO weaponData in OwnedWeaponList)
+        {
+            weaponList.Add(weaponData);
+        }
+        OwnedWeaponList.Clear();
     }
     #endregion
 
