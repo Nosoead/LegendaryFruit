@@ -130,7 +130,10 @@ public class MonsterController : MonoBehaviour, IProjectTileShooter
 
     public RegularPatternData GetRandomPattern()
     {
-        if (regularPatternDatas.Count == 0) return null;
+        if (regularPatternDatas.Count == 0)
+        {
+            return currentRegularPatternData = null;
+        }
         var randomValue = Random.Range(0, 100f);
         var randomIndex = UnityEngine.Random.Range(0, regularPatternDatas.Count);
         if(randomValue <= regularPatternDatas[randomIndex].patternAttackChance)
