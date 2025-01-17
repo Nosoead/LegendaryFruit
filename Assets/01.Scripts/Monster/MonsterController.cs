@@ -138,12 +138,10 @@ public class MonsterController : MonoBehaviour, IProjectTileShooter
         var randomIndex = UnityEngine.Random.Range(0, regularPatternDatas.Count);
         if(randomValue <= regularPatternDatas[randomIndex].patternAttackChance)
         {
-            currentRegularPatternData = regularPatternDatas[randomIndex];
+            var regularpattern = regularPatternDatas[randomIndex];
             OnPatternSelected?.Invoke(currentRegularPatternData);
-            return currentRegularPatternData;
+            return regularpattern;
         }
-        currentRegularPatternData = null;
-        OnPatternSelected?.Invoke(currentRegularPatternData);
         return currentRegularPatternData;
     }
     #endregion
