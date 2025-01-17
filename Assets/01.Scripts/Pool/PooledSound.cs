@@ -6,11 +6,15 @@ public class PooledSound : MonoBehaviour, ISetPooledObject<PooledSound>
 {
     [SerializeField] private AudioSource audioSource;
     protected IObjectPool<PooledSound> objectPool;
+
     public IObjectPool<PooledSound> ObjectPool
-    { get => objectPool; set => objectPool = value; }
+    {
+        get => objectPool;
+        set => objectPool = value;
+    }
 
     public event Action OnReleased;
-    
+
     private void Awake()
     {
         audioSource = GetComponent<AudioSource>();
@@ -36,6 +40,7 @@ public class PooledSound : MonoBehaviour, ISetPooledObject<PooledSound>
 
     public void UpdateVolume(float volume)
     {
-        audioSource.volume = volume;
+        if (audioSource != null)
+            audioSource.volume = volume;
     }
 }

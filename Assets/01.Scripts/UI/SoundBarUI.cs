@@ -10,9 +10,9 @@ public class SoundBarUI : UIBase
 
     private void Start()
     {
-        if (!PlayerPrefs.HasKey("Volume")) PlayerPrefs.SetFloat("Volume", 0.5f);
-        if (!PlayerPrefs.HasKey("BGM")) PlayerPrefs.SetFloat("BGM", 0.5f);
-        if (!PlayerPrefs.HasKey("SFX")) PlayerPrefs.SetFloat("SFX", 0.5f);
+        if (!PlayerPrefs.HasKey("Volume")) PlayerPrefs.SetFloat("Volume", 1f);
+        if (!PlayerPrefs.HasKey("BGM")) PlayerPrefs.SetFloat("BGM", 1f);
+        if (!PlayerPrefs.HasKey("SFX")) PlayerPrefs.SetFloat("SFX", 1f);
         
         volumeSlider.value = PlayerPrefs.GetFloat("Volume", 1f);
         bgmSliderbar.value = PlayerPrefs.GetFloat("BGM", 1f);

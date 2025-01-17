@@ -2101,7 +2101,7 @@ SpriteRenderer:
   m_SortingLayerID: 1723399425
   m_SortingLayer: 4
   m_SortingOrder: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: 48e93eef0688c4a259cb0eddcd8661f7, type: 3}
+  m_Sprite: {fileID: 21300000, guid: e54db926e4727114baa8829a70083aed, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -12335,6 +12335,7 @@ MonoBehaviour:
   pressFCanvas: {fileID: 4321233841532731184}
   barricadeImage: {fileID: 7580640784347737634}
   stage: {fileID: 0}
+  isCurrencyPotal: 0
 --- !u!1839735485 &1219303608699517657
 Tilemap:
   m_ObjectHideFlags: 0
@@ -23640,6 +23641,7 @@ MonoBehaviour:
   pressFCanvas: {fileID: 4170601802158497345}
   barricadeImage: {fileID: 4017362119163564511}
   stage: {fileID: 0}
+  isCurrencyPotal: 0
 --- !u!224 &3518430705320287715
 RectTransform:
   m_ObjectHideFlags: 0
@@ -28528,6 +28530,7 @@ MonoBehaviour:
   pressFCanvas: {fileID: 1228097646137051125}
   barricadeImage: {fileID: 3712105336970134832}
   stage: {fileID: 0}
+  isCurrencyPotal: 0
 --- !u!212 &5835117513553457537
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -36992,6 +36995,7 @@ MonoBehaviour:
   pressFCanvas: {fileID: 8643698722606651766}
   barricadeImage: {fileID: 3324851198892694628}
   stage: {fileID: 0}
+  isCurrencyPotal: 0
 --- !u!4 &6518000207342684007
 Transform:
   m_ObjectHideFlags: 0
