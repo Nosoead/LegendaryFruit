@@ -81,6 +81,7 @@ public class PromptUI : UIBase
 
     private void SetItemData(WeaponSO weaponData)
     {
+        string statEffect = GetStatEffectFromAttribute(weaponData.type);
         equipOrEatText.text = "장착";
         holdButton.gameObject.SetActive(true);
         promptImage.sprite = weaponData.weaponSprite;
@@ -88,7 +89,10 @@ public class PromptUI : UIBase
         promptName.text = weaponData.weaponName;
         promptDescription.text = weaponData.description;
         promptAttackPower.text = $"공격력 : {weaponData.attackPower.ToString()}" +
-                                  $" 섭취 값 : {weaponData.eatValue.ToString()}";
+                                  $" 섭취 값 : {weaponData.eatValue.ToString()}" +
+                                  $"\n섭취 효과: {statEffect}";
+        
+        
     }
     private void SetItemData(PotionSO potionData)
     {
@@ -109,5 +113,19 @@ public class PromptUI : UIBase
         promptName.text = currencyData.currencyName;
         promptDescription.text = currencyData.description;
         promptAttackPower.text = "";
+    }
+
+    private string GetStatEffectFromAttribute(AttributeType attributeType)
+    {
+        switch (attributeType)
+        {
+            case AttributeType.Burn:
+                return "최대 체력 증가";
+            case AttributeType.SlowDown:
+                return "이동속도 증가";
+            case AttributeType.Knockback:
+                return "공격력 증가";
+        }
+        return null;
     }
 }
