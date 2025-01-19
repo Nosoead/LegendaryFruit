@@ -33,7 +33,7 @@ MonoBehaviour:
     patternDamage: 25
     pattrenAttackClip: {fileID: 7400000, guid: 6701faa5ff18b0d429f1e72b952bf624, type: 2}
     patternAttackChance: 50
-    patternAttributeValue: 10
-    patternAttributeRateTime: 0.2
+    patternAttributeValue: 2
+    patternAttributeRateTime: 2
     patternAttributeStack: 0
   defalutAttackClip: {fileID: 7400000, guid: 54aba33084ac7514b8cd9e00c63fe45e, type: 2}

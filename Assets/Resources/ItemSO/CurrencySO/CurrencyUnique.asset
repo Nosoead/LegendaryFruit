@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ID: 31501
   currencyName: "\uAE08\uC194\uBC29\uC6B8"
-  description: "\uAECD\uB370\uAE30 50 \uD68D\uB4DD"
+  description: "\uAECD\uB370\uAE30 50 \uD68D\uB4DD\uD569\uB2C8\uB2E4."
   gradeType: 2
   currencyValue: 50
   currencySprite: {fileID: 476334992, guid: 2dc759bd3a4956a43abfb19f02f4369d, type: 3}

@@ -14,8 +14,6 @@ public class StatHandler
 
     public float Substract(float currentValue, float deltaValue)
     {
-        Debug.Log(currentValue);
-        Debug.Log(currentValue - deltaValue);
         return Mathf.Max(currentValue - deltaValue, 0f);
     }
 }

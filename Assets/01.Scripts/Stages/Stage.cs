@@ -146,6 +146,17 @@ public class Stage : MonoBehaviour
     }
     #endregion
 
+    public void RegisterWeapon(PooledFruitWeapon discardedObject)
+    {
+        foreach (var npc in stageNPC)
+        {
+            if (npc is RewardWeaponNPC rewardWeaponNPC)
+            {
+                rewardWeaponNPC.RegisterWeapon(discardedObject);
+            }
+        }
+    }
+
     public void PoolRelease()
     {
         foreach (var npc in stageNPC)

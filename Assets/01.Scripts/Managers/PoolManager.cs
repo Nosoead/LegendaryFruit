@@ -122,6 +122,8 @@ public class PoolManager : Singleton<PoolManager>
 
     private void PreCreateObjectPool()
     {
+        Instance.CreatePool<PooledMonster>(PoolType.PooledMonster, false, 7, 12);
+        Instance.CreatePool<PooledBossMonster>(PoolType.PooledBossMonster, false, 7, 12);
         Instance.CreatePool<PooledParticle>(PoolType.PooledParticle, false, 5, 10);
         Instance.CreatePool<PooledProjectile>(PoolType.PooledProjectile, false, 15, 30);
         Instance.CreatePool<PooledFruitWeapon>(PoolType.PooledFruitWeapon, false, 5, 5);

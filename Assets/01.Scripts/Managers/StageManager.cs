@@ -148,6 +148,11 @@ public class StageManager : Singleton<StageManager>
         }
     }
 
+    public void RegisterWeapon(PooledFruitWeapon discardedObject)
+    {
+        currentStage.RegisterWeapon(discardedObject);
+    }
+
     public StageType GetCurrentStage()
     {
         return currentStageType;

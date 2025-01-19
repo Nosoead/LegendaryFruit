@@ -36,8 +36,8 @@ MonoBehaviour:
     attributeDatas:
     - attributeType: 1
       trailMaterial: {fileID: 2100000, guid: 88f79feaedbf1fd4f8979f7b82163416, type: 2}
-      attributeValue: 0
-      attributeLateTime: 0
+      attributeValue: 2
+      attributeLateTime: 2
       attributeStack: 0
   effectData: []
   effectMaterial: {fileID: 0}
