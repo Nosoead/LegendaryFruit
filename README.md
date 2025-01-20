@@ -16,7 +16,9 @@ Legendary Fruit : The Ultimate Weapon
 12. [Trouble Shooting](#-trouble-shooting)
     
 ## 👨‍🏫 프로젝트 소개
+![165468431 (1)](https://github.com/user-attachments/assets/40c2634b-013e-4fee-be80-6170ff9d7d98)
 스컬 모티브한 2D 로그라이크 게임
+
 
 ## 👥 팀소개
 팀 이름 유래 : 2승희보유, C# 2주 학습, 유니티 2달 학습, Unity 2D 프로젝트, 팀20조 // Team 222220
