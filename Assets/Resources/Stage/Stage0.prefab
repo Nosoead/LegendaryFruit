@@ -462,7 +462,8 @@ MonoBehaviour:
   monsterSpawnPoints: []
   firstPotal: {fileID: 1250859552575632239}
   secondPotal: {fileID: 1965170476854647466}
-  stageNPC: []
+  stageNPC:
+  - {fileID: 4604827751128373110}
 --- !u!1 &421773809464890975
 GameObject:
   m_ObjectHideFlags: 0
@@ -1428,7 +1429,7 @@ Transform:
   m_GameObject: {fileID: 1064829075903284287}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2, y: 9, z: 0}
+  m_LocalPosition: {x: 1.5, y: 1.25, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2414,7 +2415,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1159384259675404191}
   - component: {fileID: 6350484804888753354}
-  - component: {fileID: 5330794470105275882}
+  - component: {fileID: 4604827751128373110}
   m_Layer: 11
   m_Name: Reward
   m_TagString: Untagged
@@ -2431,7 +2432,7 @@ Transform:
   m_GameObject: {fileID: 1863167359286333516}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -5, z: 0}
+  m_LocalPosition: {x: 0, y: -1.9, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -2473,7 +2474,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 2.25}
+  m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -2484,9 +2485,9 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 3, y: 4.5}
+  m_Size: {x: 2, y: 6.5}
   m_EdgeRadius: 0
---- !u!114 &5330794470105275882
+--- !u!114 &4604827751128373110
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2495,13 +2496,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 1863167359286333516}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3ed4963ea5a03064fb602961a6f32400, type: 3}
+  m_Script: {fileID: 11500000, guid: 9cfa3c9d71f45e3428bd0c5e885c99f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   spawnPositionsRoot: {fileID: 7428339024129224202}
   pressFCanvas: {fileID: 8017091436963198153}
   weaponData: {fileID: 0}
-  NPCSpotlight: {fileID: 0}
+  currencyData: {fileID: 0}
 --- !u!1 &2141289394315641261
 GameObject:
   m_ObjectHideFlags: 0
@@ -4537,7 +4538,7 @@ Transform:
   m_GameObject: {fileID: 3413714465388300719}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.1, y: 6.22, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -18340,7 +18341,7 @@ Transform:
   m_GameObject: {fileID: 4568444477680330066}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -4.5, y: 6, z: 0}
+  m_LocalPosition: {x: -2.5, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -18455,7 +18456,7 @@ Transform:
   m_GameObject: {fileID: 4662092030982046282}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4, y: 6.5, z: 0}
+  m_LocalPosition: {x: 2.5, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -18486,7 +18487,7 @@ Transform:
   m_GameObject: {fileID: 4758229780618608297}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 9.5, z: 0}
+  m_LocalPosition: {x: 0, y: 1.75, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -18681,7 +18682,7 @@ Transform:
   m_GameObject: {fileID: 5573172270370809204}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3, y: 8, z: 0}
+  m_LocalPosition: {x: -1.5, y: 0.85, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -19343,7 +19344,7 @@ Canvas:
   m_VertexColorAlwaysGammaSpace: 0
   m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
-  m_SortingLayerID: 0
+  m_SortingLayerID: 158365691
   m_SortingOrder: 0
   m_TargetDisplay: 0
 --- !u!114 &2274637481360058698

@@ -45,7 +45,6 @@ public class PlayerStat : Stat
         if (statDictionary.ContainsKey(statKey))
         {
             statDictionary[statKey] = currentValue;
-            Debug.Log($"key{statKey}, Value {currentValue}");
             OnStatUpdatedEvent?.Invoke(statKey, currentValue);
             if (statKey == "MaxHealth")
             {

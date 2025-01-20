@@ -9,10 +9,13 @@ public class PlayerInfoManager : Singleton<PlayerInfoManager>
     [SerializeField] private PlayerEquipment equipment;
     [SerializeField] private CurrencySystem currency;
     private SaveDataContainer saveDataContainer;
+    private PersistentData persistentData;
+
     protected override void Awake()
     {
         EnsureComponents();
         saveDataContainer = new SaveDataContainer();
+        persistentData = new PersistentData();
     }
 
     private void EnsureComponents()
@@ -35,6 +38,7 @@ public class PlayerInfoManager : Singleton<PlayerInfoManager>
     {
         CallSaveData();
         DataManager.Instance.SaveData(saveDataContainer);
+        DataManager.Instance.SaveData(persistentData);
     }
 
     public void Load()
@@ -43,7 +47,13 @@ public class PlayerInfoManager : Singleton<PlayerInfoManager>
         statManager.LoadStatManagerData(saveDataContainer.playerStatData);
         statManager.LoadConsumeData(saveDataContainer.weaponData.eatWeaponDataList);
         equipment.LoadEquipmentData(saveDataContainer.weaponData.equippedWeapons, saveDataContainer.weaponData.currentEquipWeaponIndex);
-        currency.LoadCurrencyData(saveDataContainer.currencyData);
+        currency.LoadInGameCurrencyData(saveDataContainer.currencyData);
+    }
+
+    public void GlobalLoad()
+    {
+        persistentData = DataManager.Instance.LoadData<PersistentData>();
+        currency.LoadGlobalCurrencyData(persistentData);
     }
 
     public void Delete()
@@ -60,7 +70,8 @@ public class PlayerInfoManager : Singleton<PlayerInfoManager>
         saveDataContainer.weaponData.equippedWeapons = result.Item1;
         saveDataContainer.weaponData.currentEquipWeaponIndex = result.Item2;
         saveDataContainer.currentStage = StageManager.Instance.GetCurrentStage();
-        saveDataContainer.currencyData = currency.SaveCurrencyData();
+        saveDataContainer.currencyData = currency.SaveInGameCurrencyData();
+        persistentData = currency.SaveGlobalCurrencyData();
     }
 
     public SaveDataContainer GetSaveData()
@@ -102,5 +113,11 @@ public class WeaponData
 public class CurrencyData
 {
     public int inGameCurrency;
+    public int globalCurrency;
+}
+
+[System.Serializable]
+public class PersistentData
+{
     public int globalCurrency;
 }

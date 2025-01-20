@@ -39,7 +39,7 @@ public class RewardNPC : NPC
     #region /TogglePrompt
     protected void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.layer == playerLayer || collision.gameObject.layer == invincibleLayer)
+        if ((collision.gameObject.layer == playerLayer || collision.gameObject.layer == invincibleLayer) && StageManager.Instance.GetStageClear())
         {
             TogglePrompt(isOpen: true);
         }
@@ -47,7 +47,7 @@ public class RewardNPC : NPC
 
     protected void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.gameObject.layer == playerLayer || collision.gameObject.layer == invincibleLayer)
+        if ((collision.gameObject.layer == playerLayer || collision.gameObject.layer == invincibleLayer) && StageManager.Instance.GetStageClear())
         {
             TogglePrompt(isOpen: false);
         }

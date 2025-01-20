@@ -4029,7 +4029,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\uBBF8\uACC4\uBC1C"
+  m_text: "\uBC16\uC5D0 \uC788\uB294 \uBB34\uC9C0\uAC1C\uC0C9 \uB098\uBB34\uB97C
+    \uAC15\uD654\uD560 \uC218 \uC788\uB2E4\uAD6C~"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 09508b13331cd6b4d9f59de10e4af554, type: 2}
   m_sharedMaterial: {fileID: -4972991714483978622, guid: 09508b13331cd6b4d9f59de10e4af554, type: 2}
@@ -5301,7 +5302,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 999/999
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 09508b13331cd6b4d9f59de10e4af554, type: 2}
   m_sharedMaterial: {fileID: -4972991714483978622, guid: 09508b13331cd6b4d9f59de10e4af554, type: 2}
@@ -6944,6 +6945,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 541988657370bab48821cc8591b32278, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  upgradeData:
+    countUpgrade: 0
+    gradeUpgrade: 0
+    gradeProbability: 0
+    currencyProbability: 0
+    weaponProbability: 0
   upgradeButton: {fileID: 8655934405977682092}
   cancelButton: {fileID: 5882449473301948040}
   countButton:
@@ -6966,8 +6973,8 @@ MonoBehaviour:
   - {fileID: 1778842790976408601}
   - {fileID: 1612695725473063198}
   - {fileID: 8950648078094892059}
-  gradeText: {fileID: 5126099736470484740}
   countText: {fileID: 1487234219417505211}
+  gradeText: {fileID: 5126099736470484740}
   currencyText: {fileID: 6436709352915397498}
 --- !u!1 &8346877263805253631
 GameObject:

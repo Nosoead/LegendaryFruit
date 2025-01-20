@@ -52,7 +52,10 @@ public class Potal : MonoBehaviour, IInteractable
     {
         GameManager.Instance.OnGameClear -= OnOpenPotal;
     }
-
+    private void OnDestroy()
+    {
+        GameManager.Instance.OnGameClear -= OnOpenPotal;
+    }
     private void OnOpenPotal()
     {
         if (barricadeImage != null)

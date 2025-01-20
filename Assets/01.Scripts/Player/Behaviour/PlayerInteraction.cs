@@ -148,7 +148,6 @@ public class PlayerInteraction : MonoBehaviour
             }
             else if (pressedTime == tapCompleteTime)
             {
-                Debug.Log("1초 경과");
             }
             else
             {
@@ -181,7 +180,6 @@ public class PlayerInteraction : MonoBehaviour
         }
         else
         {
-            Debug.Log("1초 이상 2초 미만에 취소함");
             isTapPressed = false;
             isHoldPressed = false;
         }

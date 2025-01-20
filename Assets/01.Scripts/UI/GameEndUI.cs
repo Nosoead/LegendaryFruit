@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using Unity.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -13,8 +14,8 @@ public class GameEndUI : UIBase
     [SerializeField] private TextMeshProUGUI playTime;
     [SerializeField] private TextMeshProUGUI inGameMoney;
     [SerializeField] private TextMeshProUGUI globalMoney;
-    [SerializeField] private TextMeshProUGUI totalDamage;
     [SerializeField] private TextMeshProUGUI totalEat;
+    [SerializeField] private TextMeshProUGUI todoAdd;
     [SerializeField] private Image lastImage;
     [SerializeField] private List<Image> totalEatImages;
     
@@ -27,17 +28,16 @@ public class GameEndUI : UIBase
         input = GatherInputManager.Instance.input;
         sceneCapture = GetComponent<SceneCapture>();
     }
-    private void Start()
-    {
-        StartCoroutine(waitForStatData());
-    }
+
     public override void Open()
     {
         base.Open();
         sceneCapture.CaptureScene();
-        StartCoroutine(waitForDataToText());
+        CachingSaveData();
+        CachingImageList();
+        SetResultData();
         exitButton.onClick.AddListener(() => UIManager.Instance.ToggleUI<GameEndUI>(false));
-        DataManager.Instance.DeleteData<SaveDataContainer>();
+        exitButton.onClick.AddListener(() => DataManager.Instance.DeleteData<SaveDataContainer>());
         if (GameManager.Instance.GetGameClear())
         {
             titleTxt.text = "Game Clear!";
@@ -51,33 +51,32 @@ public class GameEndUI : UIBase
         exitTxt.text = "돌아가기";
     }
 
-    private IEnumerator waitForStatData()
+
+    private void CachingSaveData()
     {
-        while (saveDataContainer == null)
+        saveDataContainer = PlayerInfoManager.Instance.GetSaveData();
+    }
+
+    private void CachingImageList()
+    {
+        foreach (Image image in totalEatImages)
         {
-            saveDataContainer = PlayerInfoManager.Instance.GetSaveData();
-            if (saveDataContainer == null)
-            {
-                yield return saveDataContainer != null;
-            }
+            image.color = new Color(1f, 1f, 1f, 0f);
         }
     }
 
-    private IEnumerator waitForDataToText()
+    private void SetResultData()
     {
-        if (saveDataContainer == null)
-        {
-            yield return saveDataContainer != null;
-        }
-        GetDataToText();
-    }
-    private void GetDataToText()
-    {
-        TimeSpan timeSpan = TimeSpan.FromSeconds(Time.time); // 일시정지되면 같이 멈추는 시간
-        //TimeSpan timeSpan = TimeSpan.FromSeconds(Time.unscaledTime); //일시정지되도 흘러가는 시간
+        TimeSpan timeSpan = GameManager.Instance.GetCurrentTimeData();
         playTime.text = timeSpan.ToString(@"hh\:mm\:ss");
         if (  saveDataContainer == null) Debug.Log("null saveDataContainer");
         inGameMoney.text = saveDataContainer.currencyData.inGameCurrency.ToString();
-        inGameMoney.text = saveDataContainer.currencyData.globalCurrency.ToString();
+        globalMoney.text = saveDataContainer.currencyData.globalCurrency.ToString();
+        totalEat.text = saveDataContainer.weaponData.eatWeaponDataList.Count.ToString();
+        for (int i = 0; i < saveDataContainer.weaponData.eatWeaponDataList.Count; i++)
+        {
+            totalEatImages[i].sprite = saveDataContainer.weaponData.eatWeaponDataList[i].rewardSprite;
+            totalEatImages[i].color = new Color(1f, 1f, 1f, 1f);
+        }
     }
 }

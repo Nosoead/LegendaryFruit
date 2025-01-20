@@ -72,6 +72,11 @@ public class RewardWeaponNPC : RewardNPC, IInteractable
         }
     }
 
+    public void RegisterWeapon(PooledFruitWeapon discardedObject)
+    {
+        pooledWeapon = discardedObject;
+    }
+
     public override void ReleaseReward()
     {
         base.ReleaseReward();
