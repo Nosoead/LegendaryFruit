@@ -1,7 +1,5 @@
-![image (9)](https://github.com/user-attachments/assets/c80680c8-0c93-46b2-aabc-e6021e86aa6a)# 222220
-스파르타코딩 최종프로젝트
 
-# 프로젝트 이름
+# 💻 프로젝트 이름
 Legendary Fruit : The Ultimate Weapon
 
 ## 📖 목차
@@ -159,6 +157,16 @@ https://www.figma.com/board/QcHAQbKkVd6qroLPvDi4Ax/22220%EC%A1%B0-%EC%B4%88%EC%9
 - Player & Monster
 ![image (6)](https://github.com/user-attachments/assets/4825fbcf-9a53-4a16-8f9f-2d6fffacdffe)
 
+    <details>
+        <surmmary>Player</surmmary>
+        ![image (9)](https://github.com/user-attachments/assets/c0dfc51a-8095-4b82-9394-360985b647e0)
+
+        <surmmary>Monster</surmmary>
+       ![image (8)](https://github.com/user-attachments/assets/467cd588-4ae2-4ada-afa8-5cc7d2077e93)
+
+    </details>
+      
+      
 
 ## ⚽ Trouble Shooting
 
