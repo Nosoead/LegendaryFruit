@@ -32,17 +32,20 @@ Legendary Fruit : The Ultimate Weapon
 
 ## 😎 프로젝트 컨셉
 
-- 무기가 과일로 된 컨셉 
+- 무기가 과일로 된 컨셉
+  
 ![25011704](https://github.com/user-attachments/assets/b2364e30-c8db-4328-bfe9-566f2d537864)
 
 
 - 얻은 무기로 재화를 획득
+  
 ![25011601](https://github.com/user-attachments/assets/ceace5ca-6db3-4e97-ba3a-ceb4299ac1b5)
 
 
 - 얻은 재화를 강화를 진행
+
 ![25011607](https://github.com/user-attachments/assets/74da1fb0-0611-478c-aab7-ef2fe05a6a91)
-    ![25011608](https://github.com/user-attachments/assets/10122835-650e-44f5-aeef-e0aae33528c3)
+![25011608](https://github.com/user-attachments/assets/10122835-650e-44f5-aeef-e0aae33528c3)
 
 ## ⚙️ Project 내 설정
 - ⌨️ Input
