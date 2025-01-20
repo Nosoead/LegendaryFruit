@@ -42,7 +42,7 @@ Legendary Fruit : The Ultimate Weapon
 
 - 얻은 재화를 강화를 진행
 ![25011607](https://github.com/user-attachments/assets/74da1fb0-0611-478c-aab7-ef2fe05a6a91)
-![25011608](https://github.com/user-attachments/assets/10122835-650e-44f5-aeef-e0aae33528c3)
+    ![25011608](https://github.com/user-attachments/assets/10122835-650e-44f5-aeef-e0aae33528c3)
 
 ## ⚙️ Project 내 설정
 - ⌨️ Input
