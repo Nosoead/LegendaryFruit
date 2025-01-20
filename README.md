@@ -31,11 +31,14 @@ Legendary Fruit : The Ultimate Weapon
 스컬 게임을 한 경험을 바탕으로 스컬을 모티브로한 2D 로그라이크 게임 개발 팀 결성
 
 ## 😎 프로젝트 컨셉
+
 - 무기가 과일로 된 컨셉 
 ![25011704](https://github.com/user-attachments/assets/b2364e30-c8db-4328-bfe9-566f2d537864)
 
+
 - 얻은 무기로 재화를 획득
 ![25011601](https://github.com/user-attachments/assets/ceace5ca-6db3-4e97-ba3a-ceb4299ac1b5)
+
 
 - 얻은 재화를 강화를 진행
 ![25011607](https://github.com/user-attachments/assets/74da1fb0-0611-478c-aab7-ef2fe05a6a91)
@@ -56,15 +59,13 @@ Legendary Fruit : The Ultimate Weapon
 
 - 기능 1 - FSM
     ![image](https://github.com/user-attachments/assets/631bd0c3-935f-42cf-b942-fed3172a76f4)
-  <details>
-      <surmmary>
+  
     - 사용이유
         플레이어나 몬스터의 상태 전환과 동작을 체계적으로 관리하고 효율적으로 제어하기 위해 사용.
     - 구현방법
         1. Unity 기반의 몬스터 상태 머신(State Machine) 구현으로, 몬스터의 상태(Idle, Patrolling, Attack)를 관리하며 상태 전환과 실행 로직을 포함.
         2. `MonsterController`와 연동하여 상태별 행동 업데이트 및 실행, Unity의 `UnityAction`을 활용한 상태 통계 업데이트 기능 제공.
-      </surmmary>
-  </details>
+
 
 
 - 기능 2 - ObjectPooling
@@ -109,6 +110,7 @@ Legendary Fruit : The Ultimate Weapon
     ![스크린샷 2025-01-19 142113](https://github.com/user-attachments/assets/42f04ba9-fce0-4167-8867-11c2f0d9f859)
 
     트렌지션은 유지된채 객체 생성.
+
 
     3. AnimationClip에 클립에 맞는 메서드를 이벤트 설정
        
