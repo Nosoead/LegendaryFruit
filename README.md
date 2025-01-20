@@ -159,11 +159,10 @@ https://www.figma.com/board/QcHAQbKkVd6qroLPvDi4Ax/22220%EC%A1%B0-%EC%B4%88%EC%9
 
     <details>
         <surmmary>Player</surmmary>
-        ![image (9)](https://github.com/user-attachments/assets/c0dfc51a-8095-4b82-9394-360985b647e0)
-
-        <surmmary>Monster</surmmary>
-       ![image (8)](https://github.com/user-attachments/assets/467cd588-4ae2-4ada-afa8-5cc7d2077e93)
-
+        1. ㅇㄴㅇㄴㅇㄴㅇ
+        2// ㅇㄴㅇ 
+        3. ㅇㅁㅇ
+        5.. ㅇㅁㅇ
     </details>
       
       
