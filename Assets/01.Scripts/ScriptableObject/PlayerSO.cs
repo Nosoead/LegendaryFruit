@@ -40,7 +40,7 @@ public class SyncStat
     {
         dictionary["MaxHealth"] = statData.maxHealth;
         dictionary["CurrentHealth"] = statData.currentHealth;
-        dictionary["CurrentAttackPower"] = statData.currentAttackPower;
+        dictionary["AttackPower"] = statData.currentAttackPower;
         dictionary["CurrentDefense"] = statData.currentDefense;
         dictionary["AttackSpeed"] = statData.attackSpeed;
         dictionary["MoveSpeed"] = statData.moveSpeed;
@@ -52,7 +52,7 @@ public class SyncStat
     {
         statData.maxHealth = dictonary["MaxHealth"];
         statData.currentHealth = dictonary["CurrentHealth"];
-        statData.currentAttackPower = dictonary["CurrentAttackPower"];
+        statData.currentAttackPower = dictonary["AttackPower"];
         statData.currentDefense = dictonary["CurrentDefense"];
         statData.attackSpeed = dictonary["AttackSpeed"];
         statData.moveSpeed = dictonary["MoveSpeed"];

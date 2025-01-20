@@ -100,6 +100,7 @@ public class StageManager : Singleton<StageManager>
         currentStage.gameObject.SetActive(true);
         if (!currentStage.GetCombatData())
         {
+            stageClear = true;
             GameManager.Instance.SetGameClear(true);
         }
         else if (currentStage.GetBossData())

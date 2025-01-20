@@ -79,6 +79,7 @@ public class PlayerStatManager : MonoBehaviour
         string statKey = ((StatType)((int)weaponData.type)).ToString();
         float eatValue = weaponData.eatValue;
         float result = statHandler.Add(stat.GetStatValue(statKey), eatValue);
+        Debug.Log($"11key : {statKey}, currentValue : {eatValue}");
         stat.UpdateStat(statKey, result);
     }
 

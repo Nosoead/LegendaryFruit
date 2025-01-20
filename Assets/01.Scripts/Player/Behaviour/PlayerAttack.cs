@@ -80,7 +80,7 @@ public class PlayerAttack : MonoBehaviour, IProjectTileShooter
     {
         switch (statKey)
         {
-            case "CurrentAttackPower":
+            case "AttackPower":
                 currentAttackPower = value;
                 SetTotalAttackPower();
                 break;
