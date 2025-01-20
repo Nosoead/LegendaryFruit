@@ -63,9 +63,9 @@ Legendary Fruit : The Ultimate Weapon
 ![image](https://github.com/user-attachments/assets/631bd0c3-935f-42cf-b942-fed3172a76f4)
     - 사용이유<br>
     플레이어나 몬스터의 상태 전환과 동작을 체계적으로 관리하고 효율적으로 제어하기 위해 사용.<br>  
-- 구현방법<br>
-    1. Unity 기반의 몬스터 상태 머신(State Machine) 구현으로, 몬스터의 상태(Idle, Patrolling, Attack)를 관리하며 상태 전환과 실행 로직을 포함.<br>
-    2. `MonsterController`와 연동하여 상태별 행동 업데이트 및 실행, Unity의 `UnityAction`을 활용한 상태 통계 업데이트 기능 제공.
+    - 구현방법<br>
+        1. Unity 기반의 몬스터 상태 머신(State Machine) 구현으로, 몬스터의 상태(Idle, Patrolling, Attack)를 관리하며 상태 전환과 실행 로직을 포함.<br>
+        2. `MonsterController`와 연동하여 상태별 행동 업데이트 및 실행, Unity의 `UnityAction`을 활용한 상태 통계 업데이트 기능 제공.
 </details>
 
 
@@ -76,8 +76,8 @@ Legendary Fruit : The Ultimate Weapon
     - 사용이유<br>
     반복되서 사용되는 오브젝트를 생성파괴하지 않고 재사용하기 위해 사용.<br>
     - 구현방법<br>
-    1. PoolManager는 Unity에서 제공하는 UnityEngine.Pool을 사용하여 다양한 타입의 풀링객체를 생성, 관리, 초기화하는 기능을 제공.<br>
-    2. 풀링 시스템은 GenericPooledObject를 사용해 특정 풀 타입에 대해 오브젝트를 생성, 활성화/비화성화, 제거하며, 필요한 경우 모든 풀을 초기화 하는 기능 제공.
+        1. PoolManager는 Unity에서 제공하는 UnityEngine.Pool을 사용하여 다양한 타입의 풀링객체를 생성, 관리, 초기화하는 기능을 제공.<br>
+        2. 풀링 시스템은 GenericPooledObject를 사용해 특정 풀 타입에 대해 오브젝트를 생성, 활성화/비화성화, 제거하며, 필요한 경우 모든 풀을 초기화 하는 기능 제공.
 </details>
 
 <details>
@@ -87,8 +87,8 @@ Legendary Fruit : The Ultimate Weapon
     - 사용이유<br>
     몬스터의 공격 패턴과 애니메이션을 동저긍로 변경하여 다양한 몬스터 동작을 효율적으로 관리하기 위해 사용.<br>
     - 구현방법<br>
-    1. MonsterSO에 RegularPatternData, PatternData를 통해 몬스터의 스탯, 공격 패턴, 애니메이션 데이터를 ScriptObejct로 관리.<br>
-    2. 런타임에 SO를 주입하거나 교체하여 몬스터의 공작과 애니메이션을 동적으로 설정.
+        1. MonsterSO에 RegularPatternData, PatternData를 통해 몬스터의 스탯, 공격 패턴, 애니메이션 데이터를 ScriptObejct로 관리.<br>
+        2. 런타임에 SO를 주입하거나 교체하여 몬스터의 공작과 애니메이션을 동적으로 설정.
 </details>
 
 <details>
@@ -98,8 +98,8 @@ Legendary Fruit : The Ultimate Weapon
     - 사용이유<br>
     몬스터의 공격 패턴과 애니메이션을 동저긍로 변경하여 다양한 몬스터 동작을 효율적으로 관리하기 위해 사용.<br>
     - 구현방법<br>
-    1. MonsterSO에 RegularPatternData, PatternData를 통해 몬스터의 스탯, 공격 패턴, 애니메이션 데이터를 ScriptObejct로 관리.<br>
-    2. 런타임에 SO를 주입하거나 교체하여 몬스터의 공작과 애니메이션을 동적으로 설정.
+        1. MonsterSO에 RegularPatternData, PatternData를 통해 몬스터의 스탯, 공격 패턴, 애니메이션 데이터를 ScriptObejct로 관리.<br>
+        2. 런타임에 SO를 주입하거나 교체하여 몬스터의 공작과 애니메이션을 동적으로 설정.
 </details>
 
 <details>
@@ -119,7 +119,7 @@ Legendary Fruit : The Ultimate Weapon
 
    트렌지션은 유지된채 객체 생성.<br>
    
-    2. AnimationClip에 클립에 맞는 메서드를 이벤트 설정<br>
+   2. AnimationClip에 클립에 맞는 메서드를 이벤트 설정<br>
        
     ![스크린샷 2025-01-19 143414](https://github.com/user-attachments/assets/c60e5414-7f59-4b0f-8f5e-6ecdd6b91178)
 
