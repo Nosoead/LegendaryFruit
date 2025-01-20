@@ -57,13 +57,12 @@ Legendary Fruit : The Ultimate Weapon
 - 기능 1 - FSM
     ![image](https://github.com/user-attachments/assets/631bd0c3-935f-42cf-b942-fed3172a76f4)
   <details>
-      <surmmary>상세내용
-              - 사용이유
-                플레이어나 몬스터의 상태 전환과 동작을 체계적으로 관리하고 효율적으로 제어하기 위해 사용.
-              - 구현방법
-                1. Unity 기반의 몬스터 상태 머신(State Machine) 구현으로, 몬스터의 상태(Idle, Patrolling, Attack)를 관리하며 상태 전환과 실행 로직을 포함.
-                2. `MonsterController`와 연동하여 상태별 행동 업데이트 및 실행, Unity의 `UnityAction`을 활용한 상태 통계 업데이트 기능 제공.
-      </surmmary>
+      <surmmary>상세내용</surmmary>
+- 사용이유
+    플레이어나 몬스터의 상태 전환과 동작을 체계적으로 관리하고 효율적으로 제어하기 위해 사용.
+- 구현방법
+    1. Unity 기반의 몬스터 상태 머신(State Machine) 구현으로, 몬스터의 상태(Idle, Patrolling, Attack)를 관리하며 상태 전환과 실행 로직을 포함.
+    2. `MonsterController`와 연동하여 상태별 행동 업데이트 및 실행, Unity의 `UnityAction`을 활용한 상태 통계 업데이트 기능 제공.
   </details>
 
 
