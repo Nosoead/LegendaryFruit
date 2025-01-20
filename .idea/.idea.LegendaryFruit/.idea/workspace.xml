@@ -6,12 +6,12 @@
   <component name="ChangeListManager">
     <list default="true" id="fd1b27b5-9a48-464d-8c89-0ee285d61d98" name="변경" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.LegendaryFruit/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.LegendaryFruit/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/00.Scenes/TestScenes/Test_Brochure.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/00.Scenes/TestScenes/Test_Brochure.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/01.Scripts/Player/Managers/PlayerStatManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/01.Scripts/Player/Managers/PlayerStatManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/01.Scripts/Pool/PooledSound.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/01.Scripts/Pool/PooledSound.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/01.Scripts/UI/ESCUI.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/01.Scripts/UI/ESCUI.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/01.Scripts/UI/GameEndUI.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/01.Scripts/UI/GameEndUI.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/01.Scripts/UI/SoundBarUI.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/01.Scripts/UI/SoundBarUI.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01.Scripts/UI/PromptUI.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/01.Scripts/UI/PromptUI.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/04.Materials/Textures/MonsterImage/NumberingMaterial/Number_Texture_Monster.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/04.Materials/Textures/MonsterImage/NumberingMaterial/Number_Texture_Monster.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/04.Materials/Textures/PlayerImage/NumberingMaterial/Number_Texture_Player 1.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/04.Materials/Textures/PlayerImage/NumberingMaterial/Number_Texture_Player 1.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/05.Animations/MonsterAnimations/RegularAnimations/Orcs/Epic_Orc/EpicOrc_Controller.overrideController" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/05.Animations/MonsterAnimations/RegularAnimations/Orcs/Epic_Orc/EpicOrc_Controller.overrideController" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/05.Animations/MonsterAnimations/RegularAnimations/Orcs/Normal_Orc/Orc_Controller.overrideController" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/05.Animations/MonsterAnimations/RegularAnimations/Orcs/Normal_Orc/Orc_Controller.overrideController" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/05.Animations/MonsterAnimations/RegularAnimations/Skeleton/SkeletonBerserker/SkeletonBerserker_AnimationController.overrideController" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/05.Animations/MonsterAnimations/RegularAnimations/Skeleton/SkeletonBerserker/SkeletonBerserker_AnimationController.overrideController" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -166,6 +166,8 @@
       <workItem from="1736814048271" duration="12582000" />
       <workItem from="1736986045988" duration="23461000" />
       <workItem from="1737073824044" duration="2723000" />
+      <workItem from="1737249861891" duration="2489000" />
+      <workItem from="1737261490446" duration="5513000" />
     </task>
     <servers />
   </component>
@@ -193,24 +195,5 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Assets/01.Scripts/Managers/GatherInputManager.cs</url>
-          <line>7</line>
-          <properties documentPath="D:\Unity Practice\LegendaryFruit\Assets\01.Scripts\Managers\GatherInputManager.cs" containingFunctionPresentation="프로퍼티 'isPlay'">
-            <startOffsets>
-              <option value="187" />
-            </startOffsets>
-            <endOffsets>
-              <option value="191" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
 </project>
