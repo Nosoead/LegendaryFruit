@@ -3,12 +3,13 @@
 Legendary Fruit : The Ultimate Weapon
 
 ## 📖 목차
-1. [프로젝트 소개](#프로젝트-소개)
+1. [프로젝트 소개](#👨‍🏫프로젝트-소개)
 2. [팀소개](#팀소개)
 3. [프로젝트 계기](#프로젝트-계기)
-4. [주요기능](#주요기능)
-5. [개발기간](#개발기간)
-6. [기술스택](#기술스택)
+4. [프로젝트 컨셉](#😎프로젝트-컨셉)
+5. [주요기능](#주요기능)
+6. [개발기간](#개발기간)
+7. [기술스택](#기술스택)
 8. [와이어프레임](#와이어프레임)
 10. [ERD](#ERD)
 11. [클라이언트구조](#클라이언트-구조)
@@ -157,14 +158,18 @@ https://www.figma.com/board/QcHAQbKkVd6qroLPvDi4Ax/22220%EC%A1%B0-%EC%B4%88%EC%9
 - Player & Monster
 ![image (6)](https://github.com/user-attachments/assets/4825fbcf-9a53-4a16-8f9f-2d6fffacdffe)
 
-    <details>
-        <surmmary>Player</surmmary>
-        1. ㅇㄴㅇㄴㅇㄴㅇ
-        2// ㅇㄴㅇ 
-        3. ㅇㅁㅇ
-        5.. ㅇㅁㅇ
-    </details>
-      
+<details>
+    <summary>Player</summary>
+
+![image (9)](https://github.com/user-attachments/assets/48c1276e-e699-4be8-a908-ac1ed6447ce7)
+
+</details>
+<details>
+    <summary>Monster</summary>
+
+![image (8)](https://github.com/user-attachments/assets/3059a179-0a5e-4ac5-a775-0c3b0270c0bf)
+
+</details>
       
 
 ## ⚽ Trouble Shooting
