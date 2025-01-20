@@ -13,7 +13,7 @@ Legendary Fruit : The Ultimate Weapon
 6. [기술스택](#기술스택)
 8. [와이어프레임](#와이어프레임)
 10. [ERD](#ERD)
-11. [클라이언트구조](#클라이언트구조)
+11. [클라이언트구조](#클라이언트-구조)
 12. [Trouble Shooting](#trouble-shooting)
     
 ## 👨‍🏫 프로젝트 소개
@@ -159,9 +159,6 @@ https://www.figma.com/board/QcHAQbKkVd6qroLPvDi4Ax/22220%EC%A1%B0-%EC%B4%88%EC%9
 - Player & Monster
 ![image (6)](https://github.com/user-attachments/assets/4825fbcf-9a53-4a16-8f9f-2d6fffacdffe)
 
-<details>
-<surmmary>자세히보기</surmmary>
-</details>
 ## Trouble Shooting
 
 
