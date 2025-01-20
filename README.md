@@ -31,18 +31,16 @@ Legendary Fruit : The Ultimate Weapon
 스컬 게임을 한 경험을 바탕으로 스컬을 모티브로한 2D 로그라이크 게임 개발 팀 결성
 
 ## 😎 프로젝트 컨셉
-- 🍓 Fruit 
-     - 우리의 프로젝트는 과일이 주된 컨셉이다.
-      과일로 된 무기와 과일로 된 몬스터들이 존재하고, 이들을 물리치고, 무기는 먹고! 휘두르고! 무기를 교체!
-      여타 다른 로그라이크 방식과 진행은 비슷할지도 모르지만,
-      무기를 먹을 수 있다는 참신한 컨셉이 존재한다.
+![25011704](https://github.com/user-attachments/assets/b2364e30-c8db-4328-bfe9-566f2d537864)
+- 무기가 과일로 된 컨셉 
 
+![25011601](https://github.com/user-attachments/assets/ceace5ca-6db3-4e97-ba3a-ceb4299ac1b5)
+- 얻은 무기로 재화를 획득
 
-- 🎁 Reward
-     - 우리는 과일이 주된 컨셉이므로 보상자체도 과일로 존재한다.
-       스테이지가 클리어된다면, 보상을 주는 나무라는 NPC에게서 열매가 맺히고, 그 열매를 따면!
-       무기지만, 과일인! 아이템이 보상으로 쥐어진다.
-  
+![25011607](https://github.com/user-attachments/assets/74da1fb0-0611-478c-aab7-ef2fe05a6a91)
+![25011608](https://github.com/user-attachments/assets/10122835-650e-44f5-aeef-e0aae33528c3)
+- 얻은 재화를 강화를 진행
+
 ## ⚙️ Project 내 설정
 - ⌨️ Input
     - 키보드 화살표 기반 이동으로 진행
@@ -54,18 +52,10 @@ Legendary Fruit : The Ultimate Weapon
     -  설정 : Esc
     -  무기 교체 : Spacebar
 
-- 🔫 Weapon
-
-  - 과일로 된 무기지만
-          속성이 존재하여 색깔별로 속성타입이 다르다.(하지만 먹는다면?)
-    - 🔴  Red  :  화상   (HP증가)
-    - 🔵  Blue :  감속   (공격력증가)  
-                  
-
 ## 💜 주요기능
 
 - 기능 1
-
+    /콜아웃
 - 기능 2
 
 - 기능 3
