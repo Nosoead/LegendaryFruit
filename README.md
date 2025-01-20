@@ -64,13 +64,11 @@ Legendary Fruit : The Ultimate Weapon
     ![image](https://github.com/user-attachments/assets/631bd0c3-935f-42cf-b942-fed3172a76f4)
   
     - 사용이유
-        플레이어나 몬스터의 상태 전환과 동작을 체계적으로 관리하고 효율적으로 제어하기 위해 사용.
+      플레이어나 몬스터의 상태 전환과 동작을 체계적으로 관리하고 효율적으로 제어하기 위해 사용.
     - 구현방법
         1. Unity 기반의 몬스터 상태 머신(State Machine) 구현으로, 몬스터의 상태(Idle, Patrolling, Attack)를 관리하며 상태 전환과 실행 로직을 포함.
         2. `MonsterController`와 연동하여 상태별 행동 업데이트 및 실행, Unity의 `UnityAction`을 활용한 상태 통계 업데이트 기능 제공.
-
-
-
+           
 - 기능 2 - ObjectPooling
     ![image (1)](https://github.com/user-attachments/assets/bee96c90-ad29-412c-ab2d-901c03897cee)
   
@@ -109,7 +107,7 @@ Legendary Fruit : The Ultimate Weapon
     - 애니메이션과 게임 로직을 간단하고 직관적으로 연결하기 위해 사용
     - 구현방법
     1. 기존 Controller의 State에 대응해 각자의 클립을 주입
-    2. 
+       
     ![스크린샷 2025-01-19 142113](https://github.com/user-attachments/assets/42f04ba9-fce0-4167-8867-11c2f0d9f859)
 
     트렌지션은 유지된채 객체 생성.
