@@ -18,13 +18,13 @@ public class MonsterParticleController : ParticleController
     {
         monsterStatManager.DamageTakenEvent += OnDamageReceived;
         monsterStatManager.OnDieEvent += DieParticlePeelPlay;
-        monsterStatManager.OnDieEvent += DieParticleSeedPlay;
+        monsterStatManager.OnDieCurrencyEvent += DieParticleSeedPlay;
     }
     private void OnDisable()
     {
         monsterStatManager.DamageTakenEvent -= OnDamageReceived;
         monsterStatManager.OnDieEvent -= DieParticlePeelPlay;
-        monsterStatManager.OnDieEvent -= DieParticleSeedPlay;
+        monsterStatManager.OnDieCurrencyEvent -= DieParticleSeedPlay;
     }
 
     private void EnsureComponents()

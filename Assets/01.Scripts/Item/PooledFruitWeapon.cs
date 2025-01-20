@@ -6,6 +6,7 @@ public class PooledFruitWeapon : Item, IInteractable, ISetPooledObject<PooledFru
     public WeaponSO weaponData;
     private CurrencySystem currencySystem;
 
+    [SerializeField] private ParticleSystem eatParticle;
     protected IObjectPool<PooledFruitWeapon> objectPool;
     public IObjectPool<PooledFruitWeapon> ObjectPool
     { get => objectPool; set => objectPool = value; }
@@ -15,6 +16,7 @@ public class PooledFruitWeapon : Item, IInteractable, ISetPooledObject<PooledFru
         base.EnsureComponents();
         if (weaponData != null)
         {
+            itemSprite.color = new Color(1f, 1f, 1f, 1f);
             itemSprite.sprite = weaponData.weaponSprite;
         }
         if (currencySystem == null)
@@ -44,7 +46,9 @@ public class PooledFruitWeapon : Item, IInteractable, ISetPooledObject<PooledFru
     private void FruitEat()
     {
         currencySystem.GetCurrency(1, isGlobalCurrency: true);
-        ObjectPool.Release(this);
+        eatParticle.Play();
+        itemSprite.color = new Color(1f, 1f, 1f, 0f);
+        Invoke(nameof(ReleaseObject), 1.0f);
     }
 
     private void FruitEquip()
@@ -73,5 +77,10 @@ public class PooledFruitWeapon : Item, IInteractable, ISetPooledObject<PooledFru
     public void SetWeaponSO(WeaponSO weaponData)
     {
         this.weaponData = weaponData;
+    }
+
+    private void ReleaseObject()
+    {
+        ObjectPool.Release(this);
     }
 }

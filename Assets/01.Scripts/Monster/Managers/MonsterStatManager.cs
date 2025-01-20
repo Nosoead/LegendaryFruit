@@ -9,6 +9,7 @@ public class MonsterStatManager : MonoBehaviour
     public event UnityAction<float, AttributeType> DamageTakenEvent;
     public event UnityAction<RangedAttackData> OnRangedAttackDataEvent;
     public event UnityAction<List<RegularPatternData>> OnRegularPatternDataEvent;
+    public event UnityAction OnDieCurrencyEvent;
     public UnityAction<float, bool> OnShowHealthBarEvent;
     public event UnityAction OnDieEvent;
     private MonsterAnimationController monsterAnimationController;
@@ -246,6 +247,7 @@ public class MonsterStatManager : MonoBehaviour
             if (randomNum == 7)
             {
                 currencySystem.GetCurrency(1, isGlobalCurrency: true);
+                OnDieCurrencyEvent?.Invoke();
             }
         }
 
