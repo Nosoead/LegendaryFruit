@@ -233,7 +233,7 @@ Transform:
   m_GameObject: {fileID: 69685069}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -10.802292, y: 8.294126, z: -26.477432}
+  m_LocalPosition: {x: 5.3577085, y: 1.1041257, z: -26.477432}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1007,11 +1007,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7854109364709030339, guid: dd5abbe63ea36f4478a505be38f9d0ca, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -11.6
+      value: 4.56
       objectReference: {fileID: 0}
     - target: {fileID: 7854109364709030339, guid: dd5abbe63ea36f4478a505be38f9d0ca, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 4.1
+      value: -3.09
       objectReference: {fileID: 0}
     - target: {fileID: 7854109364709030339, guid: dd5abbe63ea36f4478a505be38f9d0ca, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1915,7 +1915,7 @@ Transform:
   m_GameObject: {fileID: 2046657632}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -10.802292, y: 8.294126, z: -26.477432}
+  m_LocalPosition: {x: 5.3577085, y: 1.1041257, z: -26.477432}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -2091,7 +2091,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4296494111472896478, guid: 73ae0fb64b2adba40a4a8c213ff54b0a, type: 3}
       propertyPath: m_ColliderPaths.Array.size
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6203308214588842524, guid: 73ae0fb64b2adba40a4a8c213ff54b0a, type: 3}
       propertyPath: m_Name
@@ -2099,7 +2099,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6203308214588842524, guid: 73ae0fb64b2adba40a4a8c213ff54b0a, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6315095820090201245, guid: 73ae0fb64b2adba40a4a8c213ff54b0a, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2506,6 +2506,14 @@ PrefabInstance:
     - target: {fileID: 4643582648465689616, guid: 0625255d23ebd544e8103884e84b7c70, type: 3}
       propertyPath: m_Name
       value: Stage22
+      objectReference: {fileID: 0}
+    - target: {fileID: 4643582648465689616, guid: 0625255d23ebd544e8103884e84b7c70, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4735455239311590347, guid: 0625255d23ebd544e8103884e84b7c70, type: 3}
+      propertyPath: m_ColliderPaths.Array.size
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7468641860879918822, guid: 0625255d23ebd544e8103884e84b7c70, type: 3}
       propertyPath: m_LocalPosition.x

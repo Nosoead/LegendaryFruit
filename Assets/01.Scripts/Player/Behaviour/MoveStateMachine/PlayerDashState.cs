@@ -18,6 +18,7 @@ public class PlayerDashState : IState
     public void Enter()
     {
         ApplyDash();
+        testManager.Instance.ShowState("DashStage");
     }
 
     public void Execute()

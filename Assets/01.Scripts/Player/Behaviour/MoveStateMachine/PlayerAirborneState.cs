@@ -16,6 +16,7 @@ public class PlayerAirborneState : IState
         {
             player.DecreaseJumpCount();
         }
+        testManager.Instance.ShowState("AirbornState");
     }
 
     public void Execute()
