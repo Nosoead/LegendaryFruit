@@ -1,4 +1,4 @@
-# 222220
+![image (9)](https://github.com/user-attachments/assets/c80680c8-0c93-46b2-aabc-e6021e86aa6a)# 222220
 스파르타코딩 최종프로젝트
 
 # 프로젝트 이름
@@ -159,15 +159,8 @@ https://www.figma.com/board/QcHAQbKkVd6qroLPvDi4Ax/22220%EC%A1%B0-%EC%B4%88%EC%9
 - Player & Monster
 ![image (6)](https://github.com/user-attachments/assets/4825fbcf-9a53-4a16-8f9f-2d6fffacdffe)
 
-<details>Player
-    ![image (9)](https://github.com/user-attachments/assets/459a9ecb-47eb-4d08-ad37-4411070f7f2a)
-</detals>
-    
-<detilas>Monster
-    ![image (8)](https://github.com/user-attachments/assets/6c8247e0-14b5-4c8d-ae33-ff2662a7a6f6)
-</detilas>
-    
-## Trouble Shooting
+
+## ⚽ Trouble Shooting
 
 
 
