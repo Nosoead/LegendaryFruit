@@ -56,6 +56,7 @@ Legendary Fruit : The Ultimate Weapon
 
 - 기능 1 - FSM
     ![image](https://github.com/user-attachments/assets/631bd0c3-935f-42cf-b942-fed3172a76f4)
+  
     - 사용이유
     플레이어나 몬스터의 상태 전환과 동작을 체계적으로 관리하고 효율적으로 제어하기 위해 사용.
 
@@ -65,6 +66,7 @@ Legendary Fruit : The Ultimate Weapon
 
 - 기능 2 - ObjectPooling
     ![image (1)](https://github.com/user-attachments/assets/bee96c90-ad29-412c-ab2d-901c03897cee)
+  
     - 사용이유
     반복되서 사용되는 오브젝트를 생성파괴하지 않고 재사용하기 위해 사용.
     - 구현방법
@@ -73,6 +75,7 @@ Legendary Fruit : The Ultimate Weapon
 
 - 기능 3 - 전략패턴(SO)
     ![image (2)](https://github.com/user-attachments/assets/d4953358-2233-40d2-a287-6b05e151fce5)
+  
     - 사용이유
     몬스터의 공격 패턴과 애니메이션을 동저긍로 변경하여 다양한 몬스터 동작을 효율적으로 관리하기 위해 사용.
     - 구현방법
@@ -81,6 +84,7 @@ Legendary Fruit : The Ultimate Weapon
 
 - 기능 4 - InputSystem
     ![image (3)](https://github.com/user-attachments/assets/22fdc868-c9e9-45ba-81bf-5db23895e462)
+  
     - 사용이유
     몬스터의 공격 패턴과 애니메이션을 동저긍로 변경하여 다양한 몬스터 동작을 효율적으로 관리하기 위해 사용.
     - 구현방법
@@ -89,6 +93,7 @@ Legendary Fruit : The Ultimate Weapon
 
 - 기능 5 - Animation Override Controller & AnimationEvent  
     ![image (4)](https://github.com/user-attachments/assets/fa0b6a57-ce1c-4a59-8a61-0bf4afca24db)
+  
     - 사용이유
     AnimationOverrideController
     - 동일한 AnimationController를 여러 몬스터에게 적용시켜 메모리 사용량을 줄이고, 애니메이션 관리 효율성을 높이기 위해서 사용
@@ -97,11 +102,15 @@ Legendary Fruit : The Ultimate Weapon
     - 애니메이션과 게임 로직을 간단하고 직관적으로 연결하기 위해 사용
     - 구현방법
     1. 기존 Controller의 State에 대응해 각자의 클립을 주입
+    2. 
     ![스크린샷 2025-01-19 142113](https://github.com/user-attachments/assets/42f04ba9-fce0-4167-8867-11c2f0d9f859)
+
     트렌지션은 유지된채 객체 생성.
 
-    2. AnimationClip에 클립에 맞는 메서드를 이벤트 설정
+    3. AnimationClip에 클립에 맞는 메서드를 이벤트 설정
+       
     ![스크린샷 2025-01-19 143414](https://github.com/user-attachments/assets/c60e5414-7f59-4b0f-8f5e-6ecdd6b91178)
+
     설정한 메서드에 맞는 행동 구현 
 
 ## ⏲️ 개발기간
@@ -145,13 +154,9 @@ https://www.figma.com/board/QcHAQbKkVd6qroLPvDi4Ax/22220%EC%A1%B0-%EC%B4%88%EC%9
 
 - Player & Monster
 ![image (6)](https://github.com/user-attachments/assets/4825fbcf-9a53-4a16-8f9f-2d6fffacdffe)
-</details>
-    <summary>Player 자세히보기</summary>
-    ![image (9)](https://github.com/user-attachments/assets/d106c97d-17fc-4a49-b62d-0a5db7eeb8d4)
-</details>
-</details>
-    <summary>Monster 자세히보기</summary>
-    ![image (8)](https://github.com/user-attachments/assets/1cd04782-41ba-4430-8753-3af704f059e6)
+
+<details>
+<surmmary>자세히보기</surmmary>
 </details>
 ## Trouble Shooting
 
