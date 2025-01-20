@@ -31,7 +31,7 @@ public class StartTreeNPC : RewardNPC, IInteractable
     public override void SetReward()
     {
         randomPosition = RandomNumber(2, spawnPositions.Count);
-        if (upgradeData.countUpgrade == 0)
+        if (upgradeData == null)
         {
             return;
         }
