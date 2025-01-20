@@ -11,11 +11,9 @@ Legendary Fruit : The Ultimate Weapon
 4. [주요기능](#주요기능)
 5. [개발기간](#개발기간)
 6. [기술스택](#기술스택)
-7. [서비스 구조](#서비스-구조)
 8. [와이어프레임](#와이어프레임)
-9. [API 명세서](#API-명세서)
 10. [ERD](#ERD)
-11. [프로젝트 파일 구조](#프로젝트-파일-구조)
+11. [클라이언트구조](#클라이언트구조)
 12. [Trouble Shooting](#trouble-shooting)
     
 ## 👨‍🏫 프로젝트 소개
@@ -113,7 +111,7 @@ Legendary Fruit : The Ultimate Weapon
     트렌지션은 유지된채 객체 생성.
 
 
-    3. AnimationClip에 클립에 맞는 메서드를 이벤트 설정
+    2. AnimationClip에 클립에 맞는 메서드를 이벤트 설정
        
     ![스크린샷 2025-01-19 143414](https://github.com/user-attachments/assets/c60e5414-7f59-4b0f-8f5e-6ecdd6b91178)
 
