@@ -1439,10 +1439,18 @@ MonoBehaviour:
   playTime: {fileID: 7171667326770741015}
   inGameMoney: {fileID: 5427201769135500817}
   globalMoney: {fileID: 4671464527270109474}
-  totalDamage: {fileID: 8680796183520352922}
-  totalEat: {fileID: 1754433344491329642}
+  totalEat: {fileID: 8680796183520352922}
+  todoAdd: {fileID: 1754433344491329642}
   lastImage: {fileID: 0}
-  totalEatImages: []
+  totalEatImages:
+  - {fileID: 4602807993471394088}
+  - {fileID: 4065217723327769184}
+  - {fileID: 6406939946446910338}
+  - {fileID: 8046241920506653185}
+  - {fileID: 5235450002917613403}
+  - {fileID: 3523411567064722866}
+  - {fileID: 9196084392960727267}
+  - {fileID: 2278697510170096669}
 --- !u!114 &4576917496701693976
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1633,7 +1641,7 @@ GameObject:
   - component: {fileID: 689911181398261518}
   - component: {fileID: 6407302943501586960}
   m_Layer: 5
-  m_Name: KilEnemyCountText
+  m_Name: EatFruitText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1686,7 +1694,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\uCC98\uCE58\uD55C \uC801"
+  m_text: "\uBA39\uC740 \uACFC\uC77C \uAC1C\uC218"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 09508b13331cd6b4d9f59de10e4af554, type: 2}
   m_sharedMaterial: {fileID: -4972991714483978622, guid: 09508b13331cd6b4d9f59de10e4af554, type: 2}
@@ -1713,7 +1721,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 50.6
+  m_fontSize: 32.65
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -1842,7 +1850,7 @@ GameObject:
   - component: {fileID: 3483865365013914954}
   - component: {fileID: 1986461770303674532}
   m_Layer: 5
-  m_Name: EatFruitText
+  m_Name: AddText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1895,7 +1903,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\uBA39\uC740 \uACFC\uC77C\uAC1C\uC218"
+  m_text: '-'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 09508b13331cd6b4d9f59de10e4af554, type: 2}
   m_sharedMaterial: {fileID: -4972991714483978622, guid: 09508b13331cd6b4d9f59de10e4af554, type: 2}
@@ -1922,7 +1930,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 37.2
+  m_fontSize: 63.6
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -2394,7 +2402,7 @@ GameObject:
   - component: {fileID: 1691831520846853518}
   - component: {fileID: 1754433344491329642}
   m_Layer: 5
-  m_Name: EatFruit
+  m_Name: Add
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2447,7 +2455,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 999
+  m_text: '-'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 09508b13331cd6b4d9f59de10e4af554, type: 2}
   m_sharedMaterial: {fileID: -4972991714483978622, guid: 09508b13331cd6b4d9f59de10e4af554, type: 2}
@@ -2772,7 +2780,7 @@ GameObject:
   - component: {fileID: 3933605600641651398}
   - component: {fileID: 8680796183520352922}
   m_Layer: 5
-  m_Name: KilEnemyCount
+  m_Name: EatFruit
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

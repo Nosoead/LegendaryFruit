@@ -4,6 +4,7 @@ using UnityEngine.Pool;
 public class PooledFruitWeapon : Item, IInteractable, ISetPooledObject<PooledFruitWeapon>
 {
     public WeaponSO weaponData;
+    private CurrencySystem currencySystem;
 
     protected IObjectPool<PooledFruitWeapon> objectPool;
     public IObjectPool<PooledFruitWeapon> ObjectPool
@@ -15,6 +16,13 @@ public class PooledFruitWeapon : Item, IInteractable, ISetPooledObject<PooledFru
         if (weaponData != null)
         {
             itemSprite.sprite = weaponData.weaponSprite;
+        }
+        if (currencySystem == null)
+        {
+            if (GameManager.Instance.player.gameObject.TryGetComponent(out CurrencySystem currencySys))
+            {
+                currencySystem = currencySys;
+            }
         }
     }
 
@@ -35,6 +43,7 @@ public class PooledFruitWeapon : Item, IInteractable, ISetPooledObject<PooledFru
 
     private void FruitEat()
     {
+        currencySystem.GetCurrency(1, isGlobalCurrency: true);
         ObjectPool.Release(this);
     }
 

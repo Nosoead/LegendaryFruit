@@ -11,13 +11,7 @@ public class ESCUI : UIBase
     [SerializeField] private Button settingButton;
     [SerializeField] private Button newGameButton;
     [SerializeField] private Button exitButton;
-    [SerializeField] private TMP_Text nowTime;
-    private void Update()
-    {
-        TimeSpan timeSpan = TimeSpan.FromSeconds(Time.time); // 일시정지되면 같이 멈추는 시간
-        //TimeSpan timeSpan = TimeSpan.FromSeconds(Time.unscaledTime); //일시정지되도 흘러가는 시간
-        nowTime.text = timeSpan.ToString(@"hh\:mm\:ss");
-    }
+    [SerializeField] private TMP_Text currentTime;
 
     public override void Open()
     {
@@ -33,6 +27,9 @@ public class ESCUI : UIBase
         newGameButton.onClick.AddListener(() => SceneManagerExtension.Instance.LoadScene(SceneType.OneCycleScene));
         newGameButton.onClick.AddListener(() => SoundManagers.Instance.PlaySFX(SfxType.UIButton));
         exitButton.onClick.AddListener(() => Quit());
+        TimeSpan timeSpan = GameManager.Instance.GetCurrentTimeData();
+        currentTime.text = timeSpan.ToString(@"hh\:mm\:ss");
+        
     }
 
     private void Quit()

@@ -1,11 +1,10 @@
 using UnityEngine;
-//using System.Diagnostics;
+using System.Diagnostics;
 
 public class OneCycleScene : BaseScene
 {
     public override void Init()
     {
-        //PoolManager.Instance.Init();
         ItemManager.Instance.Init();
         StageManager.Instance.Init();
         UIManager.Instance.ForeInit();

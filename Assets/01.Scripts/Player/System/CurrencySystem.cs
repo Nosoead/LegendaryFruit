@@ -9,7 +9,9 @@ public class CurrencySystem : MonoBehaviour
     public UnityAction<int, bool> OnGlobalCurrencyDataToUI;
     private int inGameCurrency;
     private int globalCurrency;
+    private int persistentGlobalCurrency;
     private CurrencyData currencyData = new CurrencyData();
+    private PersistentData persistentData = new PersistentData();
 
     private void InitCurrency()
     {
@@ -22,14 +24,14 @@ public class CurrencySystem : MonoBehaviour
     {
         if (isGlobalCurrency)
         {
-            if (globalCurrency < useValue)
+            if (persistentGlobalCurrency < useValue)
             {
                 return;
             }
             else
             {
-                globalCurrency -= useValue;
-                OnGlobalCurrencyDataToUI?.Invoke(globalCurrency, isGlobalCurrency);
+                persistentGlobalCurrency -= useValue;
+                OnGlobalCurrencyDataToUI?.Invoke(persistentGlobalCurrency, isGlobalCurrency);
             }
         }
         else
@@ -51,7 +53,8 @@ public class CurrencySystem : MonoBehaviour
         if (isGlobalCurrency)
         {
             globalCurrency += useValue;
-            OnGlobalCurrencyDataToUI?.Invoke(globalCurrency, isGlobalCurrency);
+            persistentGlobalCurrency += useValue;
+            OnGlobalCurrencyDataToUI?.Invoke(persistentGlobalCurrency, isGlobalCurrency);
         }
         else
         {
@@ -64,7 +67,7 @@ public class CurrencySystem : MonoBehaviour
     {
         if (isGlobalCurrency)
         {
-            return globalCurrency;
+            return persistentGlobalCurrency;
         }
         else
         {
@@ -79,18 +82,29 @@ public class CurrencySystem : MonoBehaviour
     #endregion
 
     #region /Data
-    public CurrencyData SaveCurrencyData()
+    public CurrencyData SaveInGameCurrencyData()
     {
         currencyData.inGameCurrency = this.inGameCurrency;
         currencyData.globalCurrency = this.globalCurrency;
         return currencyData;
     }
 
-    public void LoadCurrencyData(CurrencyData currencyData)
+    public void LoadInGameCurrencyData(CurrencyData currencyData)
     {
         this.inGameCurrency = currencyData.inGameCurrency;
         this.globalCurrency = currencyData.globalCurrency;
         OnInGameCurrencyDataToUI?.Invoke(inGameCurrency, false);
+    }
+
+    public PersistentData SaveGlobalCurrencyData()
+    {
+        persistentData.globalCurrency = this.persistentGlobalCurrency;
+        return persistentData;
+    }
+
+    public void LoadGlobalCurrencyData(PersistentData persistentData)
+    {
+        this.persistentGlobalCurrency = persistentData.globalCurrency;
         OnGlobalCurrencyDataToUI?.Invoke(globalCurrency, true);
     }
     #endregion

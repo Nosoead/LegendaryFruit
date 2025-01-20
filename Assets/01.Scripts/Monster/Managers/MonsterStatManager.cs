@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -243,6 +242,11 @@ public class MonsterStatManager : MonoBehaviour
             StageManager.Instance.MonsterDie();
             SoundManagers.Instance.PlaySFX(SfxType.MonsterDeath);
             currencySystem.GetCurrency((int)inGameCurrency, isGlobalCurrency: false);
+            int randomNum = Random.Range(0, 10);
+            if (randomNum == 7)
+            {
+                currencySystem.GetCurrency(1, isGlobalCurrency: true);
+            }
         }
 
         isDead = true;
