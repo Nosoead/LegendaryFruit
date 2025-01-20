@@ -146,10 +146,10 @@ Visual Studio 2022
 ### ✔️ Deploy 
 https://nosoead.itch.io/legendaryfruit
 
-## 와이어프레임
+## 📑 와이어프레임
 https://www.figma.com/board/5LJiExFjudEpSSrfuhIrLa/22220%EC%A1%B0-%EC%99%80%EC%9D%B4%EC%96%B4%ED%94%84%EB%A0%88%EC%9E%84?node-id=0-1&node-type=canvas&t=WtP5c2lugbyUG3Cu-0
 
-## ERD
+##  ERD
 https://www.figma.com/board/QcHAQbKkVd6qroLPvDi4Ax/22220%EC%A1%B0-%EC%B4%88%EC%95%88-%26-%EC%BB%A8%EC%85%89?node-id=180-752&node-type=section&t=1YphAOslbvR5QsqM-0
 
 ## 클라이언트 구조
