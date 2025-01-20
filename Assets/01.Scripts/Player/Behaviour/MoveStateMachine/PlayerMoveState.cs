@@ -11,7 +11,7 @@ public class PlayerMoveState : IState
 
     public void Enter()
     {
-        testManager.Instance.ShowState("MoveStage");
+        
     }
 
     public void Execute()

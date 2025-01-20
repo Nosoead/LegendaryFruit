@@ -12,7 +12,7 @@ public class PlayerIdleState : IState
 
     public void Enter()
     {
-        testManager.Instance.ShowState("IdleState");
+        
     }
 
     public void Execute()

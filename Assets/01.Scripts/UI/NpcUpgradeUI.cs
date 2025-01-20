@@ -24,6 +24,7 @@ public class NpcUpgradeUI : UIBase
     [SerializeField] private TextMeshProUGUI gradeText;
     [SerializeField] private TextMeshProUGUI currencyText;
     private CurrencySystem currencySystem;
+    private PlayerInput input;
 
 
     private SkillType selectSkillType;
@@ -40,6 +41,10 @@ public class NpcUpgradeUI : UIBase
     public override void Open()
     {
         base.Open();
+        this.input = GatherInputManager.Instance.input;
+        input.Player.Disable();
+        input.Changer.Disable();
+        input.UI.Enable();
     }
 
     private void Start()
