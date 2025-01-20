@@ -33,6 +33,7 @@ public class RewardWeaponNPC : RewardNPC, IInteractable
         }
         randomNum = Random.Range(0, spawnPositions.Count);
         pooledReward = reward.Get();
+        pooledReward.PlayParticle();
         pooledReward.gameObject.transform.position = spawnPositions[randomNum].position;
         pooledReward.gameObject.TryGetComponent(out SpriteRenderer spriteRenderer);
         spriteRenderer.sprite = weaponData.rewardSprite;

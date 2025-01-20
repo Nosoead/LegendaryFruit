@@ -79,6 +79,7 @@ public class StartTreeNPC : RewardNPC, IInteractable
             currencyData = setItemData;
         }
         pooledRewards[0] = reward.Get();
+        pooledRewards[0].PlayParticle();
         pooledRewards[0].gameObject.transform.position = position;
         pooledRewards[0].gameObject.TryGetComponent(out SpriteRenderer spriteRenderer);
         spriteRenderer.sprite = currencyData.rewardSprite;
@@ -92,6 +93,7 @@ public class StartTreeNPC : RewardNPC, IInteractable
             weaponData = setItemData;
         }
         pooledRewards[1] = reward.Get();
+        pooledRewards[1].PlayParticle();
         pooledRewards[1].gameObject.transform.position = position;
         pooledRewards[1].gameObject.TryGetComponent(out SpriteRenderer spriteRenderer);
         spriteRenderer.sprite = weaponData.rewardSprite;

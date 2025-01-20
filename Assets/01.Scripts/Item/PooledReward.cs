@@ -8,6 +8,7 @@ public class PooledReward : MonoBehaviour, ISetPooledObject<PooledReward>
     public WeaponSO weaponData = null;
     [SerializeField] private SpriteRenderer spriteRenderer;
     [SerializeField] private PooledFruitWeapon weaponPrefab;
+    [SerializeField] private ParticleSystem spawnParticle;
 
     private IObjectPool<PooledReward> objectPool;
 
@@ -87,8 +88,14 @@ public class PooledReward : MonoBehaviour, ISetPooledObject<PooledReward>
         }
     }
 
+    public void PlayParticle()
+    {
+        spawnParticle.Play();
+    }
+
     public void PoolRelease()
     {
+        spawnParticle.Stop();
         ObjectPool.Release(this);
     }
 }
