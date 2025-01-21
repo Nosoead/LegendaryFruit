@@ -1,0 +1,1539 @@
+fileFormatVersion: 2
+guid: 9d6fc4eea0b482e458b7bbbb49d110d0
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 12
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 1
+  swizzle: 50462976
+  cookieLightType: 1
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Server
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Slash1_Sheet_Blue_0
+      rect:
+        serializedVersion: 2
+        x: 383
+        y: 947
+        width: 163
+        height: 316
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 75850f975a9b4a8489a22ae4290b2665
+      internalID: -548061436
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Slash1_Sheet_Blue_1
+      rect:
+        serializedVersion: 2
+        x: 408
+        y: 1261
+        width: 42
+        height: 57
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ec601b182faeaa84a841e2816e4ae2da
+      internalID: -1361972288
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Slash1_Sheet_Blue_2
+      rect:
+        serializedVersion: 2
+        x: 467
+        y: 903
+        width: 176
+        height: 369
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e357d2753356ec344ad7d09d110757bc
+      internalID: 464504608
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Slash1_Sheet_Blue_3
+      rect:
+        serializedVersion: 2
+        x: 513
+        y: 1198
+        width: 84
+        height: 97
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ae403a7c86eddb94db58c9ab6d98b2e8
+      internalID: 424384229
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Slash1_Sheet_Blue_4
+      rect:
+        serializedVersion: 2
+        x: 373
+        y: 1182
+        width: 16
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0ccb32f96a4732c448e76c410f7ac9b6
+      internalID: 686145362
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Slash1_Sheet_Blue_5
+      rect:
+        serializedVersion: 2
+        x: 599
+        y: 1181
+        width: 7
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0856a2b0334084745ba7427057c1f2e5
+      internalID: -866189617
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Slash1_Sheet_Blue_6
+      rect:
+        serializedVersion: 2
+        x: 888
+        y: 817
+        width: 399
+        height: 375
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 59d26507badb17c4cb65ac6cbcd4af72
+      internalID: -1206444099
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Slash1_Sheet_Blue_7
+      rect:
+        serializedVersion: 2
+        x: 1492
+        y: 816
+        width: 435
+        height: 213
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d07729224884b06428baa469ca89370c
+      internalID: -65470877
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Slash1_Sheet_Blue_8
+      rect:
+        serializedVersion: 2
+        x: 1885
+        y: 1010
+        width: 6
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 67a0ff17f9ca4284dbabcb6df95fb2fa
+      internalID: -853960945
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Slash1_Sheet_Blue_9
+      rect:
+        serializedVersion: 2
+        x: 1939
+        y: 963
+        width: 11
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e22b8770bfa5a9f44844613ca71947b9
+      internalID: -2108292717
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Slash1_Sheet_Blue_10
+      rect:
+        serializedVersion: 2
+        x: 1464
+        y: 930
+        width: 13
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 42ef85a6c7f36744996d4384e97db6e9
+      internalID: -1274956349
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Slash1_Sheet_Blue_11
+      rect:
+        serializedVersion: 2
+        x: 1474
+        y: 943
+        width: 7
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0278cdca9cd26c3429548639e2cae90a
+      internalID: 200432693
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Slash1_Sheet_Blue_12
+      rect:
+        serializedVersion: 2
+        x: 474
+        y: 892
+        width: 19
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b4e58a8a955a8f746af571a487713f20
+      internalID: 316008480
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Slash1_Sheet_Blue_13
+      rect:
+        serializedVersion: 2
+        x: 518
+        y: 882
+        width: 36
+        height: 53
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 432c4fbf75331fc49ab8841c2bcb3ecf
+      internalID: -222773804
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Slash1_Sheet_Blue_14
+      rect:
+        serializedVersion: 2
+        x: 1470
+        y: 881
+        width: 9
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cedad6c150da40549a375985fd607f4b
+      internalID: -513030717
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Slash1_Sheet_Blue_15
+      rect:
+        serializedVersion: 2
+        x: 1481
+        y: 871
+        width: 62
+        height: 71
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a644f9359bfb5fa458fee874a3bccaa0
+      internalID: -1461772696
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Slash1_Sheet_Blue_16
+      rect:
+        serializedVersion: 2
+        x: 873
+        y: 839
+        width: 28
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0f1fbf94ee4eae5449d23e4731be9059
+      internalID: 970461881
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Slash1_Sheet_Blue_17
+      rect:
+        serializedVersion: 2
+        x: 1479
+        y: 836
+        width: 41
+        height: 44
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4054f51a05975f748b459e537f997312
+      internalID: 67191371
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Slash1_Sheet_Blue_18
+      rect:
+        serializedVersion: 2
+        x: 998
+        y: 755
+        width: 64
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1cfa3eab045346c43a04bec20e706cd3
+      internalID: 2033027810
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Slash1_Sheet_Blue_19
+      rect:
+        serializedVersion: 2
+        x: 1009
+        y: 765
+        width: 142
+        height: 36
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d851ff1101de5eb47947d33d23fc0654
+      internalID: -633559048
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Slash1_Sheet_Blue_20
+      rect:
+        serializedVersion: 2
+        x: 1071
+        y: 776
+        width: 101
+        height: 47
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 28102638ce0ec88478a0fe6334138d60
+      internalID: -1976332058
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Slash1_Sheet_Blue_21
+      rect:
+        serializedVersion: 2
+        x: 1545
+        y: 758
+        width: 55
+        height: 56
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a0cb6675925a4134d8b6630afd447696
+      internalID: 1808346085
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Slash1_Sheet_Blue_22
+      rect:
+        serializedVersion: 2
+        x: 1669
+        y: 755
+        width: 77
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 271ba4d2ac0c64f48bf129ccec2a4e3f
+      internalID: 1487477142
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Slash1_Sheet_Blue_23
+      rect:
+        serializedVersion: 2
+        x: 1679
+        y: 765
+        width: 151
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cba850889b78faa4bb616efac96602eb
+      internalID: 170905246
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Slash1_Sheet_Blue_24
+      rect:
+        serializedVersion: 2
+        x: 1747
+        y: 775
+        width: 102
+        height: 44
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ee0c24bfa97477b499fd5f2f8f1fa4fa
+      internalID: -29636679
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Slash1_Sheet_Blue_25
+      rect:
+        serializedVersion: 2
+        x: 1601
+        y: 745
+        width: 104
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e8d0d0b3b552fd14697960f1366e1eb5
+      internalID: 1006623472
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Slash1_Sheet_Blue_26
+      rect:
+        serializedVersion: 2
+        x: 716
+        y: 310
+        width: 30
+        height: 182
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ee19ca5163380df4089d49fc8357e054
+      internalID: 440462744
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Slash1_Sheet_Blue_27
+      rect:
+        serializedVersion: 2
+        x: 782
+        y: 157
+        width: 142
+        height: 337
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2e25f09fdd174c447b180e8ed7908c53
+      internalID: -1234179423
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Slash1_Sheet_Blue_28
+      rect:
+        serializedVersion: 2
+        x: 784
+        y: 486
+        width: 5
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4fd564fe287781342ad4737f88565103
+      internalID: -812988908
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Slash1_Sheet_Blue_29
+      rect:
+        serializedVersion: 2
+        x: 797
+        y: 480
+        width: 5
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6c2c6091ec7821647ad1b7a3ac9d20ae
+      internalID: -1636793231
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Slash1_Sheet_Blue_30
+      rect:
+        serializedVersion: 2
+        x: 1388
+        y: 321
+        width: 85
+        height: 241
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c7b4bd9aaaaf71b4b98dc63f0e70372f
+      internalID: 1978793169
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Slash1_Sheet_Blue_31
+      rect:
+        serializedVersion: 2
+        x: 1426
+        y: 244
+        width: 77
+        height: 317
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4005ddc755e0234438a49a67640926a5
+      internalID: 746698064
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Slash1_Sheet_Blue_32
+      rect:
+        serializedVersion: 2
+        x: 1452
+        y: 358
+        width: 97
+        height: 235
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2c0ea0394b199f04ea00e97bbf386ade
+      internalID: 1495113251
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Slash1_Sheet_Blue_33
+      rect:
+        serializedVersion: 2
+        x: 1465
+        y: 287
+        width: 82
+        height: 267
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3eafa2556b35d38489ca3b44a0bd18e6
+      internalID: -504995541
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Slash1_Sheet_Blue_34
+      rect:
+        serializedVersion: 2
+        x: 1474
+        y: 229
+        width: 100
+        height: 328
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b46a06b425b71774c8224de46d946c30
+      internalID: -1123015257
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Slash1_Sheet_Blue_35
+      rect:
+        serializedVersion: 2
+        x: 743
+        y: 154
+        width: 162
+        height: 331
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: efbb7e95377a88b43b803a217740da42
+      internalID: 978112845
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Slash1_Sheet_Blue_36
+      rect:
+        serializedVersion: 2
+        x: 792
+        y: 162
+        width: 213
+        height: 316
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 150dd88d2cbd1604c94935c71eaa4818
+      internalID: 1498859746
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Slash1_Sheet_Blue_37
+      rect:
+        serializedVersion: 2
+        x: 1589
+        y: 466
+        width: 19
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a5ed6a3498616a344a6e05c1db5e4d5a
+      internalID: -1736598270
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Slash1_Sheet_Blue_38
+      rect:
+        serializedVersion: 2
+        x: 62
+        y: 136
+        width: 370
+        height: 255
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: db9c63cf5f0aee14dbf54854b31b4bc8
+      internalID: -1874815498
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Slash1_Sheet_Blue_39
+      rect:
+        serializedVersion: 2
+        x: 1567
+        y: 368
+        width: 14
+        height: 55
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 879a7d0c833e61c4289601137f584963
+      internalID: -1405227699
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Slash1_Sheet_Blue_40
+      rect:
+        serializedVersion: 2
+        x: 705
+        y: 254
+        width: 22
+        height: 74
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 38da07030d1ce39479f3607834edfbea
+      internalID: -1947710801
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Slash1_Sheet_Blue_41
+      rect:
+        serializedVersion: 2
+        x: 725
+        y: 186
+        width: 59
+        height: 109
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 28abc3a255b789149a9990e7b36c0432
+      internalID: 1087568281
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Slash1_Sheet_Blue_42
+      rect:
+        serializedVersion: 2
+        x: 726
+        y: 291
+        width: 4
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9353b892d401e6e45a837be3e930de97
+      internalID: 1247447
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Slash1_Sheet_Blue_43
+      rect:
+        serializedVersion: 2
+        x: 1457
+        y: 232
+        width: 42
+        height: 89
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 65fc824dca746b74781caf08403cbbe2
+      internalID: -719454227
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Slash1_Sheet_Blue_44
+      rect:
+        serializedVersion: 2
+        x: 36
+        y: 257
+        width: 6
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 27dcd6df82f17b5459920c904b61a625
+      internalID: -12835561
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Slash1_Sheet_Blue_45
+      rect:
+        serializedVersion: 2
+        x: 44
+        y: 183
+        width: 60
+        height: 104
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 07499f9553e9dd54f9622c5ea691a700
+      internalID: -736421332
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Slash1_Sheet_Blue_46
+      rect:
+        serializedVersion: 2
+        x: 855
+        y: 188
+        width: 151
+        height: 75
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f4d663b29ece9c549936d57a43de39b5
+      internalID: -2109656053
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Slash1_Sheet_Blue_47
+      rect:
+        serializedVersion: 2
+        x: 1414
+        y: 232
+        width: 21
+        height: 42
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a6a8f8b29892b44438a241a12ea73fdd
+      internalID: 1030837278
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Slash1_Sheet_Blue_48
+      rect:
+        serializedVersion: 2
+        x: 90
+        y: 113
+        width: 65
+        height: 56
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 661c9968df97dd64db2ec004db8384b8
+      internalID: 778679743
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Slash1_Sheet_Blue_49
+      rect:
+        serializedVersion: 2
+        x: 405
+        y: 151
+        width: 69
+        height: 58
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0a172c538c85bd34abfc9ebf4fb7ac32
+      internalID: 154441790
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Slash1_Sheet_Blue_50
+      rect:
+        serializedVersion: 2
+        x: 769
+        y: 145
+        width: 78
+        height: 98
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 56f0a91ef85924e4494accc1aedb0d6f
+      internalID: 259246128
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Slash1_Sheet_Blue_51
+      rect:
+        serializedVersion: 2
+        x: 890
+        y: 160
+        width: 103
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5923fcb0598c4f74a9b307fbd323917e
+      internalID: -1029735573
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Slash1_Sheet_Blue_52
+      rect:
+        serializedVersion: 2
+        x: 155
+        y: 122
+        width: 17
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 77ef70ebcba676044bfdfca07be3c649
+      internalID: -1781364796
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Slash1_Sheet_Blue_53
+      rect:
+        serializedVersion: 2
+        x: 173
+        y: 112
+        width: 45
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cc8fd943f843f3047a908734c72cb6dd
+      internalID: 142898988
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Slash1_Sheet_Blue_54
+      rect:
+        serializedVersion: 2
+        x: 863
+        y: 117
+        width: 25
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7e60e41e07ec689409c71fce4cff0e88
+      internalID: -1721396201
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Slash1_Sheet_Blue_55
+      rect:
+        serializedVersion: 2
+        x: 156
+        y: 82
+        width: 61
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bbcbb2b2b73d7ea448261ee81ccd0a6c
+      internalID: -1991145807
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Slash1_Sheet_Blue_56
+      rect:
+        serializedVersion: 2
+        x: 320
+        y: 83
+        width: 112
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e599425068dc96f4e920cf0e7e444911
+      internalID: -1563501407
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Slash1_Sheet_Blue_57
+      rect:
+        serializedVersion: 2
+        x: 359
+        y: 97
+        width: 30
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9c324cfc6c2399545900449911fb56fc
+      internalID: 1890901451
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Slash1_Sheet_Blue_58
+      rect:
+        serializedVersion: 2
+        x: 401
+        y: 97
+        width: 58
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d48c1c578d2f39546b17e514ec094a88
+      internalID: -1059255295
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Slash1_Sheet_Blue_59
+      rect:
+        serializedVersion: 2
+        x: 218
+        y: 76
+        width: 15
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 15105eee124c97546a5d0d3f86249a25
+      internalID: -1606852790
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Slash1_Sheet_Blue_60
+      rect:
+        serializedVersion: 2
+        x: 234
+        y: 72
+        width: 13
+        height: 5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c7d3cb474bcac64488b23f3792b42ac4
+      internalID: -912727559
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Slash1_Sheet_Blue_61
+      rect:
+        serializedVersion: 2
+        x: 305
+        y: 73
+        width: 70
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 30c93477b164586479a39c32ea00b7fb
+      internalID: -562214799
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Slash1_Sheet_Blue_62
+      rect:
+        serializedVersion: 2
+        x: 250
+        y: 62
+        width: 79
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d2426617f90ce774497c3926d0b2e66e
+      internalID: 1073678671
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 8cd1309b6277fb849afae55e8105c9ea
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      Slash1_Sheet_Blue_0: -548061436
+      Slash1_Sheet_Blue_1: -1361972288
+      Slash1_Sheet_Blue_10: -1274956349
+      Slash1_Sheet_Blue_11: 200432693
+      Slash1_Sheet_Blue_12: 316008480
+      Slash1_Sheet_Blue_13: -222773804
+      Slash1_Sheet_Blue_14: -513030717
+      Slash1_Sheet_Blue_15: -1461772696
+      Slash1_Sheet_Blue_16: 970461881
+      Slash1_Sheet_Blue_17: 67191371
+      Slash1_Sheet_Blue_18: 2033027810
+      Slash1_Sheet_Blue_19: -633559048
+      Slash1_Sheet_Blue_2: 464504608
+      Slash1_Sheet_Blue_20: -1976332058
+      Slash1_Sheet_Blue_21: 1808346085
+      Slash1_Sheet_Blue_22: 1487477142
+      Slash1_Sheet_Blue_23: 170905246
+      Slash1_Sheet_Blue_24: -29636679
+      Slash1_Sheet_Blue_25: 1006623472
+      Slash1_Sheet_Blue_26: 440462744
+      Slash1_Sheet_Blue_27: -1234179423
+      Slash1_Sheet_Blue_28: -812988908
+      Slash1_Sheet_Blue_29: -1636793231
+      Slash1_Sheet_Blue_3: 424384229
+      Slash1_Sheet_Blue_30: 1978793169
+      Slash1_Sheet_Blue_31: 746698064
+      Slash1_Sheet_Blue_32: 1495113251
+      Slash1_Sheet_Blue_33: -504995541
+      Slash1_Sheet_Blue_34: -1123015257
+      Slash1_Sheet_Blue_35: 978112845
+      Slash1_Sheet_Blue_36: 1498859746
+      Slash1_Sheet_Blue_37: -1736598270
+      Slash1_Sheet_Blue_38: -1874815498
+      Slash1_Sheet_Blue_39: -1405227699
+      Slash1_Sheet_Blue_4: 686145362
+      Slash1_Sheet_Blue_40: -1947710801
+      Slash1_Sheet_Blue_41: 1087568281
+      Slash1_Sheet_Blue_42: 1247447
+      Slash1_Sheet_Blue_43: -719454227
+      Slash1_Sheet_Blue_44: -12835561
+      Slash1_Sheet_Blue_45: -736421332
+      Slash1_Sheet_Blue_46: -2109656053
+      Slash1_Sheet_Blue_47: 1030837278
+      Slash1_Sheet_Blue_48: 778679743
+      Slash1_Sheet_Blue_49: 154441790
+      Slash1_Sheet_Blue_5: -866189617
+      Slash1_Sheet_Blue_50: 259246128
+      Slash1_Sheet_Blue_51: -1029735573
+      Slash1_Sheet_Blue_52: -1781364796
+      Slash1_Sheet_Blue_53: 142898988
+      Slash1_Sheet_Blue_54: -1721396201
+      Slash1_Sheet_Blue_55: -1991145807
+      Slash1_Sheet_Blue_56: -1563501407
+      Slash1_Sheet_Blue_57: 1890901451
+      Slash1_Sheet_Blue_58: -1059255295
+      Slash1_Sheet_Blue_59: -1606852790
+      Slash1_Sheet_Blue_6: -1206444099
+      Slash1_Sheet_Blue_60: -912727559
+      Slash1_Sheet_Blue_61: -562214799
+      Slash1_Sheet_Blue_62: 1073678671
+      Slash1_Sheet_Blue_7: -65470877
+      Slash1_Sheet_Blue_8: -853960945
+      Slash1_Sheet_Blue_9: -2108292717
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

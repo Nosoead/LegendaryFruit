@@ -3,7 +3,9 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - RewardTree
+  - Potal
   layers:
   - Default
   - TransparentFX
@@ -11,20 +13,20 @@ TagManager:
   - 
   - Water
   - UI
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
+  - Ground
+  - Block
+  - Invincible
+  - Player
+  - Monster
+  - NPC
+  - Reward
+  - Item
+  - Util
+  - Laser
+  - MinimapIcon
+  - Projectile
+  - TalkableNPC
+  - ConsumableItem
   - 
   - 
   - 
@@ -40,4 +42,19 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Sky
+    uniqueID: 455728019
+    locked: 0
+  - name: Decoration
+    uniqueID: 4050424913
+    locked: 0
+  - name: Background
+    uniqueID: 1209475085
+    locked: 0
+  - name: InGame
+    uniqueID: 1723399425
+    locked: 0
+  - name: Foreground
+    uniqueID: 158365691
     locked: 0

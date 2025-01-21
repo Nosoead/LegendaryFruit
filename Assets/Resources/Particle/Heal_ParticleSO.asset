@@ -1,0 +1,41 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f8b4efc1f3286b41b584c8ebab3b687, type: 3}
+  m_Name: Heal_ParticleSO
+  m_EditorClassIdentifier: 
+  particleType: 0
+  materials:
+  - {fileID: 2100000, guid: 68f70d57b0305b64c9f605ba537f6bdb, type: 2}
+  particleData:
+  - minMaxCurve:
+      m_Mode: 0
+      m_CurveMultiplier: 0
+      m_CurveMin:
+        serializedVersion: 2
+        m_Curve: []
+        m_PreInfinity: 2
+        m_PostInfinity: 2
+        m_RotationOrder: 4
+      m_CurveMax:
+        serializedVersion: 2
+        m_Curve: []
+        m_PreInfinity: 2
+        m_PostInfinity: 2
+        m_RotationOrder: 4
+      m_ConstantMin: 0
+      m_ConstantMax: 0
+    particleSize: 8
+    particleLifeTime: 0.5
+    textureSeetAnimtaionX: 4
+    textureSeetAnimtaionY: 1
+    isTextureSeetAntimationActive: 1
+    isSizeOverTimeActive: 0

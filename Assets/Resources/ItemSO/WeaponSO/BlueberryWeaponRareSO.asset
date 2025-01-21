@@ -1,0 +1,43 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6f30345d6f773874da4088be7b3c7755, type: 3}
+  m_Name: BlueberryWeaponRareSO
+  m_EditorClassIdentifier: 
+  ID: 203001
+  weaponName: "\uC870\uAE08 \uB354 \uCEE4\uC9C4 \uBE14\uB8E8\uBCA0\uB9AC"
+  description: "\uB450\uBC30\uB85C \uB9DB\uC788\uB2E4"
+  attackPower: 0
+  type: 1
+  gradeType: 1
+  eatValue: 3
+  attributeAttackValue: 0
+  attributeAttackRateTime: 1
+  arrtibuteStatck: 0
+  weaponSprite: {fileID: 21300000, guid: afc1726a128051e4ea52f63057bb533c, type: 3}
+  rewardSprite: {fileID: 21300000, guid: b20780467c98a58448b1f9b9a06e39b1, type: 3}
+  animatorController: {fileID: 22100000, guid: 9a2b7d726c4152a4faff0ac9f289d899, type: 2}
+  rangedAttackData:
+  - projectileType: 0
+    projectTileSprite: {fileID: 21300000, guid: b20780467c98a58448b1f9b9a06e39b1, type: 3}
+    attackDistance: 0
+    maxDistance: 10
+    rangedAttackPower: 17
+    rangedAttackSpeed: 12
+    rangedAttackRate: 0
+    attributeDatas:
+    - attributeType: 1
+      trailMaterial: {fileID: 2100000, guid: 88f79feaedbf1fd4f8979f7b82163416, type: 2}
+      attributeValue: 2
+      attributeLateTime: 2
+      attributeStack: 0
+  effectData: []
+  effectMaterial: {fileID: 0}
